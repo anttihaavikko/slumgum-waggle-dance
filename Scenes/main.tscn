@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c6vi0ajnf67n7" path="res://Scripts/bee.gd" id="1_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dpdpimyenwx77" path="res://Sprites/body.png" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://cm35c804ibmbp" path="res://Scripts/ground.gd" id="2_21xkr"]
 [ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://do7b18qnf254n" path="res://Scripts/builder.gd" id="2_d1ilt"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/platform.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dq36w8r4o0c4s" path="res://Scenes/support.tscn" id="10_hptm8"]
+[ext_resource type="Script" uid="uid://c1y4mjr0cxq7s" path="res://Scripts/island.gd" id="11_d1ilt"]
 
 [sub_resource type="Animation" id="Animation_ynf5e"]
 length = 0.001
@@ -133,13 +133,14 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
 z_index = -50
-offset_left = -12057.0
-offset_top = -7137.0
-offset_right = 12081.0
-offset_bottom = 7084.0
+offset_left = -30694.0
+offset_top = -16901.0
+offset_right = 31039.0
+offset_bottom = 19628.0
 color = Color(0.52156866, 0.69411767, 0.8352941, 1)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179]
+position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
 pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8")])
 
@@ -161,7 +162,7 @@ scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings")]
 z_index = 5
-position = Vector2(-49, -99)
+position = Vector2(702, -408)
 script = ExtResource("1_8gbba")
 body = NodePath("Body")
 lander = NodePath("Lander")
@@ -210,7 +211,7 @@ offset = Vector2(38, -19)
 
 [node name="LiveLimb" type="Line2D" parent="Bee/Body" unique_id=1119725993 node_paths=PackedStringArray("target")]
 position = Vector2(54, 92)
-points = PackedVector2Array(0, 0, 40.360485, 29.51324, 14, 72)
+points = PackedVector2Array(0, 0, 40.360474, 29.513245, 14, 72.000015)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -224,7 +225,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb2" type="Line2D" parent="Bee/Body" unique_id=1358115220 node_paths=PackedStringArray("target")]
 position = Vector2(-69, 88)
-points = PackedVector2Array(0, 0, -33.93625, 36.719627, -3, 76.00001)
+points = PackedVector2Array(0, 0, -33.93628, 36.719604, -3, 75.99997)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -237,7 +238,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb3" type="Line2D" parent="Bee/Body" unique_id=1607490853 node_paths=PackedStringArray("target")]
 position = Vector2(-43, 120)
-points = PackedVector2Array(0, 0, -31.36441, 24.82486, -4, 54)
+points = PackedVector2Array(0, 0, -31.36438, 24.82489, -4, 54.000046)
 width = 20.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -270,7 +271,7 @@ polygon = PackedVector2Array(-3, -136, 35, -129, 66, -84, 83, 13, 74, 87, 41, 12
 
 [node name="Camera" type="Camera2D" parent="Bee/Body" unique_id=714120476]
 position = Vector2(1, 0)
-zoom = Vector2(0.51, 0.51)
+zoom = Vector2(0.3, 0.3)
 script = ExtResource("2_bo1nx")
 metadata/_custom_type_script = "uid://ova7wngb7x7i"
 
@@ -318,20 +319,37 @@ position = Vector2(-45, 41)
 [node name="Leg Pos 4" type="Node2D" parent="Bee/Lander" unique_id=1521862504]
 position = Vector2(45, 41)
 
-[node name="Ground" type="StaticBody2D" parent="." unique_id=1755791000]
+[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg")]
 z_index = 10
 position = Vector2(561, 460)
+script = ExtResource("11_d1ilt")
+shapes = [NodePath("Shape1")]
+collider = NodePath("CollisionPolygon2D")
+poly = NodePath("CollisionPolygon2D/Polygon2D")
+line = NodePath("CollisionPolygon2D/Line2D")
+bg = NodePath("Bg")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground" unique_id=454098672 node_paths=PackedStringArray("poly", "line")]
+[node name="Bg" type="Polygon2D" parent="Island" unique_id=935066965]
+z_index = -20
+z_as_relative = false
+scale = Vector2(-1, 1)
+color = Color(0.23680058, 0.66427696, 0.70309734, 1)
+offset = Vector2(-12, -1113)
+polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Island" unique_id=454098672]
 polygon = PackedVector2Array(-155, 137, 220, 151, 507, 82, 1150, -106, 1678, 132, 2242, 117, 2474, -234, 2380, -471, 2054, -728, 3131, -793, 2963, -531, 3023, -71, 3314, 374, 3477, 379, 3018, 784, 2276, 1382, 2079, 1105, 1382, 1155, 1065, 1565, 507, 1254, -368, 1417, -1366, 2010, -1208, 1481, -1598, 1016, -2246, 853, -2844, 344, -2908, -71, -2271, -501, -2108, -66, -1880, 473, -1129, 265, -714, 591, -22, 611, -37, 339, -294, 324)
-script = ExtResource("2_21xkr")
-poly = NodePath("../Polygon2D")
-line = NodePath("../Line2D")
 
-[node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=1048176424]
+[node name="Polygon2D" type="Polygon2D" parent="Island/CollisionPolygon2D" unique_id=1048176424]
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 
-[node name="Line2D" type="Line2D" parent="Ground" unique_id=1236615283]
+[node name="Line2D" type="Line2D" parent="Island/CollisionPolygon2D" unique_id=1236615283]
 closed = true
 width = 30.0
 default_color = Color(0.027100537, 0.2406399, 0.23231465, 1)
+
+[node name="Shape1" type="Polygon2D" parent="Island" unique_id=1955531287]
+visible = false
+position = Vector2(12, 1113)
+offset = Vector2(-12, -1113)
+polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
