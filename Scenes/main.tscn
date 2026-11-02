@@ -1,0 +1,360 @@
+[gd_scene format=3 uid="uid://dctl740whl7xn"]
+
+[ext_resource type="Script" uid="uid://c6vi0ajnf67n7" path="res://Scripts/bee.gd" id="1_8gbba"]
+[ext_resource type="Texture2D" uid="uid://dpdpimyenwx77" path="res://Sprites/body.png" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://cm35c804ibmbp" path="res://Scripts/ground.gd" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://74hyg5isj5x3" path="res://_Starter/Sprites/square.png" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
+[ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
+
+[sub_resource type="Animation" id="Animation_ynf5e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wings Right:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wings Left:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wings Right/Lower:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4546753]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wings Left/Lower:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4546753]
+}
+
+[sub_resource type="Animation" id="Animation_hptm8"]
+resource_name = "flap"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wings Right:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.21666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2617993877991494, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wings Left:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2617993877991494, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wings Right/Lower:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.4546753, 0.5235987755982988, 0.4546753]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wings Left/Lower:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.4546753, 0.5235987755982988, 0.4546753]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1ilt"]
+_data = {
+&"RESET": SubResource("Animation_ynf5e"),
+&"flap": SubResource("Animation_hptm8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
+size = Vector2(163, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed4kf"]
+size = Vector2(254, 69)
+
+[node name="Main" type="Node2D" unique_id=324059262]
+
+[node name="DevRestart" type="Node" parent="." unique_id=791140893]
+script = ExtResource("4_jjvhh")
+metadata/_custom_type_script = "uid://b0fr17vp8abvx"
+
+[node name="Sky" type="ColorRect" parent="." unique_id=971220568]
+offset_left = -12057.0
+offset_top = -7137.0
+offset_right = 12081.0
+offset_bottom = 7084.0
+color = Color(0.3319756, 0.5886513, 0.885763, 1)
+
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings")]
+position = Vector2(562, 169)
+script = ExtResource("1_8gbba")
+body = NodePath("Body")
+lander = NodePath("Lander")
+wings = NodePath("Body/Wing Flap")
+
+[node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
+mass = 0.5
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, -40)
+
+[node name="Wing Flap" type="AnimationPlayer" parent="Bee/Body" unique_id=1752399890]
+libraries/ = SubResource("AnimationLibrary_d1ilt")
+autoplay = &"flap"
+speed_scale = 2.0
+
+[node name="Wings Right" type="Node2D" parent="Bee/Body" unique_id=436242528]
+position = Vector2(76, 42)
+
+[node name="Upper" type="Sprite2D" parent="Bee/Body/Wings Right" unique_id=1684558679]
+position = Vector2(0, -1)
+texture = ExtResource("7_ynf5e")
+offset = Vector2(38, -19)
+
+[node name="Lower" type="Sprite2D" parent="Bee/Body/Wings Right" unique_id=1714706414]
+position = Vector2(0.9999999, 13)
+rotation = 0.4546753
+scale = Vector2(0.842817, 0.842817)
+texture = ExtResource("7_ynf5e")
+offset = Vector2(38, -19)
+
+[node name="Wings Left" type="Node2D" parent="Bee/Body" unique_id=440867306]
+position = Vector2(-87, 42)
+scale = Vector2(-1, 1)
+
+[node name="Upper" type="Sprite2D" parent="Bee/Body/Wings Left" unique_id=163199787]
+position = Vector2(0, -1)
+texture = ExtResource("7_ynf5e")
+offset = Vector2(38, -19)
+
+[node name="Lower" type="Sprite2D" parent="Bee/Body/Wings Left" unique_id=1700566999]
+position = Vector2(0.9999999, 13)
+rotation = 0.4546753
+scale = Vector2(0.842817, 0.842817)
+texture = ExtResource("7_ynf5e")
+offset = Vector2(38, -19)
+
+[node name="LiveLimb" type="Line2D" parent="Bee/Body" unique_id=1119725993 node_paths=PackedStringArray("target")]
+position = Vector2(54, 92)
+points = PackedVector2Array(0, 0, 40.360474, 29.513245, 14, 72)
+width = 25.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("6_6bp64")
+target = NodePath("../../Lander/Leg Pos 1")
+length = 50.0
+flip = true
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="LiveLimb2" type="Line2D" parent="Bee/Body" unique_id=1358115220 node_paths=PackedStringArray("target")]
+position = Vector2(-69, 88)
+points = PackedVector2Array(0, 0, -33.93625, 36.719635, -3, 76)
+width = 25.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("6_6bp64")
+target = NodePath("../../Lander/Leg Pos 2")
+length = 50.0
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="LiveLimb3" type="Line2D" parent="Bee/Body" unique_id=1607490853 node_paths=PackedStringArray("target")]
+position = Vector2(-43, 120)
+points = PackedVector2Array(0, 0, -31.36441, 24.82486, -4, 54)
+width = 20.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("6_6bp64")
+target = NodePath("../../Lander/Leg Pos 3")
+length = 40.0
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="LiveLimb4" type="Line2D" parent="Bee/Body" unique_id=2063263471 node_paths=PackedStringArray("target")]
+position = Vector2(35, 118)
+points = PackedVector2Array(0, 0, 32, 24, 8, 56)
+width = 20.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("6_6bp64")
+target = NodePath("../../Lander/Leg Pos 4")
+length = 40.0
+flip = true
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="Body Sprite" type="Sprite2D" parent="Bee/Body" unique_id=734084277]
+texture = ExtResource("1_jjgbg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bee/Body" unique_id=1004588807]
+polygon = PackedVector2Array(-3, -136, 35, -129, 66, -84, 83, 13, 74, 87, 41, 127, 8, 139, -20, 138, -59, 114, -77, 85, -86, 11, -67, -90, -35, -130)
+
+[node name="Camera" type="Camera2D" parent="Bee/Body" unique_id=714120476]
+position = Vector2(1, 0)
+zoom = Vector2(0.51, 0.51)
+script = ExtResource("2_bo1nx")
+metadata/_custom_type_script = "uid://ova7wngb7x7i"
+
+[node name="Lander Joint" type="PinJoint2D" parent="Bee/Body" unique_id=1662152783]
+position = Vector2(-2, 121)
+node_a = NodePath("..")
+node_b = NodePath("../../Lander")
+angular_limit_lower = -0.87266463
+angular_limit_upper = 0.87266463
+
+[node name="Spring Left" type="DampedSpringJoint2D" parent="Bee/Body" unique_id=1192200579]
+position = Vector2(-56, 96)
+node_a = NodePath("..")
+node_b = NodePath("../../Lander")
+length = 20.0
+stiffness = 40.0
+
+[node name="Spring Right" type="DampedSpringJoint2D" parent="Bee/Body" unique_id=1041827361]
+position = Vector2(51, 96)
+node_a = NodePath("..")
+node_b = NodePath("../../Lander")
+length = 20.0
+stiffness = 40.0
+
+[node name="Face" parent="Bee/Body" unique_id=1240513132 instance=ExtResource("7_344ge")]
+position = Vector2(-5, -41)
+scale = Vector2(2.325933, 2.325933)
+
+[node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
+position = Vector2(-2, 133)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee/Lander" unique_id=372798544]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_cpkcx")
+
+[node name="Leg Pos 1" type="Node2D" parent="Bee/Lander" unique_id=482267135]
+position = Vector2(70, 31)
+
+[node name="Leg Pos 2" type="Node2D" parent="Bee/Lander" unique_id=1816918155]
+position = Vector2(-70, 31)
+
+[node name="Leg Pos 3" type="Node2D" parent="Bee/Lander" unique_id=424270434]
+position = Vector2(-45, 41)
+
+[node name="Leg Pos 4" type="Node2D" parent="Bee/Lander" unique_id=1521862504]
+position = Vector2(45, 41)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1755791000]
+position = Vector2(561, 460)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground" unique_id=454098672 node_paths=PackedStringArray("poly", "line")]
+polygon = PackedVector2Array(-155, 137, 220, 151, 507, 82, 1150, -106, 1678, 132, 2242, 117, 2474, -234, 2380, -471, 2054, -728, 3131, -793, 2963, -531, 3023, -71, 3314, 374, 3477, 379, 3018, 784, 2276, 1382, 2079, 1105, 1382, 1155, 1065, 1565, 507, 1254, -368, 1417, -1366, 2010, -1208, 1481, -1598, 1016, -2246, 853, -2844, 344, -2908, -71, -2271, -501, -2108, -66, -1880, 473, -1129, 265, -714, 591, -22, 611, -37, 339, -294, 324)
+script = ExtResource("2_21xkr")
+poly = NodePath("../Polygon2D")
+line = NodePath("../Line2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=1048176424]
+color = Color(0.6683451, 0.4062158, 0.23641893, 1)
+
+[node name="Line2D" type="Line2D" parent="Ground" unique_id=1236615283]
+closed = true
+width = 20.0
+default_color = Color(0.28009135, 0.15553927, 0.07131546, 1)
+
+[node name="Platform" type="StaticBody2D" parent="." unique_id=130178925]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(563, 409)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=1983016511]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ed4kf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/CollisionShape2D" unique_id=1810180473]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.6293945e-06, -0.5000007)
+scale = Vector2(254.00002, 68)
+texture = ExtResource("5_kry3j")
+metadata/_edit_lock_ = true
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=1358944404]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(139, 283)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1329314651]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ed4kf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2/CollisionShape2D" unique_id=102227839]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.6293945e-06, -0.5000007)
+scale = Vector2(254.00002, 68)
+texture = ExtResource("5_kry3j")
+metadata/_edit_lock_ = true
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=1567094493]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-245, 427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1533515]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ed4kf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3/CollisionShape2D" unique_id=1589004367]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.6293945e-06, -0.5000007)
+scale = Vector2(254.00002, 68)
+texture = ExtResource("5_kry3j")
+metadata/_edit_lock_ = true
