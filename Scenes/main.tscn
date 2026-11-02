@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dpdpimyenwx77" path="res://Sprites/body.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://cm35c804ibmbp" path="res://Scripts/ground.gd" id="2_21xkr"]
 [ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://do7b18qnf254n" path="res://Scripts/builder.gd" id="2_d1ilt"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
@@ -139,6 +140,8 @@ offset_bottom = 7084.0
 color = Color(0.52156866, 0.69411767, 0.8352941, 1)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179]
+script = ExtResource("2_d1ilt")
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8")])
 
 [node name="Platform" parent="Platforms" unique_id=208223166 instance=ExtResource("9_ynf5e")]
 position = Vector2(32, 283)
@@ -157,6 +160,7 @@ rotation = 1.7915099
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings")]
+z_index = 5
 position = Vector2(-49, -99)
 script = ExtResource("1_8gbba")
 body = NodePath("Body")
@@ -315,6 +319,7 @@ position = Vector2(-45, 41)
 position = Vector2(45, 41)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1755791000]
+z_index = 10
 position = Vector2(561, 460)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground" unique_id=454098672 node_paths=PackedStringArray("poly", "line")]
