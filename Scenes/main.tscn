@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://cm35c804ibmbp" path="res://Scripts/ground.gd" id="2_21xkr"]
 [ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
-[ext_resource type="Texture2D" uid="uid://74hyg5isj5x3" path="res://_Starter/Sprites/square.png" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/platform.tscn" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://dq36w8r4o0c4s" path="res://Scenes/support.tscn" id="10_hptm8"]
 
 [sub_resource type="Animation" id="Animation_ynf5e"]
 length = 0.001
@@ -123,9 +124,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed4kf"]
-size = Vector2(254, 69)
-
 [node name="Main" type="Node2D" unique_id=324059262]
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
@@ -133,14 +131,33 @@ script = ExtResource("4_jjvhh")
 metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
+z_index = -50
 offset_left = -12057.0
 offset_top = -7137.0
 offset_right = 12081.0
 offset_bottom = 7084.0
-color = Color(0.3319756, 0.5886513, 0.885763, 1)
+color = Color(0.52156866, 0.69411767, 0.8352941, 1)
+
+[node name="Platforms" type="Node2D" parent="." unique_id=403826179]
+
+[node name="Platform" parent="Platforms" unique_id=208223166 instance=ExtResource("9_ynf5e")]
+position = Vector2(32, 283)
+
+[node name="Platform2" parent="Platforms" unique_id=904452774 instance=ExtResource("9_ynf5e")]
+position = Vector2(-377, 283)
+
+[node name="Support" parent="Platforms" unique_id=1304477163 instance=ExtResource("10_hptm8")]
+position = Vector2(266, 486.99997)
+rotation = 0.95713127
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="Support2" parent="Platforms" unique_id=678899702 instance=ExtResource("10_hptm8")]
+position = Vector2(-545, 539)
+rotation = 1.7915099
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings")]
-position = Vector2(562, 169)
+position = Vector2(-49, -99)
 script = ExtResource("1_8gbba")
 body = NodePath("Body")
 lander = NodePath("Lander")
@@ -189,7 +206,7 @@ offset = Vector2(38, -19)
 
 [node name="LiveLimb" type="Line2D" parent="Bee/Body" unique_id=1119725993 node_paths=PackedStringArray("target")]
 position = Vector2(54, 92)
-points = PackedVector2Array(0, 0, 40.360474, 29.513245, 14, 72)
+points = PackedVector2Array(0, 0, 40.360485, 29.51324, 14, 72)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -203,7 +220,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb2" type="Line2D" parent="Bee/Body" unique_id=1358115220 node_paths=PackedStringArray("target")]
 position = Vector2(-69, 88)
-points = PackedVector2Array(0, 0, -33.93625, 36.719635, -3, 76)
+points = PackedVector2Array(0, 0, -33.93625, 36.719627, -3, 76.00001)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -307,54 +324,9 @@ poly = NodePath("../Polygon2D")
 line = NodePath("../Line2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=1048176424]
-color = Color(0.6683451, 0.4062158, 0.23641893, 1)
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 
 [node name="Line2D" type="Line2D" parent="Ground" unique_id=1236615283]
 closed = true
-width = 20.0
-default_color = Color(0.28009135, 0.15553927, 0.07131546, 1)
-
-[node name="Platform" type="StaticBody2D" parent="." unique_id=130178925]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(563, 409)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=1983016511]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_ed4kf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platform/CollisionShape2D" unique_id=1810180473]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-7.6293945e-06, -0.5000007)
-scale = Vector2(254.00002, 68)
-texture = ExtResource("5_kry3j")
-metadata/_edit_lock_ = true
-
-[node name="Platform2" type="StaticBody2D" parent="." unique_id=1358944404]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(139, 283)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1329314651]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_ed4kf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platform2/CollisionShape2D" unique_id=102227839]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-7.6293945e-06, -0.5000007)
-scale = Vector2(254.00002, 68)
-texture = ExtResource("5_kry3j")
-metadata/_edit_lock_ = true
-
-[node name="Platform3" type="StaticBody2D" parent="." unique_id=1567094493]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-245, 427)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1533515]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_ed4kf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Platform3/CollisionShape2D" unique_id=1589004367]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-7.6293945e-06, -0.5000007)
-scale = Vector2(254.00002, 68)
-texture = ExtResource("5_kry3j")
-metadata/_edit_lock_ = true
+width = 30.0
+default_color = Color(0.027100537, 0.2406399, 0.23231465, 1)

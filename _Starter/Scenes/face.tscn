@@ -18,7 +18,7 @@ opened_mouth = NodePath("Wrapper/Open Mouth")
 [node name="Wrapper" type="Node2D" parent="." unique_id=149350154]
 
 [node name="Blushes" type="Node2D" parent="Wrapper" unique_id=319134752]
-modulate = Color(0.85882354, 0.3529412, 0.25882354, 1)
+modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
 
 [node name="Blush Left" type="Sprite2D" parent="Wrapper/Blushes" unique_id=1921362429]
 clip_children = 1

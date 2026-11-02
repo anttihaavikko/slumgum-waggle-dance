@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d1kmkyvijt4sh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
+size = Vector2(500, 99)
+
+[node name="Platform" type="StaticBody2D" unique_id=208223166]
+
+[node name="Outline" type="Line2D" parent="." unique_id=1428855056]
+points = PackedVector2Array(-200, 0, 200, 0)
+closed = true
+width = 100.0
+default_color = Color(0, 0, 0, 1)
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="Fill" type="Line2D" parent="." unique_id=1403270834]
+z_index = 1
+z_as_relative = false
+points = PackedVector2Array(-200, 0, 200, 0)
+closed = true
+width = 60.0
+default_color = Color(1, 0.7294118, 0.28627452, 1)
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1372066112]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_hptm8")
