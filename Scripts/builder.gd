@@ -16,7 +16,7 @@ var slot := 0
 func _process(_delta) -> void:
 	if held:
 		held.global_position = get_global_mouse_position()
-		if Input.is_action_just_pressed("place"):
+		if Input.is_action_just_pressed("primary"):
 			prev_angle = held.rotation
 			held.collision_layer = held_layer
 			held.collision_mask = held_mask

@@ -1,7 +1,8 @@
 extends Equipment
 
-func update(_delta: float):
-	pass
+func update(delta: float):
+	super.update(delta)
+	align()
 
 func toggle(state: bool):
 	super.toggle(state)
