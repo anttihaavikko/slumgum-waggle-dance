@@ -1,28 +1,43 @@
 class_name HealthDisplay extends Control
 
-@export var max_hp := 10
-@export var label: Label
-@export var bar: ColorRect
+@export var max_hp := 10:
+	set(val):
+		max_hp = val
+		update_shown()
+@export var label: RichTextLabel
+@export var max_label: RichTextLabel
+@export var bar: Control
+@export var full_scale: Vector2 = Vector2(1, 1)
+@export var empty_scale: Vector2 = Vector2(0, 1)
+@export var animated := true
 
-var hp: int
+var hp: int:
+	set(val):
+		hp = val
+		update_shown()
 
 func _ready() -> void:
 	hp = max_hp
-	update_shown()
 
 func hurt(amount: int) -> void:
 	hp = max(hp - amount, 0)
-	update_shown()
 
 func heal(amount: int) -> void:
 	hp = min(hp + amount, max_hp)
-	update_shown()
 
 func is_alive() -> bool:
 	return hp > 0
 
 func update_shown() -> void:
 	if label:
-		label.text = "%d/%d" % [hp, max_hp]
+		if max_label:
+			label.text = "%d" % [hp]
+			max_label.text = "%d" % [max_hp]
+		else:
+			label.text = "%d/%d" % [hp, max_hp]
 	if bar:
-		get_tree().create_tween().tween_property(bar, "scale", Vector2(clampf(hp * 1.0 / max_hp, 0, 1), 1), 0.1).set_trans(Tween.TRANS_QUAD)
+		var target = lerp(empty_scale, full_scale, clampf(hp * 1.0 / max_hp, 0, 1))
+		if animated:
+			get_tree().create_tween().tween_property(bar, "scale", target, 0.1).set_trans(Tween.TRANS_QUAD)
+		else:
+			bar.scale = target

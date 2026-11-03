@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0ngmpejmn2sp"]
 
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="1_kc167"]
+[ext_resource type="Script" uid="uid://csutijataospt" path="res://_Starter/Scripts/health_display.gd" id="2_gpk4l"]
 [ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="2_p15m1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wsu2k"]
@@ -12,7 +13,7 @@ shader_parameter/speed = 0.05
 shader_parameter/peaks = 11.0
 shader_parameter/time_mod = 0.5
 
-[node name="Health" type="TextureRect" unique_id=295510265]
+[node name="Health" type="TextureRect" unique_id=295510265 node_paths=PackedStringArray("label", "max_label", "bar")]
 modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
 clip_children = 2
 offset_left = -82.0
@@ -22,6 +23,12 @@ offset_bottom = 77.0
 texture = ExtResource("1_kc167")
 expand_mode = 2
 stretch_mode = 5
+script = ExtResource("2_gpk4l")
+label = NodePath("Current")
+max_label = NodePath("Max")
+bar = NodePath("Empty")
+full_scale = Vector2(1, 0)
+empty_scale = Vector2(1, 1)
 
 [node name="Empty" type="ColorRect" parent="." unique_id=106016159]
 self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
