@@ -1,6 +1,7 @@
 class_name Inventory extends Node
 
 @export var slot_prefab: PackedScene
+@export var manager: ItemManager
 
 var slots: Array[Slot] = []
 var focused := 0
@@ -29,3 +30,6 @@ func get_free_slot() -> int:
 
 func add_equipment(eq: Equipment):
 	slots[get_free_slot()].add_equipment(eq)
+
+func add_item(id: Item.Id):
+	slots[get_free_slot()].add_item(manager.items[id])

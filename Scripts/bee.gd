@@ -8,6 +8,8 @@ class_name Bee extends Node2D
 @export var hands: Node2D
 @export var health: HealthDisplay
 @export var energy: HealthDisplay
+@export var item: Sprite2D
+@export var cam: Camera
 
 var thrust = 1.5
 var turning = 1.0
@@ -23,6 +25,8 @@ func _ready() -> void:
 	inventory.create_slots(5)
 	inventory.add_equipment(tools[Equipment.Type.Scythe])
 	inventory.add_equipment(tools[Equipment.Type.Hammer])
+	inventory.add_item(Item.Id.Nectar)
+	inventory.add_item(Item.Id.Pollen)
 	inventory.focus(0)
 	current_changed()
 	inventory.changed.connect(current_changed)
@@ -39,11 +43,18 @@ func collide(_node: Node2D):
 	var mag = body.linear_velocity.length()
 	var threshold := 200.0
 	if mag > threshold:
-		health.hurt(roundi(mag / threshold))
+		var amt = roundi(mag / threshold)
+		health.hurt(amt)
+		cam.shake(amt * 5, 0.15)
 
 func current_changed():
 	current = inventory.current().equipment
 	hands.visible = not current
+	var i = inventory.current().item
+	item.visible = !!i
+	if i:
+		item.self_modulate = i.data.color
+		item.texture = i.data.sprite
 
 func change_energy(dir: float, limit: float = energy_max):
 	if limit < energy_max and energy_left > limit and dir > 0: return

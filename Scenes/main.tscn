@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c6vi0ajnf67n7" path="res://Scripts/bee.gd" id="1_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dpdpimyenwx77" path="res://Sprites/body.png" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://cbkdo86lifxj7" path="res://Scripts/item_manager.gd" id="2_3pmx8"]
 [ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://do7b18qnf254n" path="res://Scripts/builder.gd" id="2_d1ilt"]
+[ext_resource type="Script" uid="uid://0x44vjlq1u52" path="res://Scripts/item_data.gd" id="3_cbgmd"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
@@ -15,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bhmy8epeom4i4" path="res://Sprites/hands.png" id="11_b3802"]
 [ext_resource type="Script" uid="uid://c1y4mjr0cxq7s" path="res://Scripts/island.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="11_h1bgf"]
+[ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="12_gt3je"]
 [ext_resource type="Texture2D" uid="uid://sotoeyspthkx" path="res://Sprites/hud-frame.png" id="13_fdnlq"]
 [ext_resource type="Script" uid="uid://bdxalhd66bjh3" path="res://Scripts/hammer.gd" id="13_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cucel30a085ml" path="res://Sprites/held_scythe.png" id="14_pdsj5"]
@@ -22,6 +25,23 @@
 [ext_resource type="Script" uid="uid://dug0iwlcv3ovm" path="res://Scripts/scythe.gd" id="15_ee4r6"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
+
+[sub_resource type="Resource" id="Resource_1w6v2"]
+script = ExtResource("3_cbgmd")
+id = 1
+title = "Nectar"
+color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = ExtResource("12_gt3je")
+description = "Lorem ipsum."
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_u50mg"]
+script = ExtResource("3_cbgmd")
+id = 1
+title = "Pollen"
+sprite = ExtResource("12_gt3je")
+description = "Pollen ipsum maximus."
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
 bounce = 0.5
@@ -145,6 +165,11 @@ size = Vector2(163, 45)
 script = ExtResource("4_jjvhh")
 metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
+[node name="ItemManager" type="Node" parent="." unique_id=1772976029]
+script = ExtResource("2_3pmx8")
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg")])
+metadata/_custom_type_script = "uid://cbkdo86lifxj7"
+
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
 z_index = -50
 offset_left = -30694.0
@@ -176,7 +201,7 @@ rotation = 1.7915099
 scale = Vector2(0.99999994, 0.99999994)
 script = null
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam")]
 z_index = 5
 position = Vector2(702, -408)
 script = ExtResource("1_8gbba")
@@ -184,10 +209,12 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Body Sprite/Hands/Hammer"), NodePath("Body/Body Sprite/Hands/Scythe")]
-hands = NodePath("Body/Body Sprite/Hands/Hands")
+tools = [NodePath("Body/Hands/Hammer"), NodePath("Body/Hands/Scythe")]
+hands = NodePath("Body/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
+item = NodePath("Body/Hands/Item")
+cam = NodePath("Body/Camera")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
 mass = 0.5
@@ -299,41 +326,6 @@ position = Vector2(-34, -153)
 texture = ExtResource("9_6iyac")
 flip_h = true
 
-[node name="Hands" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1805560162]
-position = Vector2(0, 62)
-script = ExtResource("11_h1bgf")
-moves = true
-move_direction = Vector2(0, 10)
-single_direction = true
-metadata/_custom_type_script = "uid://uxu8p38o38ip"
-
-[node name="Hands" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=556945472]
-visible = false
-self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-position = Vector2(-1.9999999, 2)
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("11_b3802")
-offset = Vector2(0, 1)
-
-[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=832850319 node_paths=PackedStringArray("builder")]
-visible = false
-self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-position = Vector2(-3, 0)
-rotation = 0.13577862
-texture = ExtResource("10_k12tt")
-offset = Vector2(-47, 3)
-script = ExtResource("13_fevyy")
-builder = NodePath("../../../../../Platforms")
-
-[node name="Scythe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=627905351]
-visible = false
-self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-position = Vector2(-1, -2.0000153)
-rotation = 0.13577862
-texture = ExtResource("14_pdsj5")
-offset = Vector2(-103.92078, 94.49667)
-script = ExtResource("15_ee4r6")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bee/Body" unique_id=1004588807]
 polygon = PackedVector2Array(-3, -136, 35, -129, 66, -84, 83, 13, 74, 87, 41, 127, 8, 139, -20, 138, -59, 114, -77, 85, -86, 11, -67, -90, -35, -130)
 
@@ -367,6 +359,47 @@ stiffness = 40.0
 [node name="Face" parent="Bee/Body" unique_id=1240513132 instance=ExtResource("7_344ge")]
 position = Vector2(-5, -41)
 scale = Vector2(2.325933, 2.325933)
+
+[node name="Hands" type="Node2D" parent="Bee/Body" unique_id=1805560162]
+position = Vector2(0, 62)
+script = ExtResource("11_h1bgf")
+moves = true
+move_direction = Vector2(0, 10)
+single_direction = true
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="Item" type="Sprite2D" parent="Bee/Body/Hands" unique_id=391573004]
+visible = false
+position = Vector2(-2.999998, -39.000008)
+scale = Vector2(0.73749995, 0.73749995)
+texture = ExtResource("12_gt3je")
+offset = Vector2(0, 1)
+
+[node name="Hands" type="Sprite2D" parent="Bee/Body/Hands" unique_id=556945472]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1.9999999, 2)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("11_b3802")
+offset = Vector2(0, 1)
+
+[node name="Hammer" type="Sprite2D" parent="Bee/Body/Hands" unique_id=832850319 node_paths=PackedStringArray("builder")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-3, 0)
+rotation = 0.13577862
+texture = ExtResource("10_k12tt")
+offset = Vector2(-47, 3)
+script = ExtResource("13_fevyy")
+builder = NodePath("../../../../Platforms")
+
+[node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands" unique_id=627905351]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1, -2.0000153)
+rotation = 0.13577862
+texture = ExtResource("14_pdsj5")
+offset = Vector2(-103.92078, 94.49667)
+script = ExtResource("15_ee4r6")
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
 position = Vector2(-2, 133)
@@ -468,7 +501,7 @@ offset_top = -75.10501
 offset_right = 80.444855
 offset_bottom = 74.89499
 
-[node name="Bar" type="HBoxContainer" parent="HUD/Frame" unique_id=34212200]
+[node name="Bar" type="HBoxContainer" parent="HUD/Frame" unique_id=34212200 node_paths=PackedStringArray("manager")]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -484,3 +517,4 @@ theme_override_constants/separation = 10
 alignment = 1
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
+manager = NodePath("../../../ItemManager")
