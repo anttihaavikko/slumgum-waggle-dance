@@ -13,6 +13,8 @@ var thrust = 1.5
 var turning = 1.0
 var energy_max := 30.0
 var energy_left := energy_max
+var charging := false
+var landed := false
 
 var current: Equipment
 
@@ -25,20 +27,42 @@ func _ready() -> void:
 	current_changed()
 	inventory.changed.connect(current_changed)
 	energy.max_hp = roundi(energy_max)
+	lander.body_entered.connect(land)
+	lander.body_exited.connect(func(_o): landed = false)
+	body.body_entered.connect(collide)
+
+func land(target: Node2D):
+	landed = true
+	charging = target is Platform
+
+func collide(_node: Node2D):
+	var mag = body.linear_velocity.length()
+	var threshold := 200.0
+	if mag > threshold:
+		health.hurt(roundi(mag / threshold))
 
 func current_changed():
 	current = inventory.current().equipment
 	hands.visible = not current
 
+func change_energy(dir: float, limit: float = energy_max):
+	if limit < energy_max and energy_left > limit and dir > 0: return
+	energy_left = clampf(energy_left + dir, 0, energy_max)
+	energy.hp = roundi(energy_left)
+
 func _process(delta) -> void:
+	if not health.is_alive(): return
+
 	var rot = Input.get_axis("left", "right")
 	var acc = Input.get_axis("accelerate", "brake") if energy_left > 0 else 0.0
 	body.apply_torque(rot * delta * 5000000 * turning)
 	body.apply_force(body.transform.y * acc * thrust * 100000 * delta)
 	wings.speed_scale = 1.0 + absf(acc) * 3.0
 	if abs(acc) > 0.01:
-		energy_left = clampf(energy_left - delta, 0, energy_max)
-		energy.hp = roundi(energy_left)
+		change_energy(-delta)
+
+	if landed:
+		change_energy(delta * 5, energy_max if charging else 5.0)
 
 	if current:
 		current.update(delta)
