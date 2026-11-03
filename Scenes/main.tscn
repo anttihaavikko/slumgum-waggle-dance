@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://do7b18qnf254n" path="res://Scripts/builder.gd" id="2_d1ilt"]
 [ext_resource type="Script" uid="uid://0x44vjlq1u52" path="res://Scripts/item_data.gd" id="3_cbgmd"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://calgx5smnk57" path="res://_Starter/Scripts/effects.gd" id="5_ueoa1"]
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
+[ext_resource type="PackedScene" uid="uid://brpgseb06rh2n" path="res://_Starter/Scenes/Effects/pop.tscn" id="6_6vcvc"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
@@ -171,6 +173,11 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 script = ExtResource("2_3pmx8")
 items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg")])
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
+
+[node name="Effects" type="Node" parent="." unique_id=1890521244]
+script = ExtResource("5_ueoa1")
+effects = Array[PackedScene]([ExtResource("6_6vcvc")])
+metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
 z_index = -50
