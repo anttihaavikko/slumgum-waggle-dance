@@ -38,8 +38,9 @@ func _ready() -> void:
 func land(target: Node2D):
 	landed = true
 	charging = target is Platform
-	if charging:
-		Effects.singleton.pop("LANDED!", body.global_position)
+	cam.shake(body.linear_velocity.length() * 0.01, 0.12)
+	# if charging:
+	# 	Effects.singleton.pop("LANDED!", body.global_position)
 
 func collide(_node: Node2D):
 	var mag = body.linear_velocity.length()

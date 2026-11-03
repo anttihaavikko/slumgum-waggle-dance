@@ -43,7 +43,6 @@ func offset_points(shape: PackedVector2Array, distance: float = 200) -> PackedVe
 		shape[p] += Vector2(randf_range(-distance, distance), randf_range(-distance, distance))
 	return shape
 
-
 func append(shape: PackedVector2Array, offset: Vector2) -> PackedVector2Array:
 	return Geometry2D.merge_polygons(shape, get_shape(0, offset, true))[0]
 
