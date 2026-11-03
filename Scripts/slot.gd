@@ -13,5 +13,4 @@ func add_equipment(eq: Equipment):
 	label.text = eq.name.substr(0, 1)
 
 func is_empty() -> bool:
-	print(equipment)
 	return not equipment

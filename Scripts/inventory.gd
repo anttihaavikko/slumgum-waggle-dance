@@ -28,6 +28,4 @@ func get_free_slot() -> int:
 	return slots.find_custom(func(s: Slot): return s.is_empty())
 
 func add_equipment(eq: Equipment):
-	print(slots[0].equipment)
-	print(get_free_slot())
 	slots[get_free_slot()].add_equipment(eq)
