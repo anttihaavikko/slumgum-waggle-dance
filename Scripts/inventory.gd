@@ -1,0 +1,33 @@
+class_name Inventory extends Node
+
+@export var slot_prefab: PackedScene
+
+var slots: Array[Slot] = []
+var focused := 0
+
+signal changed
+
+func create_slots(amount: int):
+	for i in amount:
+		var slot = slot_prefab.instantiate() as Slot
+		add_child(slot)
+		slots.append(slot)
+		slot.mark(false)
+		slot.label.text = ""
+
+func focus(index: int):
+	if focused > -1: slots[focused].mark(false)
+	focused = index
+	slots[focused].mark(true)
+	changed.emit()
+
+func current() -> Slot:
+	return slots[focused]
+
+func get_free_slot() -> int:
+	return slots.find_custom(func(s: Slot): return s.is_empty())
+
+func add_equipment(eq: Equipment):
+	print(slots[0].equipment)
+	print(get_free_slot())
+	slots[get_free_slot()].add_equipment(eq)

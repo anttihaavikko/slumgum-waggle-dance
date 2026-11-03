@@ -10,8 +10,8 @@ var held_mask: int
 var prev_angle := 0.0
 var slot := 0
 
-func _ready() -> void:
-	create(0)
+# func _ready() -> void:
+# 	create(0)
 
 func _process(_delta) -> void:
 	if held:
@@ -21,19 +21,21 @@ func _process(_delta) -> void:
 			held.collision_layer = held_layer
 			held.collision_mask = held_mask
 			create(slot)
-		if Input.is_action_just_pressed("rotate_right"):
+		if Input.is_action_just_pressed("wheel_up"):
 			held.rotation_degrees += min_angle
-		if Input.is_action_just_pressed("rotate_left"):
+		if Input.is_action_just_pressed("wheel_down"):
 			held.rotation_degrees -= min_angle
 
-	if Input.is_action_just_pressed("slot_1"): create(0, true)
-	if Input.is_action_just_pressed("slot_2"): create(1, true)
+	# if Input.is_action_just_pressed("slot_1"): create(0, true)
+	# if Input.is_action_just_pressed("slot_2"): create(1, true)
 
-
-func create(s: int, discard: bool = false):
-	if discard and held:
+func clear():
+	if held:
 		prev_angle = held.rotation
 		held.queue_free()
+
+func create(s: int, discard: bool = false):
+	if discard: clear()
 	slot = s
 	held = pieces[slot].instantiate()
 	if held is StaticBody2D:

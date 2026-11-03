@@ -11,10 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
 [ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/platform.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dq36w8r4o0c4s" path="res://Scenes/support.tscn" id="10_hptm8"]
+[ext_resource type="Texture2D" uid="uid://chigtoisavcty" path="res://Sprites/held-hammer.png" id="10_k12tt"]
+[ext_resource type="Texture2D" uid="uid://bhmy8epeom4i4" path="res://Sprites/hands.png" id="11_b3802"]
 [ext_resource type="Script" uid="uid://c1y4mjr0cxq7s" path="res://Scripts/island.gd" id="11_d1ilt"]
+[ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="11_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://sotoeyspthkx" path="res://Sprites/hud-frame.png" id="13_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="14_jkdf5"]
-[ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="15_wsu2k"]
+[ext_resource type="Script" uid="uid://bdxalhd66bjh3" path="res://Scripts/hammer.gd" id="13_fevyy"]
+[ext_resource type="Texture2D" uid="uid://cucel30a085ml" path="res://Sprites/held_scythe.png" id="14_pdsj5"]
+[ext_resource type="PackedScene" uid="uid://0ngmpejmn2sp" path="res://Scenes/globe.tscn" id="14_wsu2k"]
+[ext_resource type="Script" uid="uid://dug0iwlcv3ovm" path="res://Scripts/scythe.gd" id="15_ee4r6"]
+[ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
+[ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
+bounce = 0.5
 
 [sub_resource type="Animation" id="Animation_ynf5e"]
 length = 0.001
@@ -164,16 +174,20 @@ position = Vector2(-545, 539)
 rotation = 1.7915099
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands")]
 z_index = 5
 position = Vector2(702, -408)
 script = ExtResource("1_8gbba")
 body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
+inventory = NodePath("../HUD/Frame/Bar")
+tools = [NodePath("Body/Body Sprite/Hands/Hammer"), NodePath("Body/Body Sprite/Hands/Scythe")]
+hands = NodePath("Body/Body Sprite/Hands/Hands")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
 mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_ee4r6")
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, -40)
 
@@ -229,7 +243,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb2" type="Line2D" parent="Bee/Body" unique_id=1358115220 node_paths=PackedStringArray("target")]
 position = Vector2(-69, 88)
-points = PackedVector2Array(0, 0, -33.93628, 36.719604, -3, 75.99997)
+points = PackedVector2Array(0, 0, -33.93622, 36.719635, -3, 76.000046)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -278,6 +292,41 @@ texture = ExtResource("9_6iyac")
 position = Vector2(-34, -153)
 texture = ExtResource("9_6iyac")
 flip_h = true
+
+[node name="Hands" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1805560162]
+position = Vector2(0, 62)
+script = ExtResource("11_h1bgf")
+moves = true
+move_direction = Vector2(0, 10)
+single_direction = true
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="Hands" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=556945472]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1.9999999, 2)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("11_b3802")
+offset = Vector2(0, 1)
+
+[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=832850319 node_paths=PackedStringArray("builder")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-3, 0)
+rotation = 0.13577862
+texture = ExtResource("10_k12tt")
+offset = Vector2(-47, 3)
+script = ExtResource("13_fevyy")
+builder = NodePath("../../../../../Platforms")
+
+[node name="Scythe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=627905351]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1, -2.0000153)
+rotation = 0.13577862
+texture = ExtResource("14_pdsj5")
+offset = Vector2(-103.92078, 94.49667)
+script = ExtResource("15_ee4r6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bee/Body" unique_id=1004588807]
 polygon = PackedVector2Array(-3, -136, 35, -129, 66, -84, 83, 13, 74, 87, 41, 127, 8, 139, -20, 138, -59, 114, -77, 85, -86, 11, -67, -90, -35, -130)
@@ -385,27 +434,31 @@ texture = ExtResource("13_fdnlq")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Health" type="TextureRect" parent="HUD/Frame" unique_id=989467637]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-layout_mode = 0
-offset_left = 216.1568
-offset_top = 126.0
-offset_right = 377.1568
-offset_bottom = 276.0
-texture = ExtResource("14_jkdf5")
-expand_mode = 2
-stretch_mode = 5
+[node name="Health" parent="HUD/Frame" unique_id=295510265 instance=ExtResource("14_wsu2k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39100003
+anchor_top = 0.545
+anchor_right = 0.39100003
+anchor_bottom = 0.545
+offset_left = -80.15814
+offset_top = -75.10501
+offset_right = 80.84186
+offset_bottom = 74.89499
+pivot_offset = Vector2(80.8432, 76)
 
-[node name="Energy" type="TextureRect" parent="HUD/Frame" unique_id=785847835]
-self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-layout_mode = 0
-offset_left = 387.1568
-offset_top = 126.0
-offset_right = 548.1568
-offset_bottom = 276.0
-texture = ExtResource("14_jkdf5")
-expand_mode = 2
-stretch_mode = 5
+[node name="Energy" parent="HUD/Frame" unique_id=1808764196 instance=ExtResource("14_wsu2k")]
+modulate = Color(1, 0.7294118, 0.28627452, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.61300004
+anchor_top = 0.545
+anchor_right = 0.61300004
+anchor_bottom = 0.545
+offset_left = -80.555145
+offset_top = -75.10501
+offset_right = 80.444855
+offset_bottom = 74.89499
 
 [node name="Bar" type="HBoxContainer" parent="HUD/Frame" unique_id=34212200]
 layout_mode = 1
@@ -421,45 +474,5 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 alignment = 1
-
-[node name="Slot" type="TextureRect" parent="HUD/Frame/Bar" unique_id=1312791080]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-texture = ExtResource("15_wsu2k")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Slot2" type="TextureRect" parent="HUD/Frame/Bar" unique_id=1346454842]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-texture = ExtResource("15_wsu2k")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Slot3" type="TextureRect" parent="HUD/Frame/Bar" unique_id=2072148973]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-texture = ExtResource("15_wsu2k")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Slot4" type="TextureRect" parent="HUD/Frame/Bar" unique_id=279243576]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-texture = ExtResource("15_wsu2k")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Slot5" type="TextureRect" parent="HUD/Frame/Bar" unique_id=1549222314]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-texture = ExtResource("15_wsu2k")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Slot6" type="TextureRect" parent="HUD/Frame/Bar" unique_id=786957931]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-texture = ExtResource("15_wsu2k")
-expand_mode = 3
-stretch_mode = 5
+script = ExtResource("19_hibaj")
+slot_prefab = ExtResource("20_hibaj")

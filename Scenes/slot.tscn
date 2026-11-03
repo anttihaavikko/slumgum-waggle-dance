@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cyin4lknfiopg"]
+
+[ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="1_luhj6"]
+[ext_resource type="Script" uid="uid://osxfh0uy60hy" path="res://Scripts/slot.gd" id="2_12ej0"]
+
+[node name="Slot" type="TextureRect" unique_id=157785236 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(60, 60)
+texture = ExtResource("1_luhj6")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_12ej0")
+label = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=573338345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "H"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
