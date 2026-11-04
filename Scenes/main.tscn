@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dagf4wr0s64rf" path="res://Scenes/rock.tscn" id="9_o1aky"]
 [ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/platform.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dq36w8r4o0c4s" path="res://Scenes/support.tscn" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://chigtoisavcty" path="res://Sprites/held-hammer.png" id="10_k12tt"]
@@ -320,7 +321,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb3" type="Line2D" parent="Bee/Body" unique_id=1607490853 node_paths=PackedStringArray("target")]
 position = Vector2(-43, 120)
-points = PackedVector2Array(0, 0, -31.36444, 24.82486, -4, 53.999985)
+points = PackedVector2Array(0, 0, -31.36438, 24.82489, -4, 54.000046)
 width = 20.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -506,6 +507,7 @@ line = NodePath("CollisionPolygon2D/Line2D")
 bg = NodePath("Bg")
 flower_prefab = ExtResource("30_7k868")
 ray = NodePath("../RayCast2D")
+rock_prefab = ExtResource("9_o1aky")
 
 [node name="Bg" type="Polygon2D" parent="Island" unique_id=935066965]
 z_index = -20

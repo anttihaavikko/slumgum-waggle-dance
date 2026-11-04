@@ -8,6 +8,7 @@ class_name Island extends Node2D
 @export var bg: Polygon2D
 @export var flower_prefab: PackedScene
 @export var ray: RayCast2D
+@export var rock_prefab: PackedScene
 
 var gap := 5000
 var pieces := 3
@@ -44,6 +45,15 @@ func generate():
 
 	spawn_flower(-3500)
 	spawn_flower(2000)
+
+	var spots := range(poly.polygon.size())
+	spots.shuffle()
+
+	for i in 50:
+		var rock = rock_prefab.instantiate() as Node2D
+		var p = poly.polygon[spots[i]]
+		rock.global_position = p
+		add_child(rock)
 
 func spawn_flower(pos: float):
 	ray.global_position = Vector2(global_position.x + pos, -2500)
