@@ -5,6 +5,7 @@ class_name Harvester extends Node2D
 @export var icon: Control
 @export var bad: Control
 @export var good: Control
+@export var arrow: Control
 
 var start: float
 var end: float
@@ -34,12 +35,15 @@ func _process(delta) -> void:
 		icon.position = marker.position
 		bad.visible = not success
 		good.visible = success
+		# arrow.self_modulate = good.self_modulate if success else Color.WHITE
 		done = true
 		if success:
 			Main.singleton.inventory.add_item(Item.Id.Nectar)
+			Main.singleton.inventory.add_item(Item.Id.Pollen, 2)
 
 func reset():
 	pos = 0
 	bad.hide()
 	good.hide()
 	done = false
+	arrow.self_modulate = Color.WHITE

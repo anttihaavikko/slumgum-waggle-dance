@@ -3,6 +3,7 @@ class_name Main extends Node
 
 @export var harvester: Harvester
 @export var inventory: Inventory
+@export var item_db: ItemManager
 
 var bee: Bee
 

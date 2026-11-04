@@ -155,6 +155,8 @@ cancel={
 2d_physics/layer_1="All"
 2d_physics/layer_2="Platforms"
 2d_physics/layer_3="BeeBody"
+2d_physics/layer_4="Ground"
+2d_physics/layer_5="Pickups"
 
 [physics]
 

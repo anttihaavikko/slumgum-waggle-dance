@@ -6,8 +6,8 @@
 size = Vector2(500, 99)
 
 [node name="Platform" type="StaticBody2D" unique_id=208223166]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 10
+collision_mask = 10
 script = ExtResource("1_1rc8e")
 
 [node name="Outline" type="Line2D" parent="." unique_id=1428855056]

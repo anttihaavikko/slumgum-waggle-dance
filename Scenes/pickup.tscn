@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bd80e2cqqc85w"]
+
+[ext_resource type="Script" uid="uid://dljflmp5umrof" path="res://Scripts/pickup.gd" id="1_cya6u"]
+[ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="1_v7u4w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k2e45"]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
+radius = 91.78235
+
+[node name="Pickup" type="RigidBody2D" unique_id=1139630903 node_paths=PackedStringArray("sprite", "area")]
+collision_layer = 16
+collision_mask = 24
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_k2e45")
+script = ExtResource("1_cya6u")
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=929980930]
+scale = Vector2(0.72526413, 0.72526413)
+texture = ExtResource("1_v7u4w")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=734810126]
+polygon = PackedVector2Array(-16, -46, 17, -44, 44, -17, 45, 15, 17, 43, -17, 43, -46, 18, -44, -18)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=295608567]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2065663725]
+shape = SubResource("CircleShape2D_cpkcx")

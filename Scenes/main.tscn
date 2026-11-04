@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://calgx5smnk57" path="res://_Starter/Scripts/effects.gd" id="5_ueoa1"]
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://brpgseb06rh2n" path="res://_Starter/Scenes/Effects/pop.tscn" id="6_6vcvc"]
+[ext_resource type="PackedScene" uid="uid://bd80e2cqqc85w" path="res://Scenes/pickup.tscn" id="6_536cc"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
@@ -36,11 +37,11 @@
 [ext_resource type="Texture2D" uid="uid://b6d031yqaujsn" path="res://Sprites/x.png" id="34_jwpg7"]
 [ext_resource type="Texture2D" uid="uid://chh1wri5fn6i8" path="res://Sprites/icon-key.png" id="34_r33sp"]
 [ext_resource type="Texture2D" uid="uid://dqgjqqqc2mqrf" path="res://Sprites/icon-trigger.png" id="35_hdf80"]
+[ext_resource type="Texture2D" uid="uid://bowys0fo5me6x" path="res://Sprites/thumbs.png" id="35_k2e45"]
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="36_hdf80"]
 
 [sub_resource type="Resource" id="Resource_1w6v2"]
 script = ExtResource("3_cbgmd")
-id = 1
 title = "Nectar"
 color = Color(1, 0.7294118, 0.28627452, 1)
 sprite = ExtResource("12_gt3je")
@@ -49,7 +50,8 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_u50mg"]
 script = ExtResource("3_cbgmd")
-id = 1
+item_id = 1
+stack_size = 3
 title = "Pollen"
 sprite = ExtResource("12_gt3je")
 description = "Pollen ipsum maximus."
@@ -173,10 +175,11 @@ size = Vector2(163, 45)
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
+item_db = NodePath("../ItemManager")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -185,6 +188,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
 items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg")])
+pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
 [node name="Effects" type="Node" parent="." unique_id=1890521244]
@@ -241,7 +245,7 @@ builder = NodePath("../Platforms")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
 collision_layer = 5
-collision_mask = 5
+collision_mask = 13
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_ee4r6")
 center_of_mass_mode = 1
@@ -314,7 +318,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb3" type="Line2D" parent="Bee/Body" unique_id=1607490853 node_paths=PackedStringArray("target")]
 position = Vector2(-43, 120)
-points = PackedVector2Array(0, 0, -31.36438, 24.82489, -4, 54.000046)
+points = PackedVector2Array(0, 0, -31.36444, 24.82486, -4, 53.999985)
 width = 20.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -449,6 +453,7 @@ swing_dir = 1.2
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
 position = Vector2(-2, 133)
+collision_mask = 9
 contact_monitor = true
 max_contacts_reported = 1
 
@@ -475,6 +480,7 @@ target_position = Vector2(0, 5000)
 [node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray")]
 z_index = 10
 position = Vector2(561, 460)
+collision_layer = 9
 script = ExtResource("11_d1ilt")
 shapes = [NodePath("Shape1")]
 collider = NodePath("CollisionPolygon2D")
@@ -487,6 +493,7 @@ ray = NodePath("../RayCast2D")
 [node name="Bg" type="Polygon2D" parent="Island" unique_id=935066965]
 z_index = -20
 z_as_relative = false
+position = Vector2(15, 6)
 scale = Vector2(-1, 1)
 color = Color(0.23680058, 0.66427696, 0.70309734, 1)
 offset = Vector2(-12, -1113)
@@ -571,14 +578,16 @@ script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
 
-[node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good")]
+[node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
+z_index = 50
 position = Vector2(697, -451)
 script = ExtResource("32_kltya")
 marker = NodePath("Bg/Marker")
 marker_end = NodePath("Bg/Track/End")
 icon = NodePath("Bg/Icon")
 bad = NodePath("Bg/Icon/Bad")
-good = NodePath("Bg/Icon/Good")
+good = NodePath("Bg/Good")
+arrow = NodePath("Bg/Arrow")
 
 [node name="Bg" type="ColorRect" parent="Harvester" unique_id=1974314631]
 offset_left = -543.0
@@ -623,6 +632,17 @@ offset_right = 572.0
 offset_bottom = 272.0
 texture = ExtResource("33_e08e2")
 
+[node name="Good" type="TextureRect" parent="Harvester/Bg" unique_id=325464470]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+layout_mode = 0
+offset_left = 409.0
+offset_top = 144.99994
+offset_right = 690.0
+offset_bottom = 460.99994
+scale = Vector2(0.9741972, 0.9741972)
+pivot_offset = Vector2(36, -10)
+texture = ExtResource("35_k2e45")
+
 [node name="Icon" type="Control" parent="Harvester/Bg" unique_id=640591028]
 anchors_preset = 0
 offset_left = 24.0
@@ -633,17 +653,6 @@ offset_bottom = 296.0
 [node name="Bad" type="TextureRect" parent="Harvester/Bg/Icon" unique_id=829132091]
 visible = false
 self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-layout_mode = 0
-offset_left = -36.0
-offset_top = 7.0
-offset_right = 55.0
-offset_bottom = 99.0
-pivot_offset = Vector2(36, -10)
-texture = ExtResource("34_jwpg7")
-
-[node name="Good" type="TextureRect" parent="Harvester/Bg/Icon" unique_id=325464470]
-visible = false
-self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
 layout_mode = 0
 offset_left = -36.0
 offset_top = 7.0

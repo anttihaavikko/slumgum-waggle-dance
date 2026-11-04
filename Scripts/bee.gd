@@ -25,7 +25,7 @@ var current: Equipment
 func _ready() -> void:
 	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
-	inventory.create_slots(5)
+	inventory.create_slots(2)
 	# inventory.add_equipment(tools[Equipment.Type.Scythe])
 	# inventory.add_equipment(tools[Equipment.Type.Hammer])
 	# inventory.add_item(Item.Id.Nectar)
