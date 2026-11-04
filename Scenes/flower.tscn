@@ -2,7 +2,50 @@
 
 [ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="1_4r3j5"]
 [ext_resource type="Script" uid="uid://dc3w1cdj6frg3" path="res://Scripts/flower.gd" id="1_hbmji"]
-[ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="2_hbmji"]
+[ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="3_ei51o"]
+[ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="3_gd0df"]
+[ext_resource type="Texture2D" uid="uid://br04h76iid81d" path="res://Sprites/flower1.png" id="3_hbmji"]
+[ext_resource type="Texture2D" uid="uid://bb3ggkxd4i6re" path="res://Sprites/flower-mid.png" id="4_88g82"]
+[ext_resource type="Script" uid="uid://cav6gx1wclcxg" path="res://_Starter/Scripts/line_mimic.gd" id="4_d1m62"]
+[ext_resource type="Script" uid="uid://bwknch2pvkg4u" path="res://_Starter/Scripts/line.gd" id="7_d2yni"]
+[ext_resource type="Texture2D" uid="uid://bvxhqnvoxkp6v" path="res://Sprites/flower-bud.png" id="8_dc7g4"]
+[ext_resource type="Texture2D" uid="uid://cgpj466rjolw2" path="res://Sprites/leaf1.png" id="9_k1h35"]
+[ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="9_uelli"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uelli"]
+shader = ExtResource("9_uelli")
+shader_parameter/amount = 15.0
+shader_parameter/frequency = 0.5
+shader_parameter/speed = 4.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dc7g4"]
+shader = ExtResource("3_ei51o")
+shader_parameter/amount = 5.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 5.0
+shader_parameter/peaks = 9.0
+shader_parameter/time_mod = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88g82"]
+shader = ExtResource("3_ei51o")
+shader_parameter/amount = 12.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/peaks = 7.0
+shader_parameter/time_mod = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ei51o"]
+shader = ExtResource("3_ei51o")
+shader_parameter/amount = 7.0
+shader_parameter/rotation_speed = 2.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/peaks = 11.0
+shader_parameter/time_mod = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
 radius = 266.06766
@@ -10,24 +53,76 @@ radius = 266.06766
 [node name="Flower" type="Node2D" unique_id=1614192265 node_paths=PackedStringArray("area")]
 z_as_relative = false
 script = ExtResource("1_hbmji")
-area = NodePath("Area2D")
+area = NodePath("Mover/Area2D")
 
 [node name="Root" type="Sprite2D" parent="." unique_id=776698886]
+visible = false
+position = Vector2(0, 122)
 texture = ExtResource("1_4r3j5")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1832368481]
+[node name="Leaf2" type="Sprite2D" parent="." unique_id=565610169]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+material = SubResource("ShaderMaterial_uelli")
+position = Vector2(-8, 19)
+rotation = 0.39513224
+scale = Vector2(1.3987384, 1.3987384)
+texture = ExtResource("9_k1h35")
+offset = Vector2(-10, -364)
+flip_h = true
+
+[node name="Line2D" type="Line2D" parent="." unique_id=559737479 node_paths=PackedStringArray("targets")]
+points = PackedVector2Array(0, 122, -3, -1633)
+width = 70.0
+default_color = Color(0, 0, 0, 1)
+script = ExtResource("7_d2yni")
+targets = [NodePath("../Root"), NodePath("../Mover/Area2D")]
+
+[node name="Line2D" type="Line2D" parent="Line2D" unique_id=1084804079 node_paths=PackedStringArray("target")]
+points = PackedVector2Array(0, 122, -3, -1633)
+width = 30.0
+default_color = Color(0.16073915, 0.79539937, 0.7713478, 1)
+script = ExtResource("4_d1m62")
+target = NodePath("..")
+
+[node name="Mover" type="Node2D" parent="." unique_id=441931705]
+position = Vector2(0, -789)
+script = ExtResource("3_gd0df")
+moves = true
+move_direction = Vector2(30, 0)
+move_speed = 4.0
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="Area2D" type="Area2D" parent="Mover" unique_id=1832368481]
 position = Vector2(-3, -844)
 collision_layer = 4
 collision_mask = 4
 
-[node name="Center" type="Sprite2D" parent="Area2D" unique_id=1551095991]
-self_modulate = Color(0, 0, 0, 1)
-texture = ExtResource("2_hbmji")
+[node name="Bud" type="Sprite2D" parent="Mover/Area2D" unique_id=1809985916]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+material = SubResource("ShaderMaterial_dc7g4")
+position = Vector2(-1, 241)
+scale = Vector2(1.1334298, 1.1334298)
+texture = ExtResource("8_dc7g4")
 
-[node name="Fill" type="Sprite2D" parent="Area2D/Center" unique_id=1859614875]
-self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-scale = Vector2(0.8819664, 0.8819664)
-texture = ExtResource("2_hbmji")
+[node name="Leaves" type="Sprite2D" parent="Mover/Area2D" unique_id=1551095991]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+material = SubResource("ShaderMaterial_88g82")
+scale = Vector2(1.7648212, 1.7648212)
+texture = ExtResource("3_hbmji")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=93237737]
+[node name="Center" type="Sprite2D" parent="Mover/Area2D" unique_id=915737508]
+material = SubResource("ShaderMaterial_ei51o")
+scale = Vector2(1.5933408, 1.5933408)
+texture = ExtResource("4_88g82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/Area2D" unique_id=93237737]
 shape = SubResource("CircleShape2D_cpkcx")
+
+[node name="Leaf" type="Sprite2D" parent="." unique_id=721686173]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+material = SubResource("ShaderMaterial_uelli")
+position = Vector2(-8, 19)
+rotation = -0.41924852
+scale = Vector2(1.0747712, 1.0747712)
+texture = ExtResource("9_k1h35")
+offset = Vector2(-10, -364)

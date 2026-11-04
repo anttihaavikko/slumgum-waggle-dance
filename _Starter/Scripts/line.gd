@@ -22,4 +22,4 @@ func _process(_delta: float) -> void:
 				set_point_position(i * per_segment + p, pos - global_position);
 	else:
 		for i in range(targets.size()):
-			set_point_position(i, to_local(targets[i].global_position) - to_local(global_position))
+			set_point_position(i, to_local(targets[i].global_position))
