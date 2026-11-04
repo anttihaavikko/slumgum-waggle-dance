@@ -210,7 +210,7 @@ rotation = 1.7915099
 scale = Vector2(0.99999994, 0.99999994)
 script = null
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder")]
 z_index = 5
 position = Vector2(702, -408)
 script = ExtResource("1_8gbba")
@@ -224,6 +224,7 @@ health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
 item = NodePath("Body/Hands/Item")
 cam = NodePath("Body/Camera")
+builder = NodePath("../Platforms")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
 mass = 0.5

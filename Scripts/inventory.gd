@@ -33,3 +33,6 @@ func add_equipment(eq: Equipment):
 
 func add_item(id: Item.Id):
 	slots[get_free_slot()].add_item(manager.items[id])
+
+func change_focus(dir: int):
+	focus((focused + dir + slots.size()) % slots.size())

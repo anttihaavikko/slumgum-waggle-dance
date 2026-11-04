@@ -10,6 +10,7 @@ class_name Bee extends Node2D
 @export var energy: HealthDisplay
 @export var item: Sprite2D
 @export var cam: Camera
+@export var builder: Builder
 
 var thrust = 1.5
 var turning = 1.0
@@ -84,3 +85,11 @@ func _process(delta) -> void:
 	for i in 9:
 		if Input.is_action_just_pressed("slot_%d" % [i + 1]) and i < inventory.slots.size():
 			inventory.focus(i)
+
+	if builder.held: return
+
+	if Input.is_action_just_pressed("wheel_up"):
+		inventory.change_focus(1)
+
+	if Input.is_action_just_pressed("wheel_down"):
+		inventory.change_focus(-1)

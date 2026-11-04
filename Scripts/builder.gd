@@ -25,6 +25,8 @@ func _process(_delta) -> void:
 			held.rotation_degrees += min_angle
 		if Input.is_action_just_pressed("wheel_down"):
 			held.rotation_degrees -= min_angle
+		if Input.is_action_just_pressed("cancel"):
+			clear()
 
 	# if Input.is_action_just_pressed("slot_1"): create(0, true)
 	# if Input.is_action_just_pressed("slot_2"): create(1, true)
