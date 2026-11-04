@@ -1,10 +1,12 @@
 @abstract class_name Equipment extends Node2D
 
-enum Type {
+enum Id {
 	Hammer,
-	Scythe
+	Scythe,
+	Brush
 }
 
+@export var identifier: Id
 @export var swinger: Swinger
 @export var aligner: Node2D
 @export var swing_dir := 1.0

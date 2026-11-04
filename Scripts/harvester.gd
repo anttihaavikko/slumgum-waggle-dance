@@ -39,7 +39,8 @@ func _process(delta) -> void:
 		done = true
 		if success:
 			Main.singleton.inventory.add_item(Item.Id.Nectar)
-			Main.singleton.inventory.add_item(Item.Id.Pollen, 2)
+			if Main.singleton.bee.is_holding(Equipment.Id.Brush):
+				Main.singleton.inventory.add_item(Item.Id.Pollen)
 
 func reset():
 	pos = 0

@@ -25,18 +25,23 @@ var current: Equipment
 func _ready() -> void:
 	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
-	inventory.create_slots(2)
+	inventory.create_slots(4)
 	# inventory.add_equipment(tools[Equipment.Type.Scythe])
 	# inventory.add_equipment(tools[Equipment.Type.Hammer])
 	# inventory.add_item(Item.Id.Nectar)
 	# inventory.add_item(Item.Id.Pollen)
+	inventory.add_equipment(tools[Equipment.Id.Brush])
+	energy.max_hp = roundi(energy_max)
+	await get_tree().process_frame
 	inventory.focus(0)
 	current_changed()
 	inventory.changed.connect(current_changed)
-	energy.max_hp = roundi(energy_max)
 	lander.body_entered.connect(land)
 	lander.body_exited.connect(func(_o): landed = false)
 	body.body_entered.connect(collide)
+
+func is_holding(id: Equipment.Id):
+	return current and current.identifier == id
 
 func land(target: Node2D):
 	landed = true

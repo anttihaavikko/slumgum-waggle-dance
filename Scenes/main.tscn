@@ -31,6 +31,8 @@
 [ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="18_1w6v2"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
+[ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
+[ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
 [ext_resource type="Texture2D" uid="uid://cofjigejorj7t" path="res://Sprites/tri-down.png" id="33_e08e2"]
@@ -235,7 +237,7 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe")]
+tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush")]
 hands = NodePath("Body/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
@@ -447,7 +449,22 @@ scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("14_pdsj5")
 offset = Vector2(-103.92078, 94.49667)
 script = ExtResource("15_ee4r6")
+identifier = 1
 swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = 1.2
+
+[node name="Brush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1, -1.04904175e-05)
+rotation = 0.13577862
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("27_aqgau")
+offset = Vector2(19.93097, 4.150696)
+flip_h = true
+flip_v = true
+script = ExtResource("28_8cuat")
+identifier = 2
 aligner = NodePath("../..")
 swing_dir = 1.2
 
