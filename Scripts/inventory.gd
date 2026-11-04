@@ -19,6 +19,7 @@ func create_slots(amount: int):
 func focus(index: int):
 	if focused > -1: slots[focused].mark(false)
 	focused = index
+	if index < 0: return
 	slots[focused].mark(true)
 	changed.emit()
 
@@ -30,9 +31,11 @@ func get_free_slot() -> int:
 
 func add_equipment(eq: Equipment):
 	slots[get_free_slot()].add_equipment(eq)
+	focus(focused)
 
 func add_item(id: Item.Id):
 	slots[get_free_slot()].add_item(manager.items[id])
+	focus(focused)
 
 func change_focus(dir: int):
 	focus((focused + dir + slots.size()) % slots.size())

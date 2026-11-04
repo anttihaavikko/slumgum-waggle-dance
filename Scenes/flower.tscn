@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://w2u23qbc3ljl"]
+
+[ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="1_4r3j5"]
+[ext_resource type="Script" uid="uid://dc3w1cdj6frg3" path="res://Scripts/flower.gd" id="1_hbmji"]
+[ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="2_hbmji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
+radius = 266.06766
+
+[node name="Flower" type="Node2D" unique_id=1614192265 node_paths=PackedStringArray("area")]
+z_as_relative = false
+script = ExtResource("1_hbmji")
+area = NodePath("Area2D")
+
+[node name="Root" type="Sprite2D" parent="." unique_id=776698886]
+texture = ExtResource("1_4r3j5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1832368481]
+position = Vector2(-3, -844)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Center" type="Sprite2D" parent="Area2D" unique_id=1551095991]
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_hbmji")
+
+[node name="Fill" type="Sprite2D" parent="Area2D/Center" unique_id=1859614875]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+scale = Vector2(0.8819664, 0.8819664)
+texture = ExtResource("2_hbmji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=93237737]
+shape = SubResource("CircleShape2D_cpkcx")

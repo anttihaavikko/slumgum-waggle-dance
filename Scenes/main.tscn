@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dctl740whl7xn"]
 
 [ext_resource type="Script" uid="uid://c6vi0ajnf67n7" path="res://Scripts/bee.gd" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://dr8ied6lnfefv" path="res://Scripts/main.gd" id="1_hpc6h"]
 [ext_resource type="Texture2D" uid="uid://dpdpimyenwx77" path="res://Sprites/body.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://cbkdo86lifxj7" path="res://Scripts/item_manager.gd" id="2_3pmx8"]
 [ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
@@ -29,6 +30,13 @@
 [ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="18_1w6v2"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
+[ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
+[ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
+[ext_resource type="Texture2D" uid="uid://cofjigejorj7t" path="res://Sprites/tri-down.png" id="33_e08e2"]
+[ext_resource type="Texture2D" uid="uid://b6d031yqaujsn" path="res://Sprites/x.png" id="34_jwpg7"]
+[ext_resource type="Texture2D" uid="uid://chh1wri5fn6i8" path="res://Sprites/icon-key.png" id="34_r33sp"]
+[ext_resource type="Texture2D" uid="uid://dqgjqqqc2mqrf" path="res://Sprites/icon-trigger.png" id="35_hdf80"]
+[ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="36_hdf80"]
 
 [sub_resource type="Resource" id="Resource_1w6v2"]
 script = ExtResource("3_cbgmd")
@@ -165,6 +173,11 @@ size = Vector2(163, 45)
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory")]
+script = ExtResource("1_hpc6h")
+harvester = NodePath("../Harvester")
+inventory = NodePath("../HUD/Frame/Bar")
+
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
 metadata/_custom_type_script = "uid://b0fr17vp8abvx"
@@ -227,6 +240,8 @@ cam = NodePath("Body/Camera")
 builder = NodePath("../Platforms")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
+collision_layer = 5
+collision_mask = 5
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_ee4r6")
 center_of_mass_mode = 1
@@ -453,7 +468,11 @@ position = Vector2(-45, 41)
 [node name="Leg Pos 4" type="Node2D" parent="Bee/Lander" unique_id=1521862504]
 position = Vector2(45, 41)
 
-[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg")]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2024921188]
+position = Vector2(1402, -716)
+target_position = Vector2(0, 5000)
+
+[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray")]
 z_index = 10
 position = Vector2(561, 460)
 script = ExtResource("11_d1ilt")
@@ -462,6 +481,8 @@ collider = NodePath("CollisionPolygon2D")
 poly = NodePath("CollisionPolygon2D/Polygon2D")
 line = NodePath("CollisionPolygon2D/Line2D")
 bg = NodePath("Bg")
+flower_prefab = ExtResource("30_7k868")
+ray = NodePath("../RayCast2D")
 
 [node name="Bg" type="Polygon2D" parent="Island" unique_id=935066965]
 z_index = -20
@@ -549,3 +570,136 @@ alignment = 1
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
+
+[node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good")]
+position = Vector2(697, -451)
+script = ExtResource("32_kltya")
+marker = NodePath("Bg/Marker")
+marker_end = NodePath("Bg/Track/End")
+icon = NodePath("Bg/Icon")
+bad = NodePath("Bg/Icon/Bad")
+good = NodePath("Bg/Icon/Good")
+
+[node name="Bg" type="ColorRect" parent="Harvester" unique_id=1974314631]
+offset_left = -543.0
+offset_top = -794.0
+offset_right = 552.0
+offset_bottom = -389.0
+color = Color(0, 0, 0, 1)
+
+[node name="Track" type="ColorRect" parent="Harvester/Bg" unique_id=1204458540]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 296.0
+offset_right = 1066.0
+offset_bottom = 319.0
+
+[node name="End" type="ColorRect" parent="Harvester/Bg/Track" unique_id=763544485]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -54.0
+offset_bottom = 54.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Marker" type="ColorRect" parent="Harvester/Bg" unique_id=1608475105]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 255.0
+offset_right = 42.0
+offset_bottom = 363.0
+
+[node name="Arrow" type="TextureRect" parent="Harvester/Bg" unique_id=946074449]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 219.0
+offset_right = 572.0
+offset_bottom = 272.0
+texture = ExtResource("33_e08e2")
+
+[node name="Icon" type="Control" parent="Harvester/Bg" unique_id=640591028]
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 256.0
+offset_right = 64.0
+offset_bottom = 296.0
+
+[node name="Bad" type="TextureRect" parent="Harvester/Bg/Icon" unique_id=829132091]
+visible = false
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+layout_mode = 0
+offset_left = -36.0
+offset_top = 7.0
+offset_right = 55.0
+offset_bottom = 99.0
+pivot_offset = Vector2(36, -10)
+texture = ExtResource("34_jwpg7")
+
+[node name="Good" type="TextureRect" parent="Harvester/Bg/Icon" unique_id=325464470]
+visible = false
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+layout_mode = 0
+offset_left = -36.0
+offset_top = 7.0
+offset_right = 55.0
+offset_bottom = 99.0
+pivot_offset = Vector2(36, -10)
+texture = ExtResource("34_jwpg7")
+
+[node name="Key" type="TextureRect" parent="Harvester/Bg" unique_id=1663577258]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 48.0
+offset_right = 488.0
+offset_bottom = 182.0
+texture = ExtResource("34_r33sp")
+
+[node name="Label" type="RichTextLabel" parent="Harvester/Bg/Key" unique_id=264957767]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 32.0
+offset_right = 103.0
+offset_bottom = 127.0
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 45
+text = "W"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Trigger" type="TextureRect" parent="Harvester/Bg" unique_id=98266422]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 45.0
+offset_right = 780.0
+offset_bottom = 180.0
+texture = ExtResource("35_hdf80")
+
+[node name="Label" type="RichTextLabel" parent="Harvester/Bg/Trigger" unique_id=1574104557]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 110.0
+offset_bottom = 127.0
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 45
+text = "RT"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Or Label" type="RichTextLabel" parent="Harvester/Bg" unique_id=219480208]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 81.0
+offset_right = 577.0
+offset_bottom = 176.0
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 45
+text = "OR"
+scroll_active = false
+horizontal_alignment = 1

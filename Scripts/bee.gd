@@ -18,16 +18,18 @@ var energy_max := 30.0
 var energy_left := energy_max
 var charging := false
 var landed := false
+var zoomed := false
 
 var current: Equipment
 
 func _ready() -> void:
+	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
 	inventory.create_slots(5)
-	inventory.add_equipment(tools[Equipment.Type.Scythe])
-	inventory.add_equipment(tools[Equipment.Type.Hammer])
-	inventory.add_item(Item.Id.Nectar)
-	inventory.add_item(Item.Id.Pollen)
+	# inventory.add_equipment(tools[Equipment.Type.Scythe])
+	# inventory.add_equipment(tools[Equipment.Type.Hammer])
+	# inventory.add_item(Item.Id.Nectar)
+	# inventory.add_item(Item.Id.Pollen)
 	inventory.focus(0)
 	current_changed()
 	inventory.changed.connect(current_changed)
@@ -85,6 +87,11 @@ func _process(delta) -> void:
 	for i in 9:
 		if Input.is_action_just_pressed("slot_%d" % [i + 1]) and i < inventory.slots.size():
 			inventory.focus(i)
+
+	if Input.is_key_pressed(KEY_Z) and OS.is_debug_build():
+		zoomed = not zoomed
+		var z = 0.05 if zoomed else 0.3
+		cam.zoom = Vector2.ONE * z
 
 	if builder.held: return
 

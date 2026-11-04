@@ -6,6 +6,8 @@ class_name Island extends Node2D
 @export var poly: Polygon2D
 @export var line: Line2D
 @export var bg: Polygon2D
+@export var flower_prefab: PackedScene
+@export var ray: RayCast2D
 
 var gap := 5000
 var pieces := 3
@@ -37,6 +39,19 @@ func generate():
 	poly.polygon = shape
 	line.points = shape
 	bg.polygon = Geometry2D.offset_polygon(offset_points(shape.duplicate()), 100)[0]
+
+	await get_tree().process_frame
+
+	spawn_flower(-3500)
+	spawn_flower(2000)
+
+func spawn_flower(pos: float):
+	ray.global_position = Vector2(global_position.x + pos, -2500)
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		var flower = flower_prefab.instantiate() as Flower
+		add_child(flower)
+		flower.global_position = ray.get_collision_point()
 
 func offset_points(shape: PackedVector2Array, distance: float = 200) -> PackedVector2Array:
 	for p in range(shape.size()):
