@@ -17,6 +17,7 @@ var gap := 5000
 var pieces := 3
 
 func _ready() -> void:
+	show()
 	generate()
 
 func generate():

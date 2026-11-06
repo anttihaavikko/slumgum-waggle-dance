@@ -503,7 +503,7 @@ swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
 
-[node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("swinger", "aligner")]
+[node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1, -2)
@@ -516,6 +516,7 @@ identifier = 1
 swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = 1.2
+sprite = NodePath(".")
 
 [node name="Brush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
 visible = false
@@ -532,10 +533,10 @@ identifier = 2
 aligner = NodePath("../..")
 swing_dir = 1.2
 
-[node name="Guitar" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("swinger", "aligner")]
+[node name="Guitar" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-position = Vector2(-14.000011, 1.335144e-05)
+position = Vector2(3.9999886, 1.30832195e-05)
 rotation = -0.18809377
 scale = Vector2(0.85136753, 0.85136753)
 texture = ExtResource("31_nwwfm")
@@ -545,6 +546,8 @@ identifier = 3
 swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = 0.1
+sprite = NodePath(".")
+flips = true
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
 position = Vector2(0, 133)
@@ -573,6 +576,7 @@ position = Vector2(1402, -716)
 target_position = Vector2(0, 10000)
 
 [node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees")]
+visible = false
 z_index = 10
 position = Vector2(561, 460)
 collision_layer = 9
@@ -616,6 +620,7 @@ offset_top = -12950.0
 offset_right = -4796.9355
 offset_bottom = 1476.6826
 scale = Vector2(2.1822758, 2.1822758)
+mouse_filter = 2
 texture = ExtResource("36_jut3y")
 stretch_mode = 1
 
@@ -694,18 +699,31 @@ slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
 
 [node name="Core" type="ColorRect" parent="HUD" unique_id=876813654]
-offset_left = 173.0
-offset_top = 169.0
-offset_right = 579.0
-offset_bottom = 840.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -787.0
+offset_top = -371.0
+offset_right = -381.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("38_kqrg6")
 
 [node name="Box" type="ColorRect" parent="HUD" unique_id=52359827 node_paths=PackedStringArray("inputs")]
-offset_left = 1184.0
-offset_top = 169.0
-offset_right = 1590.0
-offset_bottom = 840.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.467
+anchor_right = 0.5
+anchor_bottom = 0.467
+offset_left = 224.0
+offset_top = -335.36002
+offset_right = 630.0
+offset_bottom = 335.63998
+grow_horizontal = 0
 color = Color(0, 0, 0, 1)
 script = ExtResource("38_kqrg6")
 inputs = NodePath("Inputs")
