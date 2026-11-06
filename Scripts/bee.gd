@@ -11,6 +11,8 @@ class_name Bee extends Node2D
 @export var item: Sprite2D
 @export var cam: Camera
 @export var builder: Builder
+@export var face: Face
+@export var crosses: Node2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -19,6 +21,7 @@ var energy_left := energy_max
 var charging := false
 var landed := false
 var zoomed := false
+var dead := false
 
 var current: Equipment
 
@@ -42,6 +45,15 @@ func _ready() -> void:
 	lander.body_exited.connect(func(_o): landed = false)
 	body.body_entered.connect(collide)
 
+func die():
+	face.left_eye.hide()
+	face.right_eye.hide()
+	crosses.show()
+	hands.hide()
+	if current: current.hide()
+	wings.stop()
+	face.mouth.scale.y *= -1
+
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id
 
@@ -59,6 +71,9 @@ func collide(_node: Node2D):
 		var amt = roundi(mag / threshold)
 		health.hurt(amt)
 		cam.shake(amt * 5, 0.15)
+		if not health.is_alive() and not dead:
+			dead = true
+			die()
 
 func current_changed():
 	current = inventory.current().equipment

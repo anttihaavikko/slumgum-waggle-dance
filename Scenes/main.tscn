@@ -297,7 +297,7 @@ position = Vector2(-453, 239)
 [node name="Box" parent="Platforms" unique_id=891814443 instance=ExtResource("13_kqrg6")]
 position = Vector2(94, 242)
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
 position = Vector2(702, -408)
 script = ExtResource("1_8gbba")
@@ -312,6 +312,8 @@ energy = NodePath("../HUD/Frame/Energy")
 item = NodePath("Body/Hands/Item")
 cam = NodePath("Body/Camera")
 builder = NodePath("../Platforms")
+face = NodePath("Body/Face Wrap/LookAtMouse/Face")
+crosses = NodePath("Body/Face Wrap/LookAtMouse/Face/Crosses")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
 collision_layer = 5
@@ -466,6 +468,19 @@ metadata/_custom_type_script = "uid://dce3tbn077db6"
 [node name="Face" parent="Bee/Body/Face Wrap/LookAtMouse" unique_id=1240513132 instance=ExtResource("7_344ge")]
 position = Vector2(-1, 3)
 scale = Vector2(2.325933, 2.325933)
+
+[node name="Crosses" type="Node2D" parent="Bee/Body/Face Wrap/LookAtMouse/Face" unique_id=1424782053]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Bee/Body/Face Wrap/LookAtMouse/Face/Crosses" unique_id=2126327626]
+position = Vector2(12.468115, -5.15922)
+scale = Vector2(0.16434486, 0.16434486)
+texture = ExtResource("34_jwpg7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Bee/Body/Face Wrap/LookAtMouse/Face/Crosses" unique_id=1761394488]
+position = Vector2(-12.468115, -6.01909)
+scale = Vector2(0.16434486, 0.16434486)
+texture = ExtResource("34_jwpg7")
 
 [node name="Hands" type="Node2D" parent="Bee/Body" unique_id=1805560162]
 position = Vector2(0, 62)
