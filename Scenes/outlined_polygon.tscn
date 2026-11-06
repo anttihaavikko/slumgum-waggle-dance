@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://oy4xa5m7pemb"]
+
+[ext_resource type="Script" uid="uid://1yk73b2qyorb" path="res://Scripts/outlined_polygon.gd" id="1_s5u56"]
+
+[node name="OutlinedPolygon" type="Node2D" unique_id=859106240 node_paths=PackedStringArray("poly", "line")]
+script = ExtResource("1_s5u56")
+poly = NodePath("Polygon2D")
+line = NodePath("Line2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=543954787]
+color = Color(0.07289872, 0.4188474, 0.4054934, 1)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=905448920]
+closed = true
+width = 30.0
+default_color = Color(0.33423564, 0.21917433, 9.62615e-08, 1)

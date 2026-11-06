@@ -16,8 +16,8 @@ polygon = PackedVector2Array(273, 28, 132, -220, -187, -145, -226, 135, 93, 263)
 
 [node name="Line2D" type="Line2D" parent="." unique_id=2068691883]
 closed = true
-width = 20.0
-default_color = Color(0, 0, 0, 1)
+width = 25.0
+default_color = Color(0.13725491, 0, 0.11764706, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=960823535]
 collision_layer = 8

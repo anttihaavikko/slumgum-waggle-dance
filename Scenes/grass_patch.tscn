@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bmxypsjcdsvhk"]
+
+[ext_resource type="Texture2D" uid="uid://c63q1tps7lmi8" path="res://Sprites/patch.png" id="1_we272"]
+
+[node name="Grass Patch" type="Sprite2D" unique_id=1680130274]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+scale = Vector2(2.4882033, 2.4882033)
+texture = ExtResource("1_we272")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=932326411]
+visible = false
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+texture = ExtResource("1_we272")

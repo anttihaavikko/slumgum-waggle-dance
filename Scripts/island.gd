@@ -1,6 +1,7 @@
 class_name Island extends Node2D
 
 @export var shapes: Array[Polygon2D]
+@export var patch_prefab: PackedScene
 
 @export var collider: CollisionPolygon2D
 @export var poly: Polygon2D
@@ -9,6 +10,8 @@ class_name Island extends Node2D
 @export var flower_prefab: PackedScene
 @export var ray: RayCast2D
 @export var rock_prefab: PackedScene
+@export var tree_prefab: PackedScene
+@export var trees: Node2D
 
 var gap := 5000
 var pieces := 3
@@ -55,6 +58,30 @@ func generate():
 		var p = poly.polygon[spots[i]]
 		rock.global_position = p
 		add_child(rock)
+
+	for i in 75:
+		var grass = patch_prefab.instantiate() as Node2D
+		grass.rotate(PI * 2 * randf())
+		var p = poly.polygon[spots[i + 50]]
+		grass.global_position = p
+		poly.add_child(grass)
+
+	var tree_spots = range(bg.polygon.size())
+	tree_spots.shuffle()
+
+	for i in 200:
+		var p = bg.polygon[tree_spots[i]]
+		if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 50, bg.polygon): continue
+		var tree = tree_prefab.instantiate() as Node2D
+		tree.scale *= randf_range(0.8, 1.2)
+		trees.add_child(tree)
+		tree.global_position = bg.to_global(p) + Vector2.UP * randf_range(400, 750)
+		# tree.global_position.x *= -1
+
+func shift(shape: PackedVector2Array, dir: Vector2) -> PackedVector2Array:
+	for p in range(shape.size()):
+		shape[p] += dir
+	return shape
 
 func spawn_flower(pos: float):
 	ray.global_position = Vector2(global_position.x + pos, -5000)
