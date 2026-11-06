@@ -48,6 +48,8 @@ func swap(slot: Slot):
 	# slot.clear()
 	slot.item = ti
 	slot.equipment = te
+	if equipment: equipment.hide()
+	if slot.equipment: slot.equipment.hide()
 	slot.update_visuals()
 	Main.singleton.inventory.re_focus()
 	Main.singleton.held.hide_if_empty()

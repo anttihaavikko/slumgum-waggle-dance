@@ -52,7 +52,11 @@ func get_contents() -> Array[Item]:
 	var contents: Array[Item] = []
 	contents.resize(slots.size())
 	for i in slots.size():
-		contents[i] = slots[i].item
+		if slots[i].equipment:
+			contents[i] = Item.new(Main.singleton.item_db.items[Item.Id.Equipment], 1)
+			contents[i].equip = slots[i].equipment.identifier
+		else:
+			contents[i] = slots[i].item
 	return contents
 
 func can_add(id: Item.Id, amount: int):

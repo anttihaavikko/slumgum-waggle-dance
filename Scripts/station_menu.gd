@@ -42,4 +42,7 @@ func fill(target: Inventory, source: Array[Item]):
 	if not target: return
 	for i in source.size():
 		if source[i]:
-			target.slots[i].add_item(source[i].data, source[i].amount)
+			if source[i].data.item_id == Item.Id.Equipment:
+				target.slots[i].add_equipment(Main.singleton.bee.tools[source[i].equip])
+			else:
+				target.slots[i].add_item(source[i].data, source[i].amount)

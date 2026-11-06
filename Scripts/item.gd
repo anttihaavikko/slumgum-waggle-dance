@@ -10,7 +10,7 @@ enum Id {
 
 var data: ItemData
 var amount: int
-var equip: Equipment
+var equip: Equipment.Id
 
 func _init(dat: ItemData, amt: int = 1) -> void:
 	data = dat
