@@ -15,5 +15,8 @@ func _ready() -> void:
 func entered(_node: Node2D):
 	var inventory = Main.singleton.inventory
 	if inventory.can_add(item.data.item_id, item.amount):
-		inventory.add_item(item.data.item_id, item.amount)
+		if item.data.item_id == Item.Id.Equipment:
+			inventory.add_equipment(Main.singleton.bee.tools[item.equip])
+		else:
+			inventory.add_item(item.data.item_id, item.amount)
 		queue_free()

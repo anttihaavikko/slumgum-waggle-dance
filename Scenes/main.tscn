@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://brpgseb06rh2n" path="res://_Starter/Scenes/Effects/pop.tscn" id="6_6vcvc"]
 [ext_resource type="PackedScene" uid="uid://bd80e2cqqc85w" path="res://Scenes/pickup.tscn" id="6_536cc"]
+[ext_resource type="Texture2D" uid="uid://b3ahxuod773is" path="res://Sprites/pollen.png" id="6_ptfg5"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
@@ -68,7 +69,7 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 1
 title = "Pollen"
-sprite = ExtResource("12_gt3je")
+sprite = ExtResource("6_ptfg5")
 description = "Pollen ipsum maximus."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 

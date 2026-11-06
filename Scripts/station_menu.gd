@@ -19,6 +19,9 @@ func close():
 	Main.singleton.station = null
 	if inputs: station.inputs = inputs.get_contents()
 	if outputs: station.outputs = outputs.get_contents()
+	if Main.singleton.held:
+		Main.singleton.held.drop()
+		Main.singleton.held.hide()
 
 func open(source: Station):
 	if Main.singleton.station:
