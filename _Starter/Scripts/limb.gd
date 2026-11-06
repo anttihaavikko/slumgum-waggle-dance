@@ -15,7 +15,7 @@ func _ready() -> void:
 	upper = LimbSegment.new(length, 0, false)
 	lower = LimbSegment.new(length, 1, true)
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not target: return
 
 	if points.size() < 3:

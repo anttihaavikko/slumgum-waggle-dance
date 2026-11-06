@@ -15,15 +15,20 @@
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dq4p4s1xc713j" path="res://Sprites/cloud0.png" id="9_55jeb"]
+[ext_resource type="Script" uid="uid://dm7c5hyh8houj" path="res://_Starter/Scripts/clouds.gd" id="9_gsvbx"]
 [ext_resource type="PackedScene" uid="uid://dagf4wr0s64rf" path="res://Scenes/rock.tscn" id="9_o1aky"]
 [ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/Pieces/platform.tscn" id="9_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://bf67jtvbxfd6h" path="res://Sprites/cloud1.png" id="10_gsvbx"]
 [ext_resource type="PackedScene" uid="uid://dq36w8r4o0c4s" path="res://Scenes/Pieces/support.tscn" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://chigtoisavcty" path="res://Sprites/held-hammer.png" id="10_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bhmy8epeom4i4" path="res://Sprites/hands.png" id="11_b3802"]
+[ext_resource type="Texture2D" uid="uid://oy1jivx3hba6" path="res://Sprites/cloud2.png" id="11_bv80c"]
 [ext_resource type="Script" uid="uid://c1y4mjr0cxq7s" path="res://Scripts/island.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="11_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="12_aa8k8"]
 [ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="12_gt3je"]
+[ext_resource type="Texture2D" uid="uid://bbjxqfep8bdgj" path="res://Sprites/cloud3.png" id="12_ptfg5"]
 [ext_resource type="Texture2D" uid="uid://sotoeyspthkx" path="res://Sprites/hud-frame.png" id="13_fdnlq"]
 [ext_resource type="Script" uid="uid://bdxalhd66bjh3" path="res://Scripts/hammer.gd" id="13_fevyy"]
 [ext_resource type="PackedScene" uid="uid://bxbgr700fj2tv" path="res://Scenes/Pieces/box.tscn" id="13_kqrg6"]
@@ -31,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cucel30a085ml" path="res://Sprites/held_scythe.png" id="14_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://0ngmpejmn2sp" path="res://Scenes/globe.tscn" id="14_wsu2k"]
 [ext_resource type="Script" uid="uid://dug0iwlcv3ovm" path="res://Scripts/scythe.gd" id="15_ee4r6"]
+[ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="15_k12tt"]
 [ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="18_1w6v2"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
@@ -85,6 +91,15 @@ stack_size = 1
 title = "Equip"
 sprite = ExtResource("12_gt3je")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
+shader = ExtResource("15_k12tt")
+shader_parameter/amount = 10.0
+shader_parameter/rotation_speed = 4.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.02
+shader_parameter/peaks = 13.0
+shader_parameter/time_mod = 0.5
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
 bounce = 0.5
@@ -234,6 +249,19 @@ offset_top = -15420.0
 offset_right = 28897.0
 offset_bottom = 21109.0
 color = Color(0.58766574, 0.7902795, 0.90929693, 1)
+
+[node name="Clouds" type="Node2D" parent="." unique_id=1368952648]
+script = ExtResource("9_gsvbx")
+amount = 200
+width = 25000
+height = 9000
+sprites = Array[Texture2D]([ExtResource("10_gsvbx"), ExtResource("11_bv80c"), ExtResource("12_ptfg5"), ExtResource("9_55jeb")])
+size_min = 3.0
+size_max = 8.0
+alpha = 0.3
+speed_min = -10.0
+speed_max = -150.0
+cloud_material = SubResource("ShaderMaterial_gsvbx")
 
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179]
 position = Vector2(751, -309)
