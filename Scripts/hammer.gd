@@ -10,6 +10,7 @@ func update(delta: float):
 
 func toggle(state: bool):
 	super.toggle(state)
+	if Main.singleton.station: return
 	if state:
 		builder.create(builder.slot)
 	else:

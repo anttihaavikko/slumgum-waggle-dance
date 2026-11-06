@@ -57,10 +57,29 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_u50mg"]
 script = ExtResource("3_cbgmd")
 item_id = 1
-stack_size = 3
 title = "Pollen"
 sprite = ExtResource("12_gt3je")
 description = "Pollen ipsum maximus."
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_kqrg6"]
+script = ExtResource("3_cbgmd")
+item_id = 2
+title = "Wax"
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_nwwfm"]
+script = ExtResource("3_cbgmd")
+item_id = 3
+title = "Honey"
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_s8vy0"]
+script = ExtResource("3_cbgmd")
+item_id = 4
+stack_size = 1
+title = "Equip"
+sprite = ExtResource("12_gt3je")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
@@ -181,12 +200,13 @@ size = Vector2(163, 45)
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
 stations = [NodePath("../HUD/Core"), NodePath("../HUD/Box")]
+held = NodePath("../HUD/Slot")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -194,7 +214,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), null])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
@@ -238,7 +258,7 @@ script = null
 position = Vector2(-453, 239)
 
 [node name="Box" parent="Platforms" unique_id=891814443 instance=ExtResource("13_kqrg6")]
-position = Vector2(84, 242)
+position = Vector2(94, 242)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder")]
 z_index = 5
@@ -616,13 +636,38 @@ offset_bottom = 840.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("38_kqrg6")
 
-[node name="Box" type="ColorRect" parent="HUD" unique_id=52359827]
+[node name="Box" type="ColorRect" parent="HUD" unique_id=52359827 node_paths=PackedStringArray("inputs")]
 offset_left = 1184.0
 offset_top = 169.0
 offset_right = 1590.0
 offset_bottom = 840.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("38_kqrg6")
+inputs = NodePath("Inputs")
+
+[node name="Inputs" type="HBoxContainer" parent="HUD/Box" unique_id=1449105974 node_paths=PackedStringArray("manager")]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 303.0
+offset_bottom = 91.0
+script = ExtResource("19_hibaj")
+slot_prefab = ExtResource("20_hibaj")
+manager = NodePath("../../../ItemManager")
+
+[node name="Slot" parent="HUD" unique_id=157785236 instance=ExtResource("20_hibaj")]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -272.0
+offset_right = 8.550537
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50

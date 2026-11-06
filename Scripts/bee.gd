@@ -26,11 +26,12 @@ func _ready() -> void:
 	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
 	inventory.create_slots(4)
+	for s in inventory.slots: s.in_bar = true
 	# inventory.add_equipment(tools[Equipment.Type.Scythe])
 	# inventory.add_equipment(tools[Equipment.Type.Hammer])
-	# inventory.add_item(Item.Id.Nectar)
-	# inventory.add_item(Item.Id.Pollen)
 	inventory.add_equipment(tools[Equipment.Id.Brush])
+	inventory.add_item(Item.Id.Nectar)
+	inventory.add_item(Item.Id.Pollen)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
 	inventory.focus(0)

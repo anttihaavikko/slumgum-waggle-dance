@@ -10,6 +10,9 @@ enum Id {
 @export var button: Button
 @export var center: Node2D
 
+var inputs: Array[Item] = []
+var outputs: Array[Item] = []
+
 var menu: StationMenu
 
 func _ready() -> void:
@@ -24,4 +27,4 @@ func open():
 	if menu.visible:
 		menu.hide()
 		return
-	menu.show()
+	menu.open(self)

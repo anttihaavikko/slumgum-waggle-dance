@@ -5,6 +5,7 @@ class_name Inventory extends Node
 
 var slots: Array[Slot] = []
 var focused := 0
+var other: Inventory
 
 signal changed
 
@@ -15,6 +16,16 @@ func create_slots(amount: int):
 		slots.append(slot)
 		slot.mark(false)
 		slot.label.text = ""
+		slot.button.pressed.connect(func(): click_slot(slot))
+
+func click_slot(slot: Slot):
+	if not other:
+		focus(slots.find(slot))
+		return
+	slot.pick()
+
+func re_focus():
+	focus(focused)
 
 func focus(index: int):
 	if focused > -1: slots[focused].mark(false)
@@ -32,6 +43,17 @@ func get_free_slot() -> int:
 func add_equipment(eq: Equipment):
 	slots[get_free_slot()].add_equipment(eq)
 	focus(focused)
+
+func clear():
+	for s in slots:
+		s.clear()
+
+func get_contents() -> Array[Item]:
+	var contents: Array[Item] = []
+	contents.resize(slots.size())
+	for i in slots.size():
+		contents[i] = slots[i].item
+	return contents
 
 func can_add(id: Item.Id, amount: int):
 	var match = slots.find_custom(func(s: Slot): return s.can_add(id, amount))

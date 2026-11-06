@@ -6,7 +6,9 @@
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="4_c828r"]
 [ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="5_th82r"]
 
-[node name="Slot" type="TextureRect" unique_id=157785236 node_paths=PackedStringArray("label", "count_container", "count_label", "icon")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_th82r"]
+
+[node name="Slot" type="TextureRect" unique_id=157785236 node_paths=PackedStringArray("label", "count_container", "count_label", "icon", "button")]
 custom_minimum_size = Vector2(60, 60)
 offset_right = 60.55046
 offset_bottom = 60.0
@@ -19,6 +21,7 @@ label = NodePath("Label")
 count_container = NodePath("Count Bg")
 count_label = NodePath("Count Bg/Amount")
 icon = NodePath("Icon")
+button = NodePath("Button")
 
 [node name="Label" type="RichTextLabel" parent="." unique_id=573338345]
 layout_mode = 1
@@ -28,7 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 24
-text = "H"
+text = "?"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -77,3 +80,13 @@ grow_vertical = 2
 texture = ExtResource("5_th82r")
 expand_mode = 5
 stretch_mode = 5
+
+[node name="Button" type="Button" parent="." unique_id=410495047]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_th82r")
+flat = true
