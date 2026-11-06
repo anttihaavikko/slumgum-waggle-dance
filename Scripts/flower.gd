@@ -7,7 +7,9 @@ func _ready() -> void:
 	area.body_exited.connect(exited)
 
 func entered(_body: Node2D):
-	Main.singleton.harvester.begin(area.global_position)
+	Main.singleton.harvester.begin(self, area.global_position)
 
 func exited(_body: Node2D):
-	Main.singleton.harvester.hide()
+	var h := Main.singleton.harvester
+	if h.flower == self:
+		h.hide()

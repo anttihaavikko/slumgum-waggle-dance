@@ -72,6 +72,15 @@ func change_energy(dir: float, limit: float = energy_max):
 	energy_left = clampf(energy_left + dir, 0, energy_max)
 	energy.hp = roundi(energy_left)
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not OS.is_debug_build(): return
+
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_Z:
+			zoomed = not zoomed
+			var z = 0.05 if zoomed else 0.3
+			cam.zoom = Vector2.ONE * z
+
 func _process(delta) -> void:
 	if not health.is_alive(): return
 
@@ -92,11 +101,6 @@ func _process(delta) -> void:
 	for i in 9:
 		if Input.is_action_just_pressed("slot_%d" % [i + 1]) and i < inventory.slots.size():
 			inventory.focus(i)
-
-	if Input.is_key_pressed(KEY_Z) and OS.is_debug_build():
-		zoomed = not zoomed
-		var z = 0.05 if zoomed else 0.3
-		cam.zoom = Vector2.ONE * z
 
 	if builder.held: return
 

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dfsx4ecwoq8gc"]
+
+[ext_resource type="Script" uid="uid://b6vkutm2x2800" path="res://Scripts/station.gd" id="1_kgk3l"]
+[ext_resource type="Texture2D" uid="uid://mxcvq0svo6pu" path="res://Sprites/core.png" id="2_7aa1q"]
+[ext_resource type="Script" uid="uid://cahkyqjkmgnwc" path="res://_Starter/Scripts/visible_node.gd" id="3_ps2im"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ps2im"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eg0lu"]
+
+[node name="Core" type="Node2D" unique_id=299398414 node_paths=PackedStringArray("button", "center")]
+script = ExtResource("1_kgk3l")
+title = "Core"
+button = NodePath("Button")
+center = NodePath("Center")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=641265153]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(0, -252)
+texture = ExtResource("2_7aa1q")
+
+[node name="Button" type="Button" parent="." unique_id=501500570]
+offset_left = -171.0
+offset_top = -555.0
+offset_right = 170.0
+offset_bottom = 27.0
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ps2im")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eg0lu")
+flat = true
+
+[node name="Center" type="Node2D" parent="." unique_id=1552365683]
+position = Vector2(3, -340)
+script = ExtResource("3_ps2im")
+show_label = false
+metadata/_custom_type_script = "uid://cahkyqjkmgnwc"

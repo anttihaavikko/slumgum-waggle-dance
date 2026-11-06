@@ -13,13 +13,15 @@ var end: float
 var pos := 0.0
 var moving := true
 var done := false
+var flower: Flower
 
 func _ready() -> void:
 	hide()
 	start = marker.position.x
 	end = marker_end.position.x
 
-func begin(p: Vector2):
+func begin(f: Flower, p: Vector2):
+	flower = f
 	reset()
 	global_position = p
 	show()

@@ -4,6 +4,7 @@ class_name Main extends Node
 @export var harvester: Harvester
 @export var inventory: Inventory
 @export var item_db: ItemManager
+@export var stations: Array[StationMenu]
 
 var bee: Bee
 
@@ -20,3 +21,6 @@ func _exit_tree() -> void:
 func _init() -> void:
 	if singleton == null:
 		singleton = self
+
+static func pop(message: String):
+	Effects.singleton.pop(message, singleton.bee.body.global_position)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dq36w8r4o0c4s"]
 
-[ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/platform.tscn" id="1_fveve"]
+[ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/Pieces/platform.tscn" id="1_fveve"]
 
 [node name="Support" unique_id=208223166 instance=ExtResource("1_fveve")]
 z_index = -1

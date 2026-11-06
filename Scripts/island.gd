@@ -44,6 +44,7 @@ func generate():
 	await get_tree().process_frame
 
 	spawn_flower(-3500)
+	spawn_flower(-2800)
 	spawn_flower(2000)
 
 	var spots := range(poly.polygon.size())
@@ -56,7 +57,7 @@ func generate():
 		add_child(rock)
 
 func spawn_flower(pos: float):
-	ray.global_position = Vector2(global_position.x + pos, -2500)
+	ray.global_position = Vector2(global_position.x + pos, -5000)
 	ray.force_raycast_update()
 	if ray.is_colliding():
 		var flower = flower_prefab.instantiate() as Flower
