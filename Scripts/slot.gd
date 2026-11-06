@@ -75,10 +75,7 @@ func add_item(data: ItemData, amount: int = 1):
 	update_visuals()
 
 func drop():
-	if item:
-		Main.singleton.item_db.spawn(item.data.item_id, Main.singleton.bee.body.global_position, item.amount)
-	if equipment:
-		Main.singleton.item_db.spawn(Item.Id.Equipment, Main.singleton.bee.body.global_position, 1, equipment.identifier)
+	Main.drop(item, equipment)
 	clear()
 
 func is_empty() -> bool:

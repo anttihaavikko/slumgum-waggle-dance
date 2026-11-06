@@ -29,3 +29,9 @@ static func pop(message: String):
 
 func _process(_delta) -> void:
 	held.global_position = held.get_global_mouse_position()
+
+static func drop(item: Item, equipment: Equipment):
+	if item:
+		singleton.item_db.spawn(item.data.item_id, singleton.bee.body.global_position, item.amount)
+	if equipment:
+		singleton.item_db.spawn(Item.Id.Equipment, singleton.bee.body.global_position, 1, equipment.identifier)

@@ -41,7 +41,11 @@ func get_free_slot() -> int:
 	return slots.find_custom(func(s: Slot): return s.is_empty())
 
 func add_equipment(eq: Equipment):
-	slots[get_free_slot()].add_equipment(eq)
+	var slot = get_free_slot()
+	if slot >= 0:
+		slots[slot].add_equipment(eq)
+	else:
+		Main.drop(null, eq)
 	focus(focused)
 
 func clear():

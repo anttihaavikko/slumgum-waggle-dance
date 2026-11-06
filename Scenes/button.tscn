@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://k4m70ayplym8"]
+
+[ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="1_1cmwl"]
+
+[node name="Button" type="Button" unique_id=1022843980]
+custom_minimum_size = Vector2(0, 60)
+offset_right = 156.0
+offset_bottom = 64.0
+theme = ExtResource("1_1cmwl")
+text = "Test"

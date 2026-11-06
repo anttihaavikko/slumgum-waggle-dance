@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bd80e2cqqc85w" path="res://Scenes/pickup.tscn" id="6_536cc"]
 [ext_resource type="Texture2D" uid="uid://b3ahxuod773is" path="res://Sprites/pollen.png" id="6_ptfg5"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
+[ext_resource type="Texture2D" uid="uid://iik6jalprqdf" path="res://Sprites/star.png" id="7_2060n"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
 [ext_resource type="Texture2D" uid="uid://dq4p4s1xc713j" path="res://Sprites/cloud0.png" id="9_55jeb"]
@@ -56,6 +57,8 @@
 [ext_resource type="Texture2D" uid="uid://d3l1w6wwkt86" path="res://Sprites/dots.png" id="36_jut3y"]
 [ext_resource type="PackedScene" uid="uid://bpt1nog23ndgh" path="res://Scenes/tree.tscn" id="36_v2nl5"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
+[ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
+[ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
 
 [sub_resource type="Resource" id="Resource_1w6v2"]
 script = ExtResource("3_cbgmd")
@@ -90,7 +93,8 @@ script = ExtResource("3_cbgmd")
 item_id = 4
 stack_size = 1
 title = "Equip"
-sprite = ExtResource("12_gt3je")
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = ExtResource("7_2060n")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
@@ -713,6 +717,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("38_kqrg6")
+
+[node name="Crafter" type="VBoxContainer" parent="HUD/Core" unique_id=1240438515]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 236.0
+offset_bottom = 409.0
+script = ExtResource("50_1semv")
+button_prefab = ExtResource("50_2daye")
 
 [node name="Box" type="ColorRect" parent="HUD" unique_id=52359827 node_paths=PackedStringArray("inputs")]
 anchors_preset = -1
