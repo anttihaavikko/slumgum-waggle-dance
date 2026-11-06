@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
+[ext_resource type="Texture2D" uid="uid://cd0yify70om02" path="res://Sprites/guitar.png" id="31_nwwfm"]
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
 [ext_resource type="Texture2D" uid="uid://cofjigejorj7t" path="res://Sprites/tri-down.png" id="33_e08e2"]
 [ext_resource type="Texture2D" uid="uid://b6d031yqaujsn" path="res://Sprites/x.png" id="34_jwpg7"]
@@ -268,7 +269,7 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush")]
+tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar")]
 hands = NodePath("Body/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
@@ -486,6 +487,7 @@ aligner = NodePath("../..")
 swing_dir = 1.2
 
 [node name="Brush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
+visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1, -1.04904175e-05)
 rotation = 0.13577862
@@ -498,6 +500,20 @@ script = ExtResource("28_8cuat")
 identifier = 2
 aligner = NodePath("../..")
 swing_dir = 1.2
+
+[node name="Guitar" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("swinger", "aligner")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-14.000011, 1.335144e-05)
+rotation = -0.18809377
+scale = Vector2(0.85136753, 0.85136753)
+texture = ExtResource("31_nwwfm")
+offset = Vector2(73.951904, 1.5249786)
+script = ExtResource("28_8cuat")
+identifier = 3
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = 0.1
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
 position = Vector2(-2, 133)

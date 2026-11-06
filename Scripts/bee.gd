@@ -30,6 +30,7 @@ func _ready() -> void:
 	# inventory.add_equipment(tools[Equipment.Type.Scythe])
 	# inventory.add_equipment(tools[Equipment.Type.Hammer])
 	inventory.add_equipment(tools[Equipment.Id.Brush])
+	inventory.add_equipment(tools[Equipment.Id.Guitar])
 	inventory.add_item(Item.Id.Nectar)
 	inventory.add_item(Item.Id.Pollen)
 	energy.max_hp = roundi(energy_max)
