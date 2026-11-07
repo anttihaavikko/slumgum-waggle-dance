@@ -1,6 +1,7 @@
 class_name Builder extends Node2D
 
 @export var pieces: Array[PackedScene]
+@export var cross: Node2D
 
 var min_angle := 15
 
@@ -16,7 +17,8 @@ var slot := 0
 func _process(_delta) -> void:
 	if held:
 		held.global_position = get_global_mouse_position()
-		if Input.is_action_just_pressed("primary"):
+		cross.visible = not held.can_place()
+		if Input.is_action_just_pressed("primary") and not cross.visible:
 			prev_angle = held.rotation
 			if held.body:
 				held.body.collision_layer = held_layer
@@ -37,6 +39,7 @@ func clear():
 	if held:
 		prev_angle = held.rotation
 		held.queue_free()
+		cross.hide()
 
 func create(s: int, discard: bool = false):
 	if discard: clear()

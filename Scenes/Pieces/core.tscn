@@ -8,13 +8,22 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eg0lu"]
 
-[node name="Core" type="Node2D" unique_id=299398414 node_paths=PackedStringArray("button", "center")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps2im"]
+size = Vector2(34.8, 19.52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg0lu"]
+size = Vector2(291.26, 483.825)
+
+[node name="Core" type="Node2D" unique_id=299398414 node_paths=PackedStringArray("button", "center", "body", "connection_shapes", "required_shape")]
 z_index = 1
 script = ExtResource("1_kgk3l")
 title = "Core"
 button = NodePath("Button")
 center = NodePath("Center")
+body = NodePath("StaticBody2D")
 can_rotate = false
+connection_shapes = [NodePath("Left"), NodePath("Right")]
+required_shape = NodePath("ShapeCast2D2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=641265153]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
@@ -35,3 +44,29 @@ position = Vector2(3, -340)
 script = ExtResource("3_ps2im")
 show_label = false
 metadata/_custom_type_script = "uid://cahkyqjkmgnwc"
+
+[node name="Left" type="ShapeCast2D" parent="." unique_id=2129715786]
+position = Vector2(-120, -6)
+shape = SubResource("RectangleShape2D_ps2im")
+target_position = Vector2(0, 0)
+collision_mask = 2
+
+[node name="Right" type="ShapeCast2D" parent="." unique_id=781947195]
+position = Vector2(121, -6)
+shape = SubResource("RectangleShape2D_ps2im")
+target_position = Vector2(0, 0)
+collision_mask = 2
+
+[node name="ShapeCast2D2" type="ShapeCast2D" parent="." unique_id=540746725]
+position = Vector2(0, -280)
+shape = SubResource("RectangleShape2D_eg0lu")
+target_position = Vector2(0, 0)
+collision_mask = 43
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1673048611]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=779958969]
+position = Vector2(0, -279.0875)
+shape = SubResource("RectangleShape2D_eg0lu")

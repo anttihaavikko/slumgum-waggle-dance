@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_bpnfs"]
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="2_dwxtq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwxtq"]
+size = Vector2(291.26, 282.825)
+
 [node name="Box" unique_id=299398414 instance=ExtResource("1_bpnfs")]
 identifier = 1
 title = "Box"
@@ -16,3 +19,11 @@ offset_top = -306.0
 
 [node name="Center" parent="." index="2" unique_id=1552365683]
 position = Vector2(-2, -194)
+
+[node name="ShapeCast2D2" parent="." index="5" unique_id=540746725]
+position = Vector2(1, -152)
+shape = SubResource("RectangleShape2D_dwxtq")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
+position = Vector2(0, -154.5875)
+shape = SubResource("RectangleShape2D_dwxtq")

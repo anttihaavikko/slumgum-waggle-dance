@@ -16,3 +16,6 @@ z_as_relative = false
 z_index = 0
 z_as_relative = true
 default_color = Color(0.6318325, 0.4287993, 0, 1)
+
+[node name="Block" parent="." index="4" unique_id=745238219]
+collision_mask = 0
