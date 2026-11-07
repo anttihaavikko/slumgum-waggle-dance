@@ -46,6 +46,10 @@ func _ready() -> void:
 	body.body_entered.connect(collide)
 
 func die():
+	for i in inventory.slots:
+		if not i.equipment:
+			var p = i.drop()
+			if p: p.apply_impulse(Vector2.UP.rotated(randf_range(0, 2 * PI)) * 800)
 	face.left_eye.hide()
 	face.right_eye.hide()
 	crosses.show()
@@ -53,6 +57,7 @@ func die():
 	if current: current.hide()
 	wings.stop()
 	face.mouth.scale.y *= -1
+	item.hide()
 
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id

@@ -83,9 +83,10 @@ func add_item(data: ItemData, amount: int = 1):
 	item = Item.new(data, amount)
 	update_visuals()
 
-func drop():
-	Main.drop(item, equipment)
+func drop() -> Pickup:
+	var p = Main.drop(item, equipment)
 	clear()
+	return p
 
 func is_empty() -> bool:
 	return not equipment and (not item or item.amount == 0)

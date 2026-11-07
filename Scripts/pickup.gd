@@ -13,6 +13,7 @@ func _ready() -> void:
 	area.body_entered.connect(entered)
 
 func entered(_node: Node2D):
+	if not Main.singleton.bee.health.is_alive(): return
 	var inventory = Main.singleton.inventory
 	if inventory.can_add(item.data.item_id, item.amount):
 		if item.data.item_id == Item.Id.Equipment:
