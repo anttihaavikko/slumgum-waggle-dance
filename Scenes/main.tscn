@@ -284,7 +284,7 @@ starters = [NodePath("Platform"), NodePath("Platform2")]
 position = Vector2(32, 283)
 
 [node name="Platform2" parent="Platforms" unique_id=904452774 instance=ExtResource("9_ynf5e")]
-position = Vector2(-377, 283)
+position = Vector2(-369, 283)
 
 [node name="Support" parent="Platforms" unique_id=1304477163 instance=ExtResource("10_hptm8")]
 position = Vector2(266, 486.99997)
@@ -293,7 +293,7 @@ scale = Vector2(0.9999999, 0.9999999)
 script = null
 
 [node name="Support2" parent="Platforms" unique_id=678899702 instance=ExtResource("10_hptm8")]
-position = Vector2(-545, 539)
+position = Vector2(-543.00006, 529)
 rotation = 1.7915099
 scale = Vector2(0.99999994, 0.99999994)
 script = null

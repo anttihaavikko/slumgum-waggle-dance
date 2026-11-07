@@ -133,7 +133,7 @@ autoplay = &"tree"
 speed_scale = 2.0
 script = ExtResource("1_l7sa7")
 min_speed = 0.7
-max_speed = 1.7
+max_speed = 1.2
 
 [node name="Trunk" type="Sprite2D" parent="." unique_id=329324177]
 position = Vector2(-1, -1)
