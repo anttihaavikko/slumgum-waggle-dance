@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ch587gui708gb" path="res://_Starter/Scripts/randomize_anim_speed.gd" id="1_l7sa7"]
 [ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="2_l3oha"]
+[ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="3_l3oha"]
 [ext_resource type="Texture2D" uid="uid://ca1yr2t06u40x" path="res://Sprites/tree.png" id="3_m36md"]
 
 [sub_resource type="Animation" id="Animation_wl4bb"]
@@ -113,6 +114,15 @@ _data = {
 &"tree": SubResource("Animation_1tvlp")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7sa7"]
+shader = ExtResource("3_l3oha")
+shader_parameter/amount = 6.0
+shader_parameter/rotation_speed = 1.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/peaks = 10.0
+shader_parameter/time_mod = 1.0
+
 [node name="Tree" type="Node2D" unique_id=596932785]
 scale = Vector2(3.5, 3.5)
 
@@ -132,6 +142,7 @@ texture = ExtResource("2_l3oha")
 offset = Vector2(5.280729, -18.246424)
 
 [node name="Branches" type="Sprite2D" parent="." unique_id=416815452]
+material = SubResource("ShaderMaterial_l7sa7")
 position = Vector2(-0.85394263, -32.611862)
 rotation = -0.017453292
 scale = Vector2(0.99697715, 1.0000634)
@@ -140,6 +151,7 @@ texture = ExtResource("3_m36md")
 offset = Vector2(0.68002367, -95.39817)
 
 [node name="Branches2" type="Sprite2D" parent="Branches" unique_id=1226245417]
+material = SubResource("ShaderMaterial_l7sa7")
 position = Vector2(-0.05702448, -87.88338)
 rotation = -0.017453292
 scale = Vector2(0.88964283, 0.88964283)
@@ -147,6 +159,7 @@ texture = ExtResource("3_m36md")
 offset = Vector2(-5.0082803, -100.35762)
 
 [node name="Branches3" type="Sprite2D" parent="Branches/Branches2" unique_id=1716292303]
+material = SubResource("ShaderMaterial_l7sa7")
 position = Vector2(0.429821, -101.12134)
 rotation = -0.017453292
 scale = Vector2(0.9279345, 0.9279345)
@@ -154,8 +167,12 @@ texture = ExtResource("3_m36md")
 offset = Vector2(-6.579357, -85.149536)
 
 [node name="Branches4" type="Sprite2D" parent="Branches/Branches2/Branches3" unique_id=1704704171]
+material = SubResource("ShaderMaterial_l7sa7")
 position = Vector2(-8.161351, -118.99175)
 rotation = -0.017453292
 scale = Vector2(0.6856978, 0.6856978)
 texture = ExtResource("3_m36md")
 offset = Vector2(1, -92)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=653192924]
+polygon = PackedVector2Array(-71.14285, 44.571426, -22.571426, 18.857141, 63.714283, 15.999999, 127.71428, 44.571426, 174.2857, 93.71428, 147.42856, 132.57143, 93.99999, 147.14285, -4.285714, 171.71428, -89.14285, 139.71428, -145.42856, 109.14285, -125.71428, 61.142853)

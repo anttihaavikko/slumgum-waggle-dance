@@ -20,6 +20,7 @@ offset_left = -82.0
 offset_top = -73.0
 offset_right = 79.0
 offset_bottom = 77.0
+mouse_filter = 2
 texture = ExtResource("1_kc167")
 expand_mode = 2
 stretch_mode = 5
@@ -44,6 +45,7 @@ offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.34)
+mouse_filter = 2
 
 [node name="Line" type="ColorRect" parent="." unique_id=528131617]
 layout_mode = 1
@@ -56,6 +58,7 @@ offset_right = -15.156799
 offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Current" type="RichTextLabel" parent="." unique_id=1003585790]
@@ -65,6 +68,7 @@ offset_left = 8.0
 offset_top = 19.0
 offset_right = 152.0
 offset_bottom = 69.0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 40
 text = "5"
 scroll_active = false
@@ -78,6 +82,7 @@ offset_left = 8.0
 offset_top = 77.0
 offset_right = 152.0
 offset_bottom = 127.0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 40
 text = "10"
 scroll_active = false
