@@ -19,7 +19,15 @@ func add_equipment(eq: Equipment):
 	equipment = eq
 	update_visuals()
 
-func pick():
+func pick(target: Inventory):
+	if Input.is_action_pressed("shift"):
+		if target.can_add_item(item, equipment):
+			if equipment:
+				target.add_equipment(equipment)
+			else:
+				target.add_item(item.data.item_id, item.amount)
+			clear()
+		return
 	var held = Main.singleton.held
 	if not held.is_empty():
 		swap(held)
@@ -32,6 +40,7 @@ func clear():
 	item = null
 	equipment = null
 	update_visuals()
+	Main.singleton.inventory.re_focus()
 
 func swap(slot: Slot):
 	if slot.item and can_add(slot.item.data.item_id, slot.item.amount):

@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func fill():
 	amount = randi_range(3, 5)
+	center.modulate = Color.WHITE
 
 func consume():
 	amount -= 1

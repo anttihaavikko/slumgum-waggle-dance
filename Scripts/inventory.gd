@@ -22,7 +22,7 @@ func click_slot(slot: Slot):
 	if not other:
 		focus(slots.find(slot))
 		return
-	slot.pick()
+	slot.pick(other)
 
 func re_focus():
 	focus(focused)
@@ -62,6 +62,12 @@ func get_contents() -> Array[Item]:
 		else:
 			contents[i] = slots[i].item
 	return contents
+
+func can_add_item(item: Item, equip: Equipment):
+	return item and can_add(item.data.item_id, item.amount) or equip and has_space()
+
+func has_space():
+	return slots.any(func(s: Slot): return s.is_empty())
 
 func can_add(id: Item.Id, amount: int):
 	var match = slots.find_custom(func(s: Slot): return s.can_add(id, amount))
