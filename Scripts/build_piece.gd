@@ -35,6 +35,7 @@ func try_to_place():
 		return
 
 func snap(points: Array[Node2D]):
+	if Input.is_action_pressed("shift"): return
 	var p := -1
 	var best := -1
 	var distance = 9999
