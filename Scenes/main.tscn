@@ -298,10 +298,11 @@ script = null
 [node name="Station" parent="Platforms" unique_id=299398414 instance=ExtResource("12_aa8k8")]
 position = Vector2(-453, 239)
 
-[node name="Box" parent="Platforms" unique_id=891814443 instance=ExtResource("13_kqrg6")]
+[node name="Box" parent="Platforms" unique_id=891814443 node_paths=PackedStringArray("connection_shapes") instance=ExtResource("13_kqrg6")]
 z_index = 0
 position = Vector2(94, 242)
 can_rotate = true
+connection_shapes = []
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5

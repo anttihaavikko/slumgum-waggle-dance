@@ -49,13 +49,13 @@ metadata/_custom_type_script = "uid://cahkyqjkmgnwc"
 position = Vector2(-120, -6)
 shape = SubResource("RectangleShape2D_ps2im")
 target_position = Vector2(0, 0)
-collision_mask = 2
+collision_mask = 64
 
 [node name="Right" type="ShapeCast2D" parent="." unique_id=781947195]
 position = Vector2(121, -6)
 shape = SubResource("RectangleShape2D_ps2im")
 target_position = Vector2(0, 0)
-collision_mask = 2
+collision_mask = 64
 
 [node name="ShapeCast2D2" type="ShapeCast2D" parent="." unique_id=540746725]
 position = Vector2(0, -280)
