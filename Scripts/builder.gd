@@ -18,7 +18,9 @@ func _process(_delta) -> void:
 	if held:
 		held.global_position = get_global_mouse_position()
 		cross.visible = not held.can_place()
-		if Input.is_action_just_pressed("primary") and not cross.visible:
+		if Input.is_action_just_pressed("primary"):
+			held.try_to_place()
+			if cross.visible: return
 			prev_angle = held.rotation
 			if held.body:
 				held.body.collision_layer = held_layer

@@ -20,10 +20,12 @@ script = ExtResource("1_kgk3l")
 title = "Core"
 button = NodePath("Button")
 center = NodePath("Center")
+identifier = 2
 body = NodePath("StaticBody2D")
 can_rotate = false
 connection_shapes = [NodePath("Left"), NodePath("Right")]
 required_shape = NodePath("ShapeCast2D2")
+takes_space = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=641265153]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)

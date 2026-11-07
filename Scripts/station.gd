@@ -1,11 +1,5 @@
 class_name Station extends BuildPiece
 
-enum Id {
-	Core,
-	Box
-}
-
-@export var identifier: Id
 @export var title: String
 @export var button: Button
 @export var center: Node2D
@@ -27,11 +21,12 @@ func _process(delta) -> void:
 func announce():
 	if cooldown > 0: return
 	if Main.singleton.builder.held: return
-	Effects.singleton.pop(title, center.global_position)
+	Effects.singleton.pop(title.to_upper(), center.global_position + Vector2.UP * 100)
 	cooldown = 0.5
 
 func open():
 	if Main.singleton.builder.held: return
+	if not menu: return
 	if menu.visible:
 		menu.hide()
 		return

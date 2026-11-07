@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://b4af11tt4lq03"]
+
+[ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_n04rh"]
+[ext_resource type="Texture2D" uid="uid://1s8fh5yxfq8x" path="res://Sprites/sign.png" id="2_6rtxg"]
+[ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="3_6rtxg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n04rh"]
+size = Vector2(253.29, 163.06)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpw3y"]
+size = Vector2(291.26, 200)
+
+[node name="Sign" unique_id=299398414 node_paths=PackedStringArray("connection_shapes", "label") instance=ExtResource("1_n04rh")]
+z_index = 4
+title = "Sign"
+identifier = 4
+can_rotate = true
+connection_shapes = []
+takes_space = false
+label = NodePath("RichTextLabel")
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+position = Vector2(1, 2)
+texture = ExtResource("2_6rtxg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="1" unique_id=869578903]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -128.0
+offset_top = -82.0
+offset_right = 129.0
+offset_bottom = 84.0
+theme = ExtResource("3_6rtxg")
+theme_override_constants/line_separation = -20
+theme_override_font_sizes/normal_font_size = 60
+text = "LOREM
+IPSUM"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" parent="." index="2" unique_id=501500570]
+offset_left = -170.0
+offset_top = -125.0
+offset_right = 171.0
+offset_bottom = 130.0
+
+[node name="Center" parent="." index="3" unique_id=1552365683]
+position = Vector2(1, -1)
+
+[node name="Left" parent="." index="4" unique_id=2129715786]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_n04rh")
+collision_mask = 2
+
+[node name="Right" parent="." index="5" unique_id=781947195]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_n04rh")
+collision_mask = 2
+
+[node name="ShapeCast2D2" parent="." index="6" unique_id=540746725]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_dpw3y")
+
+[node name="StaticBody2D" parent="." index="7" unique_id=1673048611]
+position = Vector2(1, 254)
+collision_layer = 0
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=779958969]
+position = Vector2(0, -253)
+shape = SubResource("RectangleShape2D_dpw3y")

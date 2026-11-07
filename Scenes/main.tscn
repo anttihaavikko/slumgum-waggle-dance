@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="18_1w6v2"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
+[ext_resource type="PackedScene" uid="uid://b4af11tt4lq03" path="res://Scenes/Pieces/sign.tscn" id="22_qax2n"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
@@ -59,6 +60,7 @@
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
 [ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
 [ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
+[ext_resource type="Script" uid="uid://g0nodib4yvx4" path="res://Scripts/sign_editor.gd" id="55_y86h7"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 
 [sub_resource type="Resource" id="Resource_1w6v2"]
@@ -230,7 +232,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [NodePath("../HUD/Core"), NodePath("../HUD/Box")]
+stations = [null, null, NodePath("../HUD/Core"), NodePath("../HUD/Box"), NodePath("../HUD/Input")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 
@@ -274,7 +276,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6")])
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n")])
 cross = NodePath("../Cursor Icon/Nope")
 
 [node name="Platform" parent="Platforms" unique_id=208223166 instance=ExtResource("9_ynf5e")]
@@ -298,11 +300,10 @@ script = null
 [node name="Station" parent="Platforms" unique_id=299398414 instance=ExtResource("12_aa8k8")]
 position = Vector2(-453, 239)
 
-[node name="Box" parent="Platforms" unique_id=891814443 node_paths=PackedStringArray("connection_shapes") instance=ExtResource("13_kqrg6")]
+[node name="Box" parent="Platforms" unique_id=891814443 instance=ExtResource("13_kqrg6")]
 z_index = 0
 position = Vector2(94, 242)
 can_rotate = true
-connection_shapes = []
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -667,6 +668,7 @@ polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1935048811]
 
 [node name="Frame" type="TextureRect" parent="HUD" unique_id=940088816]
+self_modulate = Color(0.13725491, 0, 0.11764706, 1)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -733,13 +735,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -787.0
-offset_top = -371.0
-offset_right = -381.0
-offset_bottom = 300.0
+offset_left = -705.0
+offset_top = -369.0
+offset_right = -299.0
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.13725491, 0, 0.11764706, 1)
 script = ExtResource("38_kqrg6")
 
 [node name="Crafter" type="VBoxContainer" parent="HUD/Core" unique_id=1240438515]
@@ -762,7 +764,7 @@ offset_top = -335.36002
 offset_right = 630.0
 offset_bottom = 335.63998
 grow_horizontal = 0
-color = Color(0, 0, 0, 1)
+color = Color(0.13725491, 0, 0.11764706, 1)
 script = ExtResource("38_kqrg6")
 inputs = NodePath("Inputs")
 
@@ -775,6 +777,30 @@ offset_bottom = 91.0
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
+
+[node name="Input" type="ColorRect" parent="HUD" unique_id=1703526333 node_paths=PackedStringArray("field")]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.467
+anchor_right = 0.5
+anchor_bottom = 0.467
+offset_left = -139.0
+offset_top = -239.36002
+offset_right = 96.0
+offset_bottom = -24.360016
+grow_horizontal = 0
+color = Color(0.13725491, 0, 0.11764706, 1)
+script = ExtResource("55_y86h7")
+field = NodePath("TextEdit")
+
+[node name="TextEdit" type="TextEdit" parent="HUD/Input" unique_id=378300377]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 218.0
+offset_bottom = 199.0
+text = "LOREM
+IPSUM"
 
 [node name="Slot" parent="HUD" unique_id=157785236 instance=ExtResource("20_hibaj")]
 visible = false
@@ -806,7 +832,7 @@ offset_left = -543.0
 offset_top = -794.0
 offset_right = 552.0
 offset_bottom = -389.0
-color = Color(0, 0, 0, 1)
+color = Color(0.13725491, 0, 0.11764706, 1)
 
 [node name="Track" type="ColorRect" parent="Harvester/Bg" unique_id=1204458540]
 layout_mode = 0

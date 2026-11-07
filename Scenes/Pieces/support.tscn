@@ -7,6 +7,7 @@ z_index = -1
 z_as_relative = false
 collision_layer = 2
 collision_mask = 2
+identifier = 1
 
 [node name="Outline" parent="." index="0" unique_id=1428855056]
 z_index = -5

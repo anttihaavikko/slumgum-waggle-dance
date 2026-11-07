@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="1_kc167"]
 [ext_resource type="Script" uid="uid://csutijataospt" path="res://_Starter/Scripts/health_display.gd" id="2_gpk4l"]
 [ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="2_p15m1"]
+[ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="4_gpk4l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wsu2k"]
 shader = ExtResource("2_p15m1")
@@ -69,6 +70,7 @@ offset_top = 19.0
 offset_right = 152.0
 offset_bottom = 69.0
 mouse_filter = 2
+theme = ExtResource("4_gpk4l")
 theme_override_font_sizes/normal_font_size = 40
 text = "5"
 scroll_active = false
@@ -83,6 +85,7 @@ offset_top = 77.0
 offset_right = 152.0
 offset_bottom = 127.0
 mouse_filter = 2
+theme = ExtResource("4_gpk4l")
 theme_override_font_sizes/normal_font_size = 40
 text = "10"
 scroll_active = false
