@@ -5,6 +5,7 @@ class_name Main extends Node
 @export var item_db: ItemManager
 @export var stations: Array[StationMenu]
 @export var held: Slot
+@export var builder: Builder
 
 var station: StationMenu
 var bee: Bee

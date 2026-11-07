@@ -1,4 +1,4 @@
-class_name Station extends Node2D
+class_name Station extends BuildPiece
 
 enum Id {
 	Core,
@@ -26,10 +26,12 @@ func _process(delta) -> void:
 
 func announce():
 	if cooldown > 0: return
+	if Main.singleton.builder.held: return
 	Effects.singleton.pop(title, center.global_position)
 	cooldown = 0.5
 
 func open():
+	if Main.singleton.builder.held: return
 	if menu.visible:
 		menu.hide()
 		return

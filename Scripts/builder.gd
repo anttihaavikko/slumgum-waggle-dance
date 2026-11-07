@@ -4,7 +4,7 @@ class_name Builder extends Node2D
 
 var min_angle := 15
 
-var held: Node2D
+var held: BuildPiece
 var held_layer: int
 var held_mask: int
 var prev_angle := 0.0
@@ -18,13 +18,15 @@ func _process(_delta) -> void:
 		held.global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("primary"):
 			prev_angle = held.rotation
-			held.collision_layer = held_layer
-			held.collision_mask = held_mask
+			if held.body:
+				held.body.collision_layer = held_layer
+				held.body.collision_mask = held_mask
 			create(slot)
-		if Input.is_action_just_pressed("wheel_up"):
-			held.rotation_degrees += min_angle
-		if Input.is_action_just_pressed("wheel_down"):
-			held.rotation_degrees -= min_angle
+		if held.can_rotate:
+			if Input.is_action_just_pressed("wheel_up"):
+				held.rotation_degrees += min_angle
+			if Input.is_action_just_pressed("wheel_down"):
+				held.rotation_degrees -= min_angle
 		if Input.is_action_just_pressed("cancel"):
 			clear()
 
@@ -40,11 +42,12 @@ func create(s: int, discard: bool = false):
 	if discard: clear()
 	slot = s
 	held = pieces[slot].instantiate()
-	if held is StaticBody2D:
-		held_layer = held.collision_layer
-		held_mask = held.collision_mask
-		held.collision_layer = 0
-		held.collision_mask = 0
+	if not held.can_rotate: prev_angle = 0
+	if held and held.body:
+		held_layer = held.body.collision_layer
+		held_mask = held.body.collision_mask
+		held.body.collision_layer = 0
+		held.body.collision_mask = 0
 	add_child(held)
 	held.rotation = prev_angle
 	held.global_position = get_global_mouse_position()

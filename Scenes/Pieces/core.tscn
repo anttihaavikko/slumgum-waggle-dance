@@ -9,10 +9,12 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eg0lu"]
 
 [node name="Core" type="Node2D" unique_id=299398414 node_paths=PackedStringArray("button", "center")]
+z_index = 1
 script = ExtResource("1_kgk3l")
 title = "Core"
 button = NodePath("Button")
 center = NodePath("Center")
+can_rotate = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=641265153]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)

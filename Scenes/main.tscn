@@ -224,13 +224,14 @@ size = Vector2(163, 45)
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
 stations = [NodePath("../HUD/Core"), NodePath("../HUD/Box")]
 held = NodePath("../HUD/Slot")
+builder = NodePath("../Platforms")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -256,6 +257,7 @@ offset_bottom = 21109.0
 color = Color(0.58766574, 0.7902795, 0.90929693, 1)
 
 [node name="Clouds" type="Node2D" parent="." unique_id=1368952648]
+z_index = -10
 script = ExtResource("9_gsvbx")
 amount = 200
 width = 25000
@@ -271,7 +273,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8")])
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6")])
 
 [node name="Platform" parent="Platforms" unique_id=208223166 instance=ExtResource("9_ynf5e")]
 position = Vector2(32, 283)
