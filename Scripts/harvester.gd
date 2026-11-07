@@ -40,6 +40,7 @@ func _process(delta) -> void:
 		# arrow.self_modulate = good.self_modulate if success else Color.WHITE
 		done = true
 		if success:
+			flower.consume()
 			Main.singleton.inventory.add_item(Item.Id.Nectar)
 			if Main.singleton.bee.is_holding(Equipment.Id.Brush):
 				Main.singleton.inventory.add_item(Item.Id.Pollen)

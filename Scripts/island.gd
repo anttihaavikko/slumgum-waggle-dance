@@ -47,9 +47,8 @@ func generate():
 
 	await get_tree().process_frame
 
-	spawn_flower(-3500)
-	spawn_flower(-2800)
-	spawn_flower(2000)
+	spawn_flowers(1)
+	spawn_flowers(-1)
 
 	var spots := range(poly.polygon.size())
 	spots.shuffle()
@@ -85,13 +84,23 @@ func shift(shape: PackedVector2Array, dir: Vector2) -> PackedVector2Array:
 		shape[p] += dir
 	return shape
 
+func spawn_flowers(dir: float):
+	var pos = dir * randf_range(4000, 6000)
+	for i in 5:
+		spawn_flower(pos)
+		if randf() < 0.5: spawn_flower(pos + randf_range(500, 1000))
+		if randf() < 0.5: spawn_flower(pos - randf_range(500, 1000))
+		pos += dir * randf_range(3000, 6000)
+
 func spawn_flower(pos: float):
 	ray.global_position = Vector2(global_position.x + pos, -5000)
 	ray.force_raycast_update()
 	if ray.is_colliding():
+		var p = ray.get_collision_point()
+		if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 200, poly.polygon): return
 		var flower = flower_prefab.instantiate() as Flower
 		add_child(flower)
-		flower.global_position = ray.get_collision_point()
+		flower.global_position = p
 
 func offset_points(shape: PackedVector2Array, distance: float = 200) -> PackedVector2Array:
 	for p in range(shape.size()):
