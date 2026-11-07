@@ -1,4 +1,3 @@
-
 class_name Main extends Node
 
 @export var harvester: Harvester

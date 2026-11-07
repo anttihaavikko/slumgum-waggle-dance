@@ -55,8 +55,9 @@ func generate():
 	spots.shuffle()
 
 	for i in 50:
-		var rock = rock_prefab.instantiate() as Node2D
 		var p = poly.polygon[spots[i]]
+		if to_local(p).length() < 1500: continue
+		var rock = rock_prefab.instantiate() as Node2D
 		rock.global_position = p
 		add_child(rock)
 
