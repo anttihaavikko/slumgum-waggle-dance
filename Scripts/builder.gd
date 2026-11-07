@@ -2,6 +2,7 @@ class_name Builder extends Node2D
 
 @export var pieces: Array[PackedScene]
 @export var cross: Node2D
+@export var starters: Array[BuildPiece]
 
 var min_angle := 15
 
@@ -10,17 +11,21 @@ var held_layer: int
 var held_mask: int
 var prev_angle := 0.0
 var slot := 0
+var snap_points: Array[Node2D] = []
 
-# func _ready() -> void:
-# 	create(0)
+func _ready() -> void:
+	for s in starters:
+		snap_points.append_array(s.snap_points)
 
 func _process(_delta) -> void:
 	if held:
 		held.global_position = get_global_mouse_position()
+		held.snap(snap_points)
 		cross.visible = not held.can_place()
 		if Input.is_action_just_pressed("primary"):
 			held.try_to_place()
 			if cross.visible: return
+			snap_points.append_array(held.snap_points)
 			prev_angle = held.rotation
 			if held.body:
 				held.body.collision_layer = held_layer

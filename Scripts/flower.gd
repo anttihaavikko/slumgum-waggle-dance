@@ -2,10 +2,12 @@ class_name Flower extends Node2D
 
 @export var area: Area2D
 @export var center: Sprite2D
+@export var mover: Mover
 
 var amount := 0
 
 func _ready() -> void:
+	mover.time_offset = randf_range(0, 100)
 	area.global_position.y += randf_range(-400, 200)
 	area.body_entered.connect(entered)
 	area.body_exited.connect(exited)

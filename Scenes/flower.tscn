@@ -50,11 +50,12 @@ shader_parameter/time_mod = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
 radius = 266.06766
 
-[node name="Flower" type="Node2D" unique_id=1614192265 node_paths=PackedStringArray("area", "center")]
+[node name="Flower" type="Node2D" unique_id=1614192265 node_paths=PackedStringArray("area", "center", "mover")]
 z_as_relative = false
 script = ExtResource("1_hbmji")
 area = NodePath("Mover/Area2D")
 center = NodePath("Mover/Area2D/Center")
+mover = NodePath("Mover")
 
 [node name="Root" type="Sprite2D" parent="." unique_id=776698886]
 visible = false

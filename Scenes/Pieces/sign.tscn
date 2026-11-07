@@ -10,12 +10,14 @@ size = Vector2(253.29, 163.06)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpw3y"]
 size = Vector2(291.26, 200)
 
-[node name="Sign" unique_id=299398414 node_paths=PackedStringArray("connection_shapes", "label") instance=ExtResource("1_n04rh")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rtxg"]
+size = Vector2(291.26, 200)
+
+[node name="Sign" unique_id=299398414 node_paths=PackedStringArray("label") instance=ExtResource("1_n04rh")]
 z_index = 4
 title = "Sign"
 identifier = 4
 can_rotate = true
-connection_shapes = []
 takes_space = false
 label = NodePath("RichTextLabel")
 
@@ -24,14 +26,15 @@ position = Vector2(1, 2)
 texture = ExtResource("2_6rtxg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="1" unique_id=869578903]
-self_modulate = Color(0, 0, 0, 1)
 offset_left = -128.0
 offset_top = -82.0
 offset_right = 129.0
 offset_bottom = 84.0
 theme = ExtResource("3_6rtxg")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -20
 theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
 text = "LOREM
 IPSUM"
 scroll_active = false
@@ -67,4 +70,4 @@ collision_layer = 0
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=779958969]
 position = Vector2(0, -253)
-shape = SubResource("RectangleShape2D_dpw3y")
+shape = SubResource("RectangleShape2D_6rtxg")

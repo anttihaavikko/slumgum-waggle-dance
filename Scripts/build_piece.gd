@@ -7,6 +7,7 @@ class_name BuildPiece extends Node2D
 @export var required_shape: ShapeCast2D
 @export var takes_space := true
 @export var label: RichTextLabel
+@export var snap_points: Array[Node2D]
 
 enum Id {
 	Platform,
@@ -32,3 +33,17 @@ func try_to_place():
 	if is_blocked():
 		Main.pop("Blocked!")
 		return
+
+func snap(points: Array[Node2D]):
+	var p := -1
+	var best := -1
+	var distance = 9999
+	for i in snap_points.size():
+		for j in points.size():
+			var dist = snap_points[i].global_position.distance_to(points[j].global_position)
+			if dist < distance:
+				distance = dist
+				p = i
+				best = j
+	if distance < 100:
+		global_position = points[best].global_position - (snap_points[p].global_position - global_position)

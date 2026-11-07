@@ -273,11 +273,12 @@ speed_min = -10.0
 speed_max = -150.0
 cloud_material = SubResource("ShaderMaterial_gsvbx")
 
-[node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross")]
+[node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
 pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n")])
 cross = NodePath("../Cursor Icon/Nope")
+starters = [NodePath("Platform"), NodePath("Platform2")]
 
 [node name="Platform" parent="Platforms" unique_id=208223166 instance=ExtResource("9_ynf5e")]
 position = Vector2(32, 283)
@@ -298,16 +299,17 @@ scale = Vector2(0.99999994, 0.99999994)
 script = null
 
 [node name="Station" parent="Platforms" unique_id=299398414 instance=ExtResource("12_aa8k8")]
-position = Vector2(-453, 239)
+position = Vector2(-425, 239)
+takes_space = true
 
 [node name="Box" parent="Platforms" unique_id=891814443 instance=ExtResource("13_kqrg6")]
 z_index = 0
-position = Vector2(94, 242)
+position = Vector2(70, 242)
 can_rotate = true
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
-position = Vector2(702, -408)
+position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
 body = NodePath("Body")
 lander = NodePath("Lander")
@@ -372,7 +374,7 @@ offset = Vector2(38, -19)
 
 [node name="LiveLimb" type="Line2D" parent="Bee/Body" unique_id=1119725993 node_paths=PackedStringArray("target")]
 position = Vector2(54, 92)
-points = PackedVector2Array(0, 0, 40.95984, 28.675598, 16, 72.00003)
+points = PackedVector2Array(0, 0, 40.9599, 28.675568, 16, 71.99997)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
