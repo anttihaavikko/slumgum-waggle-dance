@@ -8,6 +8,7 @@ enum Id {
 }
 
 @export var identifier: Id
+@export_multiline var description: String
 @export var swinger: Swinger
 @export var aligner: Node2D
 @export var swing_dir := 1.0

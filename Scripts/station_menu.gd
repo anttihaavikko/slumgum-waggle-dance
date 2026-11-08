@@ -2,23 +2,30 @@ class_name StationMenu extends Control
 
 @export var inputs: Inventory
 @export var outputs: Inventory
+@export var win: GameWindow
+@export var preview: Preview
 
 var initialized: bool
 var station: Station
 
 func _ready() -> void:
-	hide()
+	win.hide()
+	win.closed.connect(close)
 
 func _process(_delta) -> void:
 	if visible and Input.is_action_just_pressed("cancel"):
 		close()
 
+func is_open() -> bool:
+	return win.visible
+
 func close():
-	hide()
+	if preview: preview.close()
+	win.hide()
 	Main.singleton.inventory.other = null
 	Main.singleton.station = null
-	if inputs: station.inputs = inputs.get_contents()
-	if outputs: station.outputs = outputs.get_contents()
+	if station and inputs: station.inputs = inputs.get_contents()
+	if station and outputs: station.outputs = outputs.get_contents()
 	if Main.singleton.held:
 		Main.singleton.held.drop()
 		Main.singleton.held.hide()
@@ -30,7 +37,8 @@ func open(source: Station):
 	Main.singleton.station = self
 	Main.singleton.inventory.other = inputs
 	if inputs: inputs.other = Main.singleton.inventory
-	show()
+	win.show()
+	if preview: preview.open()
 
 	if inputs and not initialized: inputs.create_slots(3)
 	initialized = true

@@ -27,7 +27,7 @@ func announce():
 func open():
 	if Main.singleton.builder.held: return
 	if not menu: return
-	if menu.visible:
-		menu.hide()
+	if menu.is_open():
+		menu.close()
 		return
 	menu.open(self)

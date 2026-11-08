@@ -61,6 +61,8 @@
 [ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
 [ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
 [ext_resource type="Script" uid="uid://g0nodib4yvx4" path="res://Scripts/sign_editor.gd" id="55_y86h7"]
+[ext_resource type="PackedScene" uid="uid://dxy7r1qf1oqpe" path="res://Scenes/window.tscn" id="57_lx3vj"]
+[ext_resource type="Script" uid="uid://5e1wc8r2tqta" path="res://Scripts/preview.gd" id="57_ynmfv"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
 
@@ -233,7 +235,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core"), NodePath("../HUD/Box"), NodePath("../HUD/Input")]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 
@@ -389,7 +391,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb2" type="Line2D" parent="Bee/Body" unique_id=1358115220 node_paths=PackedStringArray("target")]
 position = Vector2(-69, 88)
-points = PackedVector2Array(0, 0, -32.989502, 37.57251, -1, 76)
+points = PackedVector2Array(0, 0, -32.98947, 37.57251, -1, 76.000015)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -402,7 +404,7 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 
 [node name="LiveLimb3" type="Line2D" parent="Bee/Body" unique_id=1607490853 node_paths=PackedStringArray("target")]
 position = Vector2(-43, 120)
-points = PackedVector2Array(0, 0, -30.475525, 25.908325, -2, 54.00003)
+points = PackedVector2Array(0, 0, -30.475586, 25.908295, -2, 53.999954)
 width = 20.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -531,6 +533,7 @@ texture = ExtResource("10_k12tt")
 offset = Vector2(-47, 3)
 script = ExtResource("13_fevyy")
 builder = NodePath("../../../../../../Platforms")
+description = "A tool for constructing platforms and other build pieces. Highly recommended!"
 swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
@@ -583,6 +586,7 @@ flips = true
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
 position = Vector2(0, 133)
+collision_layer = 129
 collision_mask = 9
 can_sleep = false
 contact_monitor = true
@@ -733,79 +737,6 @@ script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
 
-[node name="Core" type="ColorRect" parent="HUD" unique_id=876813654]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -705.0
-offset_top = -369.0
-offset_right = -299.0
-offset_bottom = 302.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.13725491, 0, 0.11764706, 1)
-script = ExtResource("38_kqrg6")
-
-[node name="Crafter" type="VBoxContainer" parent="HUD/Core" unique_id=1240438515]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 23.0
-offset_right = 236.0
-offset_bottom = 409.0
-script = ExtResource("50_1semv")
-button_prefab = ExtResource("50_2daye")
-
-[node name="Box" type="ColorRect" parent="HUD" unique_id=52359827 node_paths=PackedStringArray("inputs")]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.467
-anchor_right = 0.5
-anchor_bottom = 0.467
-offset_left = 224.0
-offset_top = -335.36002
-offset_right = 630.0
-offset_bottom = 335.63998
-grow_horizontal = 0
-color = Color(0.13725491, 0, 0.11764706, 1)
-script = ExtResource("38_kqrg6")
-inputs = NodePath("Inputs")
-
-[node name="Inputs" type="HBoxContainer" parent="HUD/Box" unique_id=1449105974 node_paths=PackedStringArray("manager")]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 26.0
-offset_right = 303.0
-offset_bottom = 91.0
-script = ExtResource("19_hibaj")
-slot_prefab = ExtResource("20_hibaj")
-manager = NodePath("../../../ItemManager")
-
-[node name="Input" type="ColorRect" parent="HUD" unique_id=1703526333 node_paths=PackedStringArray("field")]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.467
-anchor_right = 0.5
-anchor_bottom = 0.467
-offset_left = -139.0
-offset_top = -239.36002
-offset_right = 96.0
-offset_bottom = -24.360016
-grow_horizontal = 0
-color = Color(0.13725491, 0, 0.11764706, 1)
-script = ExtResource("55_y86h7")
-field = NodePath("TextEdit")
-
-[node name="TextEdit" type="TextEdit" parent="HUD/Input" unique_id=378300377]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 16.0
-offset_right = 218.0
-offset_bottom = 199.0
-text = "LOREM
-IPSUM"
-
 [node name="Slot" parent="HUD" unique_id=157785236 instance=ExtResource("20_hibaj")]
 visible = false
 anchors_preset = 7
@@ -820,6 +751,200 @@ offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="Core Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
+offset_left = -624.0
+offset_top = -369.0
+offset_right = -218.0
+offset_bottom = 302.0
+title = "CORE"
+
+[node name="Core" type="Control" parent="HUD/Core Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -335.5
+offset_right = 203.0
+offset_bottom = 335.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("38_kqrg6")
+win = NodePath("..")
+preview = NodePath("../../Preview Window/Preview")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Core Window/Core" unique_id=1768440130]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 86.0
+offset_right = 373.0
+offset_bottom = 197.0
+
+[node name="Description" type="RichTextLabel" parent="HUD/Core Window/Core/VBoxContainer" unique_id=496331594]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "The core provides energy to all connected platforms. Allows some very basic crafting."
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Core Window/Core/VBoxContainer" unique_id=2064826301]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Core Window/Core/VBoxContainer" unique_id=368487812]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 22
+text = "PICK A RECIPE"
+fit_content = true
+
+[node name="Spacer2" type="ColorRect" parent="HUD/Core Window/Core/VBoxContainer" unique_id=2024927129]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Crafter" type="VBoxContainer" parent="HUD/Core Window/Core/VBoxContainer" unique_id=1240438515 node_paths=PackedStringArray("preview")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+script = ExtResource("50_1semv")
+button_prefab = ExtResource("50_2daye")
+preview = NodePath("../../../../Preview Window/Preview")
+
+[node name="Box Window" parent="HUD" unique_id=194614062 instance=ExtResource("57_lx3vj")]
+offset_left = 225.0
+offset_top = -371.0
+offset_right = 631.0
+offset_bottom = 300.0
+title = "BOX"
+
+[node name="Box" type="Control" parent="HUD/Box Window" unique_id=1257848854 node_paths=PackedStringArray("inputs", "win")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.467
+anchor_right = 0.5
+anchor_bottom = 0.467
+offset_left = -204.0
+offset_top = -313.357
+offset_right = 202.0
+offset_bottom = 357.643
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("38_kqrg6")
+inputs = NodePath("Inputs")
+win = NodePath("..")
+
+[node name="Inputs" type="HBoxContainer" parent="HUD/Box Window/Box" unique_id=1449105974 node_paths=PackedStringArray("manager")]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 85.0
+offset_right = 383.0
+offset_bottom = 150.0
+mouse_filter = 2
+script = ExtResource("19_hibaj")
+slot_prefab = ExtResource("20_hibaj")
+manager = NodePath("../../../../ItemManager")
+
+[node name="Preview Window" parent="HUD" unique_id=275815913 instance=ExtResource("57_lx3vj")]
+offset_left = 168.0
+offset_top = -370.0
+offset_right = 574.0
+offset_bottom = 301.0
+has_close_button = false
+title = "PREVIEW"
+
+[node name="Preview" type="Control" parent="HUD/Preview Window" unique_id=757214562 node_paths=PackedStringArray("win", "craft_button", "description")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("57_ynmfv")
+win = NodePath("..")
+craft_button = NodePath("../Craft")
+description = NodePath("VBoxContainer/Description")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Preview Window/Preview" unique_id=1582831390]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 87.0
+offset_right = 373.0
+offset_bottom = 542.0
+
+[node name="Description" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1650942960]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "Lorem ipsum dolor
+Maybe something else?"
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1801394608]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1810376179]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 22
+text = "REQUIRED MATERIALS"
+fit_content = true
+
+[node name="Material Test" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1426591303]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "1 x Pollen ([color=#20A39E]5/1[/color])"
+fit_content = true
+
+[node name="Craft" type="Button" parent="HUD/Preview Window" unique_id=346257346]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 571.0
+offset_right = 374.0
+offset_bottom = 640.0
+theme = ExtResource("36_hdf80")
+text = "CRAFT"
+
+[node name="Sign Window" parent="HUD" unique_id=431523299 instance=ExtResource("57_lx3vj")]
+offset_left = -168.0
+offset_top = -278.0
+offset_right = 114.0
+offset_bottom = -65.0
+title = "EDIT SIGN"
+
+[node name="Input" type="Control" parent="HUD/Sign Window" unique_id=2110320222 node_paths=PackedStringArray("field", "win")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.467
+anchor_right = 0.5
+anchor_bottom = 0.467
+offset_left = -118.5
+offset_top = -100.471
+offset_right = 116.5
+offset_bottom = 114.529
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("55_y86h7")
+field = NodePath("TextEdit")
+win = NodePath("..")
+
+[node name="TextEdit" type="TextEdit" parent="HUD/Sign Window/Input" unique_id=378300377]
+layout_mode = 0
+offset_left = 6.5
+offset_top = 86.0
+offset_right = 231.5
+offset_bottom = 184.0
+text = "LOREM
+IPSUM"
+
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
 position = Vector2(697, -451)
@@ -831,12 +956,27 @@ bad = NodePath("Bg/Icon/Bad")
 good = NodePath("Bg/Good")
 arrow = NodePath("Bg/Arrow")
 
-[node name="Bg" type="ColorRect" parent="Harvester" unique_id=1974314631]
+[node name="Bg" type="Control" parent="Harvester" unique_id=1987026939]
+layout_mode = 3
+anchors_preset = 0
 offset_left = -543.0
 offset_top = -794.0
 offset_right = 552.0
 offset_bottom = -389.0
-color = Color(0.13725491, 0, 0.11764706, 1)
+
+[node name="Window" parent="Harvester/Bg" unique_id=1306382243 instance=ExtResource("57_lx3vj")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -59.0
+offset_right = 53.0
+offset_bottom = 39.0
+has_close_button = false
+title = ""
 
 [node name="Track" type="ColorRect" parent="Harvester/Bg" unique_id=1204458540]
 layout_mode = 0

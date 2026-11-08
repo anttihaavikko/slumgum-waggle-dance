@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://cg16xm21ar1yy"]
 
 [ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="1_eiilc"]
+[ext_resource type="Script" uid="uid://2mq4ej121w3" path="res://Scripts/door.gd" id="2_f7tju"]
+[ext_resource type="Script" uid="uid://lpyqajp6yf1d" path="res://Scripts/trigger.gd" id="3_ysmr7"]
+[ext_resource type="Texture2D" uid="uid://5hogqg8flgbb" path="res://Sprites/button-base.png" id="4_k8x6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(120, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed4kf"]
+size = Vector2(367, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7tju"]
+size = Vector2(383, 107)
 
 [node name="Hut" type="Node2D" unique_id=1652198801]
 z_index = -1
@@ -24,18 +33,20 @@ texture = ExtResource("1_eiilc")
 
 [node name="Door" type="StaticBody2D" parent="." unique_id=1433366134]
 position = Vector2(-497, -489)
+collision_layer = 9
+script = ExtResource("2_f7tju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=253617970]
 position = Vector2(-2, -1)
 shape = SubResource("RectangleShape2D_cpkcx")
 
-[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1161779177]
+[node name="Outline" type="Sprite2D" parent="Door" unique_id=1161779177]
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(-9.059906e-06, 0.5000305)
 scale = Vector2(1.1800003, 6.55)
 texture = ExtResource("1_eiilc")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Door" unique_id=2133510888]
+[node name="Fill" type="Sprite2D" parent="Door" unique_id=2133510888]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-0.5000433, -0.4999733)
 scale = Vector2(0.7500007, 6.0299997)
@@ -61,3 +72,51 @@ points = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -
 closed = true
 width = 30.0
 default_color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Node2D" parent="." unique_id=1269050410 node_paths=PackedStringArray("door", "area", "button")]
+z_as_relative = false
+position = Vector2(245, -167)
+script = ExtResource("3_ysmr7")
+door = NodePath("../Door")
+area = NodePath("Area")
+button = NodePath("Button Body")
+
+[node name="Area" type="Area2D" parent="Button" unique_id=181713576]
+position = Vector2(1, -106)
+collision_layer = 9
+collision_mask = 132
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area" unique_id=1223035501]
+position = Vector2(-1.5, -42)
+shape = SubResource("RectangleShape2D_ed4kf")
+
+[node name="Button Body" type="StaticBody2D" parent="Button" unique_id=815358743]
+position = Vector2(0, -104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Button Body" unique_id=1242801478]
+position = Vector2(-2.5, -32.5)
+shape = SubResource("RectangleShape2D_f7tju")
+
+[node name="Outline" type="Sprite2D" parent="Button/Button Body" unique_id=393238547]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-3, -31.5)
+scale = Vector2(3.8400002, 1.0900003)
+texture = ExtResource("1_eiilc")
+
+[node name="Fill" type="Sprite2D" parent="Button/Button Body/Outline" unique_id=1881670609]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(1.1920929e-07, 1.8348892)
+scale = Vector2(0.89062494, 0.63302755)
+texture = ExtResource("1_eiilc")
+
+[node name="Base" type="Sprite2D" parent="Button" unique_id=697982455]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-2, -33)
+scale = Vector2(1.0373689, 1.0373689)
+texture = ExtResource("4_k8x6f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Button" unique_id=635661595]
+collision_layer = 9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button/StaticBody2D" unique_id=1972379252]
+polygon = PackedVector2Array(-213, -85, -194, -105, 202, -105, 215, -87, 216, -45, 300, 17, 277, 42, -283, 42, -306, 17, -214, -45)
