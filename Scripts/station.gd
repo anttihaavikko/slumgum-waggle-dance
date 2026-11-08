@@ -1,7 +1,6 @@
 class_name Station extends BuildPiece
 
 @export var title: String
-@export var sprite: Node2D
 @export var button: Button
 @export var center: Node2D
 

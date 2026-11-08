@@ -8,6 +8,7 @@ class_name BuildPiece extends Node2D
 @export var takes_space := true
 @export var label: RichTextLabel
 @export var snap_points: Array[Node2D]
+@export var sprite: Node2D
 
 enum Id {
 	Platform,
@@ -19,7 +20,8 @@ enum Id {
 	Jar,
 	SpinningWheel,
 	Banner,
-	Bed
+	Bed,
+	Dryer
 }
 
 func can_place() -> bool:

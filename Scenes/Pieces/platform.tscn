@@ -9,7 +9,7 @@ height = 498.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
 size = Vector2(500, 99)
 
-[node name="Platform" type="StaticBody2D" unique_id=208223166 node_paths=PackedStringArray("body", "connection_shapes", "required_shape", "snap_points")]
+[node name="Platform" type="StaticBody2D" unique_id=208223166 node_paths=PackedStringArray("body", "connection_shapes", "required_shape", "snap_points", "sprite")]
 z_index = 2
 collision_layer = 74
 collision_mask = 74
@@ -18,6 +18,7 @@ body = NodePath(".")
 connection_shapes = [NodePath("Attach")]
 required_shape = NodePath("Block")
 snap_points = [NodePath("Snap1"), NodePath("Snap2"), NodePath("Snap3")]
+sprite = NodePath("Fill")
 
 [node name="Outline" type="Line2D" parent="." unique_id=1428855056]
 points = PackedVector2Array(-200, 0, 200, 0)

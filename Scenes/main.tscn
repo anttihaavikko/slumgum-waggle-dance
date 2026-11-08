@@ -231,6 +231,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
+radius = 20.0
+
 [node name="Main" type="Node2D" unique_id=324059262]
 
 [node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder")]
@@ -292,18 +295,6 @@ position = Vector2(32, 283)
 [node name="Platform2" parent="Platforms" unique_id=904452774 instance=ExtResource("9_ynf5e")]
 position = Vector2(-369, 283)
 
-[node name="Support" parent="Platforms" unique_id=1304477163 instance=ExtResource("10_hptm8")]
-position = Vector2(266, 486.99997)
-rotation = 0.95713127
-scale = Vector2(0.9999999, 0.9999999)
-script = null
-
-[node name="Support2" parent="Platforms" unique_id=678899702 instance=ExtResource("10_hptm8")]
-position = Vector2(-543.00006, 529)
-rotation = 1.7915099
-scale = Vector2(0.99999994, 0.99999994)
-script = null
-
 [node name="Station" parent="Platforms" unique_id=299398414 instance=ExtResource("12_aa8k8")]
 position = Vector2(-425, 239)
 
@@ -311,6 +302,14 @@ position = Vector2(-425, 239)
 z_index = 0
 position = Vector2(70, 242)
 can_rotate = true
+
+[node name="Support3" parent="Platforms" unique_id=1764388607 instance=ExtResource("10_hptm8")]
+position = Vector2(-542.9999, 522)
+rotation = 1.7988997
+
+[node name="Support4" parent="Platforms" unique_id=1295598682 instance=ExtResource("10_hptm8")]
+position = Vector2(266, 487)
+rotation = 0.95665735
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -586,7 +585,7 @@ swing_dir = 0.1
 sprite = NodePath(".")
 flips = true
 
-[node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "swinger", "aligner", "sprite")]
+[node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "cast", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1.9999695, 4.9999886)
@@ -597,6 +596,7 @@ offset = Vector2(-75.12311, -1.6327362)
 script = ExtResource("43_ovafv")
 paint = NodePath("Paint")
 colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(1, 0.7294118, 0.28627452, 1)])
+cast = NodePath("../../../../../../Cursor Icon/ShapeCast2D")
 identifier = 4
 swinger = NodePath("..")
 aligner = NodePath("../..")
@@ -1127,3 +1127,9 @@ visible = false
 self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
 scale = Vector2(1.593603, 1.593603)
 texture = ExtResource("34_jwpg7")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Cursor Icon" unique_id=407651035]
+shape = SubResource("CircleShape2D_ovafv")
+target_position = Vector2(0, 0)
+max_results = 1
+collision_mask = 34

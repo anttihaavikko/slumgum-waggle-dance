@@ -32,6 +32,7 @@ func _ready() -> void:
 	for s in inventory.slots: s.in_bar = true
 	# inventory.add_equipment(tools[Equipment.Id.Scythe])
 	# inventory.add_equipment(tools[Equipment.Id.Hammer])
+	inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 	inventory.add_equipment(tools[Equipment.Id.Brush])
 	inventory.add_equipment(tools[Equipment.Id.Hammer])
 	inventory.add_item(Item.Id.Nectar)
