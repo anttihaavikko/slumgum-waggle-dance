@@ -51,6 +51,7 @@ func clear():
 func create(s: int, discard: bool = false):
 	if discard: clear()
 	slot = s
+	if not pieces[slot]: return
 	held = pieces[slot].instantiate()
 	if not held.can_rotate: prev_angle = 0
 	if held and held.body:

@@ -128,7 +128,7 @@ func _process(delta) -> void:
 		if Input.is_action_just_pressed("slot_%d" % [i + 1]) and i < inventory.slots.size():
 			inventory.focus(i)
 
-	if builder.held: return
+	if builder.held and builder.held.can_rotate: return
 
 	if Input.is_action_just_pressed("wheel_up"):
 		inventory.change_focus(1)
