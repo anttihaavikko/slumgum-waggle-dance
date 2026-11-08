@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cg16xm21ar1yy"]
+
+[ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="1_eiilc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
+size = Vector2(120, 650)
+
+[node name="Hut" type="Node2D" unique_id=1652198801]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=42541900]
+self_modulate = Color(0, 0, 0, 1)
+z_as_relative = false
+position = Vector2(58, -562)
+scale = Vector2(11.82, 10.1)
+texture = ExtResource("1_eiilc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=672644012]
+self_modulate = Color(0.6313726, 0.42745098, 0, 1)
+z_as_relative = false
+position = Vector2(86, -562)
+scale = Vector2(11.82, 10.1)
+texture = ExtResource("1_eiilc")
+
+[node name="Door" type="StaticBody2D" parent="." unique_id=1433366134]
+position = Vector2(-497, -489)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=253617970]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_cpkcx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1161779177]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-9.059906e-06, 0.5000305)
+scale = Vector2(1.1800003, 6.55)
+texture = ExtResource("1_eiilc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Door" unique_id=2133510888]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-0.5000433, -0.4999733)
+scale = Vector2(0.7500007, 6.0299997)
+texture = ExtResource("1_eiilc")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=736734677]
+position = Vector2(52, 96)
+color = Color(1, 0.7294118, 0.28627452, 1)
+offset = Vector2(-354, -151)
+polygon = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -742, -276, -745, -282, -1173, 1088, -1170, 1067, 19, 1330, 344, -637, 344)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1162483288]
+position = Vector2(-453, 190)
+collision_mask = 9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1689790898]
+position = Vector2(141, -245)
+polygon = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -742, -276, -745, -282, -1173, 1088, -1170, 1067, 19, 1330, 344, -637, 344)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1838151126]
+position = Vector2(-310, -50)
+points = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -742, -276, -745, -282, -1173, 1088, -1170, 1067, 19, 1330, 344, -637, 344)
+closed = true
+width = 30.0
+default_color = Color(0, 0, 0, 1)

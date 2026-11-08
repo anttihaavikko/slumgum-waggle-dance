@@ -12,6 +12,7 @@ class_name Island extends Node2D
 @export var rock_prefab: PackedScene
 @export var tree_prefab: PackedScene
 @export var trees: Node2D
+@export var huts: Array[PackedScene]
 
 var gap := 5000
 var pieces := 3
@@ -49,6 +50,11 @@ func generate():
 
 	spawn_flowers(1)
 	spawn_flowers(-1)
+
+	spawn_hut(8500)
+	spawn_hut(17000)
+	spawn_hut(-8500)
+	spawn_hut(-17000)
 
 	var spots := range(poly.polygon.size())
 	spots.shuffle()
@@ -91,6 +97,37 @@ func spawn_flowers(dir: float):
 		if randf() < 0.5: spawn_flower(pos + randf_range(500, 1000))
 		if randf() < 0.5: spawn_flower(pos - randf_range(500, 1000))
 		pos += dir * randf_range(3000, 6000)
+
+func spawn_hut(pos: float, tries: int = 0):
+	if tries > 20: return
+	var spot := Vector2.ZERO
+	for i in 10:
+		# print("try ", i)
+		spot = Vector2(global_position.x + pos + randf_range(-1000, 1000), -5000)
+		ray.global_position = spot
+		ray.force_raycast_update()
+		if ray.is_colliding() and is_level(pos, 500): break
+
+	if ray.is_colliding():
+		var p = ray.get_collision_point()
+		var hut = huts.pick_random().instantiate() as Node2D
+		hut.rotate(ray.get_collision_normal().angle() + PI * 0.5 + randf_range(-0.1, 0.1))
+		add_child(hut)
+		hut.scale.x = [1, -1].pick_random()
+		hut.global_position = p
+	else:
+		spawn_hut(pos + randf_range(-500, 500), tries + 1)
+
+func is_level(pos: float, distance: float) -> bool:
+	ray.global_position = Vector2(global_position.x + pos - distance, -5000)
+	ray.force_raycast_update()
+	if not ray.is_colliding(): return false
+	var left = ray.get_collision_point()
+	ray.global_position = Vector2(global_position.x + pos + distance, -5000)
+	ray.force_raycast_update()
+	if not ray.is_colliding(): return false
+	var right = ray.get_collision_point()
+	return left.distance_to(right) < 2.75 * distance
 
 func spawn_flower(pos: float):
 	ray.global_position = Vector2(global_position.x + pos, -5000)
