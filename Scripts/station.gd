@@ -26,6 +26,7 @@ func announce():
 	cooldown = 0.5
 
 func open():
+	if not Main.singleton.bee.can_open(): return
 	if Main.singleton.builder.held: return
 	if not menu: return
 	if menu.is_open():

@@ -18,6 +18,8 @@ func update(_delta: float):
 			try_to_paint(c)
 			try_to_paint(c.get_parent())
 
+func blocks_clicks() -> bool:
+	return true
 
 func try_to_paint(target: Node):
 	if target is BuildPiece and target.sprite:

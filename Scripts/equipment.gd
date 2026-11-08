@@ -16,6 +16,9 @@ enum Id {
 @export var sprite: Sprite2D
 @export var flips := false
 
+func blocks_clicks() -> bool:
+	return false
+
 func update(_delta: float):
 	if swinger and Input.is_action_just_pressed("primary"):
 		swinger.swing(swing_dir)

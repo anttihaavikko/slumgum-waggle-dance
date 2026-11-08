@@ -46,6 +46,9 @@ func _ready() -> void:
 	lander.body_exited.connect(func(_o): landed = false)
 	body.body_entered.connect(collide)
 
+func can_open() -> bool:
+	return not current or not current.blocks_clicks()
+
 func die():
 	for i in inventory.slots:
 		if not i.equipment:
