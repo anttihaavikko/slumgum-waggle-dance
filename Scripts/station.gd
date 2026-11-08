@@ -1,6 +1,7 @@
 class_name Station extends BuildPiece
 
 @export var title: String
+@export var sprite: Node2D
 @export var button: Button
 @export var center: Node2D
 
@@ -11,6 +12,7 @@ var menu: StationMenu
 var cooldown := 0.0
 
 func _ready() -> void:
+	# sprite.modulate = Color.RED
 	menu = Main.singleton.stations[identifier]
 	button.pressed.connect(open)
 	button.mouse_entered.connect(announce)

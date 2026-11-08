@@ -10,6 +10,7 @@ func update(_event: InputEvent):
 	station.label.text = field.text
 
 func open(source: Station):
+	field.text = source.label.text
 	super.open(source)
 	field.grab_focus()
 	field.select_all()

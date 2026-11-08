@@ -58,6 +58,9 @@
 [ext_resource type="Texture2D" uid="uid://d3l1w6wwkt86" path="res://Sprites/dots.png" id="36_jut3y"]
 [ext_resource type="PackedScene" uid="uid://bpt1nog23ndgh" path="res://Scenes/tree.tscn" id="36_v2nl5"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
+[ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
+[ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="43_nay3j"]
+[ext_resource type="Script" uid="uid://bshomi1sce5uq" path="res://Scripts/painter.gd" id="43_ovafv"]
 [ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
 [ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
 [ext_resource type="Script" uid="uid://g0nodib4yvx4" path="res://Scripts/sign_editor.gd" id="55_y86h7"]
@@ -303,7 +306,6 @@ script = null
 
 [node name="Station" parent="Platforms" unique_id=299398414 instance=ExtResource("12_aa8k8")]
 position = Vector2(-425, 239)
-takes_space = true
 
 [node name="Box" parent="Platforms" unique_id=891814443 instance=ExtResource("13_kqrg6")]
 z_index = 0
@@ -318,7 +320,7 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar")]
+tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Hands/Aligner/Swinger/Paintbrush")]
 hands = NodePath("Body/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
@@ -584,6 +586,27 @@ swing_dir = 0.1
 sprite = NodePath(".")
 flips = true
 
+[node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "swinger", "aligner", "sprite")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1.9999695, 4.9999886)
+rotation = -0.18809377
+scale = Vector2(0.85136753, 0.85136753)
+texture = ExtResource("42_cblf0")
+offset = Vector2(-75.12311, -1.6327362)
+script = ExtResource("43_ovafv")
+paint = NodePath("Paint")
+colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(1, 0.7294118, 0.28627452, 1)])
+identifier = 4
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = -0.7
+sprite = NodePath(".")
+
+[node name="Paint" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger/Paintbrush" unique_id=1782155655]
+position = Vector2(-227.63586, -3.8719788)
+texture = ExtResource("43_nay3j")
+
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
 position = Vector2(0, 133)
 collision_layer = 129
@@ -736,20 +759,6 @@ alignment = 1
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
-
-[node name="Slot" parent="HUD" unique_id=157785236 instance=ExtResource("20_hibaj")]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -272.0
-offset_right = 8.550537
-offset_bottom = -212.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="Core Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
 offset_left = -624.0
@@ -944,6 +953,20 @@ offset_right = 231.5
 offset_bottom = 184.0
 text = "LOREM
 IPSUM"
+
+[node name="Slot" parent="HUD" unique_id=157785236 instance=ExtResource("20_hibaj")]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -272.0
+offset_right = 8.550537
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50

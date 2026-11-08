@@ -14,7 +14,12 @@ enum Id {
 	Support,
 	Core,
 	Box,
-	Sign
+	Sign,
+	Anvil,
+	Jar,
+	SpinningWheel,
+	Banner,
+	Bed
 }
 
 func can_place() -> bool:

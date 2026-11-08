@@ -14,10 +14,11 @@ size = Vector2(34.8, 19.52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eg0lu"]
 size = Vector2(291.26, 483.825)
 
-[node name="Core" type="Node2D" unique_id=299398414 node_paths=PackedStringArray("button", "center", "body", "connection_shapes", "required_shape")]
+[node name="Core" type="Node2D" unique_id=299398414 node_paths=PackedStringArray("sprite", "button", "center", "body", "connection_shapes", "required_shape")]
 z_index = 1
 script = ExtResource("1_kgk3l")
 title = "Core"
+sprite = NodePath("Sprite2D")
 button = NodePath("Button")
 center = NodePath("Center")
 identifier = 2
@@ -25,7 +26,6 @@ body = NodePath("StaticBody2D")
 can_rotate = false
 connection_shapes = [NodePath("Left"), NodePath("Right")]
 required_shape = NodePath("ShapeCast2D2")
-takes_space = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=641265153]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
@@ -63,7 +63,7 @@ collision_mask = 64
 position = Vector2(0, -280)
 shape = SubResource("RectangleShape2D_eg0lu")
 target_position = Vector2(0, 0)
-collision_mask = 43
+collision_mask = 41
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1673048611]
 collision_layer = 32

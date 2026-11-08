@@ -5,7 +5,18 @@ enum Id {
 	Pollen,
 	Wax,
 	Honey,
-	Equipment
+	Equipment,
+	Cloth,
+	Bomb,
+	EnergyPotion,
+	HealthPotion,
+	Resin,
+	Seed,
+	Rock,
+	PaintRed,
+	PaintGreen,
+	PaintWhite,
+	PaintYellow
 }
 
 var data: ItemData

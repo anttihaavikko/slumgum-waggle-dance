@@ -6,10 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwxtq"]
 size = Vector2(291.26, 282.825)
 
-[node name="Box" unique_id=299398414 node_paths=PackedStringArray("connection_shapes") instance=ExtResource("1_bpnfs")]
+[node name="Box" unique_id=299398414 instance=ExtResource("1_bpnfs")]
 title = "Box"
 identifier = 3
-connection_shapes = []
 takes_space = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
@@ -25,6 +24,7 @@ position = Vector2(-2, -194)
 [node name="ShapeCast2D2" parent="." index="5" unique_id=540746725]
 position = Vector2(1, -152)
 shape = SubResource("RectangleShape2D_dwxtq")
+collision_mask = 41
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
 position = Vector2(0, -154.5875)
