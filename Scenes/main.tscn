@@ -1230,3 +1230,6 @@ shape = SubResource("CircleShape2D_ovafv")
 target_position = Vector2(0, 0)
 max_results = 1
 collision_mask = 290
+
+[node name="Dryer" parent="." unique_id=1686598221 instance=ExtResource("25_r7bbj")]
+position = Vector2(-189, -428)

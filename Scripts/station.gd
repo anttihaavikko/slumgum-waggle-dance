@@ -4,6 +4,8 @@ class_name Station extends BuildPiece
 @export var button: Button
 @export var center: Node2D
 @export var converts: Array[Converter]
+@export var input_preview: Array[Sprite2D]
+@export var output_preview: Array[Sprite2D]
 
 var inputs: Array[Item] = []
 var outputs: Array[Item] = []
@@ -17,6 +19,7 @@ func _ready() -> void:
 	menu = Main.singleton.stations[identifier]
 	button.pressed.connect(open)
 	button.mouse_entered.connect(announce)
+	update_previews()
 
 func _process(delta) -> void:
 	cooldown -= delta
@@ -36,6 +39,7 @@ func open():
 		return
 	menu.open(self)
 	menu.win.title = title.to_upper()
+	# if menu.description: menu.description.text = "foo bar"
 
 func has_input_item(id: Item.Id) -> bool:
 	return inputs.any(func(i: Item): return i and i.data and i.data.item_id == id)
@@ -50,6 +54,21 @@ func consume(id: Item.Id):
 func pull_contents():
 	if menu.inputs: inputs = menu.inputs.get_contents()
 	if menu.outputs: outputs = menu.outputs.get_contents()
+	update_previews()
+
+func update_previews():
+	update_preview(input_preview, inputs)
+	update_preview(output_preview, outputs)
+
+func update_preview(previews: Array[Sprite2D], source: Array[Item]):
+	for p in previews:
+		p.hide()
+	for i in source.size():
+		var item = source[i]
+		if item and item.amount > 0 and i < previews.size():
+			previews[i].show()
+			previews[i].texture = item.data.sprite
+			previews[i].self_modulate = item.data.color
 
 func add(id: Item.Id):
 	var item = outputs.find_custom(func(i: Item): return i and i.data.item_id == id and i.amount < 20)
@@ -73,5 +92,6 @@ func try_convert():
 				if looking:
 					menu.update_contents()
 				working = false
+				update_previews()
 				try_convert()
 	working = false

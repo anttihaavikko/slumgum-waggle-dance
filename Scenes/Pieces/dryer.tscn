@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4h1tobhsxx7v" path="res://Sprites/dryer.png" id="2_18qpk"]
 [ext_resource type="Script" uid="uid://d30bl70a5oc7y" path="res://Scripts/converter.gd" id="2_nqcns"]
 [ext_resource type="Script" uid="uid://cojfh0e7a2gbv" path="res://Scripts/recipe_part.gd" id="3_knwth"]
+[ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="5_knwth"]
 
 [sub_resource type="Resource" id="Resource_5yyom"]
 script = ExtResource("3_knwth")
@@ -21,9 +22,11 @@ metadata/_custom_type_script = "uid://d30bl70a5oc7y"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18qpk"]
 size = Vector2(399, 380)
 
-[node name="Dryer" unique_id=299398414 instance=ExtResource("1_ms0ip")]
+[node name="Dryer" unique_id=299398414 node_paths=PackedStringArray("input_preview", "output_preview") instance=ExtResource("1_ms0ip")]
 title = "Drying Rack"
 converts = Array[ExtResource("2_nqcns")]([SubResource("Resource_18qpk")])
+input_preview = [NodePath("Sprite2D2"), NodePath("Sprite2D3"), NodePath("Sprite2D4")]
+output_preview = [NodePath("Sprite2D5"), NodePath("Sprite2D6"), NodePath("Sprite2D7")]
 identifier = 10
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
@@ -46,3 +49,33 @@ shape = SubResource("RectangleShape2D_18qpk")
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
 position = Vector2(-2.5, -220)
 shape = SubResource("RectangleShape2D_18qpk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="7" unique_id=1291538154]
+position = Vector2(-0.84430695, -344.8443)
+scale = Vector2(0.70194614, 0.70194614)
+texture = ExtResource("5_knwth")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." index="8" unique_id=597073437]
+position = Vector2(-103.84431, -344.8443)
+scale = Vector2(0.70194614, 0.70194614)
+texture = ExtResource("5_knwth")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." index="9" unique_id=721085161]
+position = Vector2(103.15569, -344.8443)
+scale = Vector2(0.70194614, 0.70194614)
+texture = ExtResource("5_knwth")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." index="10" unique_id=1701999890]
+position = Vector2(-0.84430695, -159.8443)
+scale = Vector2(0.70194614, 0.70194614)
+texture = ExtResource("5_knwth")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." index="11" unique_id=1217418426]
+position = Vector2(-103.84431, -159.8443)
+scale = Vector2(0.70194614, 0.70194614)
+texture = ExtResource("5_knwth")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." index="12" unique_id=440027770]
+position = Vector2(103.15569, -159.8443)
+scale = Vector2(0.70194614, 0.70194614)
+texture = ExtResource("5_knwth")
