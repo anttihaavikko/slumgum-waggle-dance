@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bvhmoedib4lva"]
+
+[ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_vhdmu"]
+[ext_resource type="Texture2D" uid="uid://bfffr0ldkunfp" path="res://Sprites/anvil.png" id="2_ckjq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gg5h"]
+size = Vector2(35.78, 19.52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckjq2"]
+size = Vector2(424, 255)
+
+[node name="Anvil" unique_id=299398414 instance=ExtResource("1_vhdmu")]
+title = "Anvil"
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+position = Vector2(-31, -143)
+texture = ExtResource("2_ckjq2")
+
+[node name="Center" parent="." index="2" unique_id=1552365683]
+position = Vector2(0, -217)
+
+[node name="Left" parent="." index="3" unique_id=2129715786]
+position = Vector2(-128, -6)
+shape = SubResource("RectangleShape2D_5gg5h")
+
+[node name="Right" parent="." index="4" unique_id=781947195]
+position = Vector2(131, -6)
+
+[node name="ShapeCast2D2" parent="." index="5" unique_id=540746725]
+position = Vector2(-31, -146)
+shape = SubResource("RectangleShape2D_ckjq2")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
+position = Vector2(-32, -147.5)
+shape = SubResource("RectangleShape2D_ckjq2")

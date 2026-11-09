@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://b4af11tt4lq03" path="res://Scenes/Pieces/sign.tscn" id="22_qax2n"]
 [ext_resource type="PackedScene" uid="uid://mibamh2d04it" path="res://Scenes/Pieces/banner.tscn" id="23_owhal"]
 [ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
+[ext_resource type="PackedScene" uid="uid://bvhmoedib4lva" path="res://Scenes/Pieces/anvil.tscn" id="24_qnggo"]
 [ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
 [ext_resource type="PackedScene" uid="uid://7eq4og243bf2" path="res://Scenes/Pieces/lantern_hanging.tscn" id="27_v1mrv"]
@@ -316,7 +317,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), null, ExtResource("23_uv6w5"), null, ExtResource("23_owhal"), null, ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), ExtResource("28_fd3ed")])
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), ExtResource("24_qnggo"), ExtResource("23_uv6w5"), null, ExtResource("23_owhal"), null, ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), ExtResource("28_fd3ed")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Platform"), NodePath("Platform2")]
 
