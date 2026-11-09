@@ -21,7 +21,9 @@ enum Id {
 	SpinningWheel,
 	Banner,
 	Bed,
-	Dryer
+	Dryer,
+	LanternHanging,
+	LanternStanding
 }
 
 func can_place() -> bool:

@@ -5,7 +5,7 @@ class_name Schedule extends Node
 @export var tint_color: Gradient
 
 var time := 0.1
-var speed = 0.01
+var speed := 0.1
 var day := 1
 
 func _process(delta) -> void:

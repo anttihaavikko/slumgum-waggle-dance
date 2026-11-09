@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
 [ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
+[ext_resource type="PackedScene" uid="uid://7eq4og243bf2" path="res://Scenes/Pieces/lantern_hanging.tscn" id="27_v1mrv"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
 [ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="28_pfx1i"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
@@ -66,7 +67,9 @@
 [ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
 [ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="43_nay3j"]
 [ext_resource type="Script" uid="uid://bshomi1sce5uq" path="res://Scripts/painter.gd" id="43_ovafv"]
+[ext_resource type="Texture2D" uid="uid://cwwwr5508ya0b" path="res://Sprites/lantern.png" id="47_fg68e"]
 [ext_resource type="Texture2D" uid="uid://cff2rh54nd4pq" path="res://Sprites/light.png" id="48_f6rfp"]
+[ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="48_jekl6"]
 [ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
 [ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
 [ext_resource type="Script" uid="uid://g0nodib4yvx4" path="res://Scripts/sign_editor.gd" id="55_y86h7"]
@@ -312,7 +315,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), null, ExtResource("23_uv6w5"), null, ExtResource("23_owhal"), null, ExtResource("25_r7bbj")])
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), null, ExtResource("23_uv6w5"), null, ExtResource("23_owhal"), null, ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), null])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Platform"), NodePath("Platform2")]
 
@@ -344,14 +347,8 @@ position = Vector2(660, 145)
 [node name="Dryer" parent="Platforms" unique_id=1686598221 instance=ExtResource("25_r7bbj")]
 position = Vector2(-940, -119)
 
-[node name="PointLight2D" type="PointLight2D" parent="Platforms" unique_id=850162068]
-position = Vector2(-439, -84)
-rotation = -0.13577862
-scale = Vector2(1.7338657, 1.7338657)
-blend_mode = 2
-texture = ExtResource("48_f6rfp")
-texture_scale = 1.5
-script = ExtResource("28_pfx1i")
+[node name="Lantern" parent="Platforms" unique_id=1806885397 instance=ExtResource("27_v1mrv")]
+position = Vector2(-171, 334)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -361,7 +358,7 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Hands/Aligner/Swinger/Paintbrush")]
+tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Hands/Aligner/Swinger/Lantern")]
 hands = NodePath("Body/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
@@ -615,8 +612,29 @@ identifier = 2
 aligner = NodePath("../..")
 swing_dir = 1.2
 
-[node name="PointLight2D" type="PointLight2D" parent="Bee/Body/Hands/Aligner/Swinger/Brush" unique_id=255400351]
-position = Vector2(-4.423652, -39.767212)
+[node name="Lantern" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=217710515 node_paths=PackedStringArray("aligner")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-24.999998, -41.000008)
+scale = Vector2(0.99999994, 0.99999994)
+offset = Vector2(19.93097, 4.150696)
+script = ExtResource("28_8cuat")
+identifier = 5
+aligner = NodePath("../..")
+aligns = false
+
+[node name="Light" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger/Lantern" unique_id=522149302]
+position = Vector2(20, 19)
+scale = Vector2(0.6999999, 1.0599998)
+texture = ExtResource("48_jekl6")
+
+[node name="Sprite" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger/Lantern" unique_id=1365520191]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(20, 5)
+texture = ExtResource("47_fg68e")
+
+[node name="PointLight2D" type="PointLight2D" parent="Bee/Body/Hands/Aligner/Swinger/Lantern" unique_id=842583389]
+position = Vector2(19.999996, 22.000008)
 rotation = -0.13577862
 scale = Vector2(1.7338657, 1.7338657)
 blend_mode = 2

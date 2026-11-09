@@ -34,6 +34,7 @@ func _ready() -> void:
 	# inventory.add_equipment(tools[Equipment.Id.Hammer])
 	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 	inventory.add_equipment(tools[Equipment.Id.Brush])
+	inventory.add_equipment(tools[Equipment.Id.Lantern])
 	inventory.add_equipment(tools[Equipment.Id.Hammer])
 	inventory.add_item(Item.Id.Nectar, 10)
 	inventory.add_item(Item.Id.Pollen, 10)

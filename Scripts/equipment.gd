@@ -5,7 +5,8 @@ enum Id {
 	Scythe,
 	Brush,
 	Guitar,
-	Paintbrush
+	Paintbrush,
+	Lantern
 }
 
 @export var identifier: Id
@@ -15,6 +16,7 @@ enum Id {
 @export var swing_dir := 1.0
 @export var sprite: Sprite2D
 @export var flips := false
+@export var aligns := true
 
 func blocks_clicks() -> bool:
 	return false
@@ -29,4 +31,5 @@ func toggle(state: bool):
 func align():
 	var mp = get_global_mouse_position()
 	if aligner: aligner.look_at(mp)
+	if not aligns: aligner.rotation = 0
 	if flips: sprite.flip_v = mp.x < global_position.x
