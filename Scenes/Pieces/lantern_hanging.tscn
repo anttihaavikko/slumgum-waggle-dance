@@ -50,9 +50,11 @@ position = Vector2(2, 171)
 
 [node name="Left" parent="." index="5" unique_id=2129715786]
 position = Vector2(0, -17)
+collision_mask = 66
 
 [node name="Right" parent="." index="6" unique_id=781947195]
 position = Vector2(1, -18)
+collision_mask = 66
 
 [node name="ShapeCast2D2" parent="." index="7" unique_id=540746725]
 position = Vector2(1, 215)
