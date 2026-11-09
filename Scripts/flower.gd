@@ -12,6 +12,7 @@ func _ready() -> void:
 	area.body_entered.connect(entered)
 	area.body_exited.connect(exited)
 	fill()
+	Main.singleton.flowers.append(self)
 
 func fill():
 	amount = randi_range(3, 5)

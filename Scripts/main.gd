@@ -9,6 +9,7 @@ class_name Main extends Node
 
 var station: StationMenu
 var bee: Bee
+var flowers: Array[Flower] = []
 
 static var singleton: Main = null
 

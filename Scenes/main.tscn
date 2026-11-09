@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cbkdo86lifxj7" path="res://Scripts/item_manager.gd" id="2_3pmx8"]
 [ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://do7b18qnf254n" path="res://Scripts/builder.gd" id="2_d1ilt"]
+[ext_resource type="Script" uid="uid://bifh3avdt1c13" path="res://Scripts/schedule.gd" id="2_sasc4"]
 [ext_resource type="Script" uid="uid://0x44vjlq1u52" path="res://Scripts/item_data.gd" id="3_cbgmd"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://calgx5smnk57" path="res://_Starter/Scripts/effects.gd" id="5_ueoa1"]
@@ -48,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
+[ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="28_pfx1i"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
 [ext_resource type="Texture2D" uid="uid://cd0yify70om02" path="res://Sprites/guitar.png" id="31_nwwfm"]
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
@@ -64,13 +66,19 @@
 [ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
 [ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="43_nay3j"]
 [ext_resource type="Script" uid="uid://bshomi1sce5uq" path="res://Scripts/painter.gd" id="43_ovafv"]
+[ext_resource type="Texture2D" uid="uid://cff2rh54nd4pq" path="res://Sprites/light.png" id="48_f6rfp"]
 [ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
 [ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
 [ext_resource type="Script" uid="uid://g0nodib4yvx4" path="res://Scripts/sign_editor.gd" id="55_y86h7"]
 [ext_resource type="PackedScene" uid="uid://dxy7r1qf1oqpe" path="res://Scenes/window.tscn" id="57_lx3vj"]
 [ext_resource type="Script" uid="uid://5e1wc8r2tqta" path="res://Scripts/preview.gd" id="57_ynmfv"]
+[ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
+
+[sub_resource type="Gradient" id="Gradient_sasc4"]
+offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
+colors = PackedColorArray(0.105882354, 0.019607844, 0.14509805, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.105882354, 0.019607844, 0.14509805, 1)
 
 [sub_resource type="Resource" id="Resource_1w6v2"]
 script = ExtResource("3_cbgmd")
@@ -238,6 +246,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_e5peh"]
+viewport_path = NodePath("SubViewportContainer/SubViewport2")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r7bbj"]
+blend_mode = 3
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
 radius = 20.0
 
@@ -251,6 +265,12 @@ item_db = NodePath("../ItemManager")
 stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), null, NodePath("../HUD/Converter Win/Converter"), null, null, null, NodePath("../HUD/Converter Win/Converter")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
+
+[node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint")]
+script = ExtResource("2_sasc4")
+tint = NodePath("../CanvasModulate")
+ui_tint = NodePath("../HUD/CanvasModulate")
+tint_color = SubResource("Gradient_sasc4")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -321,8 +341,17 @@ rotation = 0.95665735
 [node name="Jar" parent="Platforms" unique_id=2028750219 instance=ExtResource("23_uv6w5")]
 position = Vector2(660, 145)
 
-[node name="Jar2" parent="Platforms" unique_id=44078659 instance=ExtResource("23_uv6w5")]
-position = Vector2(1024, 84)
+[node name="Dryer" parent="Platforms" unique_id=1686598221 instance=ExtResource("25_r7bbj")]
+position = Vector2(-940, -119)
+
+[node name="PointLight2D" type="PointLight2D" parent="Platforms" unique_id=850162068]
+position = Vector2(-439, -84)
+rotation = -0.13577862
+scale = Vector2(1.7338657, 1.7338657)
+blend_mode = 2
+texture = ExtResource("48_f6rfp")
+texture_scale = 1.5
+script = ExtResource("28_pfx1i")
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -464,6 +493,10 @@ zoom = Vector2(0.3, 0.3)
 script = ExtResource("2_bo1nx")
 metadata/_custom_type_script = "uid://ova7wngb7x7i"
 
+[node name="Camera2D" type="Camera2D" parent="Bee/Body/Camera" unique_id=868875361]
+visibility_layer = 0
+editor_draw_screen = false
+
 [node name="Lander Joint" type="PinJoint2D" parent="Bee/Body" unique_id=1662152783]
 position = Vector2(-2, 121)
 node_a = NodePath("..")
@@ -581,6 +614,15 @@ script = ExtResource("28_8cuat")
 identifier = 2
 aligner = NodePath("../..")
 swing_dir = 1.2
+
+[node name="PointLight2D" type="PointLight2D" parent="Bee/Body/Hands/Aligner/Swinger/Brush" unique_id=255400351]
+position = Vector2(-4.423652, -39.767212)
+rotation = -0.13577862
+scale = Vector2(1.7338657, 1.7338657)
+blend_mode = 2
+texture = ExtResource("48_f6rfp")
+texture_scale = 1.5
+script = ExtResource("28_pfx1i")
 
 [node name="Guitar" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("swinger", "aligner", "sprite")]
 visible = false
@@ -709,6 +751,10 @@ position = Vector2(12, 1113)
 offset = Vector2(-12, -1113)
 polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
+z_index = 20
+z_as_relative = false
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1935048811]
 
 [node name="Frame" type="TextureRect" parent="HUD" unique_id=940088816]
@@ -773,10 +819,48 @@ script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1161880959]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewport" type="SubViewport" parent="HUD/SubViewportContainer" unique_id=172874936]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/SubViewportContainer/SubViewport" unique_id=529035632]
+position = Vector2(589, -389)
+texture = ExtResource("59_e5peh")
+
+[node name="Camera2D" type="Camera2D" parent="HUD/SubViewportContainer/SubViewport" unique_id=1268960028]
+position = Vector2(591, -365)
+
+[node name="Lights" type="TextureRect" parent="HUD" unique_id=1687831806]
+visible = false
+clip_children = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("ViewportTexture_e5peh")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Darkness" type="ColorRect" parent="HUD" unique_id=1952182231]
+visible = false
+material = SubResource("CanvasItemMaterial_r7bbj")
+offset_left = -147.0
+offset_top = -210.0
+offset_right = 2134.0
+offset_bottom = 1333.0
+mouse_filter = 2
+color = Color(0.105882354, 0.019607844, 0.14509805, 1)
+
 [node name="Core Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
-offset_left = -624.0
+offset_left = -617.0
 offset_top = -369.0
-offset_right = -218.0
+offset_right = -211.0
 offset_bottom = 302.0
 title = "CORE"
 
@@ -1020,9 +1104,9 @@ slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../../ItemManager")
 
 [node name="Sign Window" parent="HUD" unique_id=431523299 instance=ExtResource("57_lx3vj")]
-offset_left = -168.0
+offset_left = -145.0
 offset_top = -278.0
-offset_right = 114.0
+offset_right = 137.0
 offset_bottom = -65.0
 title = "EDIT SIGN"
 
@@ -1064,6 +1148,10 @@ offset_right = 8.550537
 offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="HUD" unique_id=1649321817]
+z_index = 20
+z_as_relative = false
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
@@ -1231,5 +1319,5 @@ target_position = Vector2(0, 0)
 max_results = 1
 collision_mask = 290
 
-[node name="Dryer" parent="." unique_id=1686598221 instance=ExtResource("25_r7bbj")]
-position = Vector2(-189, -428)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230333985]
+enabled = false

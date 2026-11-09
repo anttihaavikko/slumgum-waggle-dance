@@ -73,6 +73,7 @@ anim = NodePath("Wrap/Content/AnimationPlayer")
 [node name="Wrap" type="Node2D" parent="." unique_id=1426834117]
 
 [node name="Content" type="RichTextLabel" parent="Wrap" unique_id=1515678487]
+light_mask = 3
 offset_left = -748.0
 offset_top = -114.12
 offset_right = 752.0

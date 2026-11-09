@@ -24,6 +24,7 @@ size = Vector2(399, 380)
 
 [node name="Dryer" unique_id=299398414 node_paths=PackedStringArray("input_preview", "output_preview") instance=ExtResource("1_ms0ip")]
 title = "Drying Rack"
+description = "Place different materials on the rack and it will generate dried versions over time."
 converts = Array[ExtResource("2_nqcns")]([SubResource("Resource_18qpk")])
 input_preview = [NodePath("Sprite2D2"), NodePath("Sprite2D3"), NodePath("Sprite2D4")]
 output_preview = [NodePath("Sprite2D5"), NodePath("Sprite2D6"), NodePath("Sprite2D7")]

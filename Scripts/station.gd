@@ -1,6 +1,7 @@
 class_name Station extends BuildPiece
 
 @export var title: String
+@export_multiline var description: String
 @export var button: Button
 @export var center: Node2D
 @export var converts: Array[Converter]
@@ -39,7 +40,8 @@ func open():
 		return
 	menu.open(self)
 	menu.win.title = title.to_upper()
-	# if menu.description: menu.description.text = "foo bar"
+	if menu.description:
+		menu.description.text = description
 
 func has_input_item(id: Item.Id) -> bool:
 	return inputs.any(func(i: Item): return i and i.data and i.data.item_id == id)
