@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://b78075ysex37g" path="res://_Starter/Scripts/text_pop.gd" id="1_2mv02"]
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="2_jrvpy"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_60jk2"]
+light_mode = 1
+
 [sub_resource type="Animation" id="Animation_ayjou"]
 length = 0.001
 tracks/0/type = "value"
@@ -74,6 +77,7 @@ anim = NodePath("Wrap/Content/AnimationPlayer")
 
 [node name="Content" type="RichTextLabel" parent="Wrap" unique_id=1515678487]
 light_mask = 3
+material = SubResource("CanvasItemMaterial_60jk2")
 offset_left = -748.0
 offset_top = -114.12
 offset_right = 752.0

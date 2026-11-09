@@ -5,7 +5,7 @@ class_name Schedule extends Node
 @export var tint_color: Gradient
 
 var time := 0.1
-var speed := 0.1
+var speed := 0.01
 var day := 1
 
 func _process(delta) -> void:
@@ -18,3 +18,9 @@ func _process(delta) -> void:
 			f.fill()
 	tint.color = tint_color.sample(time)
 	ui_tint.color = tint.color + Color(0.2, 0.2, 0.2)
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if OS.is_debug_build():
+		if event is InputEventKey:
+			if Input.is_key_pressed(KEY_T):
+				time += 0.2

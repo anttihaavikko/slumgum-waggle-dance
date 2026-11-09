@@ -18,6 +18,7 @@ size = Vector2(101, 166)
 
 [node name="Lantern" unique_id=299398414 instance=ExtResource("1_71h64")]
 title = "Lantern"
+identifier = 11
 
 [node name="Back" type="Sprite2D" parent="." index="0" unique_id=681963218]
 position = Vector2(-1, 215.5)
@@ -71,5 +72,5 @@ shape = SubResource("RectangleShape2D_aiwit")
 position = Vector2(2, 217)
 blend_mode = 2
 texture = ExtResource("4_bmpjc")
-texture_scale = 2.5
+texture_scale = 3.5
 script = ExtResource("5_kqsi7")

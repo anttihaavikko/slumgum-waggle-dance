@@ -248,6 +248,9 @@ _data = {
 &"flap": SubResource("Animation_hptm8")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qnggo"]
+blend_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
 
@@ -267,7 +270,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), null, NodePath("../HUD/Converter Win/Converter"), null, null, null, NodePath("../HUD/Converter Win/Converter")]
+stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Converter Win/Converter"), null, null, null, NodePath("../HUD/Converter Win/Converter"), null, null]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 
@@ -626,23 +629,35 @@ aligner = NodePath("../..")
 aligns = false
 
 [node name="Light" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger/Lantern" unique_id=522149302]
-position = Vector2(20, 19)
+position = Vector2(25, 27)
 scale = Vector2(0.6999999, 1.0599998)
 texture = ExtResource("48_jekl6")
 
 [node name="Sprite" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger/Lantern" unique_id=1365520191]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-position = Vector2(20, 5)
+position = Vector2(20, 19.000002)
+scale = Vector2(0.85752857, 0.85752857)
 texture = ExtResource("47_fg68e")
 
 [node name="PointLight2D" type="PointLight2D" parent="Bee/Body/Hands/Aligner/Swinger/Lantern" unique_id=842583389]
-position = Vector2(19.999996, 22.000008)
+position = Vector2(20.999996, 40.000008)
 rotation = -0.13577862
 scale = Vector2(1.7338657, 1.7338657)
 blend_mode = 2
 texture = ExtResource("48_f6rfp")
 texture_scale = 1.5
 script = ExtResource("28_pfx1i")
+
+[node name="Glow" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger/Lantern" unique_id=1027141544]
+modulate = Color(1, 1, 1, 0.105882354)
+material = SubResource("CanvasItemMaterial_qnggo")
+position = Vector2(22.000002, 43.000015)
+scale = Vector2(1.1716532, 1.1716532)
+texture = ExtResource("48_f6rfp")
+script = ExtResource("11_h1bgf")
+scales = true
+scale_amount = Vector2(0.02, 0.02)
+scale_speed = 15.0
 
 [node name="Guitar" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("swinger", "aligner", "sprite")]
 visible = false
@@ -877,14 +892,14 @@ offset_bottom = 1333.0
 mouse_filter = 2
 color = Color(0.105882354, 0.019607844, 0.14509805, 1)
 
-[node name="Core Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
+[node name="Craft Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
 offset_bottom = 302.0
 title = "CORE"
 
-[node name="Core" type="Control" parent="HUD/Core Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview")]
+[node name="Core" type="Control" parent="HUD/Craft Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -902,38 +917,38 @@ script = ExtResource("38_kqrg6")
 win = NodePath("..")
 preview = NodePath("../../Preview Window/Preview")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Core Window/Core" unique_id=1768440130]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Craft Window/Core" unique_id=1768440130]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 86.0
 offset_right = 373.0
 offset_bottom = 197.0
 
-[node name="Description" type="RichTextLabel" parent="HUD/Core Window/Core/VBoxContainer" unique_id=496331594]
+[node name="Description" type="RichTextLabel" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=496331594]
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
 text = "The core provides energy to all connected platforms. Allows some very basic crafting."
 fit_content = true
 
-[node name="Spacer" type="ColorRect" parent="HUD/Core Window/Core/VBoxContainer" unique_id=2064826301]
+[node name="Spacer" type="ColorRect" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=2064826301]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Subtitle" type="RichTextLabel" parent="HUD/Core Window/Core/VBoxContainer" unique_id=368487812]
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=368487812]
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 22
 text = "PICK A RECIPE"
 fit_content = true
 
-[node name="Spacer2" type="ColorRect" parent="HUD/Core Window/Core/VBoxContainer" unique_id=2024927129]
+[node name="Spacer2" type="ColorRect" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=2024927129]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Crafter" type="VBoxContainer" parent="HUD/Core Window/Core/VBoxContainer" unique_id=1240438515 node_paths=PackedStringArray("preview")]
+[node name="Crafter" type="VBoxContainer" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=1240438515 node_paths=PackedStringArray("preview")]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10

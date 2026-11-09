@@ -17,6 +17,7 @@ size = Vector2(103, 173)
 size = Vector2(103, 173)
 
 [node name="Lantern" unique_id=299398414 instance=ExtResource("1_at3ts")]
+identifier = 12
 can_rotate = true
 
 [node name="Back" type="Sprite2D" parent="." index="0" unique_id=1823265037]
@@ -69,5 +70,5 @@ shape = SubResource("RectangleShape2D_cunpl")
 position = Vector2(2, -409)
 blend_mode = 2
 texture = ExtResource("3_mc0v1")
-texture_scale = 2.5
+texture_scale = 3.5
 script = ExtResource("6_mc0v1")
