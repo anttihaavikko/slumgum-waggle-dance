@@ -8,6 +8,7 @@ var focused := 0
 var other: Inventory
 
 signal changed
+signal added
 
 func create_slots(amount: int):
 	for i in amount:
@@ -33,6 +34,9 @@ func focus(index: int):
 	if index < 0: return
 	slots[focused].mark(true)
 	changed.emit()
+
+func has(id: Item.Id) -> bool:
+	return slots.any(func(s: Slot): return s.item.data.item_id == id)
 
 func current() -> Slot:
 	return slots[focused]
@@ -84,6 +88,7 @@ func add_item(id: Item.Id, amount: int = 1):
 		else:
 			Main.singleton.item_db.spawn(id, Main.singleton.bee.body.global_position, amount)
 	focus(focused)
+	added.emit()
 
 func change_focus(dir: int):
 	focus((focused + dir + slots.size()) % slots.size())

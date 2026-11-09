@@ -44,6 +44,8 @@
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
 [ext_resource type="PackedScene" uid="uid://b4af11tt4lq03" path="res://Scenes/Pieces/sign.tscn" id="22_qax2n"]
 [ext_resource type="PackedScene" uid="uid://mibamh2d04it" path="res://Scenes/Pieces/banner.tscn" id="23_owhal"]
+[ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
+[ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
@@ -90,12 +92,16 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 2
 title = "Wax"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = ExtResource("12_gt3je")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_nwwfm"]
 script = ExtResource("3_cbgmd")
 item_id = 3
 title = "Honey"
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = ExtResource("12_gt3je")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_s8vy0"]
@@ -242,7 +248,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), null, null, null, null, null, null]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), null, NodePath("../HUD/Converter Win/Converter"), null, null, null, NodePath("../HUD/Converter Win/Converter")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 
@@ -286,7 +292,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), null, null, null, ExtResource("23_owhal"), null, null])
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), null, ExtResource("23_uv6w5"), null, ExtResource("23_owhal"), null, ExtResource("25_r7bbj")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Platform"), NodePath("Platform2")]
 
@@ -311,6 +317,12 @@ rotation = 1.7988997
 [node name="Support4" parent="Platforms" unique_id=1295598682 instance=ExtResource("10_hptm8")]
 position = Vector2(266, 487)
 rotation = 0.95665735
+
+[node name="Jar" parent="Platforms" unique_id=2028750219 instance=ExtResource("23_uv6w5")]
+position = Vector2(660, 145)
+
+[node name="Jar2" parent="Platforms" unique_id=44078659 instance=ExtResource("23_uv6w5")]
+position = Vector2(1024, 84)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -828,7 +840,7 @@ preview = NodePath("../../../../Preview Window/Preview")
 [node name="Box Window" parent="HUD" unique_id=194614062 instance=ExtResource("57_lx3vj")]
 offset_left = 225.0
 offset_top = -371.0
-offset_right = 631.0
+offset_right = 594.0
 offset_bottom = 300.0
 title = "BOX"
 
@@ -850,9 +862,9 @@ win = NodePath("..")
 
 [node name="Inputs" type="HBoxContainer" parent="HUD/Box Window/Box" unique_id=1449105974 node_paths=PackedStringArray("manager")]
 layout_mode = 0
-offset_left = 23.0
+offset_left = 41.5
 offset_top = 85.0
-offset_right = 383.0
+offset_right = 372.0
 offset_bottom = 150.0
 mouse_filter = 2
 script = ExtResource("19_hibaj")
@@ -860,6 +872,7 @@ slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../ItemManager")
 
 [node name="Preview Window" parent="HUD" unique_id=275815913 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = 168.0
 offset_top = -370.0
 offset_right = 574.0
@@ -922,6 +935,89 @@ offset_right = 374.0
 offset_bottom = 640.0
 theme = ExtResource("36_hdf80")
 text = "CRAFT"
+
+[node name="Converter Win" parent="HUD" unique_id=1865505689 instance=ExtResource("57_lx3vj")]
+offset_left = 225.0
+offset_top = -371.0
+offset_right = 594.0
+offset_bottom = 300.0
+title = "JAR"
+
+[node name="Converter" type="Control" parent="HUD/Converter Win" unique_id=615244221 node_paths=PackedStringArray("inputs", "outputs", "win", "description")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.467
+anchor_right = 0.5
+anchor_bottom = 0.467
+offset_left = -204.0
+offset_top = -313.357
+offset_right = 202.0
+offset_bottom = 357.643
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("38_kqrg6")
+inputs = NodePath("VBoxContainer/Inputs")
+outputs = NodePath("VBoxContainer/Outputs")
+win = NodePath("..")
+description = NodePath("VBoxContainer/Description")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Converter Win/Converter" unique_id=638503194]
+layout_mode = 0
+offset_left = 49.5
+offset_top = 86.0
+offset_right = 356.5
+offset_bottom = 263.0
+
+[node name="Description" type="RichTextLabel" parent="HUD/Converter Win/Converter/VBoxContainer" unique_id=501264421]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "The core provides energy to all connected platforms. Allows some very basic crafting."
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Converter Win/Converter/VBoxContainer" unique_id=1078385024]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Inputs Title" type="RichTextLabel" parent="HUD/Converter Win/Converter/VBoxContainer" unique_id=671073602]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "INPUT"
+fit_content = true
+
+[node name="Inputs" type="HBoxContainer" parent="HUD/Converter Win/Converter/VBoxContainer" unique_id=409600455 node_paths=PackedStringArray("manager")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-5, 0)
+mouse_filter = 2
+script = ExtResource("19_hibaj")
+slot_prefab = ExtResource("20_hibaj")
+manager = NodePath("../../../../../ItemManager")
+
+[node name="Spacer2" type="ColorRect" parent="HUD/Converter Win/Converter/VBoxContainer" unique_id=107127384]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Outputs Title" type="RichTextLabel" parent="HUD/Converter Win/Converter/VBoxContainer" unique_id=383219593]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "OUTPUT"
+fit_content = true
+
+[node name="Outputs" type="HBoxContainer" parent="HUD/Converter Win/Converter/VBoxContainer" unique_id=1647315087 node_paths=PackedStringArray("manager")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-5, 0)
+mouse_filter = 2
+script = ExtResource("19_hibaj")
+slot_prefab = ExtResource("20_hibaj")
+manager = NodePath("../../../../../ItemManager")
 
 [node name="Sign Window" parent="HUD" unique_id=431523299 instance=ExtResource("57_lx3vj")]
 offset_left = -168.0

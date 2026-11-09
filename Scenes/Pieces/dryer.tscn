@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b65h0k2dii1wy"]
+
+[ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_ms0ip"]
+[ext_resource type="Texture2D" uid="uid://b4h1tobhsxx7v" path="res://Sprites/dryer.png" id="2_18qpk"]
+[ext_resource type="Script" uid="uid://d30bl70a5oc7y" path="res://Scripts/converter.gd" id="2_nqcns"]
+[ext_resource type="Script" uid="uid://cojfh0e7a2gbv" path="res://Scripts/recipe_part.gd" id="3_knwth"]
+
+[sub_resource type="Resource" id="Resource_5yyom"]
+script = ExtResource("3_knwth")
+
+[sub_resource type="Resource" id="Resource_tua2b"]
+script = ExtResource("3_knwth")
+item = 2
+
+[sub_resource type="Resource" id="Resource_18qpk"]
+script = ExtResource("2_nqcns")
+input = Array[ExtResource("3_knwth")]([SubResource("Resource_5yyom")])
+output = Array[ExtResource("3_knwth")]([SubResource("Resource_tua2b")])
+metadata/_custom_type_script = "uid://d30bl70a5oc7y"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18qpk"]
+size = Vector2(399, 380)
+
+[node name="Dryer" unique_id=299398414 instance=ExtResource("1_ms0ip")]
+title = "Drying Rack"
+converts = Array[ExtResource("2_nqcns")]([SubResource("Resource_18qpk")])
+identifier = 10
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+position = Vector2(0, -215)
+texture = ExtResource("2_18qpk")
+
+[node name="Center" parent="." index="2" unique_id=1552365683]
+position = Vector2(1, -243)
+
+[node name="Left" parent="." index="3" unique_id=2129715786]
+position = Vector2(-166, -5)
+
+[node name="Right" parent="." index="4" unique_id=781947195]
+position = Vector2(165, -7)
+
+[node name="ShapeCast2D2" parent="." index="5" unique_id=540746725]
+position = Vector2(0, -222)
+shape = SubResource("RectangleShape2D_18qpk")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
+position = Vector2(-2.5, -220)
+shape = SubResource("RectangleShape2D_18qpk")

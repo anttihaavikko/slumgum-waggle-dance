@@ -32,11 +32,11 @@ func _ready() -> void:
 	for s in inventory.slots: s.in_bar = true
 	# inventory.add_equipment(tools[Equipment.Id.Scythe])
 	# inventory.add_equipment(tools[Equipment.Id.Hammer])
-	inventory.add_equipment(tools[Equipment.Id.Paintbrush])
+	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 	inventory.add_equipment(tools[Equipment.Id.Brush])
 	inventory.add_equipment(tools[Equipment.Id.Hammer])
-	inventory.add_item(Item.Id.Nectar)
-	# inventory.add_item(Item.Id.Pollen)
+	inventory.add_item(Item.Id.Nectar, 10)
+	inventory.add_item(Item.Id.Pollen, 10)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
 	inventory.focus(0)

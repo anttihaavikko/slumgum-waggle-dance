@@ -39,3 +39,6 @@ static func drop(item: Item, equipment: Equipment) -> Pickup:
 
 static func shake(amount: float, duration: float):
 	singleton.bee.cam.shake(amount, duration)
+
+static func get_item_data(id: Item.Id) -> ItemData:
+	return singleton.item_db.items[id]
