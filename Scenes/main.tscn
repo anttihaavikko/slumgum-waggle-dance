@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://iik6jalprqdf" path="res://Sprites/star.png" id="7_2060n"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://bbnv4d0882u5o" path="res://Sprites/cloth.png" id="9_1tvlp"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
 [ext_resource type="Texture2D" uid="uid://dq4p4s1xc713j" path="res://Sprites/cloud0.png" id="9_55jeb"]
 [ext_resource type="Script" uid="uid://dm7c5hyh8houj" path="res://_Starter/Scripts/clouds.gd" id="9_gsvbx"]
@@ -48,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
 [ext_resource type="PackedScene" uid="uid://bvhmoedib4lva" path="res://Scenes/Pieces/anvil.tscn" id="24_qnggo"]
 [ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
+[ext_resource type="PackedScene" uid="uid://8uqc336nuxot" path="res://Scenes/Pieces/spinning_wheel.tscn" id="26_tab3y"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
 [ext_resource type="PackedScene" uid="uid://7eq4og243bf2" path="res://Scenes/Pieces/lantern_hanging.tscn" id="27_v1mrv"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
@@ -124,6 +126,13 @@ stack_size = 1
 title = "Equip"
 color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 sprite = ExtResource("7_2060n")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_tab3y"]
+script = ExtResource("3_cbgmd")
+item_id = 5
+title = "Cloth"
+sprite = ExtResource("9_1tvlp")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
@@ -270,7 +279,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Converter Win/Converter"), null, null, null, NodePath("../HUD/Converter Win/Converter"), null, null]
+stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Converter Win/Converter"), null, null]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 
@@ -286,7 +295,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
@@ -320,7 +329,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), ExtResource("24_qnggo"), ExtResource("23_uv6w5"), null, ExtResource("23_owhal"), null, ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), ExtResource("28_fd3ed")])
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), ExtResource("24_qnggo"), ExtResource("23_uv6w5"), ExtResource("26_tab3y"), ExtResource("23_owhal"), null, ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), ExtResource("28_fd3ed")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Platform"), NodePath("Platform2")]
 
@@ -354,6 +363,12 @@ position = Vector2(-940, -119)
 
 [node name="Lantern" parent="Platforms" unique_id=1806885397 instance=ExtResource("27_v1mrv")]
 position = Vector2(-171, 334)
+
+[node name="Loom" parent="Platforms" unique_id=716544410 instance=ExtResource("26_tab3y")]
+position = Vector2(170, -247)
+
+[node name="Anvil" parent="Platforms" unique_id=1016971032 instance=ExtResource("24_qnggo")]
+position = Vector2(-382, -413)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5

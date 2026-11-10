@@ -52,31 +52,31 @@ position = Vector2(-2.5, -220)
 shape = SubResource("RectangleShape2D_18qpk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="7" unique_id=1291538154]
-position = Vector2(-0.84430695, -344.8443)
-scale = Vector2(0.70194614, 0.70194614)
+position = Vector2(-1.2399979, -352.24)
+scale = Vector2(0.722, 0.722)
 texture = ExtResource("5_knwth")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." index="8" unique_id=597073437]
-position = Vector2(-103.84431, -344.8443)
-scale = Vector2(0.70194614, 0.70194614)
+position = Vector2(-104.24, -352.24)
+scale = Vector2(0.722, 0.722)
 texture = ExtResource("5_knwth")
 
 [node name="Sprite2D4" type="Sprite2D" parent="." index="9" unique_id=721085161]
-position = Vector2(103.15569, -344.8443)
-scale = Vector2(0.70194614, 0.70194614)
+position = Vector2(102.76, -352.24)
+scale = Vector2(0.722, 0.722)
 texture = ExtResource("5_knwth")
 
 [node name="Sprite2D5" type="Sprite2D" parent="." index="10" unique_id=1701999890]
-position = Vector2(-0.84430695, -159.8443)
-scale = Vector2(0.70194614, 0.70194614)
+position = Vector2(-1.2399979, -167.23999)
+scale = Vector2(0.722, 0.722)
 texture = ExtResource("5_knwth")
 
 [node name="Sprite2D6" type="Sprite2D" parent="." index="11" unique_id=1217418426]
-position = Vector2(-103.84431, -159.8443)
-scale = Vector2(0.70194614, 0.70194614)
+position = Vector2(-104.24, -167.23999)
+scale = Vector2(0.722, 0.722)
 texture = ExtResource("5_knwth")
 
 [node name="Sprite2D7" type="Sprite2D" parent="." index="12" unique_id=440027770]
-position = Vector2(103.15569, -159.8443)
-scale = Vector2(0.70194614, 0.70194614)
+position = Vector2(102.76, -167.23999)
+scale = Vector2(0.722, 0.722)
 texture = ExtResource("5_knwth")

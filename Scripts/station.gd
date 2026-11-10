@@ -7,6 +7,7 @@ class_name Station extends BuildPiece
 @export var converts: Array[Converter]
 @export var input_preview: Array[Sprite2D]
 @export var output_preview: Array[Sprite2D]
+@export var crafting_animation: AnimationPlayer
 
 var inputs: Array[Item] = []
 var outputs: Array[Item] = []
@@ -21,6 +22,7 @@ func _ready() -> void:
 	button.pressed.connect(open)
 	button.mouse_entered.connect(announce)
 	update_previews()
+	if crafting_animation: crafting_animation.stop()
 
 func _process(delta) -> void:
 	cooldown -= delta
@@ -84,6 +86,7 @@ func try_convert():
 	working = true
 	for recipe in converts:
 		if has_input_item(recipe.input[0].item):
+			if crafting_animation: crafting_animation.play()
 			await get_tree().create_timer(5).timeout
 			var looking = menu and menu.is_open() and menu.station == self
 			if looking:
@@ -95,5 +98,6 @@ func try_convert():
 					menu.update_contents()
 				working = false
 				update_previews()
+				if crafting_animation: crafting_animation.stop()
 				try_convert()
 	working = false
