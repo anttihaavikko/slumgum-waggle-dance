@@ -18,7 +18,9 @@ enum Id {
 	PaintWhite,
 	PaintYellow,
 	Dirt,
-	Sand
+	Sand,
+	Fiber,
+	String
 }
 
 var data: ItemData

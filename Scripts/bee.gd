@@ -31,7 +31,7 @@ func _ready() -> void:
 	# global_position += Vector2.RIGHT * -500
 	inventory.create_slots(9)
 	for s in inventory.slots: s.in_bar = true
-	# inventory.add_equipment(tools[Equipment.Id.Scythe])
+	inventory.add_equipment(tools[Equipment.Id.Scythe])
 	# inventory.add_equipment(tools[Equipment.Id.Hammer])
 	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 	inventory.add_equipment(tools[Equipment.Id.Brush])

@@ -44,7 +44,10 @@
 [ext_resource type="Script" uid="uid://dug0iwlcv3ovm" path="res://Scripts/scythe.gd" id="15_ee4r6"]
 [ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="15_k12tt"]
 [ext_resource type="PackedScene" uid="uid://dophievtei5vj" path="res://_Starter/Scenes/Effects/white_bits.tscn" id="16_55idt"]
+[ext_resource type="PackedScene" uid="uid://c073loolp31sf" path="res://Scenes/Effects/red_petals.tscn" id="17_87bhu"]
 [ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="18_1w6v2"]
+[ext_resource type="PackedScene" uid="uid://ci424cjoy37ew" path="res://Scenes/Effects/leaf_parts.tscn" id="18_33qc4"]
+[ext_resource type="PackedScene" uid="uid://cw3vxcvugab7d" path="res://Scenes/Effects/plant_parts.tscn" id="19_e6rcu"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
 [ext_resource type="PackedScene" uid="uid://b4af11tt4lq03" path="res://Scenes/Pieces/sign.tscn" id="22_qax2n"]
@@ -222,6 +225,22 @@ color = Color(1, 0.8557106, 0.6513028, 1)
 sprite = ExtResource("6_ptfg5")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
+[sub_resource type="Resource" id="Resource_uqfw5"]
+script = ExtResource("3_cbgmd")
+item_id = 18
+title = "Fiber"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = ExtResource("12_gt3je")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_cf2bd"]
+script = ExtResource("3_cbgmd")
+item_id = 19
+title = "String"
+color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = ExtResource("12_gt3je")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
 shader = ExtResource("15_k12tt")
 shader_parameter/amount = 10.0
@@ -390,13 +409,13 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
 [node name="Effects" type="Node" parent="." unique_id=1890521244]
 script = ExtResource("5_ueoa1")
-effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt")])
+effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu")])
 metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]

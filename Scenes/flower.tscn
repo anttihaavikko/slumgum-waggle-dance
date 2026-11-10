@@ -135,20 +135,29 @@ texture = ExtResource("9_k1h35")
 offset = Vector2(-10, -364)
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=1190403478]
+visible = false
 modulate = Color(0.46666667, 0.30980393, 0, 1)
 position = Vector2(5.9999995, 101.99999)
 rotation = 0.106010355
 scale = Vector2(2.0388587, 2.0388587)
 texture = ExtResource("12_eeowi")
 
-[node name="Breakable" type="StaticBody2D" parent="." unique_id=1066697544 node_paths=PackedStringArray("target")]
+[node name="Breakable" type="StaticBody2D" parent="." unique_id=1066697544 node_paths=PackedStringArray("target", "particle_points")]
 position = Vector2(7, -437)
 collision_layer = 512
 collision_mask = 0
 script = ExtResource("13_uqfw5")
-drops = Array[int]([10, 10, 0, 0, 0])
+drops = Array[int]([10, 10, 0, 18, 18, 18])
 target = NodePath("..")
+particle_points = [NodePath("../Mover/Area2D"), NodePath("../Leaf Particles"), NodePath("../Stem Particles")]
+particle_indices = Array[int]([4, 5, 6])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Breakable" unique_id=1783672043]
 position = Vector2(-11, -328)
 shape = SubResource("RectangleShape2D_cpkcx")
+
+[node name="Leaf Particles" type="Node2D" parent="." unique_id=1416962231]
+position = Vector2(-5, -317)
+
+[node name="Stem Particles" type="Node2D" parent="." unique_id=1085592615]
+position = Vector2(-10, -853)

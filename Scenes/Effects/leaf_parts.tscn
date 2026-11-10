@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ci424cjoy37ew"]
+
+[ext_resource type="Texture2D" uid="uid://bs2fb06prvcct" path="res://Sprites/petal-part.png" id="1_5n20c"]
+
+[sub_resource type="Curve" id="Curve_at123"]
+_data = [Vector2(0, 0.61567885), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0905995, 0.0, 0, 0]
+point_count = 2
+
+[node name="Particles" type="CPUParticles2D" unique_id=442576560]
+emitting = false
+amount = 15
+texture = ExtResource("1_5n20c")
+one_shot = true
+explosiveness = 0.95
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 600.0
+initial_velocity_max = 844.4
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_at123")
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)

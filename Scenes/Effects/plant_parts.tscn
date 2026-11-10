@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cw3vxcvugab7d"]
+
+[ext_resource type="Texture2D" uid="uid://dq05anuf6ko1n" path="res://Sprites/plant-part.png" id="1_vdda7"]
+
+[sub_resource type="Curve" id="Curve_at123"]
+_data = [Vector2(0, 0.61567885), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0905995, 0.0, 0, 0]
+point_count = 2
+
+[node name="Particles" type="CPUParticles2D" unique_id=442576560]
+emitting = false
+amount = 15
+texture = ExtResource("1_vdda7")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.95
+emission_shape = 3
+emission_rect_extents = Vector2(100, 500)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+radial_accel_min = -47.33
+radial_accel_max = 43.33
+tangential_accel_min = -58.0
+tangential_accel_max = 48.67
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_at123")
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
