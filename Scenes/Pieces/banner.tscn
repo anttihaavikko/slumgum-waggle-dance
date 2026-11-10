@@ -27,10 +27,10 @@ position = Vector2(1, 255)
 texture = ExtResource("2_wnujt")
 
 [node name="Button" parent="." index="1" unique_id=501500570]
-offset_left = -170.0
-offset_top = -48.0
-offset_right = 171.0
-offset_bottom = 534.0
+offset_left = -93.0
+offset_top = 0.0
+offset_right = 87.0
+offset_bottom = 509.0
 
 [node name="Center" parent="." index="2" unique_id=1552365683]
 position = Vector2(4, 167)

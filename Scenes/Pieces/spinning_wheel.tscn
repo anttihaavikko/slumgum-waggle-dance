@@ -82,6 +82,10 @@ texture = ExtResource("2_olle2")
 position = Vector2(0, -167)
 texture = ExtResource("3_khng4")
 
+[node name="Button" parent="." index="2" unique_id=501500570]
+offset_top = -432.0
+offset_right = 215.0
+
 [node name="Center" parent="." index="3" unique_id=1552365683]
 position = Vector2(1, -235)
 

@@ -16,6 +16,10 @@ title = "Anvil"
 position = Vector2(-31, -143)
 texture = ExtResource("2_ckjq2")
 
+[node name="Button" parent="." index="1" unique_id=501500570]
+offset_top = -306.0
+offset_bottom = -4.0
+
 [node name="Center" parent="." index="2" unique_id=1552365683]
 position = Vector2(0, -217)
 

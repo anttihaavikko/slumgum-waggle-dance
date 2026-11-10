@@ -28,6 +28,10 @@ identifier = 6
 position = Vector2(0, -257)
 texture = ExtResource("2_1bikk")
 
+[node name="Button" parent="." index="1" unique_id=501500570]
+offset_top = -514.0
+offset_bottom = -15.0
+
 [node name="Left" parent="." index="3" unique_id=2129715786]
 position = Vector2(-39, -19)
 

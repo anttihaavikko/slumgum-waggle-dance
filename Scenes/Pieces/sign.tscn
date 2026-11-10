@@ -42,10 +42,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" parent="." index="2" unique_id=501500570]
-offset_left = -170.0
-offset_top = -125.0
-offset_right = 171.0
-offset_bottom = 130.0
+offset_left = -147.0
+offset_top = -104.0
+offset_right = 153.0
+offset_bottom = 104.0
 
 [node name="Center" parent="." index="3" unique_id=1552365683]
 position = Vector2(1, -1)
