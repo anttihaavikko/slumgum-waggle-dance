@@ -34,7 +34,9 @@ func close():
 	Main.singleton.station = null
 	if station and inputs: station.inputs = inputs.get_contents()
 	if station and outputs: station.outputs = outputs.get_contents()
-	if station: station.try_convert()
+	if station:
+		station.try_convert()
+		station.update_previews()
 	if Main.singleton.held:
 		Main.singleton.held.drop()
 		Main.singleton.held.hide()

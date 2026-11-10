@@ -136,6 +136,35 @@ title = "Cloth"
 sprite = ExtResource("9_1tvlp")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
+[sub_resource type="Resource" id="Resource_wl4bb"]
+script = ExtResource("3_cbgmd")
+item_id = 6
+color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+sprite = ExtResource("12_gt3je")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_ihvwq"]
+script = ExtResource("3_cbgmd")
+item_id = 7
+title = "Juice"
+sprite = ExtResource("12_gt3je")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_6h1fc"]
+script = ExtResource("3_cbgmd")
+item_id = 8
+title = "Potion"
+sprite = ExtResource("12_gt3je")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_vxl7x"]
+script = ExtResource("3_cbgmd")
+item_id = 9
+title = "Resin"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = ExtResource("6_ptfg5")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
 shader = ExtResource("15_k12tt")
 shader_parameter/amount = 10.0
@@ -297,7 +326,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 

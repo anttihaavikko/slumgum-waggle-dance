@@ -19,13 +19,29 @@ input = Array[ExtResource("3_knwth")]([SubResource("Resource_5yyom")])
 output = Array[ExtResource("3_knwth")]([SubResource("Resource_tua2b")])
 metadata/_custom_type_script = "uid://d30bl70a5oc7y"
 
+[sub_resource type="Resource" id="Resource_1rxw5"]
+script = ExtResource("3_knwth")
+item = 3
+metadata/_custom_type_script = "uid://cojfh0e7a2gbv"
+
+[sub_resource type="Resource" id="Resource_snm47"]
+script = ExtResource("3_knwth")
+item = 9
+metadata/_custom_type_script = "uid://cojfh0e7a2gbv"
+
+[sub_resource type="Resource" id="Resource_u5wpi"]
+script = ExtResource("2_nqcns")
+input = Array[ExtResource("3_knwth")]([SubResource("Resource_1rxw5")])
+output = Array[ExtResource("3_knwth")]([SubResource("Resource_snm47")])
+metadata/_custom_type_script = "uid://d30bl70a5oc7y"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18qpk"]
 size = Vector2(399, 380)
 
 [node name="Dryer" unique_id=299398414 node_paths=PackedStringArray("input_preview", "output_preview") instance=ExtResource("1_ms0ip")]
 title = "Drying Rack"
 description = "Place different materials on the rack and it will generate dried versions over time."
-converts = Array[ExtResource("2_nqcns")]([SubResource("Resource_18qpk")])
+converts = Array[ExtResource("2_nqcns")]([SubResource("Resource_18qpk"), SubResource("Resource_u5wpi")])
 input_preview = [NodePath("Sprite2D2"), NodePath("Sprite2D3"), NodePath("Sprite2D4")]
 output_preview = [NodePath("Sprite2D5"), NodePath("Sprite2D6"), NodePath("Sprite2D7")]
 identifier = 10
