@@ -38,10 +38,10 @@ func is_blocked() -> bool:
 
 func try_to_place():
 	if not is_attached():
-		Main.pop("Not attached!")
+		Main.pop("NOT ATTACHED!")
 		return
 	if is_blocked():
-		Main.pop("Blocked!")
+		Main.pop("BLOCKED!")
 		return
 
 func snap(points: Array[Node2D]):

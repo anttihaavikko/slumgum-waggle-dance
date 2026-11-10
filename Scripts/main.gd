@@ -6,6 +6,7 @@ class_name Main extends Node
 @export var stations: Array[StationMenu]
 @export var held: Slot
 @export var builder: Builder
+@export var time: Schedule
 
 var station: StationMenu
 var bee: Bee

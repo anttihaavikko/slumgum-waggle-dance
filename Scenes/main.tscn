@@ -275,7 +275,7 @@ radius = 20.0
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
@@ -283,6 +283,7 @@ item_db = NodePath("../ItemManager")
 stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
+time = NodePath("../Schedule")
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint")]
 script = ExtResource("2_sasc4")
@@ -1024,6 +1025,7 @@ layout_mode = 2
 text = "SLEEP UNTIL MORNING"
 
 [node name="Button2" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=30688199 instance=ExtResource("50_2daye")]
+visible = false
 layout_mode = 2
 text = "SLEEP 8 HOURS"
 

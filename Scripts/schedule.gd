@@ -4,15 +4,21 @@ class_name Schedule extends Node
 @export var ui_tint: CanvasModulate
 @export var tint_color: Gradient
 
+var sleeper: Node2D
+
 var time := 0.1
 var speed := 0.01
 var day := 1
+var sleep_until := -1.0
 
 func _process(delta) -> void:
 	time += delta * speed
 	if time >= 1:
 		time -= 1
 		day += 1
+		Engine.time_scale = 1.0
+		sleeper.hide()
+		Main.singleton.bee.show()
 		Main.pop("DAY %d" % [day])
 		for f in Main.singleton.flowers:
 			f.fill()
@@ -26,7 +32,16 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				time += 0.2
 
 func sleep_until_morning():
-	sleep_for(1.0 - time)
+	if sleeper.global_position.distance_to(Main.singleton.bee.body.global_position) > 300:
+		Main.pop("TOO FAR!")
+		return
+	if time < 0.5:
+		Main.pop("TOO EARLY!")
+		return
+	Engine.time_scale = 10.0
+	sleep_for(0)
+	sleeper.show()
+	Main.singleton.bee.hide()
 
 func sleep_eight():
 	sleep_for(1.0 / 3)

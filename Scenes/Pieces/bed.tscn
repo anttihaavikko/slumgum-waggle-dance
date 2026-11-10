@@ -2,12 +2,52 @@
 
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_vgfve"]
 [ext_resource type="Texture2D" uid="uid://ruk22duvx6lq" path="res://Sprites/bed.png" id="2_jfkuv"]
+[ext_resource type="Texture2D" uid="uid://dpdpimyenwx77" path="res://Sprites/body.png" id="3_jfkuv"]
+[ext_resource type="Texture2D" uid="uid://bkos2ea0wkrj5" path="res://Sprites/bed-mask.png" id="3_u5wpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgfve"]
 size = Vector2(398, 224)
 
-[node name="Bed" unique_id=299398414 instance=ExtResource("1_vgfve")]
+[sub_resource type="Animation" id="Animation_1rxw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u5wpi"]
+resource_name = "sleep"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.50382787, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.33, 0.94), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1rxw5"]
+_data = {
+&"RESET": SubResource("Animation_1rxw5"),
+&"sleep": SubResource("Animation_u5wpi")
+}
+
+[node name="Bed" unique_id=299398414 node_paths=PackedStringArray("sleeper") instance=ExtResource("1_vgfve")]
 title = "Bed"
+sleeper = NodePath("Mask")
 identifier = 9
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
@@ -36,3 +76,20 @@ shape = SubResource("RectangleShape2D_vgfve")
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
 position = Vector2(-1, -139)
 shape = SubResource("RectangleShape2D_vgfve")
+
+[node name="Mask" type="Sprite2D" parent="." index="7" unique_id=919730867]
+visible = false
+clip_children = 1
+position = Vector2(15, -259.99997)
+scale = Vector2(0.984125, 0.984125)
+texture = ExtResource("3_u5wpi")
+
+[node name="Body" type="Sprite2D" parent="Mask" index="0" unique_id=167578426]
+position = Vector2(-15, 80.999985)
+rotation = -1.5250702
+skew = 0.042618394
+texture = ExtResource("3_jfkuv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mask" index="1" unique_id=230991438]
+libraries/ = SubResource("AnimationLibrary_1rxw5")
+autoplay = &"sleep"

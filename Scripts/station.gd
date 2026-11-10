@@ -8,6 +8,7 @@ class_name Station extends BuildPiece
 @export var input_preview: Array[Sprite2D]
 @export var output_preview: Array[Sprite2D]
 @export var crafting_animation: AnimationPlayer
+@export var sleeper: Node2D
 
 var inputs: Array[Item] = []
 var outputs: Array[Item] = []
@@ -35,6 +36,10 @@ func announce():
 
 func open():
 	if not Main.singleton.bee.can_open(): return
+	if global_position.distance_to(Main.singleton.bee.body.global_position) > 750:
+		Main.pop("TOO FAR!")
+		return
+	Main.singleton.time.sleeper = sleeper
 	if Main.singleton.builder.held: return
 	if not menu: return
 	if menu.is_open():
