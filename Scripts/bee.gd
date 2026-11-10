@@ -88,11 +88,14 @@ func collide(_node: Node2D):
 	var threshold := 200.0
 	if mag > threshold:
 		var amt = roundi(mag / threshold)
-		health.hurt(amt)
 		cam.shake(amt * 5, 0.15)
-		if not health.is_alive() and not dead:
-			dead = true
-			die()
+		damage(amt)
+
+func damage(amount: int):
+	health.hurt(amount)
+	if not health.is_alive() and not dead:
+		dead = true
+		die()
 
 func current_changed():
 	current = inventory.current().equipment

@@ -7,6 +7,7 @@ class_name Main extends Node
 @export var held: Slot
 @export var builder: Builder
 @export var time: Schedule
+@export var explosion_shape: ShapeCast2D
 
 var station: StationMenu
 var bee: Bee

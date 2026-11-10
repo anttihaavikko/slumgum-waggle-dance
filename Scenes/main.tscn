@@ -304,9 +304,12 @@ blend_mode = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
 radius = 20.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
+radius = 1000.0
+
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
@@ -315,6 +318,7 @@ stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/B
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
+explosion_shape = NodePath("../Explosion")
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint")]
 script = ExtResource("2_sasc4")
@@ -778,7 +782,6 @@ position = Vector2(1402, -716)
 target_position = Vector2(0, 10000)
 
 [node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line")]
-visible = false
 z_index = 10
 position = Vector2(561, 460)
 collision_layer = 9
@@ -805,7 +808,7 @@ z_index = -40
 position = Vector2(15, 6)
 
 [node name="Bg" type="Polygon2D" parent="Island" unique_id=935066965]
-z_index = -20
+z_index = -10
 z_as_relative = false
 position = Vector2(15, 6)
 color = Color(0.15686275, 0.78039217, 0.7607843, 1)
@@ -813,9 +816,21 @@ offset = Vector2(-12, -1113)
 polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
 
 [node name="Wall" type="Polygon2D" parent="Island" unique_id=1735333583]
-z_index = -5
+clip_children = 2
+z_index = -10
 z_as_relative = false
 color = Color(0.4679759, 0.3102154, 0, 1)
+
+[node name="Pattern" type="TextureRect" parent="Island/Wall" unique_id=1735966543]
+self_modulate = Color(0, 0, 0, 0.2)
+offset_left = -30318.0
+offset_top = -12950.0
+offset_right = -4796.9355
+offset_bottom = 1476.6826
+scale = Vector2(2.9168046, 2.9168046)
+mouse_filter = 2
+texture = ExtResource("36_jut3y")
+stretch_mode = 1
 
 [node name="Wall Line" type="Line2D" parent="Island" unique_id=829667112]
 z_index = -5
@@ -1481,6 +1496,12 @@ collision_mask = 290
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230333985]
 enabled = false
+
+[node name="Explosion" type="ShapeCast2D" parent="." unique_id=490870025]
+position = Vector2(-1599, -17)
+shape = SubResource("CircleShape2D_cpkcx")
+target_position = Vector2(0, 0)
+collision_mask = 54
 
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
