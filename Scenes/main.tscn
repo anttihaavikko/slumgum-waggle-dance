@@ -55,6 +55,7 @@
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
 [ext_resource type="PackedScene" uid="uid://bhrh73advjb1c" path="res://Scenes/Pieces/lantern_standing.tscn" id="28_fd3ed"]
 [ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="28_pfx1i"]
+[ext_resource type="PackedScene" uid="uid://cmtgmcguvat74" path="res://Scenes/Pieces/bed.tscn" id="29_wl4bb"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
 [ext_resource type="Texture2D" uid="uid://cd0yify70om02" path="res://Sprites/guitar.png" id="31_nwwfm"]
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
@@ -329,7 +330,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), ExtResource("24_qnggo"), ExtResource("23_uv6w5"), ExtResource("26_tab3y"), ExtResource("23_owhal"), null, ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), ExtResource("28_fd3ed")])
+pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), ExtResource("24_qnggo"), ExtResource("23_uv6w5"), ExtResource("26_tab3y"), ExtResource("23_owhal"), ExtResource("29_wl4bb"), ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), ExtResource("28_fd3ed")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Platform"), NodePath("Platform2")]
 
@@ -1200,6 +1201,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="HUD" unique_id=1649321817]
+visible = false
 z_index = 20
 z_as_relative = false
 
