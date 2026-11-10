@@ -11,6 +11,8 @@ func _ready() -> void:
 			var o = shape.get_collider(i)
 			if o not in done:
 				done.append(o)
+				if o is Breakable:
+					o.destroy()
 				if o is RigidBody2D:
 					var dir = o.global_position - global_position
 					var magniude = clampf(1500.0 - dir.length(), 0, 1500.0)

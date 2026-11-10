@@ -20,8 +20,10 @@ func _process(delta) -> void:
 		if sleeper: sleeper.hide()
 		Main.singleton.bee.show()
 		Main.pop("DAY %d" % [day])
+		Main.singleton.cleanup()
+		print(Main.singleton.flowers.size())
 		for f in Main.singleton.flowers:
-			f.fill()
+			if f: f.fill()
 	tint.color = tint_color.sample(time)
 	ui_tint.color = tint.color + Color(0.2, 0.2, 0.2)
 

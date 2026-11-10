@@ -49,3 +49,6 @@ static func shake(amount: float, duration: float):
 
 static func get_item_data(id: Item.Id) -> ItemData:
 	return singleton.item_db.items[id]
+
+func cleanup():
+	flowers = flowers.filter(func(f): return f)

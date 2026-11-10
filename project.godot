@@ -171,6 +171,7 @@ shift={
 2d_physics/layer_7="Active Platforms"
 2d_physics/layer_8="Lander"
 2d_physics/layer_9="Decorations"
+2d_physics/layer_10="Breakables"
 
 [physics]
 
