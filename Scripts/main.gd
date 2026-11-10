@@ -41,6 +41,9 @@ static func drop(item: Item, equipment: Equipment) -> Pickup:
 		return singleton.item_db.spawn(Item.Id.Equipment, singleton.bee.body.global_position, 1, equipment.identifier)
 	return null
 
+static func spawn_item(item: Item.Id, pos: Vector2) -> Pickup:
+	return singleton.item_db.spawn(item, pos, 1)
+
 static func shake(amount: float, duration: float):
 	singleton.bee.cam.shake(amount, duration)
 

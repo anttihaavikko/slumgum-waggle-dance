@@ -25,4 +25,7 @@ func _ready() -> void:
 		island.explode(island.to_local(global_position))
 	Main.shake(40, 0.3)
 	Effects.singleton.add_many([1, 2, 3], global_position)
+	for i in 10:
+		var dirt = Main.spawn_item([Item.Id.Sand, Item.Id.Dirt].pick_random(), global_position)
+		dirt.apply_impulse(Vector2.ONE.rotated(randf() * PI * 2) * randf_range(500, 1200))
 	queue_free()

@@ -170,6 +170,57 @@ color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 sprite = ExtResource("6_ptfg5")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
+[sub_resource type="Resource" id="Resource_at123"]
+script = ExtResource("3_cbgmd")
+item_id = 10
+title = "Seed"
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_gmdny"]
+script = ExtResource("3_cbgmd")
+item_id = 11
+title = "Rock"
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_55idt"]
+script = ExtResource("3_cbgmd")
+item_id = 12
+title = "Paint"
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_87bhu"]
+script = ExtResource("3_cbgmd")
+item_id = 13
+title = "Paint"
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_33qc4"]
+script = ExtResource("3_cbgmd")
+item_id = 14
+title = "Paint"
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_e6rcu"]
+script = ExtResource("3_cbgmd")
+item_id = 15
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_p4gyq"]
+script = ExtResource("3_cbgmd")
+item_id = 16
+title = "Dirt"
+color = Color(0.5464185, 0.36557484, 9.62615e-08, 1)
+sprite = ExtResource("6_ptfg5")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_32dfi"]
+script = ExtResource("3_cbgmd")
+item_id = 17
+title = "Sand"
+color = Color(1, 0.8557106, 0.6513028, 1)
+sprite = ExtResource("6_ptfg5")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
 shader = ExtResource("15_k12tt")
 shader_parameter/amount = 10.0
@@ -335,7 +386,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
@@ -823,7 +874,7 @@ polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1
 clip_children = 2
 z_index = -10
 z_as_relative = false
-color = Color(0.4679759, 0.3102154, 0, 1)
+color = Color(0.46666667, 0.30980393, 0, 1)
 
 [node name="Pattern" type="TextureRect" parent="Island/Wall" unique_id=1735966543]
 self_modulate = Color(0, 0, 0, 0.2)
