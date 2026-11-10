@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://xkntx47peuwl"]
+
+[ext_resource type="Texture2D" uid="uid://cff2rh54nd4pq" path="res://Sprites/light.png" id="1_abmar"]
+[ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="2_ptriq"]
+
+[node name="Light Flash" type="PointLight2D" unique_id=839290175]
+rotation = -0.13577862
+scale = Vector2(1.7338657, 1.7338657)
+blend_mode = 2
+texture = ExtResource("1_abmar")
+texture_scale = 1.5
+script = ExtResource("2_ptriq")
+die_after = 0.35

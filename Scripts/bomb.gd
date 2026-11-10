@@ -24,4 +24,5 @@ func _ready() -> void:
 	for island in Main.singleton.islands:
 		island.explode(island.to_local(global_position))
 	Main.shake(40, 0.3)
+	Effects.singleton.add_many([1, 2], global_position)
 	queue_free()
