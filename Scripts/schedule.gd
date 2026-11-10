@@ -24,3 +24,14 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		if event is InputEventKey:
 			if Input.is_key_pressed(KEY_T):
 				time += 0.2
+
+func sleep_until_morning():
+	sleep_for(1.0 - time)
+
+func sleep_eight():
+	sleep_for(1.0 / 3)
+
+func sleep_for(amount: float):
+	time += amount
+	if Main.singleton.station:
+		Main.singleton.station.close()

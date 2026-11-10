@@ -280,7 +280,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Converter Win/Converter"), null, null]
+stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 
@@ -370,6 +370,9 @@ position = Vector2(170, -247)
 
 [node name="Anvil" parent="Platforms" unique_id=1016971032 instance=ExtResource("24_qnggo")]
 position = Vector2(-382, -413)
+
+[node name="Bed" parent="Platforms" unique_id=1218278962 instance=ExtResource("29_wl4bb")]
+position = Vector2(-966, -711)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -972,6 +975,58 @@ script = ExtResource("50_1semv")
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 
+[node name="Bed Window" parent="HUD" unique_id=2034345964 instance=ExtResource("57_lx3vj")]
+offset_left = -617.0
+offset_top = -369.0
+offset_right = -211.0
+offset_bottom = 302.0
+title = "CORE"
+
+[node name="Bed" type="Control" parent="HUD/Bed Window" unique_id=1103735753 node_paths=PackedStringArray("win")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -335.5
+offset_right = 203.0
+offset_bottom = 335.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("38_kqrg6")
+win = NodePath("..")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Bed Window/Bed" unique_id=1491971233]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 86.0
+offset_right = 373.0
+offset_bottom = 197.0
+theme_override_constants/separation = 10
+
+[node name="Description" type="RichTextLabel" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=1841981174]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "The core provides energy to all connected platforms. Allows some very basic crafting."
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=89835573]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Button" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=1022843980 instance=ExtResource("50_2daye")]
+layout_mode = 2
+text = "SLEEP UNTIL MORNING"
+
+[node name="Button2" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=30688199 instance=ExtResource("50_2daye")]
+layout_mode = 2
+text = "SLEEP 8 HOURS"
+
 [node name="Box Window" parent="HUD" unique_id=194614062 instance=ExtResource("57_lx3vj")]
 offset_left = 225.0
 offset_top = -371.0
@@ -1373,3 +1428,6 @@ collision_mask = 290
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230333985]
 enabled = false
+
+[connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
+[connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
