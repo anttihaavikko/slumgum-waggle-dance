@@ -835,7 +835,7 @@ position = Vector2(45, 41)
 position = Vector2(1402, -716)
 target_position = Vector2(0, 10000)
 
-[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line")]
+[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons")]
 visible = false
 z_index = 10
 position = Vector2(561, 460)
@@ -856,6 +856,7 @@ huts = Array[PackedScene]([ExtResource("63_my4ki")])
 explosion = NodePath("Explosion")
 wall = NodePath("Wall")
 wall_line = NodePath("Wall Line")
+dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), NodePath("Dungeon4")]
 
 [node name="Trees" type="Node2D" parent="Island" unique_id=1112407507]
 modulate = Color(0.15686275, 0.78039217, 0.7607843, 1)
@@ -926,6 +927,22 @@ polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1
 [node name="Explosion" type="Polygon2D" parent="Island" unique_id=36252574]
 visible = false
 polygon = PackedVector2Array(-28, -607, 420, -457, 647, 5, 422, 469, -51, 665, -581, 419, -715, -32, -486, -453)
+
+[node name="Dungeon1" type="Polygon2D" parent="Island" unique_id=1831085453]
+visible = false
+polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 224, 1088, 1257, 1115, 831, 1813, 106, 1912, -211, 2610, 695, 2474, 858, 3099, 514, 3797, -211, 3806, -1434, 2954, -292, 752, -302, -380)
+
+[node name="Dungeon2" type="Polygon2D" parent="Island" unique_id=402508144]
+visible = false
+polygon = PackedVector2Array(-483, -1731, 432, -1504, 360, -272, 677, 616, -419, 1051, 550, 1133, 831, 1813, 106, 1912, 1502, 2347, 1221, 2918, -202, 3009, 514, 3797, -211, 3806, -1434, 2954, -1833, 1287, -483, -344)
+
+[node name="Dungeon3" type="Polygon2D" parent="Island" unique_id=621235056]
+visible = false
+polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 1312, 1668, 730.3008, 2109.9812, 1547, 2891, 1239, 3444, -166, 2791, -818, 3281, -1434, 2954, -588.9541, 2229.3933, -1443, 997, -872, 653, 25, 1731, 369, 1495, -302, -380)
+
+[node name="Dungeon4" type="Polygon2D" parent="Island" unique_id=1270893275]
+visible = false
+polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 288, 1686, 1058, 2646, 514, 3797, -211, 3806, -963, 2737, -1090, 1849, -2069, 1794, -1362, 752, -292, 752, -302, -380)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20

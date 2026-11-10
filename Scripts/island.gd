@@ -16,6 +16,7 @@ class_name Island extends Node2D
 @export var explosion: Polygon2D
 @export var wall: Polygon2D
 @export var wall_line: Line2D
+@export var dungeons: Array[Polygon2D]
 
 var gap := 5000
 var pieces := 3
@@ -24,6 +25,7 @@ func _ready() -> void:
 	show()
 	generate()
 	Main.singleton.islands.append(self)
+	for d in dungeons: d.hide()
 
 func generate():
 	var shape = get_shape(0)
@@ -82,6 +84,10 @@ func generate():
 	var tree_spots = range(bg.polygon.size())
 	tree_spots.shuffle()
 
+	for i in 4:
+		create_dungeon(0)
+		await get_tree().process_frame
+
 	for i in 200:
 		var p = bg.polygon[tree_spots[i]]
 		if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 50, bg.polygon): continue
@@ -90,6 +96,29 @@ func generate():
 		trees.add_child(tree)
 		tree.global_position = bg.to_global(p) + Vector2.UP * randf_range(400, 750)
 		# tree.global_position.x *= -1
+
+func create_dungeon(try := 0):
+	if try > 10: return
+	var p = get_ground_pos(randf_range(3000, 15000) * [-1, 1].pick_random())
+	if abs(p.x) < 2000:
+		create_dungeon(try + 1)
+		return
+	var shape = shift(dungeons.pick_random().polygon, p)
+	# for i in range(shape.size()):
+	# 	var pp = shape[i]
+	# 	shape[i] = Vector2.ZERO + pp.rotated(randf_range(-0.1, 0.1))
+	var updated := Geometry2D.clip_polygons(poly.polygon, shape)
+	if updated.size() == 1:
+		poly.polygon = updated[0]
+		collider.polygon = updated[0]
+		line.points = updated[0]
+	else:
+		create_dungeon(try + 1)
+
+func get_ground_pos(pos: float) -> Vector2:
+	ray.global_position = Vector2(pos, -5000)
+	ray.force_raycast_update()
+	return ray.get_collision_point() if ray.is_colliding() else Vector2.ZERO
 
 func shift(shape: PackedVector2Array, dir: Vector2) -> PackedVector2Array:
 	for p in range(shape.size()):
