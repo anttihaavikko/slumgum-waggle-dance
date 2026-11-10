@@ -9,6 +9,7 @@ class_name BuildPiece extends Node2D
 @export var label: RichTextLabel
 @export var snap_points: Array[Node2D]
 @export var sprite: Node2D
+@export var extra_sprites: Array[Sprite2D]
 
 enum Id {
 	Platform,

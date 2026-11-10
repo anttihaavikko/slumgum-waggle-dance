@@ -9,3 +9,4 @@ func _ready() -> void:
 func _process(delta) -> void:
 	time += delta * 20.0
 	texture_scale = size + sin(time) * 0.01
+	energy = 1.0 + sin(time) * 0.006

@@ -66,12 +66,13 @@ _data = {
 &"loom": SubResource("Animation_ln31n")
 }
 
-[node name="Loom" unique_id=299398414 node_paths=PackedStringArray("input_preview", "crafting_animation") instance=ExtResource("1_hwrih")]
+[node name="Loom" unique_id=299398414 node_paths=PackedStringArray("input_preview", "crafting_animation", "extra_sprites") instance=ExtResource("1_hwrih")]
 title = "Spinning Wheel"
 converts = Array[ExtResource("2_vmljj")]([SubResource("Resource_olle2")])
 input_preview = [NodePath("Preview")]
 crafting_animation = NodePath("AnimationPlayer")
 identifier = 7
+extra_sprites = [NodePath("Wheel")]
 
 [node name="Wheel" type="Sprite2D" parent="." index="0" unique_id=1493110719]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)

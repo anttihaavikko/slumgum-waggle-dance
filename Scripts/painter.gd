@@ -23,6 +23,8 @@ func blocks_clicks() -> bool:
 
 func try_to_paint(target: Node):
 	if target is BuildPiece and target.sprite:
+		for s in target.extra_sprites:
+			s.self_modulate = paint.self_modulate
 		if target.sprite is Line2D:
 			target.sprite.default_color = paint.self_modulate
 		if target.sprite is Sprite2D:
