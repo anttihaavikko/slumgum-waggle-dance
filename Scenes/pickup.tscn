@@ -11,7 +11,7 @@ radius = 91.78235
 
 [node name="Pickup" type="RigidBody2D" unique_id=1139630903 node_paths=PackedStringArray("sprite", "area")]
 collision_layer = 16
-collision_mask = 24
+collision_mask = 1048
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_k2e45")
 script = ExtResource("1_cya6u")

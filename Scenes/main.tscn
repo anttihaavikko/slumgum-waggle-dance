@@ -344,6 +344,9 @@ _data = {
 &"flap": SubResource("Animation_hptm8")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_55idt"]
+radius = 174.1
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qnggo"]
 blend_mode = 1
 
@@ -698,7 +701,7 @@ swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
 
-[node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("swinger", "aligner", "sprite")]
+[node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1, -2)
@@ -707,11 +710,18 @@ scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("14_pdsj5")
 offset = Vector2(-103.92078, 94.49667)
 script = ExtResource("15_ee4r6")
+area = NodePath("Area")
 identifier = 1
 swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = 1.2
 sprite = NodePath(".")
+
+[node name="Area" type="ShapeCast2D" parent="Bee/Body/Hands/Aligner/Swinger/Scythe" unique_id=1646312883]
+position = Vector2(-247.27628, 103.423645)
+shape = SubResource("CircleShape2D_55idt")
+target_position = Vector2(0, 0)
+collision_mask = 566
 
 [node name="Brush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
 visible = false
@@ -865,7 +875,7 @@ z_index = -40
 position = Vector2(15, 6)
 
 [node name="Bg" type="Polygon2D" parent="Island" unique_id=935066965]
-z_index = -10
+z_index = -11
 z_as_relative = false
 position = Vector2(15, 6)
 color = Color(0.15686275, 0.78039217, 0.7607843, 1)

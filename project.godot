@@ -172,6 +172,7 @@ shift={
 2d_physics/layer_8="Lander"
 2d_physics/layer_9="Decorations"
 2d_physics/layer_10="Breakables"
+2d_physics/layer_11="Buttons"
 
 [physics]
 

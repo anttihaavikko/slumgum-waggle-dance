@@ -99,7 +99,7 @@ func generate():
 
 func create_dungeon(try := 0):
 	if try > 10: return
-	var p = get_ground_pos(randf_range(3000, 15000) * [-1, 1].pick_random())
+	var p = get_ground_pos(randf_range(5000, 15000) * [-1, 1].pick_random())
 	if abs(p.x) < 2000:
 		create_dungeon(try + 1)
 		return

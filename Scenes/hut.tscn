@@ -85,7 +85,7 @@ button = NodePath("Button Body")
 [node name="Area" type="Area2D" parent="Button" unique_id=181713576]
 position = Vector2(1, -106)
 collision_layer = 9
-collision_mask = 132
+collision_mask = 148
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area" unique_id=1223035501]
 position = Vector2(-1.5, -42)
@@ -93,6 +93,7 @@ shape = SubResource("RectangleShape2D_ed4kf")
 
 [node name="Button Body" type="StaticBody2D" parent="Button" unique_id=815358743]
 position = Vector2(0, -104)
+collision_layer = 1025
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Button Body" unique_id=1242801478]
 position = Vector2(-2.5, -32.5)
