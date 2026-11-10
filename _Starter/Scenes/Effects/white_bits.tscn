@@ -1,21 +1,26 @@
-[gd_scene format=3 uid="uid://b8ktnq4xfb7at"]
+[gd_scene format=3 uid="uid://dophievtei5vj"]
 
-[ext_resource type="Script" uid="uid://djvkoe3th0d8e" path="res://_Starter/Scripts/fake_particles.gd" id="1_gmdny"]
-[ext_resource type="PackedScene" uid="uid://bdhdb2dkm6po3" path="res://_Starter/Scenes/Effects/fake_particle.tscn" id="2_hv1of"]
+[ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="1_e2ykc"]
 
-[sub_resource type="Curve" id="Curve_ylsbi"]
-_data = [Vector2(0, 0), 0.0, 4.568529, 0, 0, Vector2(0.65400004, 1), -0.01466513, -0.01466513, 0, 0, Vector2(1, 0.32690358), 0.020751413, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Curve" id="Curve_at123"]
+_data = [Vector2(0, 0.61567885), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.0905995, 0.0, 0, 0]
+point_count = 2
 
-[node name="Bits" type="Node2D" unique_id=422818921]
-script = ExtResource("1_gmdny")
-particle = ExtResource("2_hv1of")
-amount = 12
-amount_variation = 0.2
-lifetime = 0.06
-lifetime_variation = 0.3
-velocity = 0.6
-velocity_variation = 0.5
-width = 15
-width_variation = 0.3
-width_curve = SubResource("Curve_ylsbi")
+[node name="Whiet Bits" type="CPUParticles2D" unique_id=442576560]
+emitting = false
+amount = 15
+texture = ExtResource("1_e2ykc")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.65
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 844.4
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_at123")
+color = Color(1, 1, 1, 0.5137255)

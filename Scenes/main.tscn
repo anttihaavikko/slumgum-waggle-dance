@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://0ngmpejmn2sp" path="res://Scenes/globe.tscn" id="14_wsu2k"]
 [ext_resource type="Script" uid="uid://dug0iwlcv3ovm" path="res://Scripts/scythe.gd" id="15_ee4r6"]
 [ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="15_k12tt"]
+[ext_resource type="PackedScene" uid="uid://dophievtei5vj" path="res://_Starter/Scenes/Effects/white_bits.tscn" id="16_55idt"]
 [ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="18_1w6v2"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
@@ -340,7 +341,7 @@ metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
 [node name="Effects" type="Node" parent="." unique_id=1890521244]
 script = ExtResource("5_ueoa1")
-effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3")])
+effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt")])
 metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
