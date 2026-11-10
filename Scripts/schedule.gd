@@ -17,7 +17,7 @@ func _process(delta) -> void:
 		time -= 1
 		day += 1
 		Engine.time_scale = 1.0
-		sleeper.hide()
+		if sleeper: sleeper.hide()
 		Main.singleton.bee.show()
 		Main.pop("DAY %d" % [day])
 		for f in Main.singleton.flowers:

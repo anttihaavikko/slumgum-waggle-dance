@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dxstoyw1fxcrn"]
+
+[ext_resource type="Texture2D" uid="uid://c4nujldxgwpc2" path="res://Sprites/bomb.png" id="1_yx723"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6h1fc"]
+bounce = 0.2
+
+[node name="Bomb" type="RigidBody2D" unique_id=2046371599]
+collision_layer = 16
+collision_mask = 26
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_6h1fc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1161724776]
+polygon = PackedVector2Array(-28, -40, 1, -73, 73, -20, 46, 16, 33, 64, -19, 86, -70, 53, -73, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=624891218]
+modulate = Color(0.31616724, 0.3161674, 0.3161673, 1)
+texture = ExtResource("1_yx723")

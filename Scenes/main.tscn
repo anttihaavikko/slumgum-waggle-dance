@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://dm7c5hyh8houj" path="res://_Starter/Scripts/clouds.gd" id="9_gsvbx"]
 [ext_resource type="PackedScene" uid="uid://dagf4wr0s64rf" path="res://Scenes/rock.tscn" id="9_o1aky"]
 [ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/Pieces/platform.tscn" id="9_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://c4nujldxgwpc2" path="res://Sprites/bomb.png" id="10_6h1fc"]
 [ext_resource type="Texture2D" uid="uid://bf67jtvbxfd6h" path="res://Sprites/cloud1.png" id="10_gsvbx"]
 [ext_resource type="PackedScene" uid="uid://dq36w8r4o0c4s" path="res://Scenes/Pieces/support.tscn" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://chigtoisavcty" path="res://Sprites/held-hammer.png" id="10_k12tt"]
@@ -83,6 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
+[ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -139,8 +141,8 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_wl4bb"]
 script = ExtResource("3_cbgmd")
 item_id = 6
-color = Color(0.39688927, 0.39688927, 0.39688924, 1)
-sprite = ExtResource("12_gt3je")
+color = Color(0.3553136, 0.35531354, 0.35531357, 1)
+sprite = ExtResource("10_6h1fc")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_ihvwq"]
@@ -421,6 +423,7 @@ cam = NodePath("Body/Camera")
 builder = NodePath("../Platforms")
 face = NodePath("Body/Face Wrap/LookAtMouse/Face")
 crosses = NodePath("Body/Face Wrap/LookAtMouse/Face/Crosses")
+bomb_prefab = ExtResource("85_vxl7x")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
 collision_layer = 5

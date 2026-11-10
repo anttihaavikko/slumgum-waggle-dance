@@ -13,6 +13,7 @@ class_name Bee extends Node2D
 @export var builder: Builder
 @export var face: Face
 @export var crosses: Node2D
+@export var bomb_prefab: PackedScene
 
 var thrust = 1.5
 var turning = 1.0
@@ -28,7 +29,7 @@ var current: Equipment
 func _ready() -> void:
 	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
-	inventory.create_slots(5)
+	inventory.create_slots(9)
 	for s in inventory.slots: s.in_bar = true
 	# inventory.add_equipment(tools[Equipment.Id.Scythe])
 	# inventory.add_equipment(tools[Equipment.Id.Hammer])
@@ -38,6 +39,7 @@ func _ready() -> void:
 	inventory.add_equipment(tools[Equipment.Id.Hammer])
 	inventory.add_item(Item.Id.Nectar, 10)
 	inventory.add_item(Item.Id.Pollen, 10)
+	inventory.add_item(Item.Id.Bomb, 10)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
 	inventory.focus(0)
@@ -46,6 +48,11 @@ func _ready() -> void:
 	lander.body_entered.connect(land)
 	lander.body_exited.connect(func(_o): landed = false)
 	body.body_entered.connect(collide)
+
+func throw(prefab: PackedScene):
+	var obj = prefab.instantiate() as RigidBody2D
+	obj.position = body.position
+	add_child(obj)
 
 func can_open() -> bool:
 	return not current or not current.blocks_clicks()
@@ -128,6 +135,10 @@ func _process(delta) -> void:
 	for i in 9:
 		if Input.is_action_just_pressed("slot_%d" % [i + 1]) and i < inventory.slots.size():
 			inventory.focus(i)
+
+	if Input.is_action_just_pressed("primary"):
+		if inventory.current().has_item(Item.Id.Bomb):
+			throw(bomb_prefab)
 
 	if builder.held and builder.held.can_rotate: return
 

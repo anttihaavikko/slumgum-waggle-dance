@@ -15,6 +15,9 @@ func mark(state: bool):
 	modulate = Color.WHITE if state else Color(0.5, 0.5, 0.5)
 	scale = Vector2.ONE * (1.2 if state and in_bar else 1.0)
 
+func has_item(id: Item.Id) -> bool:
+	return item and item.data.item_id == id
+
 func add_equipment(eq: Equipment):
 	equipment = eq
 	update_visuals()
