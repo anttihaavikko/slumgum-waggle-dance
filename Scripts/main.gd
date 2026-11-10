@@ -11,6 +11,7 @@ class_name Main extends Node
 var station: StationMenu
 var bee: Bee
 var flowers: Array[Flower] = []
+var islands: Array[Island] = []
 
 static var singleton: Main = null
 

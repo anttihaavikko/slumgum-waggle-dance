@@ -13,6 +13,9 @@ class_name Island extends Node2D
 @export var tree_prefab: PackedScene
 @export var trees: Node2D
 @export var huts: Array[PackedScene]
+@export var explosion: Polygon2D
+@export var wall: Polygon2D
+@export var wall_line: Line2D
 
 var gap := 5000
 var pieces := 3
@@ -20,6 +23,7 @@ var pieces := 3
 func _ready() -> void:
 	show()
 	generate()
+	Main.singleton.islands.append(self)
 
 func generate():
 	var shape = get_shape(0)
@@ -44,6 +48,8 @@ func generate():
 	collider.polygon = shape
 	poly.polygon = shape
 	line.points = shape
+	wall.polygon = shape
+	wall_line.points = shape
 	bg.polygon = Geometry2D.offset_polygon(offset_points(shape.duplicate()), 100)[0]
 
 	await get_tree().process_frame
@@ -89,6 +95,16 @@ func shift(shape: PackedVector2Array, dir: Vector2) -> PackedVector2Array:
 	for p in range(shape.size()):
 		shape[p] += dir
 	return shape
+
+func explode(pos: Vector2):
+	var updated := Geometry2D.clip_polygons(poly.polygon, shift(explosion.polygon, pos))
+	if updated.size() == 1:
+		poly.polygon = updated[0]
+		collider.polygon = updated[0]
+		line.points = updated[0]
+	# else:
+	# 	for p in updated.size():
+	# 		print("%d points" % [updated[p].size()])
 
 func spawn_flowers(dir: float):
 	var pos = dir * randf_range(4000, 6000)

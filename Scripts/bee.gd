@@ -52,7 +52,9 @@ func _ready() -> void:
 func throw(prefab: PackedScene):
 	var obj = prefab.instantiate() as RigidBody2D
 	obj.position = body.position
+	var dir = get_global_mouse_position() - body.global_position
 	add_child(obj)
+	obj.apply_impulse(dir.normalized() * 1500)
 
 func can_open() -> bool:
 	return not current or not current.blocks_clicks()
