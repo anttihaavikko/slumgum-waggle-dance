@@ -97,12 +97,11 @@ func generate():
 		tree.global_position = bg.to_global(p) + Vector2.UP * randf_range(400, 750)
 		# tree.global_position.x *= -1
 
-func create_dungeon(try := 0):
-	if try > 10: return
+func create_dungeon(try := 0) -> bool:
+	if try > 10: return false
 	var p = get_ground_pos(randf_range(5000, 15000) * [-1, 1].pick_random())
 	if abs(p.x) < 2000:
-		create_dungeon(try + 1)
-		return
+		return create_dungeon(try + 1)
 	var shape = shift(dungeons.pick_random().polygon, p)
 	# for i in range(shape.size()):
 	# 	var pp = shape[i]
@@ -112,8 +111,9 @@ func create_dungeon(try := 0):
 		poly.polygon = updated[0]
 		collider.polygon = updated[0]
 		line.points = updated[0]
+		return true
 	else:
-		create_dungeon(try + 1)
+		return create_dungeon(try + 1)
 
 func get_ground_pos(pos: float) -> Vector2:
 	ray.global_position = Vector2(pos, -5000)
@@ -127,6 +127,9 @@ func shift(shape: PackedVector2Array, dir: Vector2) -> PackedVector2Array:
 
 func explode(pos: Vector2):
 	var updated := Geometry2D.clip_polygons(poly.polygon, shift(explosion.polygon, pos))
+	# print(updated.size())
+	updated = updated.filter(func(a: PackedVector2Array): return a.size() > 20)
+	# print(updated.size())
 	if updated.size() == 1:
 		poly.polygon = updated[0]
 		collider.polygon = updated[0]
