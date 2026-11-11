@@ -125,7 +125,7 @@ func shift(shape: PackedVector2Array, dir: Vector2) -> PackedVector2Array:
 		shape[p] += dir
 	return shape
 
-func explode(pos: Vector2):
+func explode(pos: Vector2) -> bool:
 	var updated := Geometry2D.clip_polygons(poly.polygon, shift(explosion.polygon, pos))
 	# print(updated.size())
 	updated = updated.filter(func(a: PackedVector2Array): return a.size() > 20)
@@ -134,6 +134,8 @@ func explode(pos: Vector2):
 		poly.polygon = updated[0]
 		collider.polygon = updated[0]
 		line.points = updated[0]
+		return true
+	return false
 	# else:
 	# 	for p in updated.size():
 	# 		print("%d points" % [updated[p].size()])

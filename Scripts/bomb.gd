@@ -22,11 +22,12 @@ func _ready() -> void:
 						mod *= 2
 						if magniude > 1000: bee.damage(roundi(magniude / 1500.0 * 9.0))
 					o.apply_impulse(dir.normalized() * magniude * mod)
+	var exploded := false
 	for island in Main.singleton.islands:
-		island.explode(island.to_local(global_position))
+		exploded = exploded or island.explode(island.to_local(global_position))
 	Main.shake(40, 0.3)
 	Effects.singleton.add_many([1, 2, 3], global_position)
-	if shape.get_collision_count() > 0:
+	if shape.get_collision_count() > 0 and exploded:
 		for i in 10:
 			var dirt = Main.spawn_item([Item.Id.Sand, Item.Id.Dirt].pick_random(), global_position)
 			dirt.apply_impulse(Vector2.ONE.rotated(randf() * PI * 2) * randf_range(500, 1200))
