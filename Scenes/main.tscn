@@ -1205,7 +1205,6 @@ alignment = 1
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
-announces = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1161880959]
 visible = false

@@ -2,8 +2,8 @@ class_name Inventory extends Node
 
 @export var slot_prefab: PackedScene
 @export var manager: ItemManager
-@export var announces := false
 
+var announces := false
 var slots: Array[Slot] = []
 var focused := 0
 var other: Inventory

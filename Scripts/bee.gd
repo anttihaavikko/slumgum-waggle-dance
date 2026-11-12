@@ -48,6 +48,7 @@ func _ready() -> void:
 	lander.body_entered.connect(land)
 	lander.body_exited.connect(func(_o): landed = false)
 	body.body_entered.connect(collide)
+	inventory.announces = true
 
 func throw(prefab: PackedScene):
 	var obj = prefab.instantiate() as RigidBody2D
