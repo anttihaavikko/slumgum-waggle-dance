@@ -865,7 +865,7 @@ position = Vector2(45, 41)
 position = Vector2(1402, -716)
 target_position = Vector2(0, 10000)
 
-[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons")]
+[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area")]
 visible = false
 z_index = 10
 position = Vector2(561, 460)
@@ -887,6 +887,7 @@ explosion = NodePath("Explosion")
 wall = NodePath("Wall")
 wall_line = NodePath("Wall Line")
 dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), NodePath("Dungeon4")]
+start_area = NodePath("Start Area")
 
 [node name="Trees" type="Node2D" parent="Island" unique_id=1112407507]
 modulate = Color(0.15686275, 0.78039217, 0.7607843, 1)
@@ -954,6 +955,12 @@ position = Vector2(12, 1113)
 offset = Vector2(-12, -1113)
 polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
 
+[node name="Start Area" type="Polygon2D" parent="Island" unique_id=1590474848]
+visible = false
+position = Vector2(121, -799)
+offset = Vector2(-110, 1893)
+polygon = PackedVector2Array(-655, -1500, -328, -1283, -285, -1025, 21, -954, 308, -1109, 582, -1530, 883, -1604, 871, -2266, -864, -2242)
+
 [node name="Explosion" type="Polygon2D" parent="Island" unique_id=36252574]
 visible = false
 polygon = PackedVector2Array(-28, -607, 420, -457, 647, 5, 422, 469, -51, 665, -581, 419, -715, -32, -486, -453)
@@ -979,6 +986,7 @@ z_index = 20
 z_as_relative = false
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1935048811]
+visible = false
 
 [node name="Frame" type="TextureRect" parent="HUD" unique_id=940088816]
 self_modulate = Color(0.13725491, 0, 0.11764706, 1)

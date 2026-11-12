@@ -17,6 +17,7 @@ class_name Island extends Node2D
 @export var wall: Polygon2D
 @export var wall_line: Line2D
 @export var dungeons: Array[Polygon2D]
+@export var start_area: Polygon2D
 
 var gap := 5000
 var pieces := 3
@@ -46,6 +47,9 @@ func generate():
 		print("failed, retry!")
 		generate()
 		return
+
+	shape = Geometry2D.clip_polygons(shape, shift(start_area.polygon, Vector2(0, 1000)))[0]
+	start_area.hide()
 
 	collider.polygon = shape
 	poly.polygon = shape
