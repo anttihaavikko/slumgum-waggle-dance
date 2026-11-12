@@ -76,6 +76,7 @@
 [ext_resource type="PackedScene" uid="uid://bpt1nog23ndgh" path="res://Scenes/tree.tscn" id="36_v2nl5"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
 [ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
+[ext_resource type="Script" uid="uid://c7w7nrkb1foho" path="res://Scripts/bee_body.gd" id="42_lpdpw"]
 [ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="43_nay3j"]
 [ext_resource type="Script" uid="uid://bshomi1sce5uq" path="res://Scripts/painter.gd" id="43_ovafv"]
 [ext_resource type="Texture2D" uid="uid://cwwwr5508ya0b" path="res://Sprites/lantern.png" id="47_fg68e"]
@@ -512,7 +513,7 @@ face = NodePath("Body/Face Wrap/LookAtMouse/Face")
 crosses = NodePath("Body/Face Wrap/LookAtMouse/Face/Crosses")
 bomb_prefab = ExtResource("85_vxl7x")
 
-[node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175]
+[node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175 node_paths=PackedStringArray("bee")]
 collision_layer = 5
 collision_mask = 13
 mass = 0.5
@@ -522,6 +523,8 @@ center_of_mass = Vector2(0, -40)
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
+script = ExtResource("42_lpdpw")
+bee = NodePath("..")
 
 [node name="Wing Flap" type="AnimationPlayer" parent="Bee/Body" unique_id=1752399890]
 libraries/ = SubResource("AnimationLibrary_d1ilt")
@@ -872,6 +875,7 @@ position = Vector2(1402, -716)
 target_position = Vector2(0, 10000)
 
 [node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area", "ground_check")]
+visible = false
 z_index = 10
 position = Vector2(561, 460)
 collision_layer = 9
@@ -1137,6 +1141,9 @@ texture = ExtResource("74_p4gyq")
 self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
 position = Vector2(-1541, 1573)
 texture = ExtResource("74_p4gyq")
+
+[node name="Worm" parent="." unique_id=1279136689 instance=ExtResource("73_cf2bd")]
+position = Vector2(-214, -1208)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20

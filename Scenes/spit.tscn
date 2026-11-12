@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b84bj7kepbbnq"]
+
+[ext_resource type="Script" uid="uid://cq8b7m0uhwwur" path="res://Scripts/spit.gd" id="1_2ccia"]
+[ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="1_2s373"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lpdpw"]
+radius = 41.04875
+
+[node name="Spit" type="RigidBody2D" unique_id=326569678]
+collision_layer = 4096
+collision_mask = 4110
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_2ccia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1396726439]
+shape = SubResource("CircleShape2D_lpdpw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1231431094]
+texture = ExtResource("1_2s373")
+scale_amount_min = 0.2
+scale_amount_max = 0.3
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989486341]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+scale = Vector2(0.6152529, 0.6152529)
+texture = ExtResource("1_2s373")

@@ -173,6 +173,8 @@ shift={
 2d_physics/layer_9="Decorations"
 2d_physics/layer_10="Breakables"
 2d_physics/layer_11="Buttons"
+2d_physics/layer_12="Worms"
+2d_physics/layer_13="Spit"
 
 [physics]
 
