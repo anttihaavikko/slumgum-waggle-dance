@@ -16,11 +16,14 @@ class_name Island extends Node2D
 @export var explosion: Polygon2D
 @export var wall: Polygon2D
 @export var wall_line: Line2D
-@export var dungeons: Array[Polygon2D]
+@export var dungeons: Array[Dungeon]
 @export var start_area: Polygon2D
+@export var spawners: Array[PackedScene]
+@export var ground_check: ShapeCast2D
 
 var gap := 5000
 var pieces := 3
+var added_dungeons: Array[Dungeon]
 
 func _ready() -> void:
 	show()
@@ -92,6 +95,9 @@ func generate():
 		create_dungeon(0)
 		await get_tree().process_frame
 
+	for d in added_dungeons:
+		d.cleanup(ground_check)
+
 	for i in 200:
 		var p = bg.polygon[tree_spots[i]]
 		if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 50, bg.polygon): continue
@@ -106,7 +112,8 @@ func create_dungeon(try := 0) -> bool:
 	var p = get_ground_pos(randf_range(5000, 15000) * [-1, 1].pick_random())
 	if abs(p.x) < 2000:
 		return create_dungeon(try + 1)
-	var shape = shift(dungeons.pick_random().polygon, p)
+	var dungeon = dungeons.pick_random()
+	var shape = shift(dungeon.polygon, p)
 	# for i in range(shape.size()):
 	# 	var pp = shape[i]
 	# 	shape[i] = Vector2.ZERO + pp.rotated(randf_range(-0.1, 0.1))
@@ -115,6 +122,8 @@ func create_dungeon(try := 0) -> bool:
 		poly.polygon = updated[0]
 		collider.polygon = updated[0]
 		line.points = updated[0]
+		dungeon.populate(p - global_position, spawners.pick_random(), Main.singleton.item_db.pickup_prefab)
+		added_dungeons.append(dungeon)
 		return true
 	else:
 		return create_dungeon(try + 1)

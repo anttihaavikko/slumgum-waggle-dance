@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cb7tgyuljp17g"]
+
+[ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="1_skiwb"]
+
+[node name="Worm" type="Sprite2D" unique_id=1279136689]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+texture = ExtResource("1_skiwb")

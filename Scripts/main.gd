@@ -28,8 +28,9 @@ func _init() -> void:
 	if singleton == null:
 		singleton = self
 
-static func pop(message: String):
-	Effects.singleton.pop(message, singleton.bee.body.global_position + Vector2.UP * 100)
+static func pop(message: String, offset: float = 0.0):
+	var dir = Vector2.ONE.rotated(randf() * TAU).normalized() * offset
+	Effects.singleton.pop(message, singleton.bee.body.global_position + Vector2.UP * 100 + dir)
 
 func _process(_delta) -> void:
 	held.global_position = held.get_global_mouse_position()

@@ -89,6 +89,9 @@
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
+[ext_resource type="PackedScene" uid="uid://cb7tgyuljp17g" path="res://Scenes/worm.tscn" id="73_cf2bd"]
+[ext_resource type="Script" uid="uid://bc0p0qf2efaya" path="res://Scripts/dungeon.gd" id="74_32dfi"]
+[ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
 
@@ -383,6 +386,9 @@ radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
 radius = 1000.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cf2bd"]
+radius = 100.0
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
@@ -865,8 +871,7 @@ position = Vector2(45, 41)
 position = Vector2(1402, -716)
 target_position = Vector2(0, 10000)
 
-[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area")]
-visible = false
+[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area", "ground_check")]
 z_index = 10
 position = Vector2(561, 460)
 collision_layer = 9
@@ -888,6 +893,8 @@ wall = NodePath("Wall")
 wall_line = NodePath("Wall Line")
 dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), NodePath("Dungeon4")]
 start_area = NodePath("Start Area")
+spawners = Array[PackedScene]([ExtResource("73_cf2bd")])
+ground_check = NodePath("../Ground Check")
 
 [node name="Trees" type="Node2D" parent="Island" unique_id=1112407507]
 modulate = Color(0.15686275, 0.78039217, 0.7607843, 1)
@@ -965,28 +972,177 @@ polygon = PackedVector2Array(-655, -1500, -328, -1283, -285, -1025, 21, -954, 30
 visible = false
 polygon = PackedVector2Array(-28, -607, 420, -457, 647, 5, 422, 469, -51, 665, -581, 419, -715, -32, -486, -453)
 
-[node name="Dungeon1" type="Polygon2D" parent="Island" unique_id=1831085453]
+[node name="Dungeon1" type="Polygon2D" parent="Island" unique_id=1831085453 node_paths=PackedStringArray("spawn_spots", "item_spots")]
 visible = false
 polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 224, 1088, 1257, 1115, 831, 1813, 106, 1912, -211, 2610, 695, 2474, 858, 3099, 514, 3797, -211, 3806, -1434, 2954, -292, 752, -302, -380)
+script = ExtResource("74_32dfi")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4")]
+item_spots = [NodePath("Item1"), NodePath("Item2")]
 
-[node name="Dungeon2" type="Polygon2D" parent="Island" unique_id=402508144]
+[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon1" unique_id=122915426]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(341.99997, -155.99998)
+rotation = -1.4583606
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon1" unique_id=1852566562]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-17.000046, 2260.0005)
+rotation = -1.142881
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon1" unique_id=501162073]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1047.0001, 3221.0002)
+rotation = 0.5460485
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon1" unique_id=1523374538]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-611, 1353.0004)
+rotation = -4.36575
+texture = ExtResource("74_p4gyq")
+
+[node name="Item1" type="Sprite2D" parent="Island/Dungeon1" unique_id=1955154445]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(230, 3206)
+texture = ExtResource("74_p4gyq")
+
+[node name="Item2" type="Sprite2D" parent="Island/Dungeon1" unique_id=1926218091]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(629, 1489)
+texture = ExtResource("74_p4gyq")
+
+[node name="Dungeon2" type="Polygon2D" parent="Island" unique_id=402508144 node_paths=PackedStringArray("spawn_spots", "item_spots")]
 visible = false
 polygon = PackedVector2Array(-483, -1731, 432, -1504, 360, -272, 677, 616, -419, 1051, 550, 1133, 831, 1813, 106, 1912, 1502, 2347, 1221, 2918, -202, 3009, 514, 3797, -211, 3806, -1434, 2954, -1833, 1287, -483, -344)
+script = ExtResource("74_32dfi")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4"), NodePath("Spawner5")]
+item_spots = [NodePath("Item1")]
 
-[node name="Dungeon3" type="Polygon2D" parent="Island" unique_id=621235056]
+[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon2" unique_id=373282433]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-678.00006, -184.00008)
+rotation = -4.1749454
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon2" unique_id=922980435]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1347.9999, 628.99994)
+rotation = -4.1454062
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon2" unique_id=547415232]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(711, 1442)
+rotation = -1.7090026
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon2" unique_id=1685391648]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1669.9999, 2133)
+rotation = 1.2712883
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner5" type="Sprite2D" parent="Island/Dungeon2" unique_id=1872491576]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(86.00006, 3031)
+rotation = -0.18030727
+texture = ExtResource("74_p4gyq")
+
+[node name="Item1" type="Sprite2D" parent="Island/Dungeon2" unique_id=1862678376]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(0, 3604)
+texture = ExtResource("74_p4gyq")
+
+[node name="Dungeon3" type="Polygon2D" parent="Island" unique_id=621235056 node_paths=PackedStringArray("spawn_spots", "item_spots")]
 visible = false
 polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 1312, 1668, 730.3008, 2109.9812, 1547, 2891, 1239, 3444, -166, 2791, -818, 3281, -1434, 2954, -588.9541, 2229.3933, -1443, 997, -872, 653, 25, 1731, 369, 1495, -302, -380)
+script = ExtResource("74_32dfi")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4")]
+item_spots = [NodePath("Item1"), NodePath("Item2")]
 
-[node name="Dungeon4" type="Polygon2D" parent="Island" unique_id=1270893275]
+[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon3" unique_id=1544599721]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-429, -889.0001)
+rotation = -4.857348
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon3" unique_id=1710181091]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(420, -412)
+rotation = -1.5000722
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon3" unique_id=1569907]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(1138, 1176)
+rotation = -1.9215469
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon3" unique_id=1675439118]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-133, 2937)
+rotation = -6.1997995
+texture = ExtResource("74_p4gyq")
+
+[node name="Item1" type="Sprite2D" parent="Island/Dungeon3" unique_id=491331524]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(-995, 1069)
+texture = ExtResource("74_p4gyq")
+
+[node name="Item2" type="Sprite2D" parent="Island/Dungeon3" unique_id=1956283951]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(1118, 2996)
+texture = ExtResource("74_p4gyq")
+
+[node name="Dungeon4" type="Polygon2D" parent="Island" unique_id=1270893275 node_paths=PackedStringArray("spawn_spots", "item_spots")]
 visible = false
 polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 288, 1686, 1058, 2646, 514, 3797, -211, 3806, -963, 2737, -1090, 1849, -2069, 1794, -1362, 752, -292, 752, -302, -380)
+script = ExtResource("74_32dfi")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4"), NodePath("Spawner5")]
+item_spots = [NodePath("Item1")]
+
+[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon4" unique_id=1624159315]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(440, -810.00006)
+rotation = -7.7959676
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon4" unique_id=23275924]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(393, 310)
+rotation = -7.8336344
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon4" unique_id=1704975157]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(358, 1593)
+rotation = -7.908235
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon4" unique_id=1702593011]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(164, 3877)
+rotation = -6.434073
+texture = ExtResource("74_p4gyq")
+
+[node name="Spawner5" type="Sprite2D" parent="Island/Dungeon4" unique_id=1965742101]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1093, 2192)
+rotation = -4.857348
+texture = ExtResource("74_p4gyq")
+
+[node name="Item1" type="Sprite2D" parent="Island/Dungeon4" unique_id=1737899444]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(-1541, 1573)
+texture = ExtResource("74_p4gyq")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20
 z_as_relative = false
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1935048811]
-visible = false
 
 [node name="Frame" type="TextureRect" parent="HUD" unique_id=940088816]
 self_modulate = Color(0.13725491, 0, 0.11764706, 1)
@@ -1049,6 +1205,7 @@ alignment = 1
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
+announces = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1161880959]
 visible = false
@@ -1612,6 +1769,12 @@ position = Vector2(-1599, -17)
 shape = SubResource("CircleShape2D_cpkcx")
 target_position = Vector2(0, 0)
 collision_mask = 566
+
+[node name="Ground Check" type="ShapeCast2D" parent="." unique_id=1065088208]
+position = Vector2(-3256, 753)
+shape = SubResource("CircleShape2D_cf2bd")
+target_position = Vector2(0, 0)
+collision_mask = 8
 
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]

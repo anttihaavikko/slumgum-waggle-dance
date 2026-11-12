@@ -7,7 +7,7 @@
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
-radius = 91.78235
+radius = 123.19903
 
 [node name="Pickup" type="RigidBody2D" unique_id=1139630903 node_paths=PackedStringArray("sprite", "area")]
 collision_layer = 16
