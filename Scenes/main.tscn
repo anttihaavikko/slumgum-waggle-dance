@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://oy1jivx3hba6" path="res://Sprites/cloud2.png" id="11_bv80c"]
 [ext_resource type="Script" uid="uid://c1y4mjr0cxq7s" path="res://Scripts/island.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="11_h1bgf"]
+[ext_resource type="Texture2D" uid="uid://qru54kljjkju" path="res://Sprites/acid.png" id="11_phube"]
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="12_aa8k8"]
 [ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="12_gt3je"]
 [ext_resource type="Texture2D" uid="uid://bbjxqfep8bdgj" path="res://Sprites/cloud3.png" id="12_ptfg5"]
@@ -50,6 +51,8 @@
 [ext_resource type="PackedScene" uid="uid://cw3vxcvugab7d" path="res://Scenes/Effects/plant_parts.tscn" id="19_e6rcu"]
 [ext_resource type="Script" uid="uid://u88bgweyhdp6" path="res://Scripts/inventory.gd" id="19_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cyin4lknfiopg" path="res://Scenes/slot.tscn" id="20_hibaj"]
+[ext_resource type="PackedScene" uid="uid://b717m4xp3kdqg" path="res://_Starter/Scenes/Effects/blood.tscn" id="20_jrou0"]
+[ext_resource type="PackedScene" uid="uid://cibdhow8nd8p5" path="res://_Starter/Scenes/Effects/blood_bits.tscn" id="21_j2g22"]
 [ext_resource type="PackedScene" uid="uid://b4af11tt4lq03" path="res://Scenes/Pieces/sign.tscn" id="22_qax2n"]
 [ext_resource type="PackedScene" uid="uid://mibamh2d04it" path="res://Scenes/Pieces/banner.tscn" id="23_owhal"]
 [ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
@@ -128,8 +131,8 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 3
 title = "Honey"
-color = Color(0.9372549, 0.35686275, 0.35686275, 1)
-sprite = ExtResource("12_gt3je")
+color = Color(1, 0.8168652, 0.5516181, 1)
+sprite = ExtResource("11_phube")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_s8vy0"]
@@ -243,6 +246,14 @@ item_id = 19
 title = "String"
 color = Color(1, 0.7294118, 0.28627452, 1)
 sprite = ExtResource("12_gt3je")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_metco"]
+script = ExtResource("3_cbgmd")
+item_id = 20
+title = "Acid"
+color = Color(0.22457582, 0.8975025, 0.8707956, 1)
+sprite = ExtResource("11_phube")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
@@ -416,13 +427,13 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
 [node name="Effects" type="Node" parent="." unique_id=1890521244]
 script = ExtResource("5_ueoa1")
-effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu")])
+effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22")])
 metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
@@ -749,7 +760,7 @@ sprite = NodePath(".")
 position = Vector2(-247.27628, 103.423645)
 shape = SubResource("CircleShape2D_55idt")
 target_position = Vector2(0, 0)
-collision_mask = 566
+collision_mask = 2614
 
 [node name="Brush" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
 visible = false
@@ -1774,7 +1785,7 @@ enabled = false
 position = Vector2(-1599, -17)
 shape = SubResource("CircleShape2D_cpkcx")
 target_position = Vector2(0, 0)
-collision_mask = 566
+collision_mask = 2614
 
 [node name="Ground Check" type="ShapeCast2D" parent="." unique_id=1065088208]
 position = Vector2(-3256, 753)

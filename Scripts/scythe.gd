@@ -15,6 +15,9 @@ func update(delta: float):
 					done.append(o)
 					if o is Breakable:
 						o.destroy()
+					if o is RootPointer:
+						if o.root is Worm:
+							o.root.hurt(3)
 
 func toggle(state: bool):
 	super.toggle(state)

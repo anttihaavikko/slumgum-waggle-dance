@@ -3,9 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://b84bj7kepbbnq" path="res://Scenes/spit.tscn" id="2_jsk0y"]
 [ext_resource type="Script" uid="uid://duub2dlh0lq3i" path="res://Scripts/worm.gd" id="2_l5dqu"]
 [ext_resource type="Texture2D" uid="uid://drxpq1n288pf5" path="res://Sprites/worm-jaw.png" id="3_b7lw1"]
+[ext_resource type="Texture2D" uid="uid://wftiunh4ju4q" path="res://Sprites/worm-body.png" id="3_cgdv7"]
 [ext_resource type="Script" uid="uid://bwknch2pvkg4u" path="res://_Starter/Scripts/line.gd" id="3_n80vc"]
+[ext_resource type="Script" uid="uid://bi6dt48qm3k7k" path="res://_Starter/Scripts/root_pointer.gd" id="3_wo384"]
 [ext_resource type="Texture2D" uid="uid://d0w6my0geamot" path="res://Sprites/worm-head.png" id="4_jsk0y"]
 [ext_resource type="Script" uid="uid://cav6gx1wclcxg" path="res://_Starter/Scripts/line_mimic.gd" id="4_x1856"]
+[ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="8_211br"]
+[ext_resource type="Texture2D" uid="uid://bjdngqg5tunpo" path="res://Sprites/spit-lines.png" id="10_20thy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cpkcx"]
 radius = 51.0
@@ -17,7 +21,7 @@ radius = 123.68508
 [sub_resource type="CircleShape2D" id="CircleShape2D_ed4kf"]
 radius = 1996.1826
 
-[node name="Worm" type="Sprite2D" unique_id=1279136689 node_paths=PackedStringArray("head", "area", "jaw_left", "jaw_right", "spit_spot")]
+[node name="Worm" type="Sprite2D" unique_id=1279136689 node_paths=PackedStringArray("head", "area", "jaw_left", "jaw_right", "spit_spot", "spit_effect")]
 self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
 z_index = 5
 z_as_relative = false
@@ -28,12 +32,15 @@ jaw_left = NodePath("Head/Jaw Left")
 jaw_right = NodePath("Head/Jaw Right")
 spit_spot = NodePath("Head/Spit Spot")
 spit_prefab = ExtResource("2_jsk0y")
+spit_effect = NodePath("Head/CPUParticles2D")
 
-[node name="Link1" type="RigidBody2D" parent="." unique_id=1422456249]
+[node name="Link1" type="RigidBody2D" parent="." unique_id=1422456249 node_paths=PackedStringArray("root")]
 position = Vector2(0, -264)
 collision_layer = 2048
 collision_mask = 2206
 mass = 0.2
+script = ExtResource("3_wo384")
+root = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Link1" unique_id=349068815]
 position = Vector2(0, 30)
@@ -44,11 +51,13 @@ position = Vector2(3, 175)
 node_a = NodePath("..")
 node_b = NodePath("../../Root")
 
-[node name="Link2" type="RigidBody2D" parent="." unique_id=355666920]
+[node name="Link2" type="RigidBody2D" parent="." unique_id=355666920 node_paths=PackedStringArray("root")]
 position = Vector2(0, -532)
 collision_layer = 2048
 collision_mask = 2206
 mass = 0.2
+script = ExtResource("3_wo384")
+root = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Link2" unique_id=1244402069]
 position = Vector2(0, 30)
@@ -67,7 +76,9 @@ shape = SubResource("CircleShape2D_cpkcx")
 
 [node name="Outline" type="Line2D" parent="." unique_id=1615118387 node_paths=PackedStringArray("targets")]
 width = 120.0
-default_color = Color(0, 0, 0, 1)
+default_color = Color(1, 0.827451, 0.5803922, 1)
+texture = ExtResource("3_cgdv7")
+texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -75,7 +86,9 @@ script = ExtResource("3_n80vc")
 targets = [NodePath("../Root"), NodePath("../Link1/Joint"), NodePath("../Link2/Joint"), NodePath("../Head/Joint")]
 
 [node name="LineMimic" type="Line2D" parent="." unique_id=381623552 node_paths=PackedStringArray("target")]
+visible = false
 width = 70.0
+default_color = Color(1, 0.7294118, 0.28627452, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -83,9 +96,28 @@ script = ExtResource("4_x1856")
 target = NodePath("../Outline")
 metadata/_custom_type_script = "uid://cav6gx1wclcxg"
 
-[node name="Head" type="RigidBody2D" parent="." unique_id=2122500986]
+[node name="Head" type="RigidBody2D" parent="." unique_id=2122500986 node_paths=PackedStringArray("root")]
 position = Vector2(0, -757)
 collision_mask = 2206
+script = ExtResource("3_wo384")
+root = NodePath("..")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Head" unique_id=1139740045]
+position = Vector2(-13, -204)
+emitting = false
+texture = ExtResource("10_20thy")
+lifetime = 0.7
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.74
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 393.33
+initial_velocity_max = 753.34
+scale_amount_min = 0.2
+color = Color(1, 1, 1, 0.5647059)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1727459750]
 shape = SubResource("CircleShape2D_cpkcx")
@@ -107,12 +139,14 @@ position = Vector2(21, -685)
 shape = SubResource("CircleShape2D_ed4kf")
 
 [node name="Jaw Left" type="Sprite2D" parent="Head" unique_id=1836196689]
+self_modulate = Color(1, 0.827451, 0.5803922, 1)
 position = Vector2(-50.999996, -11.0000305)
 scale = Vector2(1.2471948, 1.2471948)
 texture = ExtResource("3_b7lw1")
 offset = Vector2(-4.8107986, -43.29712)
 
 [node name="Jaw Right" type="Sprite2D" parent="Head" unique_id=699097711]
+self_modulate = Color(1, 0.827451, 0.5803922, 1)
 position = Vector2(35, -9.999977)
 scale = Vector2(1.2471948, 1.2471948)
 texture = ExtResource("3_b7lw1")
@@ -120,9 +154,20 @@ offset = Vector2(12.828791, -42.49536)
 flip_h = true
 
 [node name="Head" type="Sprite2D" parent="Head" unique_id=2112720951]
+self_modulate = Color(1, 0.827451, 0.5803922, 1)
 position = Vector2(-7.117218, 70.84668)
 scale = Vector2(1.2471948, 1.2471948)
 texture = ExtResource("4_jsk0y")
 
 [node name="Spit Spot" type="Node2D" parent="Head" unique_id=1423367997]
 position = Vector2(-4, -240)
+
+[node name="Face" parent="Head" unique_id=1240513132 instance=ExtResource("8_211br")]
+position = Vector2(-1, 55)
+rotation = -3.1164603
+scale = Vector2(3.4840617, 3.4840617)
+
+[node name="Mouth" parent="Head/Face/Wrapper" parent_id_path=PackedInt32Array(1240513132, 149350154) index="4" unique_id=1401642646]
+visible = false
+
+[editable path="Head/Face"]

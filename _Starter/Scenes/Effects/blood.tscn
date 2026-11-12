@@ -17,5 +17,6 @@ lifetime = 0.25
 lifetime_variation = 0.3
 velocity = 0.75
 velocity_variation = 0.7
+width = 30
 width_variation = 0.3
 width_curve = SubResource("Curve_ylsbi")

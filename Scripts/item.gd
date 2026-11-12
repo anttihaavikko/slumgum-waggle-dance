@@ -20,7 +20,8 @@ enum Id {
 	Dirt,
 	Sand,
 	Fiber,
-	String
+	String,
+	Acid
 }
 
 var data: ItemData

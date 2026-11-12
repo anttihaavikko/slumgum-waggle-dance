@@ -6,25 +6,35 @@ class_name Worm extends Node2D
 @export var jaw_right: Node2D
 @export var spit_spot: Node2D
 @export var spit_prefab: PackedScene
+@export var spit_effect: CPUParticles2D
 
 var target: Node2D
 var time := 0.0
 var open := 0.0
 var cooldown := 0.0
+var life := 7
 
 func _ready() -> void:
 	head.apply_impulse(Vector2.RIGHT * 1000)
 	area.body_entered.connect(entered)
 	area.body_exited.connect(exited)
 
+func hurt(amount: int):
+	life -= amount
+	if life <= 0:
+		Effects.singleton.add_many([7, 8], head.global_position)
+		queue_free()
+
 func spit():
 	if cooldown > 0: return
 	if target is BeeBody and not target.bee.health.is_alive(): return
+	spit_effect.emitting = true
 	cooldown = 1.0
 	var s = spit_prefab.instantiate() as Spit
 	add_child(s)
 	s.global_position = spit_spot.global_position
 	s.dir = get_dir()
+	head.apply_impulse(-s.dir * 2000)
 	s.apply_impulse(s.dir * 2500)
 
 func get_dir() -> Vector2:

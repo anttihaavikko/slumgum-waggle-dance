@@ -11,16 +11,20 @@ func _ready() -> void:
 			var o = shape.get_collider(i)
 			if o not in done:
 				done.append(o)
+				var dir = o.global_position - global_position
+				var magniude = clampf(1500.0 - dir.length(), 0, 1500.0)
+				var damage = roundi(magniude / 1500.0 * 9.0)
 				if o is Breakable:
 					o.destroy()
 				if o is RigidBody2D:
-					var dir = o.global_position - global_position
-					var magniude = clampf(1500.0 - dir.length(), 0, 1500.0)
 					var mod = 1.0
+					if o is RootPointer:
+						if o.owner is Worm:
+							o.owner.hurt(10)
 					if o.get_parent() is Bee and o is not Bomb:
 						var bee = o.get_parent() as Bee
 						mod *= 2
-						if magniude > 1000: bee.damage(roundi(magniude / 1500.0 * 9.0))
+						if magniude > 1000: bee.damage(damage)
 					o.apply_impulse(dir.normalized() * magniude * mod)
 	var exploded := false
 	for island in Main.singleton.islands:
