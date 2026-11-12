@@ -8,5 +8,5 @@ func spawn(id: Item.Id, pos: Vector2, amount: int = 1, equipment: Equipment.Id =
 	pickup.item = Item.new(items[id], amount)
 	pickup.item.equip = equipment
 	pickup.global_position = pos
-	add_child(pickup)
+	call_deferred("add_child", pickup)
 	return pickup
