@@ -21,6 +21,8 @@ func _ready() -> void:
 					if o is RootPointer:
 						if o.owner is Worm:
 							o.owner.hurt(10)
+						if o.owner is Bird:
+							o.owner.hurt(10)
 					if o.get_parent() is Bee and o is not Bomb:
 						var bee = o.get_parent() as Bee
 						mod *= 2

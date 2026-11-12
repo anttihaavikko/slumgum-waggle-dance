@@ -16,7 +16,10 @@ func update(delta: float):
 					if o is Breakable:
 						o.destroy()
 					if o is RootPointer:
+						Effects.singleton.add(8, area.global_position)
 						if o.root is Worm:
+							o.root.hurt(3)
+						if o.root is Bird:
 							o.root.hurt(3)
 
 func toggle(state: bool):
