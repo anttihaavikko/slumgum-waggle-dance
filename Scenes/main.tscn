@@ -98,6 +98,10 @@
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
+[ext_resource type="Texture2D" uid="uid://0tcure6x51n8" path="res://Sprites/bird-body.png" id="99_t014q"]
+[ext_resource type="Texture2D" uid="uid://d08di2wfpoocp" path="res://Sprites/bird-head.png" id="100_nb1ia"]
+[ext_resource type="Texture2D" uid="uid://bt8yckj8i3dhk" path="res://Sprites/bird-beak.png" id="101_3ahwd"]
+[ext_resource type="Texture2D" uid="uid://c52bniys2od6o" path="res://Sprites/bird-brow.png" id="102_b4xsn"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -401,6 +405,30 @@ radius = 1000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cf2bd"]
 radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ed4kf"]
+radius = 861.6322
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb1ia"]
+shader = ExtResource("15_k12tt")
+shader_parameter/amount = 20.0
+shader_parameter/rotation_speed = 5.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/peaks = 9.49
+shader_parameter/time_mod = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_byh7c"]
+radius = 660.0273
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ahwd"]
+shader = ExtResource("15_k12tt")
+shader_parameter/amount = 10.0
+shader_parameter/rotation_speed = 5.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/peaks = 7.0
+shader_parameter/time_mod = 1.0
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
@@ -1793,5 +1821,115 @@ shape = SubResource("CircleShape2D_cf2bd")
 target_position = Vector2(0, 0)
 collision_mask = 8
 
+[node name="Bird" type="Node2D" parent="." unique_id=1851272746]
+z_index = 10
+position = Vector2(1543, -3574)
+
+[node name="Body" type="RigidBody2D" parent="Bird" unique_id=898345143]
+collision_layer = 8192
+collision_mask = 7310
+mass = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Body" unique_id=2087613320]
+shape = SubResource("CircleShape2D_ed4kf")
+
+[node name="Body" type="Sprite2D" parent="Bird/Body" unique_id=378083168]
+self_modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
+material = SubResource("ShaderMaterial_nb1ia")
+position = Vector2(-12, -87)
+scale = Vector2(1.6703446, 1.6703446)
+texture = ExtResource("99_t014q")
+
+[node name="Head" type="RigidBody2D" parent="Bird" unique_id=356099440]
+position = Vector2(-31, 541)
+collision_layer = 8192
+collision_mask = 7310
+mass = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Head" unique_id=1270048602]
+shape = SubResource("CircleShape2D_byh7c")
+
+[node name="Head" type="Sprite2D" parent="Bird/Head" unique_id=132203082]
+self_modulate = Color(0.3665946, 0.3665946, 0.36659458, 1)
+material = SubResource("ShaderMaterial_3ahwd")
+position = Vector2(19, 209)
+scale = Vector2(1.6703446, 1.6703446)
+texture = ExtResource("100_nb1ia")
+
+[node name="Beak" type="RigidBody2D" parent="Bird" unique_id=1524450982]
+position = Vector2(-31, 541)
+collision_layer = 8192
+collision_mask = 7310
+mass = 10.0
+
+[node name="Beak" type="Sprite2D" parent="Bird/Beak" unique_id=903073119]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+material = SubResource("ShaderMaterial_3ahwd")
+position = Vector2(14, 729)
+scale = Vector2(1.6703446, 1.6703446)
+texture = ExtResource("101_3ahwd")
+
+[node name="Face" parent="Bird/Beak" unique_id=1325252498 instance=ExtResource("7_344ge")]
+position = Vector2(26, 420)
+scale = Vector2(13.449595, 13.449595)
+
+[node name="Filling" parent="Bird/Beak/Face/Wrapper/Eye Left" parent_id_path=PackedInt32Array(1325252498, 3138396) index="0" unique_id=815246253]
+scale = Vector2(0.88720506, 0.88720506)
+
+[node name="Filling" parent="Bird/Beak/Face/Wrapper/Eye Right" parent_id_path=PackedInt32Array(1325252498, 379892137) index="0" unique_id=1364026518]
+scale = Vector2(0.8505026, 0.8505026)
+
+[node name="Mouth" parent="Bird/Beak/Face/Wrapper" parent_id_path=PackedInt32Array(1325252498, 149350154) index="4" unique_id=1401642646]
+visible = false
+
+[node name="Brow" type="Sprite2D" parent="Bird/Beak" unique_id=875076389]
+self_modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
+position = Vector2(20, 217)
+scale = Vector2(1.3162162, 1.3162162)
+texture = ExtResource("102_b4xsn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bird/Beak" unique_id=1163132276]
+polygon = PackedVector2Array(-283, 593, 10, 462, 299, 548, 37, 980)
+
+[node name="Neck" type="PinJoint2D" parent="Bird" unique_id=115405869]
+position = Vector2(-37, 219)
+node_a = NodePath("../Body")
+node_b = NodePath("../Head")
+
+[node name="Neck2" type="DampedSpringJoint2D" parent="Bird" unique_id=1283722815]
+position = Vector2(382, 219)
+node_a = NodePath("../Body")
+node_b = NodePath("../Head")
+length = 100.0
+stiffness = 10.0
+
+[node name="Neck3" type="DampedSpringJoint2D" parent="Bird" unique_id=1295067226]
+position = Vector2(-474, 219)
+node_a = NodePath("../Body")
+node_b = NodePath("../Head")
+length = 100.0
+stiffness = 10.0
+
+[node name="Beak Join" type="PinJoint2D" parent="Bird" unique_id=276081278]
+position = Vector2(-37, 219)
+node_a = NodePath("../Beak")
+node_b = NodePath("../Head")
+
+[node name="Beak Spring 1" type="DampedSpringJoint2D" parent="Bird" unique_id=1619915906]
+position = Vector2(382, 219)
+node_a = NodePath("../Beak")
+node_b = NodePath("../Head")
+length = 100.0
+stiffness = 10.0
+
+[node name="Beak Spring 2" type="DampedSpringJoint2D" parent="Bird" unique_id=1908431729]
+position = Vector2(-474, 219)
+node_a = NodePath("../Beak")
+node_b = NodePath("../Head")
+length = 100.0
+stiffness = 10.0
+
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
+
+[editable path="Bird/Beak/Face"]
