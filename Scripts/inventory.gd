@@ -36,6 +36,13 @@ func focus(index: int):
 	slots[focused].mark(true)
 	changed.emit()
 
+func get_count(id: Item.Id):
+	var total := 0
+	for s in slots:
+		if s.item and s.item.data.item_id == id:
+			total += s.item.amount
+	return total
+
 func has(id: Item.Id) -> bool:
 	return slots.any(func(s: Slot): return s.item.data.item_id == id)
 

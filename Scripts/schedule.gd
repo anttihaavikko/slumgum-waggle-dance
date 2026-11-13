@@ -7,7 +7,7 @@ class_name Schedule extends Node
 var sleeper: Node2D
 
 var time := 0.1
-var speed := 0.01
+var speed := 0.005
 var day := 1
 var sleep_until := -1.0
 
