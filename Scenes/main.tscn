@@ -104,6 +104,7 @@
 [ext_resource type="Texture2D" uid="uid://d08di2wfpoocp" path="res://Sprites/bird-head.png" id="100_nb1ia"]
 [ext_resource type="Texture2D" uid="uid://d1n5hk6l1wnyo" path="res://Sprites/bird-chest.png" id="100_ot5ec"]
 [ext_resource type="Texture2D" uid="uid://bt8yckj8i3dhk" path="res://Sprites/bird-beak.png" id="101_3ahwd"]
+[ext_resource type="PackedScene" uid="uid://cguckrrfjdki6" path="res://Scripts/bird_wing.tscn" id="101_b4mik"]
 [ext_resource type="Texture2D" uid="uid://c52bniys2od6o" path="res://Sprites/bird-brow.png" id="102_b4xsn"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
@@ -1191,9 +1192,6 @@ self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
 position = Vector2(-1541, 1573)
 texture = ExtResource("74_p4gyq")
 
-[node name="Worm" parent="." unique_id=1279136689 instance=ExtResource("73_cf2bd")]
-position = Vector2(-5915, -3033)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20
 z_as_relative = false
@@ -1852,6 +1850,13 @@ root = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Body" unique_id=2087613320]
 shape = SubResource("CircleShape2D_ed4kf")
 
+[node name="Wing Right" parent="Bird/Body" unique_id=2135523794 instance=ExtResource("101_b4mik")]
+position = Vector2(665, -39)
+
+[node name="Wing Left" parent="Bird/Body" unique_id=2012935144 instance=ExtResource("101_b4mik")]
+position = Vector2(-676.00006, -39)
+scale = Vector2(-1.345, 1.345)
+
 [node name="Body" type="Sprite2D" parent="Bird/Body" unique_id=378083168]
 self_modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
 material = SubResource("ShaderMaterial_nb1ia")
@@ -1861,12 +1866,14 @@ texture = ExtResource("99_t014q")
 
 [node name="Chest" type="Sprite2D" parent="Bird/Body" unique_id=954889935]
 self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+z_index = 1
 material = SubResource("ShaderMaterial_nb1ia")
 position = Vector2(17, 657)
 scale = Vector2(1.6183149, 1.6183149)
 texture = ExtResource("100_ot5ec")
 
 [node name="Head" type="RigidBody2D" parent="Bird" unique_id=356099440 node_paths=PackedStringArray("root")]
+z_index = 2
 position = Vector2(-23, 492)
 collision_layer = 8192
 collision_mask = 23710
@@ -1905,6 +1912,7 @@ length = 100.0
 stiffness = 10.0
 
 [node name="Beak" type="RigidBody2D" parent="Bird" unique_id=1524450982 node_paths=PackedStringArray("root")]
+z_index = 2
 position = Vector2(-23, 492)
 collision_layer = 8192
 collision_mask = 23710
