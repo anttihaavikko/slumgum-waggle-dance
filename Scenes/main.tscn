@@ -98,15 +98,6 @@
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
-[ext_resource type="Script" uid="uid://6jnrv0eoobp8" path="res://Scripts/bird.gd" id="99_aok0f"]
-[ext_resource type="Texture2D" uid="uid://0tcure6x51n8" path="res://Sprites/bird-body.png" id="99_t014q"]
-[ext_resource type="Script" uid="uid://bi6dt48qm3k7k" path="res://_Starter/Scripts/root_pointer.gd" id="100_64lof"]
-[ext_resource type="Texture2D" uid="uid://d08di2wfpoocp" path="res://Sprites/bird-head.png" id="100_nb1ia"]
-[ext_resource type="Texture2D" uid="uid://d1n5hk6l1wnyo" path="res://Sprites/bird-chest.png" id="100_ot5ec"]
-[ext_resource type="Script" uid="uid://c71knygmaeq2x" path="res://Scripts/bird_theme.gd" id="100_urine"]
-[ext_resource type="Texture2D" uid="uid://bt8yckj8i3dhk" path="res://Sprites/bird-beak.png" id="101_3ahwd"]
-[ext_resource type="PackedScene" uid="uid://cguckrrfjdki6" path="res://Scripts/bird_wing.tscn" id="101_b4mik"]
-[ext_resource type="Texture2D" uid="uid://c52bniys2od6o" path="res://Sprites/bird-brow.png" id="102_b4xsn"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -411,73 +402,6 @@ radius = 1000.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cf2bd"]
 radius = 100.0
 
-[sub_resource type="Resource" id="Resource_5vy51"]
-script = ExtResource("100_urine")
-main = Color(0.3647059, 0.3647059, 0.3647059, 1)
-chest = Color(0.9372549, 0.35686275, 0.35686275, 1)
-stripe = Color(0, 0, 0, 0)
-beak = Color(1, 0.7294118, 0.28627452, 1)
-cheeks = Color(0.9372549, 0.35686275, 0.35686275, 1)
-metadata/_custom_type_script = "uid://c71knygmaeq2x"
-
-[sub_resource type="Resource" id="Resource_urine"]
-script = ExtResource("100_urine")
-main = Color(0.1453273, 0.7324944, 0.7102251, 1)
-chest = Color(1, 0.7294118, 0.28627452, 1)
-stripe = Color(0, 0, 0, 0.7176471)
-beak = Color(0.18359044, 0.18359044, 0.18359044, 1)
-cheeks = Color(0.9372549, 0.35686275, 0.35686275, 1)
-metadata/_custom_type_script = "uid://c71knygmaeq2x"
-
-[sub_resource type="Resource" id="Resource_o2owy"]
-script = ExtResource("100_urine")
-main = Color(0.20871013, 0.20871016, 0.20871013, 1)
-chest = Color(1, 0.7294118, 0.28627452, 1)
-stripe = Color(0.7017301, 0.7017301, 0.7017301, 1)
-beak = Color(0.3665946, 0.3665946, 0.36659458, 1)
-cheeks = Color(0.1254902, 0.6392157, 0.61960787, 1)
-metadata/_custom_type_script = "uid://c71knygmaeq2x"
-
-[sub_resource type="Resource" id="Resource_ylsbi"]
-script = ExtResource("100_urine")
-main = Color(0.48962224, 0.48962224, 0.48962218, 1)
-chest = Color(1, 1, 1, 1)
-stripe = Color(0, 0, 0, 0.7294118)
-beak = Color(1, 0.7294118, 0.28627452, 1)
-cheeks = Color(0.9372549, 0.35686275, 0.35686275, 1)
-metadata/_custom_type_script = "uid://c71knygmaeq2x"
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_64lof"]
-bounce = 0.5
-absorbent = true
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ed4kf"]
-radius = 917.89813
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb1ia"]
-shader = ExtResource("15_k12tt")
-shader_parameter/amount = 20.0
-shader_parameter/rotation_speed = 5.0
-shader_parameter/offset = 0.0
-shader_parameter/speed = 0.1
-shader_parameter/peaks = 9.49
-shader_parameter/time_mod = 1.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_byh7c"]
-radius = 660.0273
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ahwd"]
-shader = ExtResource("15_k12tt")
-shader_parameter/amount = 10.0
-shader_parameter/rotation_speed = 5.0
-shader_parameter/offset = 0.0
-shader_parameter/speed = 0.1
-shader_parameter/peaks = 7.0
-shader_parameter/time_mod = 1.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sgh3c"]
-radius = 417.80975
-
 [node name="Main" type="Node2D" unique_id=324059262]
 
 [node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape")]
@@ -485,7 +409,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Craft Window/Core"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
@@ -1335,14 +1259,14 @@ offset_bottom = 1333.0
 mouse_filter = 2
 color = Color(0.105882354, 0.019607844, 0.14509805, 1)
 
-[node name="Craft Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
+[node name="Core Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
 offset_bottom = 302.0
 title = "CORE"
 
-[node name="Core" type="Control" parent="HUD/Craft Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview")]
+[node name="Core" type="Control" parent="HUD/Core Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview", "crafter")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1359,43 +1283,111 @@ mouse_filter = 2
 script = ExtResource("38_kqrg6")
 win = NodePath("..")
 preview = NodePath("../../Preview Window/Preview")
+crafter = NodePath("VBoxContainer/Crafter")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Craft Window/Core" unique_id=1768440130]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Core Window/Core" unique_id=1768440130]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 86.0
 offset_right = 373.0
 offset_bottom = 197.0
 
-[node name="Description" type="RichTextLabel" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=496331594]
+[node name="Description" type="RichTextLabel" parent="HUD/Core Window/Core/VBoxContainer" unique_id=496331594]
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
 text = "The core provides energy to all connected platforms. Allows some very basic crafting."
 fit_content = true
 
-[node name="Spacer" type="ColorRect" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=2064826301]
+[node name="Spacer" type="ColorRect" parent="HUD/Core Window/Core/VBoxContainer" unique_id=2064826301]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Subtitle" type="RichTextLabel" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=368487812]
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Core Window/Core/VBoxContainer" unique_id=368487812]
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 22
 text = "PICK A RECIPE"
 fit_content = true
 
-[node name="Spacer2" type="ColorRect" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=2024927129]
+[node name="Spacer2" type="ColorRect" parent="HUD/Core Window/Core/VBoxContainer" unique_id=2024927129]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Crafter" type="VBoxContainer" parent="HUD/Craft Window/Core/VBoxContainer" unique_id=1240438515 node_paths=PackedStringArray("preview")]
+[node name="Crafter" type="VBoxContainer" parent="HUD/Core Window/Core/VBoxContainer" unique_id=1240438515 node_paths=PackedStringArray("preview")]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 script = ExtResource("50_1semv")
+recipes = Array[int]([0, 5])
+button_prefab = ExtResource("50_2daye")
+preview = NodePath("../../../../Preview Window/Preview")
+
+[node name="Anvil Window" parent="HUD" unique_id=31283961 instance=ExtResource("57_lx3vj")]
+offset_left = -617.0
+offset_top = -369.0
+offset_right = -211.0
+offset_bottom = 302.0
+title = "ANVIL"
+
+[node name="Anvil" type="Control" parent="HUD/Anvil Window" unique_id=259982122 node_paths=PackedStringArray("win", "preview", "crafter")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -335.5
+offset_right = 203.0
+offset_bottom = 335.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("38_kqrg6")
+win = NodePath("..")
+preview = NodePath("../../Preview Window/Preview")
+crafter = NodePath("VBoxContainer/Crafter")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Anvil Window/Anvil" unique_id=1885799288]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 86.0
+offset_right = 373.0
+offset_bottom = 197.0
+
+[node name="Description" type="RichTextLabel" parent="HUD/Anvil Window/Anvil/VBoxContainer" unique_id=1798386482]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "The core provides energy to all connected platforms. Allows some very basic crafting."
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Anvil Window/Anvil/VBoxContainer" unique_id=59118443]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Anvil Window/Anvil/VBoxContainer" unique_id=1985980959]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 22
+text = "PICK A RECIPE"
+fit_content = true
+
+[node name="Spacer2" type="ColorRect" parent="HUD/Anvil Window/Anvil/VBoxContainer" unique_id=559773262]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Crafter" type="VBoxContainer" parent="HUD/Anvil Window/Anvil/VBoxContainer" unique_id=905743923 node_paths=PackedStringArray("preview")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+script = ExtResource("50_1semv")
+recipes = Array[int]([1, 2, 3, 4])
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 
@@ -1866,191 +1858,5 @@ shape = SubResource("CircleShape2D_cf2bd")
 target_position = Vector2(0, 0)
 collision_mask = 8
 
-[node name="Bird" type="Node2D" parent="." unique_id=1851272746 node_paths=PackedStringArray("body", "head", "beak", "swipe_right", "swipe_left", "main_sprites", "stripe", "chest", "beak_sprite", "blush")]
-z_index = 10
-position = Vector2(541, -6222)
-script = ExtResource("99_aok0f")
-body = NodePath("Body")
-head = NodePath("Head")
-beak = NodePath("Beak")
-swipe_right = NodePath("Beak/Swipe Right")
-swipe_left = NodePath("Beak/Swiper Left")
-main_sprites = [NodePath("Body/Body"), NodePath("Body/Wing Right/Base"), NodePath("Body/Wing Right/Base/Fill"), NodePath("Body/Wing Right/Base/Tip"), NodePath("Body/Wing Right/Base/Tip/Fill"), NodePath("Body/Wing Left/Base"), NodePath("Body/Wing Left/Base/Fill"), NodePath("Body/Wing Left/Base/Tip"), NodePath("Body/Wing Left/Base/Tip/Fill"), NodePath("Head/Head"), NodePath("Beak/Brow")]
-stripe = NodePath("Head/Head/Stripe/Face Stripe")
-chest = NodePath("Body/Chest")
-beak_sprite = NodePath("Beak/Beak")
-blush = NodePath("Beak/Face/Wrapper/Blushes")
-themes = Array[ExtResource("100_urine")]([SubResource("Resource_5vy51"), SubResource("Resource_urine"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi")])
-
-[node name="Body" type="RigidBody2D" parent="Bird" unique_id=898345143 node_paths=PackedStringArray("root")]
-collision_layer = 8192
-collision_mask = 23710
-mass = 20.0
-physics_material_override = SubResource("PhysicsMaterial_64lof")
-script = ExtResource("100_64lof")
-root = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Body" unique_id=2087613320]
-shape = SubResource("CircleShape2D_ed4kf")
-
-[node name="Wing Right" parent="Bird/Body" unique_id=2135523794 instance=ExtResource("101_b4mik")]
-position = Vector2(665, -39)
-
-[node name="Wing Left" parent="Bird/Body" unique_id=2012935144 instance=ExtResource("101_b4mik")]
-position = Vector2(-676.00006, -39)
-scale = Vector2(-1.345, 1.345)
-
-[node name="Body" type="Sprite2D" parent="Bird/Body" unique_id=378083168]
-self_modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
-material = SubResource("ShaderMaterial_nb1ia")
-position = Vector2(-12, -87)
-scale = Vector2(1.6703446, 1.6703446)
-texture = ExtResource("99_t014q")
-
-[node name="Chest" type="Sprite2D" parent="Bird/Body" unique_id=954889935]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-z_index = 1
-material = SubResource("ShaderMaterial_nb1ia")
-position = Vector2(17, 657)
-scale = Vector2(1.6183149, 1.6183149)
-texture = ExtResource("100_ot5ec")
-
-[node name="Head" type="RigidBody2D" parent="Bird" unique_id=356099440 node_paths=PackedStringArray("root")]
-z_index = 2
-position = Vector2(-23, 492)
-collision_layer = 8192
-collision_mask = 23710
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_64lof")
-script = ExtResource("100_64lof")
-root = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Head" unique_id=1270048602]
-shape = SubResource("CircleShape2D_byh7c")
-
-[node name="Head" type="Sprite2D" parent="Bird/Head" unique_id=132203082]
-self_modulate = Color(0.3665946, 0.3665946, 0.36659458, 1)
-clip_children = 2
-material = SubResource("ShaderMaterial_3ahwd")
-position = Vector2(11, -21)
-scale = Vector2(1.6703446, 1.6703446)
-texture = ExtResource("100_nb1ia")
-
-[node name="Stripe" type="Node2D" parent="Bird/Head/Head" unique_id=959583332]
-position = Vector2(1.1973572, 219.11646)
-
-[node name="Face Stripe" type="Polygon2D" parent="Bird/Head/Head/Stripe" unique_id=492984187]
-self_modulate = Color(0.14901961, 0.14901961, 0.14901961, 0.7254902)
-position = Vector2(2.993394, -207.14291)
-scale = Vector2(0.92198884, 0.92198884)
-polygon = PackedVector2Array(-1.796051, 146.07764, -201.75479, 144.2815, -781.79834, -101.94556, -477.26062, 152.5935, -109.55824, 258.62915, 129.31464, 257.4319, 573.36206, 86.36133, 776.60376, -121.42554, 196.36667, 144.88013)
-
-[node name="Neck" type="PinJoint2D" parent="Bird/Head" unique_id=115405869]
-position = Vector2(-6, -322)
-node_a = NodePath("../../Body")
-node_b = NodePath("..")
-
-[node name="Neck2" type="DampedSpringJoint2D" parent="Bird/Head" unique_id=1283722815]
-position = Vector2(413, -322)
-node_a = NodePath("../../Body")
-node_b = NodePath("..")
-length = 100.0
-stiffness = 10.0
-
-[node name="Neck3" type="DampedSpringJoint2D" parent="Bird/Head" unique_id=1295067226]
-position = Vector2(-443, -322)
-node_a = NodePath("../../Body")
-node_b = NodePath("..")
-length = 100.0
-stiffness = 10.0
-
-[node name="Beak" type="RigidBody2D" parent="Bird" unique_id=1524450982 node_paths=PackedStringArray("root")]
-z_index = 2
-position = Vector2(-23, 492)
-collision_layer = 8192
-collision_mask = 23710
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_64lof")
-script = ExtResource("100_64lof")
-root = NodePath("..")
-
-[node name="Beak" type="Sprite2D" parent="Bird/Beak" unique_id=903073119]
-self_modulate = Color(1, 0.7294118, 0.28627452, 1)
-material = SubResource("ShaderMaterial_3ahwd")
-position = Vector2(14, 729)
-scale = Vector2(1.6703446, 1.6703446)
-texture = ExtResource("101_3ahwd")
-
-[node name="Face" parent="Bird/Beak" unique_id=1325252498 instance=ExtResource("7_344ge")]
-position = Vector2(12.771608, 346.7163)
-scale = Vector2(13.449595, 13.449595)
-
-[node name="Blush Left" parent="Bird/Beak/Face/Wrapper/Blushes" parent_id_path=PackedInt32Array(1325252498, 319134752) index="0" unique_id=1921362429]
-position = Vector2(-24.98216, 5.7250757)
-
-[node name="Blush Right" parent="Bird/Beak/Face/Wrapper/Blushes" parent_id_path=PackedInt32Array(1325252498, 319134752) index="1" unique_id=69306370]
-position = Vector2(24.53605, 5.353326)
-
-[node name="Filling" parent="Bird/Beak/Face/Wrapper/Eye Left" parent_id_path=PackedInt32Array(1325252498, 3138396) index="0" unique_id=815246253]
-scale = Vector2(0.88720506, 0.88720506)
-
-[node name="Filling" parent="Bird/Beak/Face/Wrapper/Eye Right" parent_id_path=PackedInt32Array(1325252498, 379892137) index="0" unique_id=1364026518]
-scale = Vector2(0.8505026, 0.8505026)
-
-[node name="Mouth" parent="Bird/Beak/Face/Wrapper" parent_id_path=PackedInt32Array(1325252498, 149350154) index="4" unique_id=1401642646]
-visible = false
-
-[node name="Brow" type="Sprite2D" parent="Bird/Beak" unique_id=875076389]
-self_modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
-position = Vector2(24.771606, 145.71631)
-scale = Vector2(1.3162162, 1.3162162)
-texture = ExtResource("102_b4xsn")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bird/Beak" unique_id=1163132276]
-position = Vector2(2, 428)
-polygon = PackedVector2Array(-577, -235, 8, -434, 543, -253, 27, 544)
-
-[node name="Beak Join" type="PinJoint2D" parent="Bird/Beak" unique_id=276081278]
-position = Vector2(4, 77)
-node_a = NodePath("..")
-node_b = NodePath("../../Head")
-
-[node name="Beak Spring 1" type="DampedSpringJoint2D" parent="Bird/Beak" unique_id=1619915906]
-position = Vector2(248, 561)
-node_a = NodePath("..")
-node_b = NodePath("../../Head")
-
-[node name="Beak Spring 2" type="DampedSpringJoint2D" parent="Bird/Beak" unique_id=1908431729]
-position = Vector2(-224, 586)
-node_a = NodePath("..")
-node_b = NodePath("../../Head")
-
-[node name="Swipe Right" type="Area2D" parent="Bird/Beak" unique_id=849805628]
-position = Vector2(436, 679)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Beak/Swipe Right" unique_id=1460208740]
-position = Vector2(1, -3)
-shape = SubResource("CircleShape2D_sgh3c")
-
-[node name="Swiper Left" type="Area2D" parent="Bird/Beak" unique_id=112768881]
-position = Vector2(-400, 698)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Beak/Swiper Left" unique_id=1414423126]
-position = Vector2(1, -3)
-shape = SubResource("CircleShape2D_sgh3c")
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bird/Beak" unique_id=1949654502]
-position = Vector2(13, 345)
-remote_path = NodePath("../../Head/Head/Stripe")
-update_scale = false
-
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
-
-[editable path="Bird/Body/Wing Right"]
-[editable path="Bird/Body/Wing Left"]
-[editable path="Bird/Beak/Face"]

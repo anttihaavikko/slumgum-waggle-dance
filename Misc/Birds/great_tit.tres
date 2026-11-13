@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BirdTheme" format=3 uid="uid://ce4nf1mah3s08"]
+
+[ext_resource type="Script" uid="uid://c71knygmaeq2x" path="res://Scripts/bird_theme.gd" id="1_gk2fl"]
+
+[resource]
+script = ExtResource("1_gk2fl")
+main = Color(0.20871013, 0.20871016, 0.20871013, 1)
+chest = Color(1, 0.7294118, 0.28627452, 1)
+stripe = Color(0.7017301, 0.7017301, 0.7017301, 1)
+beak = Color(0.3665946, 0.3665946, 0.36659458, 1)
+cheeks = Color(0.1254902, 0.6392157, 0.61960787, 1)
+metadata/_custom_type_script = "uid://c71knygmaeq2x"

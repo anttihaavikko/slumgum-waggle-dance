@@ -5,6 +5,7 @@ class_name StationMenu extends Control
 @export var win: GameWindow
 @export var preview: Preview
 @export var description: RichTextLabel
+@export var crafter: Crafter
 
 var initialized: bool
 var station: Station
@@ -44,6 +45,7 @@ func close():
 func open(source: Station):
 	if Main.singleton.station:
 		Main.singleton.station.close()
+	if crafter: crafter.open()
 	station = source
 	Main.singleton.station = self
 	Main.singleton.inventory.other = inputs

@@ -1,21 +1,28 @@
-extends Control
+class_name Crafter extends Control
 
+@export var recipes: Array[Equipment.Id]
 @export var button_prefab: PackedScene
 @export var preview: Preview
 
 var buttons: Array[Button] = []
+var index := 0
 
 func _ready() -> void:
-	for eq in Main.singleton.bee.tools:
+	for i in recipes.size():
+		var eq = Main.singleton.bee.tools[recipes[i]]
 		var button = button_prefab.instantiate() as Button
 		button.toggle_mode = true
 		buttons.append(button)
 		button.text = eq.name
-		button.pressed.connect(func(): press(eq, button))
+		button.pressed.connect(func(): press(eq, button, i))
 		add_child(button)
-	press(Main.singleton.bee.tools[0], buttons[0])
+	open()
 
-func press(eq: Equipment, button: Button):
+func open():
+	press(Main.singleton.bee.tools[recipes[index]], buttons[index], index)
+
+func press(eq: Equipment, button: Button, idx: int):
+	index = idx
 	deselect_all(button)
 	preview.show_for(eq)
 
