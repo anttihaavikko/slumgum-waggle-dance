@@ -1,7 +1,7 @@
 class_name Bee extends Node2D
 
-@export var body: RigidBody2D
-@export var lander: RigidBody2D
+@export var body: MovableRigidbody
+@export var lander: MovableRigidbody
 @export var wings: AnimationPlayer
 @export var inventory: Inventory
 @export var tools: Array[Equipment]
@@ -73,6 +73,23 @@ func die():
 	wings.stop()
 	face.mouth.scale.y *= -1
 	item.hide()
+	await get_tree().create_timer(3).timeout
+	body.move_to(global_position, 0)
+	lander.move_to(global_position + Vector2.DOWN * 133, 0)
+	body.linear_velocity = Vector2.ZERO
+	body.angular_velocity = 0
+	lander.linear_velocity = Vector2.ZERO
+	lander.angular_velocity = 0
+	wings.play()
+	crosses.hide()
+	face.right_eye.show()
+	face.left_eye.show()
+	face.mouth.scale.y *= -1
+	if current: current.show()
+	else: hands.show()
+	health.heal(999)
+	energy.heal(999)
+	dead = false
 
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id

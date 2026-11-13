@@ -93,6 +93,7 @@
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
+[ext_resource type="Script" uid="uid://bks47snlvsntf" path="res://_Starter/Scripts/movable_rigidbody.gd" id="71_t014q"]
 [ext_resource type="PackedScene" uid="uid://cb7tgyuljp17g" path="res://Scenes/worm.tscn" id="73_cf2bd"]
 [ext_resource type="Script" uid="uid://bc0p0qf2efaya" path="res://Scripts/dungeon.gd" id="74_32dfi"]
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
@@ -154,6 +155,7 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_wl4bb"]
 script = ExtResource("3_cbgmd")
 item_id = 6
+title = "Bomb"
 color = Color(0.3553136, 0.35531354, 0.35531357, 1)
 sprite = ExtResource("10_6h1fc")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
@@ -524,7 +526,7 @@ face = NodePath("Body/Face Wrap/LookAtMouse/Face")
 crosses = NodePath("Body/Face Wrap/LookAtMouse/Face/Crosses")
 bomb_prefab = ExtResource("85_vxl7x")
 
-[node name="Body" type="RigidBody2D" parent="Bee" unique_id=1512123175 node_paths=PackedStringArray("bee")]
+[node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
 collision_mask = 8205
 mass = 0.5
@@ -536,6 +538,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("42_lpdpw")
 bee = NodePath("..")
+metadata/_custom_type_script = "uid://bks47snlvsntf"
 
 [node name="Wing Flap" type="AnimationPlayer" parent="Bee/Body" unique_id=1752399890]
 libraries/ = SubResource("AnimationLibrary_d1ilt")
@@ -883,13 +886,15 @@ sprite = NodePath(".")
 position = Vector2(-227.63586, -3.8719788)
 texture = ExtResource("43_nay3j")
 
-[node name="Lander" type="RigidBody2D" parent="Bee" unique_id=168312675]
+[node name="Lander" type="RigidBody2D" parent="Bee" unique_id=832043342]
 position = Vector2(0, 133)
 collision_layer = 129
 collision_mask = 9
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
+script = ExtResource("71_t014q")
+metadata/_custom_type_script = "uid://bks47snlvsntf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bee/Lander" unique_id=372798544]
 position = Vector2(0, 13)

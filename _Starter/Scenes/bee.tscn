@@ -1,0 +1,548 @@
+[gd_scene format=3 uid="uid://f7tkjnu0j6jp"]
+
+[ext_resource type="Script" uid="uid://c6vi0ajnf67n7" path="res://Scripts/bee.gd" id="1_u3wa2"]
+[ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="2_vjfft"]
+[ext_resource type="Script" uid="uid://c7w7nrkb1foho" path="res://Scripts/bee_body.gd" id="3_wub5u"]
+[ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="4_tei50"]
+[ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="5_3a1kx"]
+[ext_resource type="Texture2D" uid="uid://dpdpimyenwx77" path="res://Sprites/body.png" id="6_lpb6d"]
+[ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="7_t5wit"]
+[ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="8_gsps1"]
+[ext_resource type="Script" uid="uid://dce3tbn077db6" path="res://_Starter/Scripts/look_at_mouse.gd" id="9_oxbmd"]
+[ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="10_d5hvf"]
+[ext_resource type="Texture2D" uid="uid://b6d031yqaujsn" path="res://Sprites/x.png" id="11_rypom"]
+[ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="12_1xvtm"]
+[ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="13_4yyba"]
+[ext_resource type="Texture2D" uid="uid://bhmy8epeom4i4" path="res://Sprites/hands.png" id="14_r21cm"]
+[ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="15_shqfn"]
+[ext_resource type="Texture2D" uid="uid://chigtoisavcty" path="res://Sprites/held-hammer.png" id="16_1tn42"]
+[ext_resource type="Script" uid="uid://bdxalhd66bjh3" path="res://Scripts/hammer.gd" id="17_qcu1q"]
+[ext_resource type="Texture2D" uid="uid://cucel30a085ml" path="res://Sprites/held_scythe.png" id="18_ggh3y"]
+[ext_resource type="Script" uid="uid://dug0iwlcv3ovm" path="res://Scripts/scythe.gd" id="19_jacp7"]
+[ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="20_us1lc"]
+[ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="21_7xvdx"]
+[ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="22_72sqk"]
+[ext_resource type="Texture2D" uid="uid://cwwwr5508ya0b" path="res://Sprites/lantern.png" id="23_a0nu8"]
+[ext_resource type="Texture2D" uid="uid://cff2rh54nd4pq" path="res://Sprites/light.png" id="24_8xgrw"]
+[ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="25_wjy1b"]
+[ext_resource type="Texture2D" uid="uid://cd0yify70om02" path="res://Sprites/guitar.png" id="26_r461q"]
+[ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="27_yi3td"]
+[ext_resource type="Script" uid="uid://bshomi1sce5uq" path="res://Scripts/painter.gd" id="28_fuef6"]
+[ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="29_t7vak"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
+bounce = 0.5
+
+[sub_resource type="Animation" id="Animation_ynf5e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wings Right:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wings Left:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wings Right/Lower:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4546753]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wings Left/Lower:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4546753]
+}
+
+[sub_resource type="Animation" id="Animation_hptm8"]
+resource_name = "flap"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wings Right:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.21666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2617993877991494, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wings Left:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2617993877991494, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wings Right/Lower:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.4546753, 0.5235987755982988, 0.4546753]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wings Left/Lower:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.4546753, 0.5235987755982988, 0.4546753]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1ilt"]
+_data = {
+&"RESET": SubResource("Animation_ynf5e"),
+&"flap": SubResource("Animation_hptm8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55idt"]
+radius = 174.1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qnggo"]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
+size = Vector2(163, 45)
+
+[node name="Bee" type="Node2D" unique_id=1355184484 node_paths=PackedStringArray("body", "lander", "wings", "tools", "hands", "item", "cam", "face", "crosses")]
+z_index = 5
+script = ExtResource("1_u3wa2")
+body = NodePath("Body")
+lander = NodePath("Lander")
+wings = NodePath("Body/Wing Flap")
+tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Hands/Aligner/Swinger/Lantern")]
+hands = NodePath("Body/Hands/Hands")
+item = NodePath("Body/Hands/Item")
+cam = NodePath("Body/Camera")
+face = NodePath("Body/Face Wrap/LookAtMouse/Face")
+crosses = NodePath("Body/Face Wrap/LookAtMouse/Face/Crosses")
+bomb_prefab = ExtResource("2_vjfft")
+
+[node name="Body" type="RigidBody2D" parent="." unique_id=842619838 node_paths=PackedStringArray("bee")]
+collision_layer = 5
+collision_mask = 8205
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_ee4r6")
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, -40)
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("3_wub5u")
+bee = NodePath("..")
+
+[node name="Wing Flap" type="AnimationPlayer" parent="Body" unique_id=846068763]
+libraries/ = SubResource("AnimationLibrary_d1ilt")
+autoplay = &"flap"
+speed_scale = 2.0
+
+[node name="Wings Right" type="Node2D" parent="Body" unique_id=532267559]
+position = Vector2(76, 42)
+
+[node name="Upper" type="Sprite2D" parent="Body/Wings Right" unique_id=107299132]
+position = Vector2(0, -1)
+texture = ExtResource("4_tei50")
+offset = Vector2(38, -19)
+
+[node name="Lower" type="Sprite2D" parent="Body/Wings Right" unique_id=1073464418]
+position = Vector2(0.9999999, 13)
+rotation = 0.4546753
+scale = Vector2(0.842817, 0.842817)
+texture = ExtResource("4_tei50")
+offset = Vector2(38, -19)
+
+[node name="Wings Left" type="Node2D" parent="Body" unique_id=68296863]
+position = Vector2(-87, 42)
+scale = Vector2(-1, 1)
+
+[node name="Upper" type="Sprite2D" parent="Body/Wings Left" unique_id=2042932470]
+position = Vector2(0, -1)
+texture = ExtResource("4_tei50")
+offset = Vector2(38, -19)
+
+[node name="Lower" type="Sprite2D" parent="Body/Wings Left" unique_id=1816207078]
+position = Vector2(0.9999999, 13)
+rotation = 0.4546753
+scale = Vector2(0.842817, 0.842817)
+texture = ExtResource("4_tei50")
+offset = Vector2(38, -19)
+
+[node name="LiveLimb" type="Line2D" parent="Body" unique_id=1026234650 node_paths=PackedStringArray("target")]
+position = Vector2(54, 92)
+points = PackedVector2Array(0, 0, 40.95987, 28.675583, 16, 72)
+width = 25.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("5_3a1kx")
+target = NodePath("../../Lander/Leg Pos 1")
+length = 50.0
+flip = true
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="LiveLimb2" type="Line2D" parent="Body" unique_id=441566960 node_paths=PackedStringArray("target")]
+position = Vector2(-69, 88)
+points = PackedVector2Array(0, 0, -32.989487, 37.57251, -1, 76)
+width = 25.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("5_3a1kx")
+target = NodePath("../../Lander/Leg Pos 2")
+length = 50.0
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="LiveLimb3" type="Line2D" parent="Body" unique_id=1990596010 node_paths=PackedStringArray("target")]
+position = Vector2(-43, 120)
+points = PackedVector2Array(0, 0, -30.475555, 25.90831, -2.0000038, 54)
+width = 20.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("5_3a1kx")
+target = NodePath("../../Lander/Leg Pos 3")
+length = 40.0
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="LiveLimb4" type="Line2D" parent="Body" unique_id=2063032293 node_paths=PackedStringArray("target")]
+position = Vector2(35, 118)
+points = PackedVector2Array(0, 0, 32.686752, 23.055939, 10, 56)
+width = 20.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("5_3a1kx")
+target = NodePath("../../Lander/Leg Pos 4")
+length = 40.0
+flip = true
+metadata/_custom_type_script = "uid://d21tebxx08yd3"
+
+[node name="Body Sprite" type="Sprite2D" parent="Body" unique_id=1568295609]
+texture = ExtResource("6_lpb6d")
+
+[node name="Feeler Right" type="Sprite2D" parent="Body/Body Sprite" unique_id=223166054]
+position = Vector2(25, -153)
+texture = ExtResource("7_t5wit")
+
+[node name="Feeler Left" type="Sprite2D" parent="Body/Body Sprite" unique_id=1402411723]
+position = Vector2(-34, -153)
+texture = ExtResource("7_t5wit")
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body" unique_id=574837367]
+polygon = PackedVector2Array(-3, -136, 35, -129, 66, -84, 83, 13, 74, 87, 41, 127, 8, 139, -20, 138, -59, 114, -77, 85, -86, 11, -67, -90, -35, -130)
+
+[node name="Camera" type="Camera2D" parent="Body" unique_id=398710551]
+position = Vector2(1, 0)
+zoom = Vector2(0.3, 0.3)
+script = ExtResource("8_gsps1")
+metadata/_custom_type_script = "uid://ova7wngb7x7i"
+
+[node name="Camera2D" type="Camera2D" parent="Body/Camera" unique_id=774830743]
+visibility_layer = 0
+editor_draw_screen = false
+
+[node name="Lander Joint" type="PinJoint2D" parent="Body" unique_id=1222767636]
+position = Vector2(-2, 121)
+node_a = NodePath("..")
+node_b = NodePath("../../Lander")
+angular_limit_lower = -0.87266463
+angular_limit_upper = 0.87266463
+
+[node name="Spring Left" type="DampedSpringJoint2D" parent="Body" unique_id=508582729]
+position = Vector2(-56, 96)
+node_a = NodePath("..")
+node_b = NodePath("../../Lander")
+length = 20.0
+stiffness = 40.0
+
+[node name="Spring Right" type="DampedSpringJoint2D" parent="Body" unique_id=1230232561]
+position = Vector2(51, 96)
+node_a = NodePath("..")
+node_b = NodePath("../../Lander")
+length = 20.0
+stiffness = 40.0
+
+[node name="Face Wrap" type="Node2D" parent="Body" unique_id=34440406]
+position = Vector2(-4, -55)
+
+[node name="LookAtMouse" type="Node2D" parent="Body/Face Wrap" unique_id=2036270661]
+script = ExtResource("9_oxbmd")
+distance = 12
+metadata/_custom_type_script = "uid://dce3tbn077db6"
+
+[node name="Face" parent="Body/Face Wrap/LookAtMouse" unique_id=1240513132 instance=ExtResource("10_d5hvf")]
+position = Vector2(-1, 3)
+scale = Vector2(2.325933, 2.325933)
+
+[node name="Crosses" type="Node2D" parent="Body/Face Wrap/LookAtMouse/Face" unique_id=1954988688]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Body/Face Wrap/LookAtMouse/Face/Crosses" unique_id=205588238]
+position = Vector2(12.468115, -5.15922)
+scale = Vector2(0.16434486, 0.16434486)
+texture = ExtResource("11_rypom")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Body/Face Wrap/LookAtMouse/Face/Crosses" unique_id=728131529]
+position = Vector2(-12.468115, -6.01909)
+scale = Vector2(0.16434486, 0.16434486)
+texture = ExtResource("11_rypom")
+
+[node name="Hands" type="Node2D" parent="Body" unique_id=794655577]
+position = Vector2(0, 62)
+script = ExtResource("12_1xvtm")
+moves = true
+move_direction = Vector2(0, 10)
+single_direction = true
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="Item" type="Sprite2D" parent="Body/Hands" unique_id=1431041762]
+visible = false
+position = Vector2(-2.999998, -39.000008)
+scale = Vector2(0.73749995, 0.73749995)
+texture = ExtResource("13_4yyba")
+offset = Vector2(0, 1)
+
+[node name="Hands" type="Sprite2D" parent="Body/Hands" unique_id=965147642]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1.9999999, 2)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("14_r21cm")
+offset = Vector2(0, 1)
+
+[node name="Aligner" type="Node2D" parent="Body/Hands" unique_id=660262983]
+
+[node name="Swinger" type="Node2D" parent="Body/Hands/Aligner" unique_id=711962043]
+script = ExtResource("15_shqfn")
+
+[node name="Hammer" type="Sprite2D" parent="Body/Hands/Aligner/Swinger" unique_id=322695921 node_paths=PackedStringArray("swinger", "aligner")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-3, 0)
+rotation = 0.13577862
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("16_1tn42")
+offset = Vector2(-47, 3)
+script = ExtResource("17_qcu1q")
+description = "A tool for constructing platforms and other build pieces. Highly recommended!"
+recipe = Dictionary[int, int]({
+0: 7
+})
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = -0.6
+
+[node name="Scythe" type="Sprite2D" parent="Body/Hands/Aligner/Swinger" unique_id=994523185 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1, -2)
+rotation = 0.13577862
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("18_ggh3y")
+offset = Vector2(-103.92078, 94.49667)
+script = ExtResource("19_jacp7")
+area = NodePath("Area")
+identifier = 1
+recipe = Dictionary[int, int]({
+2: 10,
+3: 5,
+20: 5
+})
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = 1.2
+sprite = NodePath(".")
+
+[node name="Area" type="ShapeCast2D" parent="Body/Hands/Aligner/Swinger/Scythe" unique_id=573417389]
+position = Vector2(-247.27628, 103.423645)
+shape = SubResource("CircleShape2D_55idt")
+target_position = Vector2(0, 0)
+collision_mask = 10806
+
+[node name="Brush" type="Sprite2D" parent="Body/Hands/Aligner/Swinger" unique_id=228421341 node_paths=PackedStringArray("aligner")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1, -1.04904175e-05)
+rotation = 0.13577862
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("20_us1lc")
+offset = Vector2(19.93097, 4.150696)
+flip_h = true
+flip_v = true
+script = ExtResource("21_7xvdx")
+identifier = 2
+recipe = Dictionary[int, int]({
+0: 10,
+2: 10
+})
+aligner = NodePath("../..")
+swing_dir = 1.2
+
+[node name="Lantern" type="Sprite2D" parent="Body/Hands/Aligner/Swinger" unique_id=1720704035 node_paths=PackedStringArray("aligner")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-24.999998, -41.000008)
+scale = Vector2(0.99999994, 0.99999994)
+offset = Vector2(19.93097, 4.150696)
+script = ExtResource("21_7xvdx")
+identifier = 5
+recipe = Dictionary[int, int]({
+0: 5
+})
+aligner = NodePath("../..")
+aligns = false
+
+[node name="Light" type="Sprite2D" parent="Body/Hands/Aligner/Swinger/Lantern" unique_id=1572282315]
+position = Vector2(25, 27)
+scale = Vector2(0.6999999, 1.0599998)
+texture = ExtResource("22_72sqk")
+
+[node name="Sprite" type="Sprite2D" parent="Body/Hands/Aligner/Swinger/Lantern" unique_id=197157683]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(20, 19.000002)
+scale = Vector2(0.85752857, 0.85752857)
+texture = ExtResource("23_a0nu8")
+
+[node name="PointLight2D" type="PointLight2D" parent="Body/Hands/Aligner/Swinger/Lantern" unique_id=419731423]
+position = Vector2(20.999996, 40.000008)
+rotation = -0.13577862
+scale = Vector2(1.7338657, 1.7338657)
+blend_mode = 2
+texture = ExtResource("24_8xgrw")
+texture_scale = 1.5
+script = ExtResource("25_wjy1b")
+
+[node name="Glow" type="Sprite2D" parent="Body/Hands/Aligner/Swinger/Lantern" unique_id=1965882973]
+modulate = Color(1, 1, 1, 0.105882354)
+material = SubResource("CanvasItemMaterial_qnggo")
+position = Vector2(22.000002, 43.000015)
+scale = Vector2(1.1716532, 1.1716532)
+texture = ExtResource("24_8xgrw")
+script = ExtResource("12_1xvtm")
+scales = true
+scale_amount = Vector2(0.02, 0.02)
+scale_speed = 15.0
+
+[node name="Guitar" type="Sprite2D" parent="Body/Hands/Aligner/Swinger" unique_id=398006976 node_paths=PackedStringArray("swinger", "aligner", "sprite")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(3.9999886, 1.30832195e-05)
+rotation = -0.18809377
+scale = Vector2(0.85136753, 0.85136753)
+texture = ExtResource("26_r461q")
+offset = Vector2(73.951904, 1.5249786)
+script = ExtResource("21_7xvdx")
+identifier = 3
+recipe = Dictionary[int, int]({
+0: 5,
+2: 12,
+3: 5,
+19: 6
+})
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = 0.1
+sprite = NodePath(".")
+flips = true
+
+[node name="Paintbrush" type="Sprite2D" parent="Body/Hands/Aligner/Swinger" unique_id=1463653816 node_paths=PackedStringArray("paint", "swinger", "aligner", "sprite")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1.9999695, 4.9999886)
+rotation = -0.18809377
+scale = Vector2(0.85136753, 0.85136753)
+texture = ExtResource("27_yi3td")
+offset = Vector2(-75.12311, -1.6327362)
+script = ExtResource("28_fuef6")
+paint = NodePath("Paint")
+colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(1, 0.7294118, 0.28627452, 1)])
+identifier = 4
+recipe = Dictionary[int, int]({
+2: 10,
+3: 5,
+18: 5
+})
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = -0.7
+sprite = NodePath(".")
+
+[node name="Paint" type="Sprite2D" parent="Body/Hands/Aligner/Swinger/Paintbrush" unique_id=1607765448]
+position = Vector2(-227.63586, -3.8719788)
+texture = ExtResource("29_t7vak")
+
+[node name="Lander" type="RigidBody2D" parent="." unique_id=2470887]
+position = Vector2(0, 133)
+collision_layer = 129
+collision_mask = 9
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lander" unique_id=1611215381]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_cpkcx")
+
+[node name="Leg Pos 1" type="Node2D" parent="Lander" unique_id=1356289490]
+position = Vector2(70, 31)
+
+[node name="Leg Pos 2" type="Node2D" parent="Lander" unique_id=2077515539]
+position = Vector2(-70, 31)
+
+[node name="Leg Pos 3" type="Node2D" parent="Lander" unique_id=1734656381]
+position = Vector2(-45, 41)
+
+[node name="Leg Pos 4" type="Node2D" parent="Lander" unique_id=1643353565]
+position = Vector2(45, 41)
