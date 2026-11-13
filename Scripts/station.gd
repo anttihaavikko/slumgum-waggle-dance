@@ -1,7 +1,5 @@
 class_name Station extends BuildPiece
 
-@export var title: String
-@export_multiline var description: String
 @export var button: Button
 @export var center: Node2D
 @export var converts: Array[Converter]
@@ -9,6 +7,9 @@ class_name Station extends BuildPiece
 @export var output_preview: Array[Sprite2D]
 @export var crafting_animation: AnimationPlayer
 @export var sleeper: Node2D
+
+var title: String
+var description: String
 
 var inputs: Array[Item] = []
 var outputs: Array[Item] = []
@@ -19,11 +20,14 @@ var working := false
 
 func _ready() -> void:
 	# sprite.modulate = Color.RED
-	menu = Main.singleton.stations[identifier]
 	button.pressed.connect(open)
 	button.mouse_entered.connect(announce)
 	update_previews()
 	if crafting_animation: crafting_animation.stop()
+	setup()
+
+func setup():
+	menu = Main.singleton.stations[identifier]
 
 func _process(delta) -> void:
 	cooldown -= delta

@@ -23,6 +23,7 @@ func show_for(eq: Equipment):
 	description.text = eq.description
 	equipmment = eq
 	materials.text = Main.singleton.inventory.get_recipe_description(eq.recipe)
+	craft_button.show()
 
 func craft():
 	Main.singleton.inventory.add_equipment(equipmment)

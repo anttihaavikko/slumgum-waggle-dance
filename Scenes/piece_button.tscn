@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bg8r3b1m7n3rj"]
+
+[ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="1_m0vgq"]
+[ext_resource type="Texture2D" uid="uid://v44301i6cuql" path="res://Sprites/loom.png" id="2_8da1t"]
+
+[node name="Button" unique_id=1022843980 instance=ExtResource("1_m0vgq")]
+custom_minimum_size = Vector2(100, 100)
+theme_override_constants/icon_max_width = 70
+text = ""
+icon = ExtResource("2_8da1t")
+icon_alignment = 1
+expand_icon = true

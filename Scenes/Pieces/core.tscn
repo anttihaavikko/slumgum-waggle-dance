@@ -17,10 +17,8 @@ size = Vector2(291.26, 483.825)
 [node name="Core" type="Node2D" unique_id=299398414 node_paths=PackedStringArray("button", "center", "body", "connection_shapes", "required_shape", "sprite")]
 z_index = 1
 script = ExtResource("1_kgk3l")
-title = "Core"
 button = NodePath("Button")
 center = NodePath("Center")
-identifier = 2
 body = NodePath("StaticBody2D")
 can_rotate = false
 connection_shapes = [NodePath("Left"), NodePath("Right")]

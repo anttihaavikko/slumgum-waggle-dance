@@ -1,6 +1,5 @@
 class_name BuildPiece extends Node2D
 
-@export var identifier: BuildPiece.Id
 @export var body: StaticBody2D
 @export var can_rotate := true
 @export var connection_shapes: Array[ShapeCast2D]
@@ -10,6 +9,8 @@ class_name BuildPiece extends Node2D
 @export var snap_points: Array[Node2D]
 @export var sprite: Node2D
 @export var extra_sprites: Array[Sprite2D]
+
+var identifier: BuildPiece.Id
 
 enum Id {
 	Platform,

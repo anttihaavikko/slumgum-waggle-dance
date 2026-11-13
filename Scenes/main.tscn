@@ -67,11 +67,14 @@
 [ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="28_pfx1i"]
 [ext_resource type="PackedScene" uid="uid://cmtgmcguvat74" path="res://Scenes/Pieces/bed.tscn" id="29_wl4bb"]
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
+[ext_resource type="Script" uid="uid://drtpdk28hi7te" path="res://Scripts/piece_data.gd" id="31_3h4bx"]
 [ext_resource type="Texture2D" uid="uid://cd0yify70om02" path="res://Sprites/guitar.png" id="31_nwwfm"]
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
 [ext_resource type="Texture2D" uid="uid://cofjigejorj7t" path="res://Sprites/tri-down.png" id="33_e08e2"]
+[ext_resource type="Texture2D" uid="uid://f56nl7hefqyg" path="res://Sprites/platform.png" id="33_rlvxq"]
 [ext_resource type="Texture2D" uid="uid://b6d031yqaujsn" path="res://Sprites/x.png" id="34_jwpg7"]
 [ext_resource type="Texture2D" uid="uid://chh1wri5fn6i8" path="res://Sprites/icon-key.png" id="34_r33sp"]
+[ext_resource type="Texture2D" uid="uid://bx8xx8ul1id6g" path="res://Sprites/support.png" id="35_0fjpc"]
 [ext_resource type="Texture2D" uid="uid://dqgjqqqc2mqrf" path="res://Sprites/icon-trigger.png" id="35_hdf80"]
 [ext_resource type="Texture2D" uid="uid://bowys0fo5me6x" path="res://Sprites/thumbs.png" id="35_k2e45"]
 [ext_resource type="PackedScene" uid="uid://bmxypsjcdsvhk" path="res://Scenes/grass_patch.tscn" id="35_s8vy0"]
@@ -83,12 +86,22 @@
 [ext_resource type="Script" uid="uid://c7w7nrkb1foho" path="res://Scripts/bee_body.gd" id="42_lpdpw"]
 [ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="43_nay3j"]
 [ext_resource type="Script" uid="uid://bshomi1sce5uq" path="res://Scripts/painter.gd" id="43_ovafv"]
+[ext_resource type="Texture2D" uid="uid://mxcvq0svo6pu" path="res://Sprites/core.png" id="46_aok0f"]
 [ext_resource type="Texture2D" uid="uid://cwwwr5508ya0b" path="res://Sprites/lantern.png" id="47_fg68e"]
+[ext_resource type="Texture2D" uid="uid://1s8fh5yxfq8x" path="res://Sprites/sign.png" id="48_3h4bx"]
 [ext_resource type="Texture2D" uid="uid://cff2rh54nd4pq" path="res://Sprites/light.png" id="48_f6rfp"]
 [ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="48_jekl6"]
+[ext_resource type="Texture2D" uid="uid://bfffr0ldkunfp" path="res://Sprites/anvil.png" id="49_xg142"]
 [ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
 [ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
+[ext_resource type="Texture2D" uid="uid://chm3umuwk3c5a" path="res://Sprites/jar.png" id="50_rlvxq"]
+[ext_resource type="Texture2D" uid="uid://v44301i6cuql" path="res://Sprites/loom.png" id="51_0fjpc"]
+[ext_resource type="Texture2D" uid="uid://rrd2emctesuf" path="res://Sprites/banner.png" id="52_gdwd6"]
+[ext_resource type="Texture2D" uid="uid://ruk22duvx6lq" path="res://Sprites/bed.png" id="53_cmq5c"]
+[ext_resource type="Texture2D" uid="uid://b4h1tobhsxx7v" path="res://Sprites/dryer.png" id="54_7t1gx"]
+[ext_resource type="Texture2D" uid="uid://cbo6l7kixhr7l" path="res://Sprites/lantern-hanging.png" id="55_mfvrx"]
 [ext_resource type="Script" uid="uid://g0nodib4yvx4" path="res://Scripts/sign_editor.gd" id="55_y86h7"]
+[ext_resource type="Texture2D" uid="uid://dcfxu2ds3nvqv" path="res://Sprites/lantern-standing.png" id="56_ilwxp"]
 [ext_resource type="PackedScene" uid="uid://dxy7r1qf1oqpe" path="res://Scenes/window.tscn" id="57_lx3vj"]
 [ext_resource type="Script" uid="uid://5e1wc8r2tqta" path="res://Scripts/preview.gd" id="57_ynmfv"]
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
@@ -100,6 +113,7 @@
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
+[ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -267,6 +281,100 @@ shader_parameter/offset = 0.0
 shader_parameter/speed = 0.02
 shader_parameter/peaks = 13.0
 shader_parameter/time_mod = 0.5
+
+[sub_resource type="Resource" id="Resource_3ahwd"]
+script = ExtResource("31_3h4bx")
+title = "Platform"
+description = "Build platforms to place to place other build pieces on. Also recharges your energy when landing on it."
+prefab = ExtResource("9_ynf5e")
+sprite = ExtResource("33_rlvxq")
+recipe = Dictionary[int, int]({
+0: 1
+})
+
+[sub_resource type="Resource" id="Resource_b4xsn"]
+script = ExtResource("31_3h4bx")
+title = "Support"
+description = "Use the support platforms to help place normal platforms where needed. You can freely fly past these supports."
+prefab = ExtResource("10_hptm8")
+sprite = ExtResource("35_0fjpc")
+recipe = Dictionary[int, int]({
+0: 1
+})
+
+[sub_resource type="Resource" id="Resource_ot5ec"]
+script = ExtResource("31_3h4bx")
+title = "Core"
+description = "The core provides energy to all connected platforms. Allows some very basic crafting."
+prefab = ExtResource("12_aa8k8")
+sprite = ExtResource("46_aok0f")
+recipe = Dictionary[int, int]({
+2: 10,
+3: 10,
+20: 5
+})
+
+[sub_resource type="Resource" id="Resource_aok0f"]
+script = ExtResource("31_3h4bx")
+title = "Box"
+prefab = ExtResource("13_kqrg6")
+sprite = ExtResource("74_p4gyq")
+
+[sub_resource type="Resource" id="Resource_64lof"]
+script = ExtResource("31_3h4bx")
+title = "Sign"
+prefab = ExtResource("22_qax2n")
+sprite = ExtResource("48_3h4bx")
+
+[sub_resource type="Resource" id="Resource_b4mik"]
+script = ExtResource("31_3h4bx")
+title = "Anvil"
+prefab = ExtResource("24_qnggo")
+sprite = ExtResource("49_xg142")
+
+[sub_resource type="Resource" id="Resource_urine"]
+script = ExtResource("31_3h4bx")
+title = "Jar"
+description = "Nectar placed in the jar will slowly turn into honey. test"
+prefab = ExtResource("23_uv6w5")
+sprite = ExtResource("50_rlvxq")
+
+[sub_resource type="Resource" id="Resource_5vy51"]
+script = ExtResource("31_3h4bx")
+title = "Spinning Wheel"
+prefab = ExtResource("26_tab3y")
+sprite = ExtResource("51_0fjpc")
+
+[sub_resource type="Resource" id="Resource_o2owy"]
+script = ExtResource("31_3h4bx")
+title = "Banner"
+prefab = ExtResource("23_owhal")
+sprite = ExtResource("52_gdwd6")
+
+[sub_resource type="Resource" id="Resource_ylsbi"]
+script = ExtResource("31_3h4bx")
+title = "Bed"
+prefab = ExtResource("29_wl4bb")
+sprite = ExtResource("53_cmq5c")
+
+[sub_resource type="Resource" id="Resource_ceghn"]
+script = ExtResource("31_3h4bx")
+title = "Drying Rack"
+description = "Place different materials on the rack and it will generate dried versions over time."
+prefab = ExtResource("25_r7bbj")
+sprite = ExtResource("54_7t1gx")
+
+[sub_resource type="Resource" id="Resource_3h4bx"]
+script = ExtResource("31_3h4bx")
+title = "Lantern"
+prefab = ExtResource("27_v1mrv")
+sprite = ExtResource("55_mfvrx")
+
+[sub_resource type="Resource" id="Resource_xg142"]
+script = ExtResource("31_3h4bx")
+title = "Lantern"
+prefab = ExtResource("28_fd3ed")
+sprite = ExtResource("56_ilwxp")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
 bounce = 0.5
@@ -462,12 +570,16 @@ speed_min = -10.0
 speed_max = -150.0
 cloud_material = SubResource("ShaderMaterial_gsvbx")
 
-[node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters")]
+[node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[PackedScene]([ExtResource("9_ynf5e"), ExtResource("10_hptm8"), ExtResource("12_aa8k8"), ExtResource("13_kqrg6"), ExtResource("22_qax2n"), ExtResource("24_qnggo"), ExtResource("23_uv6w5"), ExtResource("26_tab3y"), ExtResource("23_owhal"), ExtResource("29_wl4bb"), ExtResource("25_r7bbj"), ExtResource("27_v1mrv"), ExtResource("28_fd3ed")])
+pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142")])
 cross = NodePath("../Cursor Icon/Nope")
-starters = [NodePath("Platform"), NodePath("Platform2")]
+starters = [NodePath("Core"), NodePath("Platform"), NodePath("Platform2"), NodePath("Support3"), NodePath("Support4")]
+picker = NodePath("../HUD/Build Picker Win")
+preview = NodePath("../HUD/Preview Window/Preview")
+button_prefab = ExtResource("95_3ahwd")
+button_grid = NodePath("../HUD/Build Picker Win/ScrollContainer/GridContainer")
 
 [node name="Platform" parent="Platforms" unique_id=208223166 instance=ExtResource("9_ynf5e")]
 position = Vector2(32, 283)
@@ -475,13 +587,8 @@ position = Vector2(32, 283)
 [node name="Platform2" parent="Platforms" unique_id=904452774 instance=ExtResource("9_ynf5e")]
 position = Vector2(-369, 283)
 
-[node name="Station" parent="Platforms" unique_id=299398414 instance=ExtResource("12_aa8k8")]
+[node name="Core" parent="Platforms" unique_id=299398414 instance=ExtResource("12_aa8k8")]
 position = Vector2(-425, 239)
-
-[node name="Box" parent="Platforms" unique_id=891814443 instance=ExtResource("13_kqrg6")]
-z_index = 0
-position = Vector2(70, 242)
-can_rotate = true
 
 [node name="Support3" parent="Platforms" unique_id=1764388607 instance=ExtResource("10_hptm8")]
 position = Vector2(-542.9999, 522)
@@ -490,24 +597,6 @@ rotation = 1.7988997
 [node name="Support4" parent="Platforms" unique_id=1295598682 instance=ExtResource("10_hptm8")]
 position = Vector2(266, 487)
 rotation = 0.95665735
-
-[node name="Jar" parent="Platforms" unique_id=2028750219 instance=ExtResource("23_uv6w5")]
-position = Vector2(660, 145)
-
-[node name="Dryer" parent="Platforms" unique_id=1686598221 instance=ExtResource("25_r7bbj")]
-position = Vector2(-940, -119)
-
-[node name="Lantern" parent="Platforms" unique_id=1806885397 instance=ExtResource("27_v1mrv")]
-position = Vector2(-171, 334)
-
-[node name="Loom" parent="Platforms" unique_id=716544410 instance=ExtResource("26_tab3y")]
-position = Vector2(170, -247)
-
-[node name="Anvil" parent="Platforms" unique_id=1016971032 instance=ExtResource("24_qnggo")]
-position = Vector2(-382, -413)
-
-[node name="Bed" parent="Platforms" unique_id=1218278962 instance=ExtResource("29_wl4bb")]
-position = Vector2(-966, -711)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -1697,6 +1786,28 @@ offset_right = 231.5
 offset_bottom = 184.0
 text = "LOREM
 IPSUM"
+
+[node name="Build Picker Win" parent="HUD" unique_id=198672062 instance=ExtResource("57_lx3vj")]
+offset_left = -617.0
+offset_top = -369.0
+offset_right = -211.0
+offset_bottom = 302.0
+title = "BUILD PIECES"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/Build Picker Win" unique_id=784950838]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 104.0
+offset_right = 377.0
+offset_bottom = 623.0
+
+[node name="GridContainer" type="GridContainer" parent="HUD/Build Picker Win/ScrollContainer" unique_id=1403921198]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
 
 [node name="Slot" parent="HUD" unique_id=157785236 instance=ExtResource("20_hibaj")]
 visible = false

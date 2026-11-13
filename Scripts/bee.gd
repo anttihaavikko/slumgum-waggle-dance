@@ -88,7 +88,6 @@ func die():
 	if current: current.show()
 	else: hands.show()
 	health.heal(999)
-	energy.heal(999)
 	dead = false
 
 func is_holding(id: Equipment.Id):
