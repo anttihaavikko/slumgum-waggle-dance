@@ -103,3 +103,21 @@ func add_item(id: Item.Id, amount: int = 1):
 
 func change_focus(dir: int):
 	focus((focused + dir + slots.size()) % slots.size())
+
+func get_recipe_description(recipe: Dictionary[Item.Id, int]) -> String:
+	var desc = ""
+	var db = Main.singleton.item_db.items
+	for id: Item.Id in recipe.keys():
+		var item = db[id] as ItemData
+		var have = Main.singleton.inventory.get_count(id)
+		var have_color = "#20A39E" if have >= recipe[id] else "#EF5B5B"
+		desc += "[color=%s]%d[/color] x %s [img=36 color=#%s]%s[/img] (got [color=%s]%d[/color])\n" % [
+			have_color,
+			recipe[id],
+			item.title,
+			item.color.to_html(),
+			item.sprite.get_path(),
+			have_color,
+			have
+		]
+	return desc
