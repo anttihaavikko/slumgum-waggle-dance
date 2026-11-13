@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cbkdo86lifxj7" path="res://Scripts/item_manager.gd" id="2_3pmx8"]
 [ext_resource type="Script" uid="uid://ova7wngb7x7i" path="res://_Starter/Scripts/camera.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://do7b18qnf254n" path="res://Scripts/builder.gd" id="2_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bom26084meery" path="res://Scenes/bird.tscn" id="2_nb1ia"]
 [ext_resource type="Script" uid="uid://bifh3avdt1c13" path="res://Scripts/schedule.gd" id="2_sasc4"]
 [ext_resource type="Script" uid="uid://0x44vjlq1u52" path="res://Scripts/item_data.gd" id="3_cbgmd"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
@@ -416,6 +417,7 @@ held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
 explosion_shape = NodePath("../Explosion")
+bird_prefab = ExtResource("2_nb1ia")
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint")]
 script = ExtResource("2_sasc4")

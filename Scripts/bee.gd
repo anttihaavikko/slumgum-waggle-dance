@@ -17,7 +17,7 @@ class_name Bee extends Node2D
 
 var thrust = 1.5
 var turning = 1.0
-var energy_max := 30.0
+var energy_max := 20.0
 var energy_left := energy_max
 var charging := false
 var landed := false
@@ -94,12 +94,17 @@ func die():
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id
 
+func danger():
+	if Main.singleton.time.day == 1: return
+	if randf() > 0.15: return
+	Main.singleton.call_deferred("spawn_bird")
+
 func land(target: Node2D):
 	landed = true
 	charging = target is Platform
 	cam.shake(body.linear_velocity.length() * 0.01, 0.12)
-	# if charging:
-	# 	Effects.singleton.pop("LANDED!", body.global_position)
+	if not charging and energy.hp < 5 and not dead:
+		danger()
 
 func collide(_node: Node2D):
 	var mag = body.linear_velocity.length()

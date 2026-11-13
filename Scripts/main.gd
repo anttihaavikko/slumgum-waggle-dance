@@ -8,11 +8,13 @@ class_name Main extends Node
 @export var builder: Builder
 @export var time: Schedule
 @export var explosion_shape: ShapeCast2D
+@export var bird_prefab: PackedScene
 
 var station: StationMenu
 var bee: Bee
 var flowers: Array[Flower] = []
 var islands: Array[Island] = []
+var bird: Bird
 
 static var singleton: Main = null
 
@@ -53,3 +55,9 @@ static func get_item_data(id: Item.Id) -> ItemData:
 
 func cleanup():
 	flowers = flowers.filter(func(f): return f)
+
+func spawn_bird():
+	if bird: return
+	bird = bird_prefab.instantiate() as Bird
+	bird.global_position = bee.body.global_position + Vector2.UP * 5000
+	get_parent().add_child(bird)

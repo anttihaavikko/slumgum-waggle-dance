@@ -14,13 +14,17 @@ class_name Bird extends Node2D
 
 var time := 0.0
 var target: Node2D
-var life := 10
+var max_life := 10
+var life := max_life
+var leaving := false
 
 func _ready() -> void:
 	target = Main.singleton.bee.body
 	swipe_left.body_entered.connect(swipe_to_left)
 	swipe_right.body_entered.connect(swipe_to_right)
 	colorize()
+	await get_tree().create_timer(30).timeout
+	if life == max_life: leave()
 
 func colorize():
 	var theme = themes.pick_random()
@@ -37,6 +41,16 @@ func _process(delta: float) -> void:
 	if target and not dead:
 		var dir = (target.global_position - beak.global_position).normalized()
 		beak.apply_force(dir * 20000 * (sin(time) + 1))
+	else:
+		leave()
+
+func leave():
+	if leaving: return
+	leaving = true
+	target = null
+	await get_tree().create_timer(10).timeout
+	Main.singleton.bird = null
+	queue_free()
 
 func swipe_to_left(_body: Node2D):
 	swipe(1)
