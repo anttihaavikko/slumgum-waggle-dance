@@ -5,6 +5,12 @@ class_name Bird extends Node2D
 @export var beak: RigidBody2D
 @export var swipe_right: Area2D
 @export var swipe_left: Area2D
+@export var main_sprites: Array[Node2D]
+@export var stripe: Polygon2D
+@export var chest: Node2D
+@export var beak_sprite: Node2D
+@export var blush: Node2D
+@export var themes: Array[BirdTheme]
 
 var time := 0.0
 var target: Node2D
@@ -14,6 +20,15 @@ func _ready() -> void:
 	target = Main.singleton.bee.body
 	swipe_left.body_entered.connect(swipe_to_left)
 	swipe_right.body_entered.connect(swipe_to_right)
+	colorize()
+
+func colorize():
+	var theme = themes.pick_random()
+	for s in main_sprites: s.self_modulate = theme.main
+	stripe.self_modulate = theme.stripe
+	chest.self_modulate = theme.chest
+	beak_sprite.self_modulate = theme.beak
+	blush.modulate = theme.cheeks
 
 func _process(delta: float) -> void:
 	var dead = not Main.singleton.bee.health.is_alive()
@@ -30,7 +45,6 @@ func swipe_to_right(_body: Node2D):
 	swipe(-1)
 
 func swipe(dir: float):
-	print("swipe ", dir)
 	beak.apply_torque_impulse(dir * 10000000)
 
 func hurt(amount: int):

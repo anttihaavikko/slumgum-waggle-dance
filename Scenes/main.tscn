@@ -103,6 +103,7 @@
 [ext_resource type="Script" uid="uid://bi6dt48qm3k7k" path="res://_Starter/Scripts/root_pointer.gd" id="100_64lof"]
 [ext_resource type="Texture2D" uid="uid://d08di2wfpoocp" path="res://Sprites/bird-head.png" id="100_nb1ia"]
 [ext_resource type="Texture2D" uid="uid://d1n5hk6l1wnyo" path="res://Sprites/bird-chest.png" id="100_ot5ec"]
+[ext_resource type="Script" uid="uid://c71knygmaeq2x" path="res://Scripts/bird_theme.gd" id="100_urine"]
 [ext_resource type="Texture2D" uid="uid://bt8yckj8i3dhk" path="res://Sprites/bird-beak.png" id="101_3ahwd"]
 [ext_resource type="PackedScene" uid="uid://cguckrrfjdki6" path="res://Scripts/bird_wing.tscn" id="101_b4mik"]
 [ext_resource type="Texture2D" uid="uid://c52bniys2od6o" path="res://Sprites/bird-brow.png" id="102_b4xsn"]
@@ -409,6 +410,42 @@ radius = 1000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cf2bd"]
 radius = 100.0
+
+[sub_resource type="Resource" id="Resource_5vy51"]
+script = ExtResource("100_urine")
+main = Color(0.3647059, 0.3647059, 0.3647059, 1)
+chest = Color(0.9372549, 0.35686275, 0.35686275, 1)
+stripe = Color(0, 0, 0, 0)
+beak = Color(1, 0.7294118, 0.28627452, 1)
+cheeks = Color(0.9372549, 0.35686275, 0.35686275, 1)
+metadata/_custom_type_script = "uid://c71knygmaeq2x"
+
+[sub_resource type="Resource" id="Resource_urine"]
+script = ExtResource("100_urine")
+main = Color(0.1453273, 0.7324944, 0.7102251, 1)
+chest = Color(1, 0.7294118, 0.28627452, 1)
+stripe = Color(0, 0, 0, 0.7176471)
+beak = Color(0.18359044, 0.18359044, 0.18359044, 1)
+cheeks = Color(0.9372549, 0.35686275, 0.35686275, 1)
+metadata/_custom_type_script = "uid://c71knygmaeq2x"
+
+[sub_resource type="Resource" id="Resource_o2owy"]
+script = ExtResource("100_urine")
+main = Color(0.20871013, 0.20871016, 0.20871013, 1)
+chest = Color(1, 0.7294118, 0.28627452, 1)
+stripe = Color(0.7017301, 0.7017301, 0.7017301, 1)
+beak = Color(0.3665946, 0.3665946, 0.36659458, 1)
+cheeks = Color(0.1254902, 0.6392157, 0.61960787, 1)
+metadata/_custom_type_script = "uid://c71knygmaeq2x"
+
+[sub_resource type="Resource" id="Resource_ylsbi"]
+script = ExtResource("100_urine")
+main = Color(0.48962224, 0.48962224, 0.48962218, 1)
+chest = Color(1, 1, 1, 1)
+stripe = Color(0, 0, 0, 0.7294118)
+beak = Color(1, 0.7294118, 0.28627452, 1)
+cheeks = Color(0.9372549, 0.35686275, 0.35686275, 1)
+metadata/_custom_type_script = "uid://c71knygmaeq2x"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_64lof"]
 bounce = 0.5
@@ -1829,7 +1866,7 @@ shape = SubResource("CircleShape2D_cf2bd")
 target_position = Vector2(0, 0)
 collision_mask = 8
 
-[node name="Bird" type="Node2D" parent="." unique_id=1851272746 node_paths=PackedStringArray("body", "head", "beak", "swipe_right", "swipe_left")]
+[node name="Bird" type="Node2D" parent="." unique_id=1851272746 node_paths=PackedStringArray("body", "head", "beak", "swipe_right", "swipe_left", "main_sprites", "stripe", "chest", "beak_sprite", "blush")]
 z_index = 10
 position = Vector2(541, -6222)
 script = ExtResource("99_aok0f")
@@ -1838,6 +1875,12 @@ head = NodePath("Head")
 beak = NodePath("Beak")
 swipe_right = NodePath("Beak/Swipe Right")
 swipe_left = NodePath("Beak/Swiper Left")
+main_sprites = [NodePath("Body/Body"), NodePath("Body/Wing Right/Base"), NodePath("Body/Wing Right/Base/Fill"), NodePath("Body/Wing Right/Base/Tip"), NodePath("Body/Wing Right/Base/Tip/Fill"), NodePath("Body/Wing Left/Base"), NodePath("Body/Wing Left/Base/Fill"), NodePath("Body/Wing Left/Base/Tip"), NodePath("Body/Wing Left/Base/Tip/Fill"), NodePath("Head/Head"), NodePath("Beak/Brow")]
+stripe = NodePath("Head/Head/Stripe/Face Stripe")
+chest = NodePath("Body/Chest")
+beak_sprite = NodePath("Beak/Beak")
+blush = NodePath("Beak/Face/Wrapper/Blushes")
+themes = Array[ExtResource("100_urine")]([SubResource("Resource_5vy51"), SubResource("Resource_urine"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi")])
 
 [node name="Body" type="RigidBody2D" parent="Bird" unique_id=898345143 node_paths=PackedStringArray("root")]
 collision_layer = 8192
@@ -1887,10 +1930,20 @@ shape = SubResource("CircleShape2D_byh7c")
 
 [node name="Head" type="Sprite2D" parent="Bird/Head" unique_id=132203082]
 self_modulate = Color(0.3665946, 0.3665946, 0.36659458, 1)
+clip_children = 2
 material = SubResource("ShaderMaterial_3ahwd")
 position = Vector2(11, -21)
 scale = Vector2(1.6703446, 1.6703446)
 texture = ExtResource("100_nb1ia")
+
+[node name="Stripe" type="Node2D" parent="Bird/Head/Head" unique_id=959583332]
+position = Vector2(1.1973572, 219.11646)
+
+[node name="Face Stripe" type="Polygon2D" parent="Bird/Head/Head/Stripe" unique_id=492984187]
+self_modulate = Color(0.14901961, 0.14901961, 0.14901961, 0.7254902)
+position = Vector2(2.993394, -207.14291)
+scale = Vector2(0.92198884, 0.92198884)
+polygon = PackedVector2Array(-1.796051, 146.07764, -201.75479, 144.2815, -781.79834, -101.94556, -477.26062, 152.5935, -109.55824, 258.62915, 129.31464, 257.4319, 573.36206, 86.36133, 776.60376, -121.42554, 196.36667, 144.88013)
 
 [node name="Neck" type="PinJoint2D" parent="Bird/Head" unique_id=115405869]
 position = Vector2(-6, -322)
@@ -1990,7 +2043,14 @@ collision_mask = 4
 position = Vector2(1, -3)
 shape = SubResource("CircleShape2D_sgh3c")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bird/Beak" unique_id=1949654502]
+position = Vector2(13, 345)
+remote_path = NodePath("../../Head/Head/Stripe")
+update_scale = false
+
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
 
+[editable path="Bird/Body/Wing Right"]
+[editable path="Bird/Body/Wing Left"]
 [editable path="Bird/Beak/Face"]
