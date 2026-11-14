@@ -11,6 +11,8 @@ class_name BuildPiece extends Node2D
 @export var extra_sprites: Array[Sprite2D]
 
 var identifier: BuildPiece.Id
+var data: PieceData
+var placed := true
 
 enum Id {
 	Platform,
@@ -40,10 +42,14 @@ func is_blocked() -> bool:
 func try_to_place():
 	if not is_attached():
 		Main.pop("NOT ATTACHED!")
+		Main.shake(10, 0.1)
 		return
 	if is_blocked():
 		Main.pop("BLOCKED!")
+		Main.shake(10, 0.1)
 		return
+	await get_tree().create_timer(0.1).timeout
+	placed = true
 
 func snap(points: Array[Node2D]):
 	if Input.is_action_pressed("shift"): return

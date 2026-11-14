@@ -320,18 +320,29 @@ script = ExtResource("31_3h4bx")
 title = "Box"
 prefab = ExtResource("13_kqrg6")
 sprite = ExtResource("74_p4gyq")
+recipe = Dictionary[int, int]({
+0: 10
+})
 
 [sub_resource type="Resource" id="Resource_64lof"]
 script = ExtResource("31_3h4bx")
 title = "Sign"
 prefab = ExtResource("22_qax2n")
 sprite = ExtResource("48_3h4bx")
+recipe = Dictionary[int, int]({
+0: 10,
+3: 3,
+9: 3
+})
 
 [sub_resource type="Resource" id="Resource_b4mik"]
 script = ExtResource("31_3h4bx")
 title = "Anvil"
 prefab = ExtResource("24_qnggo")
 sprite = ExtResource("49_xg142")
+recipe = Dictionary[int, int]({
+2: 10
+})
 
 [sub_resource type="Resource" id="Resource_urine"]
 script = ExtResource("31_3h4bx")
@@ -339,12 +350,18 @@ title = "Jar"
 description = "Nectar placed in the jar will slowly turn into honey. test"
 prefab = ExtResource("23_uv6w5")
 sprite = ExtResource("50_rlvxq")
+recipe = Dictionary[int, int]({
+2: 10
+})
 
 [sub_resource type="Resource" id="Resource_5vy51"]
 script = ExtResource("31_3h4bx")
 title = "Spinning Wheel"
 prefab = ExtResource("26_tab3y")
 sprite = ExtResource("51_0fjpc")
+recipe = Dictionary[int, int]({
+2: 10
+})
 
 [sub_resource type="Resource" id="Resource_o2owy"]
 script = ExtResource("31_3h4bx")
@@ -357,6 +374,11 @@ script = ExtResource("31_3h4bx")
 title = "Bed"
 prefab = ExtResource("29_wl4bb")
 sprite = ExtResource("53_cmq5c")
+recipe = Dictionary[int, int]({
+2: 5,
+3: 5,
+5: 5
+})
 
 [sub_resource type="Resource" id="Resource_ceghn"]
 script = ExtResource("31_3h4bx")
@@ -364,18 +386,29 @@ title = "Drying Rack"
 description = "Place different materials on the rack and it will generate dried versions over time."
 prefab = ExtResource("25_r7bbj")
 sprite = ExtResource("54_7t1gx")
+recipe = Dictionary[int, int]({
+0: 10
+})
 
 [sub_resource type="Resource" id="Resource_3h4bx"]
 script = ExtResource("31_3h4bx")
 title = "Lantern"
 prefab = ExtResource("27_v1mrv")
 sprite = ExtResource("55_mfvrx")
+recipe = Dictionary[int, int]({
+2: 5,
+9: 1
+})
 
 [sub_resource type="Resource" id="Resource_xg142"]
 script = ExtResource("31_3h4bx")
 title = "Lantern"
 prefab = ExtResource("28_fd3ed")
 sprite = ExtResource("56_ilwxp")
+recipe = Dictionary[int, int]({
+2: 5,
+9: 1
+})
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
 bounce = 0.5

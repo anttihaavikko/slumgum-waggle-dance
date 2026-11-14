@@ -50,7 +50,6 @@ func pick_piece(index: int):
 func close():
 	if picker.visible:
 		picker.hide()
-		preview.hide()
 		preview.close()
 
 func _process(_delta) -> void:
@@ -59,8 +58,13 @@ func _process(_delta) -> void:
 		held.snap(snap_points)
 		cross.visible = not held.can_place()
 		if Input.is_action_just_pressed("primary"):
+			Main.shake(10, 0.15)
+			if not Main.singleton.inventory.has_materials(held.data.recipe):
+				Main.pop("INSUFFICIENT MATERIALS!")
+				return
 			held.try_to_place()
 			if cross.visible: return
+			Main.singleton.inventory.consume_materials(held.data.recipe)
 			snap_points.append_array(held.snap_points)
 			prev_angle = held.rotation
 			if held.body:
@@ -91,6 +95,8 @@ func create(s: int, discard: bool = false):
 	slot = s
 	if not pieces[slot]: return
 	held = pieces[slot].prefab.instantiate()
+	held.data = pieces[slot]
+	held.placed = false
 	if not held.can_rotate: prev_angle = 0
 	if held and held.body:
 		held_layer = held.body.collision_layer

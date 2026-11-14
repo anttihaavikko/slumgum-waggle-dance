@@ -110,7 +110,7 @@ func get_recipe_description(recipe: Dictionary[Item.Id, int]) -> String:
 	var db = Main.singleton.item_db.items
 	for id: Item.Id in recipe.keys():
 		var item = db[id] as ItemData
-		var have = Main.singleton.inventory.get_count(id)
+		var have = get_count(id)
 		var have_color = "#20A39E" if have >= recipe[id] else "#EF5B5B"
 		desc += "[color=%s]%d[/color] x %s [img=36 color=#%s]%s[/img] (got [color=%s]%d[/color])\n" % [
 			have_color,
@@ -122,3 +122,22 @@ func get_recipe_description(recipe: Dictionary[Item.Id, int]) -> String:
 			have
 		]
 	return desc
+
+func has_materials(recipe: Dictionary[Item.Id, int]) -> bool:
+	for id in recipe.keys():
+		if get_count(id) < recipe[id]:
+			return false
+	return true
+
+func consume_materials(recipe: Dictionary[Item.Id, int]):
+	for id in recipe.keys():
+		consume(id, recipe[id])
+
+func consume(id: Item.Id, amount: int):
+	for s in slots:
+		if s.item and s.item.data.item_id == id:
+			if s.item.amount >= amount:
+				s.take(amount)
+				return
+			amount -= s.item.amount
+			s.clear()

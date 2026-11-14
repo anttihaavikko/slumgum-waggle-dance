@@ -26,5 +26,12 @@ func show_for(eq: Equipment):
 	craft_button.show()
 
 func craft():
-	Main.singleton.inventory.add_equipment(equipmment)
+	var inv = Main.singleton.inventory
+	if not inv.has_materials(equipmment.recipe):
+		Main.pop("INSUFFICIENT MATERIALS!")
+		Main.shake(20, 0.25)
+		return
+	inv.consume_materials(equipmment.recipe)
+	inv.add_equipment(equipmment)
 	Main.shake(10, 0.15)
+	show_for(equipmment)

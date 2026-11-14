@@ -39,6 +39,7 @@ func announce():
 	cooldown = 0.5
 
 func open():
+	if not placed: return
 	if not Main.singleton.bee.can_open(): return
 	if global_position.distance_to(Main.singleton.bee.body.global_position) > 750:
 		Main.pop("TOO FAR!")

@@ -30,16 +30,19 @@ func _ready() -> void:
 	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
 	inventory.create_slots(9)
-	for s in inventory.slots: s.in_bar = true
+	for s in inventory.slots:
+		s.in_bar = true
+		s.show_key(str(inventory.slots.find(s) + 1))
 	inventory.add_equipment(tools[Equipment.Id.Scythe])
 	# inventory.add_equipment(tools[Equipment.Id.Hammer])
 	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 	inventory.add_equipment(tools[Equipment.Id.Brush])
 	inventory.add_equipment(tools[Equipment.Id.Lantern])
 	inventory.add_equipment(tools[Equipment.Id.Hammer])
+	inventory.add_item(Item.Id.Nectar, 20)
 	inventory.add_item(Item.Id.Nectar, 10)
-	inventory.add_item(Item.Id.Pollen, 10)
-	inventory.add_item(Item.Id.Bomb, 10)
+	# inventory.add_item(Item.Id.Pollen, 10)
+	# inventory.add_item(Item.Id.Bomb, 10)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
 	inventory.focus(0)
@@ -168,6 +171,8 @@ func _process(delta) -> void:
 			throw(bomb_prefab)
 
 	if builder.held and builder.held.can_rotate: return
+	if Main.singleton.station: return
+	if builder.picker.visible: return
 
 	if Input.is_action_just_pressed("wheel_up"):
 		inventory.change_focus(1)

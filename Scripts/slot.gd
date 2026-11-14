@@ -5,6 +5,8 @@ class_name Slot extends Control
 @export var count_label: RichTextLabel
 @export var icon: TextureRect
 @export var button: Button
+@export var key_container: Control
+@export var key_label: RichTextLabel
 
 var equipment: Equipment
 var item: Item
@@ -76,8 +78,10 @@ func clear():
 
 func swap(slot: Slot):
 	if slot.item and can_add(slot.item.data.item_id, slot.item.amount):
-		increment(slot.item.amount)
-		slot.clear()
+		var left = increment(slot.item.amount)
+		slot.item.amount = left
+		slot.update_visuals()
+		if slot.item.amount <= 0: slot.clear()
 		Main.singleton.held.hide_if_empty()
 		return
 	var ti = item
@@ -131,3 +135,7 @@ func increment(amount: int) -> int:
 	item.amount = mini(item.amount + amount, item.data.stack_size)
 	count_label.text = str(item.amount)
 	return remains
+
+func show_key(key: String):
+	key_container.show()
+	key_label.text = key

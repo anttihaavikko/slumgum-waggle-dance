@@ -8,7 +8,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_th82r"]
 
-[node name="Slot" type="TextureRect" unique_id=157785236 node_paths=PackedStringArray("label", "count_container", "count_label", "icon", "button")]
+[node name="Slot" type="TextureRect" unique_id=157785236 node_paths=PackedStringArray("label", "count_container", "count_label", "icon", "button", "key_container", "key_label")]
 custom_minimum_size = Vector2(60, 60)
 offset_right = 60.55046
 offset_bottom = 60.0
@@ -23,6 +23,8 @@ count_container = NodePath("Count Bg")
 count_label = NodePath("Count Bg/Amount")
 icon = NodePath("Icon")
 button = NodePath("Button")
+key_container = NodePath("Key Bg")
+key_label = NodePath("Key Bg/Key")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1178992251]
 layout_mode = 1
@@ -58,13 +60,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Count Bg" type="TextureRect" parent="." unique_id=1489309916]
-visible = false
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 31.0
-offset_top = 43.0
-offset_right = 57.0
-offset_bottom = 64.0
+offset_left = 27.0
+offset_top = 40.0
+offset_right = 53.0
+offset_bottom = 61.0
+scale = Vector2(1.1592138, 1.1592138)
 texture = ExtResource("3_67ou1")
 expand_mode = 3
 stretch_mode = 5
@@ -98,6 +100,52 @@ grow_vertical = 2
 theme = ExtResource("4_c828r")
 theme_override_font_sizes/normal_font_size = 11
 text = "20"
+scroll_active = false
+scroll_following_visible_characters = true
+horizontal_alignment = 1
+
+[node name="Key Bg" type="TextureRect" parent="." unique_id=952907484]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 15.0
+offset_top = -5.0
+offset_right = 41.0
+offset_bottom = 16.0
+scale = Vector2(1.0065584, 1.0065584)
+texture = ExtResource("3_67ou1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Bg" type="TextureRect" parent="Key Bg" unique_id=1878858958]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_67ou1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Key" type="RichTextLabel" parent="Key Bg" unique_id=1467164068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_c828r")
+theme_override_font_sizes/normal_font_size = 11
+text = "1"
 scroll_active = false
 scroll_following_visible_characters = true
 horizontal_alignment = 1
