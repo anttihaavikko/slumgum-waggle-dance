@@ -58,7 +58,7 @@ func _process(_delta) -> void:
 		held.snap(snap_points)
 		cross.visible = not held.can_place()
 		if Input.is_action_just_pressed("primary"):
-			Main.shake(10, 0.15)
+			Main.shake(5, 0.1)
 			if not Main.singleton.inventory.has_materials(held.data.recipe):
 				Main.pop("INSUFFICIENT MATERIALS!")
 				return
