@@ -11,7 +11,10 @@ func update(delta: float):
 		builder.preview.show()
 		# builder.create((builder.slot + 1) % builder.pieces.size(), true)
 	if Input.is_action_just_pressed("cancel"):
-		if builder: builder.close()
+		if builder and builder.held:
+			builder.clear()
+		if builder and builder.picker.visible:
+			builder.close()
 
 func toggle(state: bool):
 	super.toggle(state)

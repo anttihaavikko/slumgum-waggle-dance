@@ -80,6 +80,7 @@ func _process(_delta) -> void:
 
 func clear():
 	if held:
+		slot = -1
 		prev_angle = held.rotation
 		held.queue_free()
 		cross.hide()

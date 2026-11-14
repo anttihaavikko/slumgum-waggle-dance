@@ -598,6 +598,9 @@ rotation = 1.7988997
 position = Vector2(266, 487)
 rotation = 0.95665735
 
+[node name="Box" parent="Platforms" unique_id=529932352 instance=ExtResource("13_kqrg6")]
+position = Vector2(81, 235)
+
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
 position = Vector2(597, -419)

@@ -18,13 +18,14 @@ func create_slots(amount: int):
 		slots.append(slot)
 		slot.mark(false)
 		slot.label.text = ""
-		slot.button.pressed.connect(func(): click_slot(slot))
+		slot.button.gui_input.connect(func(e: InputEvent): click_slot(slot, e))
 
-func click_slot(slot: Slot):
-	if not other:
-		focus(slots.find(slot))
-		return
-	slot.pick(other)
+func click_slot(slot: Slot, e: InputEvent):
+	if e is InputEventMouseButton and e.pressed:
+		if not other:
+			focus(slots.find(slot))
+			return
+		slot.pick(other, e.button_index == MOUSE_BUTTON_RIGHT)
 
 func re_focus():
 	focus(focused)

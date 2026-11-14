@@ -35,7 +35,7 @@ static func pop(message: String, offset: float = 0.0):
 	Effects.singleton.pop(message, singleton.bee.body.global_position + Vector2.UP * 100 + dir)
 
 func _process(_delta) -> void:
-	held.global_position = held.get_global_mouse_position()
+	held.global_position = held.get_global_mouse_position() + Vector2.UP * 55
 
 static func drop(item: Item, equipment: Equipment) -> Pickup:
 	if item:

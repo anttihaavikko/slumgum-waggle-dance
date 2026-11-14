@@ -9,6 +9,7 @@ class_name Slot extends Control
 var equipment: Equipment
 var item: Item
 var in_bar: bool
+var depositing := false
 
 func mark(state: bool):
 	if equipment and in_bar: equipment.toggle(state)
@@ -22,7 +23,25 @@ func add_equipment(eq: Equipment):
 	equipment = eq
 	update_visuals()
 
-func pick(target: Inventory):
+func take(amt: int):
+	item.amount -= amt
+	if item.amount == 0: clear()
+	update_visuals()
+
+func pick(target: Inventory, alt: bool):
+	var held: Slot = Main.singleton.held
+	if not alt: depositing = false
+	if alt and item and item.amount > 0 and not depositing:
+		if held.is_empty():
+			held.add_item(item.data, 1)
+			take(1)
+			Main.singleton.held.hide_if_empty()
+			return
+		if held.item.data.item_id == item.data.item_id:
+			held.increment(1)
+			take(1)
+			return
+		return
 	if Input.is_action_pressed("shift"):
 		if target.can_add_item(item, equipment):
 			if equipment:
@@ -31,8 +50,17 @@ func pick(target: Inventory):
 				target.add_item(item.data.item_id, item.amount)
 			clear()
 		return
-	var held = Main.singleton.held
 	if not held.is_empty():
+		if alt:
+			depositing = true
+			if item and item.data.item_id == held.item.data.item_id:
+				increment(1)
+			else:
+				add_item(held.item.data, 1)
+			held.take(1)
+			if held.is_empty(): depositing = false
+			Main.singleton.held.hide_if_empty()
+			return
 		swap(held)
 		return
 	held.swap(self)
@@ -40,6 +68,7 @@ func pick(target: Inventory):
 func clear():
 	if not in_bar: mark(false)
 	if equipment: equipment.hide()
+	depositing = false
 	item = null
 	equipment = null
 	update_visuals()
