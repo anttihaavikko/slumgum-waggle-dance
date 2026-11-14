@@ -114,6 +114,7 @@
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
+[ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -498,6 +499,9 @@ blend_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0fjpc"]
+blend_mode = 3
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_e5peh"]
 viewport_path = NodePath("SubViewportContainer/SubViewport2")
 
@@ -527,11 +531,12 @@ time = NodePath("../Schedule")
 explosion_shape = NodePath("../Explosion")
 bird_prefab = ExtResource("2_nb1ia")
 
-[node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint")]
+[node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint")]
 script = ExtResource("2_sasc4")
 tint = NodePath("../CanvasModulate")
 ui_tint = NodePath("../HUD/CanvasModulate")
 tint_color = SubResource("Gradient_sasc4")
+globe_tint = NodePath("../HUD/Frame/Globe Mask/Globe Dimmer")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -1345,6 +1350,23 @@ alignment = 1
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
+
+[node name="Globe Mask" type="TextureRect" parent="HUD/Frame" unique_id=1495948992]
+clip_children = 1
+layout_mode = 0
+offset_left = 218.0
+offset_top = 109.0
+offset_right = 547.0
+offset_bottom = 295.3063
+texture = ExtResource("101_0fjpc")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Globe Dimmer" type="ColorRect" parent="HUD/Frame/Globe Mask" unique_id=1059364431]
+material = SubResource("CanvasItemMaterial_0fjpc")
+layout_mode = 0
+offset_right = 332.0
+offset_bottom = 176.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1161880959]
 visible = false

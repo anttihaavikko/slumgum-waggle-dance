@@ -3,6 +3,7 @@ class_name Schedule extends Node
 @export var tint: CanvasModulate
 @export var ui_tint: CanvasModulate
 @export var tint_color: Gradient
+@export var globe_tint: ColorRect
 
 var sleeper: Node2D
 
@@ -25,6 +26,7 @@ func _process(delta) -> void:
 			if f: f.fill()
 	tint.color = tint_color.sample(time)
 	ui_tint.color = tint.color + Color(0.2, 0.2, 0.2)
+	globe_tint.color = tint.color.lightened(0.1)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if OS.is_debug_build():
