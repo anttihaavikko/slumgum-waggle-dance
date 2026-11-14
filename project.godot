@@ -177,6 +177,7 @@ shift={
 2d_physics/layer_13="Spit"
 2d_physics/layer_14="Bird"
 2d_physics/layer_15="Bombs"
+2d_physics/layer_16="Rocks"
 
 [physics]
 

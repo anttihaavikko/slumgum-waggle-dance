@@ -121,6 +121,8 @@
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
+[ext_resource type="Texture2D" uid="uid://b7mjrvqx2x65j" path="res://Sprites/pickaxe.png" id="96_0wopu"]
+[ext_resource type="Script" uid="uid://40pyvnkqggg6" path="res://Scripts/pickaxe.gd" id="96_ja2pg"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
@@ -217,7 +219,9 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_gmdny"]
 script = ExtResource("3_cbgmd")
 item_id = 11
-title = "Rock"
+title = "Pebble"
+color = Color(0.627635, 0.6276355, 0.62763524, 1)
+sprite = ExtResource("12_gt3je")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_55idt"]
@@ -569,6 +573,9 @@ blend_mode = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
 radius = 20.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja2pg"]
+radius = 74.8
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpkcx"]
 radius = 1000.0
 
@@ -808,7 +815,7 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Hands/Aligner/Swinger/Lantern")]
+tools = [NodePath("Body/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Hands/Aligner/Swinger/Brush"), NodePath("Body/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Hands/Aligner/Swinger/Lantern"), NodePath("Body/Hands/Aligner/Swinger/Pickaxe")]
 hands = NodePath("Body/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
@@ -1183,6 +1190,27 @@ sprite = NodePath(".")
 [node name="Paint" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger/Paintbrush" unique_id=1782155655]
 position = Vector2(-227.63586, -3.8719788)
 texture = ExtResource("43_nay3j")
+
+[node name="Pickaxe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=729087898 node_paths=PackedStringArray("area", "swinger", "aligner")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-1.831934, -0.25831032)
+rotation = 0.13577862
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("96_0wopu")
+offset = Vector2(-69.47052, 2.293457)
+script = ExtResource("96_ja2pg")
+area = NodePath("../../../../../../Mine Check")
+identifier = 6
+description = "A tool for breaking down stones. Mining is a lot of work but the pebbles acquired are an important component in many recipes."
+recipe = Dictionary[int, int]({
+0: 5,
+2: 5,
+20: 2
+})
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = -0.9
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=832043342]
 position = Vector2(0, 133)
@@ -1753,7 +1781,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 script = ExtResource("50_1semv")
-recipes = Array[int]([2, 1, 3, 4])
+recipes = Array[int]([2, 6, 1, 3, 4])
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 
@@ -2292,6 +2320,14 @@ collision_mask = 290
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230333985]
 enabled = false
+
+[node name="Mine Check" type="ShapeCast2D" parent="." unique_id=439998825]
+position = Vector2(405, -383)
+rotation = 0.13577862
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("CircleShape2D_ja2pg")
+target_position = Vector2(0, 0)
+collision_mask = 32768
 
 [node name="Explosion" type="ShapeCast2D" parent="." unique_id=490870025]
 position = Vector2(-1599, -17)

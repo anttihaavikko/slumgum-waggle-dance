@@ -1,14 +1,21 @@
 [gd_scene format=3 uid="uid://dagf4wr0s64rf"]
 
 [ext_resource type="Script" uid="uid://wbt7ku5t32ht" path="res://_Starter/Scripts/rock.gd" id="1_lgx4v"]
+[ext_resource type="Script" uid="uid://bi6dt48qm3k7k" path="res://_Starter/Scripts/root_pointer.gd" id="2_5mkji"]
+[ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="3_vd8au"]
+[ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="4_1rhfe"]
 
-[node name="Rock" type="Node2D" unique_id=256846012 node_paths=PackedStringArray("poly", "line", "collider")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1rhfe"]
+blend_mode = 1
+
+[node name="Rock" type="Node2D" unique_id=256846012 node_paths=PackedStringArray("poly", "line", "collider", "spot")]
 z_index = -1
 script = ExtResource("1_lgx4v")
 poly = NodePath("Polygon2D")
 line = NodePath("Line2D")
 collider = NodePath("StaticBody2D/CollisionPolygon2D")
 tint = Color(0.80580723, 0.87184894, 0.999999, 1)
+spot = NodePath("Spot")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1222369177]
 color = Color(0.57700837, 0.5770084, 0.57700837, 1)
@@ -19,9 +26,22 @@ closed = true
 width = 25.0
 default_color = Color(0.13725491, 0, 0.11764706, 1)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=960823535]
-collision_layer = 8
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=960823535 node_paths=PackedStringArray("root")]
+collision_layer = 32776
 collision_mask = 8
+script = ExtResource("2_5mkji")
+root = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=105671712]
 polygon = PackedVector2Array(103, -79, 103, 62, -73, 83, -91, -54, 27, -152)
+
+[node name="Spot" type="Sprite2D" parent="." unique_id=1151818325]
+modulate = Color(1, 1, 1, 0.84705883)
+z_index = 100
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_1rhfe")
+texture = ExtResource("3_vd8au")
+script = ExtResource("4_1rhfe")
+scales = true
+scale_amount = Vector2(0.1, 0.1)
+single_direction = true

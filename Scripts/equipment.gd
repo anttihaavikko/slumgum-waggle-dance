@@ -6,7 +6,8 @@ enum Id {
 	Brush,
 	Guitar,
 	Paintbrush,
-	Lantern
+	Lantern,
+	Pickaxe
 }
 
 @export var identifier: Id

@@ -10,8 +10,6 @@ size = Vector2(35.78, 19.52)
 size = Vector2(424, 255)
 
 [node name="Anvil" unique_id=299398414 instance=ExtResource("1_vhdmu")]
-title = "Anvil"
-identifier = 5
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
 position = Vector2(-31, -143)
