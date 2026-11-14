@@ -827,7 +827,7 @@ offset = Vector2(0, 1)
 [node name="Swinger" type="Node2D" parent="Bee/Body/Hands/Aligner" unique_id=1904647529]
 script = ExtResource("18_1w6v2")
 
-[node name="Hammer" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "swinger", "aligner")]
+[node name="Hammer" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "swinger", "aligner", "help_text")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-3, 0)
@@ -844,6 +844,7 @@ recipe = Dictionary[int, int]({
 swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
+help_text = NodePath("../../../../../../HUD/Frame/Hammer Help")
 
 [node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
 visible = false
@@ -1367,6 +1368,24 @@ material = SubResource("CanvasItemMaterial_0fjpc")
 layout_mode = 0
 offset_right = 332.0
 offset_bottom = 176.0
+
+[node name="Hammer Help" type="RichTextLabel" parent="HUD/Frame" unique_id=942580721]
+visible = false
+layout_mode = 0
+offset_left = -125.0
+offset_top = -19.0
+offset_right = 863.0
+offset_bottom = 142.0
+theme = ExtResource("36_hdf80")
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[img=30]res://_Starter/Sprites/mouse_click.png[/img] place, [img=30]res://_Starter/Sprites/mouse_right.png[/img] open build menu,
+ [img=25]res://_Starter/Sprites/mouse_zoom.png[/img] rotate, [img=30]res://_Starter/Sprites/mouse_wheel_click.png[/img] destroy piece,
+SHIFT no snapping"
+horizontal_alignment = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1161880959]
 visible = false

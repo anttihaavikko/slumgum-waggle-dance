@@ -19,6 +19,7 @@ enum Id {
 @export var sprite: Sprite2D
 @export var flips := false
 @export var aligns := true
+@export var help_text: Control
 
 var cooldown := 0.0
 
@@ -34,6 +35,7 @@ func update(_delta: float):
 
 func toggle(state: bool):
 	visible = state
+	if help_text: help_text.visible = state
 
 func align():
 	var mp = get_global_mouse_position()
