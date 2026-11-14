@@ -4,6 +4,9 @@ extends Node2D
 @export var area: Area2D
 @export var bubble: Appearer
 @export var message: RichTextLabel
+@export var crown: Node2D
+@export var glasses: Node2D
+@export var glasses_colors: Array[Color]
 
 var off_pos = Vector2.DOWN * 600
 var last_appearance := -1
@@ -13,24 +16,76 @@ var very_first := true
 
 var event_pool: Array[QueenEvent] = [
 	QueenEvent.new([
-		"First of event",
-		"Second of event"
+		"We're (introducing) a new exciting (hybrid working) model where we are (required) to come back to the (colony) at least (three days) a week. We (firmly believe) this change to (strengthen) our (collaboration) and (innovation).",
+		"We've (heard) your (feedback) on the new (hybrid working) model. Mostly (positive) of course, no need to (fact check) this. So we've decided to (increase) the (colony) day amount to (four days) a week."
 	]),
-	QueenEvent.new([
-		"Solo event"
-	])
+	QueenEvent.new(
+		get_replacement_event("You might have already heard the (news) that our (Queen) has been caught having an (affair) with an (alleged wasp spy). The (board) has decided to (let them go) and we'll (inform) you as soon as we know (more)."),
+		get_replacement_skins(true)
+	),
+	QueenEvent.new(
+		get_replacement_event("I am (sad) and (excited) to announce that this will be my (last day) as a (Queen) for this (colony). I will be (moving) to towards new (challenges) but wish everyone here (all the best)."),
+		get_replacement_skins()
+	)
 ]
 
 func _ready() -> void:
 	queen.position = off_pos
 	area.body_entered.connect(appear)
 	area.body_exited.connect(leave)
+	event = event_pool.pop_front()
 	event_pool.shuffle()
+
+func get_replacement_skins(immediate: bool = false) -> Array[int]:
+	var options = [1, 2, 3, 4]
+	options.shuffle()
+	var first = options[0]
+	var second = options[1]
+	return [first, first, first, second, 0] if immediate else [0, first, first, second, 0]
+
+func get_replacement_event(intro) -> Array[String]:
+	return [
+		intro,
+		"Hello, I am (%s) from (HR) and I will be the (acting Queen) until we find a permanent (replacement). The (search) is ongoing and we (already) have a few potential (candidates)." % [get_random_name()],
+		"The (search) for the (new Queen) is still going on. One of the (best candidates) had to be (disqualified) because of %s but we still have a couple of (good options)." % [get_random_sack_reason()],
+		"Greetings, I am (%s) from (HR). I will be the new (acting acting Queen). The previous (acting queen) was also let go due to %s. Hopefully we will find (someone) to (fill) the position (permanently soon)!" % [get_random_name(), get_random_sack_reason()],
+		"I am (%s the %s), the new (Queen)! I will be doing the (rounds) in the (colony) the next few days getting (accustomed) to the (work environments)." % [get_random_name(), RomanNumbers.get_string(randi_range(1, 15))]
+	]
+
+func get_random_name() -> String:
+	return [
+		'Beethany',
+		'Elizabeeth',
+		'Beetrix',
+		'Beecky',
+		'Ambeer',
+		'Rebeecca',
+		'Beecca',
+		'Beeth'
+	].pick_random()
+
+func get_random_sack_reason() -> String:
+	return [
+		'(improper behaviour) around (interns)',
+		'(embezzling honey) from the colony (vault)',
+		'trying to (conspire) a (coup)',
+		'increased (%s) attacks' % get_random_bird()
+	].pick_random()
+
+func get_random_bird() -> String:
+	return ['robin', 'bee-eater', 'shrike', 'great tit'].pick_random()
+
+func setup_skin(index: int):
+	crown.visible = index == 0
+	glasses.visible = index > 0
+	glasses.self_modulate = glasses_colors[index - 1]
 
 func appear(_node: Node2D):
 	if appeared_today(): return
 	if Main.singleton.time.day == 1:
 		await get_tree().create_timer(0.5).timeout
+	if event: setup_skin(event.get_skin())
+	else: setup_skin(0)
 	get_tree().create_tween().tween_property(queen, "position", Vector2.ZERO, 0.3).set_trans(Tween.TRANS_BOUNCE)
 	last_appearance = Main.singleton.time.day
 	await get_tree().create_timer(0.3).timeout
@@ -49,6 +104,7 @@ func leave(_node: Node2D):
 func get_message() -> String:
 	if event:
 		var msg = event.messages.pop_front()
+		event.step += 1
 		if event.messages.size() == 0:
 			event = null
 		return msg
@@ -92,6 +148,13 @@ func get_message() -> String:
 
 class QueenEvent:
 	var messages: Array[String]
+	var skins: Array = []
+	var step := 0
 
-	func _init(msgs: Array[String]):
+	func _init(msgs: Array[String], use_skins: Array = []):
 		messages = msgs
+		for s in use_skins:
+			skins.append(s)
+
+	func get_skin() -> int:
+		return skins[step] if step < skins.size() else 0

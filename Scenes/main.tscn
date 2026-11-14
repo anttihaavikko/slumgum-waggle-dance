@@ -111,6 +111,7 @@
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
 [ext_resource type="Script" uid="uid://dkwkobpcq5j4v" path="res://_Starter/Scripts/appearer.gd" id="68_ilwxp"]
 [ext_resource type="Texture2D" uid="uid://c4y7h8ywky7ji" path="res://Sprites/bubble.png" id="68_mfvrx"]
+[ext_resource type="Texture2D" uid="uid://c8rtdv3liyvdf" path="res://Sprites/glasses.png" id="68_xjjvj"]
 [ext_resource type="Script" uid="uid://bks47snlvsntf" path="res://_Starter/Scripts/movable_rigidbody.gd" id="71_t014q"]
 [ext_resource type="PackedScene" uid="uid://cb7tgyuljp17g" path="res://Scenes/worm.tscn" id="73_cf2bd"]
 [ext_resource type="Script" uid="uid://bc0p0qf2efaya" path="res://Scripts/dungeon.gd" id="74_32dfi"]
@@ -658,7 +659,7 @@ rotation = 1.7988997
 position = Vector2(266, 487)
 rotation = 0.95665735
 
-[node name="Queen" type="Node2D" parent="." unique_id=982120171 node_paths=PackedStringArray("queen", "area", "bubble", "message")]
+[node name="Queen" type="Node2D" parent="." unique_id=982120171 node_paths=PackedStringArray("queen", "area", "bubble", "message", "crown", "glasses")]
 z_index = -10
 position = Vector2(498, 431)
 script = ExtResource("59_cmq5c")
@@ -666,6 +667,9 @@ queen = NodePath("Mover/Boss")
 area = NodePath("Area2D")
 bubble = NodePath("Mover/Bubble Appearer")
 message = NodePath("Mover/Bubble Appearer/Bubble Wrap/Bubble/RichTextLabel")
+crown = NodePath("Mover/Boss/Crown")
+glasses = NodePath("Mover/Boss/Face Wrap/Glasses")
+glasses_colors = Array[Color]([Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(0.3647059, 0.3647059, 0.3647059, 1), Color(1, 1, 1, 1)])
 
 [node name="Area2D" type="Area2D" parent="Queen" unique_id=1174341945]
 collision_layer = 0
@@ -732,6 +736,12 @@ metadata/_custom_type_script = "uid://dce3tbn077db6"
 [node name="Face" parent="Queen/Mover/Boss/Face Wrap" unique_id=1240513132 instance=ExtResource("7_344ge")]
 position = Vector2(-9, -111)
 scale = Vector2(4.6145344, 4.6145344)
+
+[node name="Glasses" type="Sprite2D" parent="Queen/Mover/Boss/Face Wrap" unique_id=466274467]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-5, -142)
+scale = Vector2(0.75297374, 0.75297374)
+texture = ExtResource("68_xjjvj")
 
 [node name="Bubble Appearer" type="Node2D" parent="Queen/Mover" unique_id=2043248565]
 position = Vector2(-220, -228)
