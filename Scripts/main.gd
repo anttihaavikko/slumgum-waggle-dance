@@ -10,6 +10,7 @@ class_name Main extends Node
 @export var explosion_shape: ShapeCast2D
 @export var bird_prefab: PackedScene
 @export var new_marker: Texture2D
+@export var notifications: Notifications
 
 var station: StationMenu
 var bee: Bee
@@ -83,6 +84,12 @@ func has_seen_materials(recipe: Dictionary[Item.Id, int]):
 func mark_seen(id: Item.Id):
 	if not seen.has(id):
 		seen.append(id)
+		for piece in builder.pieces:
+			if piece.recipe.has(id) and Item.can_make(piece.recipe, seen):
+				notifications.add(Utils.colorize("New build piece: (%s)" % [piece.title.to_upper()], "#FFBA49"))
+		for eq in bee.tools:
+			if eq.recipe.has(id) and Item.can_make(eq.recipe, seen):
+				notifications.add(Utils.colorize("New recipe: (%s)" % [eq.name.to_upper()], "#FFBA49"))
 
 func mark_crafted(id: Equipment.Id):
 	if not crafted.has(id):

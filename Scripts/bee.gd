@@ -51,6 +51,8 @@ func _ready() -> void:
 	lander.body_exited.connect(func(_o): landed = false)
 	body.body_entered.connect(collide)
 	inventory.announces = true
+	await get_tree().create_timer(1).timeout
+	inventory.add_item(Item.Id.Wax, 20)
 
 func throw(prefab: PackedScene):
 	var obj = prefab.instantiate() as RigidBody2D

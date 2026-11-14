@@ -57,7 +57,9 @@
 [ext_resource type="PackedScene" uid="uid://b4af11tt4lq03" path="res://Scenes/Pieces/sign.tscn" id="22_qax2n"]
 [ext_resource type="PackedScene" uid="uid://mibamh2d04it" path="res://Scenes/Pieces/banner.tscn" id="23_owhal"]
 [ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
+[ext_resource type="Script" uid="uid://e88pkdwyw65u" path="res://_Starter/Scripts/sound_effects.gd" id="24_8dylv"]
 [ext_resource type="PackedScene" uid="uid://bvhmoedib4lva" path="res://Scenes/Pieces/anvil.tscn" id="24_qnggo"]
+[ext_resource type="PackedScene" uid="uid://p0a0dayjvrf" path="res://_Starter/Scenes/sound.tscn" id="25_qv1an"]
 [ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
 [ext_resource type="PackedScene" uid="uid://8uqc336nuxot" path="res://Scenes/Pieces/spinning_wheel.tscn" id="26_tab3y"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
@@ -121,6 +123,7 @@
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
+[ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -574,7 +577,7 @@ radius = 100.0
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
@@ -586,6 +589,7 @@ time = NodePath("../Schedule")
 explosion_shape = NodePath("../Explosion")
 bird_prefab = ExtResource("2_nb1ia")
 new_marker = ExtResource("12_gt3je")
+notifications = NodePath("../HUD/Notifications")
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint")]
 script = ExtResource("2_sasc4")
@@ -608,6 +612,11 @@ metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 script = ExtResource("5_ueoa1")
 effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22")])
 metadata/_custom_type_script = "uid://calgx5smnk57"
+
+[node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
+script = ExtResource("24_8dylv")
+prefab = ExtResource("25_qv1an")
+metadata/_custom_type_script = "uid://e88pkdwyw65u"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
 z_index = -50
@@ -2065,6 +2074,55 @@ grow_vertical = 0
 visible = false
 z_index = 20
 z_as_relative = false
+
+[node name="Notifications" type="Control" parent="HUD" unique_id=114378607 node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -412.0
+offset_right = 414.0
+offset_bottom = 97.0
+grow_horizontal = 2
+script = ExtResource("116_jab21")
+label = NodePath("RichTextLabel")
+direction = Vector2(0, -1)
+metadata/_custom_type_script = "uid://yycbi8k01fjd"
+
+[node name="Outline" type="ColorRect" parent="HUD/Notifications" unique_id=1814154791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fill" type="ColorRect" parent="HUD/Notifications" unique_id=539763664]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13725491, 0, 0.11764706, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Notifications" unique_id=1688540786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Lorem ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
