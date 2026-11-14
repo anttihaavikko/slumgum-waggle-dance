@@ -65,6 +65,8 @@ func get_message() -> String:
 	if Main.singleton.crafted.size() == 0:
 		if Main.singleton.inventory.has(Item.Id.Nectar):
 			return "Oh nice, you've been a (busy bee) gathering all that (nectar)! You should try (crafting) a (hammer) from it using the (core)."
+		else:
+			return "Have you been (slacing) all day? Get your (act together) and go find (flowers) and gather some (nectar)!"
 	if Main.singleton.built.size() <= 3:
 		return "So you got the hang of (crafting). You should try (building) some (structures) with the (hammer) next. That'll allow you to get even more (materials)."
 	if event_pool.size() > 0:
