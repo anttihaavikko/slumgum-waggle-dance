@@ -45,7 +45,7 @@ func get_count(id: Item.Id):
 	return total
 
 func has(id: Item.Id) -> bool:
-	return slots.any(func(s: Slot): return s.item.data.item_id == id)
+	return slots.any(func(s: Slot): return s.item and s.item.data.item_id == id)
 
 func current() -> Slot:
 	return slots[focused]
