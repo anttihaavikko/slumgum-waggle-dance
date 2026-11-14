@@ -11,6 +11,7 @@ script = ExtResource("3_0lvj8")
 [sub_resource type="Resource" id="Resource_l5t2o"]
 script = ExtResource("3_0lvj8")
 item = 3
+amount = 2
 
 [sub_resource type="Resource" id="Resource_0lvj8"]
 script = ExtResource("2_0lvj8")
@@ -19,10 +20,7 @@ output = Array[ExtResource("3_0lvj8")]([SubResource("Resource_l5t2o")])
 metadata/_custom_type_script = "uid://d30bl70a5oc7y"
 
 [node name="Jar" unique_id=299398414 instance=ExtResource("1_w6xpg")]
-title = "Jar"
-description = "Nectar placed in the jar will slowly turn into honey."
 converts = Array[ExtResource("2_0lvj8")]([SubResource("Resource_0lvj8")])
-identifier = 6
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
 position = Vector2(0, -257)

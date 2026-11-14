@@ -327,7 +327,7 @@ description = "Can store items you don't want to carry around or risk losing."
 prefab = ExtResource("13_kqrg6")
 sprite = ExtResource("74_p4gyq")
 recipe = Dictionary[int, int]({
-0: 10
+0: 5
 })
 
 [sub_resource type="Resource" id="Resource_64lof"]
@@ -1034,7 +1034,7 @@ area = NodePath("Area")
 identifier = 1
 description = "A farming tool that can be used as a weapon in a pinch."
 recipe = Dictionary[int, int]({
-2: 10,
+2: 5,
 3: 5,
 20: 5
 })
@@ -1063,8 +1063,8 @@ script = ExtResource("28_8cuat")
 identifier = 2
 description = "Holding this tool while harvesting nectar will also allow you to gather pollen."
 recipe = Dictionary[int, int]({
-0: 10,
-2: 10
+0: 5,
+2: 5
 })
 aligner = NodePath("../..")
 swing_dir = 1.2
@@ -1127,8 +1127,7 @@ script = ExtResource("28_8cuat")
 identifier = 3
 description = "Allows you to play some sweet comforting tunes. Could maybe even affect your predators."
 recipe = Dictionary[int, int]({
-0: 5,
-2: 12,
+2: 10,
 3: 5,
 19: 6
 })
@@ -1153,7 +1152,7 @@ cast = NodePath("../../../../../../Cursor Icon/ShapeCast2D")
 identifier = 4
 description = "Allows you to paint your build pieces to what ever color you want, and possess paint of."
 recipe = Dictionary[int, int]({
-2: 10,
+2: 5,
 3: 5,
 18: 5
 })
