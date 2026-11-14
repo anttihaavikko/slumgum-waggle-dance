@@ -120,6 +120,7 @@
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
+[ext_resource type="Script" uid="uid://cqdv0478xmu4j" path="res://Scripts/guitar.gd" id="93_na2ur"]
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 [ext_resource type="Texture2D" uid="uid://b7mjrvqx2x65j" path="res://Sprites/pickaxe.png" id="96_0wopu"]
 [ext_resource type="Script" uid="uid://40pyvnkqggg6" path="res://Scripts/pickaxe.gd" id="96_ja2pg"]
@@ -323,8 +324,8 @@ description = "The core provides energy to all connected platforms. Allows some 
 prefab = ExtResource("12_aa8k8")
 sprite = ExtResource("46_aok0f")
 recipe = Dictionary[int, int]({
-2: 10,
 3: 10,
+11: 10,
 20: 5
 })
 
@@ -1141,7 +1142,7 @@ scales = true
 scale_amount = Vector2(0.02, 0.02)
 scale_speed = 15.0
 
-[node name="Guitar" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("swinger", "aligner", "sprite")]
+[node name="Guitar" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("chord_display", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(3.9999886, 1.30832195e-05)
@@ -1149,7 +1150,8 @@ rotation = -0.18809377
 scale = Vector2(0.85136753, 0.85136753)
 texture = ExtResource("31_nwwfm")
 offset = Vector2(73.951904, 1.5249786)
-script = ExtResource("28_8cuat")
+script = ExtResource("93_na2ur")
+chord_display = NodePath("../../../../../../Cursor Icon/Chord")
 identifier = 3
 description = "Allows you to play some sweet comforting tunes. Could maybe even affect your predators."
 recipe = Dictionary[int, int]({
@@ -2304,6 +2306,7 @@ horizontal_alignment = 1
 
 [node name="Cursor Icon" type="Node2D" parent="." unique_id=559628578]
 z_index = 50
+position = Vector2(-211, 264)
 script = ExtResource("60_6ml46")
 
 [node name="Nope" type="Sprite2D" parent="Cursor Icon" unique_id=1825553103]
@@ -2317,6 +2320,21 @@ shape = SubResource("CircleShape2D_ovafv")
 target_position = Vector2(0, 0)
 max_results = 1
 collision_mask = 290
+
+[node name="Chord" type="RichTextLabel" parent="Cursor Icon" unique_id=1136574372]
+visible = false
+offset_left = 21.0
+offset_top = -141.0
+offset_right = 293.0
+offset_bottom = 18.0
+theme = ExtResource("36_hdf80")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "C#"
+scroll_active = false
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230333985]
 enabled = false
