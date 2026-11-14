@@ -17,7 +17,7 @@ var very_first := true
 var event_pool: Array[QueenEvent] = [
 	QueenEvent.new([
 		"We're (introducing) a new exciting (hybrid working) model where we are (required) to come back to the (colony) at least (three days) a week. We (firmly believe) this change to (strengthen) our (collaboration) and (innovation).",
-		"We've (heard) your (feedback) on the new (hybrid working) model. Mostly (positive) of course, no need to (fact check) this. So we've decided to (increase) the (colony) day amount to (four days) a week."
+		"We've (heard) your (feedback) on the new (hybrid working) model. Mostly (positive) of course, no need to (fact check) this. So we've (decided) to (increase) the (colony) day amount to (four days) a week."
 	]),
 	QueenEvent.new(
 		get_replacement_event("You might have already heard the (news) that our (Queen) has been caught having an (affair) with an (alleged wasp spy). The (board) has decided to (let them go) and we'll (inform) you as soon as we know (more)."),

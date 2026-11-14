@@ -88,7 +88,7 @@ func add(id: Item.Id, amt: int = 1):
 	var item = outputs.find_custom(func(i: Item): return i and i.data.item_id == id and i.amount < 20)
 	if item >= 0: outputs[item].amount += amt
 	else:
-		outputs[outputs.find(null)] = Item.new(Main.get_item_data(id))
+		outputs[outputs.find(null)] = Item.new(Main.get_item_data(id), amt)
 
 func try_convert():
 	if converts.size() == 0: return
