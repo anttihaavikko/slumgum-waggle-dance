@@ -42,7 +42,7 @@ func _ready() -> void:
 	inventory.add_item(Item.Id.Nectar, 20)
 	inventory.add_item(Item.Id.Nectar, 10)
 	# inventory.add_item(Item.Id.Pollen, 10)
-	# inventory.add_item(Item.Id.Bomb, 10)
+	inventory.add_item(Item.Id.Bomb, 10)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
 	inventory.focus(0)

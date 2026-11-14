@@ -59,7 +59,9 @@ func generate():
 	line.points = shape
 	wall.polygon = shape
 	wall_line.points = shape
-	bg.polygon = Geometry2D.offset_polygon(offset_points(shape.duplicate()), 100)[0]
+
+	await get_tree().process_frame
+	bg.polygon = Geometry2D.offset_polygon(offset_points(shape.duplicate()), 200)[0]
 
 	await get_tree().process_frame
 

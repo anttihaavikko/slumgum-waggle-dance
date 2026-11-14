@@ -104,8 +104,10 @@
 [ext_resource type="Texture2D" uid="uid://dcfxu2ds3nvqv" path="res://Sprites/lantern-standing.png" id="56_ilwxp"]
 [ext_resource type="PackedScene" uid="uid://dxy7r1qf1oqpe" path="res://Scenes/window.tscn" id="57_lx3vj"]
 [ext_resource type="Script" uid="uid://5e1wc8r2tqta" path="res://Scripts/preview.gd" id="57_ynmfv"]
+[ext_resource type="Script" uid="uid://b37dkg24taj38" path="res://Scripts/queen.gd" id="59_cmq5c"]
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
+[ext_resource type="Texture2D" uid="uid://oqrvt6fcsplq" path="res://Sprites/crown.png" id="60_gdwd6"]
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
 [ext_resource type="Script" uid="uid://bks47snlvsntf" path="res://_Starter/Scripts/movable_rigidbody.gd" id="71_t014q"]
 [ext_resource type="PackedScene" uid="uid://cb7tgyuljp17g" path="res://Scenes/worm.tscn" id="73_cf2bd"]
@@ -115,6 +117,7 @@
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
+[ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -415,6 +418,17 @@ recipe = Dictionary[int, int]({
 9: 1
 })
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cmq5c"]
+radius = 367.78934
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmq5c"]
+shader = ExtResource("102_b4mik")
+shader_parameter/amount = 2.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = 10.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ee4r6"]
 bounce = 0.5
 
@@ -648,6 +662,79 @@ position = Vector2(81, 235)
 [node name="Anvil" parent="Platforms" unique_id=1054008704 instance=ExtResource("24_qnggo")]
 position = Vector2(-663, -372)
 
+[node name="Queen" type="Node2D" parent="." unique_id=982120171 node_paths=PackedStringArray("queen", "area")]
+z_index = -10
+position = Vector2(498, 431)
+script = ExtResource("59_cmq5c")
+queen = NodePath("Mover/Boss")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="Queen" unique_id=1174341945]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queen/Area2D" unique_id=592678389]
+position = Vector2(72, -494)
+shape = SubResource("CircleShape2D_cmq5c")
+
+[node name="Mover" type="Node2D" parent="Queen" unique_id=1398435012]
+script = ExtResource("11_h1bgf")
+moves = true
+move_direction = Vector2(0, 20)
+move_speed = 4.0
+single_direction = true
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="Boss" type="Node2D" parent="Queen/Mover" unique_id=2135243139]
+position = Vector2(0, -16)
+
+[node name="Body" type="Sprite2D" parent="Queen/Mover/Boss" unique_id=736964640]
+scale = Vector2(2.088257, 2.088257)
+texture = ExtResource("1_jjgbg")
+
+[node name="Crown" type="Sprite2D" parent="Queen/Mover/Boss" unique_id=1093800196]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-3.000002, -323.00003)
+scale = Vector2(0.9574225, 0.9574225)
+texture = ExtResource("60_gdwd6")
+
+[node name="Feeler Right" type="Sprite2D" parent="Queen/Mover/Boss" unique_id=64544718]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+material = SubResource("ShaderMaterial_cmq5c")
+position = Vector2(118, -281)
+rotation = 0.42796364
+scale = Vector2(1.7718698, 1.7718698)
+texture = ExtResource("9_6iyac")
+
+[node name="Feeler Left" type="Sprite2D" parent="Queen/Mover/Boss" unique_id=1268566324]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+material = SubResource("ShaderMaterial_cmq5c")
+position = Vector2(-124.00003, -279)
+rotation = -0.21021876
+scale = Vector2(1.7718698, 1.7718698)
+texture = ExtResource("9_6iyac")
+flip_h = true
+
+[node name="Hands" type="Sprite2D" parent="Queen/Mover/Boss" unique_id=1781808378]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-5, 65)
+scale = Vector2(1.9468658, 1.9468658)
+texture = ExtResource("11_b3802")
+script = ExtResource("11_h1bgf")
+moves = true
+move_direction = Vector2(0, 20)
+single_direction = true
+
+[node name="Face Wrap" type="Node2D" parent="Queen/Mover/Boss" unique_id=1926466920 node_paths=PackedStringArray("target")]
+script = ExtResource("14_cbgmd")
+distance = 50
+target = NodePath("../../../../Bee/Body")
+metadata/_custom_type_script = "uid://dce3tbn077db6"
+
+[node name="Face" parent="Queen/Mover/Boss/Face Wrap" unique_id=1240513132 instance=ExtResource("7_344ge")]
+position = Vector2(-9, -111)
+scale = Vector2(4.6145344, 4.6145344)
+
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
 position = Vector2(597, -419)
@@ -825,7 +912,7 @@ script = ExtResource("14_cbgmd")
 distance = 12
 metadata/_custom_type_script = "uid://dce3tbn077db6"
 
-[node name="Face" parent="Bee/Body/Face Wrap/LookAtMouse" unique_id=1240513132 instance=ExtResource("7_344ge")]
+[node name="Face" parent="Bee/Body/Face Wrap/LookAtMouse" unique_id=90074425 instance=ExtResource("7_344ge")]
 position = Vector2(-1, 3)
 scale = Vector2(2.325933, 2.325933)
 
@@ -1473,6 +1560,7 @@ mouse_filter = 2
 color = Color(0.105882354, 0.019607844, 0.14509805, 1)
 
 [node name="Core Window" parent="HUD" unique_id=2091614254 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
@@ -1539,6 +1627,7 @@ button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 
 [node name="Anvil Window" parent="HUD" unique_id=31283961 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
@@ -1605,6 +1694,7 @@ button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 
 [node name="Bed Window" parent="HUD" unique_id=2034345964 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
@@ -1693,6 +1783,7 @@ slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../ItemManager")
 
 [node name="Preview Window" parent="HUD" unique_id=275815913 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = 168.0
 offset_top = -370.0
 offset_right = 574.0
@@ -1846,6 +1937,7 @@ slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../../ItemManager")
 
 [node name="Sign Window" parent="HUD" unique_id=431523299 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = -145.0
 offset_top = -278.0
 offset_right = 137.0
@@ -1878,6 +1970,7 @@ text = "LOREM
 IPSUM"
 
 [node name="Build Picker Win" parent="HUD" unique_id=198672062 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
