@@ -19,6 +19,11 @@ var bird: Bird
 var seen: Array[Item.Id] = [Item.Id.Nectar]
 var built: Array[BuildPiece.Id] = [BuildPiece.Id.Platform, BuildPiece.Id.Support, BuildPiece.Id.Core]
 var crafted: Array[Equipment.Id] = []
+var died := false
+var rank := 0:
+	set(val):
+		rank = min(rank + 1, ranks.size() - 1)
+var ranks = ['newbee', 'private', 'corporal', 'sergeant', 'officer', 'lieutenant', 'captain', 'major', 'colonel', 'general']
 
 static var singleton: Main = null
 
@@ -33,6 +38,9 @@ func _exit_tree() -> void:
 func _init() -> void:
 	if singleton == null:
 		singleton = self
+
+func get_rank_name() -> String:
+	return ranks[rank]
 
 static func pop(message: String, offset: float = 0.0):
 	var dir = Vector2.ONE.rotated(randf() * TAU).normalized() * offset

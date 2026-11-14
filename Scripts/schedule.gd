@@ -19,6 +19,7 @@ func _process(delta) -> void:
 		day += 1
 		Engine.time_scale = 1.0
 		if sleeper: sleeper.hide()
+		Main.singleton.rank += 1
 		Main.singleton.bee.show()
 		Main.pop("DAY %d" % [day])
 		Main.singleton.cleanup()

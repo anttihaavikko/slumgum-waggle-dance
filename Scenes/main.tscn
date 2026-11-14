@@ -658,12 +658,6 @@ rotation = 1.7988997
 position = Vector2(266, 487)
 rotation = 0.95665735
 
-[node name="Box" parent="Platforms" unique_id=529932352 instance=ExtResource("13_kqrg6")]
-position = Vector2(81, 235)
-
-[node name="Anvil" parent="Platforms" unique_id=1054008704 instance=ExtResource("24_qnggo")]
-position = Vector2(-663, -372)
-
 [node name="Queen" type="Node2D" parent="." unique_id=982120171 node_paths=PackedStringArray("queen", "area", "bubble", "message")]
 z_index = -10
 position = Vector2(498, 431)

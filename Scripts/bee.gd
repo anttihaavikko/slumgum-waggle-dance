@@ -29,20 +29,20 @@ var current: Equipment
 func _ready() -> void:
 	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
-	inventory.create_slots(9)
+	inventory.create_slots(5)
 	for s in inventory.slots:
 		s.in_bar = true
 		s.show_key(str(inventory.slots.find(s) + 1))
-	inventory.add_equipment(tools[Equipment.Id.Scythe])
+	# inventory.add_equipment(tools[Equipment.Id.Scythe])
 	# inventory.add_equipment(tools[Equipment.Id.Hammer])
 	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 	# inventory.add_equipment(tools[Equipment.Id.Brush])
 	# inventory.add_equipment(tools[Equipment.Id.Lantern])
-	inventory.add_equipment(tools[Equipment.Id.Hammer])
+	# inventory.add_equipment(tools[Equipment.Id.Hammer])
 	# inventory.add_item(Item.Id.Nectar, 20)
 	# inventory.add_item(Item.Id.Nectar, 10)
 	# inventory.add_item(Item.Id.Pollen, 10)
-	inventory.add_item(Item.Id.Bomb, 10)
+	# inventory.add_item(Item.Id.Bomb, 10)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
 	inventory.focus(0)
@@ -92,13 +92,15 @@ func die():
 	else: hands.show()
 	health.heal(999)
 	dead = false
+	Main.singleton.rank = 0
+	Main.singleton.died = true
+	Main.singleton.time.time = 1.0
 
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id
 
 func danger():
-	if Main.singleton.time.day == 1: return
-	if randf() > 0.15: return
+	if randf() > 0.01 * Main.singleton.rank: return
 	Main.singleton.call_deferred("spawn_bird")
 
 func land(target: Node2D):

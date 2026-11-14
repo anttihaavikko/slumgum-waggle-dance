@@ -115,6 +115,9 @@ func update_visuals():
 		increment(0)
 
 func add_item(data: ItemData, amount: int = 1):
+	if amount < 1:
+		clear()
+		return
 	Main.singleton.mark_seen(data.item_id)
 	count_container.show()
 	item = Item.new(data, amount)

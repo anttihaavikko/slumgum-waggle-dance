@@ -9,6 +9,7 @@ var off_pos = Vector2.DOWN * 600
 var last_appearance := -1
 var started := false
 var event: QueenEvent
+var very_first := true
 
 var event_pool: Array[QueenEvent] = [
 	QueenEvent.new([
@@ -37,7 +38,7 @@ func appear(_node: Node2D):
 	message.text = Utils.colorize(get_message(), "#FFBA49")
 
 func appeared_today() -> bool:
-	return last_appearance == Main.singleton.time.day
+	return last_appearance == Main.singleton.time.day and not Main.singleton.died
 
 func leave(_node: Node2D):
 	await get_tree().create_timer(0.5).timeout
@@ -52,13 +53,27 @@ func get_message() -> String:
 			event = null
 		return msg
 
+	if Main.singleton.died:
+		Main.singleton.died = false
+		var intro = [
+			"(Welcome) to your first (shift newbee)!"
+		].pick_random()
+		var fillter = [
+			"You've got some big (shoes) to (fill).",
+			"You can't do (worse) than the (last guy)."
+		].pick_random()
+		var ending = [
+			"Go do (some work)!",
+			"Go find some (flowers) and bring the (nectar) home.",
+			"Keep an (eye) on your (energy levels)."
+		].pick_random()
+		return "%s %s %s" % [intro, fillter, ending]
+
 	var day := Main.singleton.time.day
-	# queued.append_array([
-	# 	"First",
-	# 	"Second"
-	# ])
+	var rank := Main.singleton.get_rank_name()
 	if day == 1:
-		return "Welcome to your first (shift newbee)! Fly around with (WASD), go find some (flowers) and gather (nectar) from them.\n\nBe mindful to not run out of (energy)!"
+		very_first = false
+		return "(Welcome) to your first (shift newbee)! Fly around with (WASD), go find some (flowers) and gather (nectar) from them.\n\nBe mindful to not run out of (energy)!"
 	if Main.singleton.crafted.size() > 0 and Main.singleton.built.size() > 3 and not started:
 		started = true
 		return "Wow, what a (great worker) you are! Keep it up and you might receive the coveted (employee of the month) title one day."
@@ -72,7 +87,7 @@ func get_message() -> String:
 	if event_pool.size() > 0:
 		event = event_pool.pop_front()
 	return [
-		"Lorem ipsum dolor sit amet."
+		"Congratulations, you've been promoted to (%s)! I'll be (expecting) you to (deliver) on that (title) too." % [rank]
 	].pick_random()
 
 class QueenEvent:
