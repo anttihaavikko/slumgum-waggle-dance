@@ -318,6 +318,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_aok0f"]
 script = ExtResource("31_3h4bx")
 title = "Box"
+description = "Can store items you don't want to carry around or risk losing."
 prefab = ExtResource("13_kqrg6")
 sprite = ExtResource("74_p4gyq")
 recipe = Dictionary[int, int]({
@@ -347,7 +348,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_urine"]
 script = ExtResource("31_3h4bx")
 title = "Jar"
-description = "Nectar placed in the jar will slowly turn into honey. test"
+description = "Nectar placed in the jar will slowly turn into honey."
 prefab = ExtResource("23_uv6w5")
 sprite = ExtResource("50_rlvxq")
 recipe = Dictionary[int, int]({
@@ -360,7 +361,8 @@ title = "Spinning Wheel"
 prefab = ExtResource("26_tab3y")
 sprite = ExtResource("51_0fjpc")
 recipe = Dictionary[int, int]({
-2: 10
+2: 10,
+3: 5
 })
 
 [sub_resource type="Resource" id="Resource_o2owy"]
@@ -368,6 +370,9 @@ script = ExtResource("31_3h4bx")
 title = "Banner"
 prefab = ExtResource("23_owhal")
 sprite = ExtResource("52_gdwd6")
+recipe = Dictionary[int, int]({
+5: 3
+})
 
 [sub_resource type="Resource" id="Resource_ylsbi"]
 script = ExtResource("31_3h4bx")
@@ -563,6 +568,7 @@ builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
 explosion_shape = NodePath("../Explosion")
 bird_prefab = ExtResource("2_nb1ia")
+new_marker = ExtResource("12_gt3je")
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint")]
 script = ExtResource("2_sasc4")
@@ -638,6 +644,9 @@ rotation = 0.95665735
 
 [node name="Box" parent="Platforms" unique_id=529932352 instance=ExtResource("13_kqrg6")]
 position = Vector2(81, 235)
+
+[node name="Anvil" parent="Platforms" unique_id=1054008704 instance=ExtResource("24_qnggo")]
+position = Vector2(-663, -372)
 
 [node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses")]
 z_index = 5
@@ -890,6 +899,7 @@ offset = Vector2(-103.92078, 94.49667)
 script = ExtResource("15_ee4r6")
 area = NodePath("Area")
 identifier = 1
+description = "A farming tool that can be used as a weapon in a pinch."
 recipe = Dictionary[int, int]({
 2: 10,
 3: 5,
@@ -918,6 +928,7 @@ flip_h = true
 flip_v = true
 script = ExtResource("28_8cuat")
 identifier = 2
+description = "Holding this tool while harvesting nectar will also allow you to gather pollen."
 recipe = Dictionary[int, int]({
 0: 10,
 2: 10
@@ -933,6 +944,7 @@ scale = Vector2(0.99999994, 0.99999994)
 offset = Vector2(19.93097, 4.150696)
 script = ExtResource("28_8cuat")
 identifier = 5
+description = "Lights up the dark night."
 recipe = Dictionary[int, int]({
 0: 5
 })
@@ -980,6 +992,7 @@ texture = ExtResource("31_nwwfm")
 offset = Vector2(73.951904, 1.5249786)
 script = ExtResource("28_8cuat")
 identifier = 3
+description = "Allows you to play some sweet comforting tunes. Could maybe even affect your predators."
 recipe = Dictionary[int, int]({
 0: 5,
 2: 12,
@@ -1005,6 +1018,7 @@ paint = NodePath("Paint")
 colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(1, 0.7294118, 0.28627452, 1)])
 cast = NodePath("../../../../../../Cursor Icon/ShapeCast2D")
 identifier = 4
+description = "Allows you to paint your build pieces to what ever color you want, and possess paint of."
 recipe = Dictionary[int, int]({
 2: 10,
 3: 5,
@@ -1695,7 +1709,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("57_ynmfv")
 win = NodePath("..")
-craft_button = NodePath("../Craft")
+craft_button = NodePath("Craft")
 description = NodePath("VBoxContainer/Description")
 materials = NodePath("VBoxContainer/Materials")
 
@@ -1739,13 +1753,12 @@ bbcode_enabled = true
 text = "1 x [img=30]res://Sprites/acid.png[/img] Acid (5/1)"
 fit_content = true
 
-[node name="Craft" type="Button" parent="HUD/Preview Window" unique_id=346257346]
+[node name="Craft" parent="HUD/Preview Window/Preview" unique_id=1334908589 instance=ExtResource("50_2daye")]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 571.0
-offset_right = 374.0
-offset_bottom = 640.0
-theme = ExtResource("36_hdf80")
+offset_left = 32.0
+offset_top = 565.0
+offset_right = 378.0
+offset_bottom = 636.0
 text = "CRAFT"
 
 [node name="Converter Win" parent="HUD" unique_id=1865505689 instance=ExtResource("57_lx3vj")]

@@ -6,9 +6,7 @@ func update(delta: float):
 	super.update(delta)
 	align()
 	if Input.is_action_just_pressed("alt"):
-		builder.clear()
-		builder.picker.show()
-		builder.preview.show()
+		builder.open_menu()
 		# builder.create((builder.slot + 1) % builder.pieces.size(), true)
 	if Input.is_action_just_pressed("cancel"):
 		if builder and builder.held:

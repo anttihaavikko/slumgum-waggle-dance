@@ -16,6 +16,7 @@ var held_mask: int
 var prev_angle := 0.0
 var slot := -1
 var snap_points: Array[Node2D] = []
+var buttons: Array[Button] = []
 
 func _ready() -> void:
 	for s in starters:
@@ -32,8 +33,20 @@ func _ready() -> void:
 		var button = button_prefab.instantiate() as Button
 		button.icon = pieces[i].sprite
 		button_grid.add_child(button)
+		buttons.append(button)
 		button.pressed.connect(func(): pick_piece(i))
 		button.mouse_entered.connect(func(): show_preview(i))
+
+func hide_undiscovered():
+	for i in buttons.size():
+		buttons[i].visible = Main.singleton.has_seen_materials(pieces[i].recipe)
+		buttons[i].get_node("Marker").visible = not Main.singleton.built.has(i)
+
+func open_menu():
+	clear()
+	picker.show()
+	preview.show()
+	hide_undiscovered()
 
 func show_preview(index: int):
 	var data = pieces[index] as PieceData
@@ -64,6 +77,7 @@ func _process(_delta) -> void:
 				return
 			held.try_to_place()
 			if cross.visible: return
+			Main.singleton.mark_built(held.identifier)
 			Main.singleton.inventory.consume_materials(held.data.recipe)
 			snap_points.append_array(held.snap_points)
 			prev_angle = held.rotation

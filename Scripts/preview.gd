@@ -34,4 +34,6 @@ func craft():
 	inv.consume_materials(equipmment.recipe)
 	inv.add_equipment(equipmment)
 	Main.shake(10, 0.15)
+	Main.singleton.mark_crafted(equipmment.identifier)
+	Main.singleton.station.crafter.hide_undiscovered()
 	show_for(equipmment)

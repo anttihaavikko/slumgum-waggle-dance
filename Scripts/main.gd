@@ -9,12 +9,16 @@ class_name Main extends Node
 @export var time: Schedule
 @export var explosion_shape: ShapeCast2D
 @export var bird_prefab: PackedScene
+@export var new_marker: Texture2D
 
 var station: StationMenu
 var bee: Bee
 var flowers: Array[Flower] = []
 var islands: Array[Island] = []
 var bird: Bird
+var seen: Array[Item.Id] = [Item.Id.Nectar]
+var built: Array[BuildPiece.Id] = [BuildPiece.Id.Platform, BuildPiece.Id.Support, BuildPiece.Id.Core]
+var crafted: Array[Equipment.Id] = []
 
 static var singleton: Main = null
 
@@ -61,3 +65,21 @@ func spawn_bird():
 	bird = bird_prefab.instantiate() as Bird
 	bird.global_position = bee.body.global_position + Vector2.UP * 5000
 	get_parent().add_child(bird)
+
+func has_seen_materials(recipe: Dictionary[Item.Id, int]):
+	for id in recipe.keys():
+		if not seen.has(id):
+			return false
+	return true
+
+func mark_seen(id: Item.Id):
+	if not seen.has(id):
+		seen.append(id)
+
+func mark_crafted(id: Equipment.Id):
+	if not crafted.has(id):
+		crafted.append(id)
+
+func mark_built(id: BuildPiece.Id):
+	if not built.has(id):
+		built.append(id)

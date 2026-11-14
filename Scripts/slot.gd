@@ -74,7 +74,7 @@ func clear():
 	item = null
 	equipment = null
 	update_visuals()
-	Main.singleton.inventory.re_focus()
+	if equipment: Main.singleton.inventory.re_focus()
 
 func swap(slot: Slot):
 	if slot.item and can_add(slot.item.data.item_id, slot.item.amount):
@@ -115,6 +115,7 @@ func update_visuals():
 		increment(0)
 
 func add_item(data: ItemData, amount: int = 1):
+	Main.singleton.mark_seen(data.item_id)
 	count_container.show()
 	item = Item.new(data, amount)
 	update_visuals()

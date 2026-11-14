@@ -134,10 +134,11 @@ func consume_materials(recipe: Dictionary[Item.Id, int]):
 		consume(id, recipe[id])
 
 func consume(id: Item.Id, amount: int):
+	var left = amount
 	for s in slots:
 		if s.item and s.item.data.item_id == id:
-			if s.item.amount >= amount:
-				s.take(amount)
+			if s.item.amount >= left:
+				s.take(left)
 				return
-			amount -= s.item.amount
+			left -= s.item.amount
 			s.clear()
