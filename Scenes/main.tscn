@@ -126,6 +126,7 @@
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
+[ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="121_rlvdk"]
 [ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
@@ -2001,6 +2002,23 @@ theme = ExtResource("36_hdf80")
 text = "0"
 script = ExtResource("114_ilwxp")
 
+[node name="Fullscreen Button" parent="HUD" unique_id=1508171716 instance=ExtResource("50_2daye")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -140.0
+offset_right = -36.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/icon_max_width = 50
+text = ""
+icon = ExtResource("121_rlvdk")
+icon_alignment = 1
+
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
 position = Vector2(697, -451)
@@ -2239,3 +2257,4 @@ shape = SubResource("WorldBoundaryShape2D_xjjvj")
 
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
+[connection signal="pressed" from="HUD/Fullscreen Button" to="Main" method="toggle_fullscreen"]

@@ -192,7 +192,7 @@ func _process(delta) -> void:
 	if builder.picker.visible: return
 
 	if Input.is_action_just_pressed("wheel_up"):
-		inventory.change_focus(1)
+		inventory.change_focus(-1)
 
 	if Input.is_action_just_pressed("wheel_down"):
-		inventory.change_focus(-1)
+		inventory.change_focus(1)

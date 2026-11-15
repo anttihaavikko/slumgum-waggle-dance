@@ -102,3 +102,6 @@ func mark_crafted(id: Equipment.Id):
 func mark_built(id: BuildPiece.Id):
 	if not built.has(id):
 		built.append(id)
+
+func toggle_fullscreen():
+	OptionsMenu.toggle_fullscreen_static()
