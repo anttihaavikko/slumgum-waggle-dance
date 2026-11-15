@@ -191,9 +191,8 @@ func spawn_hut(pos: float, tries: int = 0):
 		var prefab = hinters.pick_random() if hints.size() > 0 else huts.pick_random()
 		var hut = prefab.instantiate() as Node2D
 		add_child(hut)
-		hut.scale.x = [1, -1].pick_random()
 		hut.global_position = p
-		hut.setup(ray.get_collision_normal(), hints.pop_front())
+		hut.setup(ray.get_collision_normal(), hints.pop_front(), [1, -1].pick_random())
 	else:
 		spawn_hut(pos + randf_range(-500, 500), tries + 1)
 
