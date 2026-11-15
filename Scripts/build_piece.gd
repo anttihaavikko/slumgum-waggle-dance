@@ -13,6 +13,7 @@ class_name BuildPiece extends Node2D
 var identifier: BuildPiece.Id
 var data: PieceData
 var placed := true
+var can_break := true
 
 enum Id {
 	Platform,

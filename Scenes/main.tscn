@@ -1063,7 +1063,7 @@ offset = Vector2(0, 1)
 [node name="Swinger" type="Node2D" parent="Bee/Body/Hands/Aligner" unique_id=1904647529]
 script = ExtResource("18_1w6v2")
 
-[node name="Hammer" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "swinger", "aligner", "help_text")]
+[node name="Hammer" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "cast", "swinger", "aligner", "help_text")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-3, 0)
@@ -1073,6 +1073,7 @@ texture = ExtResource("10_k12tt")
 offset = Vector2(-47, 3)
 script = ExtResource("13_fevyy")
 builder = NodePath("../../../../../../Platforms")
+cast = NodePath("../../../../../../Cursor Icon/Mouse Caster")
 description = "A tool for constructing platforms and other build pieces. Highly recommended!"
 recipe = Dictionary[int, int]({
 0: 7
@@ -1210,7 +1211,7 @@ offset = Vector2(-75.12311, -1.6327362)
 script = ExtResource("43_ovafv")
 paint = NodePath("Paint")
 colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(1, 0.7294118, 0.28627452, 1)])
-cast = NodePath("../../../../../../Cursor Icon/ShapeCast2D")
+cast = NodePath("../../../../../../Cursor Icon/Mouse Caster")
 identifier = 4
 description = "Allows you to paint your build pieces to what ever color you want, and possess paint of."
 recipe = Dictionary[int, int]({
@@ -2239,7 +2240,7 @@ self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
 scale = Vector2(1.593603, 1.593603)
 texture = ExtResource("34_jwpg7")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="Cursor Icon" unique_id=407651035]
+[node name="Mouse Caster" type="ShapeCast2D" parent="Cursor Icon" unique_id=407651035]
 shape = SubResource("CircleShape2D_ovafv")
 target_position = Vector2(0, 0)
 max_results = 1

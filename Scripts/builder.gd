@@ -21,6 +21,7 @@ var buttons: Array[Button] = []
 func _ready() -> void:
 	for s in starters:
 		snap_points.append_array(s.snap_points)
+		s.can_break = false
 	picker.closed.connect(close)
 	picker.hide()
 
@@ -124,3 +125,6 @@ func create(s: int, discard: bool = false):
 	add_child(held)
 	held.rotation = prev_angle
 	held.global_position = get_global_mouse_position()
+
+func remove_snaps_from(target: BuildPiece):
+	snap_points = snap_points.filter(func(s): return not target.snap_points.has(s))

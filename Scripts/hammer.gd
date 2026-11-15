@@ -1,6 +1,7 @@
 extends Equipment
 
 @export var builder: Builder
+@export var cast: ShapeCast2D
 
 func update(delta: float):
 	super.update(delta)
@@ -13,6 +14,11 @@ func update(delta: float):
 			builder.clear()
 		if builder and builder.picker.visible:
 			builder.close()
+	if Input.is_action_just_pressed("middle"):
+		if cast.is_colliding():
+			var c = cast.get_collider(0)
+			try_to_break(c)
+			try_to_break(c.get_parent())
 
 func toggle(state: bool):
 	super.toggle(state)
@@ -21,3 +27,17 @@ func toggle(state: bool):
 		builder.create(builder.slot)
 	else:
 		builder.clear()
+
+func try_to_break(target: Node):
+	if target is BuildPiece:
+		if not target.can_break:
+			Main.pop("CAN NOT DESTROY THAT!")
+		else:
+			var items = builder.pieces[target.identifier].recipe
+			for id in items:
+				Main.singleton.inventory.add_item(id, items[id])
+				# Main.spawn_item(id, target.global_position)
+			Effects.singleton.add(3, target.global_position)
+			Main.shake(15, 0.2)
+			builder.remove_snaps_from(target)
+			target.queue_free()
