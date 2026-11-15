@@ -153,7 +153,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_Z:
 			zoomed = not zoomed
-			var z = 0.05 if zoomed else 0.3
+			var z = 0.025 if zoomed else 0.3
 			cam.zoom = Vector2.ONE * z
 
 func _process(delta) -> void:

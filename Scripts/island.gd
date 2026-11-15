@@ -41,7 +41,7 @@ func _ready() -> void:
 	for d in dungeons: d.hide()
 
 func generate():
-	var shape = get_shape(0)
+	var shape = get_shape(0, Vector2.ZERO, not starter)
 	shape = append(shape, Vector2(0, 4000))
 	for i in pieces:
 		shape = append(shape, Vector2(-gap * (i + 1), 0))
@@ -145,7 +145,7 @@ func create_dungeon(try := 0) -> bool:
 		return create_dungeon(try + 1)
 
 func get_ground_pos(pos: float) -> Vector2:
-	ray.global_position = Vector2(pos, -5000)
+	ray.global_position = Vector2(pos, global_position.y - 5000)
 	ray.force_raycast_update()
 	return ray.get_collision_point() if ray.is_colliding() else Vector2.ZERO
 
@@ -182,7 +182,7 @@ func spawn_hut(pos: float, tries: int = 0):
 	var spot := Vector2.ZERO
 	for i in 10:
 		# print("try ", i)
-		spot = Vector2(global_position.x + pos + randf_range(-1000, 1000), -5000)
+		spot = Vector2(global_position.x + pos + randf_range(-1000, 1000), global_position.y - 5000)
 		ray.global_position = spot
 		ray.force_raycast_update()
 		if ray.is_colliding() and is_level(pos, 500): break
@@ -198,22 +198,22 @@ func spawn_hut(pos: float, tries: int = 0):
 		spawn_hut(pos + randf_range(-500, 500), tries + 1)
 
 func is_level(pos: float, distance: float) -> bool:
-	ray.global_position = Vector2(global_position.x + pos - distance, -5000)
+	ray.global_position = Vector2(global_position.x + pos - distance, global_position.y - 5000)
 	ray.force_raycast_update()
 	if not ray.is_colliding(): return false
 	var left = ray.get_collision_point()
-	ray.global_position = Vector2(global_position.x + pos + distance, -5000)
+	ray.global_position = Vector2(global_position.x + pos + distance, global_position.y - 5000)
 	ray.force_raycast_update()
 	if not ray.is_colliding(): return false
 	var right = ray.get_collision_point()
 	return left.distance_to(right) < 2.75 * distance
 
 func spawn_flower(pos: float):
-	ray.global_position = Vector2(global_position.x + pos, -5000)
+	ray.global_position = Vector2(global_position.x + pos, global_position.y - 5000)
 	ray.force_raycast_update()
 	if ray.is_colliding():
 		var p = ray.get_collision_point()
-		if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 200, poly.polygon): return
+		# if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 200, poly.polygon): return
 		var flower = flower_prefab.instantiate() as Flower
 		add_child(flower)
 		flower.global_position = p
