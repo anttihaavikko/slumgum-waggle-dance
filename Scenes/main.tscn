@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
 [ext_resource type="Texture2D" uid="uid://dq4p4s1xc713j" path="res://Sprites/cloud0.png" id="9_55jeb"]
 [ext_resource type="Script" uid="uid://dm7c5hyh8houj" path="res://_Starter/Scripts/clouds.gd" id="9_gsvbx"]
+[ext_resource type="Texture2D" uid="uid://ckavdmb04mpey" path="res://Sprites/item-angled.png" id="9_qv1an"]
 [ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/Pieces/platform.tscn" id="9_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://c4nujldxgwpc2" path="res://Sprites/bomb.png" id="10_6h1fc"]
 [ext_resource type="Texture2D" uid="uid://bf67jtvbxfd6h" path="res://Sprites/cloud1.png" id="10_gsvbx"]
@@ -39,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://bxbgr700fj2tv" path="res://Scenes/Pieces/box.tscn" id="13_kqrg6"]
 [ext_resource type="Script" uid="uid://dce3tbn077db6" path="res://_Starter/Scripts/look_at_mouse.gd" id="14_cbgmd"]
 [ext_resource type="PackedScene" uid="uid://t87k0o8gt2t7" path="res://_Starter/Scenes/Effects/pulse.tscn" id="14_ihvwq"]
+[ext_resource type="Texture2D" uid="uid://bxy4unahgtuqe" path="res://Sprites/fiber.png" id="14_ja2pg"]
 [ext_resource type="Texture2D" uid="uid://cucel30a085ml" path="res://Sprites/held_scythe.png" id="14_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://0ngmpejmn2sp" path="res://Scenes/globe.tscn" id="14_wsu2k"]
 [ext_resource type="Script" uid="uid://dug0iwlcv3ovm" path="res://Scripts/scythe.gd" id="15_ee4r6"]
@@ -148,8 +150,8 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 2
 title = "Wax"
-color = Color(0.1254902, 0.6392157, 0.61960787, 1)
-sprite = ExtResource("12_gt3je")
+color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = ExtResource("9_qv1an")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_nwwfm"]
@@ -202,8 +204,8 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 9
 title = "Resin"
-color = Color(0.1254902, 0.6392157, 0.61960787, 1)
-sprite = ExtResource("6_ptfg5")
+color = Color(0.948872, 0.55717206, 0.47560692, 1)
+sprite = ExtResource("9_qv1an")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_at123"]
@@ -218,7 +220,7 @@ script = ExtResource("3_cbgmd")
 item_id = 11
 title = "Pebble"
 color = Color(0.627635, 0.6276355, 0.62763524, 1)
-sprite = ExtResource("12_gt3je")
+sprite = ExtResource("9_qv1an")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_55idt"]
@@ -265,15 +267,14 @@ script = ExtResource("3_cbgmd")
 item_id = 18
 title = "Fiber"
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
-sprite = ExtResource("12_gt3je")
+sprite = ExtResource("14_ja2pg")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_cf2bd"]
 script = ExtResource("3_cbgmd")
 item_id = 19
 title = "String"
-color = Color(1, 0.7294118, 0.28627452, 1)
-sprite = ExtResource("12_gt3je")
+sprite = ExtResource("14_ja2pg")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_metco"]

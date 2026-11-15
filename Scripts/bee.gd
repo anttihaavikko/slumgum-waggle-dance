@@ -35,7 +35,7 @@ func _ready() -> void:
 		s.show_key(str(inventory.slots.find(s) + 1))
 	# inventory.add_equipment(tools[Equipment.Id.Scythe])
 	inventory.add_equipment(tools[Equipment.Id.Hammer])
-	inventory.add_equipment(tools[Equipment.Id.Guitar])
+	# inventory.add_equipment(tools[Equipment.Id.Guitar])
 	# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
 	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 	# inventory.add_equipment(tools[Equipment.Id.Brush])
