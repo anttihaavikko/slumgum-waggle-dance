@@ -14,14 +14,6 @@ scale = Vector2(2.0224094, 2.0224094)
 color = Color(1, 0.7294118, 0.28627452, 1)
 polygon = PackedVector2Array(-354, -75, -420, 33, -510, 97, -512, 199, -78, 441, 362, 196, 351, 96, 275, 31, 223, -79, 120, -114, 48, -1221, -60, -1339, -182, -1207, -248, -111)
 
-[node name="Line2D" type="Line2D" parent="." unique_id=1796651643]
-position = Vector2(58, -132)
-scale = Vector2(2.0224094, 2.0224094)
-points = PackedVector2Array(-354, -75, -420, 33, -510, 97, -512, 199, -78, 441, 362, 196, 351, 96, 275, 31, 223, -79, 120, -114, 48, -1221, -60, -1339, -182, -1207, -248, -111)
-closed = true
-width = 15.0
-default_color = Color(0, 0, 0, 1)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=891823537]
 position = Vector2(58, -132)
 scale = Vector2(2.0224094, 2.0224094)
@@ -34,3 +26,35 @@ polygon = PackedVector2Array(-354, -75, -420, 33, -510, 97, -512, 199, -78, 441,
 position = Vector2(-67, -885)
 scale = Vector2(1.3035014, 1.3035014)
 texture = ExtResource("2_ddq3d")
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=44849562]
+self_modulate = Color(0.6313726, 0.42745098, 0, 1)
+points = PackedVector2Array(-665, -286, -76, -257, 515, -294)
+width = 20.0
+default_color = Color(0.6313726, 0.42745098, 0, 0.34509805)
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=578877187]
+self_modulate = Color(0.6313726, 0.42745098, 0, 1)
+points = PackedVector2Array(-972, 66, -80, 121, 769, 62)
+width = 20.0
+default_color = Color(0.6313726, 0.42745098, 0, 0.34509805)
+
+[node name="Line2D4" type="Line2D" parent="." unique_id=1433739818]
+self_modulate = Color(0.6313726, 0.42745098, 0, 1)
+points = PackedVector2Array(-796, -68, -87, -38, 620, -73)
+width = 20.0
+default_color = Color(0.6313726, 0.42745098, 0, 0.34509805)
+
+[node name="Line2D5" type="Line2D" parent="." unique_id=50700142]
+self_modulate = Color(0.6313726, 0.42745098, 0, 1)
+points = PackedVector2Array(-450, -363, -74, -348, 306, -370)
+width = 20.0
+default_color = Color(0.6313726, 0.42745098, 0, 0.34509805)
+
+[node name="Outline" type="Line2D" parent="." unique_id=1796651643]
+position = Vector2(58, -132)
+scale = Vector2(2.0224094, 2.0224094)
+points = PackedVector2Array(-354, -75, -420, 33, -510, 97, -512, 199, -78, 441, 362, 196, 351, 96, 275, 31, 223, -79, 120, -114, 48, -1221, -60, -1339, -182, -1207, -248, -111)
+closed = true
+width = 15.0
+default_color = Color(0, 0, 0, 1)
