@@ -143,7 +143,8 @@ func get_message() -> String:
 	if event_pool.size() > 0:
 		event = event_pool.pop_front()
 	return [
-		"Congratulations, you've been promoted to (%s)! I'll be (expecting) you to (deliver) on that (title) too." % [rank]
+		"Congratulations, you've been promoted to (%s)! I'll be (expecting) you to (deliver) on that (title) too." % [rank],
+		"Out (colony bard) has discovered that (music) is a very (powerful) thing. It can (control) many (things) like even our main predators, (birds)."
 	].pick_random()
 
 class QueenEvent:

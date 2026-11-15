@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://r2qxt7mpqtsx"]
+
+[ext_resource type="Script" uid="uid://ccssa1d826jgh" path="res://Scripts/hut.gd" id="1_xr68i"]
+[ext_resource type="Texture2D" uid="uid://d338fiahtxbr" path="res://Sprites/poster-bad.png" id="2_ddq3d"]
+
+[node name="Obelisk" type="Node2D" unique_id=1117316269 node_paths=PackedStringArray("poster")]
+z_index = -1
+script = ExtResource("1_xr68i")
+poster = NodePath("Poster")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=305949717]
+position = Vector2(58, -132)
+scale = Vector2(2.0224094, 2.0224094)
+color = Color(1, 0.7294118, 0.28627452, 1)
+polygon = PackedVector2Array(-354, -75, -420, 33, -510, 97, -512, 199, -78, 441, 362, 196, 351, 96, 275, 31, 223, -79, 120, -114, 48, -1221, -60, -1339, -182, -1207, -248, -111)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1796651643]
+position = Vector2(58, -132)
+scale = Vector2(2.0224094, 2.0224094)
+points = PackedVector2Array(-354, -75, -420, 33, -510, 97, -512, 199, -78, 441, 362, 196, 351, 96, 275, 31, 223, -79, 120, -114, 48, -1221, -60, -1339, -182, -1207, -248, -111)
+closed = true
+width = 15.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=891823537]
+position = Vector2(58, -132)
+scale = Vector2(2.0224094, 2.0224094)
+collision_layer = 9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=155628264]
+polygon = PackedVector2Array(-354, -75, -420, 33, -510, 97, -512, 199, -78, 441, 362, 196, 351, 96, 275, 31, 223, -79, 120, -114, 48, -1221, -60, -1339, -182, -1207, -248, -111)
+
+[node name="Poster" type="Sprite2D" parent="." unique_id=1167161036]
+position = Vector2(-67, -885)
+scale = Vector2(1.3035014, 1.3035014)
+texture = ExtResource("2_ddq3d")

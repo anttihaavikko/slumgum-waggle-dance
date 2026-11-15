@@ -27,3 +27,28 @@ func check_songs():
 	var notes = "".join(PackedStringArray(played))
 	if notes.ends_with("BADBAD"):
 		Main.singleton.spawn_bird()
+		played = []
+	if notes.ends_with("BEEF"):
+		played = []
+	if notes.ends_with("CAGE"):
+		played = []
+	if notes.ends_with("DEAD"):
+		played = []
+	if notes.ends_with("DEED"):
+		played = []
+	if notes.ends_with("EGG"):
+		played = []
+	if notes.ends_with("FACE"):
+		played = []
+	if notes.ends_with("GAG"):
+		played = []
+	if notes.ends_with("FEED"):
+		played = []
+	if notes.ends_with("DECAF"):
+		played = []
+	if notes.ends_with("CAFE"):
+		played = []
+	if notes.ends_with("CABBAGE"):
+		played = []
+	if notes.ends_with("BEAD"):
+		played = []

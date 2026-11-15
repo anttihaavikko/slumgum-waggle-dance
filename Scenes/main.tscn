@@ -126,7 +126,10 @@
 [ext_resource type="Script" uid="uid://40pyvnkqggg6" path="res://Scripts/pickaxe.gd" id="96_ja2pg"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
+[ext_resource type="Texture2D" uid="uid://d338fiahtxbr" path="res://Sprites/poster-bad.png" id="108_fvjqb"]
+[ext_resource type="Texture2D" uid="uid://bxr6bc1pjpkxt" path="res://Sprites/poster-beef.png" id="109_b05pg"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
+[ext_resource type="PackedScene" uid="uid://r2qxt7mpqtsx" path="res://Scenes/obelisk.tscn" id="128_rlvdk"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -632,6 +635,7 @@ offset_left = -32836.0
 offset_top = -15420.0
 offset_right = 28897.0
 offset_bottom = 21109.0
+pivot_offset = Vector2(34626, 15053)
 color = Color(0.58766574, 0.7902795, 0.90929693, 1)
 
 [node name="Clouds" type="Node2D" parent="." unique_id=1368952648]
@@ -1269,6 +1273,8 @@ dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), No
 start_area = NodePath("Start Area")
 spawners = Array[PackedScene]([ExtResource("73_cf2bd")])
 ground_check = NodePath("../Ground Check")
+hinters = Array[PackedScene]([ExtResource("128_rlvdk")])
+hints = Array[Texture2D]([ExtResource("108_fvjqb"), ExtResource("109_b05pg")])
 
 [node name="Trees" type="Node2D" parent="Island" unique_id=1112407507]
 modulate = Color(0.15686275, 0.78039217, 0.7607843, 1)

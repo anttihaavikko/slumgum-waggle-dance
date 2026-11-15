@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cg16xm21ar1yy"]
 
+[ext_resource type="Script" uid="uid://ccssa1d826jgh" path="res://Scripts/hut.gd" id="1_13qaw"]
 [ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="1_eiilc"]
 [ext_resource type="Script" uid="uid://2mq4ej121w3" path="res://Scripts/door.gd" id="2_f7tju"]
 [ext_resource type="Script" uid="uid://lpyqajp6yf1d" path="res://Scripts/trigger.gd" id="3_ysmr7"]
@@ -16,6 +17,7 @@ size = Vector2(383, 107)
 
 [node name="Hut" type="Node2D" unique_id=1652198801]
 z_index = -1
+script = ExtResource("1_13qaw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=42541900]
 self_modulate = Color(0, 0, 0, 1)

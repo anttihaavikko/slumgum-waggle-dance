@@ -20,6 +20,8 @@ class_name Island extends Node2D
 @export var start_area: Polygon2D
 @export var spawners: Array[PackedScene]
 @export var ground_check: ShapeCast2D
+@export var hinters: Array[PackedScene]
+@export var hints: Array[Texture2D]
 
 var gap := 5000
 var pieces := 3
@@ -175,11 +177,12 @@ func spawn_hut(pos: float, tries: int = 0):
 
 	if ray.is_colliding():
 		var p = ray.get_collision_point()
-		var hut = huts.pick_random().instantiate() as Node2D
-		hut.rotate(ray.get_collision_normal().angle() + PI * 0.5 + randf_range(-0.1, 0.1))
+		var prefab = hinters.pick_random() if hints.size() > 0 else huts.pick_random()
+		var hut = prefab.instantiate() as Node2D
 		add_child(hut)
 		hut.scale.x = [1, -1].pick_random()
 		hut.global_position = p
+		hut.setup(ray.get_collision_normal(), hints.pop_front())
 	else:
 		spawn_hut(pos + randf_range(-500, 500), tries + 1)
 
