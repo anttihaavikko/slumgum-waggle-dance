@@ -16,6 +16,11 @@ var very_first := true
 
 var event_pool: Array[QueenEvent] = [
 	QueenEvent.new([
+		"We've (decided) to get rid of our (archaic) short-term incentives (bonus program) which you were a part of. The (bonuses) only remain on employees of (job grade 13) and above as they are so (business critical).",
+		"There was a lot of (confusion) about the previous (bonus change) announcement from (yesterday). \"Who are these (job grade 13) employees?\", I hear you (ask). That's (just me) of course!",
+		"Alongside the (previous bonus changes) from few days ago, I am (personally planning) a new program to (replace) the old one. It's still on (early stages) but I (promise) that it will be (great)!"
+	]),
+	QueenEvent.new([
 		"We're (introducing) a new exciting (hybrid working) model where we are (required) to come back to the (colony) at least (three days) a week. We (firmly believe) this change to (strengthen) our (collaboration) and (innovation).",
 		"We've (heard) your (feedback) on the new (hybrid working) model. Mostly (positive) of course, no need to (fact check) this. So we've (decided) to (increase) the (colony) day amount to (four days) a week."
 	]),
