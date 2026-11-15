@@ -63,8 +63,8 @@ blush = NodePath("Beak/Face/Wrapper/Blushes")
 themes = Array[ExtResource("2_7euia")]([ExtResource("3_gapgr"), ExtResource("4_ca2jt"), ExtResource("5_bvo7a"), ExtResource("6_xi4n0")])
 
 [node name="Body" type="RigidBody2D" parent="." unique_id=379099274 node_paths=PackedStringArray("root")]
-collision_layer = 8192
-collision_mask = 23710
+collision_layer = 73728
+collision_mask = 89246
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_64lof")
 script = ExtResource("7_h6poc")

@@ -8,8 +8,8 @@ var visible_chords = ['']
 var played = []
 
 func update(delta: float):
-	var dist = max(200, roundi(get_global_mouse_position().distance_to(global_position)))
-	var index = max(roundi(dist % 2000 / 2000.0 * 7) - 1, 0)
+	var dist = roundi(get_global_mouse_position().distance_to(global_position))
+	var index = clampi(roundi((dist % 2500 - 200) / 2300.0 * 7), 0, 6)
 	chord_display.text = chords[index]
 	super.update(delta)
 	if Input.is_action_just_pressed("primary"):
@@ -23,32 +23,45 @@ func toggle(state: bool):
 	visible = state
 	played = []
 
+func play(song: String):
+	Effects.singleton.pop("[font_size=120][wave amp=50]%s" % [song], global_position + Vector2.UP * 300)
+
+func check(notes: String, song: String):
+	var ok = notes.ends_with(song)
+	if ok:
+		Main.shake(10, 0.2)
+		played = []
+		play(song)
+	return ok
+
 func check_songs():
 	var notes = "".join(PackedStringArray(played))
-	if notes.ends_with("BADBAD"):
-		Main.singleton.spawn_bird()
-		played = []
-	if notes.ends_with("BEEF"):
-		played = []
-	if notes.ends_with("CAGE"):
-		played = []
-	if notes.ends_with("DEAD"):
-		played = []
-	if notes.ends_with("DEED"):
-		played = []
-	if notes.ends_with("EGG"):
-		played = []
-	if notes.ends_with("FACE"):
-		played = []
-	if notes.ends_with("GAG"):
-		played = []
-	if notes.ends_with("FEED"):
-		played = []
-	if notes.ends_with("DECAF"):
-		played = []
-	if notes.ends_with("CAFE"):
-		played = []
-	if notes.ends_with("CABBAGE"):
-		played = []
-	if notes.ends_with("BEAD"):
-		played = []
+	if check(notes, "BADBAD"):
+		Main.singleton.spawn_bird(true)
+		return
+	if check(notes, "BEEF"):
+		for b in Main.singleton.birds: b.leave()
+		return
+	if check(notes, "CAGE"):
+		return
+	if check(notes, "DEAD"):
+		return
+	if check(notes, "DEED"):
+		return
+	if check(notes, "EGG"):
+		return
+	if check(notes, "FACE"):
+		return
+	if check(notes, "GAG"):
+		return
+	if check(notes, "FEED"):
+		return
+	if check(notes, "DECAF"):
+		return
+	if check(notes, "CAFE"):
+		Main.singleton.bee.energy_for_life()
+		return
+	if check(notes, "CABBAGE"):
+		return
+	if check(notes, "BEAD"):
+		return

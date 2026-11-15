@@ -35,7 +35,7 @@ func colorize():
 	blush.modulate = theme.cheeks
 
 func _process(delta: float) -> void:
-	var dead = not Main.singleton.bee.health.is_alive()
+	var dead = not target or not Main.singleton.bee.health.is_alive()
 	time += delta * 5.0
 	body.apply_force(Vector2.UP * 2000000 * delta * (sin(time) + 1) * (2 if dead else 1))
 	if target and not dead:
@@ -49,7 +49,7 @@ func leave():
 	leaving = true
 	target = null
 	await get_tree().create_timer(10).timeout
-	Main.singleton.bird = null
+	Main.singleton.remove_bird(self)
 	queue_free()
 
 func swipe_to_left(_body: Node2D):

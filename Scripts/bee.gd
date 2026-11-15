@@ -66,6 +66,11 @@ func throw(prefab: PackedScene):
 func can_open() -> bool:
 	return not current or not current.blocks_clicks()
 
+func energy_for_life():
+	energy_left = energy_max
+	energy.heal(999)
+	damage(1)
+
 func die():
 	for i in inventory.slots:
 		if not i.equipment:

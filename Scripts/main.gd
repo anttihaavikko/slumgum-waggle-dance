@@ -16,7 +16,7 @@ var station: StationMenu
 var bee: Bee
 var flowers: Array[Flower] = []
 var islands: Array[Island] = []
-var bird: Bird
+var birds: Array[Bird] = []
 var seen: Array[Item.Id] = [Item.Id.Nectar]
 var built: Array[BuildPiece.Id] = [BuildPiece.Id.Platform, BuildPiece.Id.Support, BuildPiece.Id.Core]
 var crafted: Array[Equipment.Id] = []
@@ -69,9 +69,13 @@ static func get_item_data(id: Item.Id) -> ItemData:
 func cleanup():
 	flowers = flowers.filter(func(f): return f)
 
-func spawn_bird():
-	if bird: return
-	bird = bird_prefab.instantiate() as Bird
+func remove_bird(bird: Bird):
+	birds.remove_at(birds.find(bird))
+
+func spawn_bird(forced := false):
+	if birds.size() > 0 and not forced: return
+	var bird = bird_prefab.instantiate() as Bird
+	birds.append(bird)
 	bird.global_position = bee.body.global_position + Vector2.UP * 5000
 	get_parent().add_child(bird)
 
