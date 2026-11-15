@@ -14,7 +14,7 @@ class_name Bird extends Node2D
 
 var time := 0.0
 var target: Node2D
-var max_life := 10
+var max_life := 25
 var life := max_life
 var leaving := false
 
