@@ -400,9 +400,8 @@ title = "Bed"
 prefab = ExtResource("29_wl4bb")
 sprite = ExtResource("53_cmq5c")
 recipe = Dictionary[int, int]({
-2: 5,
-3: 5,
-5: 5
+1: 5,
+3: 10
 })
 
 [sub_resource type="Resource" id="Resource_ceghn"]
@@ -441,6 +440,12 @@ title = "Tinker Table"
 description = "A work station for creating advanced small items."
 prefab = ExtResource("62_0wopu")
 sprite = ExtResource("63_na2ur")
+recipe = Dictionary[int, int]({
+2: 5,
+11: 5,
+19: 5,
+20: 5
+})
 metadata/_custom_type_script = "uid://drtpdk28hi7te"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmq5c"]
