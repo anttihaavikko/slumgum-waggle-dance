@@ -92,6 +92,8 @@ func die():
 	body.angular_velocity = 0
 	lander.linear_velocity = Vector2.ZERO
 	lander.angular_velocity = 0
+	Main.singleton.time.time = 1.0
+	await get_tree().create_timer(0.1).timeout
 	wings.play()
 	crosses.hide()
 	face.right_eye.show()
@@ -103,7 +105,6 @@ func die():
 	dead = false
 	Main.singleton.rank = 0
 	Main.singleton.died = true
-	Main.singleton.time.time = 1.0
 
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id
