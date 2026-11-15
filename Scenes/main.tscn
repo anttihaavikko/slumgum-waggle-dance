@@ -2114,13 +2114,14 @@ shape = SubResource("CircleShape2D_cf2bd")
 target_position = Vector2(0, 0)
 collision_mask = 8
 
-[node name="Water" type="Polygon2D" parent="." unique_id=1458919742 node_paths=PackedStringArray("area")]
+[node name="Water" type="Polygon2D" parent="." unique_id=1458919742 node_paths=PackedStringArray("area", "line")]
 z_index = 50
 position = Vector2(26490, -12103)
 color = Color(0.21568628, 0.61960787, 0.69411767, 0.6862745)
 polygon = PackedVector2Array(-123121, 22937, 47529, 22618, 46946, 32123, -123035, 32046)
 script = ExtResource("122_jab21")
 area = NodePath("Area2D")
+line = NodePath("Line2D")
 
 [node name="Line2D" type="Line2D" parent="Water" unique_id=904963129]
 material = SubResource("CanvasItemMaterial_xjjvj")
@@ -2141,7 +2142,7 @@ angular_damp_space_override = 3
 angular_damp = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/Area2D" unique_id=1313948392]
-position = Vector2(-38583, 22881)
+position = Vector2(-38596, 23151)
 shape = SubResource("WorldBoundaryShape2D_xjjvj")
 
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]

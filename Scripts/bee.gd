@@ -72,6 +72,7 @@ func energy_for_life():
 	damage(1)
 
 func die():
+	health.hurt(999)
 	for i in inventory.slots:
 		if not i.equipment:
 			var p = i.drop()
