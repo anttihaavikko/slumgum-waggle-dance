@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
 [ext_resource type="Texture2D" uid="uid://dq4p4s1xc713j" path="res://Sprites/cloud0.png" id="9_55jeb"]
 [ext_resource type="Script" uid="uid://dm7c5hyh8houj" path="res://_Starter/Scripts/clouds.gd" id="9_gsvbx"]
-[ext_resource type="PackedScene" uid="uid://dagf4wr0s64rf" path="res://Scenes/rock.tscn" id="9_o1aky"]
 [ext_resource type="PackedScene" uid="uid://d1kmkyvijt4sh" path="res://Scenes/Pieces/platform.tscn" id="9_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://c4nujldxgwpc2" path="res://Sprites/bomb.png" id="10_6h1fc"]
 [ext_resource type="Texture2D" uid="uid://bf67jtvbxfd6h" path="res://Sprites/cloud1.png" id="10_gsvbx"]
@@ -30,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://chigtoisavcty" path="res://Sprites/held-hammer.png" id="10_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bhmy8epeom4i4" path="res://Sprites/hands.png" id="11_b3802"]
 [ext_resource type="Texture2D" uid="uid://oy1jivx3hba6" path="res://Sprites/cloud2.png" id="11_bv80c"]
-[ext_resource type="Script" uid="uid://c1y4mjr0cxq7s" path="res://Scripts/island.gd" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="11_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://qru54kljjkju" path="res://Sprites/acid.png" id="11_phube"]
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="12_aa8k8"]
@@ -68,7 +66,6 @@
 [ext_resource type="PackedScene" uid="uid://bhrh73advjb1c" path="res://Scenes/Pieces/lantern_standing.tscn" id="28_fd3ed"]
 [ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="28_pfx1i"]
 [ext_resource type="PackedScene" uid="uid://cmtgmcguvat74" path="res://Scenes/Pieces/bed.tscn" id="29_wl4bb"]
-[ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="30_7k868"]
 [ext_resource type="Script" uid="uid://drtpdk28hi7te" path="res://Scripts/piece_data.gd" id="31_3h4bx"]
 [ext_resource type="Texture2D" uid="uid://cd0yify70om02" path="res://Sprites/guitar.png" id="31_nwwfm"]
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
@@ -79,10 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://bx8xx8ul1id6g" path="res://Sprites/support.png" id="35_0fjpc"]
 [ext_resource type="Texture2D" uid="uid://dqgjqqqc2mqrf" path="res://Sprites/icon-trigger.png" id="35_hdf80"]
 [ext_resource type="Texture2D" uid="uid://bowys0fo5me6x" path="res://Sprites/thumbs.png" id="35_k2e45"]
-[ext_resource type="PackedScene" uid="uid://bmxypsjcdsvhk" path="res://Scenes/grass_patch.tscn" id="35_s8vy0"]
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="36_hdf80"]
-[ext_resource type="Texture2D" uid="uid://d3l1w6wwkt86" path="res://Sprites/dots.png" id="36_jut3y"]
-[ext_resource type="PackedScene" uid="uid://bpt1nog23ndgh" path="res://Scenes/tree.tscn" id="36_v2nl5"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
 [ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
 [ext_resource type="Script" uid="uid://c7w7nrkb1foho" path="res://Scripts/bee_body.gd" id="42_lpdpw"]
@@ -110,13 +104,10 @@
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 [ext_resource type="Texture2D" uid="uid://oqrvt6fcsplq" path="res://Sprites/crown.png" id="60_gdwd6"]
-[ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="63_my4ki"]
 [ext_resource type="Script" uid="uid://dkwkobpcq5j4v" path="res://_Starter/Scripts/appearer.gd" id="68_ilwxp"]
 [ext_resource type="Texture2D" uid="uid://c4y7h8ywky7ji" path="res://Sprites/bubble.png" id="68_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://c8rtdv3liyvdf" path="res://Sprites/glasses.png" id="68_xjjvj"]
 [ext_resource type="Script" uid="uid://bks47snlvsntf" path="res://_Starter/Scripts/movable_rigidbody.gd" id="71_t014q"]
-[ext_resource type="PackedScene" uid="uid://cb7tgyuljp17g" path="res://Scenes/worm.tscn" id="73_cf2bd"]
-[ext_resource type="Script" uid="uid://bc0p0qf2efaya" path="res://Scripts/dungeon.gd" id="74_32dfi"]
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
@@ -124,12 +115,11 @@
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 [ext_resource type="Texture2D" uid="uid://b7mjrvqx2x65j" path="res://Sprites/pickaxe.png" id="96_0wopu"]
 [ext_resource type="Script" uid="uid://40pyvnkqggg6" path="res://Scripts/pickaxe.gd" id="96_ja2pg"]
+[ext_resource type="PackedScene" uid="uid://hbewxyx2g65b" path="res://Scenes/island.tscn" id="100_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
-[ext_resource type="Texture2D" uid="uid://d338fiahtxbr" path="res://Sprites/poster-bad.png" id="108_fvjqb"]
-[ext_resource type="Texture2D" uid="uid://bxr6bc1pjpkxt" path="res://Sprites/poster-beef.png" id="109_b05pg"]
+[ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
-[ext_resource type="PackedScene" uid="uid://r2qxt7mpqtsx" path="res://Scenes/obelisk.tscn" id="128_rlvdk"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -631,19 +621,20 @@ metadata/_custom_type_script = "uid://e88pkdwyw65u"
 
 [node name="Sky" type="ColorRect" parent="." unique_id=971220568]
 z_index = -50
-offset_left = -32836.0
-offset_top = -15420.0
-offset_right = 28897.0
-offset_bottom = 21109.0
+offset_left = -117316.0
+offset_top = -55868.0
+offset_right = 87393.0
+offset_bottom = 30197.0
 pivot_offset = Vector2(34626, 15053)
 color = Color(0.58766574, 0.7902795, 0.90929693, 1)
 
 [node name="Clouds" type="Node2D" parent="." unique_id=1368952648]
 z_index = -10
+position = Vector2(-14720, -14848)
 script = ExtResource("9_gsvbx")
-amount = 200
-width = 25000
-height = 9000
+amount = 600
+width = 80000
+height = 20000
 sprites = Array[Texture2D]([ExtResource("10_gsvbx"), ExtResource("11_bv80c"), ExtResource("12_ptfg5"), ExtResource("9_55jeb")])
 size_min = 3.0
 size_max = 8.0
@@ -1244,279 +1235,19 @@ position = Vector2(-45, 41)
 [node name="Leg Pos 4" type="Node2D" parent="Bee/Lander" unique_id=1521862504]
 position = Vector2(45, 41)
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2024921188]
-position = Vector2(1402, -716)
-target_position = Vector2(0, 10000)
-
-[node name="Island" type="StaticBody2D" parent="." unique_id=1755791000 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area", "ground_check")]
-visible = false
-z_index = 10
+[node name="Island" parent="." unique_id=843824130 instance=ExtResource("100_mfvrx")]
 position = Vector2(561, 460)
-collision_layer = 9
-script = ExtResource("11_d1ilt")
-shapes = [NodePath("Shape1")]
-patch_prefab = ExtResource("35_s8vy0")
-collider = NodePath("CollisionPolygon2D")
-poly = NodePath("CollisionPolygon2D/Polygon2D")
-line = NodePath("CollisionPolygon2D/Line2D")
-bg = NodePath("Bg")
-flower_prefab = ExtResource("30_7k868")
-ray = NodePath("../RayCast2D")
-rock_prefab = ExtResource("9_o1aky")
-tree_prefab = ExtResource("36_v2nl5")
-trees = NodePath("Trees")
-huts = Array[PackedScene]([ExtResource("63_my4ki")])
-explosion = NodePath("Explosion")
-wall = NodePath("Wall")
-wall_line = NodePath("Wall Line")
-dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), NodePath("Dungeon4")]
-start_area = NodePath("Start Area")
-spawners = Array[PackedScene]([ExtResource("73_cf2bd")])
-ground_check = NodePath("../Ground Check")
-hinters = Array[PackedScene]([ExtResource("128_rlvdk")])
-hints = Array[Texture2D]([ExtResource("108_fvjqb"), ExtResource("109_b05pg")])
+starter = true
 
-[node name="Trees" type="Node2D" parent="Island" unique_id=1112407507]
-modulate = Color(0.15686275, 0.78039217, 0.7607843, 1)
-z_index = -40
-position = Vector2(15, 6)
+[node name="East Island" parent="." unique_id=547865557 instance=ExtResource("100_mfvrx")]
+position = Vector2(47201, -23290)
+grass_color = Color(1, 1, 1, 1)
+bg_color = Color(0.80024856, 0.9327806, 0.99746937, 1)
 
-[node name="Bg" type="Polygon2D" parent="Island" unique_id=935066965]
-z_index = -11
-z_as_relative = false
-position = Vector2(15, 6)
-color = Color(0.15686275, 0.78039217, 0.7607843, 1)
-offset = Vector2(-12, -1113)
-polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
-
-[node name="Wall" type="Polygon2D" parent="Island" unique_id=1735333583]
-clip_children = 2
-z_index = -10
-z_as_relative = false
-color = Color(0.46666667, 0.30980393, 0, 1)
-
-[node name="Pattern" type="TextureRect" parent="Island/Wall" unique_id=1735966543]
-self_modulate = Color(0, 0, 0, 0.2)
-offset_left = -30318.0
-offset_top = -12950.0
-offset_right = -4796.9355
-offset_bottom = 1476.6826
-scale = Vector2(2.9168046, 2.9168046)
-mouse_filter = 2
-texture = ExtResource("36_jut3y")
-stretch_mode = 1
-
-[node name="Wall Line" type="Line2D" parent="Island" unique_id=829667112]
-z_index = -5
-z_as_relative = false
-closed = true
-width = 30.0
-default_color = Color(0.21170759, 0.13125274, 0, 1)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Island" unique_id=454098672]
-polygon = PackedVector2Array(-155, 137, 220, 151, 507, 82, 1150, -106, 1678, 132, 2242, 117, 2474, -234, 2380, -471, 2054, -728, 3131, -793, 2963, -531, 3023, -71, 3314, 374, 3477, 379, 3018, 784, 2276, 1382, 2079, 1105, 1382, 1155, 1065, 1565, 507, 1254, -368, 1417, -1366, 2010, -1208, 1481, -1598, 1016, -2246, 853, -2844, 344, -2908, -71, -2271, -501, -2108, -66, -1880, 473, -1129, 265, -714, 591, -22, 611, -37, 339, -294, 324)
-
-[node name="Polygon2D" type="Polygon2D" parent="Island/CollisionPolygon2D" unique_id=1048176424]
-clip_children = 2
-color = Color(0.99999994, 0.8282562, 0.57890284, 1)
-
-[node name="Pattern" type="TextureRect" parent="Island/CollisionPolygon2D/Polygon2D" unique_id=1380194395]
-self_modulate = Color(0.99389654, 0.6822076, 3.85046e-07, 1)
-offset_left = -30318.0
-offset_top = -12950.0
-offset_right = -4796.9355
-offset_bottom = 1476.6826
-scale = Vector2(2.1822758, 2.1822758)
-mouse_filter = 2
-texture = ExtResource("36_jut3y")
-stretch_mode = 1
-
-[node name="Line2D" type="Line2D" parent="Island/CollisionPolygon2D" unique_id=1236615283]
-closed = true
-width = 30.0
-default_color = Color(0.13725491, 0, 0.11764706, 1)
-
-[node name="Shape1" type="Polygon2D" parent="Island" unique_id=1955531287]
-visible = false
-position = Vector2(12, 1113)
-offset = Vector2(-12, -1113)
-polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
-
-[node name="Start Area" type="Polygon2D" parent="Island" unique_id=1590474848]
-visible = false
-position = Vector2(121, -799)
-offset = Vector2(-110, 1893)
-polygon = PackedVector2Array(-655, -1500, -328, -1283, -285, -1025, 21, -954, 308, -1109, 582, -1530, 883, -1604, 871, -2266, -864, -2242)
-
-[node name="Explosion" type="Polygon2D" parent="Island" unique_id=36252574]
-visible = false
-polygon = PackedVector2Array(-28, -607, 420, -457, 647, 5, 422, 469, -51, 665, -581, 419, -715, -32, -486, -453)
-
-[node name="Dungeon1" type="Polygon2D" parent="Island" unique_id=1831085453 node_paths=PackedStringArray("spawn_spots", "item_spots")]
-visible = false
-polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 224, 1088, 1257, 1115, 831, 1813, 106, 1912, -211, 2610, 695, 2474, 858, 3099, 514, 3797, -211, 3806, -1434, 2954, -292, 752, -302, -380)
-script = ExtResource("74_32dfi")
-spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4")]
-item_spots = [NodePath("Item1"), NodePath("Item2")]
-
-[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon1" unique_id=122915426]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(341.99997, -155.99998)
-rotation = -1.4583606
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon1" unique_id=1852566562]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-17.000046, 2260.0005)
-rotation = -1.142881
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon1" unique_id=501162073]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-1047.0001, 3221.0002)
-rotation = 0.5460485
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon1" unique_id=1523374538]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-611, 1353.0004)
-rotation = -4.36575
-texture = ExtResource("74_p4gyq")
-
-[node name="Item1" type="Sprite2D" parent="Island/Dungeon1" unique_id=1955154445]
-self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
-position = Vector2(230, 3206)
-texture = ExtResource("74_p4gyq")
-
-[node name="Item2" type="Sprite2D" parent="Island/Dungeon1" unique_id=1926218091]
-self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
-position = Vector2(629, 1489)
-texture = ExtResource("74_p4gyq")
-
-[node name="Dungeon2" type="Polygon2D" parent="Island" unique_id=402508144 node_paths=PackedStringArray("spawn_spots", "item_spots")]
-visible = false
-polygon = PackedVector2Array(-483, -1731, 432, -1504, 360, -272, 677, 616, -419, 1051, 550, 1133, 831, 1813, 106, 1912, 1502, 2347, 1221, 2918, -202, 3009, 514, 3797, -211, 3806, -1434, 2954, -1833, 1287, -483, -344)
-script = ExtResource("74_32dfi")
-spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4"), NodePath("Spawner5")]
-item_spots = [NodePath("Item1")]
-
-[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon2" unique_id=373282433]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-678.00006, -184.00008)
-rotation = -4.1749454
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon2" unique_id=922980435]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-1347.9999, 628.99994)
-rotation = -4.1454062
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon2" unique_id=547415232]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(711, 1442)
-rotation = -1.7090026
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon2" unique_id=1685391648]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-1669.9999, 2133)
-rotation = 1.2712883
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner5" type="Sprite2D" parent="Island/Dungeon2" unique_id=1872491576]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(86.00006, 3031)
-rotation = -0.18030727
-texture = ExtResource("74_p4gyq")
-
-[node name="Item1" type="Sprite2D" parent="Island/Dungeon2" unique_id=1862678376]
-self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
-position = Vector2(0, 3604)
-texture = ExtResource("74_p4gyq")
-
-[node name="Dungeon3" type="Polygon2D" parent="Island" unique_id=621235056 node_paths=PackedStringArray("spawn_spots", "item_spots")]
-visible = false
-polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 1312, 1668, 730.3008, 2109.9812, 1547, 2891, 1239, 3444, -166, 2791, -818, 3281, -1434, 2954, -588.9541, 2229.3933, -1443, 997, -872, 653, 25, 1731, 369, 1495, -302, -380)
-script = ExtResource("74_32dfi")
-spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4")]
-item_spots = [NodePath("Item1"), NodePath("Item2")]
-
-[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon3" unique_id=1544599721]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-429, -889.0001)
-rotation = -4.857348
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon3" unique_id=1710181091]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(420, -412)
-rotation = -1.5000722
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon3" unique_id=1569907]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(1138, 1176)
-rotation = -1.9215469
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon3" unique_id=1675439118]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-133, 2937)
-rotation = -6.1997995
-texture = ExtResource("74_p4gyq")
-
-[node name="Item1" type="Sprite2D" parent="Island/Dungeon3" unique_id=491331524]
-self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
-position = Vector2(-995, 1069)
-texture = ExtResource("74_p4gyq")
-
-[node name="Item2" type="Sprite2D" parent="Island/Dungeon3" unique_id=1956283951]
-self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
-position = Vector2(1118, 2996)
-texture = ExtResource("74_p4gyq")
-
-[node name="Dungeon4" type="Polygon2D" parent="Island" unique_id=1270893275 node_paths=PackedStringArray("spawn_spots", "item_spots")]
-visible = false
-polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 288, 1686, 1058, 2646, 514, 3797, -211, 3806, -963, 2737, -1090, 1849, -2069, 1794, -1362, 752, -292, 752, -302, -380)
-script = ExtResource("74_32dfi")
-spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4"), NodePath("Spawner5")]
-item_spots = [NodePath("Item1")]
-
-[node name="Spawner1" type="Sprite2D" parent="Island/Dungeon4" unique_id=1624159315]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(440, -810.00006)
-rotation = -7.7959676
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner2" type="Sprite2D" parent="Island/Dungeon4" unique_id=23275924]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(393, 310)
-rotation = -7.8336344
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner3" type="Sprite2D" parent="Island/Dungeon4" unique_id=1704975157]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(358, 1593)
-rotation = -7.908235
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner4" type="Sprite2D" parent="Island/Dungeon4" unique_id=1702593011]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(164, 3877)
-rotation = -6.434073
-texture = ExtResource("74_p4gyq")
-
-[node name="Spawner5" type="Sprite2D" parent="Island/Dungeon4" unique_id=1965742101]
-self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
-position = Vector2(-1093, 2192)
-rotation = -4.857348
-texture = ExtResource("74_p4gyq")
-
-[node name="Item1" type="Sprite2D" parent="Island/Dungeon4" unique_id=1737899444]
-self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
-position = Vector2(-1541, 1573)
-texture = ExtResource("74_p4gyq")
+[node name="West Island" parent="." unique_id=578559177 instance=ExtResource("100_mfvrx")]
+position = Vector2(-66547, -478)
+grass_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+bg_color = Color(0.96910185, 0.4936974, 0.47694802, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20
@@ -2159,6 +1890,15 @@ bbcode_enabled = true
 text = "Lorem ipsum"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FramerateDisplay" type="RichTextLabel" parent="HUD" unique_id=1898476]
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 381.0
+offset_bottom = 204.0
+theme = ExtResource("36_hdf80")
+text = "0"
+script = ExtResource("114_ilwxp")
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50

@@ -1,0 +1,299 @@
+[gd_scene format=3 uid="uid://hbewxyx2g65b"]
+
+[ext_resource type="Script" uid="uid://c1y4mjr0cxq7s" path="res://Scripts/island.gd" id="1_b640e"]
+[ext_resource type="PackedScene" uid="uid://bmxypsjcdsvhk" path="res://Scenes/grass_patch.tscn" id="2_cjy1e"]
+[ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="3_ue62x"]
+[ext_resource type="PackedScene" uid="uid://dagf4wr0s64rf" path="res://Scenes/rock.tscn" id="4_ts47d"]
+[ext_resource type="PackedScene" uid="uid://bpt1nog23ndgh" path="res://Scenes/tree.tscn" id="5_nbdts"]
+[ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="6_87y82"]
+[ext_resource type="PackedScene" uid="uid://cb7tgyuljp17g" path="res://Scenes/worm.tscn" id="7_5ec47"]
+[ext_resource type="PackedScene" uid="uid://r2qxt7mpqtsx" path="res://Scenes/obelisk.tscn" id="8_mgtah"]
+[ext_resource type="Texture2D" uid="uid://d338fiahtxbr" path="res://Sprites/poster-bad.png" id="9_w3x1o"]
+[ext_resource type="Texture2D" uid="uid://bxr6bc1pjpkxt" path="res://Sprites/poster-beef.png" id="10_j208g"]
+[ext_resource type="Texture2D" uid="uid://d3l1w6wwkt86" path="res://Sprites/dots.png" id="11_asfaq"]
+[ext_resource type="Script" uid="uid://bc0p0qf2efaya" path="res://Scripts/dungeon.gd" id="12_xghqa"]
+[ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="13_2uam6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b640e"]
+radius = 100.0
+
+[node name="Island" type="StaticBody2D" unique_id=843824130 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area", "ground_check")]
+z_index = 10
+collision_layer = 9
+script = ExtResource("1_b640e")
+grass_color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+bg_color = Color(0.15686275, 0.78039217, 0.7607843, 1)
+shapes = [NodePath("Shape1")]
+patch_prefab = ExtResource("2_cjy1e")
+collider = NodePath("CollisionPolygon2D")
+poly = NodePath("CollisionPolygon2D/Polygon2D")
+line = NodePath("CollisionPolygon2D/Line2D")
+bg = NodePath("Bg")
+flower_prefab = ExtResource("3_ue62x")
+ray = NodePath("RayCast2D")
+rock_prefab = ExtResource("4_ts47d")
+tree_prefab = ExtResource("5_nbdts")
+trees = NodePath("Trees")
+huts = Array[PackedScene]([ExtResource("6_87y82")])
+explosion = NodePath("Explosion")
+wall = NodePath("Wall")
+wall_line = NodePath("Wall Line")
+dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), NodePath("Dungeon4")]
+start_area = NodePath("Start Area")
+spawners = Array[PackedScene]([ExtResource("7_5ec47")])
+ground_check = NodePath("Ground Check")
+hinters = Array[PackedScene]([ExtResource("8_mgtah")])
+hints = Array[Texture2D]([ExtResource("9_w3x1o"), ExtResource("10_j208g")])
+
+[node name="Trees" type="Node2D" parent="." unique_id=816482379]
+modulate = Color(0.15686275, 0.78039217, 0.7607843, 1)
+z_index = -40
+position = Vector2(15, 6)
+
+[node name="Bg" type="Polygon2D" parent="." unique_id=477379778]
+z_index = -11
+z_as_relative = false
+position = Vector2(15, 6)
+color = Color(0.15686275, 0.78039217, 0.7607843, 1)
+offset = Vector2(-12, -1113)
+polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
+
+[node name="Wall" type="Polygon2D" parent="." unique_id=804205608]
+clip_children = 2
+z_index = -10
+z_as_relative = false
+color = Color(0.46666667, 0.30980393, 0, 1)
+
+[node name="Pattern" type="TextureRect" parent="Wall" unique_id=643492962]
+self_modulate = Color(0, 0, 0, 0.2)
+offset_left = -30318.0
+offset_top = -12950.0
+offset_right = -4796.9355
+offset_bottom = 1476.6826
+scale = Vector2(2.9168046, 2.9168046)
+mouse_filter = 2
+texture = ExtResource("11_asfaq")
+stretch_mode = 1
+
+[node name="Wall Line" type="Line2D" parent="." unique_id=1942241255]
+z_index = -5
+z_as_relative = false
+closed = true
+width = 30.0
+default_color = Color(0.21170759, 0.13125274, 0, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=13430163]
+polygon = PackedVector2Array(-155, 137, 220, 151, 507, 82, 1150, -106, 1678, 132, 2242, 117, 2474, -234, 2380, -471, 2054, -728, 3131, -793, 2963, -531, 3023, -71, 3314, 374, 3477, 379, 3018, 784, 2276, 1382, 2079, 1105, 1382, 1155, 1065, 1565, 507, 1254, -368, 1417, -1366, 2010, -1208, 1481, -1598, 1016, -2246, 853, -2844, 344, -2908, -71, -2271, -501, -2108, -66, -1880, 473, -1129, 265, -714, 591, -22, 611, -37, 339, -294, 324)
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D" unique_id=150627672]
+clip_children = 2
+color = Color(0.99999994, 0.8282562, 0.57890284, 1)
+
+[node name="Pattern" type="TextureRect" parent="CollisionPolygon2D/Polygon2D" unique_id=2029931915]
+self_modulate = Color(0.99389654, 0.6822076, 3.85046e-07, 1)
+offset_left = -30318.0
+offset_top = -12950.0
+offset_right = -4796.9355
+offset_bottom = 1476.6826
+scale = Vector2(2.1822758, 2.1822758)
+mouse_filter = 2
+texture = ExtResource("11_asfaq")
+stretch_mode = 1
+
+[node name="Line2D" type="Line2D" parent="CollisionPolygon2D" unique_id=284540390]
+closed = true
+width = 30.0
+default_color = Color(0.13725491, 0, 0.11764706, 1)
+
+[node name="Shape1" type="Polygon2D" parent="." unique_id=791438010]
+visible = false
+position = Vector2(12, 1113)
+offset = Vector2(-12, -1113)
+polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)
+
+[node name="Start Area" type="Polygon2D" parent="." unique_id=221247388]
+visible = false
+position = Vector2(121, -799)
+offset = Vector2(-110, 1893)
+polygon = PackedVector2Array(-655, -1500, -328, -1283, -285, -1025, 21, -954, 308, -1109, 582, -1530, 883, -1604, 871, -2266, -864, -2242)
+
+[node name="Explosion" type="Polygon2D" parent="." unique_id=2033358764]
+visible = false
+polygon = PackedVector2Array(-28, -607, 420, -457, 647, 5, 422, 469, -51, 665, -581, 419, -715, -32, -486, -453)
+
+[node name="Dungeon1" type="Polygon2D" parent="." unique_id=1913150714 node_paths=PackedStringArray("spawn_spots", "item_spots")]
+visible = false
+polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 224, 1088, 1257, 1115, 831, 1813, 106, 1912, -211, 2610, 695, 2474, 858, 3099, 514, 3797, -211, 3806, -1434, 2954, -292, 752, -302, -380)
+script = ExtResource("12_xghqa")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4")]
+item_spots = [NodePath("Item1"), NodePath("Item2")]
+
+[node name="Spawner1" type="Sprite2D" parent="Dungeon1" unique_id=284789808]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(341.99997, -155.99998)
+rotation = -1.4583606
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner2" type="Sprite2D" parent="Dungeon1" unique_id=730980090]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-17.000046, 2260.0005)
+rotation = -1.142881
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner3" type="Sprite2D" parent="Dungeon1" unique_id=301383092]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1047.0001, 3221.0002)
+rotation = 0.5460485
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner4" type="Sprite2D" parent="Dungeon1" unique_id=1259405347]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-611, 1353.0004)
+rotation = -4.36575
+texture = ExtResource("13_2uam6")
+
+[node name="Item1" type="Sprite2D" parent="Dungeon1" unique_id=1735912732]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(230, 3206)
+texture = ExtResource("13_2uam6")
+
+[node name="Item2" type="Sprite2D" parent="Dungeon1" unique_id=993580371]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(629, 1489)
+texture = ExtResource("13_2uam6")
+
+[node name="Dungeon2" type="Polygon2D" parent="." unique_id=1094852383 node_paths=PackedStringArray("spawn_spots", "item_spots")]
+visible = false
+polygon = PackedVector2Array(-483, -1731, 432, -1504, 360, -272, 677, 616, -419, 1051, 550, 1133, 831, 1813, 106, 1912, 1502, 2347, 1221, 2918, -202, 3009, 514, 3797, -211, 3806, -1434, 2954, -1833, 1287, -483, -344)
+script = ExtResource("12_xghqa")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4"), NodePath("Spawner5")]
+item_spots = [NodePath("Item1")]
+
+[node name="Spawner1" type="Sprite2D" parent="Dungeon2" unique_id=1184966196]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-678.00006, -184.00008)
+rotation = -4.1749454
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner2" type="Sprite2D" parent="Dungeon2" unique_id=825029655]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1347.9999, 628.99994)
+rotation = -4.1454062
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner3" type="Sprite2D" parent="Dungeon2" unique_id=1599727817]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(711, 1442)
+rotation = -1.7090026
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner4" type="Sprite2D" parent="Dungeon2" unique_id=1559183030]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1669.9999, 2133)
+rotation = 1.2712883
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner5" type="Sprite2D" parent="Dungeon2" unique_id=1790542718]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(86.00006, 3031)
+rotation = -0.18030727
+texture = ExtResource("13_2uam6")
+
+[node name="Item1" type="Sprite2D" parent="Dungeon2" unique_id=285908472]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(0, 3604)
+texture = ExtResource("13_2uam6")
+
+[node name="Dungeon3" type="Polygon2D" parent="." unique_id=1555070794 node_paths=PackedStringArray("spawn_spots", "item_spots")]
+visible = false
+polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 1312, 1668, 730.3008, 2109.9812, 1547, 2891, 1239, 3444, -166, 2791, -818, 3281, -1434, 2954, -588.9541, 2229.3933, -1443, 997, -872, 653, 25, 1731, 369, 1495, -302, -380)
+script = ExtResource("12_xghqa")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4")]
+item_spots = [NodePath("Item1"), NodePath("Item2")]
+
+[node name="Spawner1" type="Sprite2D" parent="Dungeon3" unique_id=1752983101]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-429, -889.0001)
+rotation = -4.857348
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner2" type="Sprite2D" parent="Dungeon3" unique_id=1474520504]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(420, -412)
+rotation = -1.5000722
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner3" type="Sprite2D" parent="Dungeon3" unique_id=2089841210]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(1138, 1176)
+rotation = -1.9215469
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner4" type="Sprite2D" parent="Dungeon3" unique_id=2002406080]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-133, 2937)
+rotation = -6.1997995
+texture = ExtResource("13_2uam6")
+
+[node name="Item1" type="Sprite2D" parent="Dungeon3" unique_id=166399454]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(-995, 1069)
+texture = ExtResource("13_2uam6")
+
+[node name="Item2" type="Sprite2D" parent="Dungeon3" unique_id=1896056740]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(1118, 2996)
+texture = ExtResource("13_2uam6")
+
+[node name="Dungeon4" type="Polygon2D" parent="." unique_id=48217305 node_paths=PackedStringArray("spawn_spots", "item_spots")]
+visible = false
+polygon = PackedVector2Array(-465, -1504, 432, -1504, 360, -272, 288, 1686, 1058, 2646, 514, 3797, -211, 3806, -963, 2737, -1090, 1849, -2069, 1794, -1362, 752, -292, 752, -302, -380)
+script = ExtResource("12_xghqa")
+spawn_spots = [NodePath("Spawner1"), NodePath("Spawner2"), NodePath("Spawner3"), NodePath("Spawner4"), NodePath("Spawner5")]
+item_spots = [NodePath("Item1")]
+
+[node name="Spawner1" type="Sprite2D" parent="Dungeon4" unique_id=1440319214]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(440, -810.00006)
+rotation = -7.7959676
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner2" type="Sprite2D" parent="Dungeon4" unique_id=838398239]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(393, 310)
+rotation = -7.8336344
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner3" type="Sprite2D" parent="Dungeon4" unique_id=115995852]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(358, 1593)
+rotation = -7.908235
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner4" type="Sprite2D" parent="Dungeon4" unique_id=675870362]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(164, 3877)
+rotation = -6.434073
+texture = ExtResource("13_2uam6")
+
+[node name="Spawner5" type="Sprite2D" parent="Dungeon4" unique_id=1268236519]
+self_modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
+position = Vector2(-1093, 2192)
+rotation = -4.857348
+texture = ExtResource("13_2uam6")
+
+[node name="Item1" type="Sprite2D" parent="Dungeon4" unique_id=1717388814]
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+position = Vector2(-1541, 1573)
+texture = ExtResource("13_2uam6")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1299960580]
+position = Vector2(841, -1176)
+exclude_parent = false
+target_position = Vector2(0, 10000)
+
+[node name="Ground Check" type="ShapeCast2D" parent="." unique_id=388581582]
+position = Vector2(-3256, 753)
+shape = SubResource("CircleShape2D_b640e")
+target_position = Vector2(0, 0)
+collision_mask = 8

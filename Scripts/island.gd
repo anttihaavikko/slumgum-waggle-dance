@@ -1,5 +1,11 @@
 class_name Island extends Node2D
 
+@export_group("Island Properties")
+@export var starter := false
+@export var grass_color: Color
+@export var bg_color: Color
+@export_group("")
+
 @export var shapes: Array[Polygon2D]
 @export var patch_prefab: PackedScene
 
@@ -53,7 +59,9 @@ func generate():
 		generate()
 		return
 
-	shape = Geometry2D.clip_polygons(shape, shift(start_area.polygon, Vector2(0, 1000)))[0]
+	if starter:
+		shape = Geometry2D.clip_polygons(shape, shift(start_area.polygon, Vector2(0, 1000)))[0]
+
 	start_area.hide()
 
 	collider.polygon = shape
@@ -64,6 +72,8 @@ func generate():
 
 	await get_tree().process_frame
 	bg.polygon = Geometry2D.offset_polygon(offset_points(shape.duplicate()), 200)[0]
+	bg.color = bg_color
+	trees.modulate = bg_color
 
 	await get_tree().process_frame
 
@@ -87,6 +97,7 @@ func generate():
 
 	for i in 75:
 		var grass = patch_prefab.instantiate() as Node2D
+		grass.self_modulate = grass_color
 		grass.rotate(PI * 2 * randf())
 		var p = poly.polygon[spots[i + 50]]
 		grass.global_position = p
