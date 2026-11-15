@@ -128,6 +128,7 @@
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
 [ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="121_rlvdk"]
 [ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
+[ext_resource type="Script" uid="uid://foqfxb04yivj" path="res://_Starter/Scripts/version_label.gd" id="122_t6wb6"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -1996,8 +1997,8 @@ vertical_alignment = 1
 [node name="FramerateDisplay" type="RichTextLabel" parent="HUD" unique_id=1898476]
 offset_left = 17.0
 offset_top = 17.0
-offset_right = 381.0
-offset_bottom = 204.0
+offset_right = 96.0
+offset_bottom = 45.0
 theme = ExtResource("36_hdf80")
 text = "0"
 script = ExtResource("114_ilwxp")
@@ -2018,6 +2019,16 @@ theme_override_constants/icon_max_width = 50
 text = ""
 icon = ExtResource("121_rlvdk")
 icon_alignment = 1
+
+[node name="Version" type="RichTextLabel" parent="HUD" unique_id=1504155144 node_paths=PackedStringArray("label")]
+offset_left = 17.0
+offset_top = 40.0
+offset_right = 144.0
+offset_bottom = 74.0
+theme = ExtResource("36_hdf80")
+text = "0.0.0"
+script = ExtResource("122_t6wb6")
+label = NodePath(".")
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
