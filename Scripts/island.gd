@@ -4,6 +4,7 @@ class_name Island extends Node2D
 @export var starter := false
 @export var grass_color: Color
 @export var bg_color: Color
+@export var worm_chance := 1.0
 @export_group("")
 
 @export var shapes: Array[Polygon2D]
@@ -137,7 +138,7 @@ func create_dungeon(try := 0) -> bool:
 		poly.polygon = updated[0]
 		collider.polygon = updated[0]
 		line.points = updated[0]
-		dungeon.populate(p - global_position, spawners.pick_random(), Main.singleton.item_db.pickup_prefab)
+		dungeon.populate(p - global_position, spawners.pick_random(), Main.singleton.item_db.pickup_prefab, worm_chance)
 		added_dungeons.append(dungeon)
 		return true
 	else:

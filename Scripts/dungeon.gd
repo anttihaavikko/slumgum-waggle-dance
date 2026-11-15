@@ -5,9 +5,10 @@ class_name Dungeon extends Polygon2D
 
 var spawners: Array[Node2D] = []
 
-func populate(pos: Vector2, danger: PackedScene, item: PackedScene):
+func populate(pos: Vector2, danger: PackedScene, item: PackedScene, chance: float):
 	var parent = get_parent()
 	for p in spawn_spots:
+		if randf() > chance: continue
 		var e = danger.instantiate() as Node2D
 		e.global_position = p.global_position + pos
 		e.rotation = p.rotation

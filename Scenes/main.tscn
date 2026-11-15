@@ -1245,6 +1245,7 @@ position = Vector2(45, 41)
 [node name="Island" parent="." unique_id=843824130 instance=ExtResource("100_mfvrx")]
 position = Vector2(561, 460)
 starter = true
+worm_chance = 0.5
 
 [node name="West Island" parent="." unique_id=578559177 instance=ExtResource("100_mfvrx")]
 position = Vector2(-66547, -478)
@@ -1256,6 +1257,7 @@ hints = Array[Texture2D]([ExtResource("101_xjjvj")])
 position = Vector2(47201, -23290)
 grass_color = Color(1, 1, 1, 1)
 bg_color = Color(0.80024856, 0.9327806, 0.99746937, 1)
+worm_chance = 0.75
 hints = Array[Texture2D]([])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
