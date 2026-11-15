@@ -6,6 +6,7 @@ class_name Preview extends Control
 @export var materials: RichTextLabel
 
 var equipmment: Equipment
+var selected_item: ItemData
 
 func _ready() -> void:
 	win.hide()
@@ -25,15 +26,28 @@ func show_for(eq: Equipment):
 	materials.text = Main.singleton.inventory.get_recipe_description(eq.recipe)
 	craft_button.show()
 
+func show_for_item(item: ItemData):
+	win.show()
+	win.title = item.title.to_upper()
+	description.text = item.description
+	selected_item = item
+	materials.text = Main.singleton.inventory.get_recipe_description(item.recipe)
+	craft_button.show()
+
 func craft():
 	var inv = Main.singleton.inventory
-	if not inv.has_materials(equipmment.recipe):
+	var recipe = selected_item.recipe if selected_item else equipmment.recipe
+	if not inv.has_materials(recipe):
 		Main.pop("INSUFFICIENT MATERIALS!")
 		Main.shake(20, 0.25)
 		return
-	inv.consume_materials(equipmment.recipe)
-	inv.add_equipment(equipmment)
+	inv.consume_materials(recipe)
+	if selected_item: inv.add_item(selected_item.item_id, selected_item.recipe_creates)
+	else: inv.add_equipment(equipmment)
 	Main.shake(10, 0.15)
-	Main.singleton.mark_crafted(equipmment.identifier)
+	if not selected_item:
+		Main.singleton.mark_crafted(equipmment.identifier)
+		show_for(equipmment)
+	else:
+		show_for_item(selected_item)
 	Main.singleton.station.crafter.hide_undiscovered()
-	show_for(equipmment)

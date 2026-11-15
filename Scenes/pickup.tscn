@@ -10,6 +10,7 @@ bounce = 0.2
 radius = 123.19903
 
 [node name="Pickup" type="RigidBody2D" unique_id=1139630903 node_paths=PackedStringArray("sprite", "area")]
+z_index = 1
 collision_layer = 16
 collision_mask = 1048
 mass = 0.1

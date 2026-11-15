@@ -106,6 +106,8 @@
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
 [ext_resource type="Texture2D" uid="uid://oqrvt6fcsplq" path="res://Sprites/crown.png" id="60_gdwd6"]
+[ext_resource type="PackedScene" uid="uid://d3aqo7hq77g6o" path="res://Scenes/Pieces/tinker.tscn" id="62_0wopu"]
+[ext_resource type="Texture2D" uid="uid://dsd8ois17b8j6" path="res://Sprites/tinker-table.png" id="63_na2ur"]
 [ext_resource type="Script" uid="uid://dkwkobpcq5j4v" path="res://_Starter/Scripts/appearer.gd" id="68_ilwxp"]
 [ext_resource type="Texture2D" uid="uid://c4y7h8ywky7ji" path="res://Sprites/bubble.png" id="68_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://c8rtdv3liyvdf" path="res://Sprites/glasses.png" id="68_xjjvj"]
@@ -184,6 +186,13 @@ item_id = 6
 title = "Bomb"
 color = Color(0.3553136, 0.35531354, 0.35531357, 1)
 sprite = ExtResource("10_6h1fc")
+description = "Who wants to dig around the dirt with a shovel? Using explosives is much more efficient. And dangerous!"
+recipe = Dictionary[int, int]({
+9: 2,
+19: 1,
+20: 3
+})
+recipe_creates = 3
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_ihvwq"]
@@ -426,6 +435,14 @@ recipe = Dictionary[int, int]({
 9: 1
 })
 
+[sub_resource type="Resource" id="Resource_y4lw4"]
+script = ExtResource("31_3h4bx")
+title = "Tinker Table"
+description = "A work station for creating advanced small items."
+prefab = ExtResource("62_0wopu")
+sprite = ExtResource("63_na2ur")
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmq5c"]
 radius = 367.78934
 
@@ -592,7 +609,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
@@ -655,7 +672,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142")])
+pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Core"), NodePath("Platform"), NodePath("Platform2"), NodePath("Support3"), NodePath("Support4")]
 picker = NodePath("../HUD/Build Picker Win")
@@ -1508,7 +1525,6 @@ offset_bottom = 197.0
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
-text = "The core provides energy to all connected platforms. Allows some very basic crafting."
 fit_content = true
 
 [node name="Spacer" type="ColorRect" parent="HUD/Anvil Window/Anvil/VBoxContainer" unique_id=59118443]
@@ -1536,6 +1552,73 @@ script = ExtResource("50_1semv")
 recipes = Array[int]([2, 6, 1, 3, 4])
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
+
+[node name="Tinker Window" parent="HUD" unique_id=1966016609 instance=ExtResource("57_lx3vj")]
+visible = false
+offset_left = -617.0
+offset_top = -369.0
+offset_right = -211.0
+offset_bottom = 302.0
+title = "ANVIL"
+
+[node name="Tinker" type="Control" parent="HUD/Tinker Window" unique_id=1737957036 node_paths=PackedStringArray("win", "preview", "crafter")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -335.5
+offset_right = 203.0
+offset_bottom = 335.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("38_kqrg6")
+win = NodePath("..")
+preview = NodePath("../../Preview Window/Preview")
+crafter = NodePath("VBoxContainer/Crafter")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Tinker Window/Tinker" unique_id=1266641145]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 86.0
+offset_right = 373.0
+offset_bottom = 197.0
+
+[node name="Description" type="RichTextLabel" parent="HUD/Tinker Window/Tinker/VBoxContainer" unique_id=1322034777]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Tinker Window/Tinker/VBoxContainer" unique_id=2021779949]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Tinker Window/Tinker/VBoxContainer" unique_id=1293058649]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 22
+text = "PICK A RECIPE"
+fit_content = true
+
+[node name="Spacer2" type="ColorRect" parent="HUD/Tinker Window/Tinker/VBoxContainer" unique_id=1125251636]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Crafter" type="VBoxContainer" parent="HUD/Tinker Window/Tinker/VBoxContainer" unique_id=1688900574 node_paths=PackedStringArray("preview")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+script = ExtResource("50_1semv")
+item_recipes = Array[int]([6])
+button_prefab = ExtResource("50_2daye")
+preview = NodePath("../../../../Preview Window/Preview")
+creates_items = true
 
 [node name="Bed Window" parent="HUD" unique_id=2034345964 instance=ExtResource("57_lx3vj")]
 visible = false

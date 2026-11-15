@@ -6,3 +6,5 @@ class_name ItemData extends Resource
 @export var color: Color = Color.WHITE
 @export var sprite: Texture2D
 @export_multiline var description: String
+@export var recipe: Dictionary[Item.Id, int]
+@export var recipe_creates := 1

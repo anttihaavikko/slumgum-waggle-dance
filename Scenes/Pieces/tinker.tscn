@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d3aqo7hq77g6o"]
+
+[ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_h3d1m"]
+[ext_resource type="Texture2D" uid="uid://dsd8ois17b8j6" path="res://Sprites/tinker-table.png" id="2_ot4gr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdv2o"]
+size = Vector2(386, 373)
+
+[node name="Tinker" unique_id=299398414 instance=ExtResource("1_h3d1m")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+position = Vector2(2, -191)
+texture = ExtResource("2_ot4gr")
+
+[node name="Button" parent="." index="1" unique_id=501500570]
+offset_top = -337.0
+offset_bottom = -17.0
+
+[node name="Center" parent="." index="2" unique_id=1552365683]
+position = Vector2(1, -234)
+
+[node name="Left" parent="." index="3" unique_id=2129715786]
+position = Vector2(-161, -5)
+
+[node name="Right" parent="." index="4" unique_id=781947195]
+position = Vector2(173, -4)
+
+[node name="ShapeCast2D2" parent="." index="5" unique_id=540746725]
+position = Vector2(5, -204)
+shape = SubResource("RectangleShape2D_cdv2o")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
+position = Vector2(6, -203.5)
+shape = SubResource("RectangleShape2D_cdv2o")

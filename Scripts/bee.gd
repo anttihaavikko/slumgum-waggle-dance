@@ -33,17 +33,6 @@ func _ready() -> void:
 	for s in inventory.slots:
 		s.in_bar = true
 		s.show_key(str(inventory.slots.find(s) + 1))
-	# inventory.add_equipment(tools[Equipment.Id.Scythe])
-	inventory.add_equipment(tools[Equipment.Id.Hammer])
-	# inventory.add_equipment(tools[Equipment.Id.Guitar])
-	# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
-	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
-	# inventory.add_equipment(tools[Equipment.Id.Brush])
-	# inventory.add_equipment(tools[Equipment.Id.Lantern])
-	inventory.add_item(Item.Id.Nectar, 20)
-	inventory.add_item(Item.Id.Nectar, 20)
-	# inventory.add_item(Item.Id.Pollen, 10)
-	# inventory.add_item(Item.Id.Bomb, 10)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
 	inventory.focus(0)
@@ -55,6 +44,21 @@ func _ready() -> void:
 	inventory.announces = true
 	# await get_tree().create_timer(1).timeout
 	# inventory.add_item(Item.Id.Wax, 20)
+	await get_tree().process_frame
+	# inventory.add_equipment(tools[Equipment.Id.Scythe])
+	inventory.add_equipment(tools[Equipment.Id.Hammer])
+	# inventory.add_equipment(tools[Equipment.Id.Guitar])
+	# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
+	# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
+	# inventory.add_equipment(tools[Equipment.Id.Brush])
+	# inventory.add_equipment(tools[Equipment.Id.Lantern])
+	inventory.add_item(Item.Id.Nectar, 20)
+	inventory.add_item(Item.Id.String, 20)
+	inventory.add_item(Item.Id.Resin, 20)
+	inventory.add_item(Item.Id.Acid, 20)
+	# inventory.add_item(Item.Id.Wax, 20)
+	# inventory.add_item(Item.Id.Pollen, 10)
+	# inventory.add_item(Item.Id.Bomb, 10)
 
 func throw(prefab: PackedScene):
 	var obj = prefab.instantiate() as RigidBody2D
