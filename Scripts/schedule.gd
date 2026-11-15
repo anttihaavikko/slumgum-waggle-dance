@@ -21,7 +21,7 @@ func _process(delta) -> void:
 		if sleeper: sleeper.hide()
 		Main.singleton.rank += 1
 		Main.singleton.bee.show()
-		Main.pop("DAY %d" % [day])
+		Effects.singleton.pop("[font_size=200]DAY %d" % [day], Main.singleton.bee.body.global_position + Vector2.UP * 700)
 		Main.singleton.cleanup()
 		for f in Main.singleton.flowers:
 			if f: f.fill()
