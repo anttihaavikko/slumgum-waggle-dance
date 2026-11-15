@@ -65,3 +65,7 @@ func check_songs():
 		return
 	if check(notes, "BEAD"):
 		return
+	if check(notes, "BEDDED"):
+		if Main.singleton.time.time > 0.5:
+			Main.singleton.time.time = 1
+		return

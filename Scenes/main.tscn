@@ -118,6 +118,7 @@
 [ext_resource type="PackedScene" uid="uid://hbewxyx2g65b" path="res://Scenes/island.tscn" id="100_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 [ext_resource type="Texture2D" uid="uid://nid1qwygfqey" path="res://Sprites/poster-cafe.png" id="101_xjjvj"]
+[ext_resource type="Texture2D" uid="uid://8otcn271yg4x" path="res://Sprites/poster-sleep.png" id="102_8dylv"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
@@ -1258,7 +1259,7 @@ position = Vector2(47201, -23290)
 grass_color = Color(1, 1, 1, 1)
 bg_color = Color(0.80024856, 0.9327806, 0.99746937, 1)
 worm_chance = 0.75
-hints = Array[Texture2D]([])
+hints = Array[Texture2D]([ExtResource("102_8dylv")])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20
