@@ -121,6 +121,7 @@
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
+[ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -576,6 +577,11 @@ radius = 1000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cf2bd"]
 radius = 100.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xjjvj"]
+blend_mode = 1
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xjjvj"]
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
@@ -2107,6 +2113,36 @@ position = Vector2(-3256, 753)
 shape = SubResource("CircleShape2D_cf2bd")
 target_position = Vector2(0, 0)
 collision_mask = 8
+
+[node name="Water" type="Polygon2D" parent="." unique_id=1458919742 node_paths=PackedStringArray("area")]
+z_index = 50
+position = Vector2(26490, -12103)
+color = Color(0.21568628, 0.61960787, 0.69411767, 0.6862745)
+polygon = PackedVector2Array(-123121, 22937, 47529, 22618, 46946, 32123, -123035, 32046)
+script = ExtResource("122_jab21")
+area = NodePath("Area2D")
+
+[node name="Line2D" type="Line2D" parent="Water" unique_id=904963129]
+material = SubResource("CanvasItemMaterial_xjjvj")
+points = PackedVector2Array(-123121, 22937, 47529, 22618, 46946, 32123, -123035, 32046)
+closed = true
+width = 30.0
+default_color = Color(1, 1, 1, 0.30588236)
+
+[node name="Area2D" type="Area2D" parent="Water" unique_id=37598533]
+collision_layer = 0
+collision_mask = 16532
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -2)
+gravity_direction = Vector2(0, -2)
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water/Area2D" unique_id=1313948392]
+position = Vector2(-38583, 22881)
+shape = SubResource("WorldBoundaryShape2D_xjjvj")
 
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
