@@ -124,6 +124,8 @@
 [ext_resource type="Texture2D" uid="uid://nid1qwygfqey" path="res://Sprites/poster-cafe.png" id="101_xjjvj"]
 [ext_resource type="Texture2D" uid="uid://8otcn271yg4x" path="res://Sprites/poster-sleep.png" id="102_8dylv"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
+[ext_resource type="Texture2D" uid="uid://ckh701akyam10" path="res://Sprites/clock-face.png" id="112_fvjqb"]
+[ext_resource type="Texture2D" uid="uid://3qbspf4inwwl" path="res://Sprites/clock-arm.png" id="113_b05pg"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
 [ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="121_rlvdk"]
@@ -592,6 +594,9 @@ viewport_path = NodePath("SubViewportContainer/SubViewport2")
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r7bbj"]
 blend_mode = 3
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b05pg"]
+blend_mode = 1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
 radius = 20.0
 
@@ -625,12 +630,13 @@ bird_prefab = ExtResource("2_nb1ia")
 new_marker = ExtResource("12_gt3je")
 notifications = NodePath("../HUD/Notifications")
 
-[node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint")]
+[node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint", "clock")]
 script = ExtResource("2_sasc4")
 tint = NodePath("../CanvasModulate")
 ui_tint = NodePath("../HUD/CanvasModulate")
 tint_color = SubResource("Gradient_sasc4")
 globe_tint = NodePath("../HUD/Frame/Globe Mask/Globe Dimmer")
+clock = NodePath("../HUD/Frame/Clock/Clock Arm")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -1354,13 +1360,50 @@ script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../ItemManager")
 
+[node name="Clock" type="TextureRect" parent="HUD/Frame" unique_id=469913679]
+modulate = Color(1, 1, 1, 0.24705882)
+layout_mode = 0
+offset_left = 351.0
+offset_top = 94.0
+offset_right = 406.0
+offset_bottom = 149.14746
+texture = ExtResource("112_fvjqb")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Clock Arm" type="Control" parent="HUD/Frame/Clock" unique_id=1918056801]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(27, 27)
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Frame/Clock/Clock Arm" unique_id=630092990]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -4.5737305
+offset_right = 3.5
+offset_bottom = 23.118576
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("113_b05pg")
+expand_mode = 4
+stretch_mode = 5
+
 [node name="Globe Mask" type="TextureRect" parent="HUD/Frame" unique_id=1495948992]
 clip_children = 1
 layout_mode = 0
-offset_left = 218.0
-offset_top = 109.0
-offset_right = 547.0
-offset_bottom = 295.3063
+offset_left = 216.0
+offset_top = 81.0
+offset_right = 545.0
+offset_bottom = 296.0
 texture = ExtResource("101_0fjpc")
 expand_mode = 5
 stretch_mode = 5
@@ -1369,7 +1412,8 @@ stretch_mode = 5
 material = SubResource("CanvasItemMaterial_0fjpc")
 layout_mode = 0
 offset_right = 332.0
-offset_bottom = 176.0
+offset_bottom = 207.0
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 
 [node name="Hammer Help" type="RichTextLabel" parent="HUD/Frame" unique_id=942580721]
 visible = false
@@ -1994,15 +2038,6 @@ text = "Lorem ipsum"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FramerateDisplay" type="RichTextLabel" parent="HUD" unique_id=1898476]
-offset_left = 17.0
-offset_top = 17.0
-offset_right = 96.0
-offset_bottom = 45.0
-theme = ExtResource("36_hdf80")
-text = "0"
-script = ExtResource("114_ilwxp")
-
 [node name="Fullscreen Button" parent="HUD" unique_id=1508171716 instance=ExtResource("50_2daye")]
 anchors_preset = 3
 anchor_left = 1.0
@@ -2020,7 +2055,20 @@ text = ""
 icon = ExtResource("121_rlvdk")
 icon_alignment = 1
 
+[node name="FramerateDisplay" type="RichTextLabel" parent="HUD" unique_id=1898476]
+modulate = Color(1, 1, 1, 0.26666668)
+material = SubResource("CanvasItemMaterial_b05pg")
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 45.0
+theme = ExtResource("36_hdf80")
+text = "0"
+script = ExtResource("114_ilwxp")
+
 [node name="Version" type="RichTextLabel" parent="HUD" unique_id=1504155144 node_paths=PackedStringArray("label")]
+modulate = Color(1, 1, 1, 0.26666668)
+material = SubResource("CanvasItemMaterial_b05pg")
 offset_left = 17.0
 offset_top = 40.0
 offset_right = 144.0
