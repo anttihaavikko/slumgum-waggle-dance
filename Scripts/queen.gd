@@ -93,6 +93,7 @@ func setup_skin(index: int):
 
 func appear(_node: Node2D):
 	if appeared_today(): return
+	Main.singleton.bee.health.heal(1)
 	if Main.singleton.time.day == 1:
 		await get_tree().create_timer(0.5).timeout
 	if event: setup_skin(event.get_skin())

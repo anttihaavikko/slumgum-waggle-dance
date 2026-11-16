@@ -660,10 +660,10 @@ script = ExtResource("24_8dylv")
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 
-[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1515128446]
+[node name="Sky Parallax" type="Parallax2D" parent="." unique_id=1515128446]
 scroll_scale = Vector2(0.5, 0.5)
 
-[node name="Sky" type="ColorRect" parent="Parallax2D2" unique_id=971220568]
+[node name="Sky" type="ColorRect" parent="Sky Parallax" unique_id=971220568]
 z_index = -50
 offset_left = -117316.0
 offset_top = -33468.0
@@ -672,19 +672,19 @@ offset_bottom = 30197.0
 pivot_offset = Vector2(34626, 15053)
 color = Color(0.5882353, 0.7921569, 0.9098039, 1)
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1943107579]
+[node name="Cloud Parallax" type="Parallax2D" parent="." unique_id=1943107579]
 scroll_scale = Vector2(0.9, 0.9)
 
-[node name="Clouds" type="Node2D" parent="Parallax2D" unique_id=1368952648]
+[node name="Clouds" type="Node2D" parent="Cloud Parallax" unique_id=1368952648]
 z_index = -10
-position = Vector2(-20598, -12213)
+position = Vector2(-27254, -12725)
 script = ExtResource("9_gsvbx")
-amount = 600
+amount = 800
 width = 90000
 height = 20000
 sprites = Array[Texture2D]([ExtResource("10_gsvbx"), ExtResource("11_bv80c"), ExtResource("12_ptfg5"), ExtResource("9_55jeb")])
-size_min = 3.0
-size_max = 8.0
+size_min = 4.0
+size_max = 12.0
 alpha = 0.3
 speed_min = -10.0
 speed_max = -150.0
