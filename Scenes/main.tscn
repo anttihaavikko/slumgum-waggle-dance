@@ -985,6 +985,8 @@ polygon = PackedVector2Array(-3, -136, 35, -129, 66, -84, 83, 13, 74, 87, 41, 12
 [node name="Camera" type="Camera2D" parent="Bee/Body" unique_id=714120476]
 position = Vector2(1, 0)
 zoom = Vector2(0.3, 0.3)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 script = ExtResource("2_bo1nx")
 metadata/_custom_type_script = "uid://ova7wngb7x7i"
 
