@@ -15,6 +15,7 @@ var event: QueenEvent
 var very_first := true
 
 var event_pool: Array[QueenEvent] = [
+	get_hr_event("We at (HR) have received (anonymous complaints) about your (work effort). They (said) that you do (nothing else) than play old (classics) like (Wings) and (V-Wing) all day."),
 	QueenEvent.new([
 		"We've (decided) to get rid of our (archaic) short-term incentives (bonus program) which you were a part of. The (bonuses) only remain on employees of (job grade 13) and above as they are so (business critical).",
 		"There was a lot of (confusion) about the previous (bonus change) announcement from (yesterday). \"Who are these (job grade 13) employees?\", I hear you (ask). That's (just me) of course!",
@@ -38,8 +39,13 @@ func _ready() -> void:
 	queen.position = off_pos
 	area.body_entered.connect(appear)
 	area.body_exited.connect(leave)
-	# event = event_pool.pop_front()
+	event = event_pool.pop_front()
 	event_pool.shuffle()
+
+func get_hr_event(content: String) -> QueenEvent:
+	return QueenEvent.new([
+		content,
+	], [[1, 2, 3, 4].pick_random()])
 
 func get_replacement_skins(immediate: bool = false) -> Array[int]:
 	var options = [1, 2, 3, 4]
