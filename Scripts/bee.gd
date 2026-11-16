@@ -14,6 +14,10 @@ class_name Bee extends Node2D
 @export var face: Face
 @export var crosses: Node2D
 @export var bomb_prefab: PackedScene
+@export var visuals: Node2D
+@export var leg_container: Node2D
+@export var pendulum_base: Node2D
+@export var pendilum: Node2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -23,6 +27,7 @@ var charging := false
 var landed := false
 var zoomed := false
 var dead := false
+var stretch := 0.0
 
 var current: Equipment
 
@@ -122,6 +127,7 @@ func land(target: Node2D):
 	landed = true
 	charging = target is Platform
 	cam.shake(body.linear_velocity.length() * 0.01, 0.12)
+	# stretch -= body.linear_velocity.y * 0.0002
 	if not charging and energy.hp < 5 and not dead:
 		danger()
 
@@ -171,16 +177,24 @@ func _process(delta) -> void:
 	if builder.held:
 		cam.position = Vector2.ZERO
 
-	if not health.is_alive(): return
-
 	var rot = Input.get_axis("left", "right")
 	var acc = Input.get_axis("accelerate", "brake") if energy_left > 0 else 0.0
 	var speed = 10.0 if OS.is_debug_build() and Input.is_action_pressed("shift") else 1.0
-	body.apply_torque(rot * delta * 5000000 * turning)
-	body.apply_force(body.transform.y * acc * thrust * 100000 * delta * speed)
-	wings.speed_scale = 1.0 + absf(acc) * 3.0
-	if abs(acc) > 0.01:
-		change_energy(-delta)
+	if health.is_alive():
+		body.apply_torque(rot * delta * 5000000 * turning)
+		body.apply_force(body.transform.y * acc * thrust * 100000 * delta * speed)
+		wings.speed_scale = 1.0 + absf(acc) * 3.0
+		if abs(acc) > 0.01:
+			change_energy(-delta)
+
+	# stretch -= clamp(signf(stretch) * delta * 0.5, -abs(stretch), abs(stretch))
+	var diff = pendulum_base.global_position - pendilum.global_position
+	stretch = diff.y * 0.004 - diff.x * 0.004
+	stretch = clamp(stretch, -0.2, 0.2)
+	visuals.scale = Vector2(1 - stretch, 1 + stretch)
+	leg_container.scale = visuals.scale
+
+	if not health.is_alive(): return
 
 	if landed:
 		change_energy(delta * 5, energy_max if charging else 5.0)
