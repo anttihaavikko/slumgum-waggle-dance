@@ -61,8 +61,10 @@
 [ext_resource type="PackedScene" uid="uid://bvhmoedib4lva" path="res://Scenes/Pieces/anvil.tscn" id="24_qnggo"]
 [ext_resource type="PackedScene" uid="uid://p0a0dayjvrf" path="res://_Starter/Scenes/sound.tscn" id="25_qv1an"]
 [ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
+[ext_resource type="PackedScene" uid="uid://dc7h41vpswfi4" path="res://Scenes/Effects/white_petals.tscn" id="26_ci23i"]
 [ext_resource type="PackedScene" uid="uid://8uqc336nuxot" path="res://Scenes/Pieces/spinning_wheel.tscn" id="26_tab3y"]
 [ext_resource type="Texture2D" uid="uid://nqdf4511dhd1" path="res://Sprites/brush.png" id="27_aqgau"]
+[ext_resource type="PackedScene" uid="uid://c8qjd5wj7iryj" path="res://Scenes/Effects/cold_petals.tscn" id="27_myryv"]
 [ext_resource type="PackedScene" uid="uid://7eq4og243bf2" path="res://Scenes/Pieces/lantern_hanging.tscn" id="27_v1mrv"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
 [ext_resource type="PackedScene" uid="uid://bhrh73advjb1c" path="res://Scenes/Pieces/lantern_standing.tscn" id="28_fd3ed"]
@@ -126,6 +128,8 @@
 [ext_resource type="Texture2D" uid="uid://8otcn271yg4x" path="res://Sprites/poster-sleep.png" id="102_8dylv"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
 [ext_resource type="PackedScene" uid="uid://s135cqqhbwcf" path="res://_Starter/Scenes/spring_core.tscn" id="104_bdqux"]
+[ext_resource type="PackedScene" uid="uid://dp8dii4g76t82" path="res://Scenes/white_flower.tscn" id="109_myryv"]
+[ext_resource type="PackedScene" uid="uid://b00id2gst1ynl" path="res://Scenes/cold_flower.tscn" id="111_bpr0e"]
 [ext_resource type="Texture2D" uid="uid://ckh701akyam10" path="res://Sprites/clock-face.png" id="112_fvjqb"]
 [ext_resource type="Texture2D" uid="uid://3qbspf4inwwl" path="res://Sprites/clock-arm.png" id="113_b05pg"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
@@ -652,7 +656,7 @@ metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
 [node name="Effects" type="Node" parent="." unique_id=1890521244]
 script = ExtResource("5_ueoa1")
-effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22")])
+effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22"), ExtResource("26_ci23i"), ExtResource("27_myryv")])
 metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
@@ -927,7 +931,7 @@ offset = Vector2(38, -19)
 
 [node name="LiveLimb" type="Line2D" parent="Bee/Body" unique_id=1119725993 node_paths=PackedStringArray("target")]
 position = Vector2(54, 92)
-points = PackedVector2Array(0, 0, 40.95984, 28.675598, 16, 72.00003)
+points = PackedVector2Array(0, 0, 40.9599, 28.675568, 16, 71.99997)
 width = 25.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -1314,6 +1318,7 @@ visible = false
 position = Vector2(-66547, -478)
 grass_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 bg_color = Color(0.9808013, 0.6111501, 0.59090304, 1)
+flower_prefab = ExtResource("109_myryv")
 hints = Array[Texture2D]([ExtResource("101_xjjvj")])
 
 [node name="East Island" parent="." unique_id=547865557 instance=ExtResource("100_mfvrx")]
@@ -1322,6 +1327,7 @@ position = Vector2(47201, -23290)
 grass_color = Color(1, 1, 1, 1)
 bg_color = Color(0.80024856, 0.9327806, 0.99746937, 1)
 worm_chance = 0.75
+flower_prefab = ExtResource("111_bpr0e")
 hints = Array[Texture2D]([ExtResource("102_8dylv")])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c8qjd5wj7iryj"]
+
+[ext_resource type="Texture2D" uid="uid://d1deuvn474hik" path="res://Sprites/petal.png" id="1_vdw1b"]
+
+[sub_resource type="Curve" id="Curve_at123"]
+_data = [Vector2(0, 0.61567885), 0.0, 0.0, 0, 0, Vector2(0.2752613, 0.83174), -1.3226453, -1.3226453, 0, 0, Vector2(1, 0), -0.83757704, 0.0, 0, 0]
+point_count = 3
+
+[node name="Particles" type="CPUParticles2D" unique_id=442576560]
+emitting = false
+amount = 15
+texture = ExtResource("1_vdw1b")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.95
+emission_shape = 6
+emission_ring_inner_radius = 50.0
+emission_ring_radius = 100.0
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_at123")
+color = Color(1, 0.7294118, 0.28627452, 1)

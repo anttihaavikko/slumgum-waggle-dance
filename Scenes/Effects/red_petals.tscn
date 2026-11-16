@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c073loolp31sf"]
 
-[ext_resource type="Texture2D" uid="uid://bs2fb06prvcct" path="res://Sprites/petal-part.png" id="1_alh4j"]
+[ext_resource type="Texture2D" uid="uid://d1deuvn474hik" path="res://Sprites/petal.png" id="1_alh4j"]
 
 [sub_resource type="Curve" id="Curve_at123"]
 _data = [Vector2(0, 0.61567885), 0.0, 0.0, 0, 0, Vector2(0.2752613, 0.83174), -1.3226453, -1.3226453, 0, 0, Vector2(1, 0), -0.83757704, 0.0, 0, 0]
@@ -25,4 +25,3 @@ angular_velocity_max = 300.0
 angle_min = -720.0
 angle_max = 720.0
 scale_amount_curve = SubResource("Curve_at123")
-color = Color(0.9372549, 0.35686275, 0.35686275, 1)

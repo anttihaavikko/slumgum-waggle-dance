@@ -52,10 +52,10 @@ func _ready() -> void:
 	# await get_tree().create_timer(1).timeout
 	# inventory.add_item(Item.Id.Wax, 20)
 	await get_tree().process_frame
-	# inventory.add_equipment(tools[Equipment.Id.Scythe])
 	if OS.is_debug_build():
 		inventory.add_equipment(tools[Equipment.Id.Hammer])
-		inventory.add_equipment(tools[Equipment.Id.Guitar])
+		inventory.add_equipment(tools[Equipment.Id.Scythe])
+		# inventory.add_equipment(tools[Equipment.Id.Guitar])
 		# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
 		# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 		# inventory.add_equipment(tools[Equipment.Id.Brush])
