@@ -175,8 +175,9 @@ func _process(delta) -> void:
 
 	var rot = Input.get_axis("left", "right")
 	var acc = Input.get_axis("accelerate", "brake") if energy_left > 0 else 0.0
+	var speed = 10.0 if OS.is_debug_build() and Input.is_action_pressed("shift") else 1.0
 	body.apply_torque(rot * delta * 5000000 * turning)
-	body.apply_force(body.transform.y * acc * thrust * 100000 * delta)
+	body.apply_force(body.transform.y * acc * thrust * 100000 * delta * speed)
 	wings.speed_scale = 1.0 + absf(acc) * 3.0
 	if abs(acc) > 0.01:
 		change_energy(-delta)

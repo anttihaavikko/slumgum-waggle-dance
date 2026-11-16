@@ -672,9 +672,10 @@ scroll_scale = Vector2(0.9, 0.9)
 
 [node name="Clouds" type="Node2D" parent="Parallax2D" unique_id=1368952648]
 z_index = -10
+position = Vector2(-20598, -12213)
 script = ExtResource("9_gsvbx")
 amount = 600
-width = 80000
+width = 90000
 height = 20000
 sprites = Array[Texture2D]([ExtResource("10_gsvbx"), ExtResource("11_bv80c"), ExtResource("12_ptfg5"), ExtResource("9_55jeb")])
 size_min = 3.0
