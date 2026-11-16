@@ -1086,6 +1086,7 @@ swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
 help_text = NodePath("../../../../../../HUD/Frame/Hammer Help")
+pans_camera = false
 
 [node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
 visible = false

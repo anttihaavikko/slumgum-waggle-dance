@@ -168,6 +168,9 @@ func _process(delta) -> void:
 	cam.position = Vector2.ZERO.move_toward(body.get_local_mouse_position(), 300 * look_mod) + \
 		body.linear_velocity * 0.5
 
+	if builder.held:
+		cam.position = Vector2.ZERO
+
 	if not health.is_alive(): return
 
 	var rot = Input.get_axis("left", "right")
