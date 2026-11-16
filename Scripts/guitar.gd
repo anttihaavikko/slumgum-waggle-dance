@@ -9,7 +9,7 @@ var played = []
 
 func update(delta: float):
 	var dist = roundi(get_global_mouse_position().distance_to(global_position))
-	var index = clampi(roundi((dist % 2500 - 200) / 2300.0 * 7), 0, 6)
+	var index = clampi(roundi((dist % 2300 - 200) / 2100.0 * 7), 0, 6)
 	chord_display.text = chords[index]
 	super.update(delta)
 	if Input.is_action_just_pressed("primary"):

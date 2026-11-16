@@ -22,6 +22,7 @@ func _ready() -> void:
 	for s in starters:
 		snap_points.append_array(s.snap_points)
 		s.can_break = false
+		s.energized = true
 	picker.closed.connect(close)
 	picker.hide()
 

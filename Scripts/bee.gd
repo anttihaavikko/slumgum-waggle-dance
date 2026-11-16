@@ -133,7 +133,9 @@ func danger():
 
 func land(target: Node2D):
 	landed = true
-	charging = target is Platform
+	charging = false
+	if target is Platform:
+		charging = target.energized
 	cam.shake(body.linear_velocity.length() * 0.01, 0.12)
 	# stretch -= body.linear_velocity.y * 0.0002
 	if not charging and energy.hp < 5 and not dead:

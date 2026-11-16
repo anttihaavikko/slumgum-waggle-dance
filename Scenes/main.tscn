@@ -119,6 +119,7 @@
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 [ext_resource type="Texture2D" uid="uid://b7mjrvqx2x65j" path="res://Sprites/pickaxe.png" id="96_0wopu"]
 [ext_resource type="Script" uid="uid://40pyvnkqggg6" path="res://Scripts/pickaxe.gd" id="96_ja2pg"]
+[ext_resource type="Texture2D" uid="uid://btjcnvg2calqe" path="res://Sprites/guitar-scale.png" id="98_e1jjv"]
 [ext_resource type="PackedScene" uid="uid://hbewxyx2g65b" path="res://Scenes/island.tscn" id="100_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 [ext_resource type="Texture2D" uid="uid://nid1qwygfqey" path="res://Sprites/poster-cafe.png" id="101_xjjvj"]
@@ -659,14 +660,17 @@ script = ExtResource("24_8dylv")
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 
-[node name="Sky" type="ColorRect" parent="." unique_id=971220568]
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1515128446]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="Sky" type="ColorRect" parent="Parallax2D2" unique_id=971220568]
 z_index = -50
 offset_left = -117316.0
-offset_top = -55868.0
+offset_top = -33468.0
 offset_right = 87393.0
 offset_bottom = 30197.0
 pivot_offset = Vector2(34626, 15053)
-color = Color(0.58766574, 0.7902795, 0.90929693, 1)
+color = Color(0.5882353, 0.7921569, 0.9098039, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1943107579]
 scroll_scale = Vector2(0.9, 0.9)
@@ -1176,6 +1180,11 @@ swing_dir = 0.1
 sprite = NodePath(".")
 flips = true
 
+[node name="Scale" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Guitar" unique_id=392386160]
+modulate = Color(1, 1, 1, 0.11372549)
+scale = Vector2(4.7098603, 4.7098603)
+texture = ExtResource("98_e1jjv")
+
 [node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "cast", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
@@ -1304,7 +1313,7 @@ worm_chance = 0.5
 visible = false
 position = Vector2(-66547, -478)
 grass_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
-bg_color = Color(0.96910185, 0.4936974, 0.47694802, 1)
+bg_color = Color(0.9808013, 0.6111501, 0.59090304, 1)
 hints = Array[Texture2D]([ExtResource("101_xjjvj")])
 
 [node name="East Island" parent="." unique_id=547865557 instance=ExtResource("100_mfvrx")]
@@ -2273,12 +2282,12 @@ visible = false
 offset_left = 21.0
 offset_top = -141.0
 offset_right = 293.0
-offset_bottom = 18.0
+offset_bottom = 62.0
 theme = ExtResource("36_hdf80")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 6
-theme_override_constants/shadow_offset_y = 6
-theme_override_font_sizes/normal_font_size = 100
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 12
+theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "C#"
 scroll_active = false

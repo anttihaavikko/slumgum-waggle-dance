@@ -14,6 +14,7 @@ var identifier: BuildPiece.Id
 var data: PieceData
 var placed := true
 var can_break := true
+var energized := false
 
 enum Id {
 	Platform,
@@ -51,7 +52,15 @@ func try_to_place():
 		Main.shake(10, 0.1)
 		return
 	await get_tree().create_timer(0.1).timeout
+	energized = connection_shapes.any(is_colligin_with_energized)
 	placed = true
+
+func is_colligin_with_energized(shape: ShapeCast2D) -> bool:
+	if shape.is_colliding():
+		var p = shape.get_collider(0)
+		if p is BuildPiece and p.energized:
+			return true
+	return false
 
 func snap(points: Array[Node2D]):
 	if Input.is_action_pressed("shift"): return
