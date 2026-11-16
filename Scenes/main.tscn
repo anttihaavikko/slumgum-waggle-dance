@@ -1086,7 +1086,6 @@ swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
 help_text = NodePath("../../../../../../HUD/Frame/Hammer Help")
-pans_camera = false
 
 [node name="Scythe" type="Sprite2D" parent="Bee/Body/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
 visible = false
@@ -1768,76 +1767,6 @@ script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../ItemManager")
 
-[node name="Preview Window" parent="HUD" unique_id=275815913 instance=ExtResource("57_lx3vj")]
-visible = false
-offset_left = 168.0
-offset_top = -370.0
-offset_right = 574.0
-offset_bottom = 301.0
-has_close_button = false
-title = "PREVIEW"
-
-[node name="Preview" type="Control" parent="HUD/Preview Window" unique_id=757214562 node_paths=PackedStringArray("win", "craft_button", "description", "materials")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("57_ynmfv")
-win = NodePath("..")
-craft_button = NodePath("Craft")
-description = NodePath("VBoxContainer/Description")
-materials = NodePath("VBoxContainer/Materials")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Preview Window/Preview" unique_id=1582831390]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 87.0
-offset_right = 373.0
-offset_bottom = 542.0
-
-[node name="Description" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1650942960]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 18
-text = "Lorem ipsum dolor
-Maybe something else?"
-fit_content = true
-
-[node name="Spacer" type="ColorRect" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1801394608]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-color = Color(1, 1, 1, 0)
-
-[node name="Subtitle" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1810376179]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 22
-text = "REQUIRED MATERIALS"
-fit_content = true
-
-[node name="Spacer2" type="ColorRect" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=660238867]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-color = Color(1, 1, 1, 0)
-
-[node name="Materials" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1972364571]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "1 x [img=30]res://Sprites/acid.png[/img] Acid (5/1)"
-fit_content = true
-
-[node name="Craft" parent="HUD/Preview Window/Preview" unique_id=1334908589 instance=ExtResource("50_2daye")]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 565.0
-offset_right = 378.0
-offset_bottom = 636.0
-text = "CRAFT"
-
 [node name="Converter Win" parent="HUD" unique_id=1865505689 instance=ExtResource("57_lx3vj")]
 visible = false
 offset_left = 225.0
@@ -1921,6 +1850,76 @@ mouse_filter = 2
 script = ExtResource("19_hibaj")
 slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../../ItemManager")
+
+[node name="Preview Window" parent="HUD" unique_id=275815913 instance=ExtResource("57_lx3vj")]
+visible = false
+offset_left = 189.0
+offset_top = -372.0
+offset_right = 595.0
+offset_bottom = 299.0
+has_close_button = false
+title = "PREVIEW"
+
+[node name="Preview" type="Control" parent="HUD/Preview Window" unique_id=757214562 node_paths=PackedStringArray("win", "craft_button", "description", "materials")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("57_ynmfv")
+win = NodePath("..")
+craft_button = NodePath("Craft")
+description = NodePath("VBoxContainer/Description")
+materials = NodePath("VBoxContainer/Materials")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Preview Window/Preview" unique_id=1582831390]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 87.0
+offset_right = 373.0
+offset_bottom = 542.0
+
+[node name="Description" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1650942960]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+text = "Lorem ipsum dolor
+Maybe something else?"
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1801394608]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1810376179]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 22
+text = "REQUIRED MATERIALS"
+fit_content = true
+
+[node name="Spacer2" type="ColorRect" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=660238867]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Materials" type="RichTextLabel" parent="HUD/Preview Window/Preview/VBoxContainer" unique_id=1972364571]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "1 x [img=30]res://Sprites/acid.png[/img] Acid (5/1)"
+fit_content = true
+
+[node name="Craft" parent="HUD/Preview Window/Preview" unique_id=1334908589 instance=ExtResource("50_2daye")]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 565.0
+offset_right = 378.0
+offset_bottom = 636.0
+text = "CRAFT"
 
 [node name="Sign Window" parent="HUD" unique_id=431523299 instance=ExtResource("57_lx3vj")]
 visible = false

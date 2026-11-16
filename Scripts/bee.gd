@@ -29,7 +29,7 @@ var current: Equipment
 func _ready() -> void:
 	Main.singleton.bee = self
 	# global_position += Vector2.RIGHT * -500
-	inventory.create_slots(5)
+	inventory.create_slots(7)
 	for s in inventory.slots:
 		s.in_bar = true
 		s.show_key(str(inventory.slots.find(s) + 1))

@@ -35,6 +35,7 @@ func update(_delta: float):
 		cooldown = 0.2
 
 func toggle(state: bool):
+	# print(name, " -> ", state)
 	visible = state
 	if help_text: help_text.visible = state
 

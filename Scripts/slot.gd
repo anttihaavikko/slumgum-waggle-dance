@@ -51,6 +51,7 @@ func pick(target: Inventory, alt: bool):
 			else:
 				target.add_item(item.data.item_id, item.amount)
 			clear()
+			Main.singleton.inventory.re_focus()
 		return
 	if not held.is_empty():
 		if alt:
@@ -74,7 +75,7 @@ func clear():
 	item = null
 	equipment = null
 	update_visuals()
-	if equipment: Main.singleton.inventory.re_focus()
+	if equipment and in_bar: Main.singleton.inventory.re_focus()
 
 func swap(slot: Slot):
 	if slot.item and can_add(slot.item.data.item_id, slot.item.amount):
@@ -107,6 +108,7 @@ func update_visuals():
 	if not in_bar: mark(item or equipment)
 	if equipment:
 		label.text = equipment.name.substr(0, 1)
+		# if in_bar: Main.singleton.inventory.re_focus()
 	icon.visible = !!item
 	count_container.visible = !!item
 	if item:
