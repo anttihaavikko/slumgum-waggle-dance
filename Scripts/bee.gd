@@ -65,11 +65,12 @@ func _ready() -> void:
 		# inventory.add_equipment(tools[Equipment.Id.Brush])
 		# inventory.add_equipment(tools[Equipment.Id.Lantern])
 		inventory.add_item(Item.Id.Nectar, 20)
-		# inventory.add_item(Item.Id.String, 20)
+		inventory.add_item(Item.Id.Honey, 20)
+		inventory.add_item(Item.Id.Wax, 20)
 		# inventory.add_item(Item.Id.Resin, 20)
 		# inventory.add_item(Item.Id.Acid, 20)
-		# inventory.add_item(Item.Id.Wax, 20)
-		# inventory.add_item(Item.Id.Pollen, 10)
+		inventory.add_item(Item.Id.Pollen, 10)
+		# inventory.add_item(Item.Id.String, 20)
 		# inventory.add_item(Item.Id.Bomb, 10)
 
 func create_spring_core():

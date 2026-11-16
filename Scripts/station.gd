@@ -71,18 +71,28 @@ func pull_contents():
 	update_previews()
 
 func update_previews():
-	update_preview(input_preview, inputs)
-	update_preview(output_preview, outputs)
+	update_preview(input_preview, inputs, true)
+	update_preview(output_preview, outputs, false)
 
-func update_preview(previews: Array[Sprite2D], source: Array[Item]):
+func accepts(id: Item.Id) -> bool:
+	for recipe in converts:
+		for part in recipe.input:
+			if part.item == id:
+				return true
+	return false
+
+func update_preview(previews: Array[Sprite2D], source: Array[Item], filters: bool):
 	for p in previews:
 		p.hide()
+	var pi = 0
 	for i in source.size():
 		var item = source[i]
-		if item and item.amount > 0 and i < previews.size():
-			previews[i].show()
-			previews[i].texture = item.data.sprite
-			previews[i].self_modulate = item.data.color
+		if item and item.amount > 0 and pi < previews.size():
+			if filters and not accepts(item.data.item_id): continue
+			previews[pi].show()
+			previews[pi].texture = item.data.sprite
+			previews[pi].self_modulate = item.data.color
+			pi += 1
 
 func add(id: Item.Id, amt: int = 1):
 	var item = outputs.find_custom(func(i: Item): return i and i.data.item_id == id and i.amount < 20)
@@ -108,6 +118,12 @@ func try_convert():
 					menu.update_contents()
 				working = false
 				update_previews()
-				if crafting_animation: crafting_animation.stop()
+				stop_animation()
 				try_convert()
+			else:
+				stop_animation()
 	working = false
+
+func stop_animation():
+	if crafting_animation:
+		crafting_animation.stop()
