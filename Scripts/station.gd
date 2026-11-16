@@ -7,6 +7,7 @@ class_name Station extends BuildPiece
 @export var output_preview: Array[Sprite2D]
 @export var crafting_animation: AnimationPlayer
 @export var sleeper: Node2D
+@export var slots := 1
 
 var title: String
 var description: String

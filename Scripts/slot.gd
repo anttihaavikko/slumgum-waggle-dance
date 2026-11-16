@@ -12,6 +12,7 @@ var equipment: Equipment
 var item: Item
 var in_bar: bool
 var depositing := false
+var locked := false
 
 func mark(state: bool):
 	if equipment and in_bar: equipment.toggle(state)
@@ -54,6 +55,7 @@ func pick(target: Inventory, alt: bool):
 			Main.singleton.inventory.re_focus()
 		return
 	if not held.is_empty():
+		if locked: return
 		if alt:
 			depositing = true
 			if item and item.data.item_id == held.item.data.item_id:
@@ -131,9 +133,10 @@ func drop() -> Pickup:
 	return p
 
 func is_empty() -> bool:
-	return not equipment and (not item or item.amount == 0)
+	return not locked and not equipment and (not item or item.amount == 0)
 
-func can_add(id: Item.Id, amount: int):
+func can_add(id: Item.Id, amount: int) -> bool:
+	if locked: return false
 	return item and item.data.item_id == id and item.amount < item.data.stack_size
 
 func increment(amount: int) -> int:

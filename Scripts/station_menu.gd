@@ -16,6 +16,7 @@ func _ready() -> void:
 	if inputs: inputs.added.connect(inventory_changed)
 	if outputs: outputs.added.connect(inventory_changed)
 
+
 func _process(_delta) -> void:
 	if visible and Input.is_action_just_pressed("cancel"):
 		close()
@@ -54,12 +55,24 @@ func open(source: Station):
 	win.show()
 	if preview: preview.open()
 
-	if inputs and not initialized: inputs.create_slots(5)
-	if outputs and not initialized: outputs.create_slots(5)
+	if inputs and not initialized:
+		inputs.create_slots(5)
+		inputs.lock()
+	if outputs and not initialized:
+		outputs.create_slots(5)
+		outputs.lock()
 	initialized = true
+
+	if inputs: limit_slots(inputs, source.slots)
+	if outputs: limit_slots(outputs, source.slots)
 
 	update_contents()
 	station.try_convert()
+
+func limit_slots(inv: Inventory, amount: int):
+	for i in inv.slots.size():
+		inv.slots[i].locked = i >= amount
+		inv.slots[i].visible = i < amount
 
 func update_contents():
 	if inputs: inputs.clear()

@@ -7,8 +7,7 @@
 size = Vector2(291.26, 282.825)
 
 [node name="Box" unique_id=299398414 instance=ExtResource("1_bpnfs")]
-title = "Box"
-identifier = 3
+slots = 5
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
 position = Vector2(0, -138)

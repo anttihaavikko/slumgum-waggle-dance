@@ -30,6 +30,10 @@ func click_slot(slot: Slot, e: InputEvent):
 func re_focus():
 	focus(focused)
 
+func lock():
+	for s in slots:
+		s.locked = true
+
 func focus(index: int):
 	if focused > -1: slots[focused].mark(false)
 	focused = index
@@ -82,7 +86,7 @@ func can_add_item(item: Item, equip: Equipment):
 func has_space():
 	return slots.any(func(s: Slot): return s.is_empty())
 
-func can_add(id: Item.Id, amount: int):
+func can_add(id: Item.Id, amount: int) -> bool:
 	var match = slots.find_custom(func(s: Slot): return s.can_add(id, amount))
 	return match > -1 or slots.any(func(s: Slot): return s.is_empty())
 

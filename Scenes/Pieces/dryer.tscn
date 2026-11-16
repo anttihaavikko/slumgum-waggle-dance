@@ -42,6 +42,7 @@ size = Vector2(399, 380)
 converts = Array[ExtResource("2_nqcns")]([SubResource("Resource_18qpk"), SubResource("Resource_u5wpi")])
 input_preview = [NodePath("Sprite2D2"), NodePath("Sprite2D3"), NodePath("Sprite2D4")]
 output_preview = [NodePath("Sprite2D5"), NodePath("Sprite2D6"), NodePath("Sprite2D7")]
+slots = 3
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
 position = Vector2(0, -215)
