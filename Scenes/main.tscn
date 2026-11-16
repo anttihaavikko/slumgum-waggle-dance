@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://sotoeyspthkx" path="res://Sprites/hud-frame.png" id="13_fdnlq"]
 [ext_resource type="Script" uid="uid://bdxalhd66bjh3" path="res://Scripts/hammer.gd" id="13_fevyy"]
 [ext_resource type="PackedScene" uid="uid://bxbgr700fj2tv" path="res://Scenes/Pieces/box.tscn" id="13_kqrg6"]
+[ext_resource type="Texture2D" uid="uid://c0b2qg6qx5ayw" path="res://Sprites/seed.png" id="14_14mkc"]
 [ext_resource type="Script" uid="uid://dce3tbn077db6" path="res://_Starter/Scripts/look_at_mouse.gd" id="14_cbgmd"]
 [ext_resource type="PackedScene" uid="uid://t87k0o8gt2t7" path="res://_Starter/Scenes/Effects/pulse.tscn" id="14_ihvwq"]
 [ext_resource type="Texture2D" uid="uid://bxy4unahgtuqe" path="res://Sprites/fiber.png" id="14_ja2pg"]
@@ -231,7 +232,8 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 10
 title = "Seed"
-sprite = ExtResource("12_gt3je")
+color = Color(1, 0.8828396, 0.71862, 1)
+sprite = ExtResource("14_14mkc")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_gmdny"]

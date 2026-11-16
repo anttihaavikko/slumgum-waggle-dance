@@ -25,3 +25,4 @@ angular_velocity_max = 300.0
 angle_min = -720.0
 angle_max = 720.0
 scale_amount_curve = SubResource("Curve_at123")
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)

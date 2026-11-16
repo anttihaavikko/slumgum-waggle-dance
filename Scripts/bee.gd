@@ -1,5 +1,9 @@
 class_name Bee extends Node2D
 
+# flower pots
+# blow pipe
+# paint making
+
 @export var body: MovableRigidbody
 @export var lander: MovableRigidbody
 @export var wings: AnimationPlayer
