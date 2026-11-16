@@ -64,13 +64,13 @@ mover = NodePath("Mover")
 
 [node name="Root" type="Sprite2D" parent="." unique_id=776698886]
 visible = false
-position = Vector2(0, 122)
+position = Vector2(-2, 10)
 texture = ExtResource("1_4r3j5")
 
 [node name="Leaf2" type="Sprite2D" parent="." unique_id=565610169]
 self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
 material = SubResource("ShaderMaterial_uelli")
-position = Vector2(-8, 19)
+position = Vector2(15.000002, 18)
 rotation = 0.39513224
 scale = Vector2(1.3987384, 1.3987384)
 texture = ExtResource("9_k1h35")
@@ -78,16 +78,22 @@ offset = Vector2(-10, -364)
 flip_h = true
 
 [node name="Line2D" type="Line2D" parent="." unique_id=559737479 node_paths=PackedStringArray("targets")]
-points = PackedVector2Array(0, 122, -3, -1633)
+points = PackedVector2Array(-2, 10, -3, -1633)
 width = 70.0
 default_color = Color(0, 0, 0, 1)
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 script = ExtResource("7_d2yni")
 targets = [NodePath("../Root"), NodePath("../Mover/Area2D")]
 
 [node name="Line2D" type="Line2D" parent="Line2D" unique_id=1084804079 node_paths=PackedStringArray("target")]
-points = PackedVector2Array(0, 122, -3, -1633)
+points = PackedVector2Array(-2, 10, -3, -1633)
 width = 30.0
 default_color = Color(0.16073915, 0.79539937, 0.7713478, 1)
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 script = ExtResource("4_d1m62")
 target = NodePath("..")
 
@@ -137,9 +143,9 @@ offset = Vector2(-10, -364)
 [node name="Ground" type="Sprite2D" parent="." unique_id=1190403478]
 visible = false
 modulate = Color(0.46666667, 0.30980393, 0, 1)
-position = Vector2(5.9999995, 101.99999)
+position = Vector2(1.9999999, 42)
 rotation = 0.106010355
-scale = Vector2(2.0388587, 2.0388587)
+scale = Vector2(1.4665363, 1.4665363)
 texture = ExtResource("12_eeowi")
 
 [node name="Breakable" type="StaticBody2D" parent="." unique_id=1066697544 node_paths=PackedStringArray("target", "particle_points")]

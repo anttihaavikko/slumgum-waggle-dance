@@ -39,7 +39,7 @@ func _ready() -> void:
 	queen.position = off_pos
 	area.body_entered.connect(appear)
 	area.body_exited.connect(leave)
-	event = event_pool.pop_front()
+	# event = event_pool.pop_front()
 	event_pool.shuffle()
 
 func get_hr_event(content: String) -> QueenEvent:
