@@ -17,7 +17,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b640e"]
 radius = 100.0
 
-[node name="Island" type="StaticBody2D" unique_id=843824130 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area", "ground_check")]
+[node name="Island" type="StaticBody2D" unique_id=843824130 node_paths=PackedStringArray("shapes", "collider", "poly", "line", "bg", "ray", "trees", "explosion", "wall", "wall_line", "dungeons", "start_area", "ground_check", "bg_parallax")]
 z_index = 10
 collision_layer = 9
 script = ExtResource("1_b640e")
@@ -28,12 +28,12 @@ patch_prefab = ExtResource("2_cjy1e")
 collider = NodePath("CollisionPolygon2D")
 poly = NodePath("CollisionPolygon2D/Polygon2D")
 line = NodePath("CollisionPolygon2D/Line2D")
-bg = NodePath("Bg")
+bg = NodePath("Parallax2D/Bg")
 flower_prefab = ExtResource("3_ue62x")
 ray = NodePath("RayCast2D")
 rock_prefab = ExtResource("4_ts47d")
 tree_prefab = ExtResource("5_nbdts")
-trees = NodePath("Trees")
+trees = NodePath("Parallax2D/Trees")
 huts = Array[PackedScene]([ExtResource("6_87y82")])
 explosion = NodePath("Explosion")
 wall = NodePath("Wall")
@@ -44,16 +44,21 @@ spawners = Array[PackedScene]([ExtResource("7_5ec47")])
 ground_check = NodePath("Ground Check")
 hinters = Array[PackedScene]([ExtResource("8_mgtah")])
 hints = Array[Texture2D]([ExtResource("9_w3x1o"), ExtResource("10_j208g")])
+bg_parallax = NodePath("Parallax2D")
 
-[node name="Trees" type="Node2D" parent="." unique_id=816482379]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1719393640]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="Trees" type="Node2D" parent="Parallax2D" unique_id=816482379]
 modulate = Color(0.15686275, 0.78039217, 0.7607843, 1)
 z_index = -40
 position = Vector2(15, 6)
 
-[node name="Bg" type="Polygon2D" parent="." unique_id=477379778]
+[node name="Bg" type="Polygon2D" parent="Parallax2D" unique_id=477379778]
 z_index = -11
 z_as_relative = false
 position = Vector2(15, 6)
+scale = Vector2(0.85, 0.85)
 color = Color(0.15686275, 0.78039217, 0.7607843, 1)
 offset = Vector2(-12, -1113)
 polygon = PackedVector2Array(318, 2, 600, -417, 1143, -552, 1814, -939, 2519, -1146, 2882, -1116, 3017, -825, 2747, -384, 3002, 86, 2882, 782, 3006, 1686, 3476, 2789, 2188, 3004, 1453, 2391, 838, 2928, 562, 3398, 624, 3929, -275, 3663, -244, 3030, -765, 2785, -1561, 2765, -2052, 3433, -3309, 2799, -2737, 1767, -3233, 891, -2986, 334, -3554, -320, -3115, -673, -1914, -470, -1571, -1102, -1218, -1091, -1228, -620, -928, -577, -317, -170, -274, 89, 32, 158)

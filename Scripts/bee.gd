@@ -48,7 +48,7 @@ func _ready() -> void:
 	# inventory.add_equipment(tools[Equipment.Id.Scythe])
 	if OS.is_debug_build():
 		inventory.add_equipment(tools[Equipment.Id.Hammer])
-		# inventory.add_equipment(tools[Equipment.Id.Guitar])
+		inventory.add_equipment(tools[Equipment.Id.Guitar])
 		# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
 		# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 		# inventory.add_equipment(tools[Equipment.Id.Brush])

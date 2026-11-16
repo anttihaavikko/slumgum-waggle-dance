@@ -667,9 +667,11 @@ offset_bottom = 30197.0
 pivot_offset = Vector2(34626, 15053)
 color = Color(0.58766574, 0.7902795, 0.90929693, 1)
 
-[node name="Clouds" type="Node2D" parent="." unique_id=1368952648]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1943107579]
+scroll_scale = Vector2(0.9, 0.9)
+
+[node name="Clouds" type="Node2D" parent="Parallax2D" unique_id=1368952648]
 z_index = -10
-position = Vector2(-14720, -9747)
 script = ExtResource("9_gsvbx")
 amount = 600
 width = 80000

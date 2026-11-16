@@ -29,6 +29,7 @@ class_name Island extends Node2D
 @export var ground_check: ShapeCast2D
 @export var hinters: Array[PackedScene]
 @export var hints: Array[Texture2D]
+@export var bg_parallax: Parallax2D
 
 var gap := 5000
 var pieces := 3
@@ -39,6 +40,7 @@ func _ready() -> void:
 	generate()
 	Main.singleton.islands.append(self)
 	for d in dungeons: d.hide()
+	bg.global_position = global_position * bg_parallax.scroll_scale.x
 
 func generate():
 	var shape = get_shape(0, Vector2.ZERO, not starter)
