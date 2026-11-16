@@ -124,6 +124,7 @@
 [ext_resource type="Texture2D" uid="uid://nid1qwygfqey" path="res://Sprites/poster-cafe.png" id="101_xjjvj"]
 [ext_resource type="Texture2D" uid="uid://8otcn271yg4x" path="res://Sprites/poster-sleep.png" id="102_8dylv"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
+[ext_resource type="PackedScene" uid="uid://s135cqqhbwcf" path="res://_Starter/Scenes/spring_core.tscn" id="104_bdqux"]
 [ext_resource type="Texture2D" uid="uid://ckh701akyam10" path="res://Sprites/clock-face.png" id="112_fvjqb"]
 [ext_resource type="Texture2D" uid="uid://3qbspf4inwwl" path="res://Sprites/clock-arm.png" id="113_b05pg"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
@@ -585,9 +586,6 @@ blend_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ed4kf"]
-radius = 37.0
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0fjpc"]
 blend_mode = 3
 
@@ -848,7 +846,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "pendulum_base", "pendilum")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -868,8 +866,8 @@ crosses = NodePath("Body/Body Sprite/Face Wrap/LookAtMouse/Face/Crosses")
 bomb_prefab = ExtResource("85_vxl7x")
 visuals = NodePath("Body/Body Sprite")
 leg_container = NodePath("Lander/Container")
-pendulum_base = NodePath("PendulumBase")
-pendilum = NodePath("Pendulum")
+spring_core_prefab = ExtResource("104_bdqux")
+core_remote = NodePath("Body/Pendulum Mover")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
@@ -1264,7 +1262,6 @@ length = 20.0
 stiffness = 40.0
 
 [node name="Pendulum Mover" type="RemoteTransform2D" parent="Bee/Body" unique_id=1177645390]
-remote_path = NodePath("../../PendulumBase")
 update_scale = false
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=832043342]
@@ -1296,48 +1293,6 @@ position = Vector2(-45, 41)
 
 [node name="Leg Pos 4" type="Node2D" parent="Bee/Lander/Container" unique_id=1521862504]
 position = Vector2(45, 41)
-
-[node name="PendulumBase" type="AnimatableBody2D" parent="Bee" unique_id=1779492109]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee/PendulumBase" unique_id=2074574443]
-shape = SubResource("CircleShape2D_ed4kf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bee/PendulumBase" unique_id=1298252315]
-visible = false
-scale = Vector2(0.9178226, 0.9178226)
-texture = ExtResource("12_gt3je")
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Bee/PendulumBase" unique_id=454739637]
-position = Vector2(-3, -43)
-node_a = NodePath("..")
-node_b = NodePath("../../Pendulum")
-length = 10.0
-stiffness = 30.0
-
-[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="Bee/PendulumBase" unique_id=1468827273]
-position = Vector2(0, 52)
-rotation = -3.12945
-node_a = NodePath("..")
-node_b = NodePath("../../Pendulum")
-length = 10.0
-stiffness = 30.0
-
-[node name="Pendulum" type="RigidBody2D" parent="Bee" unique_id=1729124875]
-collision_layer = 0
-collision_mask = 0
-mass = 0.2
-gravity_scale = 0.0
-lock_rotation = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee/Pendulum" unique_id=85143874]
-shape = SubResource("CircleShape2D_ed4kf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bee/Pendulum" unique_id=785560727]
-visible = false
-scale = Vector2(0.5193667, 0.5193667)
-texture = ExtResource("12_gt3je")
 
 [node name="Island" parent="." unique_id=843824130 instance=ExtResource("100_mfvrx")]
 visible = false

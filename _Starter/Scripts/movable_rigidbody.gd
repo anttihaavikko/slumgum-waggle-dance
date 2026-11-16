@@ -15,3 +15,6 @@ func move_to(target: Vector2, rot: float):
 	targetRotation = rot
 	reset_state = true
 
+func reset_speeds():
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0

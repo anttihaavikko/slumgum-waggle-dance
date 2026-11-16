@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://s135cqqhbwcf"]
+
+[ext_resource type="Script" uid="uid://3ixija16qpf3" path="res://_Starter/Scripts/spring_core.gd" id="1_1k2oq"]
+[ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="2_8kfus"]
+[ext_resource type="Script" uid="uid://bks47snlvsntf" path="res://_Starter/Scripts/movable_rigidbody.gd" id="3_lulqy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ed4kf"]
+radius = 37.0
+
+[node name="Spring Core" type="Node2D" unique_id=217252341 node_paths=PackedStringArray("core", "target")]
+script = ExtResource("1_1k2oq")
+core = NodePath("Core")
+target = NodePath("Target")
+
+[node name="Core" type="AnimatableBody2D" parent="." unique_id=2092299582]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core" unique_id=1545083878]
+shape = SubResource("CircleShape2D_ed4kf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Core" unique_id=430624882]
+visible = false
+scale = Vector2(0.9178226, 0.9178226)
+texture = ExtResource("2_8kfus")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Core" unique_id=1037239725]
+position = Vector2(-3, -43)
+node_a = NodePath("..")
+node_b = NodePath("../../Target")
+length = 10.0
+stiffness = 30.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="Core" unique_id=321390574]
+position = Vector2(0, 52)
+rotation = -3.12945
+node_a = NodePath("..")
+node_b = NodePath("../../Target")
+length = 10.0
+stiffness = 30.0
+
+[node name="Target" type="RigidBody2D" parent="." unique_id=359433820]
+collision_layer = 0
+collision_mask = 0
+mass = 0.2
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("3_lulqy")
+metadata/_custom_type_script = "uid://bks47snlvsntf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target" unique_id=867148474]
+shape = SubResource("CircleShape2D_ed4kf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Target" unique_id=1600784929]
+visible = false
+scale = Vector2(0.5193667, 0.5193667)
+texture = ExtResource("2_8kfus")

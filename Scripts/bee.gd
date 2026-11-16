@@ -16,8 +16,8 @@ class_name Bee extends Node2D
 @export var bomb_prefab: PackedScene
 @export var visuals: Node2D
 @export var leg_container: Node2D
-@export var pendulum_base: Node2D
-@export var pendilum: Node2D
+@export var spring_core_prefab: PackedScene
+@export var core_remote: RemoteTransform2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -28,6 +28,7 @@ var landed := false
 var zoomed := false
 var dead := false
 var stretch := 0.0
+var spring_core: SpringCore
 
 var current: Equipment
 
@@ -47,6 +48,7 @@ func _ready() -> void:
 	lander.body_exited.connect(func(_o): landed = false)
 	body.body_entered.connect(collide)
 	inventory.announces = true
+	create_spring_core()
 	# await get_tree().create_timer(1).timeout
 	# inventory.add_item(Item.Id.Wax, 20)
 	await get_tree().process_frame
@@ -65,6 +67,12 @@ func _ready() -> void:
 		# inventory.add_item(Item.Id.Wax, 20)
 		# inventory.add_item(Item.Id.Pollen, 10)
 		# inventory.add_item(Item.Id.Bomb, 10)
+
+func create_spring_core():
+	if spring_core: spring_core.queue_free()
+	spring_core = spring_core_prefab.instantiate()
+	add_child(spring_core)
+	core_remote.remote_path = spring_core.core.get_path()
 
 func throw(prefab: PackedScene):
 	var obj = prefab.instantiate() as RigidBody2D
@@ -98,10 +106,10 @@ func die():
 	await get_tree().create_timer(3).timeout
 	body.move_to(global_position, 0)
 	lander.move_to(global_position + Vector2.DOWN * 133, 0)
-	body.linear_velocity = Vector2.ZERO
-	body.angular_velocity = 0
-	lander.linear_velocity = Vector2.ZERO
-	lander.angular_velocity = 0
+	body.reset_speeds()
+	lander.reset_speeds()
+	await get_tree().process_frame
+	create_spring_core()
 	Main.singleton.time.time = 1.0
 	await get_tree().create_timer(0.1).timeout
 	wings.play()
@@ -188,11 +196,11 @@ func _process(delta) -> void:
 			change_energy(-delta)
 
 	# stretch -= clamp(signf(stretch) * delta * 0.5, -abs(stretch), abs(stretch))
-	var diff = pendulum_base.global_position - pendilum.global_position
+	var diff = spring_core.get_direction()
 	stretch = diff.y * 0.004 - diff.x * 0.004
 	stretch = clamp(stretch, -0.2, 0.2)
 	visuals.scale = Vector2(1 - stretch, 1 + stretch)
-	leg_container.scale = visuals.scale
+	# leg_container.scale = visuals.scale
 
 	if not health.is_alive(): return
 
