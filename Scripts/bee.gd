@@ -165,7 +165,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _process(delta) -> void:
 	var limit := 10.0
 	var look_mod = (limit - clamp(body.linear_velocity.length(), 0, limit)) / limit
-	cam.position = Vector2.ZERO.move_toward(body.get_local_mouse_position(), 300 * look_mod) + body.linear_velocity * 0.5
+	cam.position = Vector2.ZERO.move_toward(body.get_local_mouse_position(), 300 * look_mod) + \
+		body.linear_velocity * 0.5
 
 	if not health.is_alive(): return
 
