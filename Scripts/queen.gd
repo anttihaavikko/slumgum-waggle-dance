@@ -15,9 +15,7 @@ var event: QueenEvent
 var very_first := true
 
 var event_pool: Array[QueenEvent] = [
-	QueenEvent.new([
-		"Instead of (analyzing) and (reacting) to the (bi-annual) employee (feedback questionaire), we've decided to hold it (every quarter). That way you can get your (voice heard) more often and we don't have to actually (read) them.",
-	]),
+	get_hr_event("Instead of (analyzing) and (reacting) to the (bi-annual) employee (feedback questionaire), we've decided to hold it (every quarter). That way you can get your (voice heard) more often and we don't have to actually (read) them."),
 	get_hr_event("We at (HR) have received (anonymous complaints) about your (work effort). They (said) that you do (nothing else) than play old (classics) like (Wings) and (V-Wing) all day."),
 	QueenEvent.new([
 		"We've (decided) to get rid of our (archaic) short-term incentives (bonus program) which you were a part of. The (bonuses) only remain on employees of (job grade 13) and above as they are so (business critical).",
