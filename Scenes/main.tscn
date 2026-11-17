@@ -1054,12 +1054,15 @@ position = Vector2(-12.468115, -6.01909)
 scale = Vector2(0.16434486, 0.16434486)
 texture = ExtResource("34_jwpg7")
 
-[node name="Blowpipe" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face" unique_id=2107694464 node_paths=PackedStringArray("aligner", "sprite")]
+[node name="Blowpipe" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face" unique_id=2107694464 node_paths=PackedStringArray("ray", "line", "particles", "aligner", "sprite")]
 visible = false
 position = Vector2(0, 4.2993503)
 script = ExtResource("90_qxkn4")
+ray = NodePath("RayCast2D")
+line = NodePath("Line2D")
+particles = NodePath("CPUParticles2D")
 identifier = 7
-description = "A rudimentary but effective weapon that uses seeds to attack ones opponents from a range."
+description = "A rudimentary but effective weapon that uses pebbles or seeds as ammo to attack ones opponents from a range."
 aligner = NodePath(".")
 sprite = NodePath("Sprite2D")
 
@@ -1068,6 +1071,33 @@ self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(73.51889, 1.7197404)
 scale = Vector2(0.4942833, 0.4942833)
 texture = ExtResource("90_adgm5")
+
+[node name="Line2D" type="Line2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe" unique_id=1545887209]
+visible = false
+position = Vector2(143.5983, 0.85987)
+points = PackedVector2Array(0, 0, 69.649475, 0)
+default_color = Color(1, 1, 1, 0.4862745)
+
+[node name="RayCast2D" type="RayCast2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe" unique_id=2097362750]
+position = Vector2(143.5983, -0.429935)
+target_position = Vector2(3000, 0)
+collision_mask = 92184
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe" unique_id=1082413674]
+position = Vector2(154.7766, 1.289805)
+emitting = false
+texture = ExtResource("59_e5peh")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.81
+randomness = 0.1
+spread = 20.4
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 800.0
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+color = Color(1, 1, 1, 0.59607846)
 
 [node name="Hands Wrap" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1865143021]
 
