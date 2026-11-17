@@ -21,7 +21,9 @@ enum Id {
 	Sand,
 	Fiber,
 	String,
-	Acid
+	Acid,
+	GoldSeed,
+	PureSeed
 }
 
 var data: ItemData

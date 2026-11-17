@@ -8,4 +8,5 @@
 modulate = Color(1, 1, 1, 1)
 
 [node name="Breakable" parent="." index="6" unique_id=1066697544]
+drops = Array[int]([22, 22, 0, 18, 18, 18])
 particle_indices = Array[int]([9, 5, 6])
