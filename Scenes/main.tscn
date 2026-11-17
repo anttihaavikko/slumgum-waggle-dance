@@ -885,7 +885,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -893,11 +893,11 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Body Sprite/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Body Sprite/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Body Sprite/Hands/Aligner/Swinger/Brush"), NodePath("Body/Body Sprite/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Body Sprite/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Body Sprite/Hands/Aligner/Swinger/Lantern"), NodePath("Body/Body Sprite/Hands/Aligner/Swinger/Pickaxe")]
-hands = NodePath("Body/Body Sprite/Hands/Hands")
+tools = [NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Brush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Pickaxe")]
+hands = NodePath("Body/Body Sprite/Hands Wrap/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
-item = NodePath("Body/Body Sprite/Hands/Item")
+item = NodePath("Body/Body Sprite/Hands Wrap/Hands/Item")
 cam = NodePath("Body/Camera")
 builder = NodePath("../Platforms")
 face = NodePath("Body/Body Sprite/Face Wrap/LookAtMouse/Face")
@@ -907,6 +907,7 @@ visuals = NodePath("Body/Body Sprite")
 leg_container = NodePath("Lander/Container")
 spring_core_prefab = ExtResource("104_bdqux")
 core_remote = NodePath("Body/Pendulum Mover")
+hands_wrap = NodePath("Body/Body Sprite/Hands Wrap")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
@@ -1051,7 +1052,9 @@ position = Vector2(-12.468115, -6.01909)
 scale = Vector2(0.16434486, 0.16434486)
 texture = ExtResource("34_jwpg7")
 
-[node name="Hands" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1805560162]
+[node name="Hands Wrap" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1865143021]
+
+[node name="Hands" type="Node2D" parent="Bee/Body/Body Sprite/Hands Wrap" unique_id=1805560162]
 position = Vector2(0, 62)
 script = ExtResource("11_h1bgf")
 moves = true
@@ -1059,26 +1062,26 @@ move_direction = Vector2(0, 10)
 single_direction = true
 metadata/_custom_type_script = "uid://uxu8p38o38ip"
 
-[node name="Item" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=391573004]
+[node name="Item" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands" unique_id=391573004]
 visible = false
 position = Vector2(-2.999998, -39.000008)
 scale = Vector2(0.73749995, 0.73749995)
 texture = ExtResource("12_gt3je")
 offset = Vector2(0, 1)
 
-[node name="Hands" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands" unique_id=556945472]
+[node name="Hands" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands" unique_id=556945472]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1.9999999, 2)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("11_b3802")
 offset = Vector2(0, 1)
 
-[node name="Aligner" type="Node2D" parent="Bee/Body/Body Sprite/Hands" unique_id=218306283]
+[node name="Aligner" type="Node2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands" unique_id=218306283]
 
-[node name="Swinger" type="Node2D" parent="Bee/Body/Body Sprite/Hands/Aligner" unique_id=1904647529]
+[node name="Swinger" type="Node2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner" unique_id=1904647529]
 script = ExtResource("18_1w6v2")
 
-[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "cast", "swinger", "aligner", "help_text")]
+[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "cast", "swinger", "aligner", "help_text")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-3, 0)
@@ -1087,8 +1090,8 @@ scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("10_k12tt")
 offset = Vector2(-47, 3)
 script = ExtResource("13_fevyy")
-builder = NodePath("../../../../../../../Platforms")
-cast = NodePath("../../../../../../../Cursor Icon/Mouse Caster")
+builder = NodePath("../../../../../../../../Platforms")
+cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
 description = "A tool for constructing platforms and other build pieces. Highly recommended!"
 recipe = Dictionary[int, int]({
 0: 7
@@ -1096,9 +1099,9 @@ recipe = Dictionary[int, int]({
 swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
-help_text = NodePath("../../../../../../../HUD/Frame/Hammer Help")
+help_text = NodePath("../../../../../../../../HUD/Frame/Hammer Help")
 
-[node name="Scythe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
+[node name="Scythe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1, -2)
@@ -1120,13 +1123,13 @@ aligner = NodePath("../..")
 swing_dir = 1.2
 sprite = NodePath(".")
 
-[node name="Area" type="ShapeCast2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Scythe" unique_id=1646312883]
+[node name="Area" type="ShapeCast2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Scythe" unique_id=1646312883]
 position = Vector2(-247.27628, 103.423645)
 shape = SubResource("CircleShape2D_55idt")
 target_position = Vector2(0, 0)
 collision_mask = 10806
 
-[node name="Brush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
+[node name="Brush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1, -1.04904175e-05)
@@ -1146,7 +1149,7 @@ recipe = Dictionary[int, int]({
 aligner = NodePath("../..")
 swing_dir = 1.2
 
-[node name="Lantern" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=217710515 node_paths=PackedStringArray("aligner")]
+[node name="Lantern" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=217710515 node_paths=PackedStringArray("aligner")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-24.999998, -41.000008)
@@ -1161,18 +1164,18 @@ recipe = Dictionary[int, int]({
 aligner = NodePath("../..")
 aligns = false
 
-[node name="Light" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Lantern" unique_id=522149302]
+[node name="Light" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern" unique_id=522149302]
 position = Vector2(25, 27)
 scale = Vector2(0.6999999, 1.0599998)
 texture = ExtResource("48_jekl6")
 
-[node name="Sprite" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Lantern" unique_id=1365520191]
+[node name="Sprite" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern" unique_id=1365520191]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(20, 19.000002)
 scale = Vector2(0.85752857, 0.85752857)
 texture = ExtResource("47_fg68e")
 
-[node name="PointLight2D" type="PointLight2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Lantern" unique_id=842583389]
+[node name="PointLight2D" type="PointLight2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern" unique_id=842583389]
 position = Vector2(20.999996, 40.000008)
 rotation = -0.13577862
 scale = Vector2(1.7338657, 1.7338657)
@@ -1181,7 +1184,7 @@ texture = ExtResource("48_f6rfp")
 texture_scale = 1.5
 script = ExtResource("28_pfx1i")
 
-[node name="Glow" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Lantern" unique_id=1027141544]
+[node name="Glow" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern" unique_id=1027141544]
 modulate = Color(1, 1, 1, 0.105882354)
 material = SubResource("CanvasItemMaterial_qnggo")
 position = Vector2(22.000002, 43.000015)
@@ -1192,7 +1195,7 @@ scales = true
 scale_amount = Vector2(0.02, 0.02)
 scale_speed = 15.0
 
-[node name="Guitar" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("chord_display", "swinger", "aligner", "sprite")]
+[node name="Guitar" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("chord_display", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(3.9999886, 1.30832195e-05)
@@ -1201,7 +1204,7 @@ scale = Vector2(0.85136753, 0.85136753)
 texture = ExtResource("31_nwwfm")
 offset = Vector2(73.951904, 1.5249786)
 script = ExtResource("93_na2ur")
-chord_display = NodePath("../../../../../../../Cursor Icon/Chord")
+chord_display = NodePath("../../../../../../../../Cursor Icon/Chord")
 identifier = 3
 description = "Allows you to play some sweet comforting tunes. Could maybe even affect your predators."
 recipe = Dictionary[int, int]({
@@ -1215,12 +1218,12 @@ swing_dir = 0.1
 sprite = NodePath(".")
 flips = true
 
-[node name="Scale" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Guitar" unique_id=392386160]
+[node name="Scale" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar" unique_id=392386160]
 modulate = Color(1, 1, 1, 0.11372549)
 scale = Vector2(4.7098603, 4.7098603)
 texture = ExtResource("98_e1jjv")
 
-[node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "cast", "swinger", "aligner", "sprite")]
+[node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "cast", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1.9999695, 4.9999886)
@@ -1231,7 +1234,7 @@ offset = Vector2(-75.12311, -1.6327362)
 script = ExtResource("43_ovafv")
 paint = NodePath("Paint")
 colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(1, 0.7294118, 0.28627452, 1)])
-cast = NodePath("../../../../../../../Cursor Icon/Mouse Caster")
+cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
 identifier = 4
 description = "Allows you to paint your build pieces to what ever color you want, and possess paint of."
 recipe = Dictionary[int, int]({
@@ -1244,11 +1247,11 @@ aligner = NodePath("../..")
 swing_dir = -0.7
 sprite = NodePath(".")
 
-[node name="Paint" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger/Paintbrush" unique_id=1782155655]
+[node name="Paint" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Paintbrush" unique_id=1782155655]
 position = Vector2(-227.63586, -3.8719788)
 texture = ExtResource("43_nay3j")
 
-[node name="Pickaxe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands/Aligner/Swinger" unique_id=729087898 node_paths=PackedStringArray("area", "swinger", "aligner")]
+[node name="Pickaxe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=729087898 node_paths=PackedStringArray("area", "swinger", "aligner")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1.831934, -0.25831032)
@@ -1257,7 +1260,7 @@ scale = Vector2(0.9999999, 0.9999999)
 texture = ExtResource("96_0wopu")
 offset = Vector2(-69.47052, 2.293457)
 script = ExtResource("96_ja2pg")
-area = NodePath("../../../../../../../Mine Check")
+area = NodePath("../../../../../../../../Mine Check")
 identifier = 6
 description = "A tool for breaking down stones. Mining is a lot of work but the pebbles acquired are an important component in many recipes."
 recipe = Dictionary[int, int]({

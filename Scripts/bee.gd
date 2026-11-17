@@ -1,8 +1,10 @@
 class_name Bee extends Node2D
 
-# flower pots
 # blow pipe
 # paint making
+# oil press etc
+# potions
+# booster stations
 
 @export var body: MovableRigidbody
 @export var lander: MovableRigidbody
@@ -22,6 +24,7 @@ class_name Bee extends Node2D
 @export var leg_container: Node2D
 @export var spring_core_prefab: PackedScene
 @export var core_remote: RemoteTransform2D
+@export var hands_wrap: Node2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -94,6 +97,10 @@ func energy_for_life():
 	energy_left = energy_max
 	energy.heal(999)
 	damage(1)
+
+func heal(amt := 1):
+	if health.is_alive():
+		health.heal(amt)
 
 func die():
 	health.hurt(999)
@@ -205,6 +212,7 @@ func _process(delta) -> void:
 
 	# stretch -= clamp(signf(stretch) * delta * 0.5, -abs(stretch), abs(stretch))
 	var diff = spring_core.get_direction()
+	hands_wrap.position = diff * 1
 	stretch = diff.y * 0.004 - diff.x * 0.004
 	stretch = clamp(stretch, -0.2, 0.2)
 	visuals.scale = Vector2(1 - stretch, 1 + stretch)
