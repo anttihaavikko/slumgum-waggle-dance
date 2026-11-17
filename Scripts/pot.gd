@@ -14,6 +14,7 @@ func station_updated():
 	if station.inputs.size() > 0:
 		if station.inputs[0].data.item_id == Item.Id.Seed:
 			station.consume(station.inputs[0].data.item_id)
+			phases[0].modulate = station.inputs[0].data.color
 			change_phase(true)
 			if station.menu:
 				station.menu.update_contents()
