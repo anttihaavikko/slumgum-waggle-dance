@@ -34,6 +34,7 @@ phases = [NodePath("Step1"), NodePath("Step2"), NodePath("Step3")]
 
 [node name="Step1" type="Sprite2D" parent="Grow Spot" index="0" unique_id=1249697163]
 visible = false
+modulate = Color(0.99999994, 0.9253302, 0.8218704, 1)
 position = Vector2(-4, 18)
 rotation = -0.7354531
 texture = ExtResource("2_rj0eo")
@@ -42,9 +43,9 @@ texture = ExtResource("2_rj0eo")
 visible = false
 self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
 material = SubResource("ShaderMaterial_lsoe1")
-position = Vector2(0.9999995, -38)
+position = Vector2(-1.1920929e-07, -32)
 rotation = -0.0152980685
-scale = Vector2(0.53213155, 0.53213155)
+scale = Vector2(0.69126266, 0.69126266)
 texture = ExtResource("8_lsoe1")
 
 [node name="Step3" type="Sprite2D" parent="Grow Spot" index="2" unique_id=1415189409]

@@ -6,6 +6,7 @@ class_name Flower extends Node2D
 @export var breakable: Breakable
 
 var amount := 0
+var grown := false
 
 func _ready() -> void:
 	mover.time_offset = randf_range(0, 100)
@@ -16,7 +17,7 @@ func _ready() -> void:
 	Main.singleton.flowers.append(self)
 
 func fill():
-	amount = randi_range(3, 5)
+	amount = randi_range(3, 5) * breakable.drop_multiplier
 	center.modulate = Color.WHITE
 
 func consume():

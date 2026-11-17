@@ -24,6 +24,7 @@ func change_phase(starting := false):
 	phase += 1
 	if phase == 4:
 		var flower = flower_prefabs[0].instantiate() as Flower
+		flower.breakable.drop_multiplier = 2
 		add_child(flower)
 		flower.breakable.broke.connect(reset)
 		return
