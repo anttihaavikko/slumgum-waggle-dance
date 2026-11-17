@@ -9,6 +9,7 @@ class_name BuildPiece extends Node2D
 @export var snap_points: Array[Node2D]
 @export var sprite: Node2D
 @export var extra_sprites: Array[Sprite2D]
+@export var functionality: Node2D
 
 var identifier: BuildPiece.Id
 var data: PieceData
@@ -30,7 +31,8 @@ enum Id {
 	Dryer,
 	LanternHanging,
 	LanternStanding,
-	TinkerTable
+	TinkerTable,
+	Pot
 }
 
 func can_place() -> bool:

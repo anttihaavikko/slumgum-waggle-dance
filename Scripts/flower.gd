@@ -3,6 +3,7 @@ class_name Flower extends Node2D
 @export var area: Area2D
 @export var center: Sprite2D
 @export var mover: Mover
+@export var breakable: Breakable
 
 var amount := 0
 

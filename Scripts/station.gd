@@ -19,6 +19,8 @@ var menu: StationMenu
 var cooldown := 0.0
 var working := false
 
+signal updated
+
 func _ready() -> void:
 	# sprite.modulate = Color.RED
 	button.pressed.connect(open)
@@ -74,6 +76,7 @@ func pull_contents():
 func update_previews():
 	update_preview(input_preview, inputs, true)
 	update_preview(output_preview, outputs, false)
+	updated.emit()
 
 func accepts(id: Item.Id) -> bool:
 	for recipe in converts:

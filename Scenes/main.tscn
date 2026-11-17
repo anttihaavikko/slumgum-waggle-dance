@@ -111,6 +111,8 @@
 [ext_resource type="Texture2D" uid="uid://oqrvt6fcsplq" path="res://Sprites/crown.png" id="60_gdwd6"]
 [ext_resource type="PackedScene" uid="uid://d3aqo7hq77g6o" path="res://Scenes/Pieces/tinker.tscn" id="62_0wopu"]
 [ext_resource type="Texture2D" uid="uid://dsd8ois17b8j6" path="res://Sprites/tinker-table.png" id="63_na2ur"]
+[ext_resource type="PackedScene" uid="uid://0fjkwffkomrd" path="res://Scenes/pot.tscn" id="67_l78ku"]
+[ext_resource type="Texture2D" uid="uid://psp7cnaon0na" path="res://Sprites/pot.png" id="68_hfu3o"]
 [ext_resource type="Script" uid="uid://dkwkobpcq5j4v" path="res://_Starter/Scripts/appearer.gd" id="68_ilwxp"]
 [ext_resource type="Texture2D" uid="uid://c4y7h8ywky7ji" path="res://Sprites/bubble.png" id="68_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://c8rtdv3liyvdf" path="res://Sprites/glasses.png" id="68_xjjvj"]
@@ -460,6 +462,18 @@ recipe = Dictionary[int, int]({
 })
 metadata/_custom_type_script = "uid://drtpdk28hi7te"
 
+[sub_resource type="Resource" id="Resource_b8ggh"]
+script = ExtResource("31_3h4bx")
+title = "Pot"
+description = "Grow your own flowers. When home grown flowers are fully grown, they provide more materials than the wild ones."
+prefab = ExtResource("67_l78ku")
+sprite = ExtResource("68_hfu3o")
+recipe = Dictionary[int, int]({
+1: 3,
+2: 5
+})
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmq5c"]
 radius = 367.78934
 
@@ -629,7 +643,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker")]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker"), NodePath("../HUD/Box Window/Box")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
@@ -699,7 +713,7 @@ cloud_material = SubResource("ShaderMaterial_gsvbx")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4")])
+pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Core"), NodePath("Platform"), NodePath("Platform2"), NodePath("Support3"), NodePath("Support4")]
 picker = NodePath("../HUD/Build Picker Win")

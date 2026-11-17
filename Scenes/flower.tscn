@@ -54,12 +54,13 @@ radius = 266.06766
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(75, 1558)
 
-[node name="Flower" type="Node2D" unique_id=1614192265 node_paths=PackedStringArray("area", "center", "mover")]
+[node name="Flower" type="Node2D" unique_id=1614192265 node_paths=PackedStringArray("area", "center", "mover", "breakable")]
 z_as_relative = false
 script = ExtResource("1_hbmji")
 area = NodePath("Mover/Area2D")
 center = NodePath("Mover/Area2D/Center")
 mover = NodePath("Mover")
+breakable = NodePath("Breakable")
 
 [node name="Root" type="Sprite2D" parent="." unique_id=776698886]
 visible = false

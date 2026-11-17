@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://0fjkwffkomrd"]
+
+[ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_cc2i1"]
+[ext_resource type="Texture2D" uid="uid://psp7cnaon0na" path="res://Sprites/pot.png" id="2_b8ggh"]
+[ext_resource type="Texture2D" uid="uid://c0b2qg6qx5ayw" path="res://Sprites/seed.png" id="2_rj0eo"]
+[ext_resource type="Script" uid="uid://cgeyyoko7asmg" path="res://Scripts/pot.gd" id="3_tpvhl"]
+[ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="4_2p6rr"]
+[ext_resource type="PackedScene" uid="uid://dp8dii4g76t82" path="res://Scenes/white_flower.tscn" id="5_5hsvb"]
+[ext_resource type="PackedScene" uid="uid://b00id2gst1ynl" path="res://Scenes/cold_flower.tscn" id="6_djkxd"]
+[ext_resource type="Texture2D" uid="uid://cyw6iw45spdci" path="res://Sprites/seedling.png" id="7_5hsvb"]
+[ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="7_djkxd"]
+[ext_resource type="Texture2D" uid="uid://c5ktwi7g6jxpm" path="res://Sprites/seedling-small.png" id="8_lsoe1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsoe1"]
+shader = ExtResource("7_djkxd")
+shader_parameter/amount = 20.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = 5.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8ggh"]
+size = Vector2(291.26, 463)
+
+[node name="Pot" unique_id=299398414 node_paths=PackedStringArray("functionality") instance=ExtResource("1_cc2i1")]
+functionality = NodePath("Grow Spot")
+
+[node name="Grow Spot" type="Node2D" parent="." index="0" unique_id=1242333634 node_paths=PackedStringArray("station", "phases")]
+position = Vector2(-1, -289)
+script = ExtResource("3_tpvhl")
+flower_prefabs = Array[PackedScene]([ExtResource("4_2p6rr"), ExtResource("6_djkxd"), ExtResource("5_5hsvb")])
+station = NodePath("..")
+phases = [NodePath("Step1"), NodePath("Step2"), NodePath("Step3")]
+
+[node name="Step1" type="Sprite2D" parent="Grow Spot" index="0" unique_id=1249697163]
+visible = false
+position = Vector2(-4, 18)
+rotation = -0.7354531
+texture = ExtResource("2_rj0eo")
+
+[node name="Step2" type="Sprite2D" parent="Grow Spot" index="1" unique_id=2039937175]
+visible = false
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+material = SubResource("ShaderMaterial_lsoe1")
+position = Vector2(0.9999995, -38)
+rotation = -0.0152980685
+scale = Vector2(0.53213155, 0.53213155)
+texture = ExtResource("8_lsoe1")
+
+[node name="Step3" type="Sprite2D" parent="Grow Spot" index="2" unique_id=1415189409]
+visible = false
+self_modulate = Color(0.1254902, 0.6392157, 0.61960787, 1)
+material = SubResource("ShaderMaterial_lsoe1")
+position = Vector2(6, -143)
+rotation = -0.0152980685
+texture = ExtResource("7_5hsvb")
+
+[node name="Sprite2D" parent="." index="1" unique_id=641265153]
+position = Vector2(1, -147)
+texture = ExtResource("2_b8ggh")
+
+[node name="Button" parent="." index="2" unique_id=501500570]
+offset_top = -364.0
+offset_bottom = -29.0
+
+[node name="Center" parent="." index="3" unique_id=1552365683]
+position = Vector2(1, -246)
+
+[node name="Left" parent="." index="4" unique_id=2129715786]
+position = Vector2(-80, -2)
+
+[node name="Right" parent="." index="5" unique_id=781947195]
+position = Vector2(77, -2)
+
+[node name="ShapeCast2D2" parent="." index="6" unique_id=540746725]
+position = Vector2(3, -253)
+shape = SubResource("RectangleShape2D_b8ggh")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
+position = Vector2(0, -253.5)
+shape = SubResource("RectangleShape2D_b8ggh")

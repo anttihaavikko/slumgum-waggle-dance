@@ -17,6 +17,7 @@ var prev_angle := 0.0
 var slot := -1
 var snap_points: Array[Node2D] = []
 var buttons: Array[Button] = []
+var built_pieces: Array[BuildPiece] = []
 
 func _ready() -> void:
 	for s in starters:
@@ -83,6 +84,7 @@ func _process(_delta) -> void:
 			Main.singleton.inventory.consume_materials(held.data.recipe)
 			snap_points.append_array(held.snap_points)
 			prev_angle = held.rotation
+			built_pieces.append(held)
 			if held.body:
 				held.body.collision_layer = held_layer
 				held.body.collision_mask = held_mask

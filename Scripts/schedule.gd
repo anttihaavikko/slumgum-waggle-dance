@@ -26,6 +26,9 @@ func _process(delta) -> void:
 		Main.singleton.cleanup()
 		for f in Main.singleton.flowers:
 			if f: f.fill()
+		for piece in Main.singleton.builder.built_pieces:
+			if piece.functionality and piece.functionality is Pot:
+				piece.functionality.change_phase()
 	tint.color = tint_color.sample(time)
 	ui_tint.color = tint.color + Color(0.2, 0.2, 0.2)
 	globe_tint.color = tint.color.lightened(0.1)
