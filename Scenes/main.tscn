@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://diun2ixclcdu7" path="res://Sprites/bread.png" id="14_0t4jf"]
 [ext_resource type="Texture2D" uid="uid://c0b2qg6qx5ayw" path="res://Sprites/seed.png" id="14_14mkc"]
 [ext_resource type="Script" uid="uid://dce3tbn077db6" path="res://_Starter/Scripts/look_at_mouse.gd" id="14_cbgmd"]
+[ext_resource type="Texture2D" uid="uid://ckl3qdrbcdx1c" path="res://Sprites/mead.png" id="14_daoo8"]
 [ext_resource type="PackedScene" uid="uid://t87k0o8gt2t7" path="res://_Starter/Scenes/Effects/pulse.tscn" id="14_ihvwq"]
 [ext_resource type="Texture2D" uid="uid://bxy4unahgtuqe" path="res://Sprites/fiber.png" id="14_ja2pg"]
 [ext_resource type="Texture2D" uid="uid://cucel30a085ml" path="res://Sprites/held_scythe.png" id="14_pdsj5"]
@@ -230,9 +231,13 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_ihvwq"]
 script = ExtResource("3_cbgmd")
 item_id = 7
-title = "Juice"
-color = Color(0.1254902, 0.6392157, 0.61960787, 1)
-sprite = ExtResource("12_gt3je")
+title = "Mead"
+sprite = ExtResource("14_daoo8")
+description = "Delicious honey wine which grants you a boost of energy when consumed."
+recipe = Dictionary[int, int]({
+3: 1,
+20: 1
+})
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_6h1fc"]
@@ -2079,7 +2084,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 script = ExtResource("50_1semv")
-item_recipes = Array[int]([6, 8])
+item_recipes = Array[int]([6, 8, 7])
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 creates_items = true

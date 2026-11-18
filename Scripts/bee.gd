@@ -159,6 +159,11 @@ func fill_energy():
 	energy.heal(999)
 	heal_particles.emitting = true
 
+func give_energy(amt := 1):
+	energy_left = min(energy_left + amt, energy_max)
+	energy.heal(amt)
+	heal_particles.emitting = true
+
 func heal_if_not_full(amt := 1):
 	if not health.is_full():
 		heal(amt)
@@ -329,3 +334,6 @@ func use_selected_item():
 	if inventory.current().has_item(Item.Id.HealthPotion):
 		inventory.consume_one()
 		heal(1)
+	if inventory.current().has_item(Item.Id.EnergyPotion):
+		inventory.consume_one()
+		give_energy(5)
