@@ -25,6 +25,7 @@ class_name Bee extends Node2D
 @export var core_remote: RemoteTransform2D
 @export var hands_wrap: Node2D
 @export var heal_particles: CPUParticles2D
+@export var face_mover: Node2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -273,6 +274,7 @@ func _process(delta) -> void:
 	# stretch -= clamp(signf(stretch) * delta * 0.5, -abs(stretch), abs(stretch))
 	var diff = spring_core.get_direction()
 	hands_wrap.position = diff * 1
+	face_mover.position = -diff * 1
 	stretch = diff.y * 0.004 - diff.x * 0.004
 	stretch = clamp(stretch, -0.2, 0.2)
 	visuals.scale = Vector2(1 - stretch, 1 + stretch)

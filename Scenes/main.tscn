@@ -907,7 +907,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -915,15 +915,15 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Brush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Pickaxe"), NodePath("Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe")]
+tools = [NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Brush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Pickaxe"), NodePath("Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Blowpipe")]
 hands = NodePath("Body/Body Sprite/Hands Wrap/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
 item = NodePath("Body/Body Sprite/Hands Wrap/Hands/Item")
 cam = NodePath("Body/Camera")
 builder = NodePath("../Platforms")
-face = NodePath("Body/Body Sprite/Face Wrap/LookAtMouse/Face")
-crosses = NodePath("Body/Body Sprite/Face Wrap/LookAtMouse/Face/Crosses")
+face = NodePath("Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face")
+crosses = NodePath("Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Crosses")
 bomb_prefab = ExtResource("85_vxl7x")
 visuals = NodePath("Body/Body Sprite")
 leg_container = NodePath("Lander/Container")
@@ -931,6 +931,7 @@ spring_core_prefab = ExtResource("104_bdqux")
 core_remote = NodePath("Body/Pendulum Mover")
 hands_wrap = NodePath("Body/Body Sprite/Hands Wrap")
 heal_particles = NodePath("Body/Heal Particles")
+face_mover = NodePath("Body/Body Sprite/Face Wrap/Wrap")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
@@ -1055,29 +1056,29 @@ position = Vector2(-4, -55)
 
 [node name="Wrap" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap" unique_id=1780464618]
 
-[node name="LookAtMouse" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap" unique_id=1932406287]
+[node name="LookAtMouse" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap" unique_id=1932406287]
 script = ExtResource("14_cbgmd")
 distance = 12
 metadata/_custom_type_script = "uid://dce3tbn077db6"
 
-[node name="Face" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse" unique_id=90074425 instance=ExtResource("7_344ge")]
+[node name="Face" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse" unique_id=90074425 instance=ExtResource("7_344ge")]
 position = Vector2(-1, 3)
 scale = Vector2(2.325933, 2.325933)
 
-[node name="Crosses" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face" unique_id=1424782053]
+[node name="Crosses" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face" unique_id=1424782053]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Crosses" unique_id=2126327626]
+[node name="Sprite2D" type="Sprite2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Crosses" unique_id=2126327626]
 position = Vector2(12.468115, -5.15922)
 scale = Vector2(0.16434486, 0.16434486)
 texture = ExtResource("34_jwpg7")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Crosses" unique_id=1761394488]
+[node name="Sprite2D2" type="Sprite2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Crosses" unique_id=1761394488]
 position = Vector2(-12.468115, -6.01909)
 scale = Vector2(0.16434486, 0.16434486)
 texture = ExtResource("34_jwpg7")
 
-[node name="Blowpipe" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face" unique_id=2107694464 node_paths=PackedStringArray("ray", "line", "particles", "aligner", "sprite")]
+[node name="Blowpipe" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face" unique_id=2107694464 node_paths=PackedStringArray("ray", "line", "particles", "aligner", "sprite")]
 visible = false
 position = Vector2(0, 4.2993503)
 script = ExtResource("90_qxkn4")
@@ -1092,24 +1093,24 @@ recipe = Dictionary[int, int]({
 aligner = NodePath(".")
 sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe" unique_id=1449134884]
+[node name="Sprite2D" type="Sprite2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Blowpipe" unique_id=1449134884]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(73.51889, 1.7197404)
 scale = Vector2(0.4942833, 0.4942833)
 texture = ExtResource("90_adgm5")
 
-[node name="Line2D" type="Line2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe" unique_id=1545887209]
+[node name="Line2D" type="Line2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Blowpipe" unique_id=1545887209]
 visible = false
 position = Vector2(143.5983, 0.85987)
 points = PackedVector2Array(0, 0, 69.649475, 0)
 default_color = Color(1, 1, 1, 0.4862745)
 
-[node name="RayCast2D" type="RayCast2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe" unique_id=2097362750]
+[node name="RayCast2D" type="RayCast2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Blowpipe" unique_id=2097362750]
 position = Vector2(143.5983, -0.429935)
 target_position = Vector2(3000, 0)
 collision_mask = 92184
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Bee/Body/Body Sprite/Face Wrap/LookAtMouse/Face/Blowpipe" unique_id=1082413674]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Blowpipe" unique_id=1082413674]
 position = Vector2(154.7766, 1.289805)
 emitting = false
 texture = ExtResource("59_e5peh")
