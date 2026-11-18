@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bee"
-config/version="0.2.0"
+config/version="0.3.0"
 run/main_scene="uid://dctl740whl7xn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"

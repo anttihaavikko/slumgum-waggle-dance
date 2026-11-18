@@ -23,6 +23,22 @@ input = Array[ExtResource("3_ln31n")]([SubResource("Resource_khng4")])
 output = Array[ExtResource("3_ln31n")]([SubResource("Resource_uj2c6")])
 metadata/_custom_type_script = "uid://d30bl70a5oc7y"
 
+[sub_resource type="Resource" id="Resource_ln31n"]
+script = ExtResource("3_ln31n")
+item = 18
+metadata/_custom_type_script = "uid://cojfh0e7a2gbv"
+
+[sub_resource type="Resource" id="Resource_vmljj"]
+script = ExtResource("3_ln31n")
+item = 19
+metadata/_custom_type_script = "uid://cojfh0e7a2gbv"
+
+[sub_resource type="Resource" id="Resource_1e2gf"]
+script = ExtResource("2_vmljj")
+input = Array[ExtResource("3_ln31n")]([SubResource("Resource_ln31n")])
+output = Array[ExtResource("3_ln31n")]([SubResource("Resource_vmljj")])
+metadata/_custom_type_script = "uid://d30bl70a5oc7y"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwrih"]
 size = Vector2(370.63, 388.825)
 
@@ -67,11 +83,9 @@ _data = {
 }
 
 [node name="Loom" unique_id=299398414 node_paths=PackedStringArray("input_preview", "crafting_animation", "extra_sprites") instance=ExtResource("1_hwrih")]
-title = "Spinning Wheel"
-converts = Array[ExtResource("2_vmljj")]([SubResource("Resource_olle2")])
+converts = Array[ExtResource("2_vmljj")]([SubResource("Resource_olle2"), SubResource("Resource_1e2gf")])
 input_preview = [NodePath("Preview")]
 crafting_animation = NodePath("AnimationPlayer")
-identifier = 7
 extra_sprites = [NodePath("Wheel")]
 
 [node name="Wheel" type="Sprite2D" parent="." index="0" unique_id=1493110719]

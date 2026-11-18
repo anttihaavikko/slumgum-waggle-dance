@@ -60,10 +60,10 @@ func _ready() -> void:
 	# inventory.add_item(Item.Id.Wax, 20)
 	await get_tree().process_frame
 	if OS.is_debug_build():
-		# inventory.add_equipment(tools[Equipment.Id.Hammer])
-		# inventory.add_equipment(tools[Equipment.Id.Scythe])
+		inventory.add_equipment(tools[Equipment.Id.Hammer])
+		inventory.add_equipment(tools[Equipment.Id.Scythe])
 		inventory.add_equipment(tools[Equipment.Id.Blowpipe])
-		inventory.add_equipment(tools[Equipment.Id.Guitar])
+		# inventory.add_equipment(tools[Equipment.Id.Guitar])
 		# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
 		# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
 		# inventory.add_equipment(tools[Equipment.Id.Brush])
@@ -73,7 +73,7 @@ func _ready() -> void:
 		inventory.add_item(Item.Id.Wax, 20)
 		# inventory.add_item(Item.Id.Resin, 20)
 		# inventory.add_item(Item.Id.Acid, 20)
-		inventory.add_item(Item.Id.Pollen, 10)
+		# inventory.add_item(Item.Id.Pollen, 10)
 		# inventory.add_item(Item.Id.Seed, 20)
 		# inventory.add_item(Item.Id.String, 20)
 		# inventory.add_item(Item.Id.Bomb, 10)

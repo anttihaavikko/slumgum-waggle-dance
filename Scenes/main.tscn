@@ -337,7 +337,7 @@ shader_parameter/time_mod = 0.5
 [sub_resource type="Resource" id="Resource_3ahwd"]
 script = ExtResource("31_3h4bx")
 title = "Platform"
-description = "Build platforms to place to place other build pieces on. Also recharges your energy when landing on it."
+description = "Build platforms to place to place other build pieces on. Also recharges your energy when landing on it if it's connected to a core."
 prefab = ExtResource("9_ynf5e")
 sprite = ExtResource("33_rlvxq")
 recipe = Dictionary[int, int]({
@@ -390,6 +390,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_b4mik"]
 script = ExtResource("31_3h4bx")
 title = "Anvil"
+description = "A place to forge all sorts of equipment from tools to weapons."
 prefab = ExtResource("24_qnggo")
 sprite = ExtResource("49_xg142")
 recipe = Dictionary[int, int]({
@@ -1063,6 +1064,9 @@ line = NodePath("Line2D")
 particles = NodePath("CPUParticles2D")
 identifier = 7
 description = "A rudimentary but effective weapon that uses pebbles or seeds as ammo to attack ones opponents from a range."
+recipe = Dictionary[int, int]({
+9: 5
+})
 aligner = NodePath(".")
 sprite = NodePath("Sprite2D")
 
@@ -1141,7 +1145,7 @@ builder = NodePath("../../../../../../../../Platforms")
 cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
 description = "A tool for constructing platforms and other build pieces. Highly recommended!"
 recipe = Dictionary[int, int]({
-0: 7
+0: 5
 })
 swinger = NodePath("..")
 aligner = NodePath("../..")
@@ -1163,7 +1167,7 @@ description = "A farming tool that can be used as a weapon in a pinch."
 recipe = Dictionary[int, int]({
 2: 5,
 3: 5,
-20: 5
+20: 3
 })
 swinger = NodePath("..")
 aligner = NodePath("../..")
@@ -1206,7 +1210,7 @@ script = ExtResource("28_8cuat")
 identifier = 5
 description = "Lights up the dark night."
 recipe = Dictionary[int, int]({
-0: 5
+0: 3
 })
 aligner = NodePath("../..")
 aligns = false
@@ -1286,7 +1290,6 @@ identifier = 4
 description = "Allows you to paint your build pieces to what ever color you want, and possess paint of."
 recipe = Dictionary[int, int]({
 2: 5,
-3: 5,
 18: 5
 })
 swinger = NodePath("..")
@@ -1311,9 +1314,8 @@ area = NodePath("../../../../../../../../Mine Check")
 identifier = 6
 description = "A tool for breaking down stones. Mining is a lot of work but the pebbles acquired are an important component in many recipes."
 recipe = Dictionary[int, int]({
-0: 5,
 2: 5,
-20: 2
+20: 3
 })
 swinger = NodePath("..")
 aligner = NodePath("../..")
