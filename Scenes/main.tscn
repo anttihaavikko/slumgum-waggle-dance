@@ -143,6 +143,8 @@
 [ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="121_rlvdk"]
 [ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
 [ext_resource type="Script" uid="uid://foqfxb04yivj" path="res://_Starter/Scripts/version_label.gd" id="122_t6wb6"]
+[ext_resource type="Script" uid="uid://dcnfa0hou2e0q" path="res://Scripts/winds.gd" id="144_b12iu"]
+[ext_resource type="Script" uid="uid://dxftrchkigaky" path="res://Scripts/wind.gd" id="144_odn5n"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -672,6 +674,13 @@ radius = 100.0
 blend_mode = 1
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xjjvj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_odn5n"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_odn5n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.55351174, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
@@ -2474,6 +2483,152 @@ angular_damp = 3.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/Area2D" unique_id=1313948392]
 position = Vector2(-38596, 23151)
 shape = SubResource("WorldBoundaryShape2D_xjjvj")
+
+[node name="Winds" type="Parallax2D" parent="." unique_id=2066860193 node_paths=PackedStringArray("winds", "center_point")]
+scroll_scale = Vector2(0.8, 0.8)
+script = ExtResource("144_b12iu")
+winds = [NodePath("Line2D"), NodePath("Line2D2"), NodePath("Line2D3"), NodePath("Line2D4"), NodePath("Line2D5"), NodePath("Line2D6"), NodePath("Line2D7"), NodePath("Line2D8"), NodePath("Line2D9"), NodePath("Line2D10")]
+center_point = NodePath("../Bee/Body/Camera/Camera2D")
+
+[node name="Line2D" type="Line2D" parent="Winds" unique_id=1482799]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(547, -885)
+points = PackedVector2Array(49, -75, -149, -3, -181, 205, -174, 309, -52, 416, 124, 396, 216, 286, 357, 146, 474, 126, 563, 151, 611, 214, 679, 244, 759, 218, 817, 132, 937, 46, 1130, 3, 1274, 34, 1383, 156, 1394, 374, 1255, 499, 1064, 499, 1000, 416, 983, 268, 1081, 169, 1209, 173, 1265, 279, 1180, 372, 1095, 325)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D2" type="Line2D" parent="Winds" unique_id=1872965818]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(-877, -1639)
+points = PackedVector2Array(49, -75, -149, -3, -181, 205, -174, 309, -52, 416, 124, 396, 216, 286, 357, 146, 474, 126, 563, 151, 611, 214, 679, 244, 759, 218, 817, 132, 937, 46, 1130, 3, 1274, 34, 1383, 156, 1394, 374, 1255, 499, 1064, 499, 1000, 416, 983, 268, 1081, 169, 1209, 173, 1265, 279, 1180, 372, 1095, 325)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D3" type="Line2D" parent="Winds" unique_id=1105436399]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(1455, -1192)
+points = PackedVector2Array(49, -75, -149, -3, -181, 205, -174, 309, -52, 416, 124, 396, 216, 286, 357, 146, 474, 126, 563, 151, 611, 214, 679, 244, 759, 218, 817, 132, 937, 46, 1130, 3, 1274, 34, 1383, 156, 1394, 374, 1255, 499, 1064, 499, 1000, 416, 983, 268, 1081, 169, 1209, 173, 1265, 279, 1180, 372, 1095, 325)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D4" type="Line2D" parent="Winds" unique_id=1286203409]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(66, -1911)
+points = PackedVector2Array(-132, 58, 10, -79, 211, -118, 395, -45, 565, 131, 797, 232, 1081, 185, 1233, 2, 1134, -105, 1051, -142, 972, -99, 978, -23, 1057, 32)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D5" type="Line2D" parent="Winds" unique_id=154872345]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(66, -1911)
+points = PackedVector2Array(-132, 58, 10, -79, 211, -118, 395, -45, 565, 131, 797, 232, 1081, 185, 1233, 2, 1134, -105, 1051, -142, 972, -99, 978, -23, 1057, 32)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D6" type="Line2D" parent="Winds" unique_id=946394399]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(66, -1911)
+points = PackedVector2Array(-132, 58, 10, -79, 211, -118, 395, -45, 565, 131, 797, 232, 1081, 185, 1233, 2, 1134, -105, 1051, -142, 972, -99, 978, -23, 1057, 32)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D7" type="Line2D" parent="Winds" unique_id=1203245465]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(66, -1911)
+points = PackedVector2Array(-1302, -118, -945, -123, -671, -36, -245, 121, 263, 64, 576, -88, 967, -179, 1458, -109, 1762, 103, 2045, 177, 2280, 86)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D8" type="Line2D" parent="Winds" unique_id=1109084544]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(66, -1911)
+points = PackedVector2Array(-1302, -118, -945, -123, -671, -36, -245, 121, 263, 64, 576, -88, 967, -179, 1458, -109, 1762, 103, 2045, 177, 2280, 86)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D9" type="Line2D" parent="Winds" unique_id=505302417]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(92, -2037)
+points = PackedVector2Array(-671, -36, -224, -83, 46, -44, 263, 64, 424, 38, 576, -88, 737, -201, 967, -179)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D10" type="Line2D" parent="Winds" unique_id=898140281]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(92, -2037)
+points = PackedVector2Array(-623, 209, -722, 102, -685, -30, -478, -120, -224, -83, 46, -44, 263, 64, 424, 38, 600, 37, 759, -53, 941, -117, 1170, -180, 1444, -102, 1561, -8, 1581, 137)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
 
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
