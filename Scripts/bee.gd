@@ -94,7 +94,7 @@ func add_console_commands():
 	LimboConsole.register_command(console_spawn, "give", "spawns in an item or equipment")
 	LimboConsole.add_argument_autocomplete_source("give", 0, get_all_spawnable_names)
 	LimboConsole.register_command(fill_energy, "energy", "refill energy")
-	LimboConsole.register_command(dev_heal, "heal", "heal given amount")
+	LimboConsole.register_command(heal, "heal", "heal given amount")
 	LimboConsole.register_command(damage, "damage", "take damage")
 	LimboConsole.register_command(show_anvil_menu, "anvil", "opens anvil crafting menu")
 	LimboConsole.register_command(teleport, "teleport", "teleport to position")
@@ -109,9 +109,6 @@ func add_console_commands():
 func unregister_console(command: String):
 	if LimboConsole._commands.has(command):
 		LimboConsole.unregister_command(command)
-
-func dev_heal(amount := 20):
-	heal(amount, true)
 
 func show_anvil_menu():
 	Main.singleton.stations[BuildPiece.Id.Anvil].open(Main.singleton.builder.starters[0])
@@ -162,8 +159,12 @@ func fill_energy():
 	energy.heal(999)
 	heal_particles.emitting = true
 
-func heal(amt := 1, always_show_particles := false):
-	if health.is_alive() and (not health.is_full() or always_show_particles):
+func heal_if_not_full(amt := 1):
+	if not health.is_full():
+		heal(amt)
+
+func heal(amt := 1):
+	if health.is_alive():
 		health.heal(amt)
 		heal_particles.emitting = true
 
@@ -309,9 +310,7 @@ func _process(delta) -> void:
 			inventory.focus(i)
 
 	if Input.is_action_just_pressed("primary"):
-		if inventory.current().has_item(Item.Id.Bomb):
-			inventory.consume_one()
-			throw(bomb_prefab)
+		use_selected_item()
 
 	if builder.held and builder.held.can_rotate: return
 	if Main.singleton.station: return
@@ -322,3 +321,11 @@ func _process(delta) -> void:
 
 	if Input.is_action_just_pressed("wheel_down"):
 		inventory.change_focus(1)
+
+func use_selected_item():
+	if inventory.current().has_item(Item.Id.Bomb):
+		inventory.consume_one()
+		throw(bomb_prefab)
+	if inventory.current().has_item(Item.Id.HealthPotion):
+		inventory.consume_one()
+		heal(1)

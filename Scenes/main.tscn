@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://sotoeyspthkx" path="res://Sprites/hud-frame.png" id="13_fdnlq"]
 [ext_resource type="Script" uid="uid://bdxalhd66bjh3" path="res://Scripts/hammer.gd" id="13_fevyy"]
 [ext_resource type="PackedScene" uid="uid://bxbgr700fj2tv" path="res://Scenes/Pieces/box.tscn" id="13_kqrg6"]
+[ext_resource type="Texture2D" uid="uid://diun2ixclcdu7" path="res://Sprites/bread.png" id="14_0t4jf"]
 [ext_resource type="Texture2D" uid="uid://c0b2qg6qx5ayw" path="res://Sprites/seed.png" id="14_14mkc"]
 [ext_resource type="Script" uid="uid://dce3tbn077db6" path="res://_Starter/Scripts/look_at_mouse.gd" id="14_cbgmd"]
 [ext_resource type="PackedScene" uid="uid://t87k0o8gt2t7" path="res://_Starter/Scenes/Effects/pulse.tscn" id="14_ihvwq"]
@@ -237,9 +238,14 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_6h1fc"]
 script = ExtResource("3_cbgmd")
 item_id = 8
-title = "Potion"
-color = Color(0.9372549, 0.35686275, 0.35686275, 1)
-sprite = ExtResource("12_gt3je")
+title = "Bee Bread"
+color = Color(1, 0.8502259, 0.6375033, 1)
+sprite = ExtResource("14_0t4jf")
+description = "Bread made by mixing pollen with honey. Eating it heals you."
+recipe = Dictionary[int, int]({
+1: 1,
+3: 1
+})
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_vxl7x"]
@@ -2073,7 +2079,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 script = ExtResource("50_1semv")
-item_recipes = Array[int]([6])
+item_recipes = Array[int]([6, 8])
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 creates_items = true
