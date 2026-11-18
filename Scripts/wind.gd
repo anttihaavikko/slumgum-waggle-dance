@@ -2,6 +2,7 @@ class_name Wind extends Line2D
 
 var speed := 20.0
 var pos := 0.0
+var prev := -1
 
 var all: PackedVector2Array
 
@@ -10,6 +11,7 @@ func _ready() -> void:
 
 func restart(p: Vector2):
 	global_position = p
+	prev = -1
 	pos = 0
 	speed = randf_range(10, 30)
 	width = randf_range(40, 80)
@@ -27,4 +29,6 @@ func _process(_delta) -> void:
 
 func update():
 	var i = roundi(pos)
+	if i == prev: return
+	prev = i
 	points = all.slice(i, i + 4)
