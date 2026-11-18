@@ -136,6 +136,7 @@
 [ext_resource type="PackedScene" uid="uid://dp8dii4g76t82" path="res://Scenes/white_flower.tscn" id="109_myryv"]
 [ext_resource type="PackedScene" uid="uid://b00id2gst1ynl" path="res://Scenes/cold_flower.tscn" id="111_bpr0e"]
 [ext_resource type="Texture2D" uid="uid://ckh701akyam10" path="res://Sprites/clock-face.png" id="112_fvjqb"]
+[ext_resource type="Texture2D" uid="uid://dbyh84o2k5142" path="res://Sprites/heal-line.png" id="113_130ps"]
 [ext_resource type="Texture2D" uid="uid://3qbspf4inwwl" path="res://Sprites/clock-arm.png" id="113_b05pg"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
@@ -622,6 +623,14 @@ radius = 174.1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qnggo"]
 blend_mode = 1
 
+[sub_resource type="Curve" id="Curve_qxkn4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.7106454, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qxkn4"]
+offsets = PackedFloat32Array(0.6557692, 1)
+colors = PackedColorArray(1, 1, 1, 0.49411765, 1, 1, 1, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
 
@@ -888,7 +897,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -911,6 +920,7 @@ leg_container = NodePath("Lander/Container")
 spring_core_prefab = ExtResource("104_bdqux")
 core_remote = NodePath("Body/Pendulum Mover")
 hands_wrap = NodePath("Body/Body Sprite/Hands Wrap")
+heal_particles = NodePath("Body/Heal Particles")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
@@ -1032,6 +1042,8 @@ flip_h = true
 
 [node name="Face Wrap" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1544136475]
 position = Vector2(-4, -55)
+
+[node name="Wrap" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap" unique_id=1780464618]
 
 [node name="LookAtMouse" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap" unique_id=1932406287]
 script = ExtResource("14_cbgmd")
@@ -1359,6 +1371,23 @@ stiffness = 40.0
 
 [node name="Pendulum Mover" type="RemoteTransform2D" parent="Bee/Body" unique_id=1177645390]
 update_scale = false
+
+[node name="Heal Particles" type="CPUParticles2D" parent="Bee/Body" unique_id=1027791238]
+position = Vector2(-19, 29)
+emitting = false
+amount = 15
+texture = ExtResource("113_130ps")
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.1
+randomness = 0.3
+emission_shape = 3
+emission_rect_extents = Vector2(100, 150)
+gravity = Vector2(0, -1176)
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_qxkn4")
+color_ramp = SubResource("Gradient_qxkn4")
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=832043342]
 position = Vector2(0, 133)

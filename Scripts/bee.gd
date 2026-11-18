@@ -24,6 +24,7 @@ class_name Bee extends Node2D
 @export var spring_core_prefab: PackedScene
 @export var core_remote: RemoteTransform2D
 @export var hands_wrap: Node2D
+@export var heal_particles: CPUParticles2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -61,7 +62,7 @@ func _ready() -> void:
 	add_console_commands()
 	if OS.is_debug_build():
 		inventory.add_equipment(tools[Equipment.Id.Hammer])
-		inventory.add_equipment(tools[Equipment.Id.Scythe])
+		# inventory.add_equipment(tools[Equipment.Id.Scythe])
 		# inventory.add_equipment(tools[Equipment.Id.Blowpipe])
 		# inventory.add_equipment(tools[Equipment.Id.Guitar])
 		# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
@@ -80,13 +81,38 @@ func _ready() -> void:
 
 func add_console_commands():
 	# if LimboConsole._commands.has("give"): return
-	LimboConsole.unregister_command("give")
-	LimboConsole.unregister_command("energy")
-	LimboConsole.unregister_command("heal")
+	unregister_console("give")
+	unregister_console("energy")
+	unregister_console("heal")
+	unregister_console("damage")
+	unregister_console("anvil")
 	LimboConsole.register_command(console_spawn, "give", "spawns in an item or equipment")
 	LimboConsole.add_argument_autocomplete_source("give", 0, get_all_spawnable_names)
-	LimboConsole.register_command(fill_energy, "energy", "refill energy")
-	LimboConsole.register_command(heal, "heal", "heal given amount")
+	LimboConsole.register_command(dev_energy, "energy", "refill energy")
+	LimboConsole.register_command(dev_heal, "heal", "heal given amount")
+	LimboConsole.register_command(dev_damage, "damage", "take damage")
+	LimboConsole.register_command(show_anvil_menu, "anvil", "opens anvil crafting menu")
+
+func unregister_console(command: String):
+	if LimboConsole._commands.has(command):
+		LimboConsole.unregister_command(command)
+
+func dev_damage(amount := 1):
+	LimboConsole.close_console()
+	damage(amount)
+
+func dev_heal(amount := 20):
+	LimboConsole.close_console()
+	heal(amount, true)
+
+func dev_energy():
+	LimboConsole.close_console()
+	fill_energy()
+
+func show_anvil_menu():
+	LimboConsole.close_console()
+	Main.singleton.stations[BuildPiece.Id.Anvil].open(Main.singleton.builder.starters[0])
+	pass
 
 func console_spawn(item_name: String, amount := 20):
 	if get_equip_names().has(item_name):
@@ -129,10 +155,12 @@ func energy_for_life():
 func fill_energy():
 	energy_left = energy_max
 	energy.heal(999)
+	heal_particles.emitting = true
 
-func heal(amt := 1):
-	if health.is_alive():
+func heal(amt := 1, always_show_particles := false):
+	if health.is_alive() and (not health.is_full() or always_show_particles):
 		health.heal(amt)
+		heal_particles.emitting = true
 
 func die():
 	health.hurt(999)

@@ -28,6 +28,9 @@ func heal(amount: int) -> void:
 func is_alive() -> bool:
 	return hp > 0
 
+func is_full() -> bool:
+	return hp == max_hp
+
 func update_shown() -> void:
 	if label:
 		if max_label:
