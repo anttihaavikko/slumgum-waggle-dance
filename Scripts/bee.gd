@@ -80,19 +80,32 @@ func _ready() -> void:
 		# inventory.add_item(Item.Id.Bomb, 10)
 
 func add_console_commands():
-	LimboConsole.register_command(console_spawn, "spawn", "spawn item")
-	LimboConsole.add_argument_autocomplete_source("spawn", 0, get_item_names)
+	# if LimboConsole._commands.has("give"): return
+	LimboConsole.unregister_command("give")
+	LimboConsole.unregister_command("energy")
+	LimboConsole.unregister_command("heal")
+	LimboConsole.register_command(console_spawn, "give", "spawns in an item or equipment")
+	LimboConsole.add_argument_autocomplete_source("give", 0, get_all_spawnable_names)
+	LimboConsole.register_command(fill_energy, "energy", "refill energy")
+	LimboConsole.register_command(heal, "heal", "heal given amount")
 
-func console_spawn(item_name: String):
-	inventory.add_item(get_item_names().find(item_name), 20)
+func console_spawn(item_name: String, amount := 20):
+	if get_equip_names().has(item_name):
+		inventory.add_equipment(tools[get_equip_names().find(item_name)])
+	else:
+		inventory.add_item(get_item_names().find(item_name), amount)
 	LimboConsole.close_console()
 
-func get_item_names() -> Array[String]:
-	var names: Array[String] = []
-	for i in Main.singleton.item_db.items:
-		names.append(i.title.to_lower().replace(" ", "_"))
-	return names
+func get_all_spawnable_names() -> Array:
+	var all = get_equip_names()
+	all.append_array(get_item_names())
+	return all
 
+func get_equip_names() -> Array:
+	return tools.map(func(t): return str(t.name).to_lower())
+
+func get_item_names() -> Array:
+	return Main.singleton.item_db.items.map(func(i): return i.title.to_lower().replace(" ", "_"))
 
 func create_spring_core():
 	if spring_core: spring_core.queue_free()
@@ -111,9 +124,12 @@ func can_open() -> bool:
 	return not current or not current.blocks_clicks()
 
 func energy_for_life():
+	fill_energy()
+	damage(1)
+
+func fill_energy():
 	energy_left = energy_max
 	energy.heal(999)
-	damage(1)
 
 func heal(amt := 1):
 	if health.is_alive():
