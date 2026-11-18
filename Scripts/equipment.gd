@@ -8,7 +8,8 @@ enum Id {
 	Paintbrush,
 	Lantern,
 	Pickaxe,
-	Blowpipe
+	Blowpipe,
+	Stinger
 }
 
 @export var identifier: Id

@@ -127,6 +127,7 @@
 [ext_resource type="Texture2D" uid="uid://b7mjrvqx2x65j" path="res://Sprites/pickaxe.png" id="96_0wopu"]
 [ext_resource type="Script" uid="uid://40pyvnkqggg6" path="res://Scripts/pickaxe.gd" id="96_ja2pg"]
 [ext_resource type="Texture2D" uid="uid://btjcnvg2calqe" path="res://Sprites/guitar-scale.png" id="98_e1jjv"]
+[ext_resource type="Texture2D" uid="uid://dpytywj0cgcls" path="res://Sprites/stinger.png" id="98_gf7g1"]
 [ext_resource type="PackedScene" uid="uid://hbewxyx2g65b" path="res://Scenes/island.tscn" id="100_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
 [ext_resource type="Texture2D" uid="uid://nid1qwygfqey" path="res://Sprites/poster-cafe.png" id="101_xjjvj"]
@@ -632,6 +633,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_55idt"]
 radius = 174.1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_102yd"]
+size = Vector2(600, 150)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qnggo"]
 blend_mode = 1
 
@@ -785,6 +789,7 @@ position = Vector2(266, 487)
 rotation = 0.95665735
 
 [node name="Queen" type="Node2D" parent="." unique_id=982120171 node_paths=PackedStringArray("queen", "area", "bubble", "message", "crown", "glasses")]
+visible = false
 z_index = -10
 position = Vector2(498, 431)
 script = ExtResource("59_cmq5c")
@@ -924,7 +929,7 @@ body = NodePath("Body")
 lander = NodePath("Lander")
 wings = NodePath("Body/Wing Flap")
 inventory = NodePath("../HUD/Frame/Bar")
-tools = [NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Brush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Pickaxe"), NodePath("Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Blowpipe")]
+tools = [NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Hammer"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Scythe"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Brush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Paintbrush"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Lantern"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Pickaxe"), NodePath("Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face/Blowpipe"), NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Stinger")]
 hands = NodePath("Body/Body Sprite/Hands Wrap/Hands/Hands")
 health = NodePath("../HUD/Frame/Health")
 energy = NodePath("../HUD/Frame/Energy")
@@ -1209,6 +1214,35 @@ sprite = NodePath(".")
 [node name="Area" type="ShapeCast2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Scythe" unique_id=1646312883]
 position = Vector2(-247.27628, 103.423645)
 shape = SubResource("CircleShape2D_55idt")
+target_position = Vector2(0, 0)
+collision_mask = 10806
+
+[node name="Stinger" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=309441470 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
+visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(-133, -117)
+rotation = 0.13577862
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("98_gf7g1")
+offset = Vector2(-103.92078, 94.49667)
+script = ExtResource("15_ee4r6")
+area = NodePath("Area")
+damage = 7
+identifier = 8
+description = "A mighty weapon made from a stillbord queen's stinger."
+recipe = Dictionary[int, int]({
+2: 5,
+3: 5,
+20: 3
+})
+swinger = NodePath("..")
+aligner = NodePath("../..")
+swing_dir = 1.5
+sprite = NodePath(".")
+
+[node name="Area" type="ShapeCast2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Stinger" unique_id=1808547768]
+position = Vector2(-247.27628, 103.423645)
+shape = SubResource("RectangleShape2D_102yd")
 target_position = Vector2(0, 0)
 collision_mask = 10806
 

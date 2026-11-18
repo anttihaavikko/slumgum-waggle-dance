@@ -37,6 +37,7 @@ var event_pool: Array[QueenEvent] = [
 ]
 
 func _ready() -> void:
+	show()
 	queen.position = off_pos
 	area.body_entered.connect(appear)
 	area.body_exited.connect(leave)
