@@ -109,9 +109,12 @@ func update_visuals():
 	label.visible = !!equipment
 	if not in_bar: mark(item or equipment)
 	if equipment:
-		label.text = equipment.name.substr(0, 1)
+		icon.texture = equipment.icon
+		icon.self_modulate = equipment.self_modulate
+		label.text = "" if equipment.icon else equipment.name.substr(0, 1)
+
 		# if in_bar: Main.singleton.inventory.re_focus()
-	icon.visible = !!item
+	icon.visible = !!item or equipment and equipment.icon
 	count_container.visible = !!item
 	if item:
 		icon.texture = item.data.sprite

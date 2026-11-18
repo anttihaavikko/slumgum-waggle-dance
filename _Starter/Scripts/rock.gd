@@ -30,7 +30,7 @@ func _process(delta) -> void:
 
 func mine(pos: Vector2):
 	if spot.visible:
-		if spot.global_position.distance_to(pos) > 50:
+		if spot.global_position.distance_to(pos) > 75:
 			spot.hide()
 		else:
 			timer = 1.0

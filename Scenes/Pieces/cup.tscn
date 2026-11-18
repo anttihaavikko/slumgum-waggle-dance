@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="2_2ywsu"]
 [ext_resource type="Script" uid="uid://dbf0q0w36pcid" path="res://Scripts/cup.gd" id="2_7ye3g"]
 [ext_resource type="Texture2D" uid="uid://cvhawladf7ag4" path="res://Sprites/cup.png" id="2_mkp0a"]
+[ext_resource type="Texture2D" uid="uid://bagibpqracojd" path="res://Sprites/icon-stinger.png" id="3_7ye3g"]
 
 [node name="Cup" unique_id=299398414 node_paths=PackedStringArray("input_preview", "functionality") instance=ExtResource("1_3qamq")]
 input_preview = [NodePath("Cup/Input")]
@@ -16,7 +17,11 @@ station = NodePath("..")
 stinger = NodePath("Stinger")
 
 [node name="Stinger" type="Sprite2D" parent="Cup" index="0" unique_id=75716384]
-texture = ExtResource("2_2ywsu")
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+position = Vector2(7, 14)
+rotation = -0.7825218
+scale = Vector2(0.7644681, 0.7644681)
+texture = ExtResource("3_7ye3g")
 
 [node name="Input" type="Sprite2D" parent="Cup" index="1" unique_id=555309476]
 visible = false

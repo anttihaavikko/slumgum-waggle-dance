@@ -14,6 +14,7 @@ enum Id {
 
 @export var identifier: Id
 @export_multiline var description: String
+@export var icon: Texture2D
 @export var recipe: Dictionary[Item.Id, int]
 
 @export var swinger: Swinger

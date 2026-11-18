@@ -130,6 +130,7 @@
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 [ext_resource type="Texture2D" uid="uid://b7mjrvqx2x65j" path="res://Sprites/pickaxe.png" id="96_0wopu"]
 [ext_resource type="Script" uid="uid://40pyvnkqggg6" path="res://Scripts/pickaxe.gd" id="96_ja2pg"]
+[ext_resource type="Texture2D" uid="uid://lcm6oq33bb34" path="res://Sprites/icon-blowpipe.png" id="97_s8cid"]
 [ext_resource type="Texture2D" uid="uid://btjcnvg2calqe" path="res://Sprites/guitar-scale.png" id="98_e1jjv"]
 [ext_resource type="Texture2D" uid="uid://dpytywj0cgcls" path="res://Sprites/stinger.png" id="98_gf7g1"]
 [ext_resource type="PackedScene" uid="uid://hbewxyx2g65b" path="res://Scenes/island.tscn" id="100_mfvrx"]
@@ -137,17 +138,24 @@
 [ext_resource type="Texture2D" uid="uid://nid1qwygfqey" path="res://Sprites/poster-cafe.png" id="101_xjjvj"]
 [ext_resource type="Texture2D" uid="uid://8otcn271yg4x" path="res://Sprites/poster-sleep.png" id="102_8dylv"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
+[ext_resource type="Texture2D" uid="uid://j6n2ny7x0u8n" path="res://Sprites/hammer-icon.png" id="102_fle1e"]
 [ext_resource type="PackedScene" uid="uid://s135cqqhbwcf" path="res://_Starter/Scenes/spring_core.tscn" id="104_bdqux"]
+[ext_resource type="Texture2D" uid="uid://bnlhty6qxxeh5" path="res://Sprites/icon-scythe.png" id="105_wt5iu"]
+[ext_resource type="Texture2D" uid="uid://bagibpqracojd" path="res://Sprites/icon-stinger.png" id="107_pmnrr"]
 [ext_resource type="PackedScene" uid="uid://dp8dii4g76t82" path="res://Scenes/white_flower.tscn" id="109_myryv"]
+[ext_resource type="Texture2D" uid="uid://1wfm2d22hk3l" path="res://Sprites/icon-lantern.png" id="111_0w4wg"]
 [ext_resource type="PackedScene" uid="uid://b00id2gst1ynl" path="res://Scenes/cold_flower.tscn" id="111_bpr0e"]
 [ext_resource type="Texture2D" uid="uid://ckh701akyam10" path="res://Sprites/clock-face.png" id="112_fvjqb"]
 [ext_resource type="Texture2D" uid="uid://dbyh84o2k5142" path="res://Sprites/heal-line.png" id="113_130ps"]
 [ext_resource type="Texture2D" uid="uid://3qbspf4inwwl" path="res://Sprites/clock-arm.png" id="113_b05pg"]
 [ext_resource type="Script" uid="uid://bm3jrbbu7fesp" path="res://_Starter/Scripts/framerate_display.gd" id="114_ilwxp"]
 [ext_resource type="Script" uid="uid://yycbi8k01fjd" path="res://_Starter/Scripts/notifications.gd" id="116_jab21"]
+[ext_resource type="Texture2D" uid="uid://blifq8facqpfh" path="res://Sprites/icon-guitar.png" id="117_0w4wg"]
+[ext_resource type="Texture2D" uid="uid://dsrs1xckp74fo" path="res://Sprites/icon-paintbrush.png" id="119_s8cid"]
 [ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="121_rlvdk"]
 [ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
 [ext_resource type="Script" uid="uid://foqfxb04yivj" path="res://_Starter/Scripts/version_label.gd" id="122_t6wb6"]
+[ext_resource type="Texture2D" uid="uid://13a786in0a2a" path="res://Sprites/icon-pick.png" id="126_dllok"]
 [ext_resource type="Script" uid="uid://dcnfa0hou2e0q" path="res://Scripts/winds.gd" id="144_b12iu"]
 [ext_resource type="Script" uid="uid://dxftrchkigaky" path="res://Scripts/wind.gd" id="144_odn5n"]
 
@@ -1280,6 +1288,7 @@ texture = ExtResource("34_jwpg7")
 
 [node name="Blowpipe" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face" unique_id=2107694464 node_paths=PackedStringArray("ray", "line", "particles", "aligner", "sprite")]
 visible = false
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(0, 4.2993503)
 script = ExtResource("90_qxkn4")
 ray = NodePath("RayCast2D")
@@ -1287,6 +1296,7 @@ line = NodePath("Line2D")
 particles = NodePath("CPUParticles2D")
 identifier = 7
 description = "A rudimentary but effective weapon that uses pebbles or seeds as ammo to attack ones opponents from a range."
+icon = ExtResource("97_s8cid")
 recipe = Dictionary[int, int]({
 9: 5
 })
@@ -1367,6 +1377,7 @@ script = ExtResource("13_fevyy")
 builder = NodePath("../../../../../../../../Platforms")
 cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
 description = "A tool for constructing platforms and other build pieces. Highly recommended!"
+icon = ExtResource("102_fle1e")
 recipe = Dictionary[int, int]({
 0: 5
 })
@@ -1387,6 +1398,7 @@ script = ExtResource("15_ee4r6")
 area = NodePath("Area")
 identifier = 1
 description = "A farming tool that can be used as a weapon in a pinch."
+icon = ExtResource("105_wt5iu")
 recipe = Dictionary[int, int]({
 2: 5,
 3: 5,
@@ -1416,6 +1428,7 @@ area = NodePath("Area")
 damage = 7
 identifier = 8
 description = "A mighty weapon made from a stillbord queen's stinger."
+icon = ExtResource("107_pmnrr")
 recipe = Dictionary[int, int]({
 2: 5,
 3: 5,
@@ -1461,6 +1474,7 @@ offset = Vector2(19.93097, 4.150696)
 script = ExtResource("28_8cuat")
 identifier = 5
 description = "Lights up the dark night."
+icon = ExtResource("111_0w4wg")
 recipe = Dictionary[int, int]({
 0: 3
 })
@@ -1510,6 +1524,7 @@ script = ExtResource("93_na2ur")
 chord_display = NodePath("../../../../../../../../Cursor Icon/Chord")
 identifier = 3
 description = "Allows you to play some sweet comforting tunes. Could maybe even affect your predators."
+icon = ExtResource("117_0w4wg")
 recipe = Dictionary[int, int]({
 2: 10,
 3: 5,
@@ -1540,6 +1555,7 @@ colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.3568627
 cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
 identifier = 4
 description = "Allows you to paint your build pieces to what ever color you want, and possess paint of."
+icon = ExtResource("119_s8cid")
 recipe = Dictionary[int, int]({
 2: 5,
 18: 5
@@ -1565,6 +1581,7 @@ script = ExtResource("96_ja2pg")
 area = NodePath("../../../../../../../../Mine Check")
 identifier = 6
 description = "A tool for breaking down stones. Mining is a lot of work but the pebbles acquired are an important component in many recipes."
+icon = ExtResource("126_dllok")
 recipe = Dictionary[int, int]({
 2: 5,
 20: 3
