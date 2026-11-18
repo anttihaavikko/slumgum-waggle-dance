@@ -141,6 +141,13 @@ func consume_one():
 	consume(current().item.data.item_id, 1)
 	re_focus()
 
+func find_first_of(list: Array[Item.Id]) -> int:
+	for i in slots.size():
+		for id in list:
+			if slots[i].has(id):
+				return list.find(id)
+	return -1
+
 func consume(id: Item.Id, amount: int):
 	var left = amount
 	for s in slots:

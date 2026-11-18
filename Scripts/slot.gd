@@ -135,6 +135,9 @@ func drop() -> Pickup:
 func is_empty() -> bool:
 	return not locked and not equipment and (not item or item.amount == 0)
 
+func has(id: Item.Id):
+	return item and item.data.item_id == id
+
 func can_add(id: Item.Id, amount: int) -> bool:
 	if locked: return false
 	return item and item.data.item_id == id and item.amount < item.data.stack_size

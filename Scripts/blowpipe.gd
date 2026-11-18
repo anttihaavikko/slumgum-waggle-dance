@@ -4,18 +4,29 @@ extends Equipment
 @export var line: Line2D
 @export var particles: CPUParticles2D
 
+const ammo_types: Array[Item.Id] = [
+	Item.Id.Rock,
+	Item.Id.Seed,
+	Item.Id.GoldSeed,
+	Item.Id.PureSeed
+]
+
 var can_shoot := true
 
 func update(_delta: float):
 	super.update(_delta)
 	align()
 	if Input.is_action_just_pressed("primary") and can_shoot:
-		var ammo = Item.Id.Seed
+		var ammo = get_ammo()
+		if ammo < 1:
+			Main.pop("NO AMMO!")
+			return
 		can_shoot = false
 		var pos = line.to_local(ray.get_collision_point()) if ray.is_colliding() else ray.target_position
 		line.set_point_position(1, pos)
 		line.show()
 		Main.shake(10, 0.1)
+		Main.singleton.inventory.consume(ammo, 1)
 		particles.emitting = true
 		var body = Main.singleton.bee.body
 		body.apply_impulse(-ray.position.normalized().rotated(aligner.rotation) * 400)
@@ -34,7 +45,7 @@ func update(_delta: float):
 			if hit is RootPointer:
 				if hit.root is Worm or hit.root is Bird:
 					Effects.singleton.add(8, p)
-					hit.root.hurt(1)
+					hit.root.hurt(ammo_types.find(ammo) + 1)
 		await get_tree().create_timer(0.1).timeout
 		line.hide()
 		await get_tree().create_timer(0.1).timeout
@@ -42,3 +53,8 @@ func update(_delta: float):
 
 func toggle(state: bool):
 	super.toggle(state)
+
+func get_ammo() -> Item.Id:
+	var index = Main.singleton.inventory.find_first_of(ammo_types)
+	if index > -1: return ammo_types[index]
+	return Item.Id.Nectar
