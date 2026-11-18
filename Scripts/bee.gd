@@ -59,10 +59,11 @@ func _ready() -> void:
 	# await get_tree().create_timer(1).timeout
 	# inventory.add_item(Item.Id.Wax, 20)
 	await get_tree().process_frame
+	add_console_commands()
 	if OS.is_debug_build():
 		inventory.add_equipment(tools[Equipment.Id.Hammer])
 		inventory.add_equipment(tools[Equipment.Id.Scythe])
-		inventory.add_equipment(tools[Equipment.Id.Blowpipe])
+		# inventory.add_equipment(tools[Equipment.Id.Blowpipe])
 		# inventory.add_equipment(tools[Equipment.Id.Guitar])
 		# inventory.add_equipment(tools[Equipment.Id.Pickaxe])
 		# inventory.add_equipment(tools[Equipment.Id.Paintbrush])
@@ -70,13 +71,28 @@ func _ready() -> void:
 		# inventory.add_equipment(tools[Equipment.Id.Lantern])
 		# inventory.add_item(Item.Id.Nectar, 20)
 		# inventory.add_item(Item.Id.Honey, 20)
-		inventory.add_item(Item.Id.Wax, 20)
+		# inventory.add_item(Item.Id.Wax, 20)
 		# inventory.add_item(Item.Id.Resin, 20)
 		# inventory.add_item(Item.Id.Acid, 20)
 		# inventory.add_item(Item.Id.Pollen, 10)
 		# inventory.add_item(Item.Id.Seed, 20)
 		# inventory.add_item(Item.Id.String, 20)
 		# inventory.add_item(Item.Id.Bomb, 10)
+
+func add_console_commands():
+	LimboConsole.register_command(console_spawn, "spawn", "spawn item")
+	LimboConsole.add_argument_autocomplete_source("spawn", 0, get_item_names)
+
+func console_spawn(item_name: String):
+	inventory.add_item(get_item_names().find(item_name), 20)
+	LimboConsole.close_console()
+
+func get_item_names() -> Array[String]:
+	var names: Array[String] = []
+	for i in Main.singleton.item_db.items:
+		names.append(i.title.to_lower().replace(" ", "_"))
+	return names
+
 
 func create_spring_core():
 	if spring_core: spring_core.queue_free()
