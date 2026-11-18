@@ -215,6 +215,7 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 7
 title = "Juice"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 sprite = ExtResource("12_gt3je")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
@@ -222,6 +223,7 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 script = ExtResource("3_cbgmd")
 item_id = 8
 title = "Potion"
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 sprite = ExtResource("12_gt3je")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
@@ -252,24 +254,32 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_55idt"]
 script = ExtResource("3_cbgmd")
 item_id = 12
-title = "Paint"
+title = "Red Paint"
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = ExtResource("11_phube")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_87bhu"]
 script = ExtResource("3_cbgmd")
 item_id = 13
-title = "Paint"
+title = "Green Paint"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = ExtResource("11_phube")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_33qc4"]
 script = ExtResource("3_cbgmd")
 item_id = 14
-title = "Paint"
+title = "White Paint"
+sprite = ExtResource("11_phube")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_e6rcu"]
 script = ExtResource("3_cbgmd")
 item_id = 15
+title = "Yellow Paint"
+color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = ExtResource("11_phube")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_p4gyq"]

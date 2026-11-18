@@ -118,7 +118,7 @@ func console_spawn(item_name: String, amount := 20):
 	if get_equip_names().has(item_name):
 		inventory.add_equipment(tools[get_equip_names().find(item_name)])
 	else:
-		inventory.add_item(get_item_names().find(item_name), amount)
+		inventory.add_item(get_item_names().find_custom(func(n: String): return n.begins_with(item_name)), amount)
 	LimboConsole.close_console()
 
 func get_all_spawnable_names() -> Array:
