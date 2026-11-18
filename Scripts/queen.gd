@@ -66,26 +66,29 @@ func get_replacement_event(intro) -> Array[String]:
 
 func get_random_name() -> String:
 	return [
-		'Beethany',
-		'Elizabeeth',
-		'Beetrix',
-		'Beecky',
-		'Ambeer',
-		'Rebeecca',
-		'Beecca',
-		'Beeth'
+		"Beethany",
+		"Elizabeeth",
+		"Beetrix",
+		"Beecky",
+		"Ambeer",
+		"Rebeecca",
+		"Beecca",
+		"Beeth"
 	].pick_random()
 
 func get_random_sack_reason() -> String:
 	return [
-		'(improper behaviour) around (interns)',
-		'(embezzling honey) from the colony (vault)',
-		'trying to (conspire) a (coup)',
-		'increased (%s) attacks' % get_random_bird()
+		"(improper behaviour) around (intern %d)" % get_younglings(),
+		"(embezzling honey) from the colony (vault)",
+		"trying to (conspire) a (coup)",
+		"increased (%s) attacks" % get_random_bird()
 	].pick_random()
 
+func get_younglings() -> String:
+	return ["brood", "pupae"].pick_random()
+
 func get_random_bird() -> String:
-	return ['robin', 'bee-eater', 'shrike', 'great tit'].pick_random()
+	return ["robin", "bee-eater", "shrike", "great tit"].pick_random()
 
 func setup_skin(index: int):
 	crown.visible = index == 0

@@ -1,5 +1,8 @@
 class_name Bee extends Node2D
 
+# slumgum scout
+# waggle dance
+# queen cup -> cell -> stinger
 # paint making
 # oil press etc
 # potions
