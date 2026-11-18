@@ -22,7 +22,7 @@ func _process(delta) -> void:
 		if sleeper: sleeper.hide()
 		Main.singleton.rank += 1
 		Main.singleton.bee.show()
-		Effects.singleton.pop("[font_size=200]DAY %d" % [day], Main.singleton.bee.body.global_position + Vector2.UP * 700)
+		announce_day()
 		Main.singleton.cleanup()
 		for f in Main.singleton.flowers:
 			if f: f.fill()
@@ -33,6 +33,10 @@ func _process(delta) -> void:
 	ui_tint.color = tint.color + Color(0.2, 0.2, 0.2)
 	globe_tint.color = tint.color.lightened(0.1)
 	clock.rotation = lerp(0.0, TAU * 2, time)
+
+func announce_day():
+	await get_tree().create_timer(0.75).timeout
+	Effects.singleton.pop("[font_size=200]DAY %d" % [day], Main.singleton.bee.body.global_position + Vector2.UP * 700)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if OS.is_debug_build():
