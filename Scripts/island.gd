@@ -146,6 +146,9 @@ func create_dungeon(try := 0) -> bool:
 	else:
 		return create_dungeon(try + 1)
 
+func get_spawn() -> Vector2:
+	return get_ground_pos(global_position.x) + Vector2.UP * 500
+
 func get_ground_pos(pos: float) -> Vector2:
 	ray.global_position = Vector2(pos, global_position.y - 5000)
 	ray.force_raycast_update()

@@ -1,4 +1,4 @@
-class_name SpringCore extends Node
+class_name SpringCore extends Node2D
 
 @export var core: AnimatableBody2D
 @export var target: RigidBody2D

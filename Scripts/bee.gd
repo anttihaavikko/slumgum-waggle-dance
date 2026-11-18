@@ -87,31 +87,29 @@ func add_console_commands():
 	unregister_console("heal")
 	unregister_console("damage")
 	unregister_console("anvil")
+	unregister_console("teleport")
 	LimboConsole.register_command(console_spawn, "give", "spawns in an item or equipment")
 	LimboConsole.add_argument_autocomplete_source("give", 0, get_all_spawnable_names)
-	LimboConsole.register_command(dev_energy, "energy", "refill energy")
+	LimboConsole.register_command(fill_energy, "energy", "refill energy")
 	LimboConsole.register_command(dev_heal, "heal", "heal given amount")
-	LimboConsole.register_command(dev_damage, "damage", "take damage")
+	LimboConsole.register_command(damage, "damage", "take damage")
 	LimboConsole.register_command(show_anvil_menu, "anvil", "opens anvil crafting menu")
+	LimboConsole.register_command(teleport, "teleport", "teleport to position")
+	LimboConsole.add_argument_autocomplete_source("teleport", 0, func(): return ["home", "snow", "red"])
+	LimboConsole.add_alias("tp", "teleport")
+	LimboConsole.add_alias("item", "give")
+	LimboConsole.add_alias("spawn", "give")
+	LimboConsole.add_alias("i", "give")
+	LimboConsole.add_alias("g", "give")
 
 func unregister_console(command: String):
 	if LimboConsole._commands.has(command):
 		LimboConsole.unregister_command(command)
 
-func dev_damage(amount := 1):
-	LimboConsole.close_console()
-	damage(amount)
-
 func dev_heal(amount := 20):
-	LimboConsole.close_console()
 	heal(amount, true)
 
-func dev_energy():
-	LimboConsole.close_console()
-	fill_energy()
-
 func show_anvil_menu():
-	LimboConsole.close_console()
 	Main.singleton.stations[BuildPiece.Id.Anvil].open(Main.singleton.builder.starters[0])
 	pass
 
@@ -120,7 +118,6 @@ func console_spawn(item_name: String, amount := 20):
 		inventory.add_equipment(tools[get_equip_names().find(item_name)])
 	else:
 		inventory.add_item(get_item_names().find_custom(func(n: String): return n.begins_with(item_name)), amount)
-	LimboConsole.close_console()
 
 func get_all_spawnable_names() -> Array:
 	var all = get_equip_names()
@@ -135,7 +132,9 @@ func get_item_names() -> Array:
 
 func create_spring_core():
 	if spring_core: spring_core.queue_free()
-	spring_core = spring_core_prefab.instantiate()
+	spring_core = spring_core_prefab.instantiate() as SpringCore
+	spring_core.position = to_local(body.global_position)
+	await get_tree().process_frame
 	add_child(spring_core)
 	core_remote.remote_path = spring_core.core.get_path()
 
@@ -179,12 +178,7 @@ func die():
 	face.mouth.scale.y *= -1
 	item.hide()
 	await get_tree().create_timer(3).timeout
-	body.move_to(global_position, 0)
-	lander.move_to(global_position + Vector2.DOWN * 133, 0)
-	body.reset_speeds()
-	lander.reset_speeds()
-	await get_tree().process_frame
-	create_spring_core()
+	teleport("home")
 	Main.singleton.time.time = 1.0
 	await get_tree().create_timer(0.1).timeout
 	wings.play()
@@ -198,6 +192,22 @@ func die():
 	dead = false
 	Main.singleton.rank = 0
 	Main.singleton.died = true
+
+func teleport(target: String = "home"):
+	var points = {
+		"home": global_position,
+		"red": Main.singleton.islands[1].get_spawn(),
+		"snow": Main.singleton.islands[2].get_spawn()
+	}
+	if not points.has(target): return
+	var pos = points[target]
+	body.move_to(pos, 0)
+	lander.move_to(pos + Vector2.DOWN * 133, 0)
+	body.reset_speeds()
+	lander.reset_speeds()
+	await get_tree().process_frame
+	create_spring_core()
+
 
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id
