@@ -2487,7 +2487,7 @@ shape = SubResource("WorldBoundaryShape2D_xjjvj")
 [node name="Winds" type="Parallax2D" parent="." unique_id=2066860193 node_paths=PackedStringArray("winds", "center_point")]
 scroll_scale = Vector2(0.8, 0.8)
 script = ExtResource("144_b12iu")
-winds = [NodePath("Line2D"), NodePath("Line2D2"), NodePath("Line2D3"), NodePath("Line2D4"), NodePath("Line2D5"), NodePath("Line2D6"), NodePath("Line2D7"), NodePath("Line2D8"), NodePath("Line2D9"), NodePath("Line2D10")]
+winds = [NodePath("Line2D"), NodePath("Line2D2"), NodePath("Line2D3"), NodePath("Line2D4"), NodePath("Line2D5"), NodePath("Line2D6"), NodePath("Line2D7"), NodePath("Line2D8"), NodePath("Line2D9"), NodePath("Line2D10"), NodePath("Line2D11")]
 center_point = NodePath("../Bee/Body/Camera/Camera2D")
 
 [node name="Line2D" type="Line2D" parent="Winds" unique_id=1482799]
@@ -2621,6 +2621,20 @@ visible = false
 material = SubResource("CanvasItemMaterial_odn5n")
 position = Vector2(92, -2037)
 points = PackedVector2Array(-623, 209, -722, 102, -685, -30, -478, -120, -224, -83, 46, -44, 263, 64, 424, 38, 600, 37, 759, -53, 941, -117, 1170, -180, 1444, -102, 1561, -8, 1581, 137)
+width = 50.0
+width_curve = SubResource("Curve_odn5n")
+default_color = Color(1, 1, 1, 0.0627451)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("144_odn5n")
+
+[node name="Line2D11" type="Line2D" parent="Winds" unique_id=1809356192]
+visible = false
+material = SubResource("CanvasItemMaterial_odn5n")
+position = Vector2(66, -1911)
+points = PackedVector2Array(-1302, -118, -945, -123, -671, -36, -245, 121, 263, 64, 576, -88, 812, -112, 1012, -15, 1271, 15, 1458, -109, 1657, -83, 1827, 96, 2077, 198, 2366, 172, 2850, 185, 3045, -291, 2880, -592, 2557, -668, 2425, -443, 2553, -193, 2744, -252, 2718, -392)
 width = 50.0
 width_curve = SubResource("Curve_odn5n")
 default_color = Color(1, 1, 1, 0.0627451)
