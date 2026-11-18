@@ -142,6 +142,7 @@ func create_spring_core():
 func throw(prefab: PackedScene):
 	var obj = prefab.instantiate() as RigidBody2D
 	obj.position = body.position
+	obj.rotation = randf() * TAU
 	var dir = get_global_mouse_position() - body.global_position
 	add_child(obj)
 	obj.apply_impulse(dir.normalized() * 1500)
