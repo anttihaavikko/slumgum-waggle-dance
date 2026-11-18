@@ -4,21 +4,22 @@ class_name Dungeon extends Polygon2D
 @export var item_spots: Array[Node2D]
 
 var spawners: Array[Node2D] = []
+var egg: Node2D
 
 func populate(pos: Vector2, danger: PackedScene, item: PackedScene, chance: float):
 	var parent = get_parent()
 	for p in spawn_spots:
 		if randf() > chance: continue
 		var e = danger.instantiate() as Node2D
-		e.global_position = p.global_position + pos
 		e.rotation = p.rotation
-		parent.add_child(e)
+		e.global_position = p.position + pos
 		spawners.append(e)
-	for p in item_spots:
-		var e = item.instantiate() as Node2D
-		e.global_position = p.global_position + pos
-		e.rotation = p.rotation
 		parent.add_child(e)
+	var p = item_spots.pick_random()
+	egg = Main.singleton.item_db.spawn(Item.Id.Egg, pos + p.position)
+	# e.gravity_scale = 0
+	# e.global_position = p.global_position + pos
+	egg.rotation = p.rotation
 
 func cleanup(checker: ShapeCast2D):
 	for s in spawners:

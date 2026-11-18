@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cu6iipi0oayrd"]
+
+[ext_resource type="PackedScene" uid="uid://bd80e2cqqc85w" path="res://Scenes/pickup.tscn" id="1_44oyr"]
+[ext_resource type="Texture2D" uid="uid://citl8prq6l0q7" path="res://Sprites/egg.png" id="2_36jq7"]
+
+[node name="Egg Pickup" unique_id=1139630903 instance=ExtResource("1_44oyr")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=929980930]
+texture = ExtResource("2_36jq7")
+
+[node name="CollisionPolygon2D" parent="." index="1" unique_id=734810126]
+polygon = PackedVector2Array(-19, -98, 17, -98, 59, -51, 77, 7, 74, 62, 51, 88, 26, 100, -33, 102, -63, 81, -79, 54, -78, 1, -61, -50)

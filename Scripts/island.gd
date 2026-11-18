@@ -113,9 +113,6 @@ func generate():
 		create_dungeon(0)
 		await get_tree().process_frame
 
-	for d in added_dungeons:
-		d.cleanup(ground_check)
-
 	for i in 200:
 		var p = bg.polygon[tree_spots[i]]
 		if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 50, bg.polygon): continue
@@ -125,13 +122,16 @@ func generate():
 		tree.global_position = bg.to_global(p) + Vector2.UP * randf_range(400, 750)
 		# tree.global_position.x *= -1
 
+	for d in added_dungeons:
+		d.cleanup(ground_check)
+
 func create_dungeon(try := 0) -> bool:
 	if try > 10: return false
 	var p = get_ground_pos(randf_range(5000, 15000) * [-1, 1].pick_random())
-	if abs(p.x) < 2000:
+	if abs(p.x - global_position.x) < 2000 or p == Vector2.ZERO:
 		return create_dungeon(try + 1)
 	var dungeon = dungeons.pick_random()
-	var shape = shift(dungeon.polygon, p)
+	var shape = shift(dungeon.polygon, to_local(p))
 	# for i in range(shape.size()):
 	# 	var pp = shape[i]
 	# 	shape[i] = Vector2.ZERO + pp.rotated(randf_range(-0.1, 0.1))
@@ -147,10 +147,10 @@ func create_dungeon(try := 0) -> bool:
 		return create_dungeon(try + 1)
 
 func get_spawn() -> Vector2:
-	return get_ground_pos(global_position.x) + Vector2.UP * 500
+	return get_ground_pos(0) + Vector2.UP * 500
 
 func get_ground_pos(pos: float) -> Vector2:
-	ray.global_position = Vector2(pos, global_position.y - 5000)
+	ray.global_position = Vector2(global_position.x + pos, global_position.y - 5000)
 	ray.force_raycast_update()
 	return ray.get_collision_point() if ray.is_colliding() else Vector2.ZERO
 

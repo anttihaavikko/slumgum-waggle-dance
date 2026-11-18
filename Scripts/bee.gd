@@ -104,6 +104,7 @@ func add_console_commands():
 	LimboConsole.add_alias("spawn", "give")
 	LimboConsole.add_alias("i", "give")
 	LimboConsole.add_alias("g", "give")
+	LimboConsole.add_alias("add", "give")
 
 func unregister_console(command: String):
 	if LimboConsole._commands.has(command):

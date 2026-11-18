@@ -9,3 +9,4 @@ class_name ItemData extends Resource
 @export var recipe: Dictionary[Item.Id, int]
 @export var recipe_creates := 1
 @export var hold_offset := 0.0
+@export var custom_prefab: PackedScene

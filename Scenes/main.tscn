@@ -48,6 +48,7 @@
 [ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="15_k12tt"]
 [ext_resource type="PackedScene" uid="uid://dophievtei5vj" path="res://_Starter/Scenes/Effects/white_bits.tscn" id="16_55idt"]
 [ext_resource type="Texture2D" uid="uid://citl8prq6l0q7" path="res://Sprites/egg.png" id="16_eqnci"]
+[ext_resource type="PackedScene" uid="uid://cu6iipi0oayrd" path="res://Scenes/Pieces/egg_pickup.tscn" id="16_ojylq"]
 [ext_resource type="PackedScene" uid="uid://c073loolp31sf" path="res://Scenes/Effects/red_petals.tscn" id="17_87bhu"]
 [ext_resource type="Script" uid="uid://d0ks4dov861fq" path="res://Scripts/swinger.gd" id="18_1w6v2"]
 [ext_resource type="PackedScene" uid="uid://ci424cjoy37ew" path="res://Scenes/Effects/leaf_parts.tscn" id="18_33qc4"]
@@ -348,6 +349,7 @@ item_id = 23
 title = "Egg"
 sprite = ExtResource("16_eqnci")
 hold_offset = -52.0
+custom_prefab = ExtResource("16_ojylq")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
