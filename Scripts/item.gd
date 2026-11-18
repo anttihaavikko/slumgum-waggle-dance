@@ -23,7 +23,8 @@ enum Id {
 	String,
 	Acid,
 	GoldSeed,
-	PureSeed
+	PureSeed,
+	Egg
 }
 
 var data: ItemData

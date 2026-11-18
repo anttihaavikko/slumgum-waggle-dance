@@ -251,6 +251,7 @@ func current_changed():
 	if i:
 		item.self_modulate = i.data.color
 		item.texture = i.data.sprite
+		item.position.y = -39 + i.data.hold_offset
 
 func change_energy(dir: float, limit: float = energy_max):
 	if limit < energy_max and energy_left > limit and dir > 0: return

@@ -92,7 +92,7 @@ func update_preview(previews: Array[Sprite2D], source: Array[Item], filters: boo
 	for i in source.size():
 		var item = source[i]
 		if item and item.amount > 0 and pi < previews.size():
-			if filters and not accepts(item.data.item_id): continue
+			if not functionality and filters and not accepts(item.data.item_id): continue
 			previews[pi].show()
 			previews[pi].texture = item.data.sprite
 			previews[pi].self_modulate = item.data.color

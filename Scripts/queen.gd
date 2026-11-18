@@ -79,7 +79,7 @@ func get_random_name() -> String:
 
 func get_random_sack_reason() -> String:
 	return [
-		"(improper behaviour) around (intern %d)" % get_younglings(),
+		"(improper behaviour) around (intern %s)" % get_younglings(),
 		"(embezzling honey) from the colony (vault)",
 		"trying to (conspire) a (coup)",
 		"increased (%s) attacks" % get_random_bird()

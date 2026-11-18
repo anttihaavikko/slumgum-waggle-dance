@@ -10,6 +10,8 @@ func update(delta: float):
 	align()
 	if deadly:
 		if area.is_colliding():
+			var bird_hurt := false
+			var worm_hurt := false
 			var done: Array = []
 			if area.is_colliding():
 				for i in area.get_collision_count():
@@ -21,9 +23,11 @@ func update(delta: float):
 					if o is RootPointer:
 						deadly = false
 						Effects.singleton.add(8, area.global_position)
-						if o.root is Worm:
+						if o.root is Worm and not worm_hurt:
+							worm_hurt = true
 							o.root.hurt(damage)
-						if o.root is Bird:
+						if o.root is Bird and not bird_hurt:
+							bird_hurt = true
 							o.root.hurt(damage)
 
 	if Input.is_action_just_pressed("primary"):
