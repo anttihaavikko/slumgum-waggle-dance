@@ -1,6 +1,5 @@
 class_name Bee extends Node2D
 
-# blow pipe
 # paint making
 # oil press etc
 # potions
@@ -265,6 +264,7 @@ func _process(delta) -> void:
 
 	if Input.is_action_just_pressed("primary"):
 		if inventory.current().has_item(Item.Id.Bomb):
+			inventory.consume_one()
 			throw(bomb_prefab)
 
 	if builder.held and builder.held.can_rotate: return

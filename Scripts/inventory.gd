@@ -137,6 +137,10 @@ func consume_materials(recipe: Dictionary[Item.Id, int]):
 	for id in recipe.keys():
 		consume(id, recipe[id])
 
+func consume_one():
+	consume(current().item.data.item_id, 1)
+	re_focus()
+
 func consume(id: Item.Id, amount: int):
 	var left = amount
 	for s in slots:
