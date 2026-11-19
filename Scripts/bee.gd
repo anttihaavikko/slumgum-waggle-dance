@@ -286,7 +286,7 @@ func _process(delta) -> void:
 	var rot = Input.get_axis("left", "right")
 	var acc = Input.get_axis("accelerate", "brake") if energy_left > 0 else 0.0
 	var speed = 10.0 if OS.is_debug_build() and Input.is_action_pressed("shift") else 1.0
-	if health.is_alive():
+	if health.is_alive() and not LimboConsole.is_open():
 		body.apply_torque(rot * delta * 5000000 * turning)
 		body.apply_force(body.transform.y * acc * thrust * 100000 * delta * speed)
 		wings.speed_scale = 1.0 + absf(acc) * 3.0
@@ -303,6 +303,7 @@ func _process(delta) -> void:
 	# leg_container.scale = visuals.scale
 
 	if not health.is_alive(): return
+	if LimboConsole.is_open(): return
 
 	if landed:
 		change_energy(delta * 5, energy_max if charging else 5.0)

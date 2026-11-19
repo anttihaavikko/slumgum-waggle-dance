@@ -41,7 +41,7 @@ func announce_day():
 func _unhandled_key_input(event: InputEvent) -> void:
 	if OS.is_debug_build():
 		if event is InputEventKey:
-			if Input.is_key_pressed(KEY_T):
+			if Input.is_key_pressed(KEY_P):
 				time += 0.2
 
 func sleep_until_morning():
