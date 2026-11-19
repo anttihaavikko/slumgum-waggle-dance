@@ -55,6 +55,7 @@ func check_songs():
 	if check(notes, "GAG"):
 		return
 	if check(notes, "FEED"):
+		Main.singleton.bee.heal(1)
 		return
 	if check(notes, "DECAF"):
 		return

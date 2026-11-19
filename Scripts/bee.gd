@@ -2,11 +2,12 @@ class_name Bee extends Node2D
 
 # slumgum scout
 # waggle dance
-# queen cup -> cell -> stinger
+#
 # paint making
 # oil press etc
-# potions
 # booster stations
+# hats
+# hut doors
 
 @export var body: MovableRigidbody
 @export var lander: MovableRigidbody

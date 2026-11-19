@@ -86,7 +86,7 @@ func get_random_sack_reason() -> String:
 	].pick_random()
 
 func get_younglings() -> String:
-	return ["brood", "pupae"].pick_random()
+	return ["brood", "pupae", "larvae"].pick_random()
 
 func get_random_bird() -> String:
 	return ["robin", "bee-eater", "shrike", "great tit"].pick_random()
@@ -117,6 +117,23 @@ func leave(_node: Node2D):
 	bubble.disappear()
 	await get_tree().create_timer(0.3).timeout
 	get_tree().create_tween().tween_property(queen, "position", off_pos, 0.3).set_trans(Tween.TRANS_BOUNCE)
+
+func get_key_values() -> String:
+	var values = [
+		"transparency",
+		"synergy",
+		"exceptional customer value",
+		"being an industry leader",
+		"linear growth",
+		"fluid bandwidth",
+		"robust portfolio",
+		"employee safety",
+		"employee happiness",
+		"pushing the envelope",
+		"%s education" % [get_younglings()]
+	]
+	values.shuffle()
+	return "(%s), (%s) and (%s)" % values.slice(0, 3)
 
 func get_message() -> String:
 	if event:
@@ -162,7 +179,9 @@ func get_message() -> String:
 	return [
 		"Congratulations, you've been promoted to (%s)! I'll be (expecting) you to (deliver) on that (title) too." % [rank],
 		"Out (colony bard) has discovered that (music) is a very (powerful) thing. It can (control) many (things) like even our main predators, (birds).",
-		"There are (rumors) circulating around that there are actually (two) different (island) neighbouring this one. How many have you (visited) so far?"
+		"There are (rumors) circulating around that there are actually (two) different (island) neighbouring this one. How many have you (visited) so far?",
+		"Our colony (key values) are %s. See the (colony guidebook) for more (information) about them." % [get_key_values()],
+		"(Drying rack) is capable of making (wax) from (nectar) and (resin) from (honey). How (versatile) is that?"
 	].pick_random()
 
 class QueenEvent:
