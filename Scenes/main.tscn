@@ -684,6 +684,38 @@ _data = {
 &"flap": SubResource("Animation_hptm8")
 }
 
+[sub_resource type="Shader" id="Shader_gax0l"]
+code = "shader_type canvas_item;
+
+uniform float amount = 5.0;
+uniform float frequency = 0.0;
+uniform float speed = 5.0;
+uniform bool flip = false;
+uniform float world_amount = 1.0;
+
+void vertex() {
+	vec3 world = (MODEL_MATRIX * vec4(VERTEX, 1.0, 1.0)).xyz;
+	float phase = (frequency * world.x * world_amount) + (speed * TIME);
+	VERTEX.x += (1.0 * float(!flip) - UV.y * UV.y) * amount * sin(phase);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gax0l"]
+shader = SubResource("Shader_gax0l")
+shader_parameter/amount = 5.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = 10.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11vbv"]
+shader = ExtResource("102_b4mik")
+shader_parameter/amount = 5.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = -10.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_55idt"]
 radius = 174.1
 
@@ -998,7 +1030,6 @@ position = Vector2(266, 487)
 rotation = 0.95665735
 
 [node name="Queen" type="Node2D" parent="." unique_id=982120171 node_paths=PackedStringArray("queen", "area", "bubble", "message", "crown", "glasses")]
-visible = false
 z_index = -10
 position = Vector2(498, 431)
 script = ExtResource("59_cmq5c")
@@ -1033,6 +1064,18 @@ position = Vector2(0, -16)
 scale = Vector2(2.088257, 2.088257)
 texture = ExtResource("1_jjgbg")
 
+[node name="Cheek Right" type="Sprite2D" parent="Queen/Mover/Boss/Body" unique_id=1367084968]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(59.533752, -43.705856)
+scale = Vector2(0.11249756, 0.11249756)
+texture = ExtResource("59_e5peh")
+
+[node name="Cheek Left" type="Sprite2D" parent="Queen/Mover/Boss/Body" unique_id=17107582]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-60.466248, -43.705856)
+scale = Vector2(0.11249756, 0.11249756)
+texture = ExtResource("59_e5peh")
+
 [node name="Crown" type="Sprite2D" parent="Queen/Mover/Boss" unique_id=1093800196]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-3.000002, -323.00003)
@@ -1066,10 +1109,12 @@ moves = true
 move_direction = Vector2(0, 20)
 single_direction = true
 
-[node name="Face Wrap" type="Node2D" parent="Queen/Mover/Boss" unique_id=1926466920 node_paths=PackedStringArray("target")]
+[node name="Face Wrap" type="Node2D" parent="Queen/Mover/Boss" unique_id=1926466920 node_paths=PackedStringArray("target", "others")]
 script = ExtResource("14_cbgmd")
-distance = 50
+distance = 30
 target = NodePath("../../../../Bee/Body")
+others = [NodePath("Face/Wrapper/Eye Right/Pupil"), NodePath("Face/Wrapper/Eye Left/Pupil")]
+other_amount = 60
 metadata/_custom_type_script = "uid://dce3tbn077db6"
 
 [node name="Face" parent="Queen/Mover/Boss/Face Wrap" unique_id=1240513132 instance=ExtResource("7_344ge")]
@@ -1265,11 +1310,25 @@ metadata/_custom_type_script = "uid://d21tebxx08yd3"
 [node name="Body Sprite" type="Sprite2D" parent="Bee/Body" unique_id=734084277]
 texture = ExtResource("1_jjgbg")
 
+[node name="Cheek Right" type="Sprite2D" parent="Bee/Body/Body Sprite" unique_id=489969427]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(58.12439, -43.87561)
+scale = Vector2(0.11249756, 0.11249756)
+texture = ExtResource("59_e5peh")
+
+[node name="Cheek Left" type="Sprite2D" parent="Bee/Body/Body Sprite" unique_id=66085094]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-61.87561, -43.87561)
+scale = Vector2(0.11249756, 0.11249756)
+texture = ExtResource("59_e5peh")
+
 [node name="Feeler Right" type="Sprite2D" parent="Bee/Body/Body Sprite" unique_id=486068211]
+material = SubResource("ShaderMaterial_gax0l")
 position = Vector2(25, -153)
 texture = ExtResource("9_6iyac")
 
 [node name="Feeler Left" type="Sprite2D" parent="Bee/Body/Body Sprite" unique_id=534534028]
+material = SubResource("ShaderMaterial_11vbv")
 position = Vector2(-34, -153)
 texture = ExtResource("9_6iyac")
 flip_h = true
@@ -1279,9 +1338,11 @@ position = Vector2(-4, -55)
 
 [node name="Wrap" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap" unique_id=1780464618]
 
-[node name="LookAtMouse" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap" unique_id=1932406287]
+[node name="LookAtMouse" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap" unique_id=1932406287 node_paths=PackedStringArray("others")]
 script = ExtResource("14_cbgmd")
 distance = 12
+others = [NodePath("Face/Wrapper/Eye Left/Pupil"), NodePath("Face/Wrapper/Eye Right/Pupil")]
+other_amount = 50
 metadata/_custom_type_script = "uid://dce3tbn077db6"
 
 [node name="Face" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse" unique_id=90074425 instance=ExtResource("7_344ge")]
@@ -2738,3 +2799,6 @@ shape = SubResource("WorldBoundaryShape2D_xjjvj")
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
 [connection signal="pressed" from="HUD/Fullscreen Button" to="Main" method="toggle_fullscreen"]
+
+[editable path="Queen/Mover/Boss/Face Wrap/Face"]
+[editable path="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b86g0fd25ahdx" path="res://_Starter/Sprites/mouth.png" id="2_1a1d3"]
 [ext_resource type="Texture2D" uid="uid://74hyg5isj5x3" path="res://_Starter/Sprites/square.png" id="3_yp0oe"]
 
-[node name="Face" type="Node2D" unique_id=1240513132 node_paths=PackedStringArray("left_eye", "right_eye", "wrapper", "blushes", "extra_eyes", "mouth", "opened_mouth")]
+[node name="Face" type="Node2D" unique_id=1240513132 node_paths=PackedStringArray("left_eye", "right_eye", "wrapper", "blushes", "extra_eyes", "mouth", "opened_mouth", "left_pupil", "right_pupil")]
 script = ExtResource("1_hsvtw")
 left_eye = NodePath("Wrapper/Eye Left")
 right_eye = NodePath("Wrapper/Eye Right")
@@ -14,6 +14,8 @@ blushes = NodePath("Wrapper/Blushes")
 extra_eyes = [NodePath("Wrapper/Extra Eye")]
 mouth = NodePath("Wrapper/Mouth")
 opened_mouth = NodePath("Wrapper/Open Mouth")
+left_pupil = NodePath("Wrapper/Eye Left/Pupil")
+right_pupil = NodePath("Wrapper/Eye Right/Pupil")
 
 [node name="Wrapper" type="Node2D" parent="." unique_id=149350154]
 

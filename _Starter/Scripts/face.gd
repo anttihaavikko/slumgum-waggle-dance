@@ -7,6 +7,8 @@ class_name Face extends Node2D
 @export var extra_eyes: Array[Node2D]
 @export var mouth: Node2D
 @export var opened_mouth: Node2D
+@export var left_pupil: Node2D
+@export var right_pupil: Node2D
 
 var size: float
 var removed: bool
