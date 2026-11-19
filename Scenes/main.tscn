@@ -413,7 +413,7 @@ point_count = 3
 [sub_resource type="Resource" id="Resource_3ahwd"]
 script = ExtResource("31_3h4bx")
 title = "Platform"
-description = "Build platforms to place to place other build pieces on. Also fully recharges your energy when landing on it if it's connected to a core."
+description = "Build (platforms) to place other (build pieces) on. Also fully (recharges) your (energy) when (landing) on it if it's connected to a (core)."
 prefab = ExtResource("9_ynf5e")
 sprite = ExtResource("33_rlvxq")
 recipe = Dictionary[int, int]({
@@ -423,7 +423,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_b4xsn"]
 script = ExtResource("31_3h4bx")
 title = "Support"
-description = "Use the support platforms to help place normal platforms where needed. You can freely fly past these supports."
+description = "Use the (support platforms) to help place normal platforms (where needed). You can freely (fly past) these supports. They still carry (energy charge) to connected pieces."
 prefab = ExtResource("10_hptm8")
 sprite = ExtResource("35_0fjpc")
 recipe = Dictionary[int, int]({
@@ -433,7 +433,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_ot5ec"]
 script = ExtResource("31_3h4bx")
 title = "Core"
-description = "The core provides energy to all connected platforms. Allows some very basic crafting."
+description = "The (core) provides (energy) to all (connected platforms). Allows some very (basic crafting)."
 prefab = ExtResource("12_aa8k8")
 sprite = ExtResource("46_aok0f")
 recipe = Dictionary[int, int]({
@@ -445,7 +445,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_aok0f"]
 script = ExtResource("31_3h4bx")
 title = "Box"
-description = "Can store items you don't want to carry around or risk losing."
+description = "Can (store items) you don't want to carry around or (risk losing)."
 prefab = ExtResource("13_kqrg6")
 sprite = ExtResource("74_p4gyq")
 recipe = Dictionary[int, int]({
@@ -455,6 +455,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_64lof"]
 script = ExtResource("31_3h4bx")
 title = "Sign"
+description = "Allows you to (decorate) and (organize) your buildings."
 prefab = ExtResource("22_qax2n")
 sprite = ExtResource("48_3h4bx")
 recipe = Dictionary[int, int]({
@@ -466,7 +467,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_b4mik"]
 script = ExtResource("31_3h4bx")
 title = "Anvil"
-description = "A place to forge all sorts of equipment from tools to weapons."
+description = "A place to (forge) all sorts of (equipment) from (tools) to (weapons)."
 prefab = ExtResource("24_qnggo")
 sprite = ExtResource("49_xg142")
 recipe = Dictionary[int, int]({
@@ -476,7 +477,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_urine"]
 script = ExtResource("31_3h4bx")
 title = "Jar"
-description = "Nectar placed in the jar will slowly turn into honey."
+description = "(Nectar) placed in the (jar) will slowly turn into (honey)."
 prefab = ExtResource("23_uv6w5")
 sprite = ExtResource("50_rlvxq")
 recipe = Dictionary[int, int]({
@@ -486,6 +487,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_5vy51"]
 script = ExtResource("31_3h4bx")
 title = "Spinning Wheel"
+description = "Use the (wheel) to make (fabric) and (string) which are (essential materials) in some buildings and (crafting)."
 prefab = ExtResource("26_tab3y")
 sprite = ExtResource("51_0fjpc")
 recipe = Dictionary[int, int]({
@@ -496,6 +498,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_o2owy"]
 script = ExtResource("31_3h4bx")
 title = "Banner"
+description = "A (decorative) piece of cloth you can (hang) from (platforms)."
 prefab = ExtResource("23_owhal")
 sprite = ExtResource("52_gdwd6")
 recipe = Dictionary[int, int]({
@@ -505,6 +508,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_ylsbi"]
 script = ExtResource("31_3h4bx")
 title = "Bed"
+description = "A place to (lay down) your head and pass the (night). (Wake up) to face the (next day) more (energized)."
 prefab = ExtResource("29_wl4bb")
 sprite = ExtResource("53_cmq5c")
 recipe = Dictionary[int, int]({
@@ -515,7 +519,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_ceghn"]
 script = ExtResource("31_3h4bx")
 title = "Drying Rack"
-description = "Place different materials on the rack and it will generate dried versions over time."
+description = "Place different (materials) on the (rack) and it will (generate dried) versions over time."
 prefab = ExtResource("25_r7bbj")
 sprite = ExtResource("54_7t1gx")
 recipe = Dictionary[int, int]({
@@ -525,6 +529,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_3h4bx"]
 script = ExtResource("31_3h4bx")
 title = "Lantern"
+description = "(Lights up) the dark (night)."
 prefab = ExtResource("27_v1mrv")
 sprite = ExtResource("55_mfvrx")
 recipe = Dictionary[int, int]({
@@ -535,6 +540,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_xg142"]
 script = ExtResource("31_3h4bx")
 title = "Lantern"
+description = "(Lights up) the dark (night)."
 prefab = ExtResource("28_fd3ed")
 sprite = ExtResource("56_ilwxp")
 recipe = Dictionary[int, int]({
@@ -545,7 +551,7 @@ recipe = Dictionary[int, int]({
 [sub_resource type="Resource" id="Resource_y4lw4"]
 script = ExtResource("31_3h4bx")
 title = "Tinker Table"
-description = "A work station for creating advanced small items."
+description = "A (work station) for creating (advanced) small (items)."
 prefab = ExtResource("62_0wopu")
 sprite = ExtResource("63_na2ur")
 recipe = Dictionary[int, int]({
@@ -559,7 +565,7 @@ metadata/_custom_type_script = "uid://drtpdk28hi7te"
 [sub_resource type="Resource" id="Resource_b8ggh"]
 script = ExtResource("31_3h4bx")
 title = "Pot"
-description = "Grow your own flowers. When home grown flowers are fully grown, they provide more materials than the wild ones. The pot also slowly draws nectar from fully grown flowers if it's on an energized platform."
+description = "(Grow) your own (flowers). When (home grown) flowers are (fully grown), they provide (more materials) than the wild ones. The (pot) also slowly (draws nectar) from fully grown (flowers) if it's on an (energized platform)."
 prefab = ExtResource("67_l78ku")
 sprite = ExtResource("68_hfu3o")
 recipe = Dictionary[int, int]({
@@ -571,7 +577,7 @@ metadata/_custom_type_script = "uid://drtpdk28hi7te"
 [sub_resource type="Resource" id="Resource_gf7g1"]
 script = ExtResource("31_3h4bx")
 title = "Queen Cup"
-description = "Every queen is born from an egg in a cup. This one however, will be used for it's deadly stinger."
+description = "Every (queen) is born from an (egg) in a (cup). This (one) however, will be used for it's (deadly stinger)."
 prefab = ExtResource("69_rtmaq")
 sprite = ExtResource("70_eqnci")
 recipe = Dictionary[int, int]({
@@ -1394,7 +1400,7 @@ ray = NodePath("RayCast2D")
 line = NodePath("Line2D")
 particles = NodePath("CPUParticles2D")
 identifier = 7
-description = "A rudimentary but effective weapon that uses pebbles or seeds as ammo to attack ones opponents from a range."
+description = "A rudimentary but effective (weapon) that uses (pebbles) or (seeds) as (ammo) to attack ones opponents from a (range)."
 icon = ExtResource("97_s8cid")
 recipe = Dictionary[int, int]({
 9: 5
@@ -1475,7 +1481,7 @@ offset = Vector2(-47, 3)
 script = ExtResource("13_fevyy")
 builder = NodePath("../../../../../../../../Platforms")
 cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
-description = "A tool for constructing platforms and other build pieces. Highly recommended!"
+description = "A (tool) for (constructing platforms) and other (build pieces). Highly (recommended)!"
 icon = ExtResource("102_fle1e")
 recipe = Dictionary[int, int]({
 0: 5
@@ -1496,7 +1502,7 @@ offset = Vector2(-103.92078, 94.49667)
 script = ExtResource("15_ee4r6")
 area = NodePath("Area")
 identifier = 1
-description = "A farming tool that can be used as a weapon in a pinch."
+description = "A (farming tool) that can be used as a (weapon) in a pinch."
 icon = ExtResource("105_wt5iu")
 recipe = Dictionary[int, int]({
 2: 5,
@@ -1525,7 +1531,7 @@ offset = Vector2(-103.92078, 94.49667)
 script = ExtResource("15_ee4r6")
 area = NodePath("Area")
 identifier = 8
-description = "A mighty weapon made from a stillborn queen's stinger."
+description = "A (mighty weapon) made from a (stillborn) queen's (stinger)."
 icon = ExtResource("107_pmnrr")
 recipe = Dictionary[int, int]({
 2: 5,
@@ -1555,7 +1561,7 @@ flip_h = true
 flip_v = true
 script = ExtResource("28_8cuat")
 identifier = 2
-description = "Holding this tool while harvesting nectar will also allow you to gather pollen."
+description = "Holding this (tool) while (harvesting nectar) will also allow you to (gather pollen)."
 recipe = Dictionary[int, int]({
 0: 5,
 2: 5
@@ -1571,7 +1577,7 @@ scale = Vector2(0.99999994, 0.99999994)
 offset = Vector2(19.93097, 4.150696)
 script = ExtResource("28_8cuat")
 identifier = 5
-description = "Lights up the dark night."
+description = "(Lights up) the dark (night)."
 icon = ExtResource("111_0w4wg")
 recipe = Dictionary[int, int]({
 0: 3
@@ -1621,7 +1627,7 @@ offset = Vector2(73.951904, 1.5249786)
 script = ExtResource("93_na2ur")
 chord_display = NodePath("../../../../../../../../Cursor Icon/Chord")
 identifier = 3
-description = "Allows you to play some sweet comforting tunes. Could maybe even affect your predators."
+description = "Allows you to (play) some sweet (comforting tunes). Could maybe even (affect) your (predators)."
 icon = ExtResource("117_0w4wg")
 recipe = Dictionary[int, int]({
 2: 10,
@@ -1652,7 +1658,7 @@ paint = NodePath("Paint")
 colors = Array[Color]([Color(1, 1, 1, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(1, 0.7294118, 0.28627452, 1)])
 cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
 identifier = 4
-description = "Allows you to paint your build pieces to what ever color you want, and possess paint of."
+description = "Allows you to (paint) your (build pieces) to what ever (color) you want, and possess (paint) of."
 icon = ExtResource("119_s8cid")
 recipe = Dictionary[int, int]({
 2: 5,
@@ -1678,7 +1684,7 @@ offset = Vector2(-69.47052, 2.293457)
 script = ExtResource("96_ja2pg")
 area = NodePath("../../../../../../../../Mine Check")
 identifier = 6
-description = "A tool for breaking down stones. Mining is a lot of work but the pebbles acquired are an important component in many recipes."
+description = "A (tool) for breaking down (stones). (Mining) is a lot of (work) but the (pebbles) acquired could be an (important) component in many (recipes)."
 icon = ExtResource("126_dllok")
 recipe = Dictionary[int, int]({
 2: 5,
@@ -1984,7 +1990,7 @@ offset_right = -211.0
 offset_bottom = 302.0
 title = "CORE"
 
-[node name="Core" type="Control" parent="HUD/Core Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview", "crafter")]
+[node name="Core" type="Control" parent="HUD/Core Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview", "description", "crafter")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2001,6 +2007,7 @@ mouse_filter = 2
 script = ExtResource("38_kqrg6")
 win = NodePath("..")
 preview = NodePath("../../Preview Window/Preview")
+description = NodePath("VBoxContainer/Description")
 crafter = NodePath("VBoxContainer/Crafter")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/Core Window/Core" unique_id=1768440130]
@@ -2014,6 +2021,7 @@ offset_bottom = 197.0
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "The core provides energy to all connected platforms. Allows some very basic crafting."
 fit_content = true
 
@@ -2081,6 +2089,7 @@ offset_bottom = 197.0
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 fit_content = true
 
 [node name="Spacer" type="ColorRect" parent="HUD/Anvil Window/Anvil/VBoxContainer" unique_id=59118443]
@@ -2147,6 +2156,7 @@ offset_bottom = 197.0
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 fit_content = true
 
 [node name="Spacer" type="ColorRect" parent="HUD/Tinker Window/Tinker/VBoxContainer" unique_id=2021779949]
@@ -2213,6 +2223,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "The core provides energy to all connected platforms. Allows some very basic crafting."
 fit_content = true
 
@@ -2302,6 +2313,7 @@ offset_bottom = 263.0
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "The core provides energy to all connected platforms. Allows some very basic crafting."
 fit_content = true
 
@@ -2382,6 +2394,7 @@ offset_bottom = 542.0
 layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "Lorem ipsum dolor
 Maybe something else?"
 fit_content = true

@@ -56,7 +56,7 @@ func open():
 	menu.open(self)
 	menu.win.title = title.to_upper()
 	if menu.description:
-		menu.description.text = description
+		menu.description.text = Utils.colorize(description, "#FFBA49")
 
 func has_input_item(id: Item.Id) -> bool:
 	return inputs.any(func(i: Item): return i and i.data and i.data.item_id == id)

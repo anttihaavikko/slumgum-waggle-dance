@@ -52,6 +52,7 @@ func open(source: Station):
 	Main.singleton.inventory.other = inputs
 	if inputs: inputs.other = Main.singleton.inventory
 	if outputs: outputs.other = Main.singleton.inventory
+	if description: description.text = Utils.colorize(source.description, "#FFBA49")
 	win.show()
 	if preview: preview.open()
 

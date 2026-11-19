@@ -31,7 +31,7 @@ func _ready() -> void:
 func prepare():
 	var win := DisplayServer.window_get_size()
 	# var win := Vector2(2048, 1080)
-	print(win)
+	# print(win)
 	left.set_size(Vector2(win.x * 0.25, win.y * 1), true)
 	right.set_size(Vector2(win.x * 0.25, win.y * 1), true)
 

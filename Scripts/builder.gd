@@ -30,6 +30,7 @@ func _ready() -> void:
 	if starters[0] is Station:
 		starters[0].title = "Core"
 		starters[0].identifier = BuildPiece.Id.Core
+		starters[0].description = pieces[BuildPiece.Id.Core].description
 		starters[0].setup()
 
 	for i in pieces.size():
@@ -56,7 +57,7 @@ func show_preview(index: int):
 	preview.win.show()
 	preview.craft_button.hide()
 	preview.win.title = data.title.to_upper()
-	preview.description.text = data.description
+	preview.description.text = Utils.colorize(data.description, "#FFBA49")
 	preview.materials.text = Main.singleton.inventory.get_recipe_description(data.recipe)
 
 func pick_piece(index: int):
