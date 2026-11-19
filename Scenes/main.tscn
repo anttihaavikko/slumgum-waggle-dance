@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bom26084meery" path="res://Scenes/bird.tscn" id="2_nb1ia"]
 [ext_resource type="Script" uid="uid://bifh3avdt1c13" path="res://Scripts/schedule.gd" id="2_sasc4"]
 [ext_resource type="Script" uid="uid://0x44vjlq1u52" path="res://Scripts/item_data.gd" id="3_cbgmd"]
+[ext_resource type="Texture2D" uid="uid://cun4dm2acvrn1" path="res://Sprites/cage.png" id="4_fnc5k"]
 [ext_resource type="Script" uid="uid://b0fr17vp8abvx" path="res://_Starter/Scripts/dev_restart.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://gug6xwmxdqcn" path="res://Sprites/flip.png" id="5_658pa"]
 [ext_resource type="Script" uid="uid://calgx5smnk57" path="res://_Starter/Scripts/effects.gd" id="5_ueoa1"]
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://brpgseb06rh2n" path="res://_Starter/Scenes/Effects/pop.tscn" id="6_6vcvc"]
@@ -745,6 +747,7 @@ explosion_shape = NodePath("../Explosion")
 bird_prefab = ExtResource("2_nb1ia")
 new_marker = ExtResource("12_gt3je")
 notifications = NodePath("../HUD/Notifications")
+door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), null])
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint", "clock")]
 script = ExtResource("2_sasc4")
@@ -1697,8 +1700,8 @@ visible = false
 position = Vector2(-66547, -478)
 grass_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 bg_color = Color(0.9808013, 0.6111501, 0.59090304, 1)
-flower_prefab = ExtResource("109_myryv")
 hints = Array[Texture2D]([ExtResource("101_xjjvj")])
+flower_prefab = ExtResource("109_myryv")
 
 [node name="East Island" parent="." unique_id=547865557 instance=ExtResource("100_mfvrx")]
 visible = false
@@ -1706,8 +1709,8 @@ position = Vector2(47201, -23290)
 grass_color = Color(1, 1, 1, 1)
 bg_color = Color(0.80024856, 0.9327806, 0.99746937, 1)
 worm_chance = 0.75
-flower_prefab = ExtResource("111_bpr0e")
 hints = Array[Texture2D]([ExtResource("102_8dylv")])
+flower_prefab = ExtResource("111_bpr0e")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20

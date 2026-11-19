@@ -2,8 +2,8 @@ class_name Hut extends Node2D
 
 enum DoorTypes {
 	Music,
-	Bird,
-	Flip
+	Flip,
+	Bird
 }
 
 @export var door: Door

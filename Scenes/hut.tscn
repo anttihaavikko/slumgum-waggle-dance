@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ccssa1d826jgh" path="res://Scripts/hut.gd" id="1_13qaw"]
 [ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="1_eiilc"]
 [ext_resource type="Script" uid="uid://2mq4ej121w3" path="res://Scripts/door.gd" id="2_f7tju"]
+[ext_resource type="Texture2D" uid="uid://cun4dm2acvrn1" path="res://Sprites/cage.png" id="3_l6p02"]
 [ext_resource type="Script" uid="uid://lpyqajp6yf1d" path="res://Scripts/trigger.gd" id="3_ysmr7"]
 [ext_resource type="Texture2D" uid="uid://5hogqg8flgbb" path="res://Sprites/button-base.png" id="4_k8x6f"]
 
@@ -15,9 +16,11 @@ size = Vector2(367, 106)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7tju"]
 size = Vector2(383, 107)
 
-[node name="Hut" type="Node2D" unique_id=1652198801]
+[node name="Hut" type="Node2D" unique_id=1652198801 node_paths=PackedStringArray("door", "poster")]
 z_index = -1
 script = ExtResource("1_13qaw")
+door = NodePath("Door")
+poster = NodePath("Polygon2D/Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=42541900]
 self_modulate = Color(0, 0, 0, 1)
@@ -59,6 +62,12 @@ position = Vector2(52, 96)
 color = Color(1, 0.7294118, 0.28627452, 1)
 offset = Vector2(-354, -151)
 polygon = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -742, -276, -745, -282, -1173, 1088, -1170, 1067, 19, 1330, 344, -637, 344)
+
+[node name="Sprite2D" type="Sprite2D" parent="Polygon2D" unique_id=1595344845]
+self_modulate = Color(0.6313726, 0.42745098, 0, 1)
+position = Vector2(-517, -1204)
+scale = Vector2(0.388293, 0.33179015)
+texture = ExtResource("3_l6p02")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1162483288]
 position = Vector2(-453, 190)

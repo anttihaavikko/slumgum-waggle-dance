@@ -11,6 +11,7 @@ class_name Main extends Node
 @export var bird_prefab: PackedScene
 @export var new_marker: Texture2D
 @export var notifications: Notifications
+@export var door_hints: Array[Texture2D]
 
 var station: StationMenu
 var bee: Bee
@@ -25,6 +26,8 @@ var rank := 0:
 	set(val):
 		rank = min(rank + 1, ranks.size() - 1)
 var ranks = ['newbee', 'private', 'corporal', 'sergeant', 'officer', 'lieutenant', 'captain', 'major', 'colonel', 'general']
+var door_hint_pool: Array
+var door_hints_init := false
 
 static var singleton: Main = null
 
@@ -105,3 +108,11 @@ func mark_built(id: BuildPiece.Id):
 
 func toggle_fullscreen():
 	OptionsMenu.toggle_fullscreen_static()
+
+func get_door_hint() -> Texture2D:
+	if not door_hints_init:
+		door_hints_init = true
+		door_hint_pool = door_hints.map(func(h): return door_hints.find(h))
+		door_hint_pool.shuffle()
+	if not door_hint_pool: return null
+	return door_hints[door_hint_pool.pop_front()]

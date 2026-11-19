@@ -5,6 +5,7 @@ class_name Island extends Node2D
 @export var grass_color: Color
 @export var bg_color: Color
 @export var worm_chance := 1.0
+@export var hints: Array[Texture2D]
 @export_group("")
 
 @export var shapes: Array[Polygon2D]
@@ -28,7 +29,6 @@ class_name Island extends Node2D
 @export var spawners: Array[PackedScene]
 @export var ground_check: ShapeCast2D
 @export var hinters: Array[PackedScene]
-@export var hints: Array[Texture2D]
 @export var bg_parallax: Parallax2D
 
 var gap := 5000
@@ -193,12 +193,14 @@ func spawn_hut(pos: float, tries: int = 0):
 		if ray.is_colliding() and is_level(pos, 500): break
 
 	if ray.is_colliding():
-		var p = ray.get_collision_point()
-		var prefab = hinters.pick_random() if hints.size() > 0 else huts.pick_random()
-		var hut = prefab.instantiate() as Node2D
+		var p := ray.get_collision_point()
+		var obelisk := hints.size() > 0
+		var prefab = hinters.pick_random() if obelisk else huts.pick_random()
+		var hut := prefab.instantiate() as Node2D
+		var hint = hints.pop_front() if obelisk else Main.singleton.get_door_hint()
 		add_child(hut)
 		hut.global_position = p
-		hut.setup(ray.get_collision_normal(), hints.pop_front(), [1, -1].pick_random())
+		hut.setup(ray.get_collision_normal(), hint, [1, -1].pick_random())
 	else:
 		spawn_hut(pos + randf_range(-500, 500), tries + 1)
 
