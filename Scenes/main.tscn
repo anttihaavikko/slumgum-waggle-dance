@@ -201,7 +201,7 @@ item_id = 3
 title = "Honey"
 color = Color(1, 0.8168652, 0.5516181, 1)
 sprite = ExtResource("11_phube")
-description = "(Nectar) fermenter in a (jar) will slowly turn (sticky) and (sweet honey). Often used as an (adhesive) or for its high (nutrient) value."
+description = "(Nectar) fermenter in a (jar) will slowly turn (sticky) and (sweet honey). Often used as an (adhesive) or for its high (nutrient) value but can also be (dried) to make (resin)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_s8vy0"]
