@@ -25,8 +25,30 @@ func station_updated():
 			if station.menu:
 				station.menu.update_contents()
 
+func create_nectar() -> Item:
+	return Item.new(Main.singleton.item_db.items[Item.Id.Nectar])
+
+func update_menu():
+	if station.menu and station.menu.visible:
+		station.menu.update_contents()
+
 func change_phase(starting := false):
-	if not starting and phase == 0 or phase == 4: return
+	if phase == 4:
+		if station.menu and station.menu.visible:
+			station.pull_contents()
+		if not station.outputs[0]:
+			station.outputs[0] = create_nectar()
+			update_menu()
+			return
+		if station.outputs.size() == 0:
+			station.outputs.append(create_nectar())
+			update_menu()
+			return
+		if station.outputs[0].data.item_id == Item.Id.Nectar and station.outputs[0].amount < 20:
+			station.outputs[0].amount += 1
+			update_menu()
+		return
+	if not starting and phase == 0: return
 	if phase > 0: phases[phase - 1].hide()
 	phase += 1
 	if phase == 4:
