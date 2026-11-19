@@ -8,6 +8,6 @@ func spawn(id: Item.Id, pos: Vector2, amount: int = 1, equipment: Equipment.Id =
 	var pickup = prefab.instantiate() as Pickup
 	pickup.item = Item.new(items[id], amount)
 	pickup.item.equip = equipment
-	call_deferred("add_child", pickup)
 	pickup.global_position = pos
+	call_deferred("add_child", pickup)
 	return pickup
