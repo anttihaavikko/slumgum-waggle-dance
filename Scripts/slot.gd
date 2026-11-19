@@ -14,6 +14,17 @@ var in_bar: bool
 var depositing := false
 var locked := false
 
+func _ready() -> void:
+	button.mouse_entered.connect(hover_on)
+	button.mouse_exited.connect(hover_off)
+
+func hover_on():
+	if Main.singleton.held == self: return
+	Main.singleton.tooltip.show_for(self, global_position)
+
+func hover_off():
+	Main.singleton.tooltip.hide()
+
 func mark(state: bool):
 	if equipment and in_bar: equipment.toggle(state)
 	modulate = Color.WHITE if state else Color(0.5, 0.5, 0.5)
@@ -52,6 +63,7 @@ func pick(target: Inventory, alt: bool):
 			else:
 				target.add_item(item.data.item_id, item.amount)
 			clear()
+			hover_off()
 			Main.singleton.inventory.re_focus()
 		return
 	if not held.is_empty():
@@ -65,10 +77,13 @@ func pick(target: Inventory, alt: bool):
 			held.take(1)
 			if held.is_empty(): depositing = false
 			Main.singleton.held.hide_if_empty()
+			hover_on()
 			return
 		swap(held)
+		hover_on()
 		return
 	held.swap(self)
+	hover_on()
 
 func clear():
 	if not in_bar: mark(false)
@@ -154,3 +169,13 @@ func increment(amount: int) -> int:
 func show_key(key: String):
 	key_container.show()
 	key_label.text = key
+
+func get_title() -> String:
+	if equipment:
+		return equipment.name
+	return item.data.title
+
+func get_description() -> String:
+	if equipment:
+		return equipment.description
+	return item.data.description

@@ -163,6 +163,8 @@
 [ext_resource type="Texture2D" uid="uid://13a786in0a2a" path="res://Sprites/icon-pick.png" id="126_dllok"]
 [ext_resource type="Script" uid="uid://dcnfa0hou2e0q" path="res://Scripts/winds.gd" id="144_b12iu"]
 [ext_resource type="Script" uid="uid://dxftrchkigaky" path="res://Scripts/wind.gd" id="144_odn5n"]
+[ext_resource type="Script" uid="uid://cpfu6gox7gjfb" path="res://Scripts/tooltip.gd" id="157_11vbv"]
+[ext_resource type="Texture2D" uid="uid://4snlndkvjfdp" path="res://Sprites/tooltip-arrow.png" id="158_m6w5j"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -748,6 +750,8 @@ blend_mode = 3
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b05pg"]
 blend_mode = 1
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gax0l"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
 radius = 20.0
 
@@ -767,7 +771,7 @@ blend_mode = 1
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
@@ -781,6 +785,7 @@ bird_prefab = ExtResource("2_nb1ia")
 new_marker = ExtResource("12_gt3je")
 notifications = NodePath("../HUD/Notifications")
 door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), ExtResource("6_gax0l"), null])
+tooltip = NodePath("../HUD/Tooltip")
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint", "clock")]
 script = ExtResource("2_sasc4")
@@ -1502,7 +1507,7 @@ offset = Vector2(-103.92078, 94.49667)
 script = ExtResource("15_ee4r6")
 area = NodePath("Area")
 identifier = 8
-description = "A mighty weapon made from a stillbord queen's stinger."
+description = "A mighty weapon made from a stillborn queen's stinger."
 icon = ExtResource("107_pmnrr")
 recipe = Dictionary[int, int]({
 2: 5,
@@ -2559,6 +2564,86 @@ theme = ExtResource("36_hdf80")
 text = "0.0.0"
 script = ExtResource("122_t6wb6")
 label = NodePath(".")
+
+[node name="Tooltip" type="Control" parent="HUD" unique_id=292494460 node_paths=PackedStringArray("label")]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 998.0
+offset_top = 735.0
+offset_right = 1038.0
+offset_bottom = 775.0
+mouse_filter = 2
+script = ExtResource("157_11vbv")
+label = NodePath("Mover/Container/MarginContainer/RichTextLabel")
+
+[node name="Mover" type="Node2D" parent="HUD/Tooltip" unique_id=1498830022]
+script = ExtResource("11_h1bgf")
+moves = true
+move_direction = Vector2(0, 10)
+move_speed = 3.5
+single_direction = true
+
+[node name="Container" type="PanelContainer" parent="HUD/Tooltip/Mover" unique_id=1169049305]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -176.0
+offset_right = 583.0
+offset_bottom = -52.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gax0l")
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Tooltip/Mover/Container" unique_id=174736005]
+show_behind_parent = true
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="HUD/Tooltip/Mover/Container/ColorRect" unique_id=1135095010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13725491, 0, 0.11764706, 1)
+
+[node name="Arrow" type="TextureRect" parent="HUD/Tooltip/Mover/Container/ColorRect/ColorRect2" unique_id=1819061459]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -30.0
+offset_right = 38.0
+offset_bottom = 62.0
+grow_vertical = 0
+texture = ExtResource("158_m6w5j")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Tooltip/Mover/Container" unique_id=2095082388]
+show_behind_parent = true
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Tooltip/Mover/Container/MarginContainer" unique_id=1904030151]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "HELLO
+Something something
+"
+fit_content = true
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
