@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://b00id2gst1ynl"]
 
 [ext_resource type="PackedScene" uid="uid://w2u23qbc3ljl" path="res://Scenes/flower.tscn" id="1_qyahb"]
+[ext_resource type="Texture2D" uid="uid://bsgje0qlhive2" path="res://Sprites/cold-center-yellow.png" id="2_qlbog"]
 
 [node name="Flower" unique_id=1614192265 instance=ExtResource("1_qyahb")]
 
 [node name="Petals" parent="Mover/Area2D" parent_id_path=PackedInt32Array(1832368481) index="1" unique_id=1551095991]
 modulate = Color(1, 0.7294118, 0.28627452, 1)
+
+[node name="Center" parent="Mover/Area2D" parent_id_path=PackedInt32Array(1832368481) index="2" unique_id=915737508]
+texture = ExtResource("2_qlbog")
 
 [node name="Breakable" parent="." index="6" unique_id=1066697544]
 drops = Array[int]([21, 21, 0, 18, 18, 18])
