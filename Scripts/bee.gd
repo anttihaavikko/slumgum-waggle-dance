@@ -98,13 +98,28 @@ func add_console_commands():
 	LimboConsole.register_command(damage, "damage", "take damage")
 	LimboConsole.register_command(show_anvil_menu, "anvil", "opens anvil crafting menu")
 	LimboConsole.register_command(teleport, "teleport", "teleport to position")
+	LimboConsole.register_command(show_recipe, "recipe", "list recipe ingredients")
 	LimboConsole.add_argument_autocomplete_source("teleport", 0, func(): return ["home", "snow", "red"])
+	LimboConsole.add_argument_autocomplete_source("recipe", 0, get_recipe_names)
+	LimboConsole.add_argument_autocomplete_source("teleport", 1, func(): return ["list", "get"])
 	LimboConsole.add_alias("tp", "teleport")
 	LimboConsole.add_alias("item", "give")
 	LimboConsole.add_alias("spawn", "give")
 	LimboConsole.add_alias("i", "give")
 	LimboConsole.add_alias("g", "give")
 	LimboConsole.add_alias("add", "give")
+
+func show_recipe(id: String, action := "list"):
+	var index = builder.pieces.find_custom(func(p: PieceData): return as_id(p.title).begins_with(id))
+	LimboConsole.info("%s:\n------" % [builder.pieces[index].title])
+	var recipe = builder.pieces[index].recipe
+	for part in recipe.keys():
+		LimboConsole.info("%d x %s" % [recipe[part], Main.singleton.item_db.items[part].title])
+		if action == "get":
+			inventory.add_item(part, recipe[part])
+
+func get_recipe_names() -> Array:
+	return builder.pieces.map(func(p: PieceData): return as_id(p.title))
 
 func unregister_console(command: String):
 	if LimboConsole._commands.has(command):
@@ -126,10 +141,13 @@ func get_all_spawnable_names() -> Array:
 	return all
 
 func get_equip_names() -> Array:
-	return tools.map(func(t): return str(t.name).to_lower())
+	return tools.map(func(t): return as_id(str(t.name)))
+
+func as_id(text: String) -> String:
+	return text.to_lower().replace(" ", "_")
 
 func get_item_names() -> Array:
-	return Main.singleton.item_db.items.map(func(i): return i.title.to_lower().replace(" ", "_"))
+	return Main.singleton.item_db.items.map(func(i): return as_id(i.title))
 
 func create_spring_core():
 	if spring_core: spring_core.queue_free()
