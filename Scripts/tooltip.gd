@@ -11,6 +11,7 @@ func show_for(slot: Slot, pos: Vector2):
 		return
 	global_position = pos
 	var title := slot.get_title().to_upper()
-	var desc := slot.get_description()
-	label.text = "[font_size=30]%s[/font_size]\n%s" % [title, desc]
+	var desc := Utils.colorize(slot.get_description(), "#FFBA49")
+	print(desc)
+	label.text = "[font_size=30][color=#fff]%s[/color][/font_size]\n%s" % [title, desc]
 	show()

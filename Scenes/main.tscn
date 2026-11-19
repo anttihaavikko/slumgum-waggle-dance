@@ -175,7 +175,7 @@ script = ExtResource("3_cbgmd")
 title = "Nectar"
 color = Color(1, 0.7294118, 0.28627452, 1)
 sprite = ExtResource("12_gt3je")
-description = "Lorem ipsum."
+description = "Sweet (substance) gathered from a (flower). Very (versatile) as it can be used as is, dried to make (wax) or fermented to make (honey)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_u50mg"]
@@ -183,7 +183,7 @@ script = ExtResource("3_cbgmd")
 item_id = 1
 title = "Pollen"
 sprite = ExtResource("6_ptfg5")
-description = "Pollen ipsum maximus."
+description = "Soft and fuzzy (material) gathered from a (flower). Has many different (uses) like as a source for (fabric) or (oils)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_kqrg6"]
@@ -192,6 +192,7 @@ item_id = 2
 title = "Wax"
 color = Color(1, 0.7294118, 0.28627452, 1)
 sprite = ExtResource("9_qv1an")
+description = "Hardened and dried( nectar). A (strong material) used as a (base) for many different (build pieces) and (equipment)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_nwwfm"]
@@ -200,6 +201,7 @@ item_id = 3
 title = "Honey"
 color = Color(1, 0.8168652, 0.5516181, 1)
 sprite = ExtResource("11_phube")
+description = "(Nectar) fermenter in a (jar) will slowly turn (sticky) and (sweet honey). Often used as an (adhesive) or for its high (nutrient) value."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_s8vy0"]
@@ -216,6 +218,7 @@ script = ExtResource("3_cbgmd")
 item_id = 5
 title = "Cloth"
 sprite = ExtResource("9_1tvlp")
+description = "Fabric made from (pollen). Soft yet very (strong)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_wl4bb"]
@@ -224,7 +227,7 @@ item_id = 6
 title = "Bomb"
 color = Color(0.3553136, 0.35531354, 0.35531357, 1)
 sprite = ExtResource("10_6h1fc")
-description = "Who wants to dig around the dirt with a shovel? Using explosives is much more efficient. And dangerous!"
+description = "Who wants to (dig) around the (dirt) with a (shovel)? Using (explosives) is much more (efficient). And (dangerous)!"
 recipe = Dictionary[int, int]({
 9: 2,
 19: 1,
@@ -238,7 +241,7 @@ script = ExtResource("3_cbgmd")
 item_id = 7
 title = "Mead"
 sprite = ExtResource("14_daoo8")
-description = "Delicious honey wine which grants you a boost of energy when consumed."
+description = "Delicious (honey wine) which grants you a boost of (energy) when (consumed)."
 recipe = Dictionary[int, int]({
 3: 1,
 20: 1
@@ -251,7 +254,7 @@ item_id = 8
 title = "Bee Bread"
 color = Color(1, 0.8502259, 0.6375033, 1)
 sprite = ExtResource("14_0t4jf")
-description = "Bread made by mixing pollen with honey. Eating it heals you."
+description = "(Bread) made by mixing (pollen) with (honey). Eating it (heals) you."
 recipe = Dictionary[int, int]({
 1: 1,
 3: 1
@@ -264,6 +267,7 @@ item_id = 9
 title = "Resin"
 color = Color(0.948872, 0.55717206, 0.47560692, 1)
 sprite = ExtResource("9_qv1an")
+description = "Another (hard) build (material) made from (dried honey). Not quite as strong as (wax) but more (maluable)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_at123"]
@@ -272,6 +276,7 @@ item_id = 10
 title = "Seed"
 color = Color(1, 0.8828396, 0.71862, 1)
 sprite = ExtResource("14_14mkc")
+description = "Seed of a beautiful (red flower). Allows you to (grow) your (own) ones or maybe find some (other) use."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_gmdny"]
@@ -280,6 +285,7 @@ item_id = 11
 title = "Pebble"
 color = Color(0.627635, 0.6276355, 0.62763524, 1)
 sprite = ExtResource("9_qv1an")
+description = "Small (pebble) from a broken down (rock). Not all that (useful) as a build (material) but can also be used as (ammo)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_55idt"]
@@ -288,6 +294,7 @@ item_id = 12
 title = "Red Paint"
 color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 sprite = ExtResource("11_phube")
+description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_87bhu"]
@@ -296,6 +303,7 @@ item_id = 13
 title = "Green Paint"
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 sprite = ExtResource("11_phube")
+description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_33qc4"]
@@ -303,6 +311,7 @@ script = ExtResource("3_cbgmd")
 item_id = 14
 title = "White Paint"
 sprite = ExtResource("11_phube")
+description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_e6rcu"]
@@ -311,6 +320,7 @@ item_id = 15
 title = "Yellow Paint"
 color = Color(1, 0.7294118, 0.28627452, 1)
 sprite = ExtResource("11_phube")
+description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_p4gyq"]
@@ -319,6 +329,7 @@ item_id = 16
 title = "Dirt"
 color = Color(0.5464185, 0.36557484, 9.62615e-08, 1)
 sprite = ExtResource("6_ptfg5")
+description = "Just (dir) from the (ground). Pretty (useless)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_32dfi"]
@@ -327,6 +338,7 @@ item_id = 17
 title = "Sand"
 color = Color(1, 0.8557106, 0.6513028, 1)
 sprite = ExtResource("6_ptfg5")
+description = "Fine (sand) gathered from (the ground). Has some (uses) as building (material)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_uqfw5"]
@@ -335,6 +347,7 @@ item_id = 18
 title = "Fiber"
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 sprite = ExtResource("14_ja2pg")
+description = "Porous and elastic (fiber) from a (flower) trunk. Can be (weaved) into (string)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_cf2bd"]
@@ -342,6 +355,7 @@ script = ExtResource("3_cbgmd")
 item_id = 19
 title = "String"
 sprite = ExtResource("14_ja2pg")
+description = "String is (exactly) what you (need) when you want to (faster) things together and using (adhesives) is out of the question."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_metco"]
@@ -350,6 +364,7 @@ item_id = 20
 title = "Acid"
 color = Color(0.22457582, 0.8975025, 0.8707956, 1)
 sprite = ExtResource("11_phube")
+description = "Acid (residue) from (nematode) spit. Not the (tastiest) of things but can be used on (mead making) or where ever some (extra bite) is needed."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_hfu3o"]
@@ -358,6 +373,7 @@ item_id = 21
 title = "Golden Seed"
 color = Color(1, 0.7294118, 0.28627452, 1)
 sprite = ExtResource("14_14mkc")
+description = "Seed of a golden (tundra flower). Allows you to (grow) your (own) ones or maybe find some (other) use."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_adgm5"]
@@ -365,6 +381,7 @@ script = ExtResource("3_cbgmd")
 item_id = 22
 title = "Pure Seed"
 sprite = ExtResource("14_14mkc")
+description = "Seed of a hardy (white flower) from a western (island). Allows you to (grow) your (own) ones or maybe find some (other) use."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_rtmaq"]
@@ -372,6 +389,7 @@ script = ExtResource("3_cbgmd")
 item_id = 23
 title = "Egg"
 sprite = ExtResource("16_eqnci")
+description = "A (fertilized egg) of a queen (bee). Requires a (queen cup) to be (hatched)."
 hold_offset = -52.0
 custom_prefab = ExtResource("16_ojylq")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
@@ -2641,7 +2659,7 @@ theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "HELLO
-Something something
+Something [color=red]something
 "
 fit_content = true
 
