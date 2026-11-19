@@ -196,10 +196,11 @@ func spawn_hut(pos: float, tries: int = 0):
 		var p := ray.get_collision_point()
 		var obelisk := hints.size() > 0
 		var prefab = hinters.pick_random() if obelisk else huts.pick_random()
-		var hut := prefab.instantiate() as Node2D
+		var hut := prefab.instantiate() as Hut
 		var hint = hints.pop_front() if obelisk else Main.singleton.get_door_hint()
 		add_child(hut)
 		hut.global_position = p
+		hut.door_type = Main.singleton.door_hints.find(hint) as Hut.DoorType
 		hut.setup(ray.get_collision_normal(), hint, [1, -1].pick_random())
 	else:
 		spawn_hut(pos + randf_range(-500, 500), tries + 1)

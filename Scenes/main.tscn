@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://d21tebxx08yd3" path="res://_Starter/Scripts/limb_live.gd" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://brpgseb06rh2n" path="res://_Starter/Scenes/Effects/pop.tscn" id="6_6vcvc"]
 [ext_resource type="PackedScene" uid="uid://bd80e2cqqc85w" path="res://Scenes/pickup.tscn" id="6_536cc"]
+[ext_resource type="Texture2D" uid="uid://dx5pj8wpf4k1b" path="res://Sprites/bird-door-hint.png" id="6_gax0l"]
 [ext_resource type="Texture2D" uid="uid://b3ahxuod773is" path="res://Sprites/pollen.png" id="6_ptfg5"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://iik6jalprqdf" path="res://Sprites/star.png" id="7_2060n"]
@@ -747,7 +748,7 @@ explosion_shape = NodePath("../Explosion")
 bird_prefab = ExtResource("2_nb1ia")
 new_marker = ExtResource("12_gt3je")
 notifications = NodePath("../HUD/Notifications")
-door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), null])
+door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), ExtResource("6_gax0l"), null])
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint", "clock")]
 script = ExtResource("2_sasc4")
