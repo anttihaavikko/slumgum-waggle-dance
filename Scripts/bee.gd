@@ -8,6 +8,8 @@ class_name Bee extends Node2D
 # booster stations
 # hats
 # hut doors
+# crab spiders
+# beewolves (wasp)
 
 @export var body: MovableRigidbody
 @export var lander: MovableRigidbody

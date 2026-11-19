@@ -23,6 +23,7 @@ func hurt(amount: int):
 	life -= amount
 	if life <= 0:
 		Effects.singleton.add_many([7, 8], head.global_position)
+		Effects.singleton.add_many([7, 8], (head.global_position + global_position) * 0.5)
 		queue_free()
 
 func spit():
