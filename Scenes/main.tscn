@@ -766,7 +766,7 @@ size = Vector2(163, 45)
 blend_mode = 3
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_e5peh"]
-viewport_path = NodePath("SubViewportContainer/SubViewport2")
+viewport_path = NodePath("HUD/SubViewportContainer/SubViewport")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r7bbj"]
 blend_mode = 3
