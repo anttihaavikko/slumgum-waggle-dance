@@ -251,14 +251,15 @@ func teleport(target: String = "home"):
 		"snow": Main.singleton.islands[2].get_spawn()
 	}
 	if not points.has(target): return
-	var pos = points[target]
+	teleport_to(points[target])
+
+func teleport_to(pos: Vector2):
 	body.move_to(pos, 0)
 	lander.move_to(pos + Vector2.DOWN * 133, 0)
 	body.reset_speeds()
 	lander.reset_speeds()
 	await get_tree().process_frame
 	create_spring_core()
-
 
 func is_holding(id: Equipment.Id):
 	return current and current.identifier == id

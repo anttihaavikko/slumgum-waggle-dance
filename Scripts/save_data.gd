@@ -1,8 +1,11 @@
 class_name SaveData extends Object
 
 var world_seed: int = randi()
-var day: int
-var rank: int
+var day := 0
+var rank := 0
+var time := 0.1
+var x: float
+var y: float
 var tutorial_over := false
 var health := 10
 var inventory := []

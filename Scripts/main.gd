@@ -122,6 +122,7 @@ func get_door_hint() -> Texture2D:
 func load():
 	data = SaveData.load()
 	time.day = data.day
+	time.time = data.time
 	rank = data.rank
 	for d in data.seen: seen.append(d)
 	for d in data.built: built.append(d)
@@ -129,6 +130,7 @@ func load():
 	builder.load()
 	await get_tree().process_frame
 	bee.health.hp = data.health
+	bee.teleport_to(Vector2(data.x, data.y))
 
 func save():
 	data.day = time.day
@@ -139,6 +141,9 @@ func save():
 	data.crafted = crafted
 	data.buildings = []
 	data.health = bee.health.hp
+	data.x = bee.body.global_position.x
+	data.y = bee.body.global_position.y
+	data.time = time.time
 	for b in builder.built_pieces:
 		data.buildings.append(b.get_for_save())
 	data.save()
