@@ -7,6 +7,7 @@ class_name Builder extends Node2D
 @export var preview: Preview
 @export var button_prefab: PackedScene
 @export var button_grid: Control
+@export var painter: Painter
 
 var min_angle := 15
 
@@ -54,6 +55,8 @@ func load():
 		add_child(piece)
 		piece.global_position = Vector2(data[1], data[2])
 		piece.rotation = data[3]
+		piece.paint_color = data[8]
+		Painter.paint_piece(piece, painter.colors[piece.paint_color])
 		if piece is Station:
 			piece.populate(data[4], data[5])
 			piece.update_previews()

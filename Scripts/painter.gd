@@ -1,4 +1,4 @@
-extends Equipment
+class_name Painter extends Equipment
 
 @export var paint: Node2D
 @export var colors: Array[Color]
@@ -22,10 +22,15 @@ func blocks_clicks() -> bool:
 	return true
 
 func try_to_paint(target: Node):
+	if target is BuildPiece:
+		target.paint_color = current
+		paint_piece(target, paint.self_modulate)
+
+static func paint_piece(target: Node, color: Color):
 	if target is BuildPiece and target.sprite:
 		for s in target.extra_sprites:
-			s.self_modulate = paint.self_modulate
+			s.self_modulate = color
 		if target.sprite is Line2D:
-			target.sprite.default_color = paint.self_modulate
+			target.sprite.default_color = color
 		if target.sprite is Sprite2D:
-			target.sprite.self_modulate = paint.self_modulate
+			target.sprite.self_modulate = color

@@ -16,6 +16,7 @@ var data: PieceData
 var placed := true
 var can_break := true
 var energized := false
+var paint_color := 3
 
 enum Id {
 	Platform,
@@ -89,7 +90,8 @@ func get_for_save() -> Array:
 		get_inputs_for_save(),
 		get_outputs_for_save(),
 		label.text if label else "",
-		get_extra_num()
+		get_extra_num(),
+		paint_color
 	]
 
 func get_extra_num() -> int:
