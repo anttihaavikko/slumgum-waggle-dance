@@ -69,7 +69,7 @@ func get_random_name() -> String:
 	return [
 		"Beella",
 		"Beessie",
-		"Jezbeel",
+		"Jezebeel",
 		"Beethany",
 		"Elizabeeth",
 		"Beetrix",
