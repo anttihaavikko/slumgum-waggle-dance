@@ -157,3 +157,10 @@ func consume(id: Item.Id, amount: int):
 				return
 			left -= s.item.amount
 			s.clear()
+
+func get_for_save() -> Array:
+	var data = []
+	data.resize(slots.size())
+	for i in slots.size():
+		data[i] = slots[i].get_for_save()
+	return data

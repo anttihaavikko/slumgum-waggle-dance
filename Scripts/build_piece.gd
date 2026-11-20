@@ -79,3 +79,12 @@ func snap(points: Array[Node2D]):
 				best = j
 	if distance < 100:
 		global_position = points[best].global_position - (snap_points[p].global_position - global_position)
+
+func get_for_save() -> Array:
+	return [identifier, global_position.x, global_position.y, rotation, get_inputs_for_save(), get_outputs_for_save(), label.text if label else ""]
+
+func get_inputs_for_save() -> Array:
+	return []
+
+func get_outputs_for_save() -> Array:
+	return []

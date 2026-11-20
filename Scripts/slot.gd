@@ -94,6 +94,11 @@ func clear():
 	update_visuals()
 	if equipment and in_bar: Main.singleton.inventory.re_focus()
 
+func get_for_save() -> Array[int]:
+	if equipment: return [Item.Id.Equipment, 1, equipment.identifier]
+	if not item: return []
+	return [item.data.item_id, item.amount, item.equip]
+
 func swap(slot: Slot):
 	if slot.item and can_add(slot.item.data.item_id, slot.item.amount):
 		var left = increment(slot.item.amount)

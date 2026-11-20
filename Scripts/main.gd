@@ -29,6 +29,7 @@ var rank := 0:
 var ranks = ['newbee', 'private', 'corporal', 'sergeant', 'officer', 'lieutenant', 'captain', 'major', 'colonel', 'general']
 var door_hint_pool: Array
 var door_hints_init := false
+var data: SaveData
 
 static var singleton: Main = null
 
@@ -117,3 +118,27 @@ func get_door_hint() -> Texture2D:
 		door_hint_pool.shuffle()
 	if not door_hint_pool: return null
 	return door_hints[door_hint_pool.pop_front()]
+
+func load():
+	data = SaveData.load()
+	time.day = data.day
+	rank = data.rank
+	for d in data.seen: seen.append(d)
+	for d in data.built: built.append(d)
+	for d in data.crafted: crafted.append(d)
+	builder.load()
+	await get_tree().process_frame
+	bee.health.hp = data.health
+
+func save():
+	data.day = time.day
+	data.rank = rank
+	data.inventory = inventory.get_for_save()
+	data.seen = seen
+	data.built = built
+	data.crafted = crafted
+	data.buildings = []
+	data.health = bee.health.hp
+	for b in builder.built_pieces:
+		data.buildings.append(b.get_for_save())
+	data.save()

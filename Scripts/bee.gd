@@ -48,14 +48,15 @@ var current: Equipment
 
 func _ready() -> void:
 	Main.singleton.bee = self
+	Main.singleton.load()
 	# global_position += Vector2.RIGHT * -500
 	inventory.create_slots(7)
-	for s in inventory.slots:
-		s.in_bar = true
-		s.show_key(str(inventory.slots.find(s) + 1))
+	for s in inventory.slots.size():
+		inventory.slots[s].in_bar = true
+		inventory.slots[s].show_key("%d" % [s + 1])
+	seed(Main.singleton.data.world_seed)
 	energy.max_hp = roundi(energy_max)
 	await get_tree().process_frame
-	inventory.focus(0)
 	current_changed()
 	inventory.changed.connect(current_changed)
 	lander.body_entered.connect(land)
@@ -65,10 +66,24 @@ func _ready() -> void:
 	create_spring_core()
 	# await get_tree().create_timer(1).timeout
 	# inventory.add_item(Item.Id.Wax, 20)
-	await get_tree().process_frame
 	add_console_commands()
-	if OS.is_debug_build():
-		inventory.add_equipment(tools[Equipment.Id.Hammer])
+
+	# print(OS.get_data_dir())
+	# print(Main.singleton.data.inventory)
+	# inventory.populate_from(Main.singleton.data.inventory)
+	for i in Main.singleton.data.inventory.size():
+		var data = Main.singleton.data.inventory[i]
+		if not data: continue
+		if data[0] == Item.Id.Equipment:
+			inventory.slots[i].add_equipment(tools[data[2]])
+		else:
+			inventory.slots[i].add_item(Main.singleton.item_db.items[data[0]], data[1])
+
+	inventory.focus(0)
+
+	# await get_tree().process_frame
+	# if OS.is_debug_build():
+	# 	inventory.add_equipment(tools[Equipment.Id.Hammer])
 		# inventory.add_equipment(tools[Equipment.Id.Scythe])
 		# inventory.add_equipment(tools[Equipment.Id.Blowpipe])
 		# inventory.add_equipment(tools[Equipment.Id.Guitar])
@@ -96,6 +111,7 @@ func add_console_commands():
 	unregister_console("teleport")
 	unregister_console("recipe")
 	unregister_console("die")
+	unregister_console("save")
 	LimboConsole.register_command(console_spawn, "give", "spawns in an item or equipment")
 	LimboConsole.add_argument_autocomplete_source("give", 0, get_all_spawnable_names)
 	LimboConsole.register_command(fill_energy, "energy", "refill energy")
@@ -104,6 +120,7 @@ func add_console_commands():
 	LimboConsole.register_command(show_anvil_menu, "anvil", "opens anvil crafting menu")
 	LimboConsole.register_command(teleport, "teleport", "teleport to position")
 	LimboConsole.register_command(show_recipe, "recipe", "list recipe ingredients")
+	LimboConsole.register_command(func(): Main.singleton.save(), "save", "save the game")
 	LimboConsole.register_command(func(): damage(health.max_hp), "die", "die, useful if somehow stuck")
 	LimboConsole.add_argument_autocomplete_source("teleport", 0, func(): return ["home", "snow", "red"])
 	LimboConsole.add_argument_autocomplete_source("recipe", 0, get_recipe_names)

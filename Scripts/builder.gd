@@ -41,6 +41,26 @@ func _ready() -> void:
 		button.pressed.connect(func(): pick_piece(i))
 		button.mouse_entered.connect(func(): show_preview(i))
 
+func load():
+	var buildings := Main.singleton.data.buildings
+	for i in buildings.size():
+		var data = buildings[i]
+		var piece = pieces[data[0]].prefab.instantiate() as BuildPiece
+		piece.data = pieces[data[0]]
+		piece.identifier = data[0] as BuildPiece.Id
+		if piece is Station:
+			piece.title = pieces[data[0]].title
+			piece.description = pieces[data[0]].description
+		add_child(piece)
+		piece.global_position = Vector2(data[1], data[2])
+		piece.rotation = data[3]
+		if piece is Station:
+			piece.populate(data[4], data[5])
+			piece.update_previews()
+			if piece.label: piece.label.text = data[6]
+		built_pieces.append(piece)
+		snap_points.append_array(piece.snap_points)
+
 func hide_undiscovered():
 	for i in buttons.size():
 		buttons[i].visible = Main.singleton.has_seen_materials(pieces[i].recipe)

@@ -131,3 +131,32 @@ func try_convert():
 func stop_animation():
 	if crafting_animation:
 		crafting_animation.stop()
+
+func get_inputs_for_save() -> Array:
+	return get_items_for_save(inputs)
+
+func get_outputs_for_save() -> Array:
+	return get_items_for_save(outputs)
+
+func get_items_for_save(arr: Array[Item]) -> Array:
+	var val = []
+	val.resize(arr.size())
+	for i in arr.size():
+		if not arr[i]: continue
+		val[i] = [arr[i].data.item_id, arr[i].amount, arr[i].equip]
+	return val
+
+func populate(inp: Array, out: Array):
+	inputs = get_populated(inp)
+	outputs = get_populated(out)
+
+func get_populated(arr: Array) -> Array[Item]:
+	var items: Array[Item] = []
+	var db := Main.singleton.item_db
+	items.resize(5)
+	for i in arr.size():
+		var dat = arr[i]
+		if not dat: continue
+		items[i] = Item.new(db.items[dat[0]], dat[1])
+		items[i].equip = dat[2]
+	return items

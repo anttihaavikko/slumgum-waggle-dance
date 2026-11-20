@@ -22,6 +22,7 @@ func _process(delta) -> void:
 		if sleeper: sleeper.hide()
 		Main.singleton.rank += 1
 		Main.singleton.bee.show()
+		Main.singleton.save()
 		announce_day()
 		Main.singleton.cleanup()
 		for f in Main.singleton.flowers:
