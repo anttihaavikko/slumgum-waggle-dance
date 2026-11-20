@@ -254,6 +254,7 @@ func teleport(target: String = "home"):
 	teleport_to(points[target])
 
 func teleport_to(pos: Vector2):
+	await get_tree().process_frame
 	body.move_to(pos, 0)
 	lander.move_to(pos + Vector2.DOWN * 133, 0)
 	body.reset_speeds()
