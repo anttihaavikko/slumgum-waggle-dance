@@ -160,3 +160,9 @@ func get_populated(arr: Array) -> Array[Item]:
 		items[i] = Item.new(db.items[dat[0]], dat[1])
 		items[i].equip = dat[2]
 	return items
+
+func get_extra_num() -> int:
+	if functionality:
+		if functionality is Pot:
+			return functionality.phase
+	return 0

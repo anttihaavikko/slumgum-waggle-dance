@@ -58,6 +58,10 @@ func load():
 			piece.populate(data[4], data[5])
 			piece.update_previews()
 			if piece.label: piece.label.text = data[6]
+			if piece.functionality:
+				if piece.functionality is Pot:
+					piece.functionality.phase = max(data[7] - 1, 0)
+					piece.funtionality.change_phase(true)
 		built_pieces.append(piece)
 		snap_points.append_array(piece.snap_points)
 
