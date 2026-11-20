@@ -3,7 +3,6 @@ class_name Bee extends Node2D
 # slumgum scout
 # waggle dance
 #
-# tooltips
 # paint making
 # oil press etc
 # booster stations

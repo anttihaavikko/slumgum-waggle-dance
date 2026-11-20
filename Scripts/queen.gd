@@ -67,6 +67,9 @@ func get_replacement_event(intro) -> Array[String]:
 
 func get_random_name() -> String:
 	return [
+		"Beella",
+		"Beessie",
+		"Jezbeel",
 		"Beethany",
 		"Elizabeeth",
 		"Beetrix",
