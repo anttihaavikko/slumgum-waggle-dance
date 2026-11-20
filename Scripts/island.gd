@@ -58,7 +58,7 @@ func generate():
 		right = max(right, p.x)
 
 	if left > -gap * pieces or right < gap * pieces:
-		print("failed, retry!")
+		# print("failed, retry!")
 		generate()
 		return
 

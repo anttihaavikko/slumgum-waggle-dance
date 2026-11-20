@@ -167,8 +167,8 @@ func get_message() -> String:
 	if day == 1:
 		very_first = false
 		return "(Welcome) to your first (shift newbee)! Fly around with (WASD), go find some (flowers) and gather (nectar) from them.\n\nBe mindful to not run out of (energy)!"
-	if Main.singleton.crafted.size() > 0 and Main.singleton.built.size() > 3 and not started:
-		started = true
+	if Main.singleton.crafted.size() > 0 and Main.singleton.built.size() > 3 and not Main.singleton.data.tutorial_over:
+		Main.singleton.data.tutorial_over = true
 		return "Wow, what a (great worker) you are! Keep it up and you might receive the coveted (employee of the month) title one day."
 	if Main.singleton.crafted.size() == 0:
 		if Main.singleton.inventory.has(Item.Id.Nectar):
