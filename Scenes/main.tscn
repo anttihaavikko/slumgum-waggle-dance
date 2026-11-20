@@ -165,6 +165,7 @@
 [ext_resource type="Script" uid="uid://dxftrchkigaky" path="res://Scripts/wind.gd" id="144_odn5n"]
 [ext_resource type="Script" uid="uid://cpfu6gox7gjfb" path="res://Scripts/tooltip.gd" id="157_11vbv"]
 [ext_resource type="Texture2D" uid="uid://4snlndkvjfdp" path="res://Sprites/tooltip-arrow.png" id="158_m6w5j"]
+[ext_resource type="PackedScene" uid="uid://b8agfuem7q6wk" path="res://_Starter/Scenes/blinders.tscn" id="166_hprjy"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -2912,6 +2913,8 @@ angular_damp = 3.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/Area2D" unique_id=1313948392]
 position = Vector2(-38596, 23151)
 shape = SubResource("WorldBoundaryShape2D_xjjvj")
+
+[node name="Blinders" parent="." unique_id=843717358 instance=ExtResource("166_hprjy")]
 
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]

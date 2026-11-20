@@ -4,23 +4,24 @@
 
 [node name="Blinders" type="CanvasLayer" unique_id=843717358 node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_5vmbb")
-left = NodePath("Left")
-right = NodePath("Right")
+left = NodePath("HBoxContainer/Left")
+right = NodePath("HBoxContainer/Right")
 duration = 0.5
 
-[node name="Left" type="ColorRect" parent="." unique_id=913807918]
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-scale = Vector2(1e-05, 1)
-color = Color(0, 0, 0, 1)
-
-[node name="Right" type="ColorRect" parent="." unique_id=449298611]
-anchors_preset = 11
-anchor_left = 1.0
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2138413926]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1)
+theme_override_constants/separation = 0
+
+[node name="Left" type="ColorRect" parent="HBoxContainer" unique_id=913807918]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Right" type="ColorRect" parent="HBoxContainer" unique_id=449298611]
+layout_mode = 2
+size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
