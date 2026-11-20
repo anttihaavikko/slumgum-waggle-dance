@@ -25,15 +25,10 @@ func _init() -> void:
 func _ready() -> void:
 	prepare()
 	show()
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.3).timeout
 	open()
 
 func prepare():
-	# var win := DisplayServer.window_get_size()
-	# var win := Vector2(2048, 1080)
-	# print(win)
-	# left.set_size(Vector2(win.x * 0.25, win.y * 1), true)
-	# right.set_size(Vector2(win.x * 0.25, win.y * 1), true)
 	left.pivot_offset_ratio = Vector2(0, 0)
 	right.pivot_offset_ratio = Vector2(1, 0)
 	pass
