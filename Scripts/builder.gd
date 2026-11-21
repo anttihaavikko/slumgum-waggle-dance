@@ -56,6 +56,7 @@ func load():
 		piece.global_position = Vector2(data[1], data[2])
 		piece.rotation = data[3]
 		piece.paint_color = data[8]
+		piece.energized = data[9] > 0
 		Painter.paint_piece(piece, painter.colors[piece.paint_color])
 		if piece is Station:
 			piece.populate(data[4], data[5])
@@ -160,3 +161,15 @@ func create(s: int, discard: bool = false):
 func remove_piece(target: BuildPiece):
 	built_pieces.remove_at(built_pieces.find(target))
 	snap_points = snap_points.filter(func(s): return not target.snap_points.has(s))
+
+func recalculate_energy():
+	for b in built_pieces:
+		# var l = b.body.collision_layer
+		# var m = b.body.collision_mask
+		# b.body.collision_layer = 0
+		# b.body.collision_mask = 0
+		b.energized = b.is_any_colliding_with_energized()
+		if not b.energized:
+			b.modulate = Color.BLUE
+		# b.body.collision_layer = l
+		# b.body.collision_mask = m

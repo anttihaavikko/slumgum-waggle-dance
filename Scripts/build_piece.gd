@@ -58,13 +58,28 @@ func try_to_place():
 		return
 	await get_tree().create_timer(0.1).timeout
 	energized = connection_shapes.any(is_colligin_with_energized)
+	if energized: pass_energy()
 	placed = true
 
+func pass_energy():
+	for shape in connection_shapes:
+		if shape.is_colliding():
+			for i in shape.get_collision_count():
+				var p = shape.get_collider(i)
+				if p is BuildPiece and not p.energized:
+					p.energized = true
+					p.pass_energy()
+
+func is_any_colliding_with_energized() -> bool:
+	return connection_shapes.any(is_colligin_with_energized)
+
 func is_colligin_with_energized(shape: ShapeCast2D) -> bool:
+	# shape.force_shapecast_update()
 	if shape.is_colliding():
-		var p = shape.get_collider(0)
-		if p is BuildPiece and p.energized:
-			return true
+		for i in shape.get_collision_count():
+			var p = shape.get_collider(i)
+			if p is BuildPiece and p.energized:
+				return true
 	return false
 
 func snap(points: Array[Node2D]):
@@ -92,7 +107,8 @@ func get_for_save() -> Array:
 		get_outputs_for_save(),
 		label.text if label else "",
 		get_extra_num(),
-		paint_color
+		paint_color,
+		1 if energized else 0
 	]
 
 func get_extra_num() -> int:
