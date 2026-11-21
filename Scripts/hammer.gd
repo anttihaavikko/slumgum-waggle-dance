@@ -33,10 +33,12 @@ func try_to_break(target: Node):
 		if not target.can_break:
 			Main.pop("CAN NOT DESTROY THAT!")
 		else:
+			if target is Station:
+				target.drop_items()
 			var items = builder.pieces[target.identifier].recipe
 			for id in items:
-				Main.singleton.inventory.add_item(id, items[id])
-				# Main.spawn_item(id, target.global_position)
+				var item = Main.spawn_item(id, target.center.global_position if target is Station else target.global_position)
+				item.apply_impulse(Vector2.ONE.rotated(randf() * TAU) * 200 + Vector2.UP * 200)
 			Effects.singleton.add(3, target.global_position)
 			Main.shake(15, 0.2)
 			builder.remove_piece(target)

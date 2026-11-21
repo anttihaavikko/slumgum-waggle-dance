@@ -219,10 +219,7 @@ func heal(amt := 1):
 
 func die():
 	health.hurt(999)
-	for i in inventory.slots:
-		if not i.equipment:
-			var p = i.drop()
-			if p: p.apply_impulse(Vector2.UP.rotated(randf_range(0, 2 * PI)) * 800)
+	inventory.drop(global_position)
 	face.left_eye.hide()
 	face.right_eye.hide()
 	crosses.show()

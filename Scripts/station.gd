@@ -70,6 +70,15 @@ func consume(id: Item.Id):
 		if inputs[item].amount == 0:
 			inputs[item] = null
 
+func drop_items():
+	if inputs: drop_items_from(inputs)
+	if outputs: drop_items_from(outputs)
+
+func drop_items_from(arr: Array[Item]):
+	for i in arr:
+		if not i: continue
+		Main.drop_at(i, null, center.global_position)
+
 func pull_contents():
 	if menu.inputs: inputs = menu.inputs.get_contents()
 	if menu.outputs: outputs = menu.outputs.get_contents()

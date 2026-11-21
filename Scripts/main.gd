@@ -56,12 +56,17 @@ static func pop(message: String, offset: float = 0.0):
 func _process(_delta) -> void:
 	held.global_position = held.get_global_mouse_position() + Vector2.UP * 55
 
-static func drop(item: Item, equipment: Equipment) -> Pickup:
+static func drop_at(item: Item, equipment: Equipment, pos: Vector2) -> Pickup:
 	if item:
-		return singleton.item_db.spawn(item.data.item_id, singleton.bee.body.global_position, item.amount)
+		var i = singleton.item_db.spawn(item.data.item_id, pos, item.amount)
+		i.item.equip = item.equip
+		return i
 	if equipment:
-		return singleton.item_db.spawn(Item.Id.Equipment, singleton.bee.body.global_position, 1, equipment.identifier)
+		return singleton.item_db.spawn(Item.Id.Equipment, pos, 1, equipment.identifier)
 	return null
+
+static func drop(item: Item, equipment: Equipment) -> Pickup:
+	return drop_at(item, equipment, singleton.bee.body.global_position)
 
 static func spawn_item(item: Item.Id, pos: Vector2, amount := 1) -> Pickup:
 	return singleton.item_db.spawn(item, pos, amount)

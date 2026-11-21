@@ -166,3 +166,9 @@ func get_for_save() -> Array:
 	for i in slots.size():
 		data[i] = slots[i].get_for_save()
 	return data
+
+func drop(pos: Vector2):
+	for i in slots:
+		if not i.equipment:
+			var p = i.drop_at(pos)
+			if p: p.apply_impulse(Vector2.UP.rotated(randf_range(0, 2 * PI)) * 800)
