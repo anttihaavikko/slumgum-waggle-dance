@@ -141,7 +141,8 @@ func create_dungeon(try := 0) -> bool:
 		collider.polygon = updated[0]
 		line.points = updated[0]
 		added_dungeons.append(dungeon)
-		dungeon.populate(p - global_position, spawners.pick_random(), Item.Id.Egg, worm_chance)
+		var egg = [Item.Id.Egg, Item.Id.EggDamage].pick_random()
+		dungeon.populate(p - global_position, spawners.pick_random(), egg, worm_chance)
 		return true
 	else:
 		return create_dungeon(try + 1)
