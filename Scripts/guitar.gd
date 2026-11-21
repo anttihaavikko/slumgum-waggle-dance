@@ -43,6 +43,7 @@ func check_songs():
 		for b in Main.singleton.birds: b.leave()
 		return
 	if check(notes, "CAGE"):
+		Main.singleton.open_doors(Hut.DoorType.Music)
 		return
 	if check(notes, "DEAD"):
 		return

@@ -30,6 +30,7 @@ var ranks = ['newbee', 'private', 'corporal', 'sergeant', 'officer', 'lieutenant
 var door_hint_pool: Array
 var door_hints_init := false
 var data: SaveData
+var huts: Array[Hut] = []
 
 static var singleton: Main = null
 
@@ -76,9 +77,12 @@ func cleanup():
 
 func remove_bird(bird: Bird):
 	birds.remove_at(birds.find(bird))
+	if birds.size() == 0:
+		close_doors(Hut.DoorType.Bird)
 
 func spawn_bird(forced := false):
 	if birds.size() > 0 and not forced: return
+	open_doors(Hut.DoorType.Bird, -1)
 	var bird = bird_prefab.instantiate() as Bird
 	birds.append(bird)
 	bird.global_position = bee.body.global_position + Vector2.UP * 5000
@@ -175,3 +179,16 @@ func evaluate_stats():
 	bee.health.max_hp = health
 	bee.energy_max = energy
 	bee.energy.max_hp = energy
+
+func open_doors(type: Hut.DoorType, close_delay := 3.0):
+	for hut in huts:
+		if hut.door_type == type:
+			hut.door.open()
+			if close_delay > 0:
+				await get_tree().create_timer(close_delay).timeout
+				hut.door.close()
+
+func close_doors(type: Hut.DoorType):
+	for hut in huts:
+		if hut.door_type == type:
+			hut.door.close()

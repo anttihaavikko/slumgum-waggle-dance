@@ -167,6 +167,7 @@
 [ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
 [ext_resource type="Script" uid="uid://foqfxb04yivj" path="res://_Starter/Scripts/version_label.gd" id="122_t6wb6"]
 [ext_resource type="Texture2D" uid="uid://13a786in0a2a" path="res://Sprites/icon-pick.png" id="126_dllok"]
+[ext_resource type="Script" uid="uid://bfsl5u4ut83v3" path="res://Scripts/flip_detector.gd" id="141_4fylk"]
 [ext_resource type="Script" uid="uid://dcnfa0hou2e0q" path="res://Scripts/winds.gd" id="144_b12iu"]
 [ext_resource type="Script" uid="uid://dxftrchkigaky" path="res://Scripts/wind.gd" id="144_odn5n"]
 [ext_resource type="Script" uid="uid://cpfu6gox7gjfb" path="res://Scripts/tooltip.gd" id="157_11vbv"]
@@ -419,7 +420,7 @@ item_id = 25
 stack_size = 1
 title = "Health Relic"
 sprite = ExtResource("24_tctli")
-description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (health) when exhibited in a (totem)."
+description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (health) when exhibited at a (totem)."
 hold_offset = -55.0
 custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
@@ -430,7 +431,7 @@ item_id = 26
 stack_size = 1
 title = "Energy Relic"
 sprite = ExtResource("24_8d8ul")
-description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (energy) when exhibited in a (totem)."
+description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (energy) when exhibited at a (totem)."
 custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
@@ -1835,6 +1836,10 @@ position = Vector2(-45, 41)
 [node name="Leg Pos 4" type="Node2D" parent="Bee/Lander/Container" unique_id=1521862504]
 position = Vector2(45, 41)
 
+[node name="Flip Detect" type="Node" parent="Bee" unique_id=662030700 node_paths=PackedStringArray("body")]
+script = ExtResource("141_4fylk")
+body = NodePath("../Body")
+
 [node name="Island" parent="." unique_id=843824130 instance=ExtResource("100_mfvrx")]
 visible = false
 position = Vector2(561, 460)
@@ -2971,6 +2976,7 @@ shape = SubResource("WorldBoundaryShape2D_xjjvj")
 
 [node name="Blinders" parent="." unique_id=843717358 instance=ExtResource("166_hprjy")]
 
+[connection signal="flipped" from="Bee/Flip Detect" to="Main" method="open_doors" binds= [1]]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
 [connection signal="pressed" from="HUD/Fullscreen Button" to="Main" method="toggle_fullscreen"]

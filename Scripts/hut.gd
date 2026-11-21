@@ -14,6 +14,7 @@ enum DoorType {
 var door_type: DoorType
 
 func setup(normal: Vector2, hint: Texture2D, mirrored: int, relic: Item.Id):
+	Main.singleton.huts.append(self)
 	rotate(normal.angle() + PI * 0.5 + randf_range(-0.1, 0.1))
 	if pickup:
 		pickup.rotate(randf() * TAU)
