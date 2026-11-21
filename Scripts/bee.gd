@@ -219,7 +219,7 @@ func heal(amt := 1):
 
 func die():
 	health.hurt(999)
-	inventory.drop(global_position)
+	inventory.drop(body.global_position)
 	face.left_eye.hide()
 	face.right_eye.hide()
 	crosses.show()
