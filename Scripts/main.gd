@@ -129,7 +129,7 @@ func load():
 	for d in data.crafted: crafted.append(d)
 	builder.load()
 	await get_tree().process_frame
-	bee.health.hp = data.health
+	bee.health.hp = max(data.health, 1)
 	bee.teleport_to(Vector2(data.x, data.y))
 	evaluate_stats()
 

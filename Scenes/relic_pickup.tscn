@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dvbj480ysnxy3"]
+
+[ext_resource type="PackedScene" uid="uid://bd80e2cqqc85w" path="res://Scenes/pickup.tscn" id="1_lqmyt"]
+[ext_resource type="Texture2D" uid="uid://bxr26igk5pw1r" path="res://Sprites/relic-health.png" id="2_mi6g6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgfam"]
+radius = 174.72
+
+[node name="Relic Pickup" unique_id=1139630903 instance=ExtResource("1_lqmyt")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=929980930]
+texture = ExtResource("2_mi6g6")
+
+[node name="CollisionPolygon2D" parent="." index="1" unique_id=734810126]
+polygon = PackedVector2Array(-39, -86, 40, -87, 96, -31, 96, 42, 43, 94, -41, 95, -90, 41, -85, -41)
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(295608567) index="0" unique_id=2065663725]
+shape = SubResource("CircleShape2D_pgfam")

@@ -157,5 +157,6 @@ func create(s: int, discard: bool = false):
 	held.rotation = prev_angle
 	held.global_position = get_global_mouse_position()
 
-func remove_snaps_from(target: BuildPiece):
+func remove_piece(target: BuildPiece):
+	built_pieces.remove_at(built_pieces.find(target))
 	snap_points = snap_points.filter(func(s): return not target.snap_points.has(s))

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cun4dm2acvrn1" path="res://Sprites/cage.png" id="3_l6p02"]
 [ext_resource type="Script" uid="uid://lpyqajp6yf1d" path="res://Scripts/trigger.gd" id="3_ysmr7"]
 [ext_resource type="Texture2D" uid="uid://5hogqg8flgbb" path="res://Sprites/button-base.png" id="4_k8x6f"]
+[ext_resource type="PackedScene" uid="uid://dvbj480ysnxy3" path="res://Scenes/relic_pickup.tscn" id="7_20sbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(120, 650)
@@ -16,11 +17,12 @@ size = Vector2(367, 106)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7tju"]
 size = Vector2(383, 107)
 
-[node name="Hut" type="Node2D" unique_id=1652198801 node_paths=PackedStringArray("door", "poster")]
+[node name="Hut" type="Node2D" unique_id=1652198801 node_paths=PackedStringArray("door", "poster", "pickup")]
 z_index = -1
 script = ExtResource("1_13qaw")
 door = NodePath("Door")
 poster = NodePath("Polygon2D/Sprite2D")
+pickup = NodePath("Relic Pickup")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=42541900]
 self_modulate = Color(0, 0, 0, 1)
@@ -35,6 +37,13 @@ z_as_relative = false
 position = Vector2(86, -562)
 scale = Vector2(11.82, 10.1)
 texture = ExtResource("1_eiilc")
+
+[node name="Line2D2" type="Line2D" parent="Sprite2D2" unique_id=1108081541]
+position = Vector2(-7.275804, 55.64356)
+scale = Vector2(0.08460237, 0.099009894)
+points = PackedVector2Array(-558, -995, 251, -768, 119, -1110, 730, -1095, 250, -768, 708, -299)
+width = 15.0
+default_color = Color(1, 1, 1, 0.6431373)
 
 [node name="Door" type="StaticBody2D" parent="." unique_id=1433366134]
 position = Vector2(-497, -489)
@@ -133,3 +142,7 @@ collision_layer = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button/StaticBody2D" unique_id=1972379252]
 polygon = PackedVector2Array(-213, -85, -194, -105, 202, -105, 215, -87, 216, -45, 300, 17, 277, 42, -283, 42, -306, 17, -214, -45)
+
+[node name="Relic Pickup" parent="." unique_id=1139630903 instance=ExtResource("7_20sbk")]
+position = Vector2(248, -771)
+gravity_scale = 0.0

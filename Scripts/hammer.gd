@@ -39,5 +39,5 @@ func try_to_break(target: Node):
 				# Main.spawn_item(id, target.global_position)
 			Effects.singleton.add(3, target.global_position)
 			Main.shake(15, 0.2)
-			builder.remove_snaps_from(target)
+			builder.remove_piece(target)
 			target.queue_free()

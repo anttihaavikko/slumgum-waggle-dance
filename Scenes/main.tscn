@@ -66,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://du2s603fy0xky" path="res://Sprites/egg-damage.png" id="23_85qtq"]
 [ext_resource type="PackedScene" uid="uid://mibamh2d04it" path="res://Scenes/Pieces/banner.tscn" id="23_owhal"]
 [ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
+[ext_resource type="PackedScene" uid="uid://dvbj480ysnxy3" path="res://Scenes/relic_pickup.tscn" id="24_3qdko"]
 [ext_resource type="Texture2D" uid="uid://c1aw25xu7g6j2" path="res://Sprites/relic_energy.png" id="24_8d8ul"]
 [ext_resource type="Script" uid="uid://e88pkdwyw65u" path="res://_Starter/Scripts/sound_effects.gd" id="24_8dylv"]
 [ext_resource type="PackedScene" uid="uid://bvhmoedib4lva" path="res://Scenes/Pieces/anvil.tscn" id="24_qnggo"]
@@ -420,6 +421,7 @@ title = "Health Relic"
 sprite = ExtResource("24_tctli")
 description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (health) when exhibited in a (totem)."
 hold_offset = -55.0
+custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_8d8ul"]
@@ -429,6 +431,7 @@ stack_size = 1
 title = "Energy Relic"
 sprite = ExtResource("24_8d8ul")
 description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (energy) when exhibited in a (totem)."
+custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]

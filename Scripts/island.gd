@@ -201,7 +201,8 @@ func spawn_hut(pos: float, tries: int = 0):
 		add_child(hut)
 		hut.global_position = p
 		hut.door_type = Main.singleton.door_hints.find(hint) as Hut.DoorType
-		hut.setup(ray.get_collision_normal(), hint, [1, -1].pick_random())
+		var relic = [Item.Id.RelicEnergy, Item.Id.RelicHealth].pick_random()
+		hut.setup(ray.get_collision_normal(), hint, [1, -1].pick_random(), relic)
 	else:
 		spawn_hut(pos + randf_range(-500, 500), tries + 1)
 
