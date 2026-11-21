@@ -14,6 +14,8 @@ var in_bar: bool
 var depositing := false
 var locked := false
 
+signal changed
+
 func _ready() -> void:
 	button.mouse_entered.connect(hover_on)
 	button.mouse_exited.connect(hover_off)
@@ -48,6 +50,7 @@ func pick(target: Inventory, alt: bool):
 	if alt and item and item.amount > 0 and not depositing:
 		if held.is_empty():
 			held.add_item(item.data, 1)
+			held.changed.emit()
 			take(1)
 			Main.singleton.held.hide_if_empty()
 			return
@@ -63,6 +66,7 @@ func pick(target: Inventory, alt: bool):
 			else:
 				target.add_item(item.data.item_id, item.amount)
 			clear()
+			changed.emit()
 			hover_off()
 			Main.singleton.inventory.re_focus()
 		return
@@ -74,6 +78,7 @@ func pick(target: Inventory, alt: bool):
 				increment(1)
 			else:
 				add_item(held.item.data, 1)
+				changed.emit()
 			held.take(1)
 			if held.is_empty(): depositing = false
 			Main.singleton.held.hide_if_empty()
@@ -106,6 +111,8 @@ func swap(slot: Slot):
 		slot.update_visuals()
 		if slot.item.amount <= 0: slot.clear()
 		Main.singleton.held.hide_if_empty()
+		changed.emit()
+		slot.changed.emit()
 		return
 	var ti = item
 	var te = equipment
@@ -121,6 +128,8 @@ func swap(slot: Slot):
 	slot.update_visuals()
 	Main.singleton.inventory.re_focus()
 	Main.singleton.held.hide_if_empty()
+	changed.emit()
+	slot.changed.emit()
 
 func hide_if_empty():
 	visible = not is_empty()
@@ -149,6 +158,7 @@ func add_item(data: ItemData, amount: int = 1):
 	count_container.show()
 	item = Item.new(data, amount)
 	update_visuals()
+	changed.emit()
 
 func drop() -> Pickup:
 	var p = Main.drop(item, equipment)

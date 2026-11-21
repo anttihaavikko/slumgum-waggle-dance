@@ -1,4 +1,4 @@
-extends Equipment
+class_name Weapon extends Equipment
 
 @export var area: ShapeCast2D
 @export var damage := 3

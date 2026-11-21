@@ -17,6 +17,12 @@ func _ready() -> void:
 	win.closed.connect(close)
 	if inputs: inputs.added.connect(inventory_changed)
 	if outputs: outputs.added.connect(inventory_changed)
+	if inputs: inputs.items_moved.connect(inventory_changed)
+	if outputs: outputs.items_moved.connect(inventory_changed)
+
+func update_previews():
+	if station:
+		station.update_previews()
 
 func _process(_delta) -> void:
 	if visible and Input.is_action_just_pressed("cancel"):
@@ -32,6 +38,7 @@ func is_open() -> bool:
 
 func close():
 	if preview: preview.close()
+	if not win.visible: return
 	win.hide()
 	Main.singleton.inventory.other = null
 	Main.singleton.station = null
@@ -43,6 +50,7 @@ func close():
 	if Main.singleton.held:
 		Main.singleton.held.drop()
 		Main.singleton.held.hide()
+	Main.singleton.evaluate_stats()
 
 func open(source: Station):
 	if Main.singleton.station:
@@ -79,7 +87,6 @@ func limit_slots(inv: Inventory, amount: int):
 func update_contents():
 	if inputs: inputs.clear()
 	if outputs: outputs.clear()
-
 	fill(inputs, station.inputs)
 	fill(outputs, station.outputs)
 

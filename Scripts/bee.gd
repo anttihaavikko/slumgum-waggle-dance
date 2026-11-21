@@ -156,7 +156,8 @@ func console_spawn(item_name: String, amount := 20):
 	if get_equip_names().has(item_name):
 		inventory.add_equipment(tools[get_equip_names().find(item_name)])
 	else:
-		inventory.add_item(get_item_names().find_custom(func(n: String): return n.begins_with(item_name)), amount)
+		var i = get_item_names().find_custom(func(n: String): return n.begins_with(item_name))
+		inventory.add_item(i, min(amount, Main.singleton.item_db.items[i].stack_size))
 
 func get_all_spawnable_names() -> Array:
 	var all = get_equip_names()

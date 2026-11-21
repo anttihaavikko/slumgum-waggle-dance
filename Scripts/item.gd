@@ -24,7 +24,10 @@ enum Id {
 	Acid,
 	GoldSeed,
 	PureSeed,
-	Egg
+	Egg,
+	EggDamage,
+	RelicHealth,
+	RelicEnergy
 }
 
 var data: ItemData

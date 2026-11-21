@@ -131,6 +131,7 @@ func load():
 	await get_tree().process_frame
 	bee.health.hp = data.health
 	bee.teleport_to(Vector2(data.x, data.y))
+	evaluate_stats()
 
 func save():
 	data.day = time.day
@@ -147,3 +148,30 @@ func save():
 	for b in builder.built_pieces:
 		data.buildings.append(b.get_for_save())
 	data.save()
+
+func evaluate_stats():
+	var stinger := bee.tools[Equipment.Id.Stinger] as Weapon
+	stinger.damage = 3
+	var health := 10
+	var energy := 20
+	for piece in builder.built_pieces:
+		if piece is not Station: continue
+		if piece.identifier == BuildPiece.Id.Totem:
+			for i: Item in piece.inputs:
+				if not i: continue
+				if i.data.item_id == Item.Id.RelicEnergy:
+					energy += 10
+				if i.data.item_id == Item.Id.RelicHealth:
+					health += 5
+		if piece.identifier == BuildPiece.Id.Cup:
+			for i: Item in piece.inputs:
+				if not i: continue
+				if i.data.item_id == Item.Id.EggDamage:
+					stinger.damage += 1
+
+	# print("Stinger damage: ", stinger.damage)
+	# print("Health: ", health)
+	# print("Energy: ", energy)
+	bee.health.max_hp = health
+	bee.energy_max = energy
+	bee.energy.max_hp = energy

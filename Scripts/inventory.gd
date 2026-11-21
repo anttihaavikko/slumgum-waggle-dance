@@ -10,6 +10,7 @@ var other: Inventory
 
 signal changed
 signal added
+signal items_moved
 
 func create_slots(amount: int):
 	for i in amount:
@@ -19,6 +20,7 @@ func create_slots(amount: int):
 		slot.mark(false)
 		slot.label.text = ""
 		slot.button.gui_input.connect(func(e: InputEvent): click_slot(slot, e))
+		slot.changed.connect(func(): items_moved.emit())
 
 func click_slot(slot: Slot, e: InputEvent):
 	if e is InputEventMouseButton and e.pressed:

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_56rwl"]
 [ext_resource type="Texture2D" uid="uid://fpqyb6gaktty" path="res://Sprites/totem.png" id="2_56y0w"]
-[ext_resource type="Texture2D" uid="uid://ckl3qdrbcdx1c" path="res://Sprites/mead.png" id="3_56y0w"]
+[ext_resource type="Texture2D" uid="uid://c1aw25xu7g6j2" path="res://Sprites/relic_energy.png" id="3_56y0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56rwl"]
 size = Vector2(291.26, 605)
@@ -36,6 +36,6 @@ position = Vector2(0, -330.5)
 shape = SubResource("RectangleShape2D_56rwl")
 
 [node name="Preview" type="Sprite2D" parent="." index="7" unique_id=741631797]
-position = Vector2(-4, -423)
-scale = Vector2(0.69449496, 0.69449496)
+position = Vector2(-8, -424.00003)
+scale = Vector2(0.89262545, 0.89262545)
 texture = ExtResource("3_56y0w")

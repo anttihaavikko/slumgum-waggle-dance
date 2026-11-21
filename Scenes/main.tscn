@@ -63,10 +63,13 @@
 [ext_resource type="PackedScene" uid="uid://b717m4xp3kdqg" path="res://_Starter/Scenes/Effects/blood.tscn" id="20_jrou0"]
 [ext_resource type="PackedScene" uid="uid://cibdhow8nd8p5" path="res://_Starter/Scenes/Effects/blood_bits.tscn" id="21_j2g22"]
 [ext_resource type="PackedScene" uid="uid://b4af11tt4lq03" path="res://Scenes/Pieces/sign.tscn" id="22_qax2n"]
+[ext_resource type="Texture2D" uid="uid://du2s603fy0xky" path="res://Sprites/egg-damage.png" id="23_85qtq"]
 [ext_resource type="PackedScene" uid="uid://mibamh2d04it" path="res://Scenes/Pieces/banner.tscn" id="23_owhal"]
 [ext_resource type="PackedScene" uid="uid://m1ssfs6ku3hn" path="res://Scenes/Pieces/jar.tscn" id="23_uv6w5"]
+[ext_resource type="Texture2D" uid="uid://c1aw25xu7g6j2" path="res://Sprites/relic_energy.png" id="24_8d8ul"]
 [ext_resource type="Script" uid="uid://e88pkdwyw65u" path="res://_Starter/Scripts/sound_effects.gd" id="24_8dylv"]
 [ext_resource type="PackedScene" uid="uid://bvhmoedib4lva" path="res://Scenes/Pieces/anvil.tscn" id="24_qnggo"]
+[ext_resource type="Texture2D" uid="uid://bxr26igk5pw1r" path="res://Sprites/relic-health.png" id="24_tctli"]
 [ext_resource type="PackedScene" uid="uid://p0a0dayjvrf" path="res://_Starter/Scenes/sound.tscn" id="25_qv1an"]
 [ext_resource type="PackedScene" uid="uid://b65h0k2dii1wy" path="res://Scenes/Pieces/dryer.tscn" id="25_r7bbj"]
 [ext_resource type="PackedScene" uid="uid://dc7h41vpswfi4" path="res://Scenes/Effects/white_petals.tscn" id="26_ci23i"]
@@ -390,11 +393,42 @@ metadata/_custom_type_script = "uid://0x44vjlq1u52"
 [sub_resource type="Resource" id="Resource_rtmaq"]
 script = ExtResource("3_cbgmd")
 item_id = 23
+stack_size = 1
 title = "Egg"
 sprite = ExtResource("16_eqnci")
 description = "A (fertilized egg) of a queen (bee). Requires a (queen cup) to be (hatched)."
 hold_offset = -52.0
 custom_prefab = ExtResource("16_ojylq")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_32yv2"]
+script = ExtResource("3_cbgmd")
+item_id = 24
+stack_size = 1
+title = "Fierce Egg"
+sprite = ExtResource("23_85qtq")
+description = "(Unfertilized egg) of a queen (bee). Store it inside a (queen cup) and it will (enhance) the (damage) of your wielded (stinger)."
+hold_offset = -52.0
+custom_prefab = ExtResource("16_ojylq")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_85qtq"]
+script = ExtResource("3_cbgmd")
+item_id = 25
+stack_size = 1
+title = "Health Relic"
+sprite = ExtResource("24_tctli")
+description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (health) when exhibited in a (totem)."
+hold_offset = -55.0
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_8d8ul"]
+script = ExtResource("3_cbgmd")
+item_id = 26
+stack_size = 1
+title = "Energy Relic"
+sprite = ExtResource("24_8d8ul")
+description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (energy) when exhibited in a (totem)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
@@ -842,7 +876,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 

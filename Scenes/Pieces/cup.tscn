@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://863op4sdf6cn"]
 
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_3qamq"]
-[ext_resource type="Texture2D" uid="uid://dg0h4qyt6tjay" path="res://Sprites/item.png" id="2_2ywsu"]
 [ext_resource type="Script" uid="uid://dbf0q0w36pcid" path="res://Scripts/cup.gd" id="2_7ye3g"]
 [ext_resource type="Texture2D" uid="uid://cvhawladf7ag4" path="res://Sprites/cup.png" id="2_mkp0a"]
 [ext_resource type="Texture2D" uid="uid://bagibpqracojd" path="res://Sprites/icon-stinger.png" id="3_7ye3g"]
+[ext_resource type="Texture2D" uid="uid://du2s603fy0xky" path="res://Sprites/egg-damage.png" id="4_7ye3g"]
 
 [node name="Cup" unique_id=299398414 node_paths=PackedStringArray("input_preview", "functionality") instance=ExtResource("1_3qamq")]
 input_preview = [NodePath("Cup/Input")]
@@ -24,8 +24,8 @@ scale = Vector2(0.7644681, 0.7644681)
 texture = ExtResource("3_7ye3g")
 
 [node name="Input" type="Sprite2D" parent="Cup" index="1" unique_id=555309476]
-visible = false
-texture = ExtResource("2_2ywsu")
+position = Vector2(2, -63)
+texture = ExtResource("4_7ye3g")
 
 [node name="Sprite2D" parent="." index="1" unique_id=641265153]
 position = Vector2(-6, -163)

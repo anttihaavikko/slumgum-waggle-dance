@@ -11,5 +11,5 @@ func _ready() -> void:
 	station.updated.connect(check)
 
 func check():
-	if station.outputs.size() == 0 or not station.outputs[0]:
+	if station.outputs.size() == 0 or not station.outputs[0] or (station.inputs and station.inputs[0]):
 		stinger.hide()
