@@ -57,7 +57,7 @@ func try_to_place():
 		Main.shake(10, 0.1)
 		return
 	await get_tree().create_timer(0.1).timeout
-	energized = connection_shapes.any(is_colligin_with_energized)
+	energized = connection_shapes.any(is_colligin_with_energized) or identifier == BuildPiece.Id.Core
 	if energized: pass_energy()
 	placed = true
 
