@@ -34,7 +34,8 @@ enum Id {
 	LanternStanding,
 	TinkerTable,
 	Pot,
-	Cup
+	Cup,
+	Totem
 }
 
 func can_place() -> bool:

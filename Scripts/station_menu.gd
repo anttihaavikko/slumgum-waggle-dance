@@ -6,6 +6,8 @@ class_name StationMenu extends Control
 @export var preview: Preview
 @export var description: RichTextLabel
 @export var crafter: Crafter
+@export var input_label: RichTextLabel
+@export var output_label: RichTextLabel
 
 var initialized: bool
 var station: Station
@@ -15,7 +17,6 @@ func _ready() -> void:
 	win.closed.connect(close)
 	if inputs: inputs.added.connect(inventory_changed)
 	if outputs: outputs.added.connect(inventory_changed)
-
 
 func _process(_delta) -> void:
 	if visible and Input.is_action_just_pressed("cancel"):
@@ -90,3 +91,7 @@ func fill(target: Inventory, source: Array[Item]):
 				target.slots[i].add_equipment(Main.singleton.bee.tools[source[i].equip])
 			else:
 				target.slots[i].add_item(source[i].data, source[i].amount)
+
+func toggle_outputs(state: bool):
+	if outputs: outputs.visible = state
+	if output_label: output_label.visible = state

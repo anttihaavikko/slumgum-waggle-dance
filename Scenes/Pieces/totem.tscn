@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dsibpvt7e4pkm"]
+
+[ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_56rwl"]
+[ext_resource type="Texture2D" uid="uid://fpqyb6gaktty" path="res://Sprites/totem.png" id="2_56y0w"]
+[ext_resource type="Texture2D" uid="uid://ckl3qdrbcdx1c" path="res://Sprites/mead.png" id="3_56y0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56rwl"]
+size = Vector2(291.26, 605)
+
+[node name="Totem" unique_id=299398414 node_paths=PackedStringArray("input_preview") instance=ExtResource("1_56rwl")]
+input_preview = [NodePath("Preview")]
+hide_outputs = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+position = Vector2(-5, -320)
+texture = ExtResource("2_56y0w")
+
+[node name="Button" parent="." index="1" unique_id=501500570]
+offset_top = -645.0
+
+[node name="Center" parent="." index="2" unique_id=1552365683]
+position = Vector2(-4, -423)
+
+[node name="Left" parent="." index="3" unique_id=2129715786]
+position = Vector2(-109, -7)
+
+[node name="Right" parent="." index="4" unique_id=781947195]
+position = Vector2(97, -6)
+
+[node name="ShapeCast2D2" parent="." index="5" unique_id=540746725]
+position = Vector2(-1, -330)
+shape = SubResource("RectangleShape2D_56rwl")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1673048611) index="0" unique_id=779958969]
+position = Vector2(0, -330.5)
+shape = SubResource("RectangleShape2D_56rwl")
+
+[node name="Preview" type="Sprite2D" parent="." index="7" unique_id=741631797]
+position = Vector2(-4, -423)
+scale = Vector2(0.69449496, 0.69449496)
+texture = ExtResource("3_56y0w")

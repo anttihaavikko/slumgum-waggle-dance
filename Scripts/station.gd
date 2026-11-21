@@ -8,6 +8,7 @@ class_name Station extends BuildPiece
 @export var crafting_animation: AnimationPlayer
 @export var sleeper: Node2D
 @export var slots := 1
+@export var hide_outputs := false
 
 var title: String
 var description: String
@@ -57,6 +58,7 @@ func open():
 	menu.win.title = title.to_upper()
 	if menu.description:
 		menu.description.text = Utils.colorize(description, "#FFBA49")
+	menu.toggle_outputs(not hide_outputs)
 
 func has_input_item(id: Item.Id) -> bool:
 	return inputs.any(func(i: Item): return i and i.data and i.data.item_id == id)
@@ -79,6 +81,7 @@ func update_previews():
 	updated.emit()
 
 func accepts(id: Item.Id) -> bool:
+	if converts.size() == 0: return true
 	for recipe in converts:
 		for part in recipe.input:
 			if part.item == id:

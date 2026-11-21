@@ -127,6 +127,8 @@
 [ext_resource type="Texture2D" uid="uid://cvhawladf7ag4" path="res://Sprites/cup.png" id="70_eqnci"]
 [ext_resource type="Script" uid="uid://bks47snlvsntf" path="res://_Starter/Scripts/movable_rigidbody.gd" id="71_t014q"]
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
+[ext_resource type="PackedScene" uid="uid://dsibpvt7e4pkm" path="res://Scenes/Pieces/totem.tscn" id="80_32yv2"]
+[ext_resource type="Texture2D" uid="uid://fpqyb6gaktty" path="res://Sprites/totem.png" id="81_85qtq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
 [ext_resource type="Texture2D" uid="uid://b4iv74cpqborr" path="res://Sprites/blowpipe.png" id="90_adgm5"]
@@ -587,6 +589,20 @@ recipe = Dictionary[int, int]({
 })
 metadata/_custom_type_script = "uid://drtpdk28hi7te"
 
+[sub_resource type="Resource" id="Resource_56rwl"]
+script = ExtResource("31_3h4bx")
+title = "Totem"
+description = "A (ritualistic) build (piece) that allows you to exhibit (relics) and (unlock) their full (potential)."
+prefab = ExtResource("80_32yv2")
+sprite = ExtResource("81_85qtq")
+recipe = Dictionary[int, int]({
+2: 5,
+9: 5,
+19: 5,
+23: 1
+})
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmq5c"]
 radius = 367.78934
 
@@ -801,7 +817,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter")]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
@@ -1034,7 +1050,7 @@ script = ExtResource("144_odn5n")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid", "painter")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh"), SubResource("Resource_gf7g1")])
+pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh"), SubResource("Resource_gf7g1"), SubResource("Resource_56rwl")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Core"), NodePath("Platform"), NodePath("Platform2"), NodePath("Support3"), NodePath("Support4")]
 picker = NodePath("../HUD/Build Picker Win")
@@ -2286,7 +2302,7 @@ offset_right = 594.0
 offset_bottom = 300.0
 title = "JAR"
 
-[node name="Converter" type="Control" parent="HUD/Converter Win" unique_id=615244221 node_paths=PackedStringArray("inputs", "outputs", "win", "description")]
+[node name="Converter" type="Control" parent="HUD/Converter Win" unique_id=615244221 node_paths=PackedStringArray("inputs", "outputs", "win", "description", "input_label", "output_label")]
 layout_mode = 1
 anchor_left = 0.5
 anchor_top = 0.467
@@ -2303,6 +2319,8 @@ inputs = NodePath("VBoxContainer/Inputs")
 outputs = NodePath("VBoxContainer/Outputs")
 win = NodePath("..")
 description = NodePath("VBoxContainer/Description")
+input_label = NodePath("VBoxContainer/Inputs Title")
+output_label = NodePath("VBoxContainer/Outputs Title")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/Converter Win/Converter" unique_id=638503194]
 layout_mode = 0
