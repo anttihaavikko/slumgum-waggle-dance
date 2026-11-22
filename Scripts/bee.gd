@@ -32,6 +32,7 @@ class_name Bee extends Node2D
 @export var hands_wrap: Node2D
 @export var heal_particles: CPUParticles2D
 @export var face_mover: Node2D
+@export var buzz: AudioStreamPlayer2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -43,10 +44,12 @@ var zoomed := false
 var dead := false
 var stretch := 0.0
 var spring_core: SpringCore
+var buzz_volume = MovingValue.new(0, 5)
 
 var current: Equipment
 
 func _ready() -> void:
+	buzz.volume_linear = 0
 	Main.singleton.bee = self
 	Main.singleton.load()
 	# global_position += Vector2.RIGHT * -500
@@ -335,6 +338,10 @@ func _process(delta) -> void:
 		wings.speed_scale = 1.0 + absf(acc) * 3.0
 		if abs(acc) > 0.01:
 			change_energy(-delta)
+
+	buzz_volume.target = absf(acc)
+	buzz_volume.update(delta)
+	buzz.volume_linear = buzz_volume.value * 0.5
 
 	# stretch -= clamp(signf(stretch) * delta * 0.5, -abs(stretch), abs(stretch))
 	var diff = spring_core.get_direction()

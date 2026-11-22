@@ -167,6 +167,7 @@
 [ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
 [ext_resource type="Script" uid="uid://foqfxb04yivj" path="res://_Starter/Scripts/version_label.gd" id="122_t6wb6"]
 [ext_resource type="Texture2D" uid="uid://13a786in0a2a" path="res://Sprites/icon-pick.png" id="126_dllok"]
+[ext_resource type="AudioStream" uid="uid://i5uctb87mal5" path="res://Sounds/buzz.wav" id="140_fmflf"]
 [ext_resource type="Script" uid="uid://bfsl5u4ut83v3" path="res://Scripts/flip_detector.gd" id="141_4fylk"]
 [ext_resource type="Script" uid="uid://dcnfa0hou2e0q" path="res://Scripts/winds.gd" id="144_b12iu"]
 [ext_resource type="Script" uid="uid://dxftrchkigaky" path="res://Scripts/wind.gd" id="144_odn5n"]
@@ -1260,7 +1261,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover", "buzz")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -1285,6 +1286,7 @@ core_remote = NodePath("Body/Pendulum Mover")
 hands_wrap = NodePath("Body/Body Sprite/Hands Wrap")
 heal_particles = NodePath("Body/Heal Particles")
 face_mover = NodePath("Body/Body Sprite/Face Wrap/Wrap")
+buzz = NodePath("Body/Buzz")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
@@ -1805,6 +1807,11 @@ scale_amount_min = 0.1
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_qxkn4")
 color_ramp = SubResource("Gradient_qxkn4")
+
+[node name="Buzz" type="AudioStreamPlayer2D" parent="Bee/Body" unique_id=129676445]
+stream = ExtResource("140_fmflf")
+autoplay = true
+bus = &"Sounds"
 
 [node name="Lander" type="RigidBody2D" parent="Bee" unique_id=832043342]
 position = Vector2(0, 133)

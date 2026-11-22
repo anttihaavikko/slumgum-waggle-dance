@@ -16,9 +16,14 @@ run/main_scene="uid://dctl740whl7xn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://ccn8fqkxdqqiw"
+
 [autoload]
 
 LimboConsole="*uid://dyxornv8vwibg"
+Music="*uid://dyxcgfdk2wjuq"
 
 [display]
 
