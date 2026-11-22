@@ -1223,6 +1223,7 @@ distance = 30
 target = NodePath("../../../../Bee/Body")
 others = [NodePath("Face/Wrapper/Eye Right/Pupil"), NodePath("Face/Wrapper/Eye Left/Pupil")]
 other_amount = 60
+only_target = true
 metadata/_custom_type_script = "uid://dce3tbn077db6"
 
 [node name="Face" parent="Queen/Mover/Boss/Face Wrap" unique_id=1240513132 instance=ExtResource("7_344ge")]

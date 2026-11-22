@@ -11,6 +11,7 @@ class_name Bird extends Node2D
 @export var beak_sprite: Node2D
 @export var blush: Node2D
 @export var themes: Array[BirdTheme]
+@export var looker: LookAtMouse
 
 var time := 0.0
 var target: Node2D
@@ -22,6 +23,7 @@ func _ready() -> void:
 	target = Main.singleton.bee.body
 	swipe_left.body_entered.connect(swipe_to_left)
 	swipe_right.body_entered.connect(swipe_to_right)
+	looker.target = target
 	colorize()
 	await get_tree().create_timer(29.5).timeout
 	if life == max_life: leave()
