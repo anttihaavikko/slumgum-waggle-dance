@@ -99,12 +99,12 @@ func add_item(id: Item.Id, amount: int = 1):
 	var announce_distance = 100
 	if match >= 0:
 		amount = slots[match].increment(amount)
-		if announces: Main.pop(slots[match].item.data.title, announce_distance)
+		if announces: Main.pop(slots[match].item.data.title.to_upper(), announce_distance)
 	if amount > 0:
 		var slot = get_free_slot()
 		if slot >= 0:
 			slots[slot].add_item(manager.items[id], amount)
-			if announces: Main.pop(slots[slot].item.data.title, announce_distance)
+			if announces: Main.pop(slots[slot].item.data.title.to_upper(), announce_distance)
 		else:
 			Main.singleton.item_db.spawn(id, Main.singleton.bee.body.global_position, amount)
 	focus(focused)

@@ -25,7 +25,7 @@ func consume():
 	if amount == 0:
 		var c = 0.8
 		center.modulate = Color(c, c, c)
-		Main.pop("ALL HARVESTED")
+		Main.pop("[font_size=150]ALL HARVESTED", 200)
 		SoundEffects.singleton.add(4, global_position, 2)
 		await get_tree().create_timer(0.5).timeout
 		Main.singleton.harvester.hide()

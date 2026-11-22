@@ -51,7 +51,7 @@ func get_rank_name() -> String:
 
 static func pop(message: String, offset: float = 0.0):
 	var dir = Vector2.ONE.rotated(randf() * TAU).normalized() * offset
-	Effects.singleton.pop(message, singleton.bee.body.global_position + Vector2.UP * 100 + dir)
+	Effects.singleton.pop("[wave amp=30]%s" % [message], singleton.bee.body.global_position + Vector2.UP * 100 + dir)
 
 func _process(_delta) -> void:
 	held.global_position = held.get_global_mouse_position() + Vector2.UP * 55
