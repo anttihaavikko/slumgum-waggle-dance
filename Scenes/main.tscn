@@ -142,16 +142,30 @@
 [ext_resource type="Texture2D" uid="uid://oqrvt6fcsplq" path="res://Sprites/crown.png" id="60_gdwd6"]
 [ext_resource type="AudioStream" uid="uid://b3ywh1mmnos7v" path="res://Sounds/full2.wav" id="61_w7d74"]
 [ext_resource type="PackedScene" uid="uid://d3aqo7hq77g6o" path="res://Scenes/Pieces/tinker.tscn" id="62_0wopu"]
+[ext_resource type="AudioStream" uid="uid://3dt8kq2khc4i" path="res://Sounds/chords/d.wav" id="62_vwqqh"]
 [ext_resource type="Texture2D" uid="uid://dsd8ois17b8j6" path="res://Sprites/tinker-table.png" id="63_na2ur"]
+[ext_resource type="AudioStream" uid="uid://dmgrlumd3w3ld" path="res://Sounds/chords/e.wav" id="63_svh2a"]
+[ext_resource type="AudioStream" uid="uid://yehycxrefuyc" path="res://Sounds/chords/f.wav" id="64_ytyeu"]
+[ext_resource type="AudioStream" uid="uid://dj7atmkf2k7qv" path="res://Sounds/chords/g.wav" id="65_suxc6"]
+[ext_resource type="AudioStream" uid="uid://by0eryjdv6kx1" path="res://Sounds/chords/a.wav" id="66_n3keg"]
+[ext_resource type="AudioStream" uid="uid://i6vuetsq4no2" path="res://Sounds/chords/b.wav" id="67_fbhnc"]
 [ext_resource type="PackedScene" uid="uid://0fjkwffkomrd" path="res://Scenes/pot.tscn" id="67_l78ku"]
 [ext_resource type="Texture2D" uid="uid://psp7cnaon0na" path="res://Sprites/pot.png" id="68_hfu3o"]
 [ext_resource type="Script" uid="uid://dkwkobpcq5j4v" path="res://_Starter/Scripts/appearer.gd" id="68_ilwxp"]
 [ext_resource type="Texture2D" uid="uid://c4y7h8ywky7ji" path="res://Sprites/bubble.png" id="68_mfvrx"]
+[ext_resource type="AudioStream" uid="uid://dqky2yugwv02d" path="res://Sounds/chords/c.wav" id="68_suxc6"]
 [ext_resource type="Texture2D" uid="uid://c8rtdv3liyvdf" path="res://Sprites/glasses.png" id="68_xjjvj"]
 [ext_resource type="PackedScene" uid="uid://863op4sdf6cn" path="res://Scenes/Pieces/cup.tscn" id="69_rtmaq"]
+[ext_resource type="AudioStream" uid="uid://bjyb2b6i6vrbv" path="res://Sounds/chords/d-up.wav" id="69_ycl58"]
 [ext_resource type="Texture2D" uid="uid://cvhawladf7ag4" path="res://Sprites/cup.png" id="70_eqnci"]
+[ext_resource type="AudioStream" uid="uid://cgsxo4oj2b505" path="res://Sounds/chords/e-up.wav" id="70_w32ys"]
+[ext_resource type="AudioStream" uid="uid://dccnqhmyao4fh" path="res://Sounds/chords/f-up.wav" id="71_g2ehk"]
 [ext_resource type="Script" uid="uid://bks47snlvsntf" path="res://_Starter/Scripts/movable_rigidbody.gd" id="71_t014q"]
+[ext_resource type="AudioStream" uid="uid://cf2bv1rjtkf4i" path="res://Sounds/chords/g-up.wav" id="72_b7esa"]
+[ext_resource type="AudioStream" uid="uid://b6wf6vpf3yexn" path="res://Sounds/chords/a-up.wav" id="73_uo3nc"]
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
+[ext_resource type="AudioStream" uid="uid://c3wgaarog8l32" path="res://Sounds/chords/b-up.wav" id="74_xtnwn"]
+[ext_resource type="AudioStream" uid="uid://cd3p7w7kn7fmq" path="res://Sounds/chords/c-up.wav" id="75_4vtl5"]
 [ext_resource type="PackedScene" uid="uid://dsibpvt7e4pkm" path="res://Scenes/Pieces/totem.tscn" id="80_32yv2"]
 [ext_resource type="Texture2D" uid="uid://fpqyb6gaktty" path="res://Sprites/totem.png" id="81_85qtq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
@@ -913,7 +927,7 @@ metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
 script = ExtResource("24_8dylv")
-effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74")])
+effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74"), ExtResource("62_vwqqh"), ExtResource("63_svh2a"), ExtResource("64_ytyeu"), ExtResource("65_suxc6"), ExtResource("66_n3keg"), ExtResource("67_fbhnc"), ExtResource("68_suxc6"), ExtResource("69_ycl58"), ExtResource("70_w32ys"), ExtResource("71_g2ehk"), ExtResource("72_b7esa"), ExtResource("73_uo3nc"), ExtResource("74_xtnwn"), ExtResource("75_4vtl5")])
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 
@@ -1725,6 +1739,9 @@ flips = true
 modulate = Color(1, 1, 1, 0.11372549)
 scale = Vector2(4.7098603, 4.7098603)
 texture = ExtResource("98_e1jjv")
+
+[node name="Timer" type="Timer" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar" unique_id=226969410]
+wait_time = 5.0
 
 [node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "cast", "swinger", "aligner", "sprite")]
 visible = false

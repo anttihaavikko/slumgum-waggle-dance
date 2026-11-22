@@ -14,3 +14,9 @@ func bird_attack(state: bool):
 func set_volumes(val: float):
 	day.volume_linear = val * 0.6
 	night.volume_linear = (1 - val) * 0.5
+
+func mute():
+	normal.volume_linear = 0
+
+func resume():
+	get_tree().create_tween().tween_property(normal, "volume_linear", 1, 1).set_trans(Tween.TRANS_QUAD)

@@ -2,21 +2,35 @@ extends Equipment
 
 @export var chord_display: RichTextLabel
 
-var chords = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
-var visible_chords = ['']
+var chords = ['D', 'E', 'F', 'G', 'A', 'B', 'C']
+var visible_chords = ['D', 'Em', 'F#m', 'G', 'A', 'Bm', 'C#m']
 
 var played = []
+var timer = Timer.new()
+
+func _ready() -> void:
+	add_child(timer)
+	timer.timeout.connect(restart_music)
 
 func update(delta: float):
 	var dist = roundi(get_global_mouse_position().distance_to(global_position))
 	var index = clampi(roundi((dist % 2300 - 200) / 2100.0 * 7), 0, 6)
-	chord_display.text = chords[index]
+	chord_display.text = visible_chords[index]
 	super.update(delta)
-	if Input.is_action_just_pressed("primary"):
+	if Input.is_action_just_pressed("primary") or Input.is_action_just_pressed("alt"):
+		Music.mute()
+		timer.stop()
+		timer.start(2.5)
 		played.append(chords[index])
+		var offset = 28 if Input.is_action_just_pressed("alt") else 21
+		SoundEffects.singleton.add(index + offset, global_position, 1, 0)
 		if played.size() > 10: played.pop_front()
+
 		check_songs()
 	align()
+
+func restart_music():
+	Music.resume()
 
 func toggle(state: bool):
 	chord_display.visible = state
@@ -24,6 +38,8 @@ func toggle(state: bool):
 	played = []
 
 func play(song: String):
+	timer.stop()
+	restart_music()
 	Effects.singleton.pop("[font_size=120][wave amp=50]%s" % [song], global_position + Vector2.UP * 300)
 
 func check(notes: String, song: String):
