@@ -94,18 +94,28 @@
 [ext_resource type="Texture2D" uid="uid://bowys0fo5me6x" path="res://Sprites/thumbs.png" id="35_k2e45"]
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="36_hdf80"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
+[ext_resource type="AudioStream" uid="uid://bywtwmqqhham1" path="res://Sounds/land.wav" id="41_6lvi0"]
+[ext_resource type="AudioStream" uid="uid://dp1x518em565k" path="res://Sounds/hurt.wav" id="42_2rlip"]
 [ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
 [ext_resource type="Script" uid="uid://c7w7nrkb1foho" path="res://Scripts/bee_body.gd" id="42_lpdpw"]
 [ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="43_nay3j"]
 [ext_resource type="Script" uid="uid://bshomi1sce5uq" path="res://Scripts/painter.gd" id="43_ovafv"]
+[ext_resource type="AudioStream" uid="uid://crg8tkgjgay4o" path="res://Sounds/blip.wav" id="43_ve7nm"]
+[ext_resource type="AudioStream" uid="uid://c1dphchr5r050" path="res://Sounds/no.wav" id="44_sbvnb"]
+[ext_resource type="AudioStream" uid="uid://cchb2hxbr1v2w" path="res://Sounds/nothing.wav" id="45_sbvnb"]
 [ext_resource type="Texture2D" uid="uid://mxcvq0svo6pu" path="res://Sprites/core.png" id="46_aok0f"]
+[ext_resource type="AudioStream" uid="uid://cjdcwfuuoyb4r" path="res://Sounds/pick.wav" id="46_pkhog"]
+[ext_resource type="AudioStream" uid="uid://bgkyfmob8ie7s" path="res://Sounds/boom.wav" id="47_b4mg0"]
 [ext_resource type="Texture2D" uid="uid://cwwwr5508ya0b" path="res://Sprites/lantern.png" id="47_fg68e"]
 [ext_resource type="Texture2D" uid="uid://1s8fh5yxfq8x" path="res://Sprites/sign.png" id="48_3h4bx"]
 [ext_resource type="Texture2D" uid="uid://cff2rh54nd4pq" path="res://Sprites/light.png" id="48_f6rfp"]
+[ext_resource type="AudioStream" uid="uid://de27n1qaxvf1" path="res://Sounds/die.wav" id="48_g52ui"]
 [ext_resource type="Texture2D" uid="uid://jlb1wbiv4bqb" path="res://Sprites/square.png" id="48_jekl6"]
+[ext_resource type="AudioStream" uid="uid://bmgolyf37t4ov" path="res://Sounds/low.wav" id="49_vm2ri"]
 [ext_resource type="Texture2D" uid="uid://bfffr0ldkunfp" path="res://Sprites/anvil.png" id="49_xg142"]
 [ext_resource type="Script" uid="uid://j7ihgugcbjjn" path="res://Scripts/crafter.gd" id="50_1semv"]
 [ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="50_2daye"]
+[ext_resource type="AudioStream" uid="uid://bqno4g03p3h2t" path="res://Sounds/charge.wav" id="50_reygs"]
 [ext_resource type="Texture2D" uid="uid://chm3umuwk3c5a" path="res://Sprites/jar.png" id="50_rlvxq"]
 [ext_resource type="Texture2D" uid="uid://v44301i6cuql" path="res://Sprites/loom.png" id="51_0fjpc"]
 [ext_resource type="Texture2D" uid="uid://rrd2emctesuf" path="res://Sprites/banner.png" id="52_gdwd6"]
@@ -178,6 +188,10 @@
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
 colors = PackedColorArray(0.105882354, 0.019607844, 0.14509805, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.105882354, 0.019607844, 0.14509805, 1)
+
+[sub_resource type="Curve" id="Curve_vm2ri"]
+_data = [Vector2(0.060200676, 0), 0.0, 0.0, 0, 0, Vector2(0.123745814, 1), 0.0, 0.0, 0, 0, Vector2(0.632107, 1), 0.0, 0.0, 0, 0, Vector2(0.7625418, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Resource" id="Resource_1w6v2"]
 script = ExtResource("3_cbgmd")
@@ -874,6 +888,7 @@ ui_tint = NodePath("../HUD/CanvasModulate")
 tint_color = SubResource("Gradient_sasc4")
 globe_tint = NodePath("../HUD/Frame/Globe Mask/Globe Dimmer")
 clock = NodePath("../HUD/Frame/Clock/Clock Arm")
+day_curve = SubResource("Curve_vm2ri")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -892,6 +907,7 @@ metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
 script = ExtResource("24_8dylv")
+effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs")])
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 

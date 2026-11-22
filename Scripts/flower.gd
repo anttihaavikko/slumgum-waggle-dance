@@ -26,12 +26,14 @@ func consume():
 		var c = 0.8
 		center.modulate = Color(c, c, c)
 		Main.pop("ALL HARVESTED")
+		SoundEffects.singleton.add(4, global_position, 2)
 		await get_tree().create_timer(0.5).timeout
 		Main.singleton.harvester.hide()
 
 func entered(_body: Node2D):
 	if amount <= 0:
 		Main.pop("NOTHING LEFT")
+		SoundEffects.singleton.add(4, global_position, 2)
 		return
 	Main.singleton.harvester.begin(self, area.global_position)
 

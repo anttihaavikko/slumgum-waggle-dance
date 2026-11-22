@@ -10,6 +10,9 @@ class_name Bee extends Node2D
 # hut doors
 # crab spiders
 # beewolves (wasp)
+#
+# AMBForst_Late Spring.A Quiet Forest Edge.Hot.Sunny.Birds.Mosquitoes 2_EM by newlocknew -- https://freesound.org/s/856018/ -- License: Creative Commons 0
+# amb_forest_night.wav by Dokuta_Gerovv -- https://freesound.org/s/662095/ -- License: Creative Commons 0
 
 @export var body: MovableRigidbody
 @export var lander: MovableRigidbody
@@ -221,6 +224,7 @@ func heal(amt := 1):
 		heal_particles.emitting = true
 
 func die():
+	SoundEffects.singleton.add(7, body.global_position, 0.5)
 	health.hurt(999)
 	inventory.drop(body.global_position)
 	face.left_eye.hide()
@@ -273,10 +277,14 @@ func danger():
 	Main.singleton.call_deferred("spawn_bird")
 
 func land(target: Node2D):
+	SoundEffects.singleton.add(0, lander.global_position)
 	landed = true
 	charging = false
 	if target is Platform:
 		charging = target.energized
+
+	if charging and energy_left < energy_max:
+		SoundEffects.singleton.add(9, lander.global_position, 0.7)
 	cam.shake(body.linear_velocity.length() * 0.01, 0.12)
 	# stretch -= body.linear_velocity.y * 0.0002
 	if not charging and energy.hp < 5 and not dead:
@@ -285,8 +293,11 @@ func land(target: Node2D):
 func collide(_node: Node2D):
 	var mag = body.linear_velocity.length()
 	var threshold := 200.0
+	var amt = roundi(mag / threshold)
+	var p = lander.global_position
+	SoundEffects.singleton.add(1, p, 1 + amt * 0.2)
+	SoundEffects.singleton.add(6, p, 0.5 + amt * 0.1)
 	if mag > threshold:
-		var amt = roundi(mag / threshold)
 		cam.shake(amt * 5, 0.15)
 		damage(amt)
 
@@ -306,8 +317,13 @@ func current_changed():
 		item.texture = i.data.sprite
 		item.position.y = -39 + i.data.hold_offset
 
+func energy_crossed(dir: float, limit: float) -> bool:
+	return energy_left > limit and energy_left + dir < limit
+
 func change_energy(dir: float, limit: float = energy_max):
 	if limit < energy_max and energy_left > limit and dir > 0: return
+	if energy_crossed(dir, 5.2) or energy_crossed(dir, 0):
+		SoundEffects.singleton.add(8, global_position, 3)
 	energy_left = clampf(energy_left + dir, 0, energy_max)
 	energy.hp = roundi(energy_left)
 

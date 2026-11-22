@@ -141,6 +141,7 @@ func load():
 	bee.health.hp = max(data.health, 1)
 	bee.teleport_to(Vector2(data.x, data.y))
 	evaluate_stats()
+	bee.energy_left = bee.energy_max
 
 func save():
 	data.day = time.day
@@ -197,3 +198,6 @@ func close_doors(type: Hut.DoorType):
 	for hut in huts:
 		if hut.door_type == type:
 			hut.door.close()
+
+static func bee_pos() -> Vector2:
+	return singleton.bee.body.global_position

@@ -2,11 +2,25 @@
 
 [ext_resource type="Script" uid="uid://u816r0eh3kui" path="res://Scripts/music.gd" id="1_fbmny"]
 [ext_resource type="AudioStream" uid="uid://fjk7rqwj6trn" path="res://Sounds/music.wav" id="2_qxpp0"]
+[ext_resource type="AudioStream" uid="uid://cd47f6dmd308b" path="res://Sounds/856018__newlocknew__ambforst_late-springa-quiet-forest-edgehotsunnybirds.wav" id="3_476t3"]
+[ext_resource type="AudioStream" uid="uid://dv8j7867wbxo4" path="res://Sounds/662095__dokuta_gerovv__amb_forest_night (1).wav" id="4_vi5kw"]
 
-[node name="Music" type="Node" unique_id=1579280967]
+[node name="Music" type="Node" unique_id=1579280967 node_paths=PackedStringArray("day", "night")]
 script = ExtResource("1_fbmny")
+day = NodePath("Ambience Day")
+night = NodePath("Ambience Night")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1654118550]
 stream = ExtResource("2_qxpp0")
 autoplay = true
 bus = &"Music"
+
+[node name="Ambience Day" type="AudioStreamPlayer" parent="." unique_id=91001159]
+stream = ExtResource("3_476t3")
+autoplay = true
+bus = &"Sounds"
+
+[node name="Ambience Night" type="AudioStreamPlayer" parent="." unique_id=2047255298]
+stream = ExtResource("4_vi5kw")
+autoplay = true
+bus = &"Sounds"

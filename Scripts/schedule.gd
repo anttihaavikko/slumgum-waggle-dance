@@ -9,7 +9,7 @@ class_name Schedule extends Node
 var sleeper: Node2D
 
 var time := 0.1
-var speed := 0.005
+var speed := 0.05
 var day := 1
 var sleep_until := -1.0
 
@@ -33,6 +33,9 @@ func _process(delta) -> void:
 	ui_tint.color = tint.color + Color(0.2, 0.2, 0.2)
 	globe_tint.color = tint.color.lightened(0.1)
 	clock.rotation = lerp(0.0, TAU * 2, time)
+	var effect = AudioServer.get_bus_effect(1, 0) as AudioEffectBandPassFilter
+	effect.cutoff_hz = lerp(200, 2000, tint.color.g)
+	Music.set_volumes(tint.color.g)
 
 func announce_day():
 	await get_tree().create_timer(0.75).timeout

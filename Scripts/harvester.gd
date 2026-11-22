@@ -34,6 +34,7 @@ func _process(delta) -> void:
 	if done: return
 	if Input.is_action_just_pressed("accelerate"):
 		var success := absf(0.5 - pos) < 0.075
+		SoundEffects.singleton.add(2 if success else 3, Main.singleton.bee.body.global_position)
 		icon.position = marker.position
 		bad.visible = not success
 		good.visible = success

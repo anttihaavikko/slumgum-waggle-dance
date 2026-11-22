@@ -62,6 +62,7 @@ func get_free_slot() -> int:
 func add_equipment(eq: Equipment):
 	var slot = get_free_slot()
 	if slot >= 0:
+		SoundEffects.singleton.add(5, Main.bee_pos())
 		slots[slot].add_equipment(eq)
 	else:
 		Main.drop(null, eq)
@@ -93,6 +94,7 @@ func can_add(id: Item.Id, amount: int) -> bool:
 	return match > -1 or slots.any(func(s: Slot): return s.is_empty())
 
 func add_item(id: Item.Id, amount: int = 1):
+	SoundEffects.singleton.add(5, Main.bee_pos())
 	var match = slots.find_custom(func(s: Slot): return s.can_add(id, amount))
 	var announce_distance = 100
 	if match >= 0:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dv8j7867wbxo4"
+path="res://.godot/imported/662095__dokuta_gerovv__amb_forest_night (1).wav-21607dfbdf8a2c40a224d8f1d3721b18.sample"
+
+[deps]
+
+source_file="res://Sounds/662095__dokuta_gerovv__amb_forest_night (1).wav"
+dest_files=["res://.godot/imported/662095__dokuta_gerovv__amb_forest_night (1).wav-21607dfbdf8a2c40a224d8f1d3721b18.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
