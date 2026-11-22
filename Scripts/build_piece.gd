@@ -51,15 +51,18 @@ func try_to_place():
 	if not is_attached():
 		Main.pop("NOT ATTACHED!")
 		Main.shake(10, 0.1)
+		SoundEffects.singleton.add(10, global_position)
 		return
 	if is_blocked():
 		Main.pop("BLOCKED!")
 		Main.shake(10, 0.1)
+		SoundEffects.singleton.add(10, global_position)
 		return
 	await get_tree().create_timer(0.1).timeout
 	energized = connection_shapes.any(is_colligin_with_energized) or identifier == BuildPiece.Id.Core
 	if energized: pass_energy()
 	placed = true
+	SoundEffects.singleton.add(11, global_position)
 
 func pass_energy():
 	for shape in connection_shapes:

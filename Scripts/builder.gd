@@ -106,6 +106,7 @@ func _process(_delta) -> void:
 			Main.shake(5, 0.1)
 			if not Main.singleton.inventory.has_materials(held.data.recipe):
 				Main.pop("INSUFFICIENT MATERIALS!")
+				SoundEffects.singleton.add(10, held.global_position)
 				return
 			held.try_to_place()
 			if cross.visible: return

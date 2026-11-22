@@ -29,6 +29,7 @@ func hurt(amount: int):
 func spit():
 	if cooldown > 0: return
 	if target is BeeBody and not target.bee.health.is_alive(): return
+	SoundEffects.singleton.add(15, head.global_position)
 	spit_effect.emitting = true
 	cooldown = 1.0
 	var s = spit_prefab.instantiate() as Spit

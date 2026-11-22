@@ -5,7 +5,7 @@ class_name ButtonHover extends Button
 @export var focus_size := 1.05
 @export var focus_angle := 1
 
-var sound_index := 2
+var sound_index := 13
 
 func _ready():
 	mouse_entered.connect(hover_in)

@@ -11,5 +11,6 @@ func enter(target: Node):
 	else:
 		var p = Main.spawn_item(Item.Id.Acid, global_position)
 		p.linear_velocity = linear_velocity
+		SoundEffects.singleton.add(16, global_position)
 	Effects.singleton.add_many([3], global_position)
 	queue_free()

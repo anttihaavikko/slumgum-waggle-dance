@@ -48,6 +48,7 @@ var dead := false
 var stretch := 0.0
 var spring_core: SpringCore
 var buzz_volume = MovingValue.new(0, 5)
+var has_consumed_energy := false
 
 var current: Equipment
 
@@ -220,6 +221,7 @@ func heal_if_not_full(amt := 1):
 
 func heal(amt := 1):
 	if health.is_alive():
+		SoundEffects.singleton.add(14, body.global_position)
 		health.heal(amt)
 		heal_particles.emitting = true
 
@@ -283,8 +285,9 @@ func land(target: Node2D):
 	if target is Platform:
 		charging = target.energized
 
-	if charging and energy_left < energy_max:
+	if charging and energy_left < energy_max * 0.9:
 		SoundEffects.singleton.add(9, lander.global_position, 0.7)
+		has_consumed_energy = true
 	cam.shake(body.linear_velocity.length() * 0.01, 0.12)
 	# stretch -= body.linear_velocity.y * 0.0002
 	if not charging and energy.hp < 5 and not dead:
@@ -293,10 +296,10 @@ func land(target: Node2D):
 func collide(_node: Node2D):
 	var mag = body.linear_velocity.length()
 	var threshold := 200.0
-	var amt = roundi(mag / threshold)
+	var amt = roundf(mag / threshold)
 	var p = lander.global_position
-	SoundEffects.singleton.add(1, p, 1 + amt * 0.2)
-	SoundEffects.singleton.add(6, p, 0.5 + amt * 0.1)
+	SoundEffects.singleton.add(18, p, 0.5 + min(amt * 0.2, 1))
+	SoundEffects.singleton.add(6, p, 0.5 + min(amt * 0.1, 0.6))
 	if mag > threshold:
 		cam.shake(amt * 5, 0.15)
 		damage(amt)
@@ -320,10 +323,18 @@ func current_changed():
 func energy_crossed(dir: float, limit: float) -> bool:
 	return energy_left > limit and energy_left + dir < limit
 
+func energy_bling():
+	await get_tree().create_timer(0.1).timeout
+	# SoundEffects.singleton.add(19, body.global_position)
+	SoundEffects.singleton.add(20, body.global_position)
+
 func change_energy(dir: float, limit: float = energy_max):
+	if has_consumed_energy and energy_left + dir >= energy_max:
+		has_consumed_energy = false
+		energy_bling()
 	if limit < energy_max and energy_left > limit and dir > 0: return
 	if energy_crossed(dir, 5.2) or energy_crossed(dir, 0):
-		SoundEffects.singleton.add(8, global_position, 3)
+		SoundEffects.singleton.add(8, body.global_position, 2)
 	energy_left = clampf(energy_left + dir, 0, energy_max)
 	energy.hp = roundi(energy_left)
 

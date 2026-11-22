@@ -11,6 +11,13 @@ var item: Item:
 
 func _ready() -> void:
 	area.body_entered.connect(entered)
+	body_entered.connect(collided)
+
+func collided(_node: Node2D):
+	var limit := 200.0
+	if linear_velocity.length() > limit:
+		var amt = roundf(linear_velocity.length() / limit)
+		SoundEffects.singleton.add(17, global_position, min(amt * 0.5, 1.5))
 
 func entered(_node: Node2D):
 	if not Main.singleton.bee.health.is_alive(): return

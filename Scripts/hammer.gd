@@ -33,6 +33,7 @@ func try_to_break(target: Node):
 		if not target.can_break:
 			Main.pop("CAN NOT DESTROY THAT!")
 		else:
+			SoundEffects.singleton.add_many([12, 11], target.global_position)
 			if target is Station:
 				target.drop_items()
 			var items = builder.pieces[target.identifier].recipe

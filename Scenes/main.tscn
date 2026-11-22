@@ -118,18 +118,29 @@
 [ext_resource type="AudioStream" uid="uid://bqno4g03p3h2t" path="res://Sounds/charge.wav" id="50_reygs"]
 [ext_resource type="Texture2D" uid="uid://chm3umuwk3c5a" path="res://Sprites/jar.png" id="50_rlvxq"]
 [ext_resource type="Texture2D" uid="uid://v44301i6cuql" path="res://Sprites/loom.png" id="51_0fjpc"]
+[ext_resource type="AudioStream" uid="uid://7biuwdwnuht" path="res://Sounds/block.wav" id="51_wx2j7"]
+[ext_resource type="AudioStream" uid="uid://bpegehkpixb21" path="res://Sounds/build.wav" id="52_0jame"]
 [ext_resource type="Texture2D" uid="uid://rrd2emctesuf" path="res://Sprites/banner.png" id="52_gdwd6"]
 [ext_resource type="Texture2D" uid="uid://ruk22duvx6lq" path="res://Sprites/bed.png" id="53_cmq5c"]
+[ext_resource type="AudioStream" uid="uid://cnjbbbhjvsq84" path="res://Sounds/break.wav" id="53_obsuk"]
+[ext_resource type="AudioStream" uid="uid://u0t6upiw7rqa" path="res://Sounds/button.wav" id="54_0jame"]
 [ext_resource type="Texture2D" uid="uid://b4h1tobhsxx7v" path="res://Sprites/dryer.png" id="54_7t1gx"]
 [ext_resource type="Texture2D" uid="uid://cbo6l7kixhr7l" path="res://Sprites/lantern-hanging.png" id="55_mfvrx"]
+[ext_resource type="AudioStream" uid="uid://bm2xynm0leclb" path="res://Sounds/heal.wav" id="55_obsuk"]
 [ext_resource type="Script" uid="uid://g0nodib4yvx4" path="res://Scripts/sign_editor.gd" id="55_y86h7"]
+[ext_resource type="AudioStream" uid="uid://seg1ii825n1c" path="res://Sounds/spit.wav" id="56_6ben7"]
 [ext_resource type="Texture2D" uid="uid://dcfxu2ds3nvqv" path="res://Sprites/lantern-standing.png" id="56_ilwxp"]
 [ext_resource type="PackedScene" uid="uid://dxy7r1qf1oqpe" path="res://Scenes/window.tscn" id="57_lx3vj"]
+[ext_resource type="AudioStream" uid="uid://cln76nbl3wqf7" path="res://Sounds/spit-hit.wav" id="57_pxch7"]
 [ext_resource type="Script" uid="uid://5e1wc8r2tqta" path="res://Scripts/preview.gd" id="57_ynmfv"]
+[ext_resource type="AudioStream" uid="uid://vs58c2cfosct" path="res://Sounds/item-thud.wav" id="58_pxch7"]
+[ext_resource type="AudioStream" uid="uid://kw25hhw726w3" path="res://Sounds/crash.wav" id="59_51a0c"]
 [ext_resource type="Script" uid="uid://b37dkg24taj38" path="res://Scripts/queen.gd" id="59_cmq5c"]
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="59_e5peh"]
 [ext_resource type="Script" uid="uid://5c55rclum7ge" path="res://_Starter/Scripts/follow_mouse.gd" id="60_6ml46"]
+[ext_resource type="AudioStream" uid="uid://cpgu5pmngdn38" path="res://Sounds/full.wav" id="60_cqvvm"]
 [ext_resource type="Texture2D" uid="uid://oqrvt6fcsplq" path="res://Sprites/crown.png" id="60_gdwd6"]
+[ext_resource type="AudioStream" uid="uid://b3ywh1mmnos7v" path="res://Sounds/full2.wav" id="61_w7d74"]
 [ext_resource type="PackedScene" uid="uid://d3aqo7hq77g6o" path="res://Scenes/Pieces/tinker.tscn" id="62_0wopu"]
 [ext_resource type="Texture2D" uid="uid://dsd8ois17b8j6" path="res://Sprites/tinker-table.png" id="63_na2ur"]
 [ext_resource type="PackedScene" uid="uid://0fjkwffkomrd" path="res://Scenes/pot.tscn" id="67_l78ku"]
@@ -188,10 +199,6 @@
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
 colors = PackedColorArray(0.105882354, 0.019607844, 0.14509805, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.105882354, 0.019607844, 0.14509805, 1)
-
-[sub_resource type="Curve" id="Curve_vm2ri"]
-_data = [Vector2(0.060200676, 0), 0.0, 0.0, 0, 0, Vector2(0.123745814, 1), 0.0, 0.0, 0, 0, Vector2(0.632107, 1), 0.0, 0.0, 0, 0, Vector2(0.7625418, 0), 0.0, 0.0, 0, 0]
-point_count = 4
 
 [sub_resource type="Resource" id="Resource_1w6v2"]
 script = ExtResource("3_cbgmd")
@@ -888,7 +895,6 @@ ui_tint = NodePath("../HUD/CanvasModulate")
 tint_color = SubResource("Gradient_sasc4")
 globe_tint = NodePath("../HUD/Frame/Globe Mask/Globe Dimmer")
 clock = NodePath("../HUD/Frame/Clock/Clock Arm")
-day_curve = SubResource("Curve_vm2ri")
 
 [node name="DevRestart" type="Node" parent="." unique_id=791140893]
 script = ExtResource("4_jjvhh")
@@ -907,7 +913,7 @@ metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
 script = ExtResource("24_8dylv")
-effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs")])
+effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74")])
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 
