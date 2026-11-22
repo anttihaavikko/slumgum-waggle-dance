@@ -5,9 +5,7 @@ class_name Bee extends Node2D
 #
 # paint making
 # oil press etc
-# booster stations
 # hats
-# hut doors
 # crab spiders
 # beewolves (wasp)
 #
