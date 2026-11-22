@@ -91,7 +91,7 @@ func spawn_bird(forced := false):
 	open_doors(Hut.DoorType.Bird, -1)
 	var bird = bird_prefab.instantiate() as Bird
 	birds.append(bird)
-	bird.global_position = bee.body.global_position + Vector2.UP * 5000
+	bird.global_position = bee.body.global_position + Vector2.UP * 6000
 	get_parent().add_child(bird)
 
 func has_seen_materials(recipe: Dictionary[Item.Id, int]):

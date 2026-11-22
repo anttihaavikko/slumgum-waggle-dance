@@ -23,7 +23,7 @@ func _ready() -> void:
 	swipe_left.body_entered.connect(swipe_to_left)
 	swipe_right.body_entered.connect(swipe_to_right)
 	colorize()
-	await get_tree().create_timer(28).timeout
+	await get_tree().create_timer(29.5).timeout
 	if life == max_life: leave()
 
 func colorize():
