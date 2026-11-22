@@ -87,6 +87,7 @@ func remove_bird(bird: Bird):
 
 func spawn_bird(forced := false):
 	if birds.size() > 0 and not forced: return
+	Music.bird_attack(true)
 	open_doors(Hut.DoorType.Bird, -1)
 	var bird = bird_prefab.instantiate() as Bird
 	birds.append(bird)

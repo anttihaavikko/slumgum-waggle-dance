@@ -23,7 +23,7 @@ func _ready() -> void:
 	swipe_left.body_entered.connect(swipe_to_left)
 	swipe_right.body_entered.connect(swipe_to_right)
 	colorize()
-	await get_tree().create_timer(30).timeout
+	await get_tree().create_timer(28).timeout
 	if life == max_life: leave()
 
 func colorize():
@@ -48,7 +48,9 @@ func leave():
 	if leaving: return
 	leaving = true
 	target = null
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(1).timeout
+	Music.bird_attack(false)
+	await get_tree().create_timer(9).timeout
 	Main.singleton.remove_bird(self)
 	queue_free()
 
@@ -66,4 +68,6 @@ func hurt(amount: int):
 	if life <= 0:
 		Effects.singleton.add_many([1, 7, 8], body.global_position)
 		Main.shake(80, 0.3)
+		Main.singleton.remove_bird(self)
+		Music.bird_attack(false)
 		queue_free()

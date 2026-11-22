@@ -296,8 +296,8 @@ func collide(_node: Node2D):
 	var threshold := 200.0
 	var amt = roundf(mag / threshold)
 	var p = lander.global_position
-	SoundEffects.singleton.add(18, p, 0.5 + min(amt * 0.2, 1))
-	SoundEffects.singleton.add(6, p, 0.5 + min(amt * 0.1, 0.6))
+	SoundEffects.singleton.add(18, p, 0.5 + min(amt * 0.2, 0.6))
+	SoundEffects.singleton.add(6, p, 0.5 + min(amt * 0.1, 0.4))
 	if mag > threshold:
 		cam.shake(amt * 5, 0.15)
 		damage(amt)

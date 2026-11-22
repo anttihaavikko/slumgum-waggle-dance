@@ -4,13 +4,16 @@
 [ext_resource type="AudioStream" uid="uid://fjk7rqwj6trn" path="res://Sounds/music.wav" id="2_qxpp0"]
 [ext_resource type="AudioStream" uid="uid://cd47f6dmd308b" path="res://Sounds/856018__newlocknew__ambforst_late-springa-quiet-forest-edgehotsunnybirds.wav" id="3_476t3"]
 [ext_resource type="AudioStream" uid="uid://dv8j7867wbxo4" path="res://Sounds/662095__dokuta_gerovv__amb_forest_night (1).wav" id="4_vi5kw"]
+[ext_resource type="AudioStream" uid="uid://j8bxfvs8aa76" path="res://Sounds/bird-attack.wav" id="5_timup"]
 
-[node name="Music" type="Node" unique_id=1579280967 node_paths=PackedStringArray("day", "night")]
+[node name="Music" type="Node" unique_id=1579280967 node_paths=PackedStringArray("day", "night", "bird", "normal")]
 script = ExtResource("1_fbmny")
 day = NodePath("Ambience Day")
 night = NodePath("Ambience Night")
+bird = NodePath("Bird Attack")
+normal = NodePath("Normal")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1654118550]
+[node name="Normal" type="AudioStreamPlayer" parent="." unique_id=1654118550]
 stream = ExtResource("2_qxpp0")
 autoplay = true
 bus = &"Music"
@@ -24,3 +27,7 @@ bus = &"Sounds"
 stream = ExtResource("4_vi5kw")
 autoplay = true
 bus = &"Sounds"
+
+[node name="Bird Attack" type="AudioStreamPlayer" parent="." unique_id=1448521935]
+stream = ExtResource("5_timup")
+bus = &"Music"
