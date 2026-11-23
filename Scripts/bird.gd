@@ -69,14 +69,15 @@ func swipe(dir: float):
 
 func hurt(amount: int):
 	life -= amount
+	SoundEffects.singleton.add(40, body.global_position, 1.5)
 	if life <= 0:
-		Effects.singleton.add_many([1, 7, 8], body.global_position)
-		Main.shake(80, 0.3)
+		Effects.singleton.add_many([1, 7, 8, 12], body.global_position)
+		SoundEffects.singleton.add_many([38, 39], body.global_position, 2)
+		Main.shake(100, 0.3)
 		Main.singleton.remove_bird(self)
 		Music.bird_attack(false)
 		for i in 3:
 			var p = Main.spawn_item(Item.Id.FeatherRobin + species_index, body.global_position)
 			p.rotate(randf() * TAU)
-			p.sprite.rotate(PI * -0.25)
 			p.call_deferred("launch")
 		queue_free()

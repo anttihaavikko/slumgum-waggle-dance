@@ -9,5 +9,7 @@ func spawn(id: Item.Id, pos: Vector2, amount: int = 1, equipment: Equipment.Id =
 	pickup.item = Item.new(items[id], amount)
 	pickup.item.equip = equipment
 	pickup.global_position = pos
+	pickup.rotate(randf() * TAU)
+	pickup.sprite.rotation_degrees = items[id].dropped_rotation
 	call_deferred("add_child", pickup)
 	return pickup

@@ -5,7 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
-	add()
+	call_deferred("add")
 
 func add():
 	var pos = center_point.global_position + Vector2(randf_range(-3000, 3000), randf_range(-1500, 1500))

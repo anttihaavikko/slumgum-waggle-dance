@@ -113,6 +113,7 @@
 [ext_resource type="Texture2D" uid="uid://mxcvq0svo6pu" path="res://Sprites/core.png" id="46_aok0f"]
 [ext_resource type="AudioStream" uid="uid://cjdcwfuuoyb4r" path="res://Sounds/pick.wav" id="46_pkhog"]
 [ext_resource type="AudioStream" uid="uid://bgkyfmob8ie7s" path="res://Sounds/boom.wav" id="47_b4mg0"]
+[ext_resource type="PackedScene" uid="uid://blyndd7pf1v72" path="res://Scenes/Effects/bird_blood.tscn" id="47_dx0u6"]
 [ext_resource type="Texture2D" uid="uid://cwwwr5508ya0b" path="res://Sprites/lantern.png" id="47_fg68e"]
 [ext_resource type="Texture2D" uid="uid://1s8fh5yxfq8x" path="res://Sprites/sign.png" id="48_3h4bx"]
 [ext_resource type="Texture2D" uid="uid://cff2rh54nd4pq" path="res://Sprites/light.png" id="48_f6rfp"]
@@ -180,8 +181,15 @@
 [ext_resource type="Texture2D" uid="uid://fpqyb6gaktty" path="res://Sprites/totem.png" id="81_85qtq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
 [ext_resource type="PackedScene" uid="uid://xkntx47peuwl" path="res://Scenes/light_flash.tscn" id="87_k8rh3"]
+[ext_resource type="AudioStream" uid="uid://c86edvndsmyta" path="res://Sounds/exp1.wav" id="87_n45ei"]
+[ext_resource type="AudioStream" uid="uid://c5uwln6sgwmt1" path="res://Sounds/exp2.wav" id="88_04ry5"]
+[ext_resource type="AudioStream" uid="uid://cpiatg850e1kc" path="res://Sounds/hit.wav" id="89_04ry5"]
 [ext_resource type="Texture2D" uid="uid://b4iv74cpqborr" path="res://Sprites/blowpipe.png" id="90_adgm5"]
 [ext_resource type="Script" uid="uid://bnc6wsaibhmk8" path="res://Scripts/blowpipe.gd" id="90_qxkn4"]
+[ext_resource type="AudioStream" uid="uid://cmsljqx03rks" path="res://Sounds/shoot.wav" id="90_rq0ss"]
+[ext_resource type="AudioStream" uid="uid://ckk12cc6g2lk3" path="res://Sounds/shoot2.wav" id="91_ltyjx"]
+[ext_resource type="AudioStream" uid="uid://b24mppwklipqw" path="res://Sounds/recoil.wav" id="92_xnck3"]
+[ext_resource type="AudioStream" uid="uid://btv1aj1wrbtb8" path="res://Sounds/no_ammo.wav" id="93_ltyjx"]
 [ext_resource type="Script" uid="uid://cqdv0478xmu4j" path="res://Scripts/guitar.gd" id="93_na2ur"]
 [ext_resource type="PackedScene" uid="uid://bg8r3b1m7n3rj" path="res://Scenes/piece_button.tscn" id="95_3ahwd"]
 [ext_resource type="Texture2D" uid="uid://b7mjrvqx2x65j" path="res://Sprites/pickaxe.png" id="96_0wopu"]
@@ -500,6 +508,7 @@ description = "A (feather) of a (robin) you managed to (take down). A (trophy) o
 hold_offset = -10.0
 custom_prefab = ExtResource("28_37usx")
 hold_rotation = 45.0
+dropped_rotation = -45.0
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_82fq1"]
@@ -511,6 +520,7 @@ description = "A (feather) of a (bee-eater) you managed to (take down). A (troph
 hold_offset = -10.0
 custom_prefab = ExtResource("28_37usx")
 hold_rotation = 45.0
+dropped_rotation = -45.0
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_xji1d"]
@@ -522,6 +532,7 @@ description = "A (feather) of a (great tit) you managed to (take down). A (troph
 hold_offset = -20.0
 custom_prefab = ExtResource("28_37usx")
 hold_rotation = 45.0
+dropped_rotation = -45.0
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_6im2o"]
@@ -533,6 +544,7 @@ description = "A (feather) of a (shrike) you managed to (take down). A (trophy) 
 hold_offset = -10.0
 custom_prefab = ExtResource("28_37usx")
 hold_rotation = 45.0
+dropped_rotation = -45.0
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
@@ -1035,12 +1047,12 @@ metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
 [node name="Effects" type="Node" parent="." unique_id=1890521244]
 script = ExtResource("5_ueoa1")
-effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22"), ExtResource("26_ci23i"), ExtResource("27_myryv"), ExtResource("40_b7esa")])
+effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22"), ExtResource("26_ci23i"), ExtResource("27_myryv"), ExtResource("40_b7esa"), ExtResource("47_dx0u6")])
 metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
 script = ExtResource("24_8dylv")
-effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74"), ExtResource("62_vwqqh"), ExtResource("63_svh2a"), ExtResource("64_ytyeu"), ExtResource("65_suxc6"), ExtResource("66_n3keg"), ExtResource("67_fbhnc"), ExtResource("68_suxc6"), ExtResource("69_ycl58"), ExtResource("70_w32ys"), ExtResource("71_g2ehk"), ExtResource("72_b7esa"), ExtResource("73_uo3nc"), ExtResource("74_xtnwn"), ExtResource("75_4vtl5"), ExtResource("77_uo3nc"), ExtResource("78_xtnwn"), ExtResource("79_4vtl5")])
+effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74"), ExtResource("62_vwqqh"), ExtResource("63_svh2a"), ExtResource("64_ytyeu"), ExtResource("65_suxc6"), ExtResource("66_n3keg"), ExtResource("67_fbhnc"), ExtResource("68_suxc6"), ExtResource("69_ycl58"), ExtResource("70_w32ys"), ExtResource("71_g2ehk"), ExtResource("72_b7esa"), ExtResource("73_uo3nc"), ExtResource("74_xtnwn"), ExtResource("75_4vtl5"), ExtResource("77_uo3nc"), ExtResource("78_xtnwn"), ExtResource("79_4vtl5"), ExtResource("87_n45ei"), ExtResource("88_04ry5"), ExtResource("89_04ry5"), ExtResource("90_rq0ss"), ExtResource("91_ltyjx"), ExtResource("92_xnck3"), ExtResource("93_ltyjx")])
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 

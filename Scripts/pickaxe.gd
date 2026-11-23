@@ -3,9 +3,10 @@ extends Equipment
 @export var area: ShapeCast2D
 
 func update(delta: float):
+	var on_cooldown = cooldown > 0
 	super.update(delta)
 	align()
-	if Input.is_action_just_pressed("primary"):
+	if Input.is_action_just_pressed("primary") and not on_cooldown:
 		SoundEffects.singleton.add(36, global_position, 0.7)
 		area.global_position = get_global_mouse_position()
 		await get_tree().create_timer(0.1).timeout

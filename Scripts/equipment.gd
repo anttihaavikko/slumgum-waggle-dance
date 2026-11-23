@@ -36,7 +36,7 @@ func update(_delta: float):
 	if cooldown > 0: return
 	if swinger and Input.is_action_just_pressed("primary"):
 		swinger.swing(swing_dir)
-		cooldown = 0.2
+		cooldown = 0.4
 
 func toggle(state: bool):
 	# print(name, " -> ", state)

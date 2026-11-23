@@ -11,3 +11,4 @@ class_name ItemData extends Resource
 @export var hold_offset := 0.0
 @export var custom_prefab: PackedScene
 @export var hold_rotation := 0.0
+@export var dropped_rotation := 0.0

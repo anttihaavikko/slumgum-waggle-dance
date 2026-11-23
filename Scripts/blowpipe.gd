@@ -19,6 +19,7 @@ func update(_delta: float):
 	if Input.is_action_just_pressed("primary") and can_shoot:
 		var ammo = get_ammo()
 		if ammo < 1:
+			SoundEffects.singleton.add(44, global_position, 1)
 			Main.pop("NO AMMO!")
 			return
 		can_shoot = false
@@ -30,9 +31,13 @@ func update(_delta: float):
 		particles.emitting = true
 		var body = Main.singleton.bee.body
 		body.apply_impulse(-ray.position.normalized().rotated(aligner.rotation) * 400)
+		SoundEffects.singleton.add(41, global_position, 0.25)
+		SoundEffects.singleton.add(42, global_position, 1.5)
+		SoundEffects.singleton.add(36, global_position, 1)
 		if ray.is_colliding():
 			var hit = ray.get_collider()
 			var p = ray.get_collision_point()
+			SoundEffects.singleton.add(43, p, 1)
 			Effects.singleton.add(3, p)
 			var n = ray.get_collision_normal()
 			if hit is StaticBody2D:

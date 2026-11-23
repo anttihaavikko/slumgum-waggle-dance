@@ -3,10 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://bd80e2cqqc85w" path="res://Scenes/pickup.tscn" id="1_aa7si"]
 [ext_resource type="Texture2D" uid="uid://7l2467kil3nr" path="res://Sprites/feather-robin.png" id="2_lex4i"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_colc0"]
+absorbent = true
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lex4i"]
 size = Vector2(152, 460)
 
 [node name="Feather Pickup" unique_id=1139630903 instance=ExtResource("1_aa7si")]
+physics_material_override = SubResource("PhysicsMaterial_colc0")
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, -150)
 metadata/_edit_horizontal_guides_ = [160.0]

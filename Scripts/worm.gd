@@ -21,7 +21,9 @@ func _ready() -> void:
 
 func hurt(amount: int):
 	life -= amount
+	SoundEffects.singleton.add(40, head.global_position, 1.5)
 	if life <= 0:
+		SoundEffects.singleton.add_many([38, 39], head.global_position, 2)
 		Effects.singleton.add_many([7, 8], head.global_position)
 		Effects.singleton.add_many([7, 8], (head.global_position + global_position) * 0.5)
 		queue_free()
