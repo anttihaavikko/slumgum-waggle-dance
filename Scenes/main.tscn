@@ -2042,6 +2042,7 @@ visible = false
 position = Vector2(561, 460)
 starter = true
 worm_chance = 0.5
+extra_seed = 2002
 
 [node name="West Island" parent="." unique_id=578559177 instance=ExtResource("100_mfvrx")]
 visible = false
@@ -2050,6 +2051,7 @@ grass_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 bg_color = Color(0.9808013, 0.6111501, 0.59090304, 1)
 hints = Array[Texture2D]([ExtResource("101_xjjvj")])
 flower_prefab = ExtResource("109_myryv")
+extra_seed = 161
 
 [node name="East Island" parent="." unique_id=547865557 instance=ExtResource("100_mfvrx")]
 visible = false
@@ -2059,6 +2061,7 @@ bg_color = Color(0.80024856, 0.9327806, 0.99746937, 1)
 worm_chance = 0.75
 hints = Array[Texture2D]([ExtResource("102_8dylv")])
 flower_prefab = ExtResource("111_bpr0e")
+extra_seed = 666
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1156603943]
 z_index = 20

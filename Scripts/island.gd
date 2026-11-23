@@ -30,6 +30,7 @@ class_name Island extends Node2D
 @export var ground_check: ShapeCast2D
 @export var hinters: Array[PackedScene]
 @export var bg_parallax: Parallax2D
+@export var extra_seed := 0
 
 var gap := 5000
 var pieces := 3
@@ -80,6 +81,8 @@ func generate():
 
 	await get_tree().process_frame
 
+	seed(123)
+
 	spawn_flowers(1)
 	spawn_flowers(-1)
 
@@ -112,6 +115,7 @@ func generate():
 	for i in 4:
 		create_dungeon(0)
 		await get_tree().process_frame
+		seed(Main.singleton.data.world_seed + extra_seed + i * 10)
 
 	for i in 200:
 		var p = bg.polygon[tree_spots[i]]
