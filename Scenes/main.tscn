@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ahxuod773is" path="res://Sprites/pollen.png" id="6_ptfg5"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://iik6jalprqdf" path="res://Sprites/star.png" id="7_2060n"]
+[ext_resource type="Script" uid="uid://b8mebr8i6loke" path="res://_Starter/Scripts/input_detection.gd" id="7_y07ku"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bbnv4d0882u5o" path="res://Sprites/cloth.png" id="9_1tvlp"]
 [ext_resource type="Texture2D" uid="uid://bvmu61ruffpjm" path="res://Sprites/feeler.png" id="9_6iyac"]
@@ -892,7 +893,7 @@ blend_mode = 1
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip", "input_detection")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
@@ -907,6 +908,11 @@ new_marker = ExtResource("12_gt3je")
 notifications = NodePath("../HUD/Notifications")
 door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), ExtResource("6_gax0l"), null])
 tooltip = NodePath("../HUD/Tooltip")
+input_detection = NodePath("../Input Detection")
+
+[node name="Input Detection" type="Node" parent="." unique_id=1977210264]
+script = ExtResource("7_y07ku")
+metadata/_custom_type_script = "uid://b8mebr8i6loke"
 
 [node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint", "clock")]
 script = ExtResource("2_sasc4")
@@ -1470,11 +1476,12 @@ position = Vector2(-4, -55)
 
 [node name="Wrap" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap" unique_id=1780464618]
 
-[node name="LookAtMouse" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap" unique_id=1932406287 node_paths=PackedStringArray("others")]
+[node name="LookAtMouse" type="Node2D" parent="Bee/Body/Body Sprite/Face Wrap/Wrap" unique_id=1932406287 node_paths=PackedStringArray("others", "mouse_wrap")]
 script = ExtResource("14_cbgmd")
 distance = 12
 others = [NodePath("Face/Wrapper/Eye Left/Pupil"), NodePath("Face/Wrapper/Eye Right/Pupil")]
 other_amount = 50
+mouse_wrap = NodePath("../../../../../../Input Detection")
 metadata/_custom_type_script = "uid://dce3tbn077db6"
 
 [node name="Face" parent="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse" unique_id=90074425 instance=ExtResource("7_344ge")]

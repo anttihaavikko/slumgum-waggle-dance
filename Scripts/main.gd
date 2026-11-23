@@ -13,6 +13,7 @@ class_name Main extends Node
 @export var notifications: Notifications
 @export var door_hints: Array[Texture2D]
 @export var tooltip: Tooltip
+@export var input_detection: InputDetection
 
 var station: StationMenu
 var bee: Bee

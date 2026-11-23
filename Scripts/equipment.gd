@@ -24,6 +24,7 @@ enum Id {
 @export var flips := false
 @export var aligns := true
 @export var help_text: Control
+@export var mouse_wrap: InputDetection
 
 var cooldown := 0.0
 
@@ -43,7 +44,7 @@ func toggle(state: bool):
 	if help_text: help_text.visible = state
 
 func align():
-	var mp = get_global_mouse_position()
+	var mp = Main.singleton.input_detection.get_position(Main.singleton.bee.body, 500)
 	if aligner: aligner.look_at(mp)
 	if not aligns: aligner.rotation = 0
 	if flips: sprite.flip_v = mp.x < global_position.x
