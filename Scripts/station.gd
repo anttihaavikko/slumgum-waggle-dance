@@ -112,7 +112,8 @@ func update_preview(previews: Array[Sprite2D], source: Array[Item], filters: boo
 
 func add(id: Item.Id, amt: int = 1):
 	var item = outputs.find_custom(func(i: Item): return i and i.data.item_id == id and i.amount < 20)
-	if item >= 0: outputs[item].amount += amt
+	if item >= 0:
+		outputs[item].amount += amt
 	else:
 		outputs[outputs.find(null)] = Item.new(Main.get_item_data(id), amt)
 

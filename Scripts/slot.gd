@@ -150,7 +150,7 @@ func update_visuals():
 		icon.self_modulate = item.data.color
 		increment(0)
 
-func add_item(data: ItemData, amount: int = 1):
+func add_item(data: ItemData, amount: int = 1, emits := true):
 	if amount < 1:
 		clear()
 		return
@@ -158,7 +158,7 @@ func add_item(data: ItemData, amount: int = 1):
 	count_container.show()
 	item = Item.new(data, amount)
 	update_visuals()
-	changed.emit()
+	if emits: changed.emit()
 
 func drop() -> Pickup:
 	var p = Main.drop(item, equipment)

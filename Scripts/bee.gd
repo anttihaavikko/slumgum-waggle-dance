@@ -8,6 +8,7 @@ class_name Bee extends Node2D
 # hats
 # crab spiders
 # beewolves (wasp)
+# bird eyes
 #
 # AMBForst_Late Spring.A Quiet Forest Edge.Hot.Sunny.Birds.Mosquitoes 2_EM by newlocknew -- https://freesound.org/s/856018/ -- License: Creative Commons 0
 # amb_forest_night.wav by Dokuta_Gerovv -- https://freesound.org/s/662095/ -- License: Creative Commons 0

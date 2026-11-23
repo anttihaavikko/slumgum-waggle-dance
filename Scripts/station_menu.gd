@@ -97,7 +97,7 @@ func fill(target: Inventory, source: Array[Item]):
 			if source[i].data.item_id == Item.Id.Equipment:
 				target.slots[i].add_equipment(Main.singleton.bee.tools[source[i].equip])
 			else:
-				target.slots[i].add_item(source[i].data, source[i].amount)
+				target.slots[i].add_item(source[i].data, source[i].amount, false)
 
 func toggle_outputs(state: bool):
 	if outputs: outputs.visible = state
