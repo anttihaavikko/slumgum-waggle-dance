@@ -10,6 +10,7 @@ class_name BuildPiece extends Node2D
 @export var sprite: Node2D
 @export var extra_sprites: Array[Sprite2D]
 @export var functionality: Node2D
+@export var can_paint := true
 
 var identifier: BuildPiece.Id
 var data: PieceData

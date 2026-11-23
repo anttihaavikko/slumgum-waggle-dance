@@ -80,11 +80,16 @@
 [ext_resource type="PackedScene" uid="uid://c8qjd5wj7iryj" path="res://Scenes/Effects/cold_petals.tscn" id="27_myryv"]
 [ext_resource type="PackedScene" uid="uid://7eq4og243bf2" path="res://Scenes/Pieces/lantern_hanging.tscn" id="27_v1mrv"]
 [ext_resource type="Script" uid="uid://bo2yl6aduulkt" path="res://Scripts/passive.gd" id="28_8cuat"]
+[ext_resource type="PackedScene" uid="uid://dgcutsaau3oj6" path="res://Scenes/feather_pickup.tscn" id="28_37usx"]
 [ext_resource type="PackedScene" uid="uid://bhrh73advjb1c" path="res://Scenes/Pieces/lantern_standing.tscn" id="28_fd3ed"]
 [ext_resource type="Script" uid="uid://dpfef6ajmsjhq" path="res://Scripts/living_light.gd" id="28_pfx1i"]
+[ext_resource type="Texture2D" uid="uid://d124w2fxewspj" path="res://Sprites/feather-robin-icon.png" id="29_qywy7"]
 [ext_resource type="PackedScene" uid="uid://cmtgmcguvat74" path="res://Scenes/Pieces/bed.tscn" id="29_wl4bb"]
+[ext_resource type="Texture2D" uid="uid://dlc8apgxyah56" path="res://Sprites/feather-bee-eater-icon.png" id="30_a361w"]
 [ext_resource type="Script" uid="uid://drtpdk28hi7te" path="res://Scripts/piece_data.gd" id="31_3h4bx"]
+[ext_resource type="Texture2D" uid="uid://dmwvg2027l62w" path="res://Sprites/feather-great-tit-icon.png" id="31_5fyhb"]
 [ext_resource type="Texture2D" uid="uid://cd0yify70om02" path="res://Sprites/guitar.png" id="31_nwwfm"]
+[ext_resource type="Texture2D" uid="uid://djeo6au8rjdfy" path="res://Sprites/feather-shrike-icon.png" id="32_dx0u6"]
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
 [ext_resource type="Texture2D" uid="uid://cofjigejorj7t" path="res://Sprites/tri-down.png" id="33_e08e2"]
 [ext_resource type="Texture2D" uid="uid://f56nl7hefqyg" path="res://Sprites/platform.png" id="33_rlvxq"]
@@ -206,7 +211,15 @@
 [ext_resource type="Texture2D" uid="uid://cnwp67b5haw7c" path="res://_Starter/Sprites/fullscreen.png" id="121_rlvdk"]
 [ext_resource type="Script" uid="uid://d17yxppj3u2f7" path="res://Scripts/water.gd" id="122_jab21"]
 [ext_resource type="Script" uid="uid://foqfxb04yivj" path="res://_Starter/Scripts/version_label.gd" id="122_t6wb6"]
+[ext_resource type="PackedScene" uid="uid://ju7snynemmad" path="res://Scenes/Pieces/feather_robin.tscn" id="126_17dee"]
 [ext_resource type="Texture2D" uid="uid://13a786in0a2a" path="res://Sprites/icon-pick.png" id="126_dllok"]
+[ext_resource type="Texture2D" uid="uid://7l2467kil3nr" path="res://Sprites/feather-robin.png" id="127_kt6vk"]
+[ext_resource type="PackedScene" uid="uid://vkr0pfxapumc" path="res://Scenes/Pieces/feather_bee_eater.tscn" id="128_tom0i"]
+[ext_resource type="Texture2D" uid="uid://imoee1p0eftj" path="res://Sprites/feather-bee-eater.png" id="129_rbkdr"]
+[ext_resource type="PackedScene" uid="uid://yctsxfjkug7m" path="res://Scenes/Pieces/feather_great_tit.tscn" id="130_6wqo8"]
+[ext_resource type="Texture2D" uid="uid://ckmtb8qkmxf0n" path="res://Sprites/feather-great-tit.png" id="131_qays4"]
+[ext_resource type="PackedScene" uid="uid://bs6833lkj38gc" path="res://Scenes/Pieces/feather_shrike.tscn" id="132_brnef"]
+[ext_resource type="Texture2D" uid="uid://5vxaaq1nuy5" path="res://Sprites/feather-shrike.png" id="133_37usx"]
 [ext_resource type="AudioStream" uid="uid://i5uctb87mal5" path="res://Sounds/buzz.wav" id="140_fmflf"]
 [ext_resource type="Script" uid="uid://bfsl5u4ut83v3" path="res://Scripts/flip_detector.gd" id="141_4fylk"]
 [ext_resource type="Script" uid="uid://dcnfa0hou2e0q" path="res://Scripts/winds.gd" id="144_b12iu"]
@@ -478,6 +491,50 @@ description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (
 custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
+[sub_resource type="Resource" id="Resource_rnjsd"]
+script = ExtResource("3_cbgmd")
+item_id = 27
+title = "Robin Feather"
+sprite = ExtResource("29_qywy7")
+description = "A (feather) of a (robin) you managed to (take down). A (trophy) of a battle (won)!"
+hold_offset = -10.0
+custom_prefab = ExtResource("28_37usx")
+hold_rotation = 45.0
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_82fq1"]
+script = ExtResource("3_cbgmd")
+item_id = 28
+title = "Bee-Eater Feather"
+sprite = ExtResource("30_a361w")
+description = "A (feather) of a (bee-eater) you managed to (take down). A (trophy) of a battle (won)!"
+hold_offset = -10.0
+custom_prefab = ExtResource("28_37usx")
+hold_rotation = 45.0
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_xji1d"]
+script = ExtResource("3_cbgmd")
+item_id = 29
+title = "Great Tit Feather"
+sprite = ExtResource("31_5fyhb")
+description = "A (feather) of a (great tit) you managed to (take down). A (trophy) of a battle (won)!"
+hold_offset = -20.0
+custom_prefab = ExtResource("28_37usx")
+hold_rotation = 45.0
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_6im2o"]
+script = ExtResource("3_cbgmd")
+item_id = 30
+title = "Shrike Feather"
+sprite = ExtResource("32_dx0u6")
+description = "A (feather) of a (shrike) you managed to (take down). A (trophy) of a battle (won)!"
+hold_offset = -10.0
+custom_prefab = ExtResource("28_37usx")
+hold_rotation = 45.0
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
 shader = ExtResource("15_k12tt")
 shader_parameter/amount = 10.0
@@ -681,6 +738,50 @@ recipe = Dictionary[int, int]({
 9: 5,
 19: 5,
 23: 1
+})
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
+[sub_resource type="Resource" id="Resource_brnef"]
+script = ExtResource("31_3h4bx")
+title = "Robin Feather"
+description = "A decorative (feather) of a (robin) you managed to (take down). A (trophy) of a battle (won)!"
+prefab = ExtResource("126_17dee")
+sprite = ExtResource("127_kt6vk")
+recipe = Dictionary[int, int]({
+27: 1
+})
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
+[sub_resource type="Resource" id="Resource_sxjml"]
+script = ExtResource("31_3h4bx")
+title = "Bee-Eater Feather"
+description = "A decorative (feather) of a (bee-eater) you managed to (take down). A (trophy) of a battle (won)!"
+prefab = ExtResource("128_tom0i")
+sprite = ExtResource("129_rbkdr")
+recipe = Dictionary[int, int]({
+28: 1
+})
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
+[sub_resource type="Resource" id="Resource_36uwi"]
+script = ExtResource("31_3h4bx")
+title = "Great Tit Feather"
+description = "A decorative (feather) of a (great tit) you managed to (take down). A (trophy) of a battle (won)!"
+prefab = ExtResource("130_6wqo8")
+sprite = ExtResource("131_qays4")
+recipe = Dictionary[int, int]({
+29: 1
+})
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
+[sub_resource type="Resource" id="Resource_tom0i"]
+script = ExtResource("31_3h4bx")
+title = "Shrike Feather"
+description = "A decorative (feather) of a (shrike) you managed to (take down). A (trophy) of a battle (won)!"
+prefab = ExtResource("132_brnef")
+sprite = ExtResource("133_37usx")
+recipe = Dictionary[int, int]({
+30: 1
 })
 metadata/_custom_type_script = "uid://drtpdk28hi7te"
 
@@ -898,7 +999,7 @@ script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter")]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, null, null, null]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
@@ -928,7 +1029,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul"), SubResource("Resource_rnjsd"), SubResource("Resource_82fq1"), SubResource("Resource_xji1d"), SubResource("Resource_6im2o")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
@@ -1137,7 +1238,7 @@ script = ExtResource("144_odn5n")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid", "painter")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh"), SubResource("Resource_gf7g1"), SubResource("Resource_56rwl")])
+pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh"), SubResource("Resource_gf7g1"), SubResource("Resource_56rwl"), SubResource("Resource_brnef"), SubResource("Resource_sxjml"), SubResource("Resource_36uwi"), SubResource("Resource_tom0i")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Core"), NodePath("Platform"), NodePath("Platform2"), NodePath("Support3"), NodePath("Support4")]
 picker = NodePath("../HUD/Build Picker Win")

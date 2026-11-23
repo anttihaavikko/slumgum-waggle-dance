@@ -18,6 +18,7 @@ var target: Node2D
 var max_life := 25
 var life := max_life
 var leaving := false
+var species_index := 0
 
 func _ready() -> void:
 	target = Main.singleton.bee.body
@@ -30,6 +31,7 @@ func _ready() -> void:
 
 func colorize():
 	var theme = themes.pick_random()
+	species_index = themes.find(theme)
 	for s in main_sprites: s.self_modulate = theme.main
 	stripe.self_modulate = theme.stripe
 	chest.self_modulate = theme.chest
@@ -72,4 +74,9 @@ func hurt(amount: int):
 		Main.shake(80, 0.3)
 		Main.singleton.remove_bird(self)
 		Music.bird_attack(false)
+		for i in 3:
+			var p = Main.spawn_item(Item.Id.FeatherRobin + species_index, body.global_position)
+			p.rotate(randf() * TAU)
+			p.sprite.rotate(PI * -0.25)
+			p.call_deferred("launch")
 		queue_free()

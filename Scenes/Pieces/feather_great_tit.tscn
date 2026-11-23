@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://yctsxfjkug7m"]
+
+[ext_resource type="PackedScene" uid="uid://ju7snynemmad" path="res://Scenes/Pieces/feather_robin.tscn" id="1_v82k7"]
+[ext_resource type="Texture2D" uid="uid://ckmtb8qkmxf0n" path="res://Sprites/feather-great-tit.png" id="2_6gx7u"]
+
+[node name="Feather" unique_id=299398414 instance=ExtResource("1_v82k7")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+texture = ExtResource("2_6gx7u")

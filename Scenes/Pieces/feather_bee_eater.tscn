@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://vkr0pfxapumc"]
+
+[ext_resource type="PackedScene" uid="uid://ju7snynemmad" path="res://Scenes/Pieces/feather_robin.tscn" id="1_lapih"]
+[ext_resource type="Texture2D" uid="uid://imoee1p0eftj" path="res://Sprites/feather-bee-eater.png" id="2_7p5pw"]
+
+[node name="Feather" unique_id=299398414 instance=ExtResource("1_lapih")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+texture = ExtResource("2_7p5pw")

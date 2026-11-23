@@ -27,7 +27,11 @@ enum Id {
 	Egg,
 	EggDamage,
 	RelicHealth,
-	RelicEnergy
+	RelicEnergy,
+	FeatherRobin,
+	FeatherBeeEater,
+	FeatherGreatTit,
+	FeatherShrike
 }
 
 var data: ItemData

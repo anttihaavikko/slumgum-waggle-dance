@@ -28,6 +28,7 @@ func try_to_paint(target: Node):
 
 static func paint_piece(target: Node, color: Color):
 	if target is BuildPiece and target.sprite:
+		if not target.can_paint: return
 		for s in target.extra_sprites:
 			s.self_modulate = color
 		if target.sprite is Line2D:

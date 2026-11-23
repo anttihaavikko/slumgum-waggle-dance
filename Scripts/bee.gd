@@ -326,6 +326,7 @@ func current_changed():
 		item.self_modulate = i.data.color
 		item.texture = i.data.sprite
 		item.position.y = -39 + i.data.hold_offset
+		item.rotation_degrees = i.data.hold_rotation
 
 func energy_crossed(dir: float, limit: float) -> bool:
 	return energy_left > limit and energy_left + dir < limit
