@@ -1740,9 +1740,6 @@ modulate = Color(1, 1, 1, 0.11372549)
 scale = Vector2(4.7098603, 4.7098603)
 texture = ExtResource("98_e1jjv")
 
-[node name="Timer" type="Timer" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Guitar" unique_id=226969410]
-wait_time = 5.0
-
 [node name="Paintbrush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=1825213336 node_paths=PackedStringArray("paint", "cast", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)

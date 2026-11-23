@@ -4,8 +4,8 @@ var world_seed: int = randi()
 var day := 0
 var rank := 0
 var time := 0.1
-var x: float
-var y: float
+var x := 597.0
+var y := -240.0
 var tutorial_over := false
 var health := 10
 var inventory := []
