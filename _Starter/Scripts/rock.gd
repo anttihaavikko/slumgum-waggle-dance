@@ -9,6 +9,7 @@ class_name Rock extends Node2D
 var mining := false
 var life := 0
 var timer := 0.0
+var index_number := 0
 
 func _ready() -> void:
 	rotate(PI * randf_range(-2, 2))
@@ -22,6 +23,8 @@ func _ready() -> void:
 	line.points = poly.polygon
 	collider.polygon = poly.polygon
 	poly.self_modulate = lerp(Color.WHITE, tint, randf())
+	if Main.singleton.data.broken_nodes.has(index_number * 1.0):
+		queue_free()
 
 func _process(delta) -> void:
 	timer -= delta
@@ -40,6 +43,7 @@ func mine(pos: Vector2):
 				for i in 5:
 					var p = Main.spawn_item(Item.Id.Rock, global_position)
 					p.apply_impulse(Vector2.ONE.rotated(randf() * TAU) * 750)
+				broke()
 				queue_free()
 				return
 			get_tree().create_tween().tween_property(spot, "position", get_point(), 0.15).set_trans(Tween.TRANS_BOUNCE)
@@ -51,6 +55,10 @@ func mine(pos: Vector2):
 	strike(20)
 	life = 5
 	timer = 1.0
+
+func broke():
+	if index_number >= 0:
+		Main.singleton.data.broken_nodes.append(index_number)
 
 func strike(amt: float):
 	SoundEffects.singleton.add(37, spot.global_position, 0.7)

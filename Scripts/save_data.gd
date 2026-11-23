@@ -13,6 +13,8 @@ var buildings := []
 var seen := []
 var built := []
 var crafted := []
+var explosions := []
+var broken_nodes := []
 
 static func load() -> SaveData:
 	return Saver.new().load(func(): return SaveData.new()) as SaveData

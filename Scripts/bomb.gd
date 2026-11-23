@@ -33,6 +33,8 @@ func _ready() -> void:
 		exploded = exploded or island.explode(island.to_local(global_position))
 	Main.shake(40, 0.3)
 	Effects.singleton.add_many([1, 2, 3], global_position)
+	SoundEffects.singleton.add_many([38, 39, 40], global_position, 2)
+	Main.singleton.data.explosions.append([global_position.x, global_position.y])
 	if shape.get_collision_count() > 0 and exploded:
 		for i in 10:
 			var dirt = Main.spawn_item([Item.Id.Sand, Item.Id.Dirt].pick_random(), global_position)

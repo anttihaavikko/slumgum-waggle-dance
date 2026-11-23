@@ -7,6 +7,7 @@ class_name Flower extends Node2D
 
 var amount := 0
 var grown := false
+var index_number := -1
 
 func _ready() -> void:
 	mover.time_offset = randf_range(0, 100)
@@ -15,6 +16,13 @@ func _ready() -> void:
 	area.body_exited.connect(exited)
 	fill()
 	Main.singleton.flowers.append(self)
+	breakable.broke.connect(broke)
+	if Main.singleton.data.broken_nodes.has(index_number * 1.0):
+		queue_free()
+
+func broke():
+	if index_number >= 0:
+		Main.singleton.data.broken_nodes.append(index_number)
 
 func fill():
 	amount = randi_range(3, 5) * breakable.drop_multiplier

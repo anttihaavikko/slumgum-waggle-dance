@@ -99,6 +99,8 @@ func generate():
 		if to_local(p).length() < 1500: continue
 		var rock = rock_prefab.instantiate() as Node2D
 		rock.global_position = p
+		rock.index_number = Main.singleton.object_index
+		Main.singleton.object_index += 1
 		add_child(rock)
 
 	for i in 75:
@@ -128,6 +130,9 @@ func generate():
 
 	for d in added_dungeons:
 		d.cleanup(ground_check)
+
+	for e in Main.singleton.data.explosions:
+		explode(to_local(Vector2(e[0], e[1])))
 
 func create_dungeon(try := 0) -> bool:
 	if try > 10: return false
@@ -229,6 +234,8 @@ func spawn_flower(pos: float):
 		var p = ray.get_collision_point()
 		# if not Geometry2D.is_point_in_polygon(p + Vector2.DOWN * 200, poly.polygon): return
 		var flower = flower_prefab.instantiate() as Flower
+		flower.index_number = Main.singleton.object_index
+		Main.singleton.object_index += 1
 		add_child(flower)
 		flower.global_position = p
 

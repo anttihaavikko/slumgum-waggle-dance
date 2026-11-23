@@ -32,6 +32,7 @@ var door_hint_pool: Array
 var door_hints_init := false
 var data: SaveData
 var huts: Array[Hut] = []
+var object_index := 0
 
 static var singleton: Main = null
 
