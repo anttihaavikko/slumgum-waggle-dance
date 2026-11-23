@@ -38,10 +38,14 @@ func open():
 	get_tree().create_tween().tween_property(left, "scale", Vector2(0, 1), duration).set_trans(Tween.TRANS_QUAD)
 	get_tree().create_tween().tween_property(right, "scale", Vector2(0, 1), duration).set_trans(Tween.TRANS_QUAD)
 	await get_tree().create_timer(duration).timeout
+	left.hide()
+	right.hide()
 	opened.emit()
 
 func close():
 	prepare()
+	left.show()
+	right.show()
 	get_tree().create_tween().tween_property(left, "scale", Vector2(1.1, 1), duration).set_trans(Tween.TRANS_BOUNCE)
 	get_tree().create_tween().tween_property(right, "scale", Vector2(1.1, 1), duration).set_trans(Tween.TRANS_BOUNCE)
 	await get_tree().create_timer(duration + 0.1).timeout
