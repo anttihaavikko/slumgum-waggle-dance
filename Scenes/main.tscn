@@ -367,6 +367,11 @@ title = "Red Paint"
 color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 sprite = ExtResource("11_phube")
 description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
+recipe = Dictionary[int, int]({
+14: 10,
+31: 1
+})
+recipe_creates = 10
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_87bhu"]
@@ -376,6 +381,11 @@ title = "Green Paint"
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 sprite = ExtResource("11_phube")
 description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
+recipe = Dictionary[int, int]({
+14: 10,
+32: 1
+})
+recipe_creates = 10
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_33qc4"]
@@ -384,6 +394,12 @@ item_id = 14
 title = "White Paint"
 sprite = ExtResource("11_phube")
 description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
+recipe = Dictionary[int, int]({
+1: 2,
+3: 2,
+20: 1
+})
+recipe_creates = 10
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_e6rcu"]
@@ -393,6 +409,11 @@ title = "Yellow Paint"
 color = Color(1, 0.7294118, 0.28627452, 1)
 sprite = ExtResource("11_phube")
 description = "(Paint) can be used to (color) your (build pieces) how you want. Requires a (paintbrush) to apply."
+recipe = Dictionary[int, int]({
+14: 10,
+17: 2
+})
+recipe_creates = 10
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="Resource" id="Resource_p4gyq"]
@@ -545,6 +566,24 @@ hold_offset = -10.0
 custom_prefab = ExtResource("28_37usx")
 hold_rotation = 45.0
 dropped_rotation = -45.0
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_ltyjx"]
+script = ExtResource("3_cbgmd")
+item_id = 31
+title = "Red Pollen"
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = ExtResource("6_ptfg5")
+description = "Soft and fuzzy (red material) gathered from a (crimson flower). Has many different (uses) like as a source for (fabric) or (oils)."
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_xnck3"]
+script = ExtResource("3_cbgmd")
+item_id = 32
+title = "Cold Pollen"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = ExtResource("6_ptfg5")
+description = "Soft and fuzzy (cold material) gathered from a (golden flower). Has many different (uses) like as a source for (fabric) or (oils)."
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
@@ -1041,7 +1080,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul"), SubResource("Resource_rnjsd"), SubResource("Resource_82fq1"), SubResource("Resource_xji1d"), SubResource("Resource_6im2o")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul"), SubResource("Resource_rnjsd"), SubResource("Resource_82fq1"), SubResource("Resource_xji1d"), SubResource("Resource_6im2o"), SubResource("Resource_ltyjx"), SubResource("Resource_xnck3")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
@@ -2445,7 +2484,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 script = ExtResource("50_1semv")
-item_recipes = Array[int]([6, 8, 7])
+item_recipes = Array[int]([6, 8, 7, 14, 15, 13, 12])
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 creates_items = true
