@@ -86,6 +86,9 @@ func _ready() -> void:
 			inventory.slots[i].add_item(Main.singleton.item_db.items[data[0]], data[1])
 
 	inventory.focus(0)
+	# DisplayServer.window_set_size(Vector2i(320, 240))
+	# get_tree().root.content_scale_size = Vector2i(320, 240)
+	# get_tree().root.content_scale_factor = 2
 
 	# await get_tree().process_frame
 	# if OS.is_debug_build():

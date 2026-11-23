@@ -1926,6 +1926,7 @@ offset_right = 357.83862
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 0
+layout_direction = 2
 mouse_filter = 2
 texture = ExtResource("13_fdnlq")
 expand_mode = 3
@@ -2092,6 +2093,7 @@ offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
 offset_bottom = 302.0
+layout_direction = 2
 title = "CORE"
 
 [node name="Core" type="Control" parent="HUD/Core Window" unique_id=1639279868 node_paths=PackedStringArray("win", "preview", "description", "crafter")]
@@ -2161,6 +2163,7 @@ offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
 offset_bottom = 302.0
+layout_direction = 2
 title = "ANVIL"
 
 [node name="Anvil" type="Control" parent="HUD/Anvil Window" unique_id=259982122 node_paths=PackedStringArray("win", "preview", "crafter")]
@@ -2228,6 +2231,7 @@ offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
 offset_bottom = 302.0
+layout_direction = 2
 title = "ANVIL"
 
 [node name="Tinker" type="Control" parent="HUD/Tinker Window" unique_id=1737957036 node_paths=PackedStringArray("win", "preview", "crafter")]
@@ -2296,6 +2300,7 @@ offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
 offset_bottom = 302.0
+layout_direction = 2
 title = "CORE"
 
 [node name="Bed" type="Control" parent="HUD/Bed Window" unique_id=1103735753 node_paths=PackedStringArray("win")]
@@ -2351,6 +2356,7 @@ offset_left = 225.0
 offset_top = -371.0
 offset_right = 594.0
 offset_bottom = 300.0
+layout_direction = 2
 title = "BOX"
 
 [node name="Box" type="Control" parent="HUD/Box Window" unique_id=1257848854 node_paths=PackedStringArray("inputs", "win")]
@@ -2386,6 +2392,7 @@ offset_left = 225.0
 offset_top = -371.0
 offset_right = 594.0
 offset_bottom = 300.0
+layout_direction = 2
 title = "JAR"
 
 [node name="Converter" type="Control" parent="HUD/Converter Win" unique_id=615244221 node_paths=PackedStringArray("inputs", "outputs", "win", "description", "input_label", "output_label")]
@@ -2473,6 +2480,7 @@ offset_left = 189.0
 offset_top = -372.0
 offset_right = 595.0
 offset_bottom = 299.0
+layout_direction = 2
 has_close_button = false
 title = "PREVIEW"
 
@@ -2544,6 +2552,7 @@ offset_left = -145.0
 offset_top = -278.0
 offset_right = 137.0
 offset_bottom = -65.0
+layout_direction = 2
 title = "EDIT SIGN"
 
 [node name="Input" type="Control" parent="HUD/Sign Window" unique_id=2110320222 node_paths=PackedStringArray("field", "win")]
@@ -2577,6 +2586,7 @@ offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
 offset_bottom = 302.0
+layout_direction = 2
 title = "BUILD PIECES"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HUD/Build Picker Win" unique_id=784950838]
@@ -2674,6 +2684,7 @@ offset_right = -36.0
 offset_bottom = -31.0
 grow_horizontal = 0
 grow_vertical = 0
+layout_direction = 2
 theme_override_constants/icon_max_width = 50
 text = ""
 icon = ExtResource("121_rlvdk")
@@ -2686,6 +2697,7 @@ offset_left = 17.0
 offset_top = 17.0
 offset_right = 96.0
 offset_bottom = 45.0
+layout_direction = 2
 theme = ExtResource("36_hdf80")
 text = "0"
 script = ExtResource("114_ilwxp")
@@ -2697,6 +2709,7 @@ offset_left = 17.0
 offset_top = 40.0
 offset_right = 144.0
 offset_bottom = 74.0
+layout_direction = 2
 theme = ExtResource("36_hdf80")
 text = "0.0.0"
 script = ExtResource("122_t6wb6")
@@ -3019,6 +3032,7 @@ position = Vector2(-38596, 23151)
 shape = SubResource("WorldBoundaryShape2D_xjjvj")
 
 [node name="Blinders" parent="." unique_id=843717358 instance=ExtResource("166_hprjy")]
+visible = false
 
 [connection signal="flipped" from="Bee/Flip Detect" to="Main" method="open_doors" binds= [1]]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]

@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="1_6dtsg"]
 [ext_resource type="Script" uid="uid://b6wi31avwrvcy" path="res://_Starter/Scripts/face.gd" id="1_hsvtw"]
 [ext_resource type="Texture2D" uid="uid://b86g0fd25ahdx" path="res://_Starter/Sprites/mouth.png" id="2_1a1d3"]
-[ext_resource type="Texture2D" uid="uid://74hyg5isj5x3" path="res://_Starter/Sprites/square.png" id="3_yp0oe"]
 
 [node name="Face" type="Node2D" unique_id=1240513132 node_paths=PackedStringArray("left_eye", "right_eye", "wrapper", "blushes", "extra_eyes", "mouth", "opened_mouth", "left_pupil", "right_pupil")]
 script = ExtResource("1_hsvtw")
@@ -23,28 +22,16 @@ right_pupil = NodePath("Wrapper/Eye Right/Pupil")
 modulate = Color(0.9372549, 0.35686275, 0.35686275, 1)
 
 [node name="Blush Left" type="Sprite2D" parent="Wrapper/Blushes" unique_id=1921362429]
-clip_children = 1
 position = Vector2(-19, 7)
 rotation = 3.1415925
 scale = Vector2(0.027740411, 0.017691946)
 texture = ExtResource("1_6dtsg")
 
-[node name="Fill" type="Sprite2D" parent="Wrapper/Blushes/Blush Left" unique_id=1046209242]
-position = Vector2(-16.606659, 1.7359161)
-scale = Vector2(695.53235, 795.9949)
-texture = ExtResource("3_yp0oe")
-
 [node name="Blush Right" type="Sprite2D" parent="Wrapper/Blushes" unique_id=69306370]
-clip_children = 1
 position = Vector2(21, 6)
 rotation = 3.1415925
 scale = Vector2(0.028567871, 0.016588679)
 texture = ExtResource("1_6dtsg")
-
-[node name="Fill" type="Sprite2D" parent="Wrapper/Blushes/Blush Right" unique_id=353374705]
-position = Vector2(-16.606659, 1.7359161)
-scale = Vector2(629.04266, 719.9014)
-texture = ExtResource("3_yp0oe")
 
 [node name="Eye Left" type="Sprite2D" parent="Wrapper" unique_id=3138396]
 self_modulate = Color(0, 0, 0, 1)

@@ -23,6 +23,7 @@ collision_layer = 9
 script = ExtResource("1_b640e")
 grass_color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 bg_color = Color(0.15686275, 0.78039217, 0.7607843, 1)
+hints = Array[Texture2D]([ExtResource("9_w3x1o"), ExtResource("10_j208g")])
 shapes = [NodePath("Shape1")]
 patch_prefab = ExtResource("2_cjy1e")
 collider = NodePath("CollisionPolygon2D")
@@ -43,7 +44,6 @@ start_area = NodePath("Start Area")
 spawners = Array[PackedScene]([ExtResource("7_5ec47")])
 ground_check = NodePath("Ground Check")
 hinters = Array[PackedScene]([ExtResource("8_mgtah")])
-hints = Array[Texture2D]([ExtResource("9_w3x1o"), ExtResource("10_j208g")])
 bg_parallax = NodePath("Parallax2D")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1719393640]

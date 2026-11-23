@@ -66,6 +66,6 @@ func toggle_fullscreen():
 	OptionsMenu.toggle_fullscreen_static()
 
 static func toggle_fullscreen_static():
-	var full := DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	var full := DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 	# if full: get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if full else DisplayServer.WINDOW_MODE_FULLSCREEN)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if full else DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
