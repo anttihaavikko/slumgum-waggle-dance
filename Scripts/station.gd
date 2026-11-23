@@ -174,8 +174,8 @@ func get_populated(arr: Array) -> Array[Item]:
 		items[i].equip = dat[2]
 	return items
 
-func get_extra_num() -> int:
+func get_extras() -> Array:
 	if functionality:
 		if functionality is Pot:
-			return functionality.phase
-	return 0
+			return [functionality.phase, functionality.prefab_index]
+	return []

@@ -64,8 +64,9 @@ func load():
 			if piece.label: piece.label.text = data[6]
 			if piece.functionality:
 				if piece.functionality is Pot:
-					piece.functionality.phase = max(data[7] - 1, 0)
-					piece.funtionality.change_phase(true)
+					piece.functionality.phase = max(data[7][0] - 1, 0)
+					piece.functionality.prefab_index = data[7][1]
+					piece.functionality.change_phase(true)
 		built_pieces.append(piece)
 		snap_points.append_array(piece.snap_points)
 

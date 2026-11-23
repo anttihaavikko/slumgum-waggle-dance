@@ -65,6 +65,15 @@ func open(source: Station):
 	win.show()
 	if preview: preview.open()
 
+	try_init()
+
+	if inputs: limit_slots(inputs, source.slots)
+	if outputs: limit_slots(outputs, source.slots)
+
+	update_contents()
+	station.try_convert()
+
+func try_init():
 	if inputs and not initialized:
 		inputs.create_slots(5)
 		inputs.lock()
@@ -72,12 +81,6 @@ func open(source: Station):
 		outputs.create_slots(5)
 		outputs.lock()
 	initialized = true
-
-	if inputs: limit_slots(inputs, source.slots)
-	if outputs: limit_slots(outputs, source.slots)
-
-	update_contents()
-	station.try_convert()
 
 func limit_slots(inv: Inventory, amount: int):
 	for i in inv.slots.size():

@@ -7,6 +7,7 @@ class_name Pot extends Node2D
 var phase := 0
 var seeds := [Item.Id.Seed, Item.Id.GoldSeed, Item.Id.PureSeed]
 var prefab: PackedScene
+var prefab_index := 0
 
 func _ready() -> void:
 	station.updated.connect(station_updated)
@@ -19,10 +20,13 @@ func station_updated():
 	if station.inputs.size() > 0:
 		if station.inputs[0] and is_seed(station.inputs[0].data.item_id):
 			phases[0].modulate = station.inputs[0].data.color
-			prefab = flower_prefabs[seeds.find(station.inputs[0].data.item_id)]
+			prefab_index = seeds.find(station.inputs[0].data.item_id)
+			prefab = flower_prefabs[prefab_index]
 			station.consume(station.inputs[0].data.item_id)
 			change_phase(true)
 			if station.menu:
+				station.menu.station = station
+				station.menu.try_init()
 				station.menu.update_contents()
 
 func create_nectar() -> Item:
@@ -49,9 +53,12 @@ func change_phase(starting := false):
 			update_menu()
 		return
 	if not starting and phase == 0: return
-	if phase > 0: phases[phase - 1].hide()
+	if phase > 0:
+		phases[0].hide()
+		phases[phase - 1].hide()
 	phase += 1
 	if phase == 4:
+		prefab = flower_prefabs[prefab_index]
 		var flower = prefab.instantiate() as Flower
 		flower.breakable.drop_multiplier = 2
 		add_child(flower)

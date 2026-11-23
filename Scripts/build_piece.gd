@@ -110,13 +110,13 @@ func get_for_save() -> Array:
 		get_inputs_for_save(),
 		get_outputs_for_save(),
 		label.text if label else "",
-		get_extra_num(),
+		get_extras(),
 		paint_color,
 		1 if energized else 0
 	]
 
-func get_extra_num() -> int:
-	return 0
+func get_extras() -> Array:
+	return []
 
 func get_inputs_for_save() -> Array:
 	return []
