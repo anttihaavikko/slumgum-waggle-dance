@@ -167,6 +167,9 @@
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="74_p4gyq"]
 [ext_resource type="AudioStream" uid="uid://c3wgaarog8l32" path="res://Sounds/chords/b-up.wav" id="74_xtnwn"]
 [ext_resource type="AudioStream" uid="uid://cd3p7w7kn7fmq" path="res://Sounds/chords/c-up.wav" id="75_4vtl5"]
+[ext_resource type="AudioStream" uid="uid://cv7ad68cc83xh" path="res://Sounds/swing.wav" id="77_uo3nc"]
+[ext_resource type="AudioStream" uid="uid://cc5mc5jfagcdu" path="res://Sounds/swoosh.wav" id="78_xtnwn"]
+[ext_resource type="AudioStream" uid="uid://ctwkrr6gj6roy" path="res://Sounds/mine.wav" id="79_4vtl5"]
 [ext_resource type="PackedScene" uid="uid://dsibpvt7e4pkm" path="res://Scenes/Pieces/totem.tscn" id="80_32yv2"]
 [ext_resource type="Texture2D" uid="uid://fpqyb6gaktty" path="res://Sprites/totem.png" id="81_85qtq"]
 [ext_resource type="PackedScene" uid="uid://dxstoyw1fxcrn" path="res://Scenes/bomb.tscn" id="85_vxl7x"]
@@ -930,7 +933,7 @@ metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
 script = ExtResource("24_8dylv")
-effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74"), ExtResource("62_vwqqh"), ExtResource("63_svh2a"), ExtResource("64_ytyeu"), ExtResource("65_suxc6"), ExtResource("66_n3keg"), ExtResource("67_fbhnc"), ExtResource("68_suxc6"), ExtResource("69_ycl58"), ExtResource("70_w32ys"), ExtResource("71_g2ehk"), ExtResource("72_b7esa"), ExtResource("73_uo3nc"), ExtResource("74_xtnwn"), ExtResource("75_4vtl5")])
+effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74"), ExtResource("62_vwqqh"), ExtResource("63_svh2a"), ExtResource("64_ytyeu"), ExtResource("65_suxc6"), ExtResource("66_n3keg"), ExtResource("67_fbhnc"), ExtResource("68_suxc6"), ExtResource("69_ycl58"), ExtResource("70_w32ys"), ExtResource("71_g2ehk"), ExtResource("72_b7esa"), ExtResource("73_uo3nc"), ExtResource("74_xtnwn"), ExtResource("75_4vtl5"), ExtResource("77_uo3nc"), ExtResource("78_xtnwn"), ExtResource("79_4vtl5")])
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 

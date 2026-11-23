@@ -32,6 +32,7 @@ func update(delta: float):
 
 	if Input.is_action_just_pressed("primary"):
 		deadly = true
+		SoundEffects.singleton.add(36, global_position, 0.7)
 		await get_tree().create_timer(0.1).timeout
 		deadly = false
 

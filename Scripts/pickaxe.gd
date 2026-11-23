@@ -6,6 +6,7 @@ func update(delta: float):
 	super.update(delta)
 	align()
 	if Input.is_action_just_pressed("primary"):
+		SoundEffects.singleton.add(36, global_position, 0.7)
 		area.global_position = get_global_mouse_position()
 		await get_tree().create_timer(0.1).timeout
 		if area.is_colliding():

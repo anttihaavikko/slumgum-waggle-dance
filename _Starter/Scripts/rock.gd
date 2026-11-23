@@ -35,9 +35,8 @@ func mine(pos: Vector2):
 		else:
 			timer = 1.0
 			life -= 1
+			strike(50 if life == 0 else 20)
 			if life == 0:
-				Main.shake(50, 0.2)
-				Effects.singleton.add_many([1, 3], global_position)
 				for i in 5:
 					var p = Main.spawn_item(Item.Id.Rock, global_position)
 					p.apply_impulse(Vector2.ONE.rotated(randf() * TAU) * 750)
@@ -47,11 +46,16 @@ func mine(pos: Vector2):
 		return
 	var distance = Main.singleton.bee.body.global_position.distance_to(pos)
 	if distance > 300: return
-	Main.shake(0.3, 0.2)
 	spot.position = get_point()
 	spot.show()
+	strike(20)
 	life = 5
 	timer = 1.0
+
+func strike(amt: float):
+	SoundEffects.singleton.add(37, spot.global_position, 0.7)
+	Main.shake(amt, 0.2)
+	Effects.singleton.add_many([1, 3], spot.global_position)
 
 func get_point() -> Vector2:
 	var i = randi_range(0, poly.polygon.size() - 1)
