@@ -278,7 +278,8 @@ func danger():
 	Main.singleton.call_deferred("spawn_bird")
 
 func land(target: Node2D):
-	SoundEffects.singleton.add(0, lander.global_position)
+	if body.linear_velocity.length() > 10 or body.angular_velocity > 2:
+		SoundEffects.singleton.add(0, lander.global_position)
 	landed = true
 	charging = false
 	if target is Platform:

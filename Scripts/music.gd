@@ -5,6 +5,10 @@ extends Node
 @export var bird: AudioStreamPlayer
 @export var normal: AudioStreamPlayer
 
+func _ready() -> void:
+	normal.volume_linear = 0
+	get_tree().create_tween().tween_property(normal, "volume_linear", 1, 5).set_trans(Tween.TRANS_QUAD)
+
 func bird_attack(state: bool):
 	get_tree().create_tween().tween_property(normal, "volume_linear", 0 if state else 1, 1).set_trans(Tween.TRANS_QUAD)
 	if state: await get_tree().create_timer(0.5).timeout

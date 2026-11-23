@@ -14,6 +14,7 @@ func _ready() -> void:
 	body_entered.connect(collided)
 
 func collided(_node: Node2D):
+	if global_position.distance_to(Main.bee_pos()) > 1000: return
 	var limit := 200.0
 	if linear_velocity.length() > limit:
 		var amt = roundf(linear_velocity.length() / limit)
