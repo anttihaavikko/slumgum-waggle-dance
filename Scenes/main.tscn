@@ -237,6 +237,7 @@
 [ext_resource type="PackedScene" uid="uid://b8agfuem7q6wk" path="res://_Starter/Scenes/blinders.tscn" id="166_hprjy"]
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="175_w32ys"]
 [ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
+[ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -1824,6 +1825,7 @@ flip_v = true
 script = ExtResource("28_8cuat")
 identifier = 2
 description = "Holding this (tool) while (harvesting nectar) will also allow you to (gather pollen)."
+icon = ExtResource("183_xnck3")
 recipe = Dictionary[int, int]({
 0: 5,
 2: 5
