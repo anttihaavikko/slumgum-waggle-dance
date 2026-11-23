@@ -35,6 +35,8 @@ class_name Bee extends Node2D
 @export var heal_particles: CPUParticles2D
 @export var face_mover: Node2D
 @export var buzz: AudioStreamPlayer2D
+@export var charge_particles: CPUParticles2D
+@export var charging_humm: AudioStreamPlayer2D
 
 var thrust = 1.5
 var turning = 1.0
@@ -48,11 +50,13 @@ var stretch := 0.0
 var spring_core: SpringCore
 var buzz_volume = MovingValue.new(0, 5)
 var has_consumed_energy := false
+var charge_volume = MovingValue.new(0, 10)
 
 var current: Equipment
 
 func _ready() -> void:
 	buzz.volume_linear = 0
+	charging_humm.volume_linear = 0
 	Main.singleton.bee = self
 	Main.singleton.load()
 	# global_position += Vector2.RIGHT * -500
@@ -330,6 +334,7 @@ func energy_bling():
 	await get_tree().create_timer(0.1).timeout
 	# SoundEffects.singleton.add(19, body.global_position)
 	SoundEffects.singleton.add(20, body.global_position)
+	Effects.singleton.add(11, body.global_position)
 
 func change_energy(dir: float, limit: float = energy_max):
 	if has_consumed_energy and energy_left + dir >= energy_max:
@@ -355,6 +360,14 @@ func _process(delta) -> void:
 	var look_mod = (limit - clamp(body.linear_velocity.length(), 0, limit)) / limit
 	cam.position = Vector2.ZERO.move_toward(body.get_local_mouse_position(), 300 * look_mod) + \
 		body.linear_velocity * 0.5
+
+	var show_charging = charging and landed and energy_left < energy_max
+	charge_volume.target = 1 if show_charging else 0
+	charge_volume.update(delta)
+	charge_particles.emitting = charge_volume.value
+
+	charging_humm.volume_linear = 1 if show_charging else 0
+	charging_humm.pitch_scale = 1 + 0.3 * sin(Time.get_ticks_msec() * 0.01)
 
 	if builder.held:
 		cam.position = Vector2.ZERO

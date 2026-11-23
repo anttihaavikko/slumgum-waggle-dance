@@ -94,6 +94,7 @@
 [ext_resource type="Texture2D" uid="uid://bowys0fo5me6x" path="res://Sprites/thumbs.png" id="35_k2e45"]
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="36_hdf80"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
+[ext_resource type="PackedScene" uid="uid://w80g3fd86xfk" path="res://_Starter/Scenes/Effects/pulse_ring.tscn" id="40_b7esa"]
 [ext_resource type="AudioStream" uid="uid://bywtwmqqhham1" path="res://Sounds/land.wav" id="41_6lvi0"]
 [ext_resource type="AudioStream" uid="uid://dp1x518em565k" path="res://Sounds/hurt.wav" id="42_2rlip"]
 [ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
@@ -209,6 +210,8 @@
 [ext_resource type="Script" uid="uid://cpfu6gox7gjfb" path="res://Scripts/tooltip.gd" id="157_11vbv"]
 [ext_resource type="Texture2D" uid="uid://4snlndkvjfdp" path="res://Sprites/tooltip-arrow.png" id="158_m6w5j"]
 [ext_resource type="PackedScene" uid="uid://b8agfuem7q6wk" path="res://_Starter/Scenes/blinders.tscn" id="166_hprjy"]
+[ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="175_w32ys"]
+[ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -848,7 +851,7 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_qxkn4"]
 offsets = PackedFloat32Array(0.6557692, 1)
-colors = PackedColorArray(1, 1, 1, 0.49411765, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 0.69803923, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkcx"]
 size = Vector2(163, 45)
@@ -922,7 +925,7 @@ metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
 [node name="Effects" type="Node" parent="." unique_id=1890521244]
 script = ExtResource("5_ueoa1")
-effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22"), ExtResource("26_ci23i"), ExtResource("27_myryv")])
+effects = Array[PackedScene]([ExtResource("6_6vcvc"), ExtResource("14_ihvwq"), ExtResource("87_k8rh3"), ExtResource("16_55idt"), ExtResource("17_87bhu"), ExtResource("18_33qc4"), ExtResource("19_e6rcu"), ExtResource("20_jrou0"), ExtResource("21_j2g22"), ExtResource("26_ci23i"), ExtResource("27_myryv"), ExtResource("40_b7esa")])
 metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
@@ -1298,7 +1301,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover", "buzz")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover", "buzz", "charge_particles", "charging_humm")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -1324,6 +1327,8 @@ hands_wrap = NodePath("Body/Body Sprite/Hands Wrap")
 heal_particles = NodePath("Body/Heal Particles")
 face_mover = NodePath("Body/Body Sprite/Face Wrap/Wrap")
 buzz = NodePath("Body/Buzz")
+charge_particles = NodePath("Body/Charge Particles")
+charging_humm = NodePath("Body/Charging")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
@@ -1845,8 +1850,33 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_qxkn4")
 color_ramp = SubResource("Gradient_qxkn4")
 
+[node name="Charge Particles" type="CPUParticles2D" parent="Bee/Body" unique_id=1119390011]
+position = Vector2(-19, 29)
+emitting = false
+texture = ExtResource("175_w32ys")
+lifetime = 0.4
+explosiveness = 0.1
+randomness = 0.3
+emission_shape = 3
+emission_rect_extents = Vector2(100, 150)
+gravity = Vector2(0, -1176)
+angular_velocity_min = -196.8
+angular_velocity_max = 172.8
+angle_min = -91.2
+angle_max = 244.8
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_qxkn4")
+color = Color(1, 0.9148045, 0.7964767, 1)
+color_ramp = SubResource("Gradient_qxkn4")
+
 [node name="Buzz" type="AudioStreamPlayer2D" parent="Bee/Body" unique_id=129676445]
 stream = ExtResource("140_fmflf")
+autoplay = true
+bus = &"Sounds"
+
+[node name="Charging" type="AudioStreamPlayer2D" parent="Bee/Body" unique_id=1616173421]
+stream = ExtResource("177_g2ehk")
 autoplay = true
 bus = &"Sounds"
 
