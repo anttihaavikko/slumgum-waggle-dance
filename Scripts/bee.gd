@@ -4,7 +4,6 @@ class_name Bee extends Node2D
 # waggle dance
 # waltz
 #
-# paint making
 # oil press etc
 # hats
 # crab spiders
