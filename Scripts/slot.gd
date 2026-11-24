@@ -7,6 +7,7 @@ class_name Slot extends Control
 @export var button: Button
 @export var key_container: Control
 @export var key_label: RichTextLabel
+@export var frame: TextureRect
 
 var equipment: Equipment
 var item: Item
@@ -44,6 +45,20 @@ func take(amt: int):
 	if item.amount == 0: clear()
 	update_visuals()
 
+func mark_for_pad(state: bool):
+	frame.self_modulate = Color.html("#EF5B5B") if state else Color.WHITE
+
+func auto_move(target: Inventory):
+	if target.can_add_item(item, equipment):
+		if equipment:
+			target.add_equipment(equipment)
+		else:
+			target.add_item(item.data.item_id, item.amount)
+		clear()
+		changed.emit()
+		hover_off()
+		Main.singleton.inventory.re_focus()
+
 func pick(target: Inventory, alt: bool):
 	var held: Slot = Main.singleton.held
 	if not alt: depositing = false
@@ -60,15 +75,7 @@ func pick(target: Inventory, alt: bool):
 			return
 		return
 	if Input.is_action_pressed("shift"):
-		if target.can_add_item(item, equipment):
-			if equipment:
-				target.add_equipment(equipment)
-			else:
-				target.add_item(item.data.item_id, item.amount)
-			clear()
-			changed.emit()
-			hover_off()
-			Main.singleton.inventory.re_focus()
+		auto_move(target)
 		return
 	if not held.is_empty():
 		if locked: return

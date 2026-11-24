@@ -64,7 +64,8 @@ static func pop(message: String, offset: float = 0.0):
 	Effects.singleton.pop("[wave amp=30]%s" % [message], singleton.bee.body.global_position + Vector2.UP * 100 + dir)
 
 func _process(_delta) -> void:
-	held.global_position = held.get_global_mouse_position() + Vector2.UP * 55
+	if not input_detection.using_pad:
+		held.global_position = held.get_global_mouse_position() + Vector2.UP * 55
 
 static func drop_at(item: Item, equipment: Equipment, pos: Vector2) -> Pickup:
 	if item:
@@ -234,3 +235,9 @@ func get_compass_dir(pos: Vector2) -> Vector2:
 func remove_compass_spot(node: Node2D):
 	if compass_spots.has(node):
 		compass_spots.remove_at(compass_spots.find(node))
+
+func toggle_tooltip():
+	if tooltip.visible:
+		tooltip.hide()
+	else:
+		inventory.current().hover_on()

@@ -8,7 +8,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_th82r"]
 
-[node name="Slot" type="TextureRect" unique_id=157785236 node_paths=PackedStringArray("label", "count_container", "count_label", "icon", "button", "key_container", "key_label")]
+[node name="Slot" type="TextureRect" unique_id=157785236 node_paths=PackedStringArray("label", "count_container", "count_label", "icon", "button", "key_container", "key_label", "frame")]
 custom_minimum_size = Vector2(60, 60)
 offset_right = 60.55046
 offset_bottom = 60.0
@@ -25,6 +25,7 @@ icon = NodePath("Icon")
 button = NodePath("Button")
 key_container = NodePath("Key Bg")
 key_label = NodePath("Key Bg/Key")
+frame = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1178992251]
 layout_mode = 1

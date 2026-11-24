@@ -46,7 +46,7 @@ func announce(include_pad_help := false):
 	Main.singleton.hovering = true
 	if include_pad_help:
 		await get_tree().create_timer(0.15).timeout
-		Effects.singleton.pop("[font_size=60][wave]PRESS A TO INTERACT", center.global_position)
+		Effects.singleton.pop("[font_size=60][wave]PRESS [A] TO INTERACT", center.global_position)
 
 func open():
 	if not placed: return

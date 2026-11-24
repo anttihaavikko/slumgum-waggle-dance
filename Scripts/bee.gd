@@ -470,14 +470,27 @@ func _process(delta) -> void:
 		use_selected_item()
 
 	if builder.held and builder.held.can_rotate: return
-	if Main.singleton.station: return
 	if builder.picker.visible: return
 
 	if Input.is_action_just_pressed("wheel_up"):
+		if Main.singleton.station:
+			Main.singleton.station.cycle(-1, 0)
+			return
 		inventory.change_focus(-1)
 
 	if Input.is_action_just_pressed("wheel_down"):
+		if Main.singleton.station:
+			Main.singleton.station.cycle(1, 0)
+			return
 		inventory.change_focus(1)
+
+	if Input.is_action_just_pressed("dpad_up"):
+		if Main.singleton.station:
+			Main.singleton.station.cycle(0, -1)
+
+	if Input.is_action_just_pressed("dpad_down"):
+		if Main.singleton.station:
+			Main.singleton.station.cycle(0, 1)
 
 func use_selected_item():
 	if inventory.current().has_item(Item.Id.Bomb):

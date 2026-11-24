@@ -11,6 +11,10 @@ class_name StationMenu extends Control
 
 var initialized: bool
 var station: Station
+var focused_slot_index: int
+var focused_inventory: Inventory
+var focused_slot: Slot
+var inventories: Array[Inventory]
 
 func _ready() -> void:
 	win.hide()
@@ -24,7 +28,16 @@ func update_previews():
 	if station:
 		station.update_previews()
 
+func move_held_with_pad():
+	if focused_slot and Main.singleton.held and Main.singleton.input_detection.using_pad:
+		Main.singleton.held.global_position = focused_slot.global_position + Vector2(30, -30)
+
 func _process(_delta) -> void:
+	if visible and Input.is_action_just_pressed("primary"):
+		if focused_slot and focused_inventory.other: focused_slot.auto_move(focused_inventory.other)
+	if visible and Input.is_action_just_pressed("interact"):
+		if focused_slot: focused_slot.pick(focused_inventory, false)
+		move_held_with_pad()
 	if visible and Input.is_action_just_pressed("cancel"):
 		close()
 
@@ -39,6 +52,10 @@ func is_open() -> bool:
 func close():
 	if preview: preview.close()
 	if not win.visible: return
+	if focused_slot:
+		focused_slot.hover_off()
+		focused_slot.mark_for_pad(false)
+		focused_slot = null
 	win.hide()
 	Main.singleton.inventory.other = null
 	Main.singleton.station = null
@@ -72,6 +89,37 @@ func open(source: Station):
 
 	update_contents()
 	station.try_convert()
+
+	if Main.singleton.input_detection.using_pad:
+		inventories = []
+		if focused_slot: focused_slot.mark_for_pad(false)
+		await get_tree().create_timer(0.1).timeout
+		focused_slot_index = 0
+		if inputs:
+			focused_inventory = inputs
+			inventories.append(inputs)
+		if outputs and not station.hide_outputs:
+			inventories.append(outputs)
+		inventories.append(Main.singleton.inventory)
+		cycle(0, 0)
+
+func get_next_inventory(dir: int) -> Inventory:
+	return inventories[(inventories.find(focused_inventory) + dir) % inventories.size()]
+
+func cycle(x: int, y: int):
+	if not inputs:
+		# focus next buttons
+		return
+	if not Main.singleton.input_detection.using_pad: return
+	if focused_slot: focused_slot.mark_for_pad(false)
+	if y < 0: focused_inventory = get_next_inventory(-1)
+	if y > 0: focused_inventory = get_next_inventory(1)
+	var slots = focused_inventory.slots.size() if focused_inventory.slots[0].in_bar else station.slots
+	focused_slot_index = ((focused_slot_index + x) + slots) % slots
+	focused_slot = focused_inventory.slots[focused_slot_index]
+	focused_slot.mark_for_pad(true)
+	focused_slot.hover_on()
+	move_held_with_pad()
 
 func try_init():
 	if inputs and not initialized:

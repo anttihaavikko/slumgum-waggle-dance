@@ -10,6 +10,9 @@ func _process(_delta) -> void:
 	if closest_station and Input.is_action_just_pressed("interact") and not Main.singleton.station:
 		closest_station.open()
 
+	if Input.is_action_just_pressed("toggle_tooltip"):
+		Main.singleton.toggle_tooltip()
+
 func find_closest_station():
 	if not input_detection.using_pad:
 		closest_station = null

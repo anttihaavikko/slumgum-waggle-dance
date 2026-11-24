@@ -112,6 +112,8 @@ func add_item(id: Item.Id, amount: int = 1):
 
 func change_focus(dir: int):
 	focus((focused + dir + slots.size()) % slots.size())
+	if Main.singleton.input_detection.using_pad and Main.singleton.tooltip.visible:
+		current().hover_on()
 
 func get_recipe_description(recipe: Dictionary[Item.Id, int]) -> String:
 	var desc = ""
