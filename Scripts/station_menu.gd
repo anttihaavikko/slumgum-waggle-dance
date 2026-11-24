@@ -15,6 +15,7 @@ var focused_slot_index: int
 var focused_inventory: Inventory
 var focused_slot: Slot
 var inventories: Array[Inventory]
+var can_craft := false
 
 func _ready() -> void:
 	win.hide()
@@ -35,6 +36,8 @@ func move_held_with_pad():
 func _process(_delta) -> void:
 	if visible and Input.is_action_just_pressed("primary"):
 		if focused_slot and focused_inventory.other: focused_slot.auto_move(focused_inventory.other)
+	if visible and crafter and can_craft and Input.is_action_just_pressed("interact"):
+		crafter.preview.craft()
 	if visible and Input.is_action_just_pressed("interact"):
 		if focused_slot: focused_slot.pick(focused_inventory, false)
 		move_held_with_pad()
@@ -68,6 +71,7 @@ func close():
 		Main.singleton.held.drop()
 		Main.singleton.held.hide()
 	Main.singleton.evaluate_stats()
+	can_craft = false
 
 func open(source: Station):
 	if Main.singleton.station:
@@ -101,14 +105,16 @@ func open(source: Station):
 		if outputs and not station.hide_outputs:
 			inventories.append(outputs)
 		inventories.append(Main.singleton.inventory)
-		cycle(0, 0)
+		if inputs: cycle(0, 0)
+		await get_tree().create_timer(0.3).timeout
+		can_craft = true
 
 func get_next_inventory(dir: int) -> Inventory:
 	return inventories[(inventories.find(focused_inventory) + dir) % inventories.size()]
 
 func cycle(x: int, y: int):
 	if not inputs:
-		# focus next buttons
+		if crafter: crafter.focus_next_button(y)
 		return
 	if not Main.singleton.input_detection.using_pad: return
 	if focused_slot: focused_slot.mark_for_pad(false)

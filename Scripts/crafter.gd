@@ -45,6 +45,12 @@ func open():
 	hide_undiscovered()
 	press(Main.singleton.bee.tools[recipes[index]], buttons[index], index)
 
+func focus_next_button(dir: int):
+	var visible_buttons := buttons.filter(func(b): return b.visible)
+	visible_buttons[index].button_pressed = false
+	index = (index + dir) % visible_buttons.size()
+	visible_buttons[index].button_pressed = true
+
 func press(eq: Equipment, button: Button, idx: int):
 	index = idx
 	deselect_all(button)
