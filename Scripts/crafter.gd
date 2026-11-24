@@ -18,6 +18,7 @@ func _ready() -> void:
 		button.text = eq.name
 		button.icon = Main.singleton.new_marker
 		button.pressed.connect(func(): press(eq, button, i))
+		Main.singleton.register_hoverable(button)
 		add_child(button)
 	for i in item_recipes.size():
 		var item = Main.singleton.item_db.items[item_recipes[i]]
@@ -26,6 +27,7 @@ func _ready() -> void:
 		buttons.append(button)
 		button.text = item.title
 		button.icon = Main.singleton.new_marker
+		Main.singleton.register_hoverable(button)
 		button.pressed.connect(func(): press_for_item(item, button, i))
 		add_child(button)
 	open()

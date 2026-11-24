@@ -11,6 +11,7 @@ var selected_item: ItemData
 func _ready() -> void:
 	win.hide()
 	craft_button.pressed.connect(craft)
+	Main.singleton.register_hoverable(craft_button)
 
 func close():
 	win.hide()

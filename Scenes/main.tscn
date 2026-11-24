@@ -1043,7 +1043,7 @@ blend_mode = 1
 
 [node name="Main" type="Node2D" unique_id=324059262]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip", "input_detection")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip", "input_detection", "buttons")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
@@ -1059,6 +1059,7 @@ notifications = NodePath("../HUD/Notifications")
 door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), ExtResource("6_gax0l"), null])
 tooltip = NodePath("../HUD/Tooltip")
 input_detection = NodePath("../Input Detection")
+buttons = [NodePath("../HUD/Bed Window/Bed/VBoxContainer/Morning"), NodePath("../HUD/Bed Window/Bed/VBoxContainer/Eight")]
 
 [node name="Input Detection" type="Node" parent="." unique_id=1977210264]
 script = ExtResource("7_y07ku")
@@ -2524,7 +2525,7 @@ layout_mode = 2
 theme = ExtResource("36_hdf80")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "The core provides energy to all connected platforms. Allows some very basic crafting."
+text = "[color=#FFBA49]Sleeping[/color] not only makes the annoying [color=#FFBA49]darkness[/color] easier to deal with but also gives you [color=#FFBA49]more energy[/color] for the [color=#FFBA49]next day[/color]."
 fit_content = true
 
 [node name="Spacer" type="ColorRect" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=89835573]
@@ -2532,11 +2533,11 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Button" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=1022843980 instance=ExtResource("50_2daye")]
+[node name="Morning" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=1022843980 instance=ExtResource("50_2daye")]
 layout_mode = 2
 text = "SLEEP UNTIL MORNING"
 
-[node name="Button2" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=30688199 instance=ExtResource("50_2daye")]
+[node name="Eight" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=30688199 instance=ExtResource("50_2daye")]
 visible = false
 layout_mode = 2
 text = "SLEEP 8 HOURS"
@@ -3226,8 +3227,8 @@ shape = SubResource("WorldBoundaryShape2D_xjjvj")
 visible = false
 
 [connection signal="flipped" from="Bee/Flip Detect" to="Main" method="open_doors" binds= [1]]
-[connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button" to="Schedule" method="sleep_until_morning"]
-[connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Button2" to="Schedule" method="sleep_eight"]
+[connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Morning" to="Schedule" method="sleep_until_morning"]
+[connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Eight" to="Schedule" method="sleep_eight"]
 [connection signal="pressed" from="HUD/Fullscreen Button" to="Main" method="toggle_fullscreen"]
 
 [editable path="Queen/Mover/Boss/Face Wrap/Face"]

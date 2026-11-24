@@ -19,11 +19,14 @@ func _process(delta) -> void:
 		time -= 1
 		day += 1
 		Engine.time_scale = 1.0
+		Main.singleton.bee.body.freeze = false
 		if sleeper: sleeper.hide()
 		Main.singleton.rank += 1
 		Main.singleton.bee.show()
 		announce_day()
 		Main.singleton.cleanup()
+		Main.singleton.sleep_buff -= 1
+		Main.singleton.evaluate_stats()
 		for f in Main.singleton.flowers:
 			if f: f.fill()
 		for piece in Main.singleton.builder.built_pieces:
@@ -55,9 +58,13 @@ func sleep_until_morning():
 	if time < 0.5:
 		Main.pop("TOO EARLY!")
 		return
-	Engine.time_scale = 10.0
+	Main.singleton.bee.teleport_to(sleeper.global_position + Vector2.UP * 100)
+	Main.singleton.bee.body.freeze = true
+	await get_tree().create_timer(0.1).timeout
+	Engine.time_scale = 15.0
 	sleep_for(0)
 	sleeper.show()
+	Main.singleton.sleep_buff = 2
 	Main.singleton.bee.hide()
 
 func sleep_eight():

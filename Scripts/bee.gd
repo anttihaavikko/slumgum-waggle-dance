@@ -9,13 +9,11 @@ class_name Bee extends Node2D
 # crab spiders
 # beewolves (wasp)
 # bird eyes
-# sleep boost
 # songs
 # more huts
 # more obelisks
 # menu
 # pickup permanence
-# other pollens
 #
 # inventory slots
 # compass
@@ -435,7 +433,8 @@ func _process(delta) -> void:
 	if LimboConsole.is_open(): return
 
 	if landed:
-		change_energy(delta * 5, energy_max if charging else 5.0)
+		var amt = max(5, (energy_max - energy_left) * 0.9)
+		change_energy(delta * amt, energy_max if charging else 5.0)
 
 	if current:
 		current.update(delta)

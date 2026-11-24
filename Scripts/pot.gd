@@ -38,6 +38,8 @@ func update_menu():
 
 func change_phase(starting := false):
 	if phase == 4:
+		station.menu.try_init()
+		station.menu.station = station
 		if station.menu and station.menu.visible:
 			station.pull_contents()
 		if not station.outputs[0]:

@@ -14,6 +14,7 @@ class_name Main extends Node
 @export var door_hints: Array[Texture2D]
 @export var tooltip: Tooltip
 @export var input_detection: InputDetection
+@export var buttons: Array[Button]
 
 var station: StationMenu
 var bee: Bee
@@ -34,6 +35,7 @@ var data: SaveData
 var huts: Array[Hut] = []
 var object_index := 0
 var hovering := false
+var sleep_buff := 0
 
 static var singleton: Main = null
 
@@ -48,6 +50,9 @@ func _exit_tree() -> void:
 func _init() -> void:
 	if singleton == null:
 		singleton = self
+
+func _ready() -> void:
+	for b in buttons: register_hoverable(b)
 
 func get_rank_name() -> String:
 	return ranks[rank]
@@ -167,7 +172,7 @@ func evaluate_stats():
 	var stinger := bee.tools[Equipment.Id.Stinger] as Weapon
 	stinger.damage = 3
 	var health := 10
-	var energy := 20
+	var energy := 30 if sleep_buff > 0 else 20
 	for piece in builder.built_pieces:
 		if piece is not Station: continue
 		if piece.identifier == BuildPiece.Id.Totem:
@@ -205,3 +210,7 @@ func close_doors(type: Hut.DoorType):
 
 static func bee_pos() -> Vector2:
 	return singleton.bee.body.global_position
+
+func register_hoverable(button: Button):
+	button.mouse_entered.connect(func(): hovering = true)
+	button.mouse_exited.connect(func(): hovering = false)

@@ -15,6 +15,7 @@ signal closed
 
 func _ready() -> void:
 	button.pressed.connect(close)
+	Main.singleton.register_hoverable(button)
 
 func close():
 	closed.emit()

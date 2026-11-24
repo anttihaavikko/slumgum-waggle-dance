@@ -39,6 +39,7 @@ func _ready() -> void:
 		button.icon = pieces[i].sprite
 		button_grid.add_child(button)
 		buttons.append(button)
+		Main.singleton.register_hoverable(button)
 		button.pressed.connect(func(): pick_piece(i))
 		button.mouse_entered.connect(func(): show_preview(i))
 
