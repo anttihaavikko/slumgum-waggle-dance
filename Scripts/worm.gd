@@ -45,6 +45,7 @@ func get_dir() -> Vector2:
 	return Vector2.UP.rotated(head.global_rotation)
 
 func _physics_process(delta: float) -> void:
+	if global_position.distance_to(Main.bee_pos()) > 4000: return
 	time += delta
 	var dir = (target.global_position - global_position).normalized() if target else Vector2.UP.rotated(rotation)
 	var mod = 1.0 + abs(sin(time))
