@@ -9,6 +9,17 @@ class_name Bee extends Node2D
 # crab spiders
 # beewolves (wasp)
 # bird eyes
+# sleep boost
+# songs
+# more huts
+# more obelisks
+# menu
+# pickup permanence
+# other pollens
+#
+# inventory slots
+# compass
+# free platforms
 #
 # AMBForst_Late Spring.A Quiet Forest Edge.Hot.Sunny.Birds.Mosquitoes 2_EM by newlocknew -- https://freesound.org/s/856018/ -- License: Creative Commons 0
 # amb_forest_night.wav by Dokuta_Gerovv -- https://freesound.org/s/662095/ -- License: Creative Commons 0
@@ -94,6 +105,9 @@ func _ready() -> void:
 	# get_tree().root.content_scale_size = Vector2i(320, 240)
 	# get_tree().root.content_scale_factor = 2
 
+	if OS.is_debug_build():
+		analyze()
+
 	# await get_tree().process_frame
 	# if OS.is_debug_build():
 	# 	inventory.add_equipment(tools[Equipment.Id.Hammer])
@@ -155,6 +169,26 @@ func show_recipe(id: String, action := "list"):
 		LimboConsole.info("%d x %s" % [recipe[part], Main.singleton.item_db.items[part].title])
 		if action == "get":
 			inventory.add_item(part, recipe[part])
+
+func analyze():
+	var totals: Dictionary[Item.Id, int] = {}
+	for eq in tools:
+		var line = []
+		for part in eq.recipe.keys():
+			line.append("%d x %s" % [eq.recipe[part], Main.singleton.item_db.items[part].title])
+			if totals.has(part): totals[part] += eq.recipe[part]
+			else: totals[part] = eq.recipe[part]
+		print("%s: %s" % [eq.name, ", ".join(line)])
+	for piece in builder.pieces:
+		var line = []
+		for part in piece.recipe.keys():
+			line.append("%d x %s" % [piece.recipe[part], Main.singleton.item_db.items[part].title])
+			if totals.has(part): totals[part] += piece.recipe[part]
+			else: totals[part] = piece.recipe[part]
+		print("%s: %s" % [piece.title, ", ".join(line)])
+	print("---")
+	for key in totals.keys():
+		print("%s: %d" % [Main.get_item_data(key).title, totals[key]])
 
 func get_recipe_names() -> Array:
 	return builder.pieces.map(func(p: PieceData): return as_id(p.title))
