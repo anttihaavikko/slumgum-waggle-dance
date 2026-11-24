@@ -3,6 +3,8 @@ class_name Pickup extends RigidBody2D
 @export var sprite: Sprite2D
 @export var area: Area2D
 
+var item_index := -1
+
 var item: Item:
 	set(val):
 		item = val
@@ -12,6 +14,8 @@ var item: Item:
 func _ready() -> void:
 	area.body_entered.connect(entered)
 	body_entered.connect(collided)
+	if Main.singleton.data.broken_nodes.has(item_index * 1.0):
+		queue_free()
 
 func collided(_node: Node2D):
 	if global_position.distance_to(Main.bee_pos()) > 1000: return
@@ -29,6 +33,8 @@ func entered(_node: Node2D):
 			inventory.add_equipment(Main.singleton.bee.tools[item.equip])
 		else:
 			inventory.add_item(item.data.item_id, item.amount)
+		if item_index >= 0:
+			Main.singleton.data.broken_nodes.append(item_index)
 		queue_free()
 
 func launch(force: float = 1.0):

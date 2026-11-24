@@ -17,6 +17,8 @@ func populate(pos: Vector2, danger: PackedScene, item: Item.Id, chance: float):
 		parent.add_child(e)
 	var p = item_spots.pick_random()
 	egg = Main.singleton.item_db.spawn(item, pos + p.global_position)
+	egg.item_index = Main.singleton.object_index
+	Main.singleton.object_index += 1
 	# e.gravity_scale = 0
 	# e.global_position = p.global_position + pos
 	# egg.rotation = p.rotation
