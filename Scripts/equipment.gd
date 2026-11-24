@@ -44,10 +44,10 @@ func toggle(state: bool):
 	if help_text: help_text.visible = state
 
 func align():
-	var mp = Main.singleton.input_detection.get_position(Main.singleton.bee.body, 500)
+	var mp = Main.singleton.input_detection.get_mouse_direction(Main.singleton.bee.body, 500)
 	if aligner: aligner.look_at(mp)
 	if not aligns: aligner.rotation = 0
 	if flips: sprite.flip_v = mp.x < global_position.x
 
 func can_swing():
-	return not Main.singleton.hovering
+	return not Main.singleton.hovering or Main.singleton.input_detection.using_pad

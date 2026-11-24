@@ -1396,7 +1396,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("144_odn5n")
 
-[node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid", "painter")]
+[node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid", "painter", "scroller")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
 pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh"), SubResource("Resource_gf7g1"), SubResource("Resource_56rwl"), SubResource("Resource_brnef"), SubResource("Resource_sxjml"), SubResource("Resource_36uwi"), SubResource("Resource_tom0i")])
@@ -1407,6 +1407,7 @@ preview = NodePath("../HUD/Preview Window/Preview")
 button_prefab = ExtResource("95_3ahwd")
 button_grid = NodePath("../HUD/Build Picker Win/ScrollContainer/GridContainer")
 painter = NodePath("../Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Paintbrush")
+scroller = NodePath("../HUD/Build Picker Win/ScrollContainer")
 
 [node name="Platform" parent="Platforms" unique_id=208223166 instance=ExtResource("9_ynf5e")]
 position = Vector2(32, 283)
@@ -1843,7 +1844,7 @@ offset = Vector2(0, 1)
 [node name="Swinger" type="Node2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner" unique_id=1904647529]
 script = ExtResource("18_1w6v2")
 
-[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "cast", "swinger", "aligner", "help_text")]
+[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "cast", "pointer", "swinger", "aligner", "help_text")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-3, 0)
@@ -1854,6 +1855,7 @@ offset = Vector2(-47, 3)
 script = ExtResource("13_fevyy")
 builder = NodePath("../../../../../../../../Platforms")
 cast = NodePath("../../../../../../../../Cursor Icon/Mouse Caster")
+pointer = NodePath("../../../../../../../../Cursor Icon/Ring")
 description = "A (tool) for (constructing platforms) and other (build pieces). Highly (recommended)!"
 icon = ExtResource("102_fle1e")
 recipe = Dictionary[int, int]({
@@ -3249,10 +3251,11 @@ text = "OR"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="Cursor Icon" type="Node2D" parent="." unique_id=559628578]
+[node name="Cursor Icon" type="Node2D" parent="." unique_id=559628578 node_paths=PackedStringArray("input_detection")]
 z_index = 50
 position = Vector2(-211, 264)
 script = ExtResource("60_6ml46")
+input_detection = NodePath("../Input Detection")
 
 [node name="Nope" type="Sprite2D" parent="Cursor Icon" unique_id=1825553103]
 visible = false
@@ -3280,6 +3283,12 @@ theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "C#"
 scroll_active = false
+
+[node name="Ring" type="Sprite2D" parent="Cursor Icon" unique_id=2079321541]
+visible = false
+self_modulate = Color(1, 1, 1, 0.49019608)
+scale = Vector2(1.8878052, 1.8878052)
+texture = ExtResource("34_jwpg7")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230333985]
 enabled = false

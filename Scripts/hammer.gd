@@ -2,10 +2,12 @@ extends Equipment
 
 @export var builder: Builder
 @export var cast: ShapeCast2D
+@export var pointer: Node2D
 
 func update(delta: float):
 	super.update(delta)
 	align()
+	pointer.visible = not builder.held and not builder.picker.visible and Main.singleton.input_detection.using_pad
 	if Input.is_action_just_pressed("alt"):
 		builder.open_menu()
 		# builder.create((builder.slot + 1) % builder.pieces.size(), true)
@@ -19,13 +21,23 @@ func update(delta: float):
 			var c = cast.get_collider(0)
 			try_to_break(c)
 			try_to_break(c.get_parent())
+	if Input.is_action_just_pressed("wheel_up"):
+		builder.focus_next(-1)
+	if Input.is_action_just_pressed("wheel_down"):
+		builder.focus_next(1)
+	if Input.is_action_just_pressed("dpad_down"):
+		builder.focus_next(3)
+	if Input.is_action_just_pressed("dpad_up"):
+		builder.focus_next(-3)
 
 func toggle(state: bool):
 	super.toggle(state)
 	if Main.singleton.station: return
 	if state:
 		builder.create(builder.slot)
+		Main.singleton.input_detection.fake_mouse = Main.singleton.bee.body.global_position + Vector2.UP * 600
 	else:
+		pointer.hide()
 		builder.clear()
 
 func try_to_break(target: Node):

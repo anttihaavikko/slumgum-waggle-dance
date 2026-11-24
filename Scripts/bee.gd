@@ -407,7 +407,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _process(delta) -> void:
 	var limit := 10.0
 	var look_mod = (limit - clamp(body.linear_velocity.length(), 0, limit)) / limit
-	cam.position = Vector2.ZERO.move_toward(to_local(Main.singleton.input_detection.get_position(body, 5000)), 300 * look_mod) + \
+	cam.position = Vector2.ZERO.move_toward(to_local(Main.singleton.input_detection.get_mouse_direction(body, 5000)), 300 * look_mod) + \
 		body.linear_velocity * 0.5
 
 	var hovering = Input.is_action_pressed("hover") and can_hover

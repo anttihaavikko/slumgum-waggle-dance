@@ -8,6 +8,7 @@ class_name Builder extends Node2D
 @export var button_prefab: PackedScene
 @export var button_grid: Control
 @export var painter: Painter
+@export var scroller: ScrollContainer
 
 var min_angle := 15
 
@@ -19,6 +20,7 @@ var slot := -1
 var snap_points: Array[Node2D] = []
 var buttons: Array[Button] = []
 var built_pieces: Array[BuildPiece] = []
+var index := 0
 
 func _ready() -> void:
 	for s in starters:
@@ -76,22 +78,39 @@ func hide_undiscovered():
 		buttons[i].visible = Main.singleton.has_seen_materials(pieces[i].recipe)
 		buttons[i].get_node("Marker").visible = not Main.singleton.built.has(i)
 
+func focus_next(dir: int):
+	if not picker.visible: return
+	var visible_buttons := get_visible_buttons()
+	focus_button(visible_buttons[index], false)
+	index = (index + dir) % visible_buttons.size()
+	focus_button(visible_buttons[index], true)
+
+func get_visible_buttons() -> Array[Button]:
+	return buttons.filter(func(b): return b.visible)
+
+func focus_button(btn: Button, state: bool):
+	btn.toggle_mode = state
+	btn.button_pressed = state
+	if state:
+		scroller.ensure_control_visible(btn)
+
 func open_menu():
 	clear()
 	picker.show()
 	preview.show()
 	hide_undiscovered()
+	if Main.singleton.input_detection.using_pad: focus_next(0)
 
-func show_preview(index: int):
-	var data = pieces[index] as PieceData
+func show_preview(idx: int):
+	var data = pieces[idx] as PieceData
 	preview.win.show()
 	preview.craft_button.hide()
 	preview.win.title = data.title.to_upper()
 	preview.description.text = Utils.colorize(data.description, "#FFBA49")
 	preview.materials.text = Main.singleton.inventory.get_recipe_description(data.recipe)
 
-func pick_piece(index: int):
-	create(index, true)
+func pick_piece(idx: int):
+	create(idx, true)
 	close()
 
 func close():
@@ -100,8 +119,12 @@ func close():
 		preview.close()
 
 func _process(_delta) -> void:
+	if Input.is_action_just_pressed("interact"):
+		if picker.visible:
+			pick_piece(buttons.find(get_visible_buttons()[index]))
+			Main.singleton.input_detection.fake_mouse = Main.singleton.bee.body.global_position + Vector2.UP * 600
 	if held:
-		held.global_position = get_global_mouse_position()
+		held.global_position = Main.singleton.input_detection.get_mouse_position(Main.singleton.bee.body)
 		held.snap(snap_points)
 		cross.visible = not held.can_place()
 		if Input.is_action_just_pressed("primary"):

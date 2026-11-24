@@ -7,11 +7,15 @@ var closest_station: Station
 func _process(_delta) -> void:
 	find_closest_station()
 
-	if closest_station and Input.is_action_just_pressed("interact") and not Main.singleton.station:
+	if closest_station and Input.is_action_just_pressed("interact") and not Main.singleton.station and not Main.singleton.builder.picker.visible:
 		closest_station.open()
 
 	if Input.is_action_just_pressed("toggle_tooltip"):
 		Main.singleton.toggle_tooltip()
+
+	var x = Input.get_axis("look_left", "look_right")
+	var y = Input.get_axis("look_up", "look_down")
+	input_detection.fake_mouse += Vector2(x, y) * _delta * 1000
 
 func find_closest_station():
 	if not input_detection.using_pad:
