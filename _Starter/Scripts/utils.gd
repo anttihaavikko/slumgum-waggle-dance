@@ -32,3 +32,8 @@ static func as_wavy(text: String) -> String:
 
 static func colorize(text: String, color: String) -> String:
 	return text.replace("(", "[color=%s]" % [color]).replace(")", "[/color]")
+
+static func find_closest(nodes: Array, point: Vector2) -> Node2D:
+	var sorted = nodes.duplicate()
+	sorted.sort_custom(func(a: Node2D, b: Node2D): return a.global_position.distance_to(point) > b.global_position.distance_to(point))
+	return sorted.pop_back()

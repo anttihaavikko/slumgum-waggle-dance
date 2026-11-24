@@ -9,6 +9,7 @@ class_name Station extends BuildPiece
 @export var sleeper: Node2D
 @export var slots := 1
 @export var hide_outputs := false
+@export var interactable := true
 
 var title: String
 var description: String
@@ -37,12 +38,15 @@ func setup():
 func _process(delta) -> void:
 	cooldown -= delta
 
-func announce():
+func announce(include_pad_help := false):
 	if cooldown > 0: return
 	if Main.singleton.builder.held: return
-	Effects.singleton.pop(title.to_upper(), center.global_position + Vector2.UP * 100)
+	Effects.singleton.pop("[wave]%s" % [title.to_upper()], center.global_position + Vector2.UP * 100)
 	cooldown = 0.5
 	Main.singleton.hovering = true
+	if include_pad_help:
+		await get_tree().create_timer(0.15).timeout
+		Effects.singleton.pop("[font_size=60][wave]PRESS A TO INTERACT", center.global_position)
 
 func open():
 	if not placed: return

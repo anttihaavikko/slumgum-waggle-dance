@@ -16,8 +16,7 @@ shader_parameter/world_amount = 1.0
 size = Vector2(171.84, 19.52)
 
 [node name="Banner" unique_id=299398414 node_paths=PackedStringArray("connection_shapes") instance=ExtResource("1_4hl6h")]
-title = "Banner"
-identifier = 8
+interactable = false
 connection_shapes = [NodePath("Left")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]

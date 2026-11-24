@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dagf4wr0s64rf"]
 
-[ext_resource type="Script" uid="uid://wbt7ku5t32ht" path="res://_Starter/Scripts/rock.gd" id="1_lgx4v"]
+[ext_resource type="Script" uid="uid://wbt7ku5t32ht" path="res://Scripts/rock.gd" id="1_lgx4v"]
 [ext_resource type="Script" uid="uid://bi6dt48qm3k7k" path="res://_Starter/Scripts/root_pointer.gd" id="2_5mkji"]
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="3_vd8au"]
 [ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="4_1rhfe"]
