@@ -53,4 +53,4 @@ func align():
 	if flips: sprite.flip_v = mp.x < global_position.x
 
 func can_swing():
-	return not Main.singleton.hovering or Main.singleton.input_detection.using_pad
+	return not Main.singleton.hovering or Main.singleton.input_detection.using_pad and not (Main.singleton.station or Main.singleton.station.visible)

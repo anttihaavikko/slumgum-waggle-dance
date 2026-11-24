@@ -202,11 +202,14 @@
 [ext_resource type="Texture2D" uid="uid://lcm6oq33bb34" path="res://Sprites/icon-blowpipe.png" id="97_s8cid"]
 [ext_resource type="Texture2D" uid="uid://btjcnvg2calqe" path="res://Sprites/guitar-scale.png" id="98_e1jjv"]
 [ext_resource type="Texture2D" uid="uid://dpytywj0cgcls" path="res://Sprites/stinger.png" id="98_gf7g1"]
+[ext_resource type="AudioStream" uid="uid://dlush0ujywx3c" path="res://Sounds/flower-break.wav" id="100_e104q"]
 [ext_resource type="PackedScene" uid="uid://hbewxyx2g65b" path="res://Scenes/island.tscn" id="100_mfvrx"]
 [ext_resource type="Texture2D" uid="uid://kb0sd0pj8gjq" path="res://Sprites/globes-mask.png" id="101_0fjpc"]
+[ext_resource type="AudioStream" uid="uid://cec67ax80xwyr" path="res://Sounds/btn.wav" id="101_ecp88"]
 [ext_resource type="Texture2D" uid="uid://nid1qwygfqey" path="res://Sprites/poster-cafe.png" id="101_xjjvj"]
 [ext_resource type="Texture2D" uid="uid://8otcn271yg4x" path="res://Sprites/poster-sleep.png" id="102_8dylv"]
 [ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="102_b4mik"]
+[ext_resource type="AudioStream" uid="uid://1rcd1v03sff6" path="res://Sounds/win2.wav" id="102_ecp88"]
 [ext_resource type="Texture2D" uid="uid://j6n2ny7x0u8n" path="res://Sprites/hammer-icon.png" id="102_fle1e"]
 [ext_resource type="PackedScene" uid="uid://s135cqqhbwcf" path="res://_Starter/Scenes/spring_core.tscn" id="104_bdqux"]
 [ext_resource type="Texture2D" uid="uid://bnlhty6qxxeh5" path="res://Sprites/icon-scythe.png" id="105_wt5iu"]
@@ -1201,7 +1204,7 @@ metadata/_custom_type_script = "uid://calgx5smnk57"
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1037539634]
 script = ExtResource("24_8dylv")
-effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74"), ExtResource("62_vwqqh"), ExtResource("63_svh2a"), ExtResource("64_ytyeu"), ExtResource("65_suxc6"), ExtResource("66_n3keg"), ExtResource("67_fbhnc"), ExtResource("68_suxc6"), ExtResource("69_ycl58"), ExtResource("70_w32ys"), ExtResource("71_g2ehk"), ExtResource("72_b7esa"), ExtResource("73_uo3nc"), ExtResource("74_xtnwn"), ExtResource("75_4vtl5"), ExtResource("77_uo3nc"), ExtResource("78_xtnwn"), ExtResource("79_4vtl5"), ExtResource("87_n45ei"), ExtResource("88_04ry5"), ExtResource("89_04ry5"), ExtResource("90_rq0ss"), ExtResource("91_ltyjx"), ExtResource("92_xnck3"), ExtResource("93_ltyjx")])
+effects = Array[AudioStream]([ExtResource("41_6lvi0"), ExtResource("42_2rlip"), ExtResource("43_ve7nm"), ExtResource("44_sbvnb"), ExtResource("45_sbvnb"), ExtResource("46_pkhog"), ExtResource("47_b4mg0"), ExtResource("48_g52ui"), ExtResource("49_vm2ri"), ExtResource("50_reygs"), ExtResource("51_wx2j7"), ExtResource("52_0jame"), ExtResource("53_obsuk"), ExtResource("54_0jame"), ExtResource("55_obsuk"), ExtResource("56_6ben7"), ExtResource("57_pxch7"), ExtResource("58_pxch7"), ExtResource("59_51a0c"), ExtResource("60_cqvvm"), ExtResource("61_w7d74"), ExtResource("62_vwqqh"), ExtResource("63_svh2a"), ExtResource("64_ytyeu"), ExtResource("65_suxc6"), ExtResource("66_n3keg"), ExtResource("67_fbhnc"), ExtResource("68_suxc6"), ExtResource("69_ycl58"), ExtResource("70_w32ys"), ExtResource("71_g2ehk"), ExtResource("72_b7esa"), ExtResource("73_uo3nc"), ExtResource("74_xtnwn"), ExtResource("75_4vtl5"), ExtResource("77_uo3nc"), ExtResource("78_xtnwn"), ExtResource("79_4vtl5"), ExtResource("87_n45ei"), ExtResource("88_04ry5"), ExtResource("89_04ry5"), ExtResource("90_rq0ss"), ExtResource("91_ltyjx"), ExtResource("92_xnck3"), ExtResource("93_ltyjx"), ExtResource("100_e104q"), ExtResource("101_ecp88"), ExtResource("102_ecp88")])
 prefab = ExtResource("25_qv1an")
 metadata/_custom_type_script = "uid://e88pkdwyw65u"
 

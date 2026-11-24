@@ -17,6 +17,7 @@ func destroy():
 	for i in particle_points.size():
 		Effects.singleton.add(1, particle_points[i].global_position)
 		Effects.singleton.add(particle_indices[i], particle_points[i].global_position)
+	SoundEffects.singleton.add(45, global_position, 1.5)
 	Main.shake(15, 0.15)
 	broke.emit()
 	target.queue_free()

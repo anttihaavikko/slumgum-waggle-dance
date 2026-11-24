@@ -44,6 +44,7 @@ func try_to_break(target: Node):
 	if target is BuildPiece:
 		if not target.can_break:
 			Main.pop("CAN NOT DESTROY THAT!")
+			SoundEffects.singleton.add(10, target.global_position)
 		else:
 			SoundEffects.singleton.add_many([12, 11], target.global_position)
 			if target is Station:

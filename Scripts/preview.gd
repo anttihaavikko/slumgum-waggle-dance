@@ -43,6 +43,7 @@ func craft():
 	if not inv.has_materials(recipe):
 		Main.pop("INSUFFICIENT MATERIALS!")
 		Main.shake(20, 0.25)
+		SoundEffects.singleton.add(10, Main.bee_pos())
 		return
 	inv.consume_materials(recipe)
 	if selected_item: inv.add_item(selected_item.item_id, selected_item.recipe_creates)

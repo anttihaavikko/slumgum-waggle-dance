@@ -12,6 +12,7 @@ class_name Bee extends Node2D
 # more huts
 # more obelisks
 # menu
+# mining with pad
 #
 # blocking swings
 # polymorph items

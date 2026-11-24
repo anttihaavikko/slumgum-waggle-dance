@@ -55,6 +55,7 @@ func is_open() -> bool:
 func close():
 	if preview: preview.close()
 	if not win.visible: return
+	SoundEffects.singleton.add(47, Main.bee_pos())
 	if focused_slot:
 		focused_slot.hover_off()
 		focused_slot.mark_for_pad(false)

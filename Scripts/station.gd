@@ -53,7 +53,9 @@ func open():
 	if not Main.singleton.bee.can_open(): return
 	if global_position.distance_to(Main.singleton.bee.body.global_position) > 750:
 		Main.pop("TOO FAR!")
+		SoundEffects.singleton.add(10, global_position)
 		return
+	SoundEffects.singleton.add(47, global_position)
 	Main.singleton.time.sleeper = sleeper
 	if Main.singleton.builder.held: return
 	if not menu: return

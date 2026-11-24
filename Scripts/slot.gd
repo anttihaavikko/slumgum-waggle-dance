@@ -47,6 +47,7 @@ func take(amt: int):
 
 func mark_for_pad(state: bool):
 	frame.self_modulate = Color.html("#EF5B5B") if state else Color.WHITE
+	SoundEffects.singleton.add(46, global_position, 0.5)
 
 func auto_move(target: Inventory):
 	if target.can_add_item(item, equipment):

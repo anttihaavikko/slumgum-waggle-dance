@@ -17,7 +17,8 @@ func _ready() -> void:
 		buttons.append(button)
 		button.text = eq.name
 		button.icon = Main.singleton.new_marker
-		button.pressed.connect(func(): press(eq, button, i))
+		# button.pressed.connect(func(): press(eq, button, i))
+		button.toggled.connect(func(_state): press(eq, button, i))
 		Main.singleton.register_hoverable(button)
 		add_child(button)
 	for i in item_recipes.size():
@@ -28,7 +29,7 @@ func _ready() -> void:
 		button.text = item.title
 		button.icon = Main.singleton.new_marker
 		Main.singleton.register_hoverable(button)
-		button.pressed.connect(func(): press_for_item(item, button, i))
+		button.toggled.connect(func(_state): press_for_item(item, button, i))
 		add_child(button)
 	open()
 
@@ -46,10 +47,11 @@ func open():
 	press(Main.singleton.bee.tools[recipes[index]], buttons[index], index)
 
 func focus_next_button(dir: int):
+	buttons[index].button_pressed = false
 	var visible_buttons := buttons.filter(func(b): return b.visible)
-	visible_buttons[index].button_pressed = false
-	index = (index + dir) % visible_buttons.size()
+	index = (visible_buttons.find(buttons[index]) + dir) % visible_buttons.size()
 	visible_buttons[index].button_pressed = true
+	if abs(dir) > 0: SoundEffects.singleton.add(46, global_position, 0.5)
 
 func press(eq: Equipment, button: Button, idx: int):
 	index = idx
