@@ -106,14 +106,16 @@ func _process(_delta) -> void:
 		cross.visible = not held.can_place()
 		if Input.is_action_just_pressed("primary"):
 			Main.shake(5, 0.1)
-			if not Main.singleton.inventory.has_materials(held.data.recipe):
+			var can_afford := Main.singleton.inventory.has_materials(held.data.recipe)
+			var free := Main.singleton.free_platforms and held is Platform
+			if not can_afford and not free:
 				Main.pop("INSUFFICIENT MATERIALS!")
 				SoundEffects.singleton.add(10, held.global_position)
 				return
 			held.try_to_place()
 			if cross.visible: return
 			Main.singleton.mark_built(held.identifier)
-			Main.singleton.inventory.consume_materials(held.data.recipe)
+			if not free: Main.singleton.inventory.consume_materials(held.data.recipe)
 			snap_points.append_array(held.snap_points)
 			prev_angle = held.rotation
 			built_pieces.append(held)

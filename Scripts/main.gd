@@ -36,6 +36,8 @@ var huts: Array[Hut] = []
 var object_index := 0
 var hovering := false
 var sleep_buff := 0
+var free_platforms := false
+var compass_spots: Array[Node2D] = []
 
 static var singleton: Main = null
 
@@ -175,6 +177,7 @@ func evaluate_stats():
 	var energy := 30 if sleep_buff > 0 else 20
 	bee.can_dash = false
 	bee.can_hover = false
+	free_platforms = false
 	for piece in builder.built_pieces:
 		if piece is not Station: continue
 		if piece.identifier == BuildPiece.Id.Totem:
@@ -188,6 +191,8 @@ func evaluate_stats():
 					bee.can_dash = true
 				if i.data.item_id == Item.Id.EyeBeeEater:
 					bee.can_hover = true
+				if i.data.item_id == Item.Id.EyeShrike:
+					free_platforms = true
 		if piece.identifier == BuildPiece.Id.Cup:
 			for i: Item in piece.inputs:
 				if not i: continue
@@ -220,3 +225,12 @@ static func bee_pos() -> Vector2:
 func register_hoverable(button: Button):
 	button.mouse_entered.connect(func(): hovering = true)
 	button.mouse_exited.connect(func(): hovering = false)
+
+func get_compass_dir(pos: Vector2) -> Vector2:
+	var closest = Utils.find_closest(compass_spots, pos)
+	if not closest: return Vector2.ZERO
+	return (closest.global_position - pos).normalized()
+
+func remove_compass_spot(node: Node2D):
+	if compass_spots.has(node):
+		compass_spots.remove_at(compass_spots.find(node))

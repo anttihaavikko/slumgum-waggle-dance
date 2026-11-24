@@ -16,6 +16,8 @@ func _ready() -> void:
 	body_entered.connect(collided)
 	if Main.singleton.data.broken_nodes.has(item_index * 1.0):
 		queue_free()
+	else:
+		Main.singleton.compass_spots.append(self)
 
 func collided(_node: Node2D):
 	if global_position.distance_to(Main.bee_pos()) > 1000: return
@@ -35,6 +37,7 @@ func entered(_node: Node2D):
 			inventory.add_item(item.data.item_id, item.amount)
 		if item_index >= 0:
 			Main.singleton.data.broken_nodes.append(item_index)
+		Main.singleton.remove_compass_spot(self)
 		queue_free()
 
 func launch(force: float = 1.0):
