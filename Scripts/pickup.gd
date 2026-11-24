@@ -32,6 +32,6 @@ func entered(_node: Node2D):
 		queue_free()
 
 func launch(force: float = 1.0):
-	await get_tree().process_frame
+	await get_tree().create_timer(0.1).timeout
 	apply_impulse(Vector2.ONE.rotated(randf() * TAU) * 200 * force)
 	apply_torque_impulse(randf() * 30 * force)

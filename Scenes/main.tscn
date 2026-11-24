@@ -94,13 +94,17 @@
 [ext_resource type="Script" uid="uid://bwdfxedsx71bs" path="res://Scripts/harvester.gd" id="32_kltya"]
 [ext_resource type="Texture2D" uid="uid://cofjigejorj7t" path="res://Sprites/tri-down.png" id="33_e08e2"]
 [ext_resource type="Texture2D" uid="uid://f56nl7hefqyg" path="res://Sprites/platform.png" id="33_rlvxq"]
+[ext_resource type="Texture2D" uid="uid://h1j2hxmky7m" path="res://Sprites/eye-robin.png" id="34_f2hid"]
 [ext_resource type="Texture2D" uid="uid://b6d031yqaujsn" path="res://Sprites/x.png" id="34_jwpg7"]
 [ext_resource type="Texture2D" uid="uid://chh1wri5fn6i8" path="res://Sprites/icon-key.png" id="34_r33sp"]
 [ext_resource type="Texture2D" uid="uid://bx8xx8ul1id6g" path="res://Sprites/support.png" id="35_0fjpc"]
 [ext_resource type="Texture2D" uid="uid://dqgjqqqc2mqrf" path="res://Sprites/icon-trigger.png" id="35_hdf80"]
 [ext_resource type="Texture2D" uid="uid://bowys0fo5me6x" path="res://Sprites/thumbs.png" id="35_k2e45"]
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="36_hdf80"]
+[ext_resource type="Texture2D" uid="uid://80r82ery865v" path="res://Sprites/eye-bee-eater.png" id="36_jwypt"]
+[ext_resource type="Texture2D" uid="uid://cnh4uwv8bds12" path="res://Sprites/eye-great-tit.png" id="37_bqs45"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
+[ext_resource type="Texture2D" uid="uid://dyv1utbxug574" path="res://Sprites/eye-shrike.png" id="38_s2nl6"]
 [ext_resource type="PackedScene" uid="uid://w80g3fd86xfk" path="res://_Starter/Scenes/Effects/pulse_ring.tscn" id="40_b7esa"]
 [ext_resource type="AudioStream" uid="uid://bywtwmqqhham1" path="res://Sounds/land.wav" id="41_6lvi0"]
 [ext_resource type="AudioStream" uid="uid://dp1x518em565k" path="res://Sounds/hurt.wav" id="42_2rlip"]
@@ -519,6 +523,7 @@ stack_size = 1
 title = "Energy Relic"
 sprite = ExtResource("24_8d8ul")
 description = "A (relic) of a tribe of (gentle giants). This one (boosts) your (energy) when exhibited at a (totem)."
+hold_offset = -55.0
 custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
@@ -586,6 +591,101 @@ title = "Cold Pollen"
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
 sprite = ExtResource("6_ptfg5")
 description = "Soft and fuzzy (cold material) gathered from a (golden flower). Has many different (uses) like as a source for (fabric) or (oils)."
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="Resource" id="Resource_ffxd5"]
+script = ExtResource("3_cbgmd")
+item_id = 33
+stack_size = 1
+title = "Robin Eye"
+sprite = ExtResource("34_f2hid")
+description = "An (eye) of a once scary (predator) of the beekind, a (robin). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+hold_offset = -55.0
+custom_prefab = ExtResource("24_3qdko")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgfam"]
+radius = 174.72
+
+[sub_resource type="PackedScene" id="PackedScene_bqs45"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(295608567)],
+"names": PackedStringArray("Relic Pickup", "Sprite2D", "texture", "CollisionPolygon2D", "polygon", "CollisionShape2D", "shape"),
+"node_count": 4,
+"node_ids": PackedInt32Array(1139630903, 929980930, 734810126, 2065663725),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./Area2D")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0, 1073741825, -1, 2147483647, 524291, -1, 1, 4, 2, 0, 1073741826, -1, 2147483647, 262149, -1, 1, 6, 3, 0),
+"variants": [ExtResource("6_536cc"), ExtResource("24_tctli"), PackedVector2Array(-39, -86, 40, -87, 96, -31, 96, 42, 43, 94, -41, 95, -90, 41, -85, -41), SubResource("CircleShape2D_pgfam")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_s2nl6"]
+script = ExtResource("3_cbgmd")
+item_id = 34
+stack_size = 1
+title = "Bee-Eater Eye"
+sprite = ExtResource("36_jwypt")
+description = "An (eye) of a once scary (predator) of the beekind, a (bee-eater). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+hold_offset = -55.0
+custom_prefab = SubResource("PackedScene_bqs45")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="PackedScene" id="PackedScene_jwypt"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(295608567)],
+"names": PackedStringArray("Relic Pickup", "Sprite2D", "texture", "CollisionPolygon2D", "polygon", "CollisionShape2D", "shape"),
+"node_count": 4,
+"node_ids": PackedInt32Array(1139630903, 929980930, 734810126, 2065663725),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./Area2D")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0, 1073741825, -1, 2147483647, 524291, -1, 1, 4, 2, 0, 1073741826, -1, 2147483647, 262149, -1, 1, 6, 3, 0),
+"variants": [ExtResource("6_536cc"), ExtResource("24_tctli"), PackedVector2Array(-39, -86, 40, -87, 96, -31, 96, 42, 43, 94, -41, 95, -90, 41, -85, -41), SubResource("CircleShape2D_pgfam")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_ddyu8"]
+script = ExtResource("3_cbgmd")
+item_id = 35
+stack_size = 1
+title = "Great Tit Eye"
+sprite = ExtResource("37_bqs45")
+description = "An (eye) of a once scary (predator) of the beekind, a (great tit). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+hold_offset = -55.0
+custom_prefab = SubResource("PackedScene_jwypt")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="PackedScene" id="PackedScene_s2nl6"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(295608567)],
+"names": PackedStringArray("Relic Pickup", "Sprite2D", "texture", "CollisionPolygon2D", "polygon", "CollisionShape2D", "shape"),
+"node_count": 4,
+"node_ids": PackedInt32Array(1139630903, 929980930, 734810126, 2065663725),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./Area2D")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0, 1073741825, -1, 2147483647, 524291, -1, 1, 4, 2, 0, 1073741826, -1, 2147483647, 262149, -1, 1, 6, 3, 0),
+"variants": [ExtResource("6_536cc"), ExtResource("24_tctli"), PackedVector2Array(-39, -86, 40, -87, 96, -31, 96, 42, 43, 94, -41, 95, -90, 41, -85, -41), SubResource("CircleShape2D_pgfam")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_e104q"]
+script = ExtResource("3_cbgmd")
+item_id = 36
+stack_size = 1
+title = "Shrike Eye"
+sprite = ExtResource("38_s2nl6")
+description = "An (eye) of a once scary (predator) of the beekind, a (shrike). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+hold_offset = -55.0
+custom_prefab = SubResource("PackedScene_s2nl6")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
@@ -1084,7 +1184,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul"), SubResource("Resource_rnjsd"), SubResource("Resource_82fq1"), SubResource("Resource_xji1d"), SubResource("Resource_6im2o"), SubResource("Resource_ltyjx"), SubResource("Resource_xnck3")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul"), SubResource("Resource_rnjsd"), SubResource("Resource_82fq1"), SubResource("Resource_xji1d"), SubResource("Resource_6im2o"), SubResource("Resource_ltyjx"), SubResource("Resource_xnck3"), SubResource("Resource_ffxd5"), SubResource("Resource_s2nl6"), SubResource("Resource_ddyu8"), SubResource("Resource_e104q")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 

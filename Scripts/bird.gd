@@ -80,4 +80,7 @@ func hurt(amount: int):
 			var p = Main.spawn_item(Item.Id.FeatherRobin + species_index, body.global_position)
 			p.rotate(randf() * TAU)
 			p.call_deferred("launch")
+		var eye = Main.spawn_item(Item.Id.EyeRobin + species_index, body.global_position)
+		eye.rotate(randf() * TAU)
+		eye.call_deferred("launch", 2.5)
 		queue_free()

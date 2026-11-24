@@ -2,14 +2,28 @@
 
 [ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_56rwl"]
 [ext_resource type="Texture2D" uid="uid://fpqyb6gaktty" path="res://Sprites/totem.png" id="2_56y0w"]
-[ext_resource type="Texture2D" uid="uid://c1aw25xu7g6j2" path="res://Sprites/relic_energy.png" id="3_56y0w"]
+[ext_resource type="Texture2D" uid="uid://h1j2hxmky7m" path="res://Sprites/eye-robin.png" id="3_56y0w"]
+[ext_resource type="Script" uid="uid://djt34scs3lbre" path="res://Scripts/totem.gd" id="4_ggwci"]
+[ext_resource type="Texture2D" uid="uid://cijvrkcbnjaal" path="res://_Starter/Sprites/circle.png" id="4_lw26s"]
+[ext_resource type="Texture2D" uid="uid://c8hnt3s7wvhjg" path="res://Sprites/circle-mask.png" id="5_3ggdh"]
+[ext_resource type="Shader" uid="uid://dw5u0j1r1we5x" path="res://_Starter/Shaders/blob.gdshader" id="6_hqd07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56rwl"]
 size = Vector2(291.26, 605)
 
-[node name="Totem" unique_id=299398414 node_paths=PackedStringArray("input_preview") instance=ExtResource("1_56rwl")]
-input_preview = [NodePath("Preview")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggwci"]
+shader = ExtResource("6_hqd07")
+shader_parameter/amount = 12.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/peaks = 9.66
+shader_parameter/time_mod = 1.0
+
+[node name="Totem" unique_id=299398414 node_paths=PackedStringArray("input_preview", "functionality") instance=ExtResource("1_56rwl")]
+input_preview = [NodePath("Totem Preview")]
 hide_outputs = true
+functionality = NodePath("Totem Preview")
 
 [node name="Sprite2D" parent="." index="0" unique_id=641265153]
 position = Vector2(-5, -320)
@@ -35,7 +49,25 @@ shape = SubResource("RectangleShape2D_56rwl")
 position = Vector2(0, -330.5)
 shape = SubResource("RectangleShape2D_56rwl")
 
-[node name="Preview" type="Sprite2D" parent="." index="7" unique_id=741631797]
+[node name="Totem Preview" type="Sprite2D" parent="." index="7" unique_id=741631797 node_paths=PackedStringArray("sprite")]
 position = Vector2(-8, -424.00003)
 scale = Vector2(0.89262545, 0.89262545)
 texture = ExtResource("3_56y0w")
+script = ExtResource("4_ggwci")
+sprite = NodePath("Mask/Pupil")
+
+[node name="Mask" type="Sprite2D" parent="Totem Preview" index="0" unique_id=1355212082]
+clip_children = 1
+position = Vector2(2.2405813, 4.481197)
+scale = Vector2(0.48244476, 0.48244476)
+texture = ExtResource("4_lw26s")
+
+[node name="Pupil" type="Sprite2D" parent="Totem Preview/Mask" index="0" unique_id=1727254767]
+material = SubResource("ShaderMaterial_ggwci")
+position = Vector2(0, -11.610657)
+scale = Vector2(2.080757, 2.080757)
+texture = ExtResource("3_56y0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Totem Preview/Mask/Pupil" index="0" unique_id=540219332]
+scale = Vector2(0.6404319, 0.6404319)
+texture = ExtResource("5_3ggdh")

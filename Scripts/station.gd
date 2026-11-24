@@ -94,6 +94,10 @@ func update_previews():
 	update_preview(input_preview, inputs, true)
 	update_preview(output_preview, outputs, false)
 	updated.emit()
+	if functionality is Totem:
+		functionality.sprite.hide()
+		if inputs.size() > 0 and inputs[0]:
+			functionality.setup(inputs[0].data.item_id)
 
 func accepts(id: Item.Id) -> bool:
 	if converts.size() == 0: return true

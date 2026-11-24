@@ -33,7 +33,11 @@ enum Id {
 	FeatherGreatTit,
 	FeatherShrike,
 	RedPollen,
-	ColdPollen
+	ColdPollen,
+	EyeRobin,
+	EyeBeeEater,
+	EyeGreatTit,
+	EyeShrike
 }
 
 var data: ItemData
