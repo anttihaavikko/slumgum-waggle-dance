@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cnt3l80cebe1s" path="res://Sprites/red-center.png" id="2_deccg"]
 
 [node name="Flower" unique_id=1614192265 instance=ExtResource("1_ckl1v")]
+pollen = 31
 
 [node name="Petals" parent="Mover/Area2D" parent_id_path=PackedInt32Array(1832368481) index="1" unique_id=1551095991]
 modulate = Color(1, 1, 1, 1)

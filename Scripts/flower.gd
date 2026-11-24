@@ -4,6 +4,7 @@ class_name Flower extends Node2D
 @export var center: Sprite2D
 @export var mover: Mover
 @export var breakable: Breakable
+@export var pollen := Item.Id.Pollen
 
 var amount := 0
 var grown := false

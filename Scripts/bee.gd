@@ -156,6 +156,7 @@ func add_console_commands():
 	LimboConsole.add_argument_autocomplete_source("teleport", 1, func(): return ["list", "get"])
 	LimboConsole.add_alias("tp", "teleport")
 	LimboConsole.add_alias("item", "give")
+	LimboConsole.add_alias("get", "give")
 	LimboConsole.add_alias("spawn", "give")
 	LimboConsole.add_alias("i", "give")
 	LimboConsole.add_alias("g", "give")

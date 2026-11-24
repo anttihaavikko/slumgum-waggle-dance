@@ -44,7 +44,7 @@ func _process(delta) -> void:
 			flower.consume()
 			Main.singleton.inventory.add_item(Item.Id.Nectar)
 			if Main.singleton.bee.is_holding(Equipment.Id.Brush):
-				Main.singleton.inventory.add_item(Item.Id.Pollen)
+				Main.singleton.inventory.add_item(flower.pollen)
 
 func reset():
 	pos = 0
