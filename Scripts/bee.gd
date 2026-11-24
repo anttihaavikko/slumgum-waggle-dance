@@ -12,14 +12,17 @@ class_name Bee extends Node2D
 # more huts
 # more obelisks
 # menu
-# pickup permanence
 #
 # blocking swings
 # polymorph items
 #
 # inventory slots
-# compass
-# free platforms
+# speed boost
+#
+# shrike - impale
+# bee-eater - metamorphosis, took pity
+# robin - burnt-breast, went to hell, lightning, intruders, harbinger of accidents
+# great tit - acrobatics
 #
 # AMBForst_Late Spring.A Quiet Forest Edge.Hot.Sunny.Birds.Mosquitoes 2_EM by newlocknew -- https://freesound.org/s/856018/ -- License: Creative Commons 0
 # amb_forest_night.wav by Dokuta_Gerovv -- https://freesound.org/s/662095/ -- License: Creative Commons 0
@@ -48,6 +51,7 @@ class_name Bee extends Node2D
 @export var buzz: AudioStreamPlayer2D
 @export var charge_particles: CPUParticles2D
 @export var charging_humm: AudioStreamPlayer2D
+@export var double_tap: DoubleTabDetect
 
 var thrust = 1.5
 var turning = 1.0
@@ -62,6 +66,8 @@ var spring_core: SpringCore
 var buzz_volume = MovingValue.new(0, 5)
 var has_consumed_energy := false
 var charge_volume = MovingValue.new(0, 10)
+var can_dash := false
+var can_hover := false
 
 var current: Equipment
 
@@ -88,6 +94,7 @@ func _ready() -> void:
 	# await get_tree().create_timer(1).timeout
 	# inventory.add_item(Item.Id.Wax, 20)
 	add_console_commands()
+	double_tap.triggered.connect(double_tapped)
 
 	# print(OS.get_data_dir())
 	# print(Main.singleton.data.inventory)
@@ -127,6 +134,12 @@ func _ready() -> void:
 		# inventory.add_item(Item.Id.Seed, 20)
 		# inventory.add_item(Item.Id.String, 20)
 		# inventory.add_item(Item.Id.Bomb, 10)
+
+func double_tapped(action: String):
+	if not can_dash: return
+	var dir = Vector2.RIGHT if action == "right" else Vector2.LEFT
+	body.apply_impulse(dir * 3000, Vector2(0, 100).rotated(body.rotation))
+	body.apply_torque_impulse(dir.x * 10000)
 
 func add_console_commands():
 	# if LimboConsole._commands.has("give"): return
@@ -397,6 +410,10 @@ func _process(delta) -> void:
 	cam.position = Vector2.ZERO.move_toward(to_local(Main.singleton.input_detection.get_position(body, 5000)), 300 * look_mod) + \
 		body.linear_velocity * 0.5
 
+	var hovering = Input.is_action_pressed("hover") and can_hover
+	body.gravity_scale = 0 if hovering else 1
+	lander.gravity_scale = 0 if hovering else 1
+
 	var show_charging = charging and landed and energy_left < energy_max
 	charge_volume.target = 1 if show_charging else 0
 	charge_volume.update(delta)
@@ -415,10 +432,14 @@ func _process(delta) -> void:
 		body.apply_torque(rot * delta * 5000000 * turning)
 		body.apply_force(body.transform.y * acc * thrust * 100000 * delta * speed)
 		wings.speed_scale = 1.0 + absf(acc) * 3.0
+		if hovering: wings.speed_scale = 3.0
 		if abs(acc) > 0.01:
 			change_energy(-delta)
+		if hovering:
+			change_energy(-delta * 0.2)
 
 	buzz_volume.target = absf(acc)
+	if hovering: buzz_volume.target = 1
 	buzz_volume.update(delta)
 	buzz.volume_linear = buzz_volume.value * 0.5
 

@@ -243,6 +243,7 @@
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="175_w32ys"]
 [ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
 [ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
+[ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -599,7 +600,7 @@ item_id = 33
 stack_size = 1
 title = "Robin Eye"
 sprite = ExtResource("34_f2hid")
-description = "An (eye) of a once scary (predator) of the beekind, a (robin). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+description = "An (eye) of a once scary (predator) of the beekind, a (robin). Hang it in a (totem) to unlock its (magical power). This one will always (point towards) closest unclaimed (relic) or (egg)."
 hold_offset = -55.0
 custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
@@ -629,7 +630,7 @@ item_id = 34
 stack_size = 1
 title = "Bee-Eater Eye"
 sprite = ExtResource("36_jwypt")
-description = "An (eye) of a once scary (predator) of the beekind, a (bee-eater). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+description = "An (eye) of a once scary (predator) of the beekind, a (bee-eater). Hang it in a (totem) to unlock its (magical power) granting the (ability) to (hover) still in place by (holding SPACE) or ([X])."
 hold_offset = -55.0
 custom_prefab = SubResource("PackedScene_bqs45")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
@@ -656,7 +657,7 @@ item_id = 35
 stack_size = 1
 title = "Great Tit Eye"
 sprite = ExtResource("37_bqs45")
-description = "An (eye) of a once scary (predator) of the beekind, a (great tit). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+description = "An (eye) of a once scary (predator) of the beekind, a (great tit). Hang it in a (totem) to unlock its (magical power) granting the (ability) to do a quick (dash) left or right by (double tapping) either of the (directions)."
 hold_offset = -55.0
 custom_prefab = SubResource("PackedScene_jwypt")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
@@ -683,7 +684,7 @@ item_id = 36
 stack_size = 1
 title = "Shrike Eye"
 sprite = ExtResource("38_s2nl6")
-description = "An (eye) of a once scary (predator) of the beekind, a (shrike). Hang it in a (totem) to unlock its (magical power) granting (lorem ipsum) dolor."
+description = "An (eye) of a once scary (predator) of the beekind, a (shrike). Hang it in a (totem) to unlock its (magical power) granting. This one (allows) you to (build platforms) absolutely (free) of charge."
 hold_offset = -55.0
 custom_prefab = SubResource("PackedScene_s2nl6")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
@@ -1162,6 +1163,11 @@ tooltip = NodePath("../HUD/Tooltip")
 input_detection = NodePath("../Input Detection")
 buttons = [NodePath("../HUD/Bed Window/Bed/VBoxContainer/Morning"), NodePath("../HUD/Bed Window/Bed/VBoxContainer/Eight")]
 
+[node name="DoubleTabDetect" type="Node" parent="." unique_id=295763462]
+script = ExtResource("244_ddyu8")
+actions = Array[String](["left", "right"])
+reset_delay = 0.2
+
 [node name="Input Detection" type="Node" parent="." unique_id=1977210264]
 script = ExtResource("7_y07ku")
 metadata/_custom_type_script = "uid://b8mebr8i6loke"
@@ -1566,7 +1572,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover", "buzz", "charge_particles", "charging_humm")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover", "buzz", "charge_particles", "charging_humm", "double_tap")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -1594,6 +1600,7 @@ face_mover = NodePath("Body/Body Sprite/Face Wrap/Wrap")
 buzz = NodePath("Body/Buzz")
 charge_particles = NodePath("Body/Charge Particles")
 charging_humm = NodePath("Body/Charging")
+double_tap = NodePath("../DoubleTabDetect")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5

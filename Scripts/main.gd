@@ -173,6 +173,8 @@ func evaluate_stats():
 	stinger.damage = 3
 	var health := 10
 	var energy := 30 if sleep_buff > 0 else 20
+	bee.can_dash = false
+	bee.can_hover = false
 	for piece in builder.built_pieces:
 		if piece is not Station: continue
 		if piece.identifier == BuildPiece.Id.Totem:
@@ -182,6 +184,10 @@ func evaluate_stats():
 					energy += 10
 				if i.data.item_id == Item.Id.RelicHealth:
 					health += 5
+				if i.data.item_id == Item.Id.EyeGreatTit:
+					bee.can_dash = true
+				if i.data.item_id == Item.Id.EyeBeeEater:
+					bee.can_hover = true
 		if piece.identifier == BuildPiece.Id.Cup:
 			for i: Item in piece.inputs:
 				if not i: continue
