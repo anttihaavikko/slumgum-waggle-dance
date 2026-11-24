@@ -24,6 +24,7 @@ enum Id {
 @export var flips := false
 @export var aligns := true
 @export var help_text: Control
+@export var pad_help_text: Control
 @export var mouse_wrap: InputDetection
 
 var cooldown := 0.0
@@ -41,7 +42,9 @@ func update(_delta: float):
 func toggle(state: bool):
 	# print(name, " -> ", state)
 	visible = state
-	if help_text: help_text.visible = state
+	var pad := Main.singleton.input_detection.using_pad
+	if help_text: help_text.visible = state and not pad
+	if pad_help_text: pad_help_text.visible = state and pad
 
 func align():
 	var mp = Main.singleton.input_detection.get_mouse_direction(Main.singleton.bee.body, 500)

@@ -1844,7 +1844,7 @@ offset = Vector2(0, 1)
 [node name="Swinger" type="Node2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner" unique_id=1904647529]
 script = ExtResource("18_1w6v2")
 
-[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "cast", "pointer", "swinger", "aligner", "help_text")]
+[node name="Hammer" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=832850319 node_paths=PackedStringArray("builder", "cast", "pointer", "swinger", "aligner", "help_text", "pad_help_text")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-3, 0)
@@ -1865,6 +1865,7 @@ swinger = NodePath("..")
 aligner = NodePath("../..")
 swing_dir = -0.6
 help_text = NodePath("../../../../../../../../HUD/Frame/Hammer Help")
+pad_help_text = NodePath("../../../../../../../../HUD/Frame/Hammer Help Pad")
 
 [node name="Scythe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=627905351 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
 visible = false
@@ -2339,6 +2340,7 @@ color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 
 [node name="Hammer Help" type="RichTextLabel" parent="HUD/Frame" unique_id=942580721]
 visible = false
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = -125.0
 offset_top = -19.0
@@ -2353,6 +2355,59 @@ bbcode_enabled = true
 text = "[img=30]res://_Starter/Sprites/mouse_click.png[/img] place, [img=30]res://_Starter/Sprites/mouse_right.png[/img] open build menu,
  [img=25]res://_Starter/Sprites/mouse_zoom.png[/img] rotate, [img=30]res://_Starter/Sprites/mouse_wheel_click.png[/img] destroy piece,
 SHIFT no snapping"
+horizontal_alignment = 1
+
+[node name="Fill" type="RichTextLabel" parent="HUD/Frame/Hammer Help" unique_id=692493339]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 986.0
+offset_bottom = 159.0
+theme = ExtResource("36_hdf80")
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[img=30]res://_Starter/Sprites/mouse_click.png[/img] place, [img=30]res://_Starter/Sprites/mouse_right.png[/img] open build menu,
+ [img=25]res://_Starter/Sprites/mouse_zoom.png[/img] rotate, [img=30]res://_Starter/Sprites/mouse_wheel_click.png[/img] destroy piece,
+SHIFT no snapping"
+horizontal_alignment = 1
+
+[node name="Hammer Help Pad" type="RichTextLabel" parent="HUD/Frame" unique_id=604845265]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -125.0
+offset_top = -19.0
+offset_right = 863.0
+offset_bottom = 142.0
+theme = ExtResource("36_hdf80")
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[img=30]res://Sprites/lb.png[/img] open build menu, [img=30]res://Sprites/rb.png[/img] place,
+ [img=25]res://Sprites/dpad_sides.png[/img] rotate, [img=30]res://Sprites/dpad_down.png[/img] destroy piece,
+[img=30]res://Sprites/dpad_up.png[/img] no snapping"
+horizontal_alignment = 1
+
+[node name="Fill" type="RichTextLabel" parent="HUD/Frame/Hammer Help Pad" unique_id=1733994454]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 986.0
+offset_bottom = 158.0
+theme = ExtResource("36_hdf80")
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[img=30]res://Sprites/lb.png[/img] open build menu, [img=30]res://Sprites/rb.png[/img] place,
+ [img=25]res://Sprites/dpad_sides.png[/img] rotate, [img=30]res://Sprites/dpad_down.png[/img] destroy piece,
+[img=30]res://Sprites/dpad_up.png[/img] no snapping"
 horizontal_alignment = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HUD" unique_id=1161880959]
