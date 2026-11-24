@@ -246,6 +246,7 @@
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="175_w32ys"]
 [ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
 [ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
+[ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
@@ -2839,7 +2840,6 @@ slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../../ItemManager")
 
 [node name="Preview Window" parent="HUD" unique_id=275815913 instance=ExtResource("57_lx3vj")]
-visible = false
 offset_left = 189.0
 offset_top = -372.0
 offset_right = 595.0
@@ -2908,7 +2908,10 @@ offset_left = 32.0
 offset_top = 565.0
 offset_right = 378.0
 offset_bottom = 636.0
+theme_override_constants/icon_max_width = 40
 text = "CRAFT"
+icon = ExtResource("233_vhoi0")
+icon_alignment = 0
 
 [node name="Sign Window" parent="HUD" unique_id=431523299 instance=ExtResource("57_lx3vj")]
 visible = false
