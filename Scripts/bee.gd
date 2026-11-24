@@ -8,12 +8,14 @@ class_name Bee extends Node2D
 # hats
 # crab spiders
 # beewolves (wasp)
-# bird eyes
 # songs
 # more huts
 # more obelisks
 # menu
 # pickup permanence
+#
+# blocking swings
+# polymorph items
 #
 # inventory slots
 # compass
