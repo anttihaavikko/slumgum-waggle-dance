@@ -630,7 +630,7 @@ item_id = 34
 stack_size = 1
 title = "Bee-Eater Eye"
 sprite = ExtResource("36_jwypt")
-description = "An (eye) of a once scary (predator) of the beekind, a (bee-eater). Hang it in a (totem) to unlock its (magical power) granting the (ability) to (hover) still in place by (holding SPACE) or ([X])."
+description = "An (eye) of a once scary (predator) of the beekind, a (bee-eater). Hang it in a (totem) to unlock its (magical power) granting the (ability) to (hover) still in place by (holding down) [img=85]res://Sprites/space.png[/img] or [img=25]res://Sprites/x_btn.png[/img]."
 hold_offset = -55.0
 custom_prefab = SubResource("PackedScene_bqs45")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"

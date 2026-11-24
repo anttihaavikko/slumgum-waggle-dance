@@ -139,6 +139,7 @@ func get_key_values() -> String:
 	return "(%s), (%s) and (%s)" % values.slice(0, 3)
 
 func get_message() -> String:
+	return "(Welcome) to your first (shift newbee)! Fly with [img=330]res://Sprites/wasd.png[/img] or [img=90]res://Sprites/l_stick.png[/img] + [img=100]res://Sprites/rt.png[/img], go find some (flowers) and gather (nectar) from them. Be mindful to not run out of (energy)!"
 	if event:
 		var msg = event.messages.pop_front()
 		event.step += 1
