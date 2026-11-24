@@ -26,6 +26,7 @@ func _ready() -> void:
 	# sprite.modulate = Color.RED
 	button.pressed.connect(open)
 	button.mouse_entered.connect(announce)
+	button.mouse_exited.connect(func(): Main.singleton.hovering = false)
 	update_previews()
 	if crafting_animation: crafting_animation.stop()
 	setup()
@@ -41,6 +42,7 @@ func announce():
 	if Main.singleton.builder.held: return
 	Effects.singleton.pop(title.to_upper(), center.global_position + Vector2.UP * 100)
 	cooldown = 0.5
+	Main.singleton.hovering = true
 
 func open():
 	if not placed: return

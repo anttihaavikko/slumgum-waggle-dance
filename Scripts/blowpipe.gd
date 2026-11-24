@@ -16,7 +16,7 @@ var can_shoot := true
 func update(_delta: float):
 	super.update(_delta)
 	align()
-	if Input.is_action_just_pressed("primary") and can_shoot:
+	if Input.is_action_just_pressed("primary") and can_shoot and can_swing():
 		var ammo = get_ammo()
 		if ammo < 1:
 			SoundEffects.singleton.add(44, global_position, 1)

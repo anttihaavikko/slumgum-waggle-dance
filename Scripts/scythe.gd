@@ -31,7 +31,7 @@ func update(delta: float):
 							bird_hurt = true
 							o.root.hurt(damage)
 
-	if Input.is_action_just_pressed("primary") and not on_cooldown:
+	if Input.is_action_just_pressed("primary") and not on_cooldown and can_swing():
 		deadly = true
 		SoundEffects.singleton.add(36, global_position, 0.7)
 		await get_tree().create_timer(0.1).timeout

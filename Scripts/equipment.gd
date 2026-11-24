@@ -34,7 +34,7 @@ func blocks_clicks() -> bool:
 func update(_delta: float):
 	cooldown -= _delta
 	if cooldown > 0: return
-	if swinger and Input.is_action_just_pressed("primary"):
+	if swinger and Input.is_action_just_pressed("primary") and can_swing():
 		swinger.swing(swing_dir)
 		cooldown = 0.4
 
@@ -48,3 +48,6 @@ func align():
 	if aligner: aligner.look_at(mp)
 	if not aligns: aligner.rotation = 0
 	if flips: sprite.flip_v = mp.x < global_position.x
+
+func can_swing():
+	return not Main.singleton.hovering

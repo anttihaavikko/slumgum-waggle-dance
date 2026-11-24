@@ -33,6 +33,7 @@ var door_hints_init := false
 var data: SaveData
 var huts: Array[Hut] = []
 var object_index := 0
+var hovering := false
 
 static var singleton: Main = null
 

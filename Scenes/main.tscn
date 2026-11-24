@@ -726,8 +726,7 @@ description = "(Lights up) the dark (night)."
 prefab = ExtResource("27_v1mrv")
 sprite = ExtResource("55_mfvrx")
 recipe = Dictionary[int, int]({
-2: 5,
-9: 1
+9: 3
 })
 
 [sub_resource type="Resource" id="Resource_xg142"]
@@ -737,8 +736,7 @@ description = "(Lights up) the dark (night)."
 prefab = ExtResource("28_fd3ed")
 sprite = ExtResource("56_ilwxp")
 recipe = Dictionary[int, int]({
-2: 5,
-9: 1
+9: 3
 })
 
 [sub_resource type="Resource" id="Resource_y4lw4"]
@@ -748,8 +746,7 @@ description = "A (work station) for creating (advanced) small (items)."
 prefab = ExtResource("62_0wopu")
 sprite = ExtResource("63_na2ur")
 recipe = Dictionary[int, int]({
-2: 5,
-11: 5,
+11: 15,
 19: 5,
 20: 5
 })
@@ -1797,9 +1794,7 @@ identifier = 8
 description = "A (mighty weapon) made from a (stillborn) queen's (stinger)."
 icon = ExtResource("107_pmnrr")
 recipe = Dictionary[int, int]({
-2: 5,
-3: 5,
-20: 3
+16: 1
 })
 swinger = NodePath("..")
 aligner = NodePath("../..")
@@ -1894,8 +1889,7 @@ identifier = 3
 description = "Allows you to (play) some sweet (comforting tunes). Could maybe even (affect) your (predators)."
 icon = ExtResource("117_0w4wg")
 recipe = Dictionary[int, int]({
-2: 10,
-3: 5,
+3: 6,
 19: 6
 })
 swinger = NodePath("..")
@@ -1925,7 +1919,7 @@ identifier = 4
 description = "Allows you to (paint) your (build pieces) to what ever (color) you want, and possess (paint) of."
 icon = ExtResource("119_s8cid")
 recipe = Dictionary[int, int]({
-2: 5,
+1: 5,
 18: 5
 })
 swinger = NodePath("..")
