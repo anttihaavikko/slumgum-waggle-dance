@@ -206,7 +206,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("2_fs1qj")
 theme_override_font_sizes/normal_font_size = 32
-text = "Camera distance"
+text = "Camera zoom"
 fit_content = true
 
 [node name="Scale Slider2" type="HSlider" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=139395887]

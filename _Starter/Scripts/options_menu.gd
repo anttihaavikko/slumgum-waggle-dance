@@ -52,7 +52,7 @@ func changed(_val):
 	AudioServer.set_bus_volume_linear(1, music.value * 2)
 	AudioServer.set_bus_volume_linear(2, sounds.value * 2)
 	get_tree().root.content_scale_factor = scaler.value
-	if cam: cam.zoom = default_zoom * distance.value
+	if cam: cam.zoom = default_zoom * distance.value / scaler.value
 	data.music = music.value
 	data.sounds = sounds.value
 	data.scale = scaler.value
