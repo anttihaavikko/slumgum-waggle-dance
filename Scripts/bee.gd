@@ -451,15 +451,16 @@ func _process(delta) -> void:
 	visuals.scale = Vector2(1 - stretch, 1 + stretch)
 	# leg_container.scale = visuals.scale
 
-	if not health.is_alive(): return
-	if LimboConsole.is_open(): return
-
 	if landed:
 		var amt = max(5, (energy_max - energy_left) * 0.9)
 		change_energy(delta * amt, energy_max if charging else 5.0)
 
 	if current:
 		current.update(delta)
+
+	if not health.is_alive(): return
+	if LimboConsole.is_open(): return
+	if Main.singleton.options.open: return
 
 	for i in 9:
 		if Input.is_action_just_pressed("slot_%d" % [i + 1]) and i < inventory.slots.size():

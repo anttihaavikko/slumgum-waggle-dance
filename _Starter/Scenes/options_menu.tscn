@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://bd7jj35q01jh0"]
+
+[ext_resource type="Script" uid="uid://clg7ymun2dxb2" path="res://_Starter/Scripts/options_menu.gd" id="1_2s2nq"]
+[ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="2_fs1qj"]
+[ext_resource type="Script" uid="uid://c520rycy7rrau" path="res://_Starter/Scripts/slider_label.gd" id="3_ctad7"]
+[ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://_Starter/Scenes/button.tscn" id="4_v0aow"]
+[ext_resource type="Texture2D" uid="uid://k5uyfm3uxpmo" path="res://_Starter/Sprites/menu-hamburger.png" id="5_ebsny"]
+
+[node name="OptionsMenu" type="Control" unique_id=292896132 node_paths=PackedStringArray("toggle_button_top", "music", "sounds", "scaler", "distance", "container")]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -516.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_2s2nq")
+toggle_action = "menu"
+toggle_button_top = NodePath("Toggler")
+music = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Music Slider")
+sounds = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Sounds Slider")
+scaler = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider")
+distance = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider2")
+toggle_button_on_top = true
+extra_close_action = "cancel"
+container = NodePath("Border")
+sound = 36
+metadata/_custom_type_script = "uid://clg7ymun2dxb2"
+
+[node name="Border" type="ColorRect" parent="." unique_id=705138054]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Border" unique_id=1559292927]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Fill" type="ColorRect" parent="Border/MarginContainer" unique_id=882880232]
+layout_mode = 2
+color = Color(0.13725491, 0, 0.11764706, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Border/MarginContainer/Fill" unique_id=1402385630]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Border/MarginContainer/Fill/MarginContainer" unique_id=293655345]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=2130606810]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+theme_override_font_sizes/normal_font_size = 50
+text = "Settings"
+fit_content = true
+
+[node name="Gap1" type="Control" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=783739807]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Music Label" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=577833212]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+theme_override_font_sizes/normal_font_size = 32
+text = "Music volume"
+fit_content = true
+
+[node name="Music Slider" type="HSlider" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=2113724861]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Music Slider" unique_id=1752070066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_fs1qj")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+text = "50%"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ctad7")
+
+[node name="Gap2" type="Control" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=420027531]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Sounds Label" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1307986978]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+theme_override_font_sizes/normal_font_size = 32
+text = "Sound effects"
+fit_content = true
+
+[node name="Sounds Slider" type="HSlider" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1020626522]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Sounds Slider" unique_id=1912168427]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_fs1qj")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+text = "50%"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ctad7")
+
+[node name="Gap3" type="Control" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=260396767]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Scale" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1144213076]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+theme_override_font_sizes/normal_font_size = 32
+text = "UI scale"
+fit_content = true
+
+[node name="Scale Slider" type="HSlider" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1177988329]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+min_value = 0.75
+max_value = 1.25
+step = 0.01
+value = 1.01
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider" unique_id=1112089067]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_fs1qj")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+text = "50%"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ctad7")
+
+[node name="Gap4" type="Control" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=664917396]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Scale2" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=692236945]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+theme_override_font_sizes/normal_font_size = 32
+text = "Camera distance"
+fit_content = true
+
+[node name="Scale Slider2" type="HSlider" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=139395887]
+layout_mode = 2
+theme = ExtResource("2_fs1qj")
+min_value = 0.5
+max_value = 1.5
+step = 0.01
+value = 1.01
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider2" unique_id=1283865228]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_fs1qj")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+text = "50%"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ctad7")
+
+[node name="Spacer" type="Control" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1294250265]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Die" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1022843980 instance=ExtResource("4_v0aow")]
+layout_mode = 2
+text = "STUCK?"
+
+[node name="Quit" parent="Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1158563723 instance=ExtResource("4_v0aow")]
+layout_mode = 2
+text = "SAVE AND QUIT"
+
+[node name="Toggler" parent="." unique_id=235555021 instance=ExtResource("4_v0aow")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_left = -118.0
+offset_top = 34.0
+offset_right = -28.28125
+offset_bottom = 121.0
+theme_override_constants/icon_max_width = 40
+text = ""
+icon = ExtResource("5_ebsny")
+icon_alignment = 1

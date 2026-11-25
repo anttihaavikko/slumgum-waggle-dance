@@ -247,9 +247,7 @@
 [ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
 [ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
 [ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
-[ext_resource type="Script" uid="uid://clg7ymun2dxb2" path="res://_Starter/Scripts/options_menu.gd" id="241_jmisg"]
-[ext_resource type="Script" uid="uid://c520rycy7rrau" path="res://_Starter/Scripts/slider_label.gd" id="242_47mp3"]
-[ext_resource type="Texture2D" uid="uid://k5uyfm3uxpmo" path="res://_Starter/Sprites/menu-hamburger.png" id="242_refj4"]
+[ext_resource type="PackedScene" uid="uid://bd7jj35q01jh0" path="res://_Starter/Scenes/options_menu.tscn" id="241_jmisg"]
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
@@ -1168,7 +1166,7 @@ notifications = NodePath("../HUD/Notifications")
 door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), ExtResource("6_gax0l"), null])
 tooltip = NodePath("../HUD/Tooltip")
 input_detection = NodePath("../Input Detection")
-buttons = [NodePath("../HUD/Bed Window/Bed/VBoxContainer/Morning"), NodePath("../HUD/Bed Window/Bed/VBoxContainer/Eight"), NodePath("../HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Button"), NodePath("../HUD/OptionsMenu/Toggler"), NodePath("../HUD/Fullscreen Button")]
+buttons = [NodePath("../HUD/Bed Window/Bed/VBoxContainer/Morning"), NodePath("../HUD/Bed Window/Bed/VBoxContainer/Eight"), NodePath("../HUD/OptionsMenu/Toggler"), NodePath("../HUD/Fullscreen Button")]
 options = NodePath("../HUD/OptionsMenu")
 
 [node name="DoubleTabDetect" type="Node" parent="." unique_id=295763462]
@@ -3179,256 +3177,7 @@ Something [color=red]something
 "
 fit_content = true
 
-[node name="OptionsMenu" type="Control" parent="HUD" unique_id=1505066945 node_paths=PackedStringArray("toggle_button_top", "music", "sounds", "scaler", "distance", "cam")]
-layout_mode = 3
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -516.0
-grow_horizontal = 0
-grow_vertical = 2
-script = ExtResource("241_jmisg")
-toggle_action = "menu"
-toggle_button_top = NodePath("Toggler")
-music = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Music Slider")
-sounds = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Sounds Slider")
-scaler = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider")
-distance = NodePath("Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider2")
-toggle_button_on_top = true
-cam = NodePath("../../Bee/Body/Main Camera")
-sound = 36
-metadata/_custom_type_script = "uid://clg7ymun2dxb2"
-
-[node name="Border" type="ColorRect" parent="HUD/OptionsMenu" unique_id=1012178188]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/OptionsMenu/Border" unique_id=1160930117]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Fill" type="ColorRect" parent="HUD/OptionsMenu/Border/MarginContainer" unique_id=1052939038]
-layout_mode = 2
-color = Color(0.13725491, 0, 0.11764706, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/OptionsMenu/Border/MarginContainer/Fill" unique_id=1294097394]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -14.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer" unique_id=1530800582]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Title" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=934628086]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 50
-text = "Settings"
-fit_content = true
-
-[node name="Gap1" type="Control" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=2125854314]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="Music Label" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=868775524]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 32
-text = "Music"
-fit_content = true
-
-[node name="Music Slider" type="HSlider" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1613283859]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-max_value = 1.0
-step = 0.01
-value = 0.5
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Music Slider" unique_id=261512945]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -14.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("36_hdf80")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 30
-text = "50%"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("242_47mp3")
-
-[node name="Gap2" type="Control" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=304104283]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="Sounds Label" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=731264863]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 32
-text = "Sound effects"
-fit_content = true
-
-[node name="Sounds Slider" type="HSlider" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1443529307]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-max_value = 1.0
-step = 0.01
-value = 0.5
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Sounds Slider" unique_id=1033124683]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -14.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("36_hdf80")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 30
-text = "50%"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("242_47mp3")
-
-[node name="Gap3" type="Control" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=406156194]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="Scale" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=133417131]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 32
-text = "UI scale"
-fit_content = true
-
-[node name="Scale Slider" type="HSlider" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=2044490107]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-min_value = 0.75
-max_value = 1.25
-step = 0.01
-value = 1.01
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider" unique_id=1371223966]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -15.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("36_hdf80")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 30
-text = "50%"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("242_47mp3")
-
-[node name="Gap4" type="Control" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=805067424]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="Scale2" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1637464265]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-theme_override_font_sizes/normal_font_size = 32
-text = "Camera distance"
-fit_content = true
-
-[node name="Scale Slider2" type="HSlider" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1865776427]
-layout_mode = 2
-theme = ExtResource("36_hdf80")
-min_value = 0.5
-max_value = 1.5
-step = 0.01
-value = 1.01
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Scale Slider2" unique_id=2062173739]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -15.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("36_hdf80")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 30
-text = "50%"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("242_47mp3")
-
-[node name="Spacer" type="Control" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=1350445304]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button" parent="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer" unique_id=573440228 instance=ExtResource("50_2daye")]
-layout_mode = 2
-text = "SAVE AND QUIT"
-
-[node name="Toggler" parent="HUD/OptionsMenu" unique_id=1463527495 instance=ExtResource("50_2daye")]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 0
-offset_left = -118.0
-offset_top = 34.0
-offset_right = -28.28125
-offset_bottom = 121.0
-theme_override_constants/icon_max_width = 40
-text = ""
-icon = ExtResource("242_refj4")
-icon_alignment = 1
+[node name="OptionsMenu" parent="HUD" unique_id=292896132 instance=ExtResource("241_jmisg")]
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
@@ -3680,6 +3429,11 @@ visible = false
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Morning" to="Schedule" method="sleep_until_morning"]
 [connection signal="pressed" from="HUD/Bed Window/Bed/VBoxContainer/Eight" to="Schedule" method="sleep_eight"]
 [connection signal="pressed" from="HUD/Fullscreen Button" to="Main" method="toggle_fullscreen"]
+[connection signal="pressed" from="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Die" to="Main" method="stuck"]
+[connection signal="pressed" from="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Die" to="HUD/OptionsMenu" method="toggle"]
+[connection signal="pressed" from="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Quit" to="Main" method="save_and_quit"]
+[connection signal="pressed" from="HUD/OptionsMenu/Border/MarginContainer/Fill/MarginContainer/VBoxContainer/Quit" to="HUD/OptionsMenu" method="toggle"]
 
 [editable path="Queen/Mover/Boss/Face Wrap/Face"]
 [editable path="Bee/Body/Body Sprite/Face Wrap/Wrap/LookAtMouse/Face"]
+[editable path="HUD/OptionsMenu"]

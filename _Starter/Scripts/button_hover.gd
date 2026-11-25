@@ -11,6 +11,8 @@ func _ready():
 	mouse_entered.connect(hover_in)
 	mouse_exited.connect(hover_out)
 	pressed.connect(hover_out)
+	focus_entered.connect(hover_in)
+	focus_exited.connect(hover_out)
 
 	if resize_border:
 		override_border("normal")

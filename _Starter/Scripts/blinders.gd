@@ -43,6 +43,8 @@ func open():
 	opened.emit()
 
 func close():
+	left.show()
+	right.show()
 	prepare()
 	left.show()
 	right.show()
@@ -52,8 +54,7 @@ func close():
 	closed.emit()
 
 func quit():
-	if OS.get_name() == "Web":
-		return
+	if OS.get_name() == "Web": return
 	close()
 	await get_tree().create_timer(duration + 0.1).timeout
 	get_tree().quit()

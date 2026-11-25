@@ -242,3 +242,12 @@ func toggle_tooltip():
 		tooltip.hide()
 	else:
 		inventory.current().hover_on()
+
+func save_and_quit():
+	save()
+	options.quit()
+
+func stuck():
+	bee.body.apply_impulse(Vector2.UP * 1500 + randf_range(-1, 1) * Vector2.RIGHT * 500)
+	bee.body.apply_torque_impulse(randf_range(-1, 1) * 100000)
+	bee.die()
