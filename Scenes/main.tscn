@@ -3186,7 +3186,8 @@ Something [color=red]something
 "
 fit_content = true
 
-[node name="OptionsMenu" parent="HUD" unique_id=292896132 instance=ExtResource("241_jmisg")]
+[node name="OptionsMenu" parent="HUD" unique_id=292896132 node_paths=PackedStringArray("cam") instance=ExtResource("241_jmisg")]
+cam = NodePath("../../Bee/Body/Main Camera")
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
