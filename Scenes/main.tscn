@@ -1578,7 +1578,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover", "buzz", "charge_particles", "charging_humm", "double_tap")]
+[node name="Bee" type="Node2D" parent="." unique_id=2060944565 node_paths=PackedStringArray("body", "lander", "wings", "inventory", "tools", "hands", "health", "energy", "item", "cam", "builder", "face", "crosses", "visuals", "leg_container", "core_remote", "hands_wrap", "heal_particles", "face_mover", "buzz", "charge_particles", "charging_humm", "double_tap", "swinger")]
 z_index = 5
 position = Vector2(597, -419)
 script = ExtResource("1_8gbba")
@@ -1607,6 +1607,7 @@ buzz = NodePath("Body/Buzz")
 charge_particles = NodePath("Body/Charge Particles")
 charging_humm = NodePath("Body/Charging")
 double_tap = NodePath("../DoubleTabDetect")
+swinger = NodePath("Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger")
 
 [node name="Body" type="RigidBody2D" parent="Bee" unique_id=617439204 node_paths=PackedStringArray("bee")]
 collision_layer = 5
@@ -2052,7 +2053,7 @@ sprite = NodePath(".")
 position = Vector2(-227.63586, -3.8719788)
 texture = ExtResource("43_nay3j")
 
-[node name="Pickaxe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=729087898 node_paths=PackedStringArray("area", "swinger", "aligner")]
+[node name="Pickaxe" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=729087898 node_paths=PackedStringArray("area", "ray", "swinger", "aligner")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-1.831934, -0.25831032)
@@ -2062,6 +2063,7 @@ texture = ExtResource("96_0wopu")
 offset = Vector2(-69.47052, 2.293457)
 script = ExtResource("96_ja2pg")
 area = NodePath("../../../../../../../../Mine Check")
+ray = NodePath("../../../../../../Mine Ray")
 identifier = 6
 description = "A (tool) for breaking down (stones). (Mining) is a lot of (work) but the (pebbles) acquired could be an (important) component in many (recipes)."
 icon = ExtResource("126_dllok")
@@ -2148,6 +2150,12 @@ scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_qxkn4")
 color = Color(1, 0.9148045, 0.7964767, 1)
 color_ramp = SubResource("Gradient_qxkn4")
+
+[node name="Mine Ray" type="RayCast2D" parent="Bee/Body" unique_id=159204484]
+position = Vector2(-1.8319092, 61.7417)
+scale = Vector2(0.9999998, 0.9999998)
+target_position = Vector2(0, 300)
+collision_mask = 32768
 
 [node name="Buzz" type="AudioStreamPlayer2D" parent="Bee/Body" unique_id=129676445]
 stream = ExtResource("140_fmflf")

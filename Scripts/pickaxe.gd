@@ -1,6 +1,7 @@
 extends Equipment
 
 @export var area: ShapeCast2D
+@export var ray: RayCast2D
 
 func update(delta: float):
 	var on_cooldown = cooldown > 0
@@ -8,6 +9,14 @@ func update(delta: float):
 	align()
 	if Input.is_action_just_pressed("primary") and not on_cooldown and can_swing():
 		SoundEffects.singleton.add(36, global_position, 0.7)
+		if Main.singleton.input_detection.using_pad:
+			ray.target_position = ray.to_local(Main.singleton.input_detection.get_mouse_direction(ray, 300))
+			if ray.is_colliding():
+				var o = ray.get_collider()
+				if o is RootPointer:
+					if o.root is Rock:
+						o.root.mine(ray.get_collision_point())
+			return
 		area.global_position = get_global_mouse_position()
 		await get_tree().create_timer(0.1).timeout
 		if area.is_colliding():

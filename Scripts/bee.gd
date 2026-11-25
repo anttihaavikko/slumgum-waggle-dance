@@ -53,6 +53,7 @@ class_name Bee extends Node2D
 @export var charge_particles: CPUParticles2D
 @export var charging_humm: AudioStreamPlayer2D
 @export var double_tap: DoubleTabDetect
+@export var swinger: Swinger
 
 var thrust = 1.5
 var turning = 1.0

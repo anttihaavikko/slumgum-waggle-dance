@@ -2,13 +2,20 @@
 
 [ext_resource type="Script" uid="uid://wbt7ku5t32ht" path="res://Scripts/rock.gd" id="1_lgx4v"]
 [ext_resource type="Script" uid="uid://bi6dt48qm3k7k" path="res://_Starter/Scripts/root_pointer.gd" id="2_5mkji"]
+[ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="2_g7vwe"]
+[ext_resource type="Texture2D" uid="uid://d20exh3mx7fl8" path="res://Sprites/b_btn.png" id="3_g7vwe"]
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="3_vd8au"]
 [ext_resource type="Script" uid="uid://uxu8p38o38ip" path="res://_Starter/Scripts/mover.gd" id="4_1rhfe"]
+[ext_resource type="Texture2D" uid="uid://bmpp4aew4resk" path="res://Sprites/x_btn.png" id="4_r5c4w"]
+[ext_resource type="Texture2D" uid="uid://bmnm76af6mf3b" path="res://_Starter/Sprites/mouse_click.png" id="5_1np5q"]
+[ext_resource type="Texture2D" uid="uid://cm3eepbih040j" path="res://Sprites/y_btn.png" id="5_n7yad"]
+[ext_resource type="Texture2D" uid="uid://cmls4frl3oeor" path="res://Sprites/dpad_up.png" id="6_n7yad"]
+[ext_resource type="Texture2D" uid="uid://b2k1o8wmc0phs" path="res://Sprites/dpad_down.png" id="7_6nmbp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1rhfe"]
 blend_mode = 1
 
-[node name="Rock" type="Node2D" unique_id=256846012 node_paths=PackedStringArray("poly", "line", "collider", "spot")]
+[node name="Rock" type="Node2D" unique_id=256846012 node_paths=PackedStringArray("poly", "line", "collider", "spot", "key", "key_alt")]
 z_index = -1
 script = ExtResource("1_lgx4v")
 poly = NodePath("Polygon2D")
@@ -16,6 +23,9 @@ line = NodePath("Line2D")
 collider = NodePath("StaticBody2D/CollisionPolygon2D")
 tint = Color(0.80580723, 0.87184894, 0.999999, 1)
 spot = NodePath("Spot")
+key = NodePath("Mover/Key")
+key_alt = NodePath("Mover/Key/Fill")
+key_sprites = Array[Texture2D]([ExtResource("2_g7vwe"), ExtResource("3_g7vwe"), ExtResource("4_r5c4w"), ExtResource("5_n7yad"), ExtResource("6_n7yad"), ExtResource("7_6nmbp")])
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1222369177]
 color = Color(0.57700837, 0.5770084, 0.57700837, 1)
@@ -45,3 +55,19 @@ script = ExtResource("4_1rhfe")
 scales = true
 scale_amount = Vector2(0.1, 0.1)
 single_direction = true
+
+[node name="Mover" type="Node2D" parent="." unique_id=71279906]
+script = ExtResource("4_1rhfe")
+move_direction = Vector2(0, 10)
+single_direction = true
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="Key" type="Sprite2D" parent="Mover" unique_id=1681629084]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 100
+texture = ExtResource("5_1np5q")
+
+[node name="Fill" type="Sprite2D" parent="Mover/Key" unique_id=1400025706]
+z_index = 100
+position = Vector2(-8.6992, -7.2493324)
+texture = ExtResource("5_1np5q")
