@@ -15,6 +15,7 @@ class_name Main extends Node
 @export var tooltip: Tooltip
 @export var input_detection: InputDetection
 @export var buttons: Array[Button]
+@export var options: OptionsMenu
 
 var station: StationMenu
 var bee: Bee

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxy7r1qf1oqpe"]
 
-[ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://Scenes/button.tscn" id="1_0xhjo"]
+[ext_resource type="PackedScene" uid="uid://k4m70ayplym8" path="res://_Starter/Scenes/button.tscn" id="1_0xhjo"]
 [ext_resource type="Script" uid="uid://b2jh3hcelcyu7" path="res://Scripts/game_window.gd" id="1_30sqi"]
 [ext_resource type="Texture2D" uid="uid://b6d031yqaujsn" path="res://Sprites/x.png" id="2_30sqi"]
 [ext_resource type="Theme" uid="uid://dcgt6p5ro22q2" path="res://_Starter/Themes/theme.tres" id="4_0slyu"]

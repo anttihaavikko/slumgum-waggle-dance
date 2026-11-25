@@ -1,54 +1,62 @@
 class_name OptionsMenu
 extends SlidingPanel
 
+@export var toggle_action: String
 @export var toggle_button_top: Button
 @export var toggle_button_bottom: Button
 @export var music: Slider
 @export var sounds: Slider
+@export var scaler: Slider
+@export var distance: Slider
 @export var extra_panel: SlidingPanel
 @export var toggle_button_on_top: bool
+@export var cam: Camera2D
 
 var saver = Saver.new("settings.json")
 var data: SettingsData
+var default_zoom := Vector2.ZERO
+var can_open := true
 
 func _ready():
 	super._ready()
+	if cam: default_zoom = cam.zoom
 	if toggle_button_top: toggle_button_top.visible = toggle_button_on_top
 	if toggle_button_bottom: toggle_button_bottom.visible = not toggle_button_on_top
 	show()
-	if toggle_button_top: toggle_button_top.pressed.connect(close)
-	if toggle_button_bottom: toggle_button_bottom.pressed.connect(close)
-	data = saver.load(func(): return SettingsData.new(0.5, 0.5)) as SettingsData
+	if toggle_button_top: toggle_button_top.pressed.connect(toggle)
+	if toggle_button_bottom: toggle_button_bottom.pressed.connect(toggle)
+	data = saver.load(func(): return SettingsData.new()) as SettingsData
 	# print("%f/%f" % [data.music, data.sounds])
 	music.value = data.music
 	sounds.value = data.sounds
-	prepare_slider(music)
-	prepare_slider(sounds)
-	volumes_changed(0)
-	music.value_changed.connect(volumes_changed)
-	sounds.value_changed.connect(volumes_changed)
+	scaler.value = data.scale
+	distance.value = data.distance
+	changed(0)
+	music.value_changed.connect(changed)
+	sounds.value_changed.connect(changed)
+	scaler.value_changed.connect(changed)
+	distance.value_changed.connect(changed)
 
-func prepare_slider(slider: Slider):
-	slider.max_value = 1.0
-	slider.min_value = 0
-	slider.step = 0.05
-
-func volumes_changed(_val):
+func changed(_val):
 	AudioServer.set_bus_volume_linear(1, music.value * 2)
 	AudioServer.set_bus_volume_linear(2, sounds.value * 2)
+	get_tree().root.content_scale_factor = scaler.value
+	if cam: cam.zoom = default_zoom * distance.value
 	data.music = music.value
 	data.sounds = sounds.value
-	pass
+	data.scale = scaler.value
+	data.distance = distance.value
 
-func close():
-	toggle()
+func toggle():
+	if not can_open: return
+	super.toggle()
 	if extra_panel and extra_panel.open:
 		extra_panel.toggle()
 	saver.save(data)
 
 func _input(_event):
-	if Input.is_action_just_pressed("escape"):
-		close()
+	if Input.is_action_just_pressed(toggle_action):
+		toggle()
 
 func quit():
 	Blinders.singleton.quit()
@@ -57,7 +65,7 @@ func change_scene(scene: String = "start") -> void:
 	Blinders.singleton.change_scene(scene)
 
 func restart():
-	close()
+	toggle()
 	Blinders.singleton.close()
 	await Blinders.singleton.closed
 	get_tree().reload_current_scene()

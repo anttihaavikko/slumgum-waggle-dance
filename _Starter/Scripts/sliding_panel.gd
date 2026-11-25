@@ -6,12 +6,12 @@ extends Control
 @export var in_transition: Tween.TransitionType = Tween.TRANS_BOUNCE
 @export var out_transition: Tween.TransitionType = Tween.TRANS_BOUNCE
 @export var backdrop: Control
+@export var sound := 0
 
 var pos: Vector2
 var open: bool
 var can_toggle := true
 var mouse_mode: Input.MouseMode
-var sound := 2
 
 signal on_toggle
 
