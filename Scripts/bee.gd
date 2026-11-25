@@ -11,7 +11,6 @@ class_name Bee extends Node2D
 # songs
 # more huts
 # more obelisks
-# menu
 #
 # blocking swings
 # polymorph items
