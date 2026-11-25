@@ -1176,13 +1176,14 @@ reset_delay = 0.2
 script = ExtResource("7_y07ku")
 metadata/_custom_type_script = "uid://b8mebr8i6loke"
 
-[node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint", "clock")]
+[node name="Schedule" type="Node" parent="." unique_id=679598976 node_paths=PackedStringArray("tint", "ui_tint", "globe_tint", "clock", "bed_win")]
 script = ExtResource("2_sasc4")
 tint = NodePath("../CanvasModulate")
 ui_tint = NodePath("../HUD/CanvasModulate")
 tint_color = SubResource("Gradient_sasc4")
 globe_tint = NodePath("../HUD/Frame/Globe Mask/Globe Dimmer")
 clock = NodePath("../HUD/Frame/Clock/Clock Arm")
+bed_win = NodePath("../HUD/Bed Window")
 
 [node name="Pad" type="Node" parent="." unique_id=828512202 node_paths=PackedStringArray("input_detection")]
 script = ExtResource("9_ffxd5")
@@ -2660,7 +2661,6 @@ preview = NodePath("../../../../Preview Window/Preview")
 creates_items = true
 
 [node name="Bed Window" parent="HUD" unique_id=2034345964 instance=ExtResource("57_lx3vj")]
-visible = false
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
@@ -2708,7 +2708,10 @@ color = Color(1, 1, 1, 0)
 
 [node name="Morning" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=1022843980 instance=ExtResource("50_2daye")]
 layout_mode = 2
+theme_override_constants/icon_max_width = 40
 text = "SLEEP UNTIL MORNING"
+icon = ExtResource("233_vhoi0")
+icon_alignment = 0
 
 [node name="Eight" parent="HUD/Bed Window/Bed/VBoxContainer" unique_id=30688199 instance=ExtResource("50_2daye")]
 visible = false
@@ -2840,6 +2843,7 @@ slot_prefab = ExtResource("20_hibaj")
 manager = NodePath("../../../../../ItemManager")
 
 [node name="Preview Window" parent="HUD" unique_id=275815913 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = 189.0
 offset_top = -372.0
 offset_right = 595.0

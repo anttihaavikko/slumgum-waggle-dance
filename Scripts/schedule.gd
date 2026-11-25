@@ -5,6 +5,7 @@ class_name Schedule extends Node
 @export var tint_color: Gradient
 @export var globe_tint: ColorRect
 @export var clock: Control
+@export var bed_win: GameWindow
 
 var sleeper: Node2D
 
@@ -39,6 +40,8 @@ func _process(delta) -> void:
 	var effect = AudioServer.get_bus_effect(1, 0) as AudioEffectBandPassFilter
 	effect.cutoff_hz = lerp(200, 2000, tint.color.g)
 	Music.set_volumes(tint.color.g)
+	if bed_win.visible and Input.is_action_just_pressed("interact"):
+		sleep_until_morning()
 
 func announce_day():
 	await get_tree().create_timer(0.75).timeout
@@ -54,9 +57,11 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func sleep_until_morning():
 	if sleeper.global_position.distance_to(Main.singleton.bee.body.global_position) > 300:
 		Main.pop("TOO FAR!")
+		SoundEffects.singleton.add(10, Main.bee_pos())
 		return
 	if time < 0.5:
 		Main.pop("TOO EARLY!")
+		SoundEffects.singleton.add(10, Main.bee_pos())
 		return
 	Main.singleton.bee.teleport_to(sleeper.global_position + Vector2.UP * 100)
 	Main.singleton.bee.body.freeze = true

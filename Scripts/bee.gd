@@ -406,6 +406,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			cam.zoom = Vector2.ONE * z
 
 func _process(delta) -> void:
+	if Engine.time_scale > 1: return
 	var limit := 10.0
 	var look_mod = (limit - clamp(body.linear_velocity.length(), 0, limit)) / limit
 	cam.position = Vector2.ZERO.move_toward(to_local(Main.singleton.input_detection.get_mouse_direction(body, 5000)), 300 * look_mod) + \
@@ -439,10 +440,10 @@ func _process(delta) -> void:
 		if hovering:
 			change_energy(-delta * 0.2)
 
-	buzz_volume.target = absf(acc)
-	if hovering: buzz_volume.target = 1
-	buzz_volume.update(delta)
-	buzz.volume_linear = buzz_volume.value * 0.5
+		buzz_volume.target = absf(acc)
+		if hovering: buzz_volume.target = 1
+		buzz_volume.update(delta)
+		buzz.volume_linear = buzz_volume.value * 0.5
 
 	# stretch -= clamp(signf(stretch) * delta * 0.5, -abs(stretch), abs(stretch))
 	var diff = spring_core.get_direction()
