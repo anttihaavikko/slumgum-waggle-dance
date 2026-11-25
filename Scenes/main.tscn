@@ -246,6 +246,7 @@
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="175_w32ys"]
 [ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
 [ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
+[ext_resource type="Texture2D" uid="uid://bpc535guhh2mb" path="res://Sprites/guitar_scale_pad.png" id="202_refj4"]
 [ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
 [ext_resource type="PackedScene" uid="uid://bd7jj35q01jh0" path="res://_Starter/Scenes/options_menu.tscn" id="241_jmisg"]
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
@@ -1999,7 +2000,7 @@ scales = true
 scale_amount = Vector2(0.02, 0.02)
 scale_speed = 15.0
 
-[node name="Guitar" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("chord_display", "swinger", "aligner", "sprite")]
+[node name="Guitar" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=475418637 node_paths=PackedStringArray("chord_display", "mouse_scale", "pad_scale", "swinger", "aligner", "sprite")]
 visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(3.9999886, 1.30832195e-05)
@@ -2009,6 +2010,8 @@ texture = ExtResource("31_nwwfm")
 offset = Vector2(73.951904, 1.5249786)
 script = ExtResource("93_na2ur")
 chord_display = NodePath("../../../../../../../../Cursor Icon/Chord")
+mouse_scale = NodePath("Scale")
+pad_scale = NodePath("../../../../../../Pad Scale")
 identifier = 3
 description = "Allows you to (play) some sweet (comforting tunes). Could maybe even (affect) your (predators)."
 icon = ExtResource("117_0w4wg")
@@ -2158,6 +2161,12 @@ position = Vector2(-1.8319092, 61.7417)
 scale = Vector2(0.9999998, 0.9999998)
 target_position = Vector2(0, 300)
 collision_mask = 32768
+
+[node name="Pad Scale" type="Sprite2D" parent="Bee/Body" unique_id=1020320809]
+visible = false
+modulate = Color(1, 1, 1, 0.38039216)
+scale = Vector2(1.264914, 1.264914)
+texture = ExtResource("202_refj4")
 
 [node name="Buzz" type="AudioStreamPlayer2D" parent="Bee/Body" unique_id=129676445]
 stream = ExtResource("140_fmflf")

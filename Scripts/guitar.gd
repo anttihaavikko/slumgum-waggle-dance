@@ -1,6 +1,8 @@
 extends Equipment
 
 @export var chord_display: RichTextLabel
+@export var mouse_scale: Node2D
+@export var pad_scale: Node2D
 
 var chords = ['D', 'E', 'F', 'G', 'A', 'B', 'C']
 var visible_chords = ['D', 'Em', 'F#m', 'G', 'A', 'Bm', 'C#m']
@@ -13,8 +15,11 @@ func _ready() -> void:
 	timer.timeout.connect(restart_music)
 
 func update(delta: float):
-	var dist = roundi(get_global_mouse_position().distance_to(global_position))
-	var index = clampi(roundi((dist % 2300 - 200) / 2100.0 * 7), 0, 6)
+	var pad := Main.singleton.input_detection.using_pad
+	mouse_scale.visible = not pad
+	pad_scale.visible = pad
+	if pad: pad_scale.rotation = -Main.singleton.bee.body.rotation
+	var index = get_note()
 	chord_display.text = visible_chords[index]
 	super.update(delta)
 	if Input.is_action_just_pressed("primary") or Input.is_action_just_pressed("alt"):
@@ -29,11 +34,23 @@ func update(delta: float):
 		check_songs()
 	align()
 
+func get_note() -> int:
+	var pad := Main.singleton.input_detection.using_pad
+	if pad:
+		var dir := pad_scale.to_local(Main.singleton.input_detection.get_mouse_direction(pad_scale))
+		chord_display.global_position = pad_scale.global_position + dir.normalized() * 700
+		return floori((dir.angle() + PI) / TAU * 7)
+	else:
+		var dist = roundi(get_global_mouse_position().distance_to(global_position))
+		return clampi(roundi((dist % 2300 - 200) / 2100.0 * 7), 0, 6)
+
 func restart_music():
 	Music.resume()
 
 func toggle(state: bool):
 	chord_display.visible = state
+	if not state: pad_scale.hide()
+	if state: get_note()
 	visible = state
 	played = []
 
