@@ -15,7 +15,6 @@ class_name Bee extends Node2D
 # blocking swings
 # polymorph items
 #
-# inventory slots
 # speed boost
 #
 # shrike - impale

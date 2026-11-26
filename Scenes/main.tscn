@@ -105,6 +105,7 @@
 [ext_resource type="Texture2D" uid="uid://cnh4uwv8bds12" path="res://Sprites/eye-great-tit.png" id="37_bqs45"]
 [ext_resource type="Script" uid="uid://ci6ov1thpcay3" path="res://Scripts/station_menu.gd" id="38_kqrg6"]
 [ext_resource type="Texture2D" uid="uid://dyv1utbxug574" path="res://Sprites/eye-shrike.png" id="38_s2nl6"]
+[ext_resource type="Texture2D" uid="uid://b7wgcb8ph2gwd" path="res://Sprites/relic_bag.png" id="40_47mp3"]
 [ext_resource type="PackedScene" uid="uid://w80g3fd86xfk" path="res://_Starter/Scenes/Effects/pulse_ring.tscn" id="40_b7esa"]
 [ext_resource type="AudioStream" uid="uid://bywtwmqqhham1" path="res://Sounds/land.wav" id="41_6lvi0"]
 [ext_resource type="AudioStream" uid="uid://dp1x518em565k" path="res://Sounds/hurt.wav" id="42_2rlip"]
@@ -700,7 +701,7 @@ script = ExtResource("3_cbgmd")
 item_id = 37
 stack_size = 1
 title = "Bag Relic"
-sprite = ExtResource("24_tctli")
+sprite = ExtResource("40_47mp3")
 description = "A (relic) of a tribe of (gentle giants). This one (grants) you extra (inventory space)."
 hold_offset = -55.0
 custom_prefab = ExtResource("24_3qdko")

@@ -39,6 +39,11 @@ var hovering := false
 var sleep_buff := 0
 var free_platforms := false
 var compass_spots: Array[Node2D] = []
+var relic_pool: Array[Item.Id] = []
+var egg_pool: Array[Item.Id] = []
+
+var all_relics := [Item.Id.RelicEnergy, Item.Id.RelicHealth, Item.Id.RelicInventory]
+var all_eggs := [Item.Id.Egg, Item.Id.EggDamage]
 
 static var singleton: Main = null
 
@@ -56,6 +61,20 @@ func _init() -> void:
 
 func _ready() -> void:
 	for b in buttons: register_hoverable(b)
+	relic_pool.append_array(all_relics)
+	relic_pool.shuffle()
+	egg_pool.append_array(all_eggs)
+	egg_pool.shuffle()
+
+func get_relic() -> Item.Id:
+	if relic_pool.size() > 0:
+		return relic_pool.pop_front()
+	return all_relics.pick_random()
+
+func get_egg() -> Item.Id:
+	if egg_pool.size() > 0:
+		return egg_pool.pop_front()
+	return all_eggs.pick_random()
 
 func get_rank_name() -> String:
 	return ranks[rank]

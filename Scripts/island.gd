@@ -150,7 +150,7 @@ func create_dungeon(try := 0) -> bool:
 		collider.polygon = updated[0]
 		line.points = updated[0]
 		added_dungeons.append(dungeon)
-		var egg = [Item.Id.Egg, Item.Id.EggDamage].pick_random()
+		var egg = Main.singleton.get_egg()
 		dungeon.populate(p - global_position, spawners.pick_random(), egg, worm_chance)
 		return true
 	else:
@@ -211,7 +211,7 @@ func spawn_hut(pos: float, tries: int = 0):
 		add_child(hut)
 		hut.global_position = p
 		hut.door_type = Main.singleton.door_hints.find(hint) as Hut.DoorType
-		var relic = [Item.Id.RelicEnergy, Item.Id.RelicHealth].pick_random()
+		var relic = Main.singleton.get_relic()
 		hut.setup(ray.get_collision_normal(), hint, [1, -1].pick_random(), relic)
 	else:
 		spawn_hut(pos + randf_range(-500, 500), tries + 1)
