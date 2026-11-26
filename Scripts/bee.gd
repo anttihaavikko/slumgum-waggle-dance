@@ -461,6 +461,11 @@ func _process(delta) -> void:
 	if builder.held and builder.held.can_rotate: return
 	if builder.picker.visible: return
 
+	if Input.is_action_just_pressed("throw") and inventory.current().item:
+		var gp := Main.singleton.input_detection.get_mouse_direction(body)
+		SoundEffects.singleton.add(36, gp)
+		inventory.current().throw(body.to_local(gp).normalized() * 200)
+
 	if Input.is_action_just_pressed("wheel_up"):
 		if Main.singleton.station:
 			Main.singleton.station.cycle(-1, 0)

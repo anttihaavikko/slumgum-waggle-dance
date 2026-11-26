@@ -178,6 +178,17 @@ func drop() -> Pickup:
 	clear()
 	return p
 
+func throw(dir: Vector2):
+	if not item: return
+	var p = Main.drop(Item.new(item.data, 1), null)
+	p.ignore = true
+	take(1)
+	await get_tree().process_frame
+	p.apply_impulse(dir)
+	Main.singleton.inventory.re_focus()
+	await get_tree().create_timer(1).timeout
+	p.ignore = false
+
 func is_empty() -> bool:
 	return not locked and not equipment and (not item or item.amount == 0)
 

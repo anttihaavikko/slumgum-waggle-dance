@@ -4,6 +4,7 @@ class_name Pickup extends RigidBody2D
 @export var area: Area2D
 
 var item_index := -1
+var ignore := false
 
 var item: Item:
 	set(val):
@@ -28,6 +29,7 @@ func collided(_node: Node2D):
 
 func entered(_node: Node2D):
 	if not Main.singleton.bee.health.is_alive(): return
+	if ignore: return
 	if not item: return
 	var inventory = Main.singleton.inventory
 	if inventory.can_add(item.data.item_id, item.amount):
