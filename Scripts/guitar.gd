@@ -92,15 +92,27 @@ func check_songs():
 		Main.singleton.bee.heal(1)
 		return
 	if check(notes, "DECAF"):
+		teleport_to("snow")
 		return
 	if check(notes, "CAFE"):
 		Main.singleton.bee.energy_for_life()
 		return
 	if check(notes, "CABBAGE"):
+		teleport_to("red")
 		return
 	if check(notes, "BEAD"):
+		return
+	if check(notes, "BACG"):
+		teleport_to("home")
 		return
 	if check(notes, "BEDDED"):
 		if Main.singleton.time.time > 0.5:
 			Main.singleton.time.time = 1
 		return
+
+func teleport_to(target: String):
+	SoundEffects.singleton.add(36, Main.bee_pos())
+	SoundEffects.singleton.add(44, Main.bee_pos(), 2)
+	await get_tree().create_timer(0.3).timeout
+	SoundEffects.singleton.add(42, Main.bee_pos())
+	Main.singleton.bee.teleport(target)
