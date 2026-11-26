@@ -49,8 +49,7 @@ func update(_delta: float):
 				hit.apply_impulse(-n * 500)
 			if hit is RootPointer:
 				if hit.root is Worm or hit.root is Bird:
-					Effects.singleton.add(8, p)
-					hit.root.hurt(ammo_types.find(ammo) + 1)
+					hit.root.hurt(ammo_types.find(ammo) + 1, p)
 		await get_tree().create_timer(0.1).timeout
 		line.hide()
 		await get_tree().create_timer(0.1).timeout

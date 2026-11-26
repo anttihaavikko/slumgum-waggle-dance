@@ -15,7 +15,7 @@ class_name Bird extends Node2D
 
 var time := 0.0
 var target: Node2D
-var max_life := 25
+var max_life := 30
 var life := max_life
 var leaving := false
 var species_index := 0
@@ -67,8 +67,10 @@ func swipe_to_right(_body: Node2D):
 func swipe(dir: float):
 	beak.apply_torque_impulse(dir * 10000000)
 
-func hurt(amount: int):
+func hurt(amount: int, pos: Vector2):
 	life -= amount
+	var dir := pos - body.global_position
+	Effects.singleton.add(8, pos + dir.normalized() * 50)
 	SoundEffects.singleton.add(40, body.global_position, 1.5)
 	if life <= 0:
 		Effects.singleton.add_many([1, 7, 8, 12], body.global_position)

@@ -19,8 +19,9 @@ func _ready() -> void:
 	area.body_entered.connect(entered)
 	area.body_exited.connect(exited)
 
-func hurt(amount: int):
+func hurt(amount: int, pos: Vector2):
 	life -= amount
+	Effects.singleton.add(8, pos)
 	SoundEffects.singleton.add(40, head.global_position, 1.5)
 	if life <= 0:
 		SoundEffects.singleton.add_many([38, 39], head.global_position, 2)

@@ -27,13 +27,12 @@ func update(delta: float):
 						deadly = false
 					if o is RootPointer:
 						deadly = false
-						Effects.singleton.add(8, area.global_position)
 						if o.root is Worm and not worm_hurt:
 							worm_hurt = true
-							o.root.hurt(damage)
+							o.root.hurt(damage, area.global_position)
 						if o.root is Bird and not bird_hurt:
 							bird_hurt = true
-							o.root.hurt(damage)
+							o.root.hurt(damage, area.global_position)
 					if morphs and o is Pickup:
 						o.call_deferred("polymorph")
 					if deflects and o is Spit:

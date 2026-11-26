@@ -12,9 +12,6 @@ class_name Bee extends Node2D
 # more huts
 # more obelisks
 #
-# blocking swings
-# polymorph items
-#
 # speed boost
 #
 # shrike - impale
