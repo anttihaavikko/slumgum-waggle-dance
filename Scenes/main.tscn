@@ -108,7 +108,9 @@
 [ext_resource type="Texture2D" uid="uid://b7wgcb8ph2gwd" path="res://Sprites/relic_bag.png" id="40_47mp3"]
 [ext_resource type="PackedScene" uid="uid://w80g3fd86xfk" path="res://_Starter/Scenes/Effects/pulse_ring.tscn" id="40_b7esa"]
 [ext_resource type="AudioStream" uid="uid://bywtwmqqhham1" path="res://Sounds/land.wav" id="41_6lvi0"]
+[ext_resource type="Texture2D" uid="uid://dipoowu8cxfec" path="res://Sprites/egg_defender.png" id="41_e80kf"]
 [ext_resource type="AudioStream" uid="uid://dp1x518em565k" path="res://Sounds/hurt.wav" id="42_2rlip"]
+[ext_resource type="Texture2D" uid="uid://b2i4wpem14cts" path="res://Sprites/egg_poly.png" id="42_8lmbg"]
 [ext_resource type="Texture2D" uid="uid://cdkjmu0rit8aq" path="res://Sprites/paintbrush.png" id="42_cblf0"]
 [ext_resource type="Script" uid="uid://c7w7nrkb1foho" path="res://Scripts/bee_body.gd" id="42_lpdpw"]
 [ext_resource type="Texture2D" uid="uid://2qv4rybi72g8" path="res://Sprites/paint.png" id="43_nay3j"]
@@ -247,6 +249,7 @@
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="175_w32ys"]
 [ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
 [ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
+[ext_resource type="Texture2D" uid="uid://c580cecm6ccex" path="res://Sprites/elec.png" id="193_8lmbg"]
 [ext_resource type="Texture2D" uid="uid://bpc535guhh2mb" path="res://Sprites/guitar_scale_pad.png" id="202_refj4"]
 [ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
 [ext_resource type="PackedScene" uid="uid://bd7jj35q01jh0" path="res://_Starter/Scenes/options_menu.tscn" id="241_jmisg"]
@@ -707,6 +710,60 @@ hold_offset = -55.0
 custom_prefab = ExtResource("24_3qdko")
 metadata/_custom_type_script = "uid://0x44vjlq1u52"
 
+[sub_resource type="PackedScene" id="PackedScene_47mp3"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Egg Pickup", "Sprite2D", "texture", "CollisionPolygon2D", "polygon"),
+"node_count": 3,
+"node_ids": PackedInt32Array(1139630903, 929980930, 734810126),
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0, 1073741825, -1, 2147483647, 524291, -1, 1, 4, 2, 0),
+"variants": [ExtResource("6_536cc"), ExtResource("16_eqnci"), PackedVector2Array(-19, -98, 17, -98, 59, -51, 77, 7, 74, 62, 51, 88, 26, 100, -33, 102, -63, 81, -79, 54, -78, 1, -61, -50)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_e80kf"]
+script = ExtResource("3_cbgmd")
+item_id = 38
+stack_size = 1
+title = "Defensive Egg"
+sprite = ExtResource("41_e80kf")
+description = "(Unfertilized egg) of a queen (bee). Store it inside a (queen cup) and it will allow your (stinger swings) to repel (nematode spit) and other (projectiles)."
+hold_offset = -52.0
+custom_prefab = SubResource("PackedScene_47mp3")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
+[sub_resource type="PackedScene" id="PackedScene_8lmbg"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Egg Pickup", "Sprite2D", "texture", "CollisionPolygon2D", "polygon"),
+"node_count": 3,
+"node_ids": PackedInt32Array(1139630903, 929980930, 734810126),
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0, 1073741825, -1, 2147483647, 524291, -1, 1, 4, 2, 0),
+"variants": [ExtResource("6_536cc"), ExtResource("16_eqnci"), PackedVector2Array(-19, -98, 17, -98, 59, -51, 77, 7, 74, 62, 51, 88, 26, 100, -33, 102, -63, 81, -79, 54, -78, 1, -61, -50)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_k7w2v"]
+script = ExtResource("3_cbgmd")
+item_id = 39
+stack_size = 1
+title = "Morphing Egg"
+sprite = ExtResource("42_8lmbg")
+description = "(Unfertilized egg) of a queen (bee). Store it inside a (queen cup) and it will make your (equipped stinger) transform any (hit items) to another item."
+hold_offset = -52.0
+custom_prefab = SubResource("PackedScene_8lmbg")
+metadata/_custom_type_script = "uid://0x44vjlq1u52"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsvbx"]
 shader = ExtResource("15_k12tt")
 shader_parameter/amount = 10.0
@@ -1114,7 +1171,15 @@ shader_parameter/world_amount = 1.0
 radius = 174.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_102yd"]
-size = Vector2(600, 150)
+size = Vector2(600, 260.47)
+
+[sub_resource type="Curve" id="Curve_e80kf"]
+_data = [Vector2(0, 0.2981261), 0.0, 0.0, 0, 0, Vector2(0.3919129, 0.9488927), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_8lmbg"]
+offsets = PackedFloat32Array(0.41765705, 1)
+colors = PackedColorArray(1, 0.7294118, 0.28627452, 0.57254905, 1, 1, 1, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qnggo"]
 blend_mode = 1
@@ -1210,7 +1275,7 @@ metadata/_custom_type_script = "uid://b0fr17vp8abvx"
 
 [node name="ItemManager" type="Node" parent="." unique_id=1772976029]
 script = ExtResource("2_3pmx8")
-items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul"), SubResource("Resource_rnjsd"), SubResource("Resource_82fq1"), SubResource("Resource_xji1d"), SubResource("Resource_6im2o"), SubResource("Resource_ltyjx"), SubResource("Resource_xnck3"), SubResource("Resource_ffxd5"), SubResource("Resource_s2nl6"), SubResource("Resource_ddyu8"), SubResource("Resource_e104q"), SubResource("Resource_refj4")])
+items = Array[ExtResource("3_cbgmd")]([SubResource("Resource_1w6v2"), SubResource("Resource_u50mg"), SubResource("Resource_kqrg6"), SubResource("Resource_nwwfm"), SubResource("Resource_s8vy0"), SubResource("Resource_tab3y"), SubResource("Resource_wl4bb"), SubResource("Resource_ihvwq"), SubResource("Resource_6h1fc"), SubResource("Resource_vxl7x"), SubResource("Resource_at123"), SubResource("Resource_gmdny"), SubResource("Resource_55idt"), SubResource("Resource_87bhu"), SubResource("Resource_33qc4"), SubResource("Resource_e6rcu"), SubResource("Resource_p4gyq"), SubResource("Resource_32dfi"), SubResource("Resource_uqfw5"), SubResource("Resource_cf2bd"), SubResource("Resource_metco"), SubResource("Resource_hfu3o"), SubResource("Resource_adgm5"), SubResource("Resource_rtmaq"), SubResource("Resource_32yv2"), SubResource("Resource_85qtq"), SubResource("Resource_8d8ul"), SubResource("Resource_rnjsd"), SubResource("Resource_82fq1"), SubResource("Resource_xji1d"), SubResource("Resource_6im2o"), SubResource("Resource_ltyjx"), SubResource("Resource_xnck3"), SubResource("Resource_ffxd5"), SubResource("Resource_s2nl6"), SubResource("Resource_ddyu8"), SubResource("Resource_e104q"), SubResource("Resource_refj4"), SubResource("Resource_e80kf"), SubResource("Resource_k7w2v")])
 pickup_prefab = ExtResource("6_536cc")
 metadata/_custom_type_script = "uid://cbkdo86lifxj7"
 
@@ -1447,6 +1512,7 @@ position = Vector2(266, 487)
 rotation = 0.95665735
 
 [node name="Queen" type="Node2D" parent="." unique_id=982120171 node_paths=PackedStringArray("queen", "area", "bubble", "message", "crown", "glasses")]
+visible = false
 z_index = -10
 position = Vector2(498, 431)
 script = ExtResource("59_cmq5c")
@@ -1917,8 +1983,7 @@ shape = SubResource("CircleShape2D_55idt")
 target_position = Vector2(0, 0)
 collision_mask = 10806
 
-[node name="Stinger" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=309441470 node_paths=PackedStringArray("area", "swinger", "aligner", "sprite")]
-visible = false
+[node name="Stinger" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=309441470 node_paths=PackedStringArray("area", "sparkles", "sparks", "swinger", "aligner", "sprite")]
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-133, -117)
 rotation = 0.13577862
@@ -1927,6 +1992,8 @@ texture = ExtResource("98_gf7g1")
 offset = Vector2(-103.92078, 94.49667)
 script = ExtResource("15_ee4r6")
 area = NodePath("Area")
+sparkles = NodePath("Sparkle")
+sparks = NodePath("Sparks")
 identifier = 8
 description = "A (mighty weapon) made from a (stillborn) queen's (stinger)."
 icon = ExtResource("107_pmnrr")
@@ -1942,7 +2009,55 @@ sprite = NodePath(".")
 position = Vector2(-247.27628, 103.423645)
 shape = SubResource("RectangleShape2D_102yd")
 target_position = Vector2(0, 0)
-collision_mask = 10806
+collision_mask = 14902
+
+[node name="Sparkle" type="Node2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Stinger" unique_id=658403053]
+visible = false
+
+[node name="Static Sparkles" type="CPUParticles2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Stinger/Sparkle" unique_id=1706264201]
+position = Vector2(-230.56812, 100.131714)
+amount = 15
+texture = ExtResource("59_e5peh")
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(276.69, 30)
+gravity = Vector2(0, -100)
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_e80kf")
+color = Color(0.9372549, 0.35686275, 0.35686275, 0.5176471)
+
+[node name="Sparkles" type="CPUParticles2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Stinger/Sparkle" unique_id=314178312]
+position = Vector2(-230.5681, 100.131714)
+amount = 50
+texture = ExtResource("59_e5peh")
+emission_shape = 3
+emission_rect_extents = Vector2(276.69, 30)
+gravity = Vector2(0, -100)
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_e80kf")
+color = Color(0.9372549, 0.35686275, 0.35686275, 0.5176471)
+
+[node name="Sparks" type="CPUParticles2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger/Stinger" unique_id=1092385786]
+visible = false
+position = Vector2(-283.8925, 101.361115)
+amount = 30
+texture = ExtResource("193_8lmbg")
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(276.69, 30)
+direction = Vector2(0, 1)
+spread = 67.63
+gravity = Vector2(0, 0)
+angular_velocity_min = -474.25
+angular_velocity_max = 495.8
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.15
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_e80kf")
+color_ramp = SubResource("Gradient_8lmbg")
 
 [node name="Brush" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=1224503187 node_paths=PackedStringArray("aligner")]
 visible = false

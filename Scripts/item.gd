@@ -38,7 +38,9 @@ enum Id {
 	EyeBeeEater,
 	EyeGreatTit,
 	EyeShrike,
-	RelicInventory
+	RelicInventory,
+	EggDefender,
+	EggPolymorph
 }
 
 var data: ItemData

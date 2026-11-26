@@ -181,6 +181,7 @@ func drop() -> Pickup:
 func throw(dir: Vector2):
 	if not item: return
 	var p = Main.drop(Item.new(item.data, 1), null)
+	p.global_position += dir
 	p.ignore = true
 	take(1)
 	await get_tree().process_frame

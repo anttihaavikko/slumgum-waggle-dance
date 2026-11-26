@@ -5,6 +5,7 @@ class_name Pickup extends RigidBody2D
 
 var item_index := -1
 var ignore := false
+var morphed := false
 
 var item: Item:
 	set(val):
@@ -37,10 +38,20 @@ func entered(_node: Node2D):
 			inventory.add_equipment(Main.singleton.bee.tools[item.equip])
 		else:
 			inventory.add_item(item.data.item_id, item.amount)
-		if item_index >= 0:
-			Main.singleton.data.broken_nodes.append(item_index)
-		Main.singleton.remove_compass_spot(self)
-		queue_free()
+		remove()
+
+func remove():
+	if item_index >= 0:
+		Main.singleton.data.broken_nodes.append(item_index)
+	Main.singleton.remove_compass_spot(self)
+	queue_free()
+
+func polymorph():
+	if morphed: return
+	morphed = true
+	item = Item.new(Main.get_item_data(item.data.item_id + 1), item.amount)
+	Effects.singleton.add_many([3, 11], global_position)
+	SoundEffects.singleton.add_many([38, 17, 14], global_position)
 
 func launch(force: float = 1.0):
 	await get_tree().create_timer(0.1).timeout

@@ -205,6 +205,8 @@ func save():
 func evaluate_stats():
 	var stinger := bee.tools[Equipment.Id.Stinger] as Weapon
 	stinger.damage = 3
+	stinger.morphs = false
+	stinger.deflects = false
 	var health := 10
 	var energy := 30 if sleep_buff > 0 else 20
 	var inventory_size := 7
@@ -233,6 +235,10 @@ func evaluate_stats():
 				if not i: continue
 				if i.data.item_id == Item.Id.EggDamage:
 					stinger.damage += 1
+				if i.data.item_id == Item.Id.EggDefender:
+					stinger.deflects = true
+				if i.data.item_id == Item.Id.EggPolymorph:
+					stinger.morphs = true
 
 	# print("Stinger damage: ", stinger.damage)
 	# print("Health: ", health)
@@ -241,6 +247,8 @@ func evaluate_stats():
 	bee.energy_max = energy
 	bee.energy.max_hp = energy
 	inventory.setup_size(inventory_size)
+	stinger.sparkles.visible = stinger.damage > 3
+	stinger.sparks.visible = stinger.morphs
 
 func open_doors(type: Hut.DoorType, close_delay := 3.0):
 	for hut in huts:
