@@ -111,7 +111,8 @@ func add_item(id: Item.Id, amount: int = 1):
 	added.emit()
 
 func change_focus(dir: int):
-	focus((focused + dir + slots.size()) % slots.size())
+	var size := slots.filter(func(s): return s.visible).size()
+	focus((focused + dir + size) % size)
 	if Main.singleton.input_detection.using_pad and Main.singleton.tooltip.visible:
 		current().hover_on()
 
@@ -178,3 +179,8 @@ func drop(pos: Vector2):
 			var p = Main.drop_at(slot.item, null, pos)
 			slot.clear()
 			if p: p.apply_impulse(Vector2.UP.rotated(randf_range(0, 2 * PI)) * 800)
+
+func setup_size(size: int):
+	for i in slots.size():
+		slots[i].visible = i < size
+		slots[i].check()

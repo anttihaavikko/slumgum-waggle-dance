@@ -55,7 +55,6 @@ func is_open() -> bool:
 func close():
 	if preview: preview.close()
 	if not win.visible: return
-	Main.singleton.options.can_open = true
 	SoundEffects.singleton.add(47, Main.bee_pos())
 	if focused_slot:
 		focused_slot.hover_off()
@@ -74,12 +73,14 @@ func close():
 		Main.singleton.held.hide()
 	Main.singleton.evaluate_stats()
 	can_craft = false
+	await get_tree().create_timer(0.1).timeout
+	Main.singleton.options.can_toggle = true
 
 func open(source: Station):
 	if Main.singleton.station:
 		Main.singleton.station.close()
 	if crafter: crafter.open()
-	Main.singleton.options.can_open = false
+	Main.singleton.options.can_toggle = false
 	station = source
 	Main.singleton.station = self
 	Main.singleton.inventory.other = inputs

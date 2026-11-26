@@ -17,7 +17,6 @@ extends SlidingPanel
 var saver = Saver.new("settings.json")
 var data: SettingsData
 var default_zoom := Vector2.ZERO
-var can_open := true
 
 func _ready():
 	super._ready()
@@ -59,7 +58,7 @@ func changed(_val):
 	data.distance = distance.value
 
 func button_toggle():
-	if not can_open: return
+	if not can_toggle: return
 	super.toggle()
 	if extra_panel and extra_panel.open:
 		extra_panel.toggle()

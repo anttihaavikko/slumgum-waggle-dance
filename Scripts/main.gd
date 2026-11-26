@@ -153,6 +153,17 @@ func load():
 	await get_tree().process_frame
 	bee.health.hp = max(data.health, 1)
 	bee.teleport_to(Vector2(data.x, data.y))
+
+	for i in data.inventory.size():
+		var dat = data.inventory[i]
+		if not dat: continue
+		if dat[0] == Item.Id.Equipment:
+			inventory.slots[i].add_equipment(bee.tools[dat[2]])
+		else:
+			inventory.slots[i].add_item(item_db.items[dat[0]], dat[1])
+
+	inventory.focus(0)
+
 	evaluate_stats()
 	bee.energy_left = bee.energy_max
 
@@ -177,6 +188,7 @@ func evaluate_stats():
 	stinger.damage = 3
 	var health := 10
 	var energy := 30 if sleep_buff > 0 else 20
+	var inventory_size := 7
 	bee.can_dash = false
 	bee.can_hover = false
 	free_platforms = false
@@ -195,6 +207,8 @@ func evaluate_stats():
 					bee.can_hover = true
 				if i.data.item_id == Item.Id.EyeShrike:
 					free_platforms = true
+				if i.data.item_id == Item.Id.RelicInventory:
+					inventory_size += 1
 		if piece.identifier == BuildPiece.Id.Cup:
 			for i: Item in piece.inputs:
 				if not i: continue
@@ -207,6 +221,7 @@ func evaluate_stats():
 	bee.health.max_hp = health
 	bee.energy_max = energy
 	bee.energy.max_hp = energy
+	inventory.setup_size(inventory_size)
 
 func open_doors(type: Hut.DoorType, close_delay := 3.0):
 	for hut in huts:

@@ -49,6 +49,10 @@ func mark_for_pad(state: bool):
 	frame.self_modulate = Color.html("#EF5B5B") if state else Color.WHITE
 	SoundEffects.singleton.add(46, global_position, 0.5)
 
+func check():
+	if not visible:
+		drop()
+
 func auto_move(target: Inventory):
 	if target.can_add_item(item, equipment):
 		if equipment:
@@ -169,6 +173,7 @@ func add_item(data: ItemData, amount: int = 1, emits := true):
 	if emits: changed.emit()
 
 func drop() -> Pickup:
+	if not item and not equipment: return
 	var p = Main.drop(item, equipment)
 	clear()
 	return p

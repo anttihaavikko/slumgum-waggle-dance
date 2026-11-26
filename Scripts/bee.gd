@@ -77,7 +77,7 @@ func _ready() -> void:
 	Main.singleton.bee = self
 	Main.singleton.load()
 	# global_position += Vector2.RIGHT * -500
-	inventory.create_slots(7)
+	inventory.create_slots(15)
 	for s in inventory.slots.size():
 		inventory.slots[s].in_bar = true
 		inventory.slots[s].show_key("%d" % [s + 1])
@@ -99,15 +99,6 @@ func _ready() -> void:
 	# print(OS.get_data_dir())
 	# print(Main.singleton.data.inventory)
 	# inventory.populate_from(Main.singleton.data.inventory)
-	for i in Main.singleton.data.inventory.size():
-		var data = Main.singleton.data.inventory[i]
-		if not data: continue
-		if data[0] == Item.Id.Equipment:
-			inventory.slots[i].add_equipment(tools[data[2]])
-		else:
-			inventory.slots[i].add_item(Main.singleton.item_db.items[data[0]], data[1])
-
-	inventory.focus(0)
 
 	if OS.is_debug_build():
 		analyze()
