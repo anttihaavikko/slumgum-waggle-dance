@@ -3466,19 +3466,20 @@ texture = ExtResource("249_ul0h4")
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 z_index = 5
 layout_mode = 0
-offset_left = 36.0
-offset_top = 7.0
-offset_right = 577.0
-offset_bottom = 235.0
+offset_left = -2.0
+offset_top = 8.0
+offset_right = 539.0
+offset_bottom = 236.0
 theme = ExtResource("36_hdf80")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 100
+theme_override_constants/outline_size = 74
 theme_override_font_sizes/normal_font_size = 169
 bbcode_enabled = true
-text = "[wave amp=50 freq=5]WALTZ"
+text = " [wave amp=50 freq=5]WALTZ"
 scroll_active = false
 
 [node name="Mover" type="Node2D" parent="HUD/Logo/Rect/RichTextLabel" unique_id=2091958830]
+position = Vector2(207, 126)
 script = ExtResource("11_h1bgf")
 moves = true
 move_direction = Vector2(0, 5)
@@ -3486,26 +3487,26 @@ metadata/_custom_type_script = "uid://uxu8p38o38ip"
 
 [node name="ColorRect" type="ColorRect" parent="HUD/Logo/Rect/RichTextLabel/Mover" unique_id=1784216276]
 material = SubResource("CanvasItemMaterial_cpkcx")
-offset_left = 111.92505
-offset_top = 149.18475
-offset_right = 211.76721
-offset_bottom = 173.9101
+offset_left = -48.299744
+offset_top = 27.20166
+offset_right = 51.54242
+offset_bottom = 51.927002
 color = Color(0.78680813, 0.69002193, 0.6614064, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="HUD/Logo/Rect/RichTextLabel/Mover" unique_id=746355660]
 material = SubResource("CanvasItemMaterial_cpkcx")
-offset_left = 112.17822
-offset_top = 106.13901
-offset_right = 212.02039
-offset_bottom = 130.86435
+offset_left = -48.04657
+offset_top = -15.844086
+offset_right = 51.795593
+offset_bottom = 8.881256
 color = Color(0.78680813, 0.69002193, 0.6614064, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="HUD/Logo/Rect/RichTextLabel/Mover" unique_id=1163724452]
 material = SubResource("CanvasItemMaterial_cpkcx")
-offset_left = 110.22479
-offset_top = 66.98309
-offset_right = 210.06696
-offset_bottom = 91.708435
+offset_left = -50.0
+offset_top = -55.0
+offset_right = 49.842163
+offset_bottom = -30.274658
 color = Color(0.78680813, 0.69002193, 0.6614064, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="HUD/Logo/Rect" unique_id=898965195]
