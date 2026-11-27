@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ahxuod773is" path="res://Sprites/pollen.png" id="6_ptfg5"]
 [ext_resource type="PackedScene" uid="uid://dxxgw2udie8rg" path="res://_Starter/Scenes/face.tscn" id="7_344ge"]
 [ext_resource type="Texture2D" uid="uid://iik6jalprqdf" path="res://Sprites/star.png" id="7_2060n"]
+[ext_resource type="Script" uid="uid://bhs7sbmtwoc5p" path="res://_Starter/Scripts/starter.gd" id="7_k7w2v"]
 [ext_resource type="Script" uid="uid://b8mebr8i6loke" path="res://_Starter/Scripts/input_detection.gd" id="7_y07ku"]
 [ext_resource type="Texture2D" uid="uid://mhlcnjododb8" path="res://Sprites/wing.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://bbnv4d0882u5o" path="res://Sprites/cloth.png" id="9_1tvlp"]
@@ -254,6 +255,7 @@
 [ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
 [ext_resource type="PackedScene" uid="uid://bd7jj35q01jh0" path="res://_Starter/Scenes/options_menu.tscn" id="241_jmisg"]
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
+[ext_resource type="Texture2D" uid="uid://bdh3e3iay37l0" path="res://Sprites/logo_full_draft.png" id="247_n2cpk"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -1209,6 +1211,40 @@ blend_mode = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gax0l"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2cpk"]
+shader = ExtResource("15_k12tt")
+shader_parameter/amount = 12.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/offset = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/peaks = 7.0
+shader_parameter/time_mod = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7w2v"]
+content_margin_left = 70.0
+content_margin_top = 4.0
+content_margin_right = 90.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.7294118, 0.28627452, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.6313726, 0.42745098, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7va32"]
+content_margin_left = 70.0
+content_margin_top = 4.0
+content_margin_right = 90.0
+content_margin_bottom = 4.0
+bg_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
 radius = 20.0
 
@@ -1251,6 +1287,15 @@ options = NodePath("../HUD/OptionsMenu")
 script = ExtResource("244_ddyu8")
 actions = Array[String](["left", "right"])
 reset_delay = 0.2
+
+[node name="Starter" type="Node" parent="." unique_id=1938895741 node_paths=PackedStringArray("hud", "start_button", "logo", "cam", "settings", "queen")]
+script = ExtResource("7_k7w2v")
+hud = NodePath("../HUD/Frame")
+start_button = NodePath("../HUD/Play Button")
+logo = NodePath("../HUD/Logo")
+cam = NodePath("../Bee/Body/Main Camera")
+settings = NodePath("../HUD/OptionsMenu")
+queen = NodePath("../Queen")
 
 [node name="Input Detection" type="Node" parent="." unique_id=1977210264]
 script = ExtResource("7_y07ku")
@@ -1984,6 +2029,7 @@ target_position = Vector2(0, 0)
 collision_mask = 10806
 
 [node name="Stinger" type="Sprite2D" parent="Bee/Body/Body Sprite/Hands Wrap/Hands/Aligner/Swinger" unique_id=309441470 node_paths=PackedStringArray("area", "sparkles", "sparks", "swinger", "aligner", "sprite")]
+visible = false
 self_modulate = Color(1, 0.7294118, 0.28627452, 1)
 position = Vector2(-133, -117)
 rotation = 0.13577862
@@ -2211,7 +2257,7 @@ swing_dir = -0.9
 polygon = PackedVector2Array(-3, -136, 35, -129, 66, -84, 83, 13, 74, 87, 41, 127, 8, 139, -20, 138, -59, 114, -77, 85, -86, 11, -67, -90, -35, -130)
 
 [node name="Main Camera" type="Camera2D" parent="Bee/Body" unique_id=714120476]
-position = Vector2(1, 0)
+position = Vector2(0, -360)
 zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
@@ -3313,8 +3359,46 @@ Something [color=red]something
 "
 fit_content = true
 
+[node name="Logo" type="TextureRect" parent="HUD" unique_id=1012362808]
+material = SubResource("ShaderMaterial_n2cpk")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -610.0
+offset_top = -439.0
+offset_right = 532.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("247_n2cpk")
+
 [node name="OptionsMenu" parent="HUD" unique_id=292896132 node_paths=PackedStringArray("cam") instance=ExtResource("241_jmisg")]
 cam = NodePath("../../Bee/Body/Main Camera")
+
+[node name="Play Button" parent="HUD" unique_id=1800811398 instance=ExtResource("50_2daye")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -176.0
+offset_right = 161.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 20
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_k7w2v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7va32")
+text = "PLAY"
+icon = ExtResource("233_vhoi0")
+alignment = 1
+icon_alignment = 0
+resize_border = true
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50

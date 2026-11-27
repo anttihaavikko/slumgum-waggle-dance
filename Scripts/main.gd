@@ -41,6 +41,7 @@ var free_platforms := false
 var compass_spots: Array[Node2D] = []
 var relic_pool: Array[Item.Id] = []
 var egg_pool: Array[Item.Id] = []
+var started := false
 
 var all_relics := [Item.Id.RelicEnergy, Item.Id.RelicHealth, Item.Id.RelicInventory]
 var all_eggs := [Item.Id.Egg, Item.Id.EggDamage]
@@ -161,7 +162,8 @@ func get_door_hint() -> Texture2D:
 	return door_hints[door_hint_pool.pop_front()]
 
 func load():
-	data = SaveData.load()
+	data = SaveData.new()
+	# data = SaveData.load()
 	time.day = data.day
 	time.time = data.time
 	rank = data.rank
@@ -187,6 +189,7 @@ func load():
 	bee.energy_left = bee.energy_max
 
 func save():
+	return
 	data.day = time.day
 	data.rank = rank
 	data.inventory = inventory.get_for_save()

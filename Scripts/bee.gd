@@ -64,6 +64,7 @@ var has_consumed_energy := false
 var charge_volume = MovingValue.new(0, 10)
 var can_dash := false
 var can_hover := false
+var time := 0.0
 
 var current: Equipment
 
@@ -389,6 +390,15 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			cam.zoom = Vector2.ONE * z
 
 func _process(delta) -> void:
+	if not Main.singleton.started:
+		time += delta
+		buzz_volume.target = 1
+		buzz_volume.update(delta)
+		buzz.volume_linear = buzz_volume.value * 0.5
+		body.apply_force(Vector2.UP * 138000 * delta * absf(sin(time * 2)))
+		body.apply_torque(sin(time * 2) * 500000 * delta)
+		wings.speed_scale = 3.0
+		return
 	if Engine.time_scale > 1: return
 	var limit := 10.0
 	var look_mod = (limit - clamp(body.linear_velocity.length(), 0, limit)) / limit

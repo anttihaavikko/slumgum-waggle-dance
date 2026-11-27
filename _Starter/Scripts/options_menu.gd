@@ -51,11 +51,14 @@ func changed(_val):
 	AudioServer.set_bus_volume_linear(1, music.value * 2)
 	AudioServer.set_bus_volume_linear(2, sounds.value * 2)
 	get_tree().root.content_scale_factor = scaler.value
-	if cam: cam.zoom = default_zoom * distance.value / scaler.value
+	if cam: cam.zoom = get_camera_zoom()
 	data.music = music.value
 	data.sounds = sounds.value
 	data.scale = scaler.value
 	data.distance = distance.value
+
+func get_camera_zoom() -> Vector2:
+	return default_zoom * distance.value / scaler.value
 
 func button_toggle():
 	if not can_toggle: return

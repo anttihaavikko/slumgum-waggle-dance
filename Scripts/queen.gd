@@ -1,4 +1,4 @@
-extends Node2D
+class_name Queen extends Node2D
 
 @export var queen: Node2D
 @export var area: Area2D
@@ -100,6 +100,7 @@ func setup_skin(index: int):
 	glasses.self_modulate = glasses_colors[index - 1]
 
 func appear(_node: Node2D):
+	if not Main.singleton.started: return
 	if appeared_today(): return
 	Main.singleton.bee.heal_if_not_full(1)
 	if Main.singleton.time.day == 1:
