@@ -153,6 +153,7 @@ func mark_built(id: BuildPiece.Id):
 
 func toggle_fullscreen():
 	OptionsMenu.toggle_fullscreen_static()
+	get_viewport().gui_release_focus()
 
 func get_door_hint() -> Texture2D:
 	if not door_hints_init:

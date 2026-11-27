@@ -87,6 +87,7 @@ func restart():
 
 func toggle_fullscreen():
 	OptionsMenu.toggle_fullscreen_static()
+	get_viewport().gui_release_focus()
 
 static func toggle_fullscreen_static():
 	var full := DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED

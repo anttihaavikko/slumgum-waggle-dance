@@ -14,6 +14,10 @@ func _ready() -> void:
 	await get_tree().process_frame
 	cam.zoom = Vector2.ONE * 0.5
 
+func _process(_delta) -> void:
+	if not hud.visible and Input.is_action_just_pressed("interact"):
+		start()
+
 func start():
 	hud.show()
 	start_button.hide()
