@@ -1314,6 +1314,7 @@ blend_mode = 1
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xjjvj"]
 
 [node name="Main" type="Node2D" unique_id=324059262]
+metadata/_edit_vertical_guides_ = [1885.0]
 
 [node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip", "input_detection", "buttons", "options")]
 script = ExtResource("1_hpc6h")
@@ -1392,10 +1393,10 @@ scroll_scale = Vector2(0.5, 0.5)
 
 [node name="Sky" type="ColorRect" parent="Sky Parallax" unique_id=971220568]
 z_index = -50
-offset_left = -117316.0
-offset_top = -33468.0
-offset_right = 87393.0
-offset_bottom = 30197.0
+offset_left = -117092.0
+offset_top = -33445.0
+offset_right = 87617.0
+offset_bottom = 30220.0
 pivot_offset = Vector2(34626, 15053)
 color = Color(0.5882353, 0.7921569, 0.9098039, 1)
 
@@ -3414,19 +3415,20 @@ pivot_offset_ratio = Vector2(0.5, 1)
 color = Color(0, 0, 0, 1)
 
 [node name="Fullscreen Button" parent="HUD" unique_id=1508171716 instance=ExtResource("50_2daye")]
+custom_minimum_size = Vector2(60, 60)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -140.0
-offset_right = -36.0
-offset_bottom = -31.0
+offset_left = -124.0
+offset_top = -135.0
+offset_right = -37.0
+offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 0
 layout_direction = 2
-theme_override_constants/icon_max_width = 50
+theme_override_constants/icon_max_width = 40
 text = ""
 icon = ExtResource("121_rlvdk")
 icon_alignment = 1
@@ -3694,6 +3696,9 @@ scroll_active = false
 
 [node name="OptionsMenu" parent="HUD" unique_id=292896132 node_paths=PackedStringArray("cam") instance=ExtResource("241_jmisg")]
 cam = NodePath("../../Bee/Body/Main Camera")
+
+[node name="Toggler" parent="HUD/OptionsMenu" index="1" unique_id=235555021]
+offset_right = -31.0
 
 [node name="Play Button" parent="HUD" unique_id=1800811398 instance=ExtResource("50_2daye")]
 anchors_preset = 7
