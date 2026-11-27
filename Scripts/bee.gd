@@ -267,7 +267,8 @@ func heal(amt := 1):
 func die():
 	SoundEffects.singleton.add(7, body.global_position, 0.5)
 	health.hurt(999)
-	inventory.drop(body.global_position)
+	if not Main.singleton.death_save: inventory.drop(body.global_position)
+	else: Main.singleton.inventory_saved()
 	face.left_eye.hide()
 	face.right_eye.hide()
 	crosses.show()

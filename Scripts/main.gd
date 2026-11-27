@@ -43,6 +43,7 @@ var compass_spots: Array[Node2D] = []
 var relic_pool: Array[Item.Id] = []
 var egg_pool: Array[Item.Id] = []
 var started := false
+var death_save := false
 
 var all_relics := [Item.Id.RelicEnergy, Item.Id.RelicHealth, Item.Id.RelicInventory]
 var all_eggs := [Item.Id.Egg, Item.Id.EggDamage]
@@ -299,3 +300,8 @@ func stuck():
 	bee.body.apply_impulse(Vector2.UP * 1500 + randf_range(-1, 1) * Vector2.RIGHT * 500)
 	bee.body.apply_torque_impulse(randf_range(-1, 1) * 100000)
 	bee.die()
+
+func inventory_saved():
+	await get_tree().create_timer(0.5).timeout
+	Main.pop("MUSICAL GRACE!")
+	Main.singleton.death_save = false

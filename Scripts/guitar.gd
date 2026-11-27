@@ -79,6 +79,7 @@ func check_songs():
 		Main.singleton.open_doors(Hut.DoorType.Music)
 		return
 	if check(notes, "DEAD"):
+		Main.singleton.death_save = true
 		return
 	if check(notes, "DEED"):
 		return

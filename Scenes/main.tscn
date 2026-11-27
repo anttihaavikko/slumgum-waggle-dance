@@ -252,6 +252,8 @@
 [ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
 [ext_resource type="Texture2D" uid="uid://c580cecm6ccex" path="res://Sprites/elec.png" id="193_8lmbg"]
 [ext_resource type="Texture2D" uid="uid://bpc535guhh2mb" path="res://Sprites/guitar_scale_pad.png" id="202_refj4"]
+[ext_resource type="Texture2D" uid="uid://bua276g0n7wcx" path="res://Sprites/poster_dead.png" id="224_ore4n"]
+[ext_resource type="Texture2D" uid="uid://7f1anbwmb43l" path="res://Sprites/hint_teleports.png" id="226_gqipy"]
 [ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
 [ext_resource type="PackedScene" uid="uid://bd7jj35q01jh0" path="res://_Starter/Scenes/options_menu.tscn" id="241_jmisg"]
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
@@ -2450,7 +2452,7 @@ visible = false
 position = Vector2(-66547, -478)
 grass_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
 bg_color = Color(0.9808013, 0.6111501, 0.59090304, 1)
-hints = Array[Texture2D]([ExtResource("101_xjjvj")])
+hints = Array[Texture2D]([ExtResource("101_xjjvj"), ExtResource("224_ore4n")])
 flower_prefab = ExtResource("109_myryv")
 extra_seed = 161
 
@@ -2460,7 +2462,7 @@ position = Vector2(47201, -23290)
 grass_color = Color(1, 1, 1, 1)
 bg_color = Color(0.80024856, 0.9327806, 0.99746937, 1)
 worm_chance = 0.75
-hints = Array[Texture2D]([ExtResource("102_8dylv")])
+hints = Array[Texture2D]([ExtResource("102_8dylv"), ExtResource("226_gqipy")])
 flower_prefab = ExtResource("111_bpr0e")
 extra_seed = 666
 
