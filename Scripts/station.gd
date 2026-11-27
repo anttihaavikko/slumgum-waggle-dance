@@ -40,6 +40,7 @@ func _process(delta) -> void:
 
 func announce(include_pad_help := false):
 	if cooldown > 0: return
+	if not Main.singleton.started: return
 	if Main.singleton.builder.held: return
 	Effects.singleton.pop("[wave]%s" % [title.to_upper()], center.global_position + Vector2.UP * 100)
 	cooldown = 0.5
@@ -49,6 +50,7 @@ func announce(include_pad_help := false):
 		Effects.singleton.pop("[font_size=60][wave]PRESS [img=100]res://Sprites/a_btn_shadow.png[/img] TO INTERACT", center.global_position)
 
 func open():
+	if not Main.singleton.started: return
 	if not placed: return
 	if not Main.singleton.bee.can_open(): return
 	if Main.singleton.options.open: return

@@ -17,6 +17,7 @@ class_name Main extends Node
 @export var buttons: Array[Button]
 @export var options: OptionsMenu
 
+var debug_start := false
 var station: StationMenu
 var bee: Bee
 var flowers: Array[Flower] = []
@@ -162,8 +163,8 @@ func get_door_hint() -> Texture2D:
 	return door_hints[door_hint_pool.pop_front()]
 
 func load():
-	data = SaveData.new()
-	# data = SaveData.load()
+	if OS.is_debug_build() and debug_start: data = SaveData.new()
+	else: data = SaveData.load()
 	time.day = data.day
 	time.time = data.time
 	rank = data.rank
@@ -189,7 +190,7 @@ func load():
 	bee.energy_left = bee.energy_max
 
 func save():
-	return
+	if OS.is_debug_build() and debug_start: return
 	data.day = time.day
 	data.rank = rank
 	data.inventory = inventory.get_for_save()
@@ -289,10 +290,11 @@ func toggle_tooltip():
 		inventory.current().hover_on()
 
 func save_and_quit():
-	save()
+	if started: save()
 	options.quit()
 
 func stuck():
+	if not started: return
 	bee.body.apply_impulse(Vector2.UP * 1500 + randf_range(-1, 1) * Vector2.RIGHT * 500)
 	bee.body.apply_torque_impulse(randf_range(-1, 1) * 100000)
 	bee.die()

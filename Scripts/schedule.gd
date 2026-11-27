@@ -15,6 +15,7 @@ var day := 1
 var sleep_until := -1.0
 
 func _process(delta) -> void:
+	if not Main.singleton.started: return
 	time += delta * speed
 	if time >= 1:
 		time -= 1

@@ -10,9 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Bee"
-config/description="Waggle Dance Waltz"
-config/version="0.8.1"
+config/name="Waggle Dance Waltz"
+config/version="0.9.0"
 run/main_scene="uid://dctl740whl7xn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"

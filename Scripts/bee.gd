@@ -334,6 +334,7 @@ func land(target: Node2D):
 		danger()
 
 func collide(_node: Node2D):
+	if not Main.singleton.started: return
 	var mag = body.linear_velocity.length()
 	var threshold := 200.0
 	var amt = roundf(mag / threshold)
@@ -395,7 +396,7 @@ func _process(delta) -> void:
 		buzz_volume.target = 1
 		buzz_volume.update(delta)
 		buzz.volume_linear = buzz_volume.value * 0.5
-		body.apply_force(Vector2.UP * 138000 * delta * absf(sin(time * 2)))
+		body.apply_force(Vector2.UP * 138050 * delta * absf(sin(time * 2)))
 		body.apply_torque(sin(time * 2) * 500000 * delta)
 		wings.speed_scale = 3.0
 		return

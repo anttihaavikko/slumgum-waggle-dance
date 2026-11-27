@@ -255,7 +255,10 @@
 [ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
 [ext_resource type="PackedScene" uid="uid://bd7jj35q01jh0" path="res://_Starter/Scenes/options_menu.tscn" id="241_jmisg"]
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
-[ext_resource type="Texture2D" uid="uid://bdh3e3iay37l0" path="res://Sprites/logo_full_draft.png" id="247_n2cpk"]
+[ext_resource type="Texture2D" uid="uid://bjtqjkk8j4j8f" path="res://Sprites/logo_g.png" id="247_ul0h4"]
+[ext_resource type="Texture2D" uid="uid://dxt3i10s1sbrk" path="res://Sprites/logo_others.png" id="248_3xx7e"]
+[ext_resource type="Texture2D" uid="uid://bo6ine1ry8f0x" path="res://Sprites/logo_g_fill.png" id="248_gqipy"]
+[ext_resource type="Texture2D" uid="uid://cr2cqna23jcrb" path="res://Sprites/logo_rect.png" id="249_ul0h4"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
 offsets = PackedFloat32Array(0, 0.08639706, 0.5459559, 0.68014705)
@@ -1220,6 +1223,55 @@ shader_parameter/speed = 0.1
 shader_parameter/peaks = 7.0
 shader_parameter/time_mod = 1.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cpkcx"]
+blend_mode = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ul0h4"]
+shader = ExtResource("102_b4mik")
+shader_parameter/amount = 50.0
+shader_parameter/frequency = 0.01
+shader_parameter/speed = 4.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
+[sub_resource type="Animation" id="Animation_ul0h4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gqipy"]
+resource_name = "logo"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rect:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.05235987755982989, 0.05235987755982989]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ore4n"]
+_data = {
+&"RESET": SubResource("Animation_ul0h4"),
+&"logo": SubResource("Animation_gqipy")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7w2v"]
 content_margin_left = 70.0
 content_margin_top = 4.0
@@ -1243,7 +1295,6 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 7
 border_color = Color(1, 1, 1, 1)
-corner_detail = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovafv"]
 radius = 20.0
@@ -1288,7 +1339,7 @@ script = ExtResource("244_ddyu8")
 actions = Array[String](["left", "right"])
 reset_delay = 0.2
 
-[node name="Starter" type="Node" parent="." unique_id=1938895741 node_paths=PackedStringArray("hud", "start_button", "logo", "cam", "settings", "queen")]
+[node name="Starter" type="Node" parent="." unique_id=1938895741 node_paths=PackedStringArray("hud", "start_button", "logo", "cam", "settings", "queen", "bars")]
 script = ExtResource("7_k7w2v")
 hud = NodePath("../HUD/Frame")
 start_button = NodePath("../HUD/Play Button")
@@ -1296,6 +1347,7 @@ logo = NodePath("../HUD/Logo")
 cam = NodePath("../Bee/Body/Main Camera")
 settings = NodePath("../HUD/OptionsMenu")
 queen = NodePath("../Queen")
+bars = [NodePath("../HUD/Bar Top"), NodePath("../HUD/Bar Bottom")]
 
 [node name="Input Detection" type="Node" parent="." unique_id=1977210264]
 script = ExtResource("7_y07ku")
@@ -2853,6 +2905,7 @@ preview = NodePath("../../../../Preview Window/Preview")
 creates_items = true
 
 [node name="Bed Window" parent="HUD" unique_id=2034345964 instance=ExtResource("57_lx3vj")]
+visible = false
 offset_left = -617.0
 offset_top = -369.0
 offset_right = -211.0
@@ -3236,24 +3289,6 @@ text = "Lorem ipsum"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fullscreen Button" parent="HUD" unique_id=1508171716 instance=ExtResource("50_2daye")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -140.0
-offset_right = -36.0
-offset_bottom = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-layout_direction = 2
-theme_override_constants/icon_max_width = 50
-text = ""
-icon = ExtResource("121_rlvdk")
-icon_alignment = 1
-
 [node name="FramerateDisplay" type="RichTextLabel" parent="HUD" unique_id=1898476]
 modulate = Color(1, 1, 1, 0.26666668)
 material = SubResource("CanvasItemMaterial_b05pg")
@@ -3359,6 +3394,43 @@ Something [color=red]something
 "
 fit_content = true
 
+[node name="Bar Top" type="ColorRect" parent="HUD" unique_id=917528402]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0)
+color = Color(0, 0, 0, 1)
+
+[node name="Bar Bottom" type="ColorRect" parent="HUD" unique_id=2041012177]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -236.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="Fullscreen Button" parent="HUD" unique_id=1508171716 instance=ExtResource("50_2daye")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -140.0
+offset_right = -36.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+layout_direction = 2
+theme_override_constants/icon_max_width = 50
+text = ""
+icon = ExtResource("121_rlvdk")
+icon_alignment = 1
+
 [node name="Logo" type="TextureRect" parent="HUD" unique_id=1012362808]
 material = SubResource("ShaderMaterial_n2cpk")
 anchors_preset = 8
@@ -3367,12 +3439,257 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -610.0
-offset_top = -439.0
+offset_top = -329.0
 offset_right = 532.0
-offset_bottom = -31.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("247_n2cpk")
+
+[node name="Rect" type="TextureRect" parent="HUD/Logo" unique_id=193975347]
+material = SubResource("ShaderMaterial_n2cpk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -47.0
+offset_right = 290.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.1)
+texture = ExtResource("249_ul0h4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Logo/Rect" unique_id=897185065]
+self_modulate = Color(1, 0.7294118, 0.28627452, 1)
+z_index = 5
+layout_mode = 0
+offset_left = 36.0
+offset_top = 7.0
+offset_right = 577.0
+offset_bottom = 235.0
+theme = ExtResource("36_hdf80")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 100
+theme_override_font_sizes/normal_font_size = 169
+bbcode_enabled = true
+text = "[wave amp=50 freq=5]WALTZ"
+scroll_active = false
+
+[node name="Mover" type="Node2D" parent="HUD/Logo/Rect/RichTextLabel" unique_id=2091958830]
+script = ExtResource("11_h1bgf")
+moves = true
+move_direction = Vector2(0, 5)
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Logo/Rect/RichTextLabel/Mover" unique_id=1784216276]
+material = SubResource("CanvasItemMaterial_cpkcx")
+offset_left = 111.92505
+offset_top = 149.18475
+offset_right = 211.76721
+offset_bottom = 173.9101
+color = Color(0.78680813, 0.69002193, 0.6614064, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HUD/Logo/Rect/RichTextLabel/Mover" unique_id=746355660]
+material = SubResource("CanvasItemMaterial_cpkcx")
+offset_left = 112.17822
+offset_top = 106.13901
+offset_right = 212.02039
+offset_bottom = 130.86435
+color = Color(0.78680813, 0.69002193, 0.6614064, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HUD/Logo/Rect/RichTextLabel/Mover" unique_id=1163724452]
+material = SubResource("CanvasItemMaterial_cpkcx")
+offset_left = 110.22479
+offset_top = 66.98309
+offset_right = 210.06696
+offset_bottom = 91.708435
+color = Color(0.78680813, 0.69002193, 0.6614064, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Logo/Rect" unique_id=898965195]
+z_index = -1
+material = SubResource("ShaderMaterial_ul0h4")
+position = Vector2(-14.096298, 94.55995)
+rotation = -1.6041976
+scale = Vector2(0.94184184, 0.94184184)
+texture = ExtResource("131_qays4")
+offset = Vector2(-2.796692, -267.99527)
+
+[node name="Sprite2D2" type="Sprite2D" parent="HUD/Logo/Rect" unique_id=1854655358]
+z_index = -1
+material = SubResource("ShaderMaterial_ul0h4")
+position = Vector2(0.4845395, 135.83975)
+rotation = -1.9049016
+scale = Vector2(0.94184184, 0.94184184)
+texture = ExtResource("127_kt6vk")
+offset = Vector2(-2.796692, -267.99527)
+
+[node name="Sprite2D3" type="Sprite2D" parent="HUD/Logo/Rect" unique_id=166381541]
+z_index = -1
+material = SubResource("ShaderMaterial_ul0h4")
+position = Vector2(495.99292, 77.257034)
+rotation = 1.6019205
+scale = Vector2(0.94184184, 0.94184184)
+texture = ExtResource("133_37usx")
+offset = Vector2(-2.796692, -267.99527)
+
+[node name="Sprite2D4" type="Sprite2D" parent="HUD/Logo/Rect" unique_id=1316536513]
+z_index = -1
+material = SubResource("ShaderMaterial_ul0h4")
+position = Vector2(496.42343, 119.97442)
+rotation = 1.8554249
+scale = Vector2(0.94184184, 0.94184184)
+texture = ExtResource("129_rbkdr")
+offset = Vector2(-2.796692, -267.99527)
+
+[node name="G1" type="TextureRect" parent="HUD/Logo" unique_id=1016970159]
+material = SubResource("ShaderMaterial_n2cpk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -226.0
+offset_right = -228.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("247_ul0h4")
+
+[node name="Fill" type="TextureRect" parent="HUD/Logo/G1" unique_id=1785452446]
+z_index = 1
+material = SubResource("ShaderMaterial_n2cpk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -114.0
+offset_right = 65.5
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("248_gqipy")
+
+[node name="Mover" type="Node2D" parent="HUD/Logo/G1" unique_id=1345536907 node_paths=PackedStringArray("target")]
+script = ExtResource("11_h1bgf")
+target = NodePath("..")
+moves = true
+move_direction = Vector2(0, 15)
+move_speed = 3.0
+scale_amount = Vector2(0.1, 0.1)
+scale_speed = 3.0
+single_direction = true
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="G2" type="TextureRect" parent="HUD/Logo" unique_id=647916022]
+material = SubResource("ShaderMaterial_n2cpk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -222.0
+offset_right = -128.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("247_ul0h4")
+
+[node name="Fill" type="TextureRect" parent="HUD/Logo/G2" unique_id=1491877839]
+z_index = 1
+material = SubResource("ShaderMaterial_n2cpk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -114.0
+offset_right = 65.5
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("248_gqipy")
+
+[node name="Mover" type="Node2D" parent="HUD/Logo/G2" unique_id=837559971 node_paths=PackedStringArray("target")]
+script = ExtResource("11_h1bgf")
+target = NodePath("..")
+moves = true
+move_direction = Vector2(0, 15)
+move_speed = 3.0
+scale_amount = Vector2(0.1, 0.1)
+scale_speed = 3.0
+single_direction = true
+time_offset = 1.5699999999999998
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
+
+[node name="Others" type="TextureRect" parent="HUD/Logo" unique_id=1986841878]
+material = SubResource("ShaderMaterial_n2cpk")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -174.0
+offset_right = 565.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("248_3xx7e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Logo" unique_id=705612179]
+libraries/ = SubResource("AnimationLibrary_ore4n")
+autoplay = &"logo"
+speed_scale = 0.7
+
+[node name="Version" type="RichTextLabel" parent="HUD/Logo" unique_id=887438853 node_paths=PackedStringArray("label")]
+layout_mode = 1
+offset_left = 819.0
+offset_top = 230.0
+offset_right = 1073.0
+offset_bottom = 339.0
+layout_direction = 2
+theme = ExtResource("36_hdf80")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "0.0.0"
+scroll_active = false
+script = ExtResource("122_t6wb6")
+label = NodePath(".")
+prefix = "[wave]"
+
+[node name="Author" type="RichTextLabel" parent="HUD/Logo" unique_id=1787724524]
+layout_mode = 1
+offset_left = 444.0
+offset_top = -30.0
+offset_right = 1091.0
+offset_bottom = 70.0
+layout_direction = 2
+theme = ExtResource("36_hdf80")
+theme_override_colors/font_outline_color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 31
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave] Antti Haavikko presents"
+scroll_active = false
 
 [node name="OptionsMenu" parent="HUD" unique_id=292896132 node_paths=PackedStringArray("cam") instance=ExtResource("241_jmisg")]
 cam = NodePath("../../Bee/Body/Main Camera")
@@ -3390,15 +3707,25 @@ offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/h_separation = 20
-theme_override_constants/icon_max_width = 60
+theme_override_constants/icon_max_width = 70
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_k7w2v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7va32")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7va32")
 text = "PLAY"
 icon = ExtResource("233_vhoi0")
 alignment = 1
 icon_alignment = 0
 resize_border = true
+
+[node name="Mover" type="Node2D" parent="HUD/Play Button" unique_id=340262385 node_paths=PackedStringArray("target")]
+script = ExtResource("11_h1bgf")
+target = NodePath("..")
+moves = true
+move_direction = Vector2(0, 20)
+move_speed = 3.0
+single_direction = true
+metadata/_custom_type_script = "uid://uxu8p38o38ip"
 
 [node name="Harvester" type="Node2D" parent="." unique_id=584084666 node_paths=PackedStringArray("marker", "marker_end", "icon", "bad", "good", "arrow")]
 z_index = 50
