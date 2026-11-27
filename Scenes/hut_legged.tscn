@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c3ajl0b8gck2t"]
+
+[ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="1_i8fgt"]
+
+[node name="Hut" unique_id=1652198801 instance=ExtResource("1_i8fgt")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=42541900]
+position = Vector2(-5, -838)
+
+[node name="Sprite2D2" parent="." index="1" unique_id=672644012]
+position = Vector2(23, -838)
+
+[node name="Line2D2" parent="Sprite2D2" index="0" unique_id=1108081541]
+points = PackedVector2Array(-558, -857, -165, -772, -63, -1098, 721, -1107, 712, -843, -163, -770, 700, -245.99997)
+
+[node name="Door" parent="." index="2" unique_id=1433366134]
+position = Vector2(-588, -747)
+
+[node name="Polygon2D" parent="." index="3" unique_id=736734677]
+position = Vector2(-39, -162)
+polygon = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -742, -276, -745, -282, -1173, -128.4961, -1172.6638, 89, -1335, 415, -1412, 774, -1331, 942.99536, -1170.3176, 1088, -1170, 1064, -107, 1077, 45, 1281, 365, 955, 952, 829, 955, 394, 748, 394, 640, 849, 840, 1121, 378, 912, 39, -183, 27, -325, 373, -5, 854, 381, 631, 383, 759, 34, 948, -102, 939, -456, 376, -302, 29)
+
+[node name="StaticBody2D" parent="." index="4" unique_id=1162483288]
+position = Vector2(-544, -68)
+
+[node name="CollisionPolygon2D" parent="StaticBody2D" index="0" unique_id=1689790898]
+polygon = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -742, -276, -745, -282, -1173, -128.4961, -1172.6638, 89, -1335, 415, -1412, 774, -1331, 942.99536, -1170.3176, 1088, -1170, 1064, -107, 1077, 45, 1281, 365, 955, 952, 829, 955, 394, 748, 394, 640, 849, 840, 1121, 378, 912, 39, -183, 27, -325, 373, -5, 854, 381, 631, 383, 759, 34, 948, -102, 939, -456, 376, -302, 29)
+
+[node name="Line2D" parent="." index="5" unique_id=1838151126]
+position = Vector2(-401, -308)
+points = PackedVector2Array(-249, -118, 900, -118, 901, -929, -99, -929, -108, -742, -276, -745, -282, -1173, -128.4961, -1172.6638, 89, -1335, 415, -1412, 774, -1331, 942.99536, -1170.3176, 1088, -1170, 1064, -107, 1077, 45, 1281, 365, 955, 952, 829, 955, 394, 748, 394, 640, 849, 840, 1121, 378, 912, 39, -183, 27, -325, 373, -5, 854, 381, 631, 383, 759, 34, 948, -102, 939, -456, 376, -302, 29)
+
+[node name="Button" parent="." index="6" unique_id=1269050410]
+position = Vector2(154, -425)
+
+[node name="Relic Pickup" parent="." index="7" unique_id=1139630903]
+position = Vector2(-231, -1048)

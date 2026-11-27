@@ -8,11 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://cg16xm21ar1yy" path="res://Scenes/hut.tscn" id="6_87y82"]
 [ext_resource type="PackedScene" uid="uid://cb7tgyuljp17g" path="res://Scenes/worm.tscn" id="7_5ec47"]
 [ext_resource type="PackedScene" uid="uid://r2qxt7mpqtsx" path="res://Scenes/obelisk.tscn" id="8_mgtah"]
+[ext_resource type="PackedScene" uid="uid://c3ajl0b8gck2t" path="res://Scenes/hut_legged.tscn" id="9_cjy1e"]
 [ext_resource type="Texture2D" uid="uid://d338fiahtxbr" path="res://Sprites/poster-bad.png" id="9_w3x1o"]
 [ext_resource type="Texture2D" uid="uid://bxr6bc1pjpkxt" path="res://Sprites/poster-beef.png" id="10_j208g"]
 [ext_resource type="Texture2D" uid="uid://d3l1w6wwkt86" path="res://Sprites/dots.png" id="11_asfaq"]
+[ext_resource type="PackedScene" uid="uid://bxj7msp1sjjru" path="res://Scenes/obelisk2.tscn" id="12_ue62x"]
 [ext_resource type="Script" uid="uid://bc0p0qf2efaya" path="res://Scripts/dungeon.gd" id="12_xghqa"]
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="13_2uam6"]
+[ext_resource type="PackedScene" uid="uid://brqnk0cn7n76m" path="res://Scenes/obelisk3.tscn" id="13_ts47d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b640e"]
 radius = 100.0
@@ -35,7 +38,7 @@ ray = NodePath("RayCast2D")
 rock_prefab = ExtResource("4_ts47d")
 tree_prefab = ExtResource("5_nbdts")
 trees = NodePath("Parallax2D/Trees")
-huts = Array[PackedScene]([ExtResource("6_87y82")])
+huts = Array[PackedScene]([ExtResource("6_87y82"), ExtResource("9_cjy1e")])
 explosion = NodePath("Explosion")
 wall = NodePath("Wall")
 wall_line = NodePath("Wall Line")
@@ -43,7 +46,7 @@ dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), No
 start_area = NodePath("Start Area")
 spawners = Array[PackedScene]([ExtResource("7_5ec47")])
 ground_check = NodePath("Ground Check")
-hinters = Array[PackedScene]([ExtResource("8_mgtah")])
+hinters = Array[PackedScene]([ExtResource("8_mgtah"), ExtResource("12_ue62x"), ExtResource("13_ts47d")])
 bg_parallax = NodePath("Parallax2D")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1719393640]
