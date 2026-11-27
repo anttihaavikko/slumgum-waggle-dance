@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://bc0p0qf2efaya" path="res://Scripts/dungeon.gd" id="12_xghqa"]
 [ext_resource type="Texture2D" uid="uid://dcveo0co8ai0m" path="res://Sprites/box.png" id="13_2uam6"]
 [ext_resource type="PackedScene" uid="uid://brqnk0cn7n76m" path="res://Scenes/obelisk3.tscn" id="13_ts47d"]
+[ext_resource type="PackedScene" uid="uid://blvo0p8jkb7oq" path="res://Scenes/obelisk4.tscn" id="14_nbdts"]
+[ext_resource type="PackedScene" uid="uid://bfkl6iiuehhcc" path="res://Scenes/obelisk5.tscn" id="15_87y82"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b640e"]
 radius = 100.0
@@ -46,7 +48,7 @@ dungeons = [NodePath("Dungeon1"), NodePath("Dungeon2"), NodePath("Dungeon3"), No
 start_area = NodePath("Start Area")
 spawners = Array[PackedScene]([ExtResource("7_5ec47")])
 ground_check = NodePath("Ground Check")
-hinters = Array[PackedScene]([ExtResource("8_mgtah"), ExtResource("12_ue62x"), ExtResource("13_ts47d")])
+hinters = Array[PackedScene]([ExtResource("8_mgtah"), ExtResource("12_ue62x"), ExtResource("13_ts47d"), ExtResource("14_nbdts"), ExtResource("15_87y82")])
 bg_parallax = NodePath("Parallax2D")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1719393640]
