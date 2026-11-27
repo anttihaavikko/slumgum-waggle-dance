@@ -91,7 +91,7 @@ func has_space():
 
 func can_add(id: Item.Id, amount: int) -> bool:
 	var match = slots.find_custom(func(s: Slot): return s.can_add(id, amount))
-	return match > -1 or slots.any(func(s: Slot): return s.is_empty())
+	return match > -1 or slots.any(func(s: Slot): return s.visible and s.is_empty())
 
 func add_item(id: Item.Id, amount: int = 1):
 	SoundEffects.singleton.add(5, Main.bee_pos())
