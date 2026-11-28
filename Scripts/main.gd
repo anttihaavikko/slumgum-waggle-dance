@@ -145,6 +145,9 @@ func mark_seen(id: Item.Id):
 		for eq in bee.tools:
 			if eq.recipe.has(id) and Item.can_make(eq.recipe, seen):
 				notifications.add(Utils.colorize("New recipe: (%s)" % [eq.name.to_upper()], "#FFBA49"))
+		for h in tailor.recipes:
+			if h.recipe.has(id) and Item.can_make(h.recipe, seen):
+				notifications.add(Utils.colorize("New hat part: (%s)" % [h.title.to_upper()], "#FFBA49"))
 
 func mark_crafted(id: Equipment.Id):
 	if not crafted.has(id):

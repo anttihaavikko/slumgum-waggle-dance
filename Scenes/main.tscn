@@ -1249,7 +1249,6 @@ blend_mode = 3
 [sub_resource type="Resource" id="Resource_tl5jb"]
 script = ExtResource("246_gckwj")
 title = "White Hat"
-description = "Lorem ipsum"
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_ic5ri"]
@@ -1280,6 +1279,9 @@ metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 script = ExtResource("246_gckwj")
 title = "White String"
 slot = 1
+recipe = Dictionary[int, int]({
+19: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_yv31h"]
@@ -1287,6 +1289,9 @@ script = ExtResource("246_gckwj")
 title = "Yellow String"
 slot = 1
 color = Color(1, 0.7294118, 0.28627452, 1)
+recipe = Dictionary[int, int]({
+19: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_6ecqq"]
@@ -1294,6 +1299,9 @@ script = ExtResource("246_gckwj")
 title = "Green String"
 slot = 1
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+recipe = Dictionary[int, int]({
+19: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_if84k"]
@@ -1301,6 +1309,9 @@ script = ExtResource("246_gckwj")
 title = "Red String"
 slot = 1
 color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+recipe = Dictionary[int, int]({
+19: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_xy8ya"]
@@ -1308,6 +1319,9 @@ script = ExtResource("246_gckwj")
 title = "Dark String"
 slot = 1
 color = Color(0.13725491, 0, 0.11764706, 1)
+recipe = Dictionary[int, int]({
+19: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_m7bcm"]
@@ -1315,6 +1329,9 @@ script = ExtResource("246_gckwj")
 title = "Robin Feather"
 slot = 2
 feather = ExtResource("127_kt6vk")
+recipe = Dictionary[int, int]({
+27: 1
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_nh8i1"]
@@ -1322,6 +1339,9 @@ script = ExtResource("246_gckwj")
 title = "Bee-Eater Feather"
 slot = 2
 feather = ExtResource("129_rbkdr")
+recipe = Dictionary[int, int]({
+28: 1
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_gxnpd"]
@@ -1329,6 +1349,9 @@ script = ExtResource("246_gckwj")
 title = "Great Tit Feather"
 slot = 2
 feather = ExtResource("131_qays4")
+recipe = Dictionary[int, int]({
+29: 1
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_saeuq"]
@@ -1336,6 +1359,9 @@ script = ExtResource("246_gckwj")
 title = "Shrike Feather"
 slot = 2
 feather = ExtResource("133_37usx")
+recipe = Dictionary[int, int]({
+30: 1
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b05pg"]
