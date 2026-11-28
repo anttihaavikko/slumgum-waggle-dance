@@ -322,9 +322,15 @@ func update_hat():
 	for id in data.hat_parts:
 		var index := tailor.recipes.find_custom(func(h: HatPart): return h.resource_scene_unique_id == id)
 		var hat_part := tailor.recipes[index]
-		if hat_part.slot == 0: hat.main_sprite.self_modulate = hat_part.color
-		if hat_part.slot == 1: hat.string_sprite.self_modulate = hat_part.color
-		if hat_part.slot == 2: hat.feather.texture = hat_part.feather
+		if hat_part.slot == 0:
+			hat.main_sprite.self_modulate = hat_part.color
+			hat.main_sprite.texture = hat_part.sprite
+		if hat_part.slot == 1:
+			hat.string_sprite.self_modulate = hat_part.color
+			hat.string_sprite.texture = hat_part.sprite
+			hat.string_sprite.position = hat.string_pos + hat_part.offset
+		if hat_part.slot == 2:
+			hat.feather.texture = hat_part.sprite
 
 func is_wearing(hp: HatPart) -> bool:
 	return data.hat_parts.has(hp.resource_scene_unique_id)

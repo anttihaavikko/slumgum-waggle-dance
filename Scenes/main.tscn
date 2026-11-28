@@ -264,9 +264,11 @@
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
 [ext_resource type="Script" uid="uid://d0b6lvtks1g0" path="res://Scripts/tailor.gd" id="245_tl5jb"]
 [ext_resource type="Script" uid="uid://dlnqjbx3tiun" path="res://Scripts/hat_part.gd" id="246_gckwj"]
+[ext_resource type="Texture2D" uid="uid://b6rhk0f15ga7b" path="res://Sprites/top_hat.png" id="247_m7bcm"]
 [ext_resource type="Texture2D" uid="uid://bjtqjkk8j4j8f" path="res://Sprites/logo_g.png" id="247_ul0h4"]
 [ext_resource type="Texture2D" uid="uid://dxt3i10s1sbrk" path="res://Sprites/logo_others.png" id="248_3xx7e"]
 [ext_resource type="Texture2D" uid="uid://bo6ine1ry8f0x" path="res://Sprites/logo_g_fill.png" id="248_gqipy"]
+[ext_resource type="Texture2D" uid="uid://cmywygdkr0l7x" path="res://Sprites/hat_ribbon.png" id="248_x8wul"]
 [ext_resource type="Texture2D" uid="uid://cr2cqna23jcrb" path="res://Sprites/logo_rect.png" id="249_ul0h4"]
 
 [sub_resource type="Gradient" id="Gradient_sasc4"]
@@ -1249,36 +1251,123 @@ blend_mode = 3
 [sub_resource type="Resource" id="Resource_tl5jb"]
 script = ExtResource("246_gckwj")
 title = "White Hat"
+sprite = ExtResource("214_vpdwf")
+recipe = Dictionary[int, int]({
+5: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_ic5ri"]
 script = ExtResource("246_gckwj")
 title = "Yellow Hat"
 color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = ExtResource("214_vpdwf")
+recipe = Dictionary[int, int]({
+5: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_rwfnq"]
 script = ExtResource("246_gckwj")
 title = "Green Hat"
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = ExtResource("214_vpdwf")
+recipe = Dictionary[int, int]({
+5: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_gckwj"]
 script = ExtResource("246_gckwj")
 title = "Red Hat"
 color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = ExtResource("214_vpdwf")
+recipe = Dictionary[int, int]({
+5: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_h186a"]
 script = ExtResource("246_gckwj")
 title = "Dark Hat"
 color = Color(0.13725491, 0, 0.11764706, 1)
+sprite = ExtResource("214_vpdwf")
+recipe = Dictionary[int, int]({
+5: 5
+})
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_wtlgf"]
+script = ExtResource("246_gckwj")
+title = "White Top Hat"
+sprite = ExtResource("247_m7bcm")
+recipe = Dictionary[int, int]({
+5: 10,
+20: 5
+})
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m7bcm"]
+load_path = "res://.godot/imported/top_hat.png-403f7edcb77a1efdfcc1325e323135c5.ctex"
+
+[sub_resource type="Resource" id="Resource_dorq1"]
+script = ExtResource("246_gckwj")
+title = "Yellow Top Hat"
+color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = SubResource("CompressedTexture2D_m7bcm")
+recipe = Dictionary[int, int]({
+5: 10,
+20: 5
+})
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u7f2x"]
+load_path = "res://.godot/imported/top_hat.png-403f7edcb77a1efdfcc1325e323135c5.ctex"
+
+[sub_resource type="Resource" id="Resource_ugo8c"]
+script = ExtResource("246_gckwj")
+title = "Green Top Hat"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = SubResource("CompressedTexture2D_u7f2x")
+recipe = Dictionary[int, int]({
+5: 10,
+20: 5
+})
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nf1h2"]
+load_path = "res://.godot/imported/top_hat.png-403f7edcb77a1efdfcc1325e323135c5.ctex"
+
+[sub_resource type="Resource" id="Resource_mv3pa"]
+script = ExtResource("246_gckwj")
+title = "Red Top Hat"
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = SubResource("CompressedTexture2D_nf1h2")
+recipe = Dictionary[int, int]({
+5: 10,
+20: 5
+})
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_npckp"]
+load_path = "res://.godot/imported/top_hat.png-403f7edcb77a1efdfcc1325e323135c5.ctex"
+
+[sub_resource type="Resource" id="Resource_lpg44"]
+script = ExtResource("246_gckwj")
+title = "Dark Top Hat"
+color = Color(0.13725491, 0, 0.11764706, 1)
+sprite = SubResource("CompressedTexture2D_npckp")
+recipe = Dictionary[int, int]({
+5: 10,
+20: 5
+})
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="Resource" id="Resource_x8wul"]
 script = ExtResource("246_gckwj")
 title = "White String"
 slot = 1
+sprite = ExtResource("183_o48hj")
 recipe = Dictionary[int, int]({
 19: 5
 })
@@ -1289,6 +1378,7 @@ script = ExtResource("246_gckwj")
 title = "Yellow String"
 slot = 1
 color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = ExtResource("183_o48hj")
 recipe = Dictionary[int, int]({
 19: 5
 })
@@ -1299,6 +1389,7 @@ script = ExtResource("246_gckwj")
 title = "Green String"
 slot = 1
 color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = ExtResource("183_o48hj")
 recipe = Dictionary[int, int]({
 19: 5
 })
@@ -1309,6 +1400,7 @@ script = ExtResource("246_gckwj")
 title = "Red String"
 slot = 1
 color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = ExtResource("183_o48hj")
 recipe = Dictionary[int, int]({
 19: 5
 })
@@ -1319,6 +1411,7 @@ script = ExtResource("246_gckwj")
 title = "Dark String"
 slot = 1
 color = Color(0.13725491, 0, 0.11764706, 1)
+sprite = ExtResource("183_o48hj")
 recipe = Dictionary[int, int]({
 19: 5
 })
@@ -1328,7 +1421,7 @@ metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 script = ExtResource("246_gckwj")
 title = "Robin Feather"
 slot = 2
-feather = ExtResource("127_kt6vk")
+sprite = ExtResource("127_kt6vk")
 recipe = Dictionary[int, int]({
 27: 1
 })
@@ -1338,7 +1431,7 @@ metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 script = ExtResource("246_gckwj")
 title = "Bee-Eater Feather"
 slot = 2
-feather = ExtResource("129_rbkdr")
+sprite = ExtResource("129_rbkdr")
 recipe = Dictionary[int, int]({
 28: 1
 })
@@ -1348,7 +1441,7 @@ metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 script = ExtResource("246_gckwj")
 title = "Great Tit Feather"
 slot = 2
-feather = ExtResource("131_qays4")
+sprite = ExtResource("131_qays4")
 recipe = Dictionary[int, int]({
 29: 1
 })
@@ -1358,10 +1451,86 @@ metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 script = ExtResource("246_gckwj")
 title = "Shrike Feather"
 slot = 2
-feather = ExtResource("133_37usx")
+sprite = ExtResource("133_37usx")
 recipe = Dictionary[int, int]({
 30: 1
 })
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_u7f2x"]
+script = ExtResource("246_gckwj")
+title = "White Ribbon"
+slot = 1
+sprite = ExtResource("248_x8wul")
+recipe = Dictionary[int, int]({
+5: 2,
+20: 2
+})
+offset = Vector2(0, -10)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x8wul"]
+load_path = "res://.godot/imported/hat_ribbon.png-4a7560b0b83868dffb11fb413aa0d18d.ctex"
+
+[sub_resource type="Resource" id="Resource_nf1h2"]
+script = ExtResource("246_gckwj")
+title = "Yellow Ribbon"
+slot = 1
+color = Color(1, 0.7294118, 0.28627452, 1)
+sprite = SubResource("CompressedTexture2D_x8wul")
+recipe = Dictionary[int, int]({
+5: 2,
+20: 2
+})
+offset = Vector2(0, -10)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mv3pa"]
+load_path = "res://.godot/imported/hat_ribbon.png-4a7560b0b83868dffb11fb413aa0d18d.ctex"
+
+[sub_resource type="Resource" id="Resource_npckp"]
+script = ExtResource("246_gckwj")
+title = "Green Ribbon"
+slot = 1
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+sprite = SubResource("CompressedTexture2D_mv3pa")
+recipe = Dictionary[int, int]({
+5: 2,
+20: 2
+})
+offset = Vector2(0, -10)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lpg44"]
+load_path = "res://.godot/imported/hat_ribbon.png-4a7560b0b83868dffb11fb413aa0d18d.ctex"
+
+[sub_resource type="Resource" id="Resource_y1gki"]
+script = ExtResource("246_gckwj")
+title = "Red Ribbon"
+slot = 1
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+sprite = SubResource("CompressedTexture2D_lpg44")
+recipe = Dictionary[int, int]({
+5: 2,
+20: 2
+})
+offset = Vector2(0, -10)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eoht1"]
+load_path = "res://.godot/imported/hat_ribbon.png-4a7560b0b83868dffb11fb413aa0d18d.ctex"
+
+[sub_resource type="Resource" id="Resource_x8pim"]
+script = ExtResource("246_gckwj")
+title = "Dark Ribbon"
+slot = 1
+color = Color(0.13725491, 0, 0.11764706, 1)
+sprite = SubResource("CompressedTexture2D_eoht1")
+recipe = Dictionary[int, int]({
+5: 2,
+20: 2
+})
+offset = Vector2(0, -10)
 metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b05pg"]
@@ -3175,7 +3344,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 script = ExtResource("245_tl5jb")
-recipes = Array[ExtResource("246_gckwj")]([SubResource("Resource_tl5jb"), SubResource("Resource_ic5ri"), SubResource("Resource_rwfnq"), SubResource("Resource_gckwj"), SubResource("Resource_h186a"), SubResource("Resource_x8wul"), SubResource("Resource_yv31h"), SubResource("Resource_6ecqq"), SubResource("Resource_if84k"), SubResource("Resource_xy8ya"), SubResource("Resource_m7bcm"), SubResource("Resource_nh8i1"), SubResource("Resource_gxnpd"), SubResource("Resource_saeuq")])
+recipes = Array[ExtResource("246_gckwj")]([SubResource("Resource_tl5jb"), SubResource("Resource_ic5ri"), SubResource("Resource_rwfnq"), SubResource("Resource_gckwj"), SubResource("Resource_h186a"), SubResource("Resource_wtlgf"), SubResource("Resource_dorq1"), SubResource("Resource_ugo8c"), SubResource("Resource_mv3pa"), SubResource("Resource_lpg44"), SubResource("Resource_x8wul"), SubResource("Resource_yv31h"), SubResource("Resource_6ecqq"), SubResource("Resource_if84k"), SubResource("Resource_xy8ya"), SubResource("Resource_m7bcm"), SubResource("Resource_nh8i1"), SubResource("Resource_gxnpd"), SubResource("Resource_saeuq"), SubResource("Resource_u7f2x"), SubResource("Resource_nf1h2"), SubResource("Resource_npckp"), SubResource("Resource_y1gki"), SubResource("Resource_x8pim")])
 button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../../../Preview Window/Preview")
 scroller = NodePath("../../..")

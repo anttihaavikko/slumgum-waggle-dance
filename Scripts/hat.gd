@@ -6,3 +6,8 @@ class_name Hat extends Node2D
 @export var string_sprite: Sprite2D
 @export var colors: Array[Color]
 @export var feathers: Array[Texture2D]
+
+var string_pos: Vector2
+
+func _ready() -> void:
+	string_pos = string_sprite.position

@@ -85,6 +85,7 @@ func open(source: Station):
 	if Main.singleton.station:
 		Main.singleton.station.close()
 	if crafter: crafter.open()
+	if tailor: tailor.open()
 	Main.singleton.options.can_toggle = false
 	station = source
 	Main.singleton.station = self

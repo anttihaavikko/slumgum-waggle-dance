@@ -9,6 +9,7 @@ var buttons: Array[Button] = []
 var index := 0
 
 func _ready() -> void:
+	recipes.sort_custom(func (a, b): return a.sort_key() < b.sort_key())
 	for i in recipes.size():
 		var button = button_prefab.instantiate() as Button
 		button.toggle_mode = true
@@ -27,6 +28,7 @@ func hide_undiscovered():
 
 func open():
 	hide_undiscovered()
+	index = buttons.find(buttons.filter(func (b): return b.visible)[0])
 	press(recipes[index], buttons[index], index)
 
 func focus_next_button(dir: int):
@@ -36,7 +38,6 @@ func focus_next_button(dir: int):
 	visible_buttons[index].button_pressed = true
 	if abs(dir) > 0: SoundEffects.singleton.add(46, global_position, 0.5)
 	scroller.ensure_control_visible(visible_buttons[index])
-
 
 func press(eq: HatPart, button: Button, idx: int):
 	index = idx
