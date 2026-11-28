@@ -475,23 +475,24 @@ func _process(delta) -> void:
 		SoundEffects.singleton.add(36, gp)
 		inventory.current().throw(body.to_local(gp).normalized() * 200)
 
-	if Input.is_action_just_pressed("wheel_up"):
+	var pad := Main.singleton.input_detection.using_pad
+	if Input.is_action_just_pressed("wheel_up") and pad:
 		if Main.singleton.station:
 			Main.singleton.station.cycle(-1, 0)
 			return
 		inventory.change_focus(-1)
 
-	if Input.is_action_just_pressed("wheel_down"):
+	if Input.is_action_just_pressed("wheel_down") and pad:
 		if Main.singleton.station:
 			Main.singleton.station.cycle(1, 0)
 			return
 		inventory.change_focus(1)
 
-	if Input.is_action_just_pressed("dpad_up"):
+	if Input.is_action_just_pressed("dpad_up") and pad:
 		if Main.singleton.station:
 			Main.singleton.station.cycle(0, -1)
 
-	if Input.is_action_just_pressed("dpad_down"):
+	if Input.is_action_just_pressed("dpad_down") and pad:
 		if Main.singleton.station:
 			Main.singleton.station.cycle(0, 1)
 
