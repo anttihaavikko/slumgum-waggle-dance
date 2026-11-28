@@ -1028,9 +1028,13 @@ metadata/_custom_type_script = "uid://drtpdk28hi7te"
 [sub_resource type="Resource" id="Resource_nm0t2"]
 script = ExtResource("31_3h4bx")
 title = "Tailoring Station"
-description = "Tools necessary to craft different sorts of hats."
+description = "Tools necessary to (craft) different sorts of (hats). The hats crafted are purely (cosmetic). But who doesn't (want) hats."
 prefab = ExtResource("160_rgxdg")
 sprite = ExtResource("161_tl5jb")
+recipe = Dictionary[int, int]({
+11: 10,
+19: 5
+})
 metadata/_custom_type_script = "uid://drtpdk28hi7te"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmq5c"]
