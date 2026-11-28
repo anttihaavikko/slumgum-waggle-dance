@@ -15,6 +15,8 @@ var built := []
 var crafted := []
 var explosions := []
 var broken_nodes := []
+var created_hats: Array[String] = []
+var hat_parts: Array[String] = ["", "", ""]
 
 static func load() -> SaveData:
 	return Saver.new().load(func(): return SaveData.new()) as SaveData

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b1jc8io6l3hbe"]
+
+[ext_resource type="PackedScene" uid="uid://dfsx4ecwoq8gc" path="res://Scenes/Pieces/core.tscn" id="1_nm0t2"]
+[ext_resource type="Texture2D" uid="uid://dwmrmy81pnu73" path="res://Sprites/tailor_station.png" id="2_tpph5"]
+[ext_resource type="Shader" uid="uid://7gwbqnj5dg4s" path="res://_Starter/Shaders/wavy.gdshader" id="3_5qau1"]
+[ext_resource type="Texture2D" uid="uid://beu0kkpj7x0yp" path="res://Sprites/tailor_loose_string.png" id="4_edbew"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpkcx"]
+shader = ExtResource("3_5qau1")
+shader_parameter/amount = 20.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = 3.0
+shader_parameter/flip = true
+shader_parameter/world_amount = 1.0
+
+[node name="Tailor" unique_id=299398414 instance=ExtResource("1_nm0t2")]
+can_paint = false
+
+[node name="Sprite2D" parent="." index="0" unique_id=641265153]
+self_modulate = Color(1, 1, 1, 1)
+position = Vector2(112, -356)
+texture = ExtResource("2_tpph5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="7" unique_id=394960323]
+z_index = 3
+material = SubResource("ShaderMaterial_cpkcx")
+position = Vector2(-76, 203)
+texture = ExtResource("4_edbew")

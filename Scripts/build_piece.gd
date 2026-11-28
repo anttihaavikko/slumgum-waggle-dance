@@ -40,7 +40,8 @@ enum Id {
 	FeatherRobin,
 	FeatherBeeEater,
 	FeatherGreatTit,
-	FeatherShrike
+	FeatherShrike,
+	Tailor
 }
 
 func can_place() -> bool:

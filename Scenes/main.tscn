@@ -246,17 +246,24 @@
 [ext_resource type="Script" uid="uid://dxftrchkigaky" path="res://Scripts/wind.gd" id="144_odn5n"]
 [ext_resource type="Script" uid="uid://cpfu6gox7gjfb" path="res://Scripts/tooltip.gd" id="157_11vbv"]
 [ext_resource type="Texture2D" uid="uid://4snlndkvjfdp" path="res://Sprites/tooltip-arrow.png" id="158_m6w5j"]
+[ext_resource type="PackedScene" uid="uid://b1jc8io6l3hbe" path="res://Scenes/tailor.tscn" id="160_rgxdg"]
+[ext_resource type="Texture2D" uid="uid://dwmrmy81pnu73" path="res://Sprites/tailor_station.png" id="161_tl5jb"]
 [ext_resource type="PackedScene" uid="uid://b8agfuem7q6wk" path="res://_Starter/Scenes/blinders.tscn" id="166_hprjy"]
 [ext_resource type="Texture2D" uid="uid://bgrkqovwopksn" path="res://Sprites/mine-spot.png" id="175_w32ys"]
 [ext_resource type="AudioStream" uid="uid://bl0ieoxygc4fk" path="res://Sounds/charging.wav" id="177_g2ehk"]
+[ext_resource type="Script" uid="uid://c225t4671hx8s" path="res://Scripts/hat.gd" id="181_6looh"]
+[ext_resource type="Texture2D" uid="uid://bkmvrxkchngim" path="res://Sprites/hat_string.png" id="183_o48hj"]
 [ext_resource type="Texture2D" uid="uid://cxp054wm1xg30" path="res://Sprites/brush-icon.png" id="183_xnck3"]
 [ext_resource type="Texture2D" uid="uid://c580cecm6ccex" path="res://Sprites/elec.png" id="193_8lmbg"]
 [ext_resource type="Texture2D" uid="uid://bpc535guhh2mb" path="res://Sprites/guitar_scale_pad.png" id="202_refj4"]
+[ext_resource type="Texture2D" uid="uid://c1v5odc7eax5n" path="res://Sprites/hat.png" id="214_vpdwf"]
 [ext_resource type="Texture2D" uid="uid://bua276g0n7wcx" path="res://Sprites/poster_dead.png" id="224_ore4n"]
 [ext_resource type="Texture2D" uid="uid://7f1anbwmb43l" path="res://Sprites/hint_teleports.png" id="226_gqipy"]
 [ext_resource type="Texture2D" uid="uid://ciue25yyu1e03" path="res://Sprites/a_btn.png" id="233_vhoi0"]
 [ext_resource type="PackedScene" uid="uid://bd7jj35q01jh0" path="res://_Starter/Scenes/options_menu.tscn" id="241_jmisg"]
 [ext_resource type="Script" uid="uid://cchf6omhhy18c" path="res://_Starter/Scripts/double_tab_detect.gd" id="244_ddyu8"]
+[ext_resource type="Script" uid="uid://d0b6lvtks1g0" path="res://Scripts/tailor.gd" id="245_tl5jb"]
+[ext_resource type="Script" uid="uid://dlnqjbx3tiun" path="res://Scripts/hat_part.gd" id="246_gckwj"]
 [ext_resource type="Texture2D" uid="uid://bjtqjkk8j4j8f" path="res://Sprites/logo_g.png" id="247_ul0h4"]
 [ext_resource type="Texture2D" uid="uid://dxt3i10s1sbrk" path="res://Sprites/logo_others.png" id="248_3xx7e"]
 [ext_resource type="Texture2D" uid="uid://bo6ine1ry8f0x" path="res://Sprites/logo_g_fill.png" id="248_gqipy"]
@@ -1018,6 +1025,14 @@ recipe = Dictionary[int, int]({
 })
 metadata/_custom_type_script = "uid://drtpdk28hi7te"
 
+[sub_resource type="Resource" id="Resource_nm0t2"]
+script = ExtResource("31_3h4bx")
+title = "Tailoring Station"
+description = "Tools necessary to craft different sorts of hats."
+prefab = ExtResource("160_rgxdg")
+sprite = ExtResource("161_tl5jb")
+metadata/_custom_type_script = "uid://drtpdk28hi7te"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmq5c"]
 radius = 367.78934
 
@@ -1174,6 +1189,22 @@ shader_parameter/speed = -10.0
 shader_parameter/flip = false
 shader_parameter/world_amount = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o48hj"]
+shader = ExtResource("102_b4mik")
+shader_parameter/amount = 30.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = 12.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6looh"]
+shader = ExtResource("102_b4mik")
+shader_parameter/amount = 10.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = 8.0
+shader_parameter/flip = false
+shader_parameter/world_amount = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_55idt"]
 radius = 174.1
 
@@ -1210,6 +1241,98 @@ viewport_path = NodePath("HUD/SubViewportContainer/SubViewport")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r7bbj"]
 blend_mode = 3
+
+[sub_resource type="Resource" id="Resource_tl5jb"]
+script = ExtResource("246_gckwj")
+title = "White Hat"
+description = "Lorem ipsum"
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_ic5ri"]
+script = ExtResource("246_gckwj")
+title = "Yellow Hat"
+color = Color(1, 0.7294118, 0.28627452, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_rwfnq"]
+script = ExtResource("246_gckwj")
+title = "Green Hat"
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_gckwj"]
+script = ExtResource("246_gckwj")
+title = "Red Hat"
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_h186a"]
+script = ExtResource("246_gckwj")
+title = "Dark Hat"
+color = Color(0.13725491, 0, 0.11764706, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_x8wul"]
+script = ExtResource("246_gckwj")
+title = "White String"
+slot = 1
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_yv31h"]
+script = ExtResource("246_gckwj")
+title = "Yellow String"
+slot = 1
+color = Color(1, 0.7294118, 0.28627452, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_6ecqq"]
+script = ExtResource("246_gckwj")
+title = "Green String"
+slot = 1
+color = Color(0.1254902, 0.6392157, 0.61960787, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_if84k"]
+script = ExtResource("246_gckwj")
+title = "Red String"
+slot = 1
+color = Color(0.9372549, 0.35686275, 0.35686275, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_xy8ya"]
+script = ExtResource("246_gckwj")
+title = "Dark String"
+slot = 1
+color = Color(0.13725491, 0, 0.11764706, 1)
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_m7bcm"]
+script = ExtResource("246_gckwj")
+title = "Robin Feather"
+slot = 2
+feather = ExtResource("127_kt6vk")
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_nh8i1"]
+script = ExtResource("246_gckwj")
+title = "Bee-Eater Feather"
+slot = 2
+feather = ExtResource("129_rbkdr")
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_gxnpd"]
+script = ExtResource("246_gckwj")
+title = "Great Tit Feather"
+slot = 2
+feather = ExtResource("131_qays4")
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
+
+[sub_resource type="Resource" id="Resource_saeuq"]
+script = ExtResource("246_gckwj")
+title = "Shrike Feather"
+slot = 2
+feather = ExtResource("133_37usx")
+metadata/_custom_type_script = "uid://dlnqjbx3tiun"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b05pg"]
 blend_mode = 1
@@ -1318,12 +1441,12 @@ blend_mode = 1
 [node name="Main" type="Node2D" unique_id=324059262]
 metadata/_edit_vertical_guides_ = [1885.0]
 
-[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip", "input_detection", "buttons", "options")]
+[node name="Main" type="Node" parent="." unique_id=486877403 node_paths=PackedStringArray("harvester", "inventory", "item_db", "stations", "held", "builder", "time", "explosion_shape", "notifications", "tooltip", "input_detection", "buttons", "options", "hat", "tailor")]
 script = ExtResource("1_hpc6h")
 harvester = NodePath("../Harvester")
 inventory = NodePath("../HUD/Frame/Bar")
 item_db = NodePath("../ItemManager")
-stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, null, null, null]
+stations = [null, null, NodePath("../HUD/Core Window/Core"), NodePath("../HUD/Box Window/Box"), NodePath("../HUD/Sign Window/Input"), NodePath("../HUD/Anvil Window/Anvil"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, NodePath("../HUD/Bed Window/Bed"), NodePath("../HUD/Converter Win/Converter"), null, null, NodePath("../HUD/Tinker Window/Tinker"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), NodePath("../HUD/Converter Win/Converter"), null, null, null, null, NodePath("../HUD/Tailor Window/Tailor")]
 held = NodePath("../HUD/Slot")
 builder = NodePath("../Platforms")
 time = NodePath("../Schedule")
@@ -1334,8 +1457,10 @@ notifications = NodePath("../HUD/Notifications")
 door_hints = Array[Texture2D]([ExtResource("4_fnc5k"), ExtResource("5_658pa"), ExtResource("6_gax0l"), null])
 tooltip = NodePath("../HUD/Tooltip")
 input_detection = NodePath("../Input Detection")
-buttons = [NodePath("../HUD/Bed Window/Bed/VBoxContainer/Morning"), NodePath("../HUD/Bed Window/Bed/VBoxContainer/Eight"), NodePath("../HUD/OptionsMenu/Toggler"), NodePath("../HUD/Fullscreen Button")]
+buttons = [NodePath("../HUD/Bed Window/Bed/VBoxContainer/Morning"), NodePath("../HUD/Bed Window/Bed/VBoxContainer/Eight"), NodePath("../HUD/OptionsMenu/Toggler"), NodePath("../HUD/Fullscreen Button"), NodePath("../HUD/Play Button")]
 options = NodePath("../HUD/OptionsMenu")
+hat = NodePath("../Bee/Body/Body Sprite/Hat")
+tailor = NodePath("../HUD/Tailor Window/Tailor/ScrollContainer/MarginContainer/VBoxContainer/Crafter")
 
 [node name="DoubleTabDetect" type="Node" parent="." unique_id=295763462]
 script = ExtResource("244_ddyu8")
@@ -1584,7 +1709,7 @@ script = ExtResource("144_odn5n")
 [node name="Platforms" type="Node2D" parent="." unique_id=403826179 node_paths=PackedStringArray("cross", "starters", "picker", "preview", "button_grid", "painter", "scroller")]
 position = Vector2(751, -309)
 script = ExtResource("2_d1ilt")
-pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh"), SubResource("Resource_gf7g1"), SubResource("Resource_56rwl"), SubResource("Resource_brnef"), SubResource("Resource_sxjml"), SubResource("Resource_36uwi"), SubResource("Resource_tom0i")])
+pieces = Array[ExtResource("31_3h4bx")]([SubResource("Resource_3ahwd"), SubResource("Resource_b4xsn"), SubResource("Resource_ot5ec"), SubResource("Resource_aok0f"), SubResource("Resource_64lof"), SubResource("Resource_b4mik"), SubResource("Resource_urine"), SubResource("Resource_5vy51"), SubResource("Resource_o2owy"), SubResource("Resource_ylsbi"), SubResource("Resource_ceghn"), SubResource("Resource_3h4bx"), SubResource("Resource_xg142"), SubResource("Resource_y4lw4"), SubResource("Resource_b8ggh"), SubResource("Resource_gf7g1"), SubResource("Resource_56rwl"), SubResource("Resource_brnef"), SubResource("Resource_sxjml"), SubResource("Resource_36uwi"), SubResource("Resource_tom0i"), SubResource("Resource_nm0t2")])
 cross = NodePath("../Cursor Icon/Nope")
 starters = [NodePath("Core"), NodePath("Platform"), NodePath("Platform2"), NodePath("Support3"), NodePath("Support4")]
 picker = NodePath("../HUD/Build Picker Win")
@@ -1911,16 +2036,57 @@ position = Vector2(-61.87561, -43.87561)
 scale = Vector2(0.11249756, 0.11249756)
 texture = ExtResource("59_e5peh")
 
-[node name="Feeler Right" type="Sprite2D" parent="Bee/Body/Body Sprite" unique_id=486068211]
+[node name="Feelers" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1223804686]
+
+[node name="Feeler Right" type="Sprite2D" parent="Bee/Body/Body Sprite/Feelers" unique_id=486068211]
 material = SubResource("ShaderMaterial_gax0l")
 position = Vector2(25, -153)
 texture = ExtResource("9_6iyac")
 
-[node name="Feeler Left" type="Sprite2D" parent="Bee/Body/Body Sprite" unique_id=534534028]
+[node name="Feeler Left" type="Sprite2D" parent="Bee/Body/Body Sprite/Feelers" unique_id=534534028]
 material = SubResource("ShaderMaterial_11vbv")
 position = Vector2(-34, -153)
 texture = ExtResource("9_6iyac")
 flip_h = true
+
+[node name="Hat" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=967549259 node_paths=PackedStringArray("feelers", "main_sprite", "feather", "string_sprite")]
+visible = false
+position = Vector2(-3, -91)
+script = ExtResource("181_6looh")
+feelers = NodePath("../Feelers")
+main_sprite = NodePath("Main")
+feather = NodePath("Feather")
+string_sprite = NodePath("String")
+colors = Array[Color]([Color(1, 0.7294118, 0.28627452, 1), Color(0.9372549, 0.35686275, 0.35686275, 1), Color(0.1254902, 0.6392157, 0.61960787, 1), Color(0.3647059, 0.3647059, 0.3647059, 1), Color(1, 1, 1, 1)])
+feathers = Array[Texture2D]([ExtResource("127_kt6vk"), ExtResource("129_rbkdr"), ExtResource("133_37usx"), ExtResource("131_qays4")])
+
+[node name="Feather" type="Sprite2D" parent="Bee/Body/Body Sprite/Hat" unique_id=1618158211]
+visible = false
+material = SubResource("ShaderMaterial_o48hj")
+position = Vector2(-54, -42)
+rotation = -0.4444136
+scale = Vector2(0.33970946, 0.33970946)
+texture = ExtResource("127_kt6vk")
+offset = Vector2(0, -255.6377)
+script = ExtResource("11_h1bgf")
+move_direction = Vector2(5, 0)
+move_speed = 8.0
+time_offset = 0.5
+
+[node name="Main" type="Sprite2D" parent="Bee/Body/Body Sprite/Hat" unique_id=618362008]
+self_modulate = Color(0.3647059, 0.3647059, 0.3647059, 1)
+material = SubResource("ShaderMaterial_6looh")
+position = Vector2(0, -84)
+scale = Vector2(1.1888914, 1.1888914)
+texture = ExtResource("214_vpdwf")
+
+[node name="String" type="Sprite2D" parent="Bee/Body/Body Sprite/Hat" unique_id=1131097115]
+visible = false
+material = SubResource("ShaderMaterial_6looh")
+position = Vector2(1.0967255e-05, -53.00003)
+scale = Vector2(1.0857103, 1.0857103)
+texture = ExtResource("183_o48hj")
+offset = Vector2(1.842102, 0.41589355)
 
 [node name="Face Wrap" type="Node2D" parent="Bee/Body/Body Sprite" unique_id=1544136475]
 position = Vector2(-4, -55)
@@ -2907,6 +3073,83 @@ button_prefab = ExtResource("50_2daye")
 preview = NodePath("../../../../Preview Window/Preview")
 creates_items = true
 
+[node name="Tailor Window" parent="HUD" unique_id=1779725009 instance=ExtResource("57_lx3vj")]
+offset_left = -617.0
+offset_top = -369.0
+offset_right = -211.0
+offset_bottom = 302.0
+layout_direction = 2
+title = "ANVIL"
+
+[node name="Tailor" type="Control" parent="HUD/Tailor Window" unique_id=483794198 node_paths=PackedStringArray("win", "preview", "tailor")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -335.5
+offset_right = 203.0
+offset_bottom = 335.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("38_kqrg6")
+win = NodePath("..")
+preview = NodePath("../../Preview Window/Preview")
+tailor = NodePath("ScrollContainer/MarginContainer/VBoxContainer/Crafter")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/Tailor Window/Tailor" unique_id=810174439]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 96.0
+offset_right = 378.0
+offset_bottom = 637.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Tailor Window/Tailor/ScrollContainer" unique_id=2002465952]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Tailor Window/Tailor/ScrollContainer/MarginContainer" unique_id=71637432]
+custom_minimum_size = Vector2(318.76, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Description" type="RichTextLabel" parent="HUD/Tailor Window/Tailor/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1272714318]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+fit_content = true
+
+[node name="Spacer" type="ColorRect" parent="HUD/Tailor Window/Tailor/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1423444993]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Subtitle" type="RichTextLabel" parent="HUD/Tailor Window/Tailor/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1850400297]
+layout_mode = 2
+theme = ExtResource("36_hdf80")
+theme_override_font_sizes/normal_font_size = 22
+text = "PICK A RECIPE"
+fit_content = true
+
+[node name="Spacer2" type="ColorRect" parent="HUD/Tailor Window/Tailor/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1125177976]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Crafter" type="VBoxContainer" parent="HUD/Tailor Window/Tailor/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2060950350 node_paths=PackedStringArray("preview", "scroller")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+script = ExtResource("245_tl5jb")
+recipes = Array[ExtResource("246_gckwj")]([SubResource("Resource_tl5jb"), SubResource("Resource_ic5ri"), SubResource("Resource_rwfnq"), SubResource("Resource_gckwj"), SubResource("Resource_h186a"), SubResource("Resource_x8wul"), SubResource("Resource_yv31h"), SubResource("Resource_6ecqq"), SubResource("Resource_if84k"), SubResource("Resource_xy8ya"), SubResource("Resource_m7bcm"), SubResource("Resource_nh8i1"), SubResource("Resource_gxnpd"), SubResource("Resource_saeuq")])
+button_prefab = ExtResource("50_2daye")
+preview = NodePath("../../../../../../Preview Window/Preview")
+scroller = NodePath("../../..")
+
 [node name="Bed Window" parent="HUD" unique_id=2034345964 instance=ExtResource("57_lx3vj")]
 visible = false
 offset_left = -617.0
@@ -3100,7 +3343,7 @@ layout_direction = 2
 has_close_button = false
 title = "PREVIEW"
 
-[node name="Preview" type="Control" parent="HUD/Preview Window" unique_id=757214562 node_paths=PackedStringArray("win", "craft_button", "description", "materials")]
+[node name="Preview" type="Control" parent="HUD/Preview Window" unique_id=757214562 node_paths=PackedStringArray("win", "craft_button", "wear_button", "description", "materials", "materials_title")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3110,8 +3353,10 @@ grow_vertical = 2
 script = ExtResource("57_ynmfv")
 win = NodePath("..")
 craft_button = NodePath("Craft")
+wear_button = NodePath("Wear")
 description = NodePath("VBoxContainer/Description")
 materials = NodePath("VBoxContainer/Materials")
+materials_title = NodePath("VBoxContainer/Subtitle")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/Preview Window/Preview" unique_id=1582831390]
 layout_mode = 0
@@ -3162,6 +3407,18 @@ offset_right = 378.0
 offset_bottom = 636.0
 theme_override_constants/icon_max_width = 40
 text = "CRAFT"
+icon = ExtResource("233_vhoi0")
+icon_alignment = 0
+
+[node name="Wear" parent="HUD/Preview Window/Preview" unique_id=1330379679 instance=ExtResource("50_2daye")]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 565.0
+offset_right = 378.0
+offset_bottom = 636.0
+theme_override_constants/icon_max_width = 40
+text = "WEAR"
 icon = ExtResource("233_vhoi0")
 icon_alignment = 0
 

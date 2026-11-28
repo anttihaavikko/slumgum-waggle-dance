@@ -16,6 +16,8 @@ class_name Main extends Node
 @export var input_detection: InputDetection
 @export var buttons: Array[Button]
 @export var options: OptionsMenu
+@export var hat: Hat
+@export var tailor: Tailor
 
 var debug_start := false
 var station: StationMenu
@@ -190,6 +192,7 @@ func load():
 
 	evaluate_stats()
 	bee.energy_left = bee.energy_max
+	update_hat()
 
 func save():
 	if OS.is_debug_build() and debug_start: return
@@ -305,3 +308,20 @@ func inventory_saved():
 	await get_tree().create_timer(0.5).timeout
 	Main.pop("MUSICAL GRACE!")
 	Main.singleton.death_save = false
+
+func update_hat():
+	hat.visible = data.hat_parts[0] != ""
+	hat.feelers.visible = not hat.visible
+	hat.string_sprite.visible = data.hat_parts[1] != ""
+	hat.feather.visible = data.hat_parts[2] != ""
+	if not hat.visible and (hat.string_sprite.visible or hat.feather.visible):
+		pop("CAN'T WEAR ACCESSORIES WITHOUT A HAT")
+	for id in data.hat_parts:
+		var index := tailor.recipes.find_custom(func(h: HatPart): return h.resource_scene_unique_id == id)
+		var hat_part := tailor.recipes[index]
+		if hat_part.slot == 0: hat.main_sprite.self_modulate = hat_part.color
+		if hat_part.slot == 1: hat.string_sprite.self_modulate = hat_part.color
+		if hat_part.slot == 2: hat.feather.texture = hat_part.feather
+
+func is_wearing(hp: HatPart) -> bool:
+	return data.hat_parts.has(hp.resource_scene_unique_id)

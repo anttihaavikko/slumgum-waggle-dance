@@ -6,6 +6,7 @@ class_name StationMenu extends Control
 @export var preview: Preview
 @export var description: RichTextLabel
 @export var crafter: Crafter
+@export var tailor: Tailor
 @export var input_label: RichTextLabel
 @export var output_label: RichTextLabel
 
@@ -36,8 +37,12 @@ func move_held_with_pad():
 func _process(_delta) -> void:
 	if visible and Input.is_action_just_pressed("primary"):
 		if focused_slot and focused_inventory.other: focused_slot.auto_move(focused_inventory.other)
-	if visible and crafter and can_craft and Input.is_action_just_pressed("interact"):
-		crafter.preview.craft()
+	if visible and Input.is_action_just_pressed("interact"):
+		if crafter and can_craft:
+			if crafter.preview.craft_button.visible: crafter.preview.craft()
+		if tailor and can_craft:
+			if tailor.preview.wear_button.visible: tailor.preview.wear()
+			if tailor.preview.craft_button.visible: tailor.preview.craft()
 	if visible and Input.is_action_just_pressed("interact"):
 		if focused_slot: focused_slot.pick(focused_inventory, false)
 		move_held_with_pad()
@@ -119,6 +124,7 @@ func get_next_inventory(dir: int) -> Inventory:
 func cycle(x: int, y: int):
 	if not inputs:
 		if crafter: crafter.focus_next_button(y)
+		if tailor: tailor.focus_next_button(y)
 		return
 	if not Main.singleton.input_detection.using_pad: return
 	if focused_slot: focused_slot.mark_for_pad(false)
